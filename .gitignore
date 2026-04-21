@@ -1,0 +1,12 @@
+.env
+.venv/
+__pycache__/
+*.pyc
+sessions/*.jsonl
+jobs/*.json
+jobs/*.json.tmp
+ontology/bfo.owl
+ontology/working.owl
+ontology/working.owl.bak
+.DS_Store
+*.egg-info/

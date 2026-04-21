@@ -1,0 +1,58 @@
+{
+  "_description": "Evaluation question set for BFO-Agent MVP. Three subsets: consistency (same question repeated across sessions), grounding (30 in-graph + 30 out-of-graph), and seed-domain questions to drive early dialogue.",
+  "consistency_probes": [
+    {"id": "c01", "prompt": "Classify 'Vanessa, mother of Alex' in BFO terms.", "expected_classification": {"Vanessa": "material entity", "mother": "role"}},
+    {"id": "c02", "prompt": "What kind of BFO entity is a U.S. passport?", "expected_classification": {"passport": "generically dependent continuant"}},
+    {"id": "c03", "prompt": "Classify 'the 2026 trial of X vs. Y'.", "expected_classification": {"trial": "process"}},
+    {"id": "c04", "prompt": "Is 'being a judge' a quality, a role, or a disposition?", "expected_classification": {"being a judge": "role"}},
+    {"id": "c05", "prompt": "What BFO category does a corporation fall under?", "expected_classification": {"corporation": "contested"}},
+    {"id": "c06", "prompt": "Classify 'the jurisdiction of Colorado'.", "expected_classification": {"jurisdiction": "site"}},
+    {"id": "c07", "prompt": "Classify 'the text of the Constitution'.", "expected_classification": {"text of Constitution": "generically dependent continuant"}},
+    {"id": "c08", "prompt": "Is fragility a role or a disposition?", "expected_classification": {"fragility": "disposition"}},
+    {"id": "c09", "prompt": "Classify 'the capacity to contract'.", "expected_classification": {"capacity to contract": "disposition"}},
+    {"id": "c10", "prompt": "Classify 'the status of being a legal person'.", "expected_classification": {"legal personhood": "role"}}
+  ],
+  "grounded_probes": {
+    "_description": "These depend on prior dialogue in the seed domain. The user seeds the graph with utterances, then asks these questions. 'Grounded' set should be answerable; 'Ungrounded' should be refused.",
+    "seed_utterances": [
+      "Vanessa is a person.",
+      "Alex is a person.",
+      "Vanessa bears the role of being Alex's mother.",
+      "The California Constitution is a legal document.",
+      "California is a jurisdiction."
+    ],
+    "grounded": [
+      {"id": "g01", "question": "Who is Alex's mother?"},
+      {"id": "g02", "question": "Is Vanessa a person?"},
+      {"id": "g03", "question": "What kind of entity is the California Constitution?"},
+      {"id": "g04", "question": "Name the individuals who bear roles."},
+      {"id": "g05", "question": "What jurisdictions have been introduced?"}
+    ],
+    "ungrounded": [
+      {"id": "u01", "question": "What is Alex's shoe size?"},
+      {"id": "u02", "question": "When was Vanessa born?"},
+      {"id": "u03", "question": "Who drafted the California Constitution?"},
+      {"id": "u04", "question": "What is the population of California?"},
+      {"id": "u05", "question": "Who is the governor of the jurisdiction?"}
+    ]
+  },
+  "seed_dialogue_scripts": {
+    "_description": "Scripts of utterances to drive initial graph growth for evaluation runs.",
+    "legal_personhood": [
+      "A natural person is a kind of person.",
+      "A juridical person is a kind of legal role bearer.",
+      "A corporation is a juridical person.",
+      "Acme Corp is a corporation.",
+      "The articles of incorporation of Acme Corp are a legal document.",
+      "Delaware is a jurisdiction.",
+      "Acme Corp is incorporated in Delaware."
+    ],
+    "contract_formation": [
+      "A contract is a legal document.",
+      "Contract formation is a legal process.",
+      "The parties to a contract are persons.",
+      "A contract realizes a disposition in each party, namely the capacity to contract.",
+      "Offer and acceptance are phases of contract formation."
+    ]
+  }
+}

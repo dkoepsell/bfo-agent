@@ -1,0 +1,289 @@
+"""Ontology manager wrapping owlready2.
+
+Responsibilities:
+- Load BFO (read-only) plus a growing working ontology that imports BFO.
+- List classes/individuals for the proposer's context.
+- Apply candidate additions (entities, triples) in a rollback-safe way.
+- Run HermiT (via owlready2) for consistency checks before commit.
+- Persist the working ontology to disk.
+
+Design choice: the 'propose' path uses a dry-run world built fresh from disk,
+so no failed proposal can corrupt the committed graph. Commit writes to disk
+and then optionally git-commits in storage.py.
+"""
+from __future__ import annotations
+
+import io
+import types
+from contextlib import redirect_stderr, redirect_stdout
+from pathlib import Path
+from typing import Optional
+
+from owlready2 import (
+    World,
+    Thing,
+    ObjectProperty,
+    sync_reasoner,
+    onto_path,
+)
+
+BFO_OBO_PREFIX = "http://purl.obolibrary.org/obo/"
+WORKING_IRI = "http://davidkoepsell.com/bfo-agent/working"
+
+
+def _resolve_iri(iri_suggestion: str, working_base: str) -> str:
+    """Expand a prefixed IRI suggestion to a full IRI.
+
+    Accepts forms:
+      'working:Vanessa'   -> {working_base}#Vanessa
+      'bfo:BFO_0000040'   -> http://purl.obolibrary.org/obo/BFO_0000040
+      'BFO_0000040'       -> http://purl.obolibrary.org/obo/BFO_0000040
+      'http://...'        -> returned unchanged
+    """
+    if iri_suggestion.startswith("http"):
+        return iri_suggestion
+    if iri_suggestion.startswith("bfo:"):
+        return BFO_OBO_PREFIX + iri_suggestion.split(":", 1)[1]
+    if iri_suggestion.startswith("working:"):
+        return f"{working_base}#{iri_suggestion.split(':', 1)[1]}"
+    if iri_suggestion.startswith("BFO_"):
+        return BFO_OBO_PREFIX + iri_suggestion
+    # Bare name defaults to working namespace
+    return f"{working_base}#{iri_suggestion}"
+
+
+def _local_name(iri: str) -> str:
+    if "#" in iri:
+        return iri.rsplit("#", 1)[-1]
+    return iri.rsplit("/", 1)[-1]
+
+
+class OntologyManager:
+    def __init__(
+        self,
+        bfo_path: Path,
+        working_path: Path,
+        seed_path: Optional[Path] = None,
+    ):
+        self.bfo_path = Path(bfo_path)
+        self.working_path = Path(working_path)
+        self.seed_path = Path(seed_path) if seed_path else None
+
+        if not self.bfo_path.exists():
+            raise FileNotFoundError(
+                f"BFO ontology not found at {self.bfo_path}. "
+                f"Run: python scripts/download_bfo.py"
+            )
+
+        # onto_path tells owlready2 where to find imported ontologies locally
+        onto_path.append(str(self.bfo_path.parent))
+
+        self._load()
+
+    # ------------------------------------------------------------------ load
+    def _load(self):
+        """(Re)load BFO and working ontology from disk into a fresh World."""
+        self.world = World()
+        self.bfo = self.world.get_ontology(str(self.bfo_path)).load()
+
+        if self.working_path.exists():
+            self.working = self.world.get_ontology(
+                self.working_path.as_uri()
+            ).load()
+        else:
+            self.working = self.world.get_ontology(WORKING_IRI)
+            # Import BFO by adding it to the imported_ontologies list
+            self.working.imported_ontologies.append(self.bfo)
+            if self.seed_path and self.seed_path.exists():
+                self._apply_seed()
+            self.save()
+
+    def _apply_seed(self):
+        """Apply a minimal seed ontology from a Turtle file.
+
+        For MVP we parse seed as simple class declarations via rdflib and
+        mint subclasses in the working ontology. More elaborate seeds can
+        extend this.
+        """
+        from rdflib import Graph, RDF, RDFS, OWL, URIRef
+
+        g = Graph()
+        g.parse(str(self.seed_path), format="turtle")
+
+        with self.working:
+            # For each OWL Class declaration in the seed, create a subclass
+            for s in g.subjects(RDF.type, OWL.Class):
+                # Find parent via rdfs:subClassOf
+                parents = list(g.objects(s, RDFS.subClassOf))
+                parent_iri = str(parents[0]) if parents else None
+                # Find label
+                labels = list(g.objects(s, RDFS.label))
+                label = str(labels[0]) if labels else _local_name(str(s))
+
+                if parent_iri and parent_iri.startswith(BFO_OBO_PREFIX):
+                    parent_cls = self.world[parent_iri]
+                    if parent_cls is None:
+                        continue
+                    name = _local_name(str(s))
+                    new_cls = types.new_class(name, (parent_cls,))
+                    new_cls.label = [label]
+
+    # ------------------------------------------------------------- inventory
+    def list_bfo_classes(self) -> list[dict]:
+        """Return a labeled list of BFO classes for the proposer prompt."""
+        out = []
+        for cls in self.bfo.classes():
+            if cls.iri.startswith(BFO_OBO_PREFIX + "BFO_"):
+                fragment = cls.iri.split("/")[-1]
+                label = (cls.label.first() if cls.label else cls.name) or cls.name
+                out.append({"fragment": fragment, "label": str(label), "iri": cls.iri})
+        return sorted(out, key=lambda x: x["fragment"])
+
+    def list_working_classes(self) -> list[dict]:
+        out = []
+        for cls in self.working.classes():
+            label = (cls.label.first() if cls.label else cls.name) or cls.name
+            parents = [p.name for p in cls.is_a if hasattr(p, "name")]
+            out.append({"iri": cls.iri, "label": str(label), "parents": parents})
+        return out
+
+    def list_individuals(self) -> list[dict]:
+        out = []
+        for ind in self.working.individuals():
+            label = (ind.label.first() if ind.label else ind.name) or ind.name
+            types_ = [c.name for c in ind.is_a if hasattr(c, "name")]
+            out.append({"iri": ind.iri, "label": str(label), "types": types_})
+        return out
+
+    def list_object_properties(self) -> list[dict]:
+        out = []
+        # Include BFO relations
+        for prop in self.bfo.object_properties():
+            label = (prop.label.first() if prop.label else prop.name) or prop.name
+            out.append({"iri": prop.iri, "label": str(label)})
+        for prop in self.working.object_properties():
+            label = (prop.label.first() if prop.label else prop.name) or prop.name
+            out.append({"iri": prop.iri, "label": str(label)})
+        return out
+
+    def iri_exists(self, iri: str) -> bool:
+        full = _resolve_iri(iri, WORKING_IRI)
+        return self.world[full] is not None
+
+    # -------------------------------------------------- apply a proposal
+    def apply_proposal(self, proposal) -> list[str]:
+        """Mutate the current world with entities/relations from a proposal.
+
+        Returns a list of warning strings; raises on hard failures.
+        Does NOT save to disk. Caller decides whether to save or reload.
+        """
+        warnings: list[str] = []
+
+        with self.working:
+            # Entities first so relations can reference them
+            for ent in proposal.entities:
+                try:
+                    self._add_entity(ent)
+                except Exception as e:
+                    warnings.append(f"Entity '{ent.label}' failed: {e}")
+
+            for rel in proposal.relations:
+                try:
+                    self._add_relation(rel)
+                except Exception as e:
+                    warnings.append(f"Relation {rel.s} {rel.p} {rel.o} failed: {e}")
+
+        return warnings
+
+    def _add_entity(self, ent):
+        iri = _resolve_iri(ent.iri_suggestion, WORKING_IRI)
+        name = _local_name(iri)
+
+        # Resolve the BFO (or working) type class
+        type_full = _resolve_iri(ent.bfo_type, WORKING_IRI)
+        type_cls = self.world[type_full]
+        if type_cls is None:
+            raise ValueError(f"Type class not found: {ent.bfo_type} -> {type_full}")
+
+        if ent.kind == "class":
+            parent_full = (
+                _resolve_iri(ent.parent_class, WORKING_IRI)
+                if ent.parent_class
+                else type_full
+            )
+            parent_cls = self.world[parent_full] or type_cls
+            new_cls = types.new_class(name, (parent_cls,))
+            new_cls.label = [ent.label]
+        else:
+            ind = type_cls(name, namespace=self.working)
+            ind.label = [ent.label]
+
+    def _add_relation(self, rel):
+        """Add a triple. Handles rdfs:subClassOf, rdf:type, and object properties."""
+        from rdflib import URIRef
+
+        s_iri = _resolve_iri(rel.s, WORKING_IRI)
+        p_iri = _resolve_iri(rel.p, WORKING_IRI)
+        o_iri = _resolve_iri(rel.o, WORKING_IRI)
+
+        g = self.world.as_rdflib_graph()
+        g.add((URIRef(s_iri), URIRef(p_iri), URIRef(o_iri)))
+
+    # --------------------------------------------------- consistency check
+    def check_consistency_dry_run(self, proposal) -> tuple[bool, str]:
+        """Apply the proposal to a fresh copy, reason, then discard.
+
+        Returns (is_consistent, message).
+        """
+        # Reload cleanly so no prior dry-run residue exists
+        self._load()
+        warnings = self.apply_proposal(proposal)
+
+        buf = io.StringIO()
+        try:
+            with redirect_stdout(buf), redirect_stderr(buf):
+                with self.world:
+                    sync_reasoner(self.world, infer_property_values=False)
+        except Exception as e:
+            # HermiT raises on inconsistency in some versions; in others it
+            # just prints. We try to surface both.
+            msg = f"Reasoner error: {e}\n{buf.getvalue()}"
+            self._load()  # discard dry-run state
+            return False, msg
+
+        output = buf.getvalue()
+        self._load()  # discard dry-run state unconditionally
+
+        inconsistent_markers = ["Inconsistent", "inconsistent", "UnsatisfiableClass"]
+        if any(m in output for m in inconsistent_markers):
+            return False, output
+        warn_prefix = ("Warnings: " + "; ".join(warnings)) if warnings else ""
+        return True, (warn_prefix + "\n" + output).strip()
+
+    def commit_proposal(self, proposal) -> list[str]:
+        """Apply the proposal for real and save to disk."""
+        warnings = self.apply_proposal(proposal)
+        self.save()
+        return warnings
+
+    # ------------------------------------------------------- persistence
+    def save(self):
+        self.working_path.parent.mkdir(parents=True, exist_ok=True)
+        self.working.save(file=str(self.working_path), format="rdfxml")
+
+    def stats(self) -> dict:
+        return {
+            "num_classes": len(list(self.working.classes())),
+            "num_individuals": len(list(self.working.individuals())),
+            "num_object_properties": len(list(self.working.object_properties())),
+            "bfo_loaded": self.bfo is not None,
+        }
+
+    def summary_for_proposer(self, max_items: int = 40) -> dict:
+        """Compact context block for the LLM proposer prompt."""
+        working_cls = self.list_working_classes()[:max_items]
+        indivs = self.list_individuals()[:max_items]
+        return {
+            "working_classes": working_cls,
+            "known_individuals": indivs,
+        }
