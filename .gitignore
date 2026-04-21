@@ -10,3 +10,6 @@ ontology/working.owl
 ontology/working.owl.bak
 .DS_Store
 *.egg-info/
+
+# Windows NTFS metadata from WSL-side downloads
+*:Zone.Identifier
