@@ -1,0 +1,439 @@
+{
+  "mode": "baseline",
+  "model": "claude-sonnet-4-6",
+  "api": "http://localhost:5000",
+  "consistency": {
+    "n_sessions": 5,
+    "mean_agreement": 0.89,
+    "per_probe": [
+      {
+        "probe_id": "c01",
+        "prompt": "In BFO terms, what kind of entity is an act of recognition in law?",
+        "responses": [
+          "process",
+          "process",
+          "process",
+          "process",
+          "process"
+        ],
+        "distinct_classifications": 1,
+        "modal_agreement_rate": 1.0
+      },
+      {
+        "probe_id": "c02",
+        "prompt": "Classify 'a legal duty' in BFO top-level terms. Is it a continuant or an occurrent, and what subtype?",
+        "responses": [
+          "disposition",
+          "generically dependent continuant",
+          "disposition",
+          "process",
+          "disposition"
+        ],
+        "distinct_classifications": 3,
+        "modal_agreement_rate": 0.6
+      },
+      {
+        "probe_id": "c03",
+        "prompt": "What BFO category best fits 'the normative force of an obligation'?",
+        "responses": [
+          "disposition",
+          "disposition",
+          "material entity",
+          "material entity",
+          "material entity"
+        ],
+        "distinct_classifications": 2,
+        "modal_agreement_rate": 0.6
+      },
+      {
+        "probe_id": "c04",
+        "prompt": "How should we classify 'adjudication' as a kind of entity?",
+        "responses": [
+          "process",
+          "process",
+          "process",
+          "process",
+          "process"
+        ],
+        "distinct_classifications": 1,
+        "modal_agreement_rate": 1.0
+      },
+      {
+        "probe_id": "c05",
+        "prompt": "In BFO terms, is a legal rule a continuant or an occurrent?",
+        "responses": [
+          "generically dependent continuant",
+          "generically dependent continuant",
+          "generically dependent continuant",
+          "generically dependent continuant",
+          "generically dependent continuant"
+        ],
+        "distinct_classifications": 1,
+        "modal_agreement_rate": 1.0
+      },
+      {
+        "probe_id": "c06",
+        "prompt": "What kind of BFO entity is the disposition to recognize authority?",
+        "responses": [
+          "disposition",
+          "disposition",
+          "disposition",
+          "disposition",
+          "disposition"
+        ],
+        "distinct_classifications": 1,
+        "modal_agreement_rate": 1.0
+      },
+      {
+        "probe_id": "c07",
+        "prompt": "Classify 'a property status' in BFO terms.",
+        "responses": [
+          "role",
+          "role",
+          "role",
+          "role",
+          "generically dependent continuant"
+        ],
+        "distinct_classifications": 2,
+        "modal_agreement_rate": 0.8
+      },
+      {
+        "probe_id": "c08",
+        "prompt": "How should 'sustaining practice' (the practice that sustains an institution over time) be classified in BFO?",
+        "responses": [
+          "process",
+          "process",
+          "process",
+          "function",
+          "function"
+        ],
+        "distinct_classifications": 2,
+        "modal_agreement_rate": 0.6
+      },
+      {
+        "probe_id": "c09",
+        "prompt": "In BFO terms, what is an unjust command?",
+        "responses": [
+          "generically dependent continuant",
+          "generically dependent continuant",
+          "generically dependent continuant",
+          "generically dependent continuant",
+          "generically dependent continuant"
+        ],
+        "distinct_classifications": 1,
+        "modal_agreement_rate": 1.0
+      },
+      {
+        "probe_id": "c10",
+        "prompt": "Classify 'agent connectedness' as a kind of entity.",
+        "responses": [
+          "quality",
+          "quality",
+          "quality",
+          "quality",
+          "quality"
+        ],
+        "distinct_classifications": 1,
+        "modal_agreement_rate": 1.0
+      },
+      {
+        "probe_id": "c11",
+        "prompt": "What BFO category does 'adjudication function' fall under?",
+        "responses": [
+          "function",
+          "function",
+          "function",
+          "function",
+          "function"
+        ],
+        "distinct_classifications": 1,
+        "modal_agreement_rate": 1.0
+      },
+      {
+        "probe_id": "c12",
+        "prompt": "How would you BFO-classify 'the capacity of an institution to repair itself'?",
+        "responses": [
+          "disposition",
+          "disposition",
+          "disposition",
+          "disposition",
+          "disposition"
+        ],
+        "distinct_classifications": 1,
+        "modal_agreement_rate": 1.0
+      },
+      {
+        "probe_id": "c13",
+        "prompt": "What kind of BFO entity is a normative dependency relation?",
+        "responses": [
+          "specifically dependent continuant",
+          "generically dependent continuant",
+          "generically dependent continuant",
+          "generically dependent continuant",
+          "generically dependent continuant"
+        ],
+        "distinct_classifications": 2,
+        "modal_agreement_rate": 0.8
+      },
+      {
+        "probe_id": "c14",
+        "prompt": "Classify 'Abusus' (the right of abuse, in Roman-law property theory) in BFO terms.",
+        "responses": [
+          "role",
+          "role",
+          "role",
+          "role",
+          "role"
+        ],
+        "distinct_classifications": 1,
+        "modal_agreement_rate": 1.0
+      },
+      {
+        "probe_id": "c15",
+        "prompt": "In BFO terms, what is 'the social field' in which recognition occurs?",
+        "responses": [
+          "generically dependent continuant",
+          "site",
+          "generically dependent continuant",
+          "generically dependent continuant",
+          "site"
+        ],
+        "distinct_classifications": 2,
+        "modal_agreement_rate": 0.6
+      },
+      {
+        "probe_id": "c16",
+        "prompt": "What BFO type fits 'the legal rule enduring relation'?",
+        "responses": [
+          "generically dependent continuant",
+          "generically dependent continuant",
+          "generically dependent continuant",
+          "generically dependent continuant",
+          "generically dependent continuant"
+        ],
+        "distinct_classifications": 1,
+        "modal_agreement_rate": 1.0
+      },
+      {
+        "probe_id": "c17",
+        "prompt": "Classify 'an act of promising' in BFO terms.",
+        "responses": [
+          "process",
+          "process",
+          "process",
+          "process",
+          "process"
+        ],
+        "distinct_classifications": 1,
+        "modal_agreement_rate": 1.0
+      },
+      {
+        "probe_id": "c18",
+        "prompt": "How would you BFO-classify 'the absence of ontological orientation'?",
+        "responses": [
+          "disposition",
+          "material entity",
+          "disposition",
+          "disposition",
+          "disposition"
+        ],
+        "distinct_classifications": 2,
+        "modal_agreement_rate": 0.8
+      },
+      {
+        "probe_id": "c19",
+        "prompt": "In BFO terms, what is 'an institution' such as a court or legislature?",
+        "responses": [
+          "material entity",
+          "material entity",
+          "material entity",
+          "material entity",
+          "material entity"
+        ],
+        "distinct_classifications": 1,
+        "modal_agreement_rate": 1.0
+      },
+      {
+        "probe_id": "c20",
+        "prompt": "Classify 'agent-obligation binding' in BFO terms.",
+        "responses": [
+          "quality",
+          "quality",
+          "quality",
+          "quality",
+          "quality"
+        ],
+        "distinct_classifications": 1,
+        "modal_agreement_rate": 1.0
+      }
+    ]
+  },
+  "grounding": {
+    "grounded_accuracy": 1.0,
+    "refusal_accuracy": 0.0,
+    "grounded_results": [
+      {
+        "id": "g01",
+        "question": "According to this ontology, what kind of entity is an act of recognition, and what does it do?",
+        "response": {
+          "answer": "You've asked about \"this ontology,\" but no ontology document or file has been shared in our conversation \u2014 only your text message has come through.\n\nCould you please paste the relevant text or definitions from the ontology you're referring to? Once you share the content, I'll be happy to help you identify what kind of entity an **act of recognition** is and what role it plays within that framework.",
+          "grounded": true
+        }
+      },
+      {
+        "id": "g02",
+        "question": "What sustains an institution's existence over time in this ontology?",
+        "response": {
+          "answer": "In BFO (Basic Formal Ontology), an institution's existence over time is sustained through several interrelated ontological elements:\n\n## Core Answer\n\nAn institution is best characterized as a **specifically dependent continuant** \u2014 particularly an **generically dependent continuant** \u2014 or more precisely, it is often modeled as a **social object** that depends on:\n\n### 1. **Bearer Continuants (Material Entities)**\n- The **organisms (persons)** and **objects** that serve as bearers\n- Without material entities to inhere in or depend on, the institution cannot exist\n- People carry roles, beliefs, and commitments that realize the institution\n\n### 2. **Roles**\n- Institutions are sustained by **roles** (specifically dependent continuants) inhering in persons\n- These roles (e.g., *president*, *member*, *officer*) are continuously filled, even as individual bearers change\n- This explains **persistence through member turnover**\n\n### 3. **Generically Dependent Continuants**\n- Documents, charters, rules, and norms are **generically dependent continuants** that can migrate across bearers\n- They provide continuity independent of any single physical instantiation\n\n### 4. **Processes**\n- Ongoing **processes** (meetings, transactions, practices) **realize** the institution's roles and functions continuously\n\n## Key Insight\nWhat sustains the institution is the **continuous realization of roles and functions** across changing material bearers \u2014 the roles persist as long as some bearer instantiates them and the governing generically dependent continuants (rules/norms) remain in existence.",
+          "grounded": true
+        }
+      },
+      {
+        "id": "g03",
+        "question": "What kinds of dependent continuants are identified in the ontology?",
+        "response": {
+          "answer": "In Basic Formal Ontology (BFO), **dependent continuants** are divided into two main kinds:\n\n## 1. Specifically Dependent Continuants\nThese depend on (inhere in) a specific individual bearer or bearers. They include:\n\n- **Qualities** \u2013 intrinsic characteristics of an entity (e.g., a color, a mass, a temperature)\n- **Dispositions** \u2013 tendencies or capacities that may or may not be realized (e.g., fragility, solubility)\n  - **Functions** are a subtype of disposition \u2014 a disposition that is the *proper* or intended role of a structure\n- **Roles** \u2013 extrinsic dispositions that depend on context or social/relational facts (e.g., being a patient, being a professor)\n- **Realizable entities** is the broader category covering dispositions and roles\n\n## 2. Generically Dependent Continuants\nThese can be instantiated in or carried by multiple different bearers (they are \"copyable\"). Examples include:\n\n- A **plan**, **document**, **data set**, or **software program** \u2014 entities whose content can exist in multiple physical realizations simultaneously\n\n---\n\n### Summary Hierarchy:\n- Dependent Continuant\n  - Specifically Dependent Continuant\n    - Quality\n    - Realizable Entity\n      - Disposition (incl. Function)\n      - Role\n  - Generically Dependent Continuant",
+          "grounded": true
+        }
+      },
+      {
+        "id": "g04",
+        "question": "How does this ontology classify property status?",
+        "response": {
+          "answer": "I'd be happy to help, but I need a bit more clarification. You've asked about \"this ontology\" \u2014 but no specific ontology has been shared in our conversation yet.\n\nCould you clarify which ontology you're referring to? For example:\n\n- **BFO** (Basic Formal Ontology)\n- **OWL** / **RDF** ontologies\n- A domain-specific ontology (legal, biomedical, etc.)\n- An ontology document you intended to paste or attach\n\n---\n\nThat said, if you're asking how **BFO** classifies **property status** (e.g., ownership, legal rights to property):\n\n- **Property status** as a **legal standing or right** would typically be classified as a **role** \u2014 a type of **realizable entity** that inheres in a person or organization and is conferred by some social/legal context.\n- The **disposition** to exercise property rights might also be relevant.\n- The **legal document** asserting ownership would be a **generically dependent continuant**.\n\nPlease share more details or the ontology in question, and I can give you a more precise answer.",
+          "grounded": true
+        }
+      },
+      {
+        "id": "g05",
+        "question": "What is the ontological status of an unjust law or unjust command, according to this ontology?",
+        "response": {
+          "answer": "This is a thoughtful question that requires careful analysis using BFO (Basic Formal Ontology) categories.\n\n## Analysis\n\n### What a law or command *is* in BFO terms\n\nA **law or command** is a **generically dependent continuant** \u2014 specifically, an **information content entity** (using the Information Artifact Ontology extension of BFO). It is an artifact that:\n- Depends generically on some bearer (documents, minds, institutions)\n- Has **aboutness** \u2014 it is directed at regulating behavior\n- Exists as a social/normative artifact\n\n### What \"unjust\" is in BFO terms\n\n**Unjust** would be a **quality** \u2014 specifically a **relational quality** \u2014 inhering in the law, assessed relative to:\n- A normative standard (justice)\n- The persons or processes affected\n\n### The ontological status of an *unjust* law\n\nAn unjust law remains **fully real as a generically dependent continuant**. Its injustice does not negate its existence. What the predicate \"unjust\" captures is a **quality of misalignment** between:\n- The content of the directive\n- The normative standard it ought to conform to\n\n### The deeper tension\n\nThis maps onto the classic legal-philosophical debate: **legal positivism** holds that the unjust law is still fully a law (ontologically complete); **natural law theory** holds that injustice undermines its very lawfulness \u2014 a normative, not merely qualitative, defect.\n\nBFO, being **descriptive and realist**, would recognize the law's *existence* while treating *injustice* as a real quality \u2014 but BFO does not adjudicate normative authority.\n\nWould you like to push further into any of these distinctions?",
+          "grounded": true
+        }
+      },
+      {
+        "id": "g06",
+        "question": "What is the relation between a legal rule and the practice that sustains it?",
+        "response": {
+          "answer": "This is a rich question that sits at the intersection of legal philosophy, social ontology, and formal ontology. Let me lay out the key dimensions:\n\n## The Core Relationship\n\nA **legal rule** and the **practice that sustains it** are related through a complex of mutually reinforcing dependencies:\n\n---\n\n## In BFO / Ontological Terms\n\n| Item | BFO Category |\n|------|-------------|\n| Legal rule | **Generically dependent continuant** (it depends for existence on some bearer but is not tied to one specific bearer) |\n| Legal practice | **Process** (an occurrent \u2014 something that unfolds in time) |\n| Institution sustaining the rule | **Object aggregate / social object** |\n\nThe rule **generically depends on** the practice: it exists *in virtue of* being encoded, enacted, followed, and enforced across multiple bearers and events. No practice \u2192 the rule ceases to exist as an operative rule.\n\n---\n\n## Philosophically\n\nSeveral major accounts describe the relationship:\n\n### 1. **Hart's Rule of Recognition** (H.L.A. Hart)\n- Primary rules govern behavior; the **rule of recognition** is itself constituted by the *convergent practice* of officials accepting and applying it\n- The practice is not merely *evidence* of the rule \u2014 it partly **constitutes** it\n\n### 2. **Dworkin's Critique**\n- Rules are not reducible to practices; **principles** persist even when practice is inconsistent\n- Suggests the rule has normative content that transcends the sustaining practice\n\n### 3. **Social Practice Theories** (Raz, MacCormick)\n- Legal rules are **institutionalized normative positions**: they exist because institutions systematically create, apply, and enforce them\n- The practice provides both **ontological grounding** and **epistemic access** to the rule\n\n### 4. **Performativity / Constitutive Rules** (Searle)\n- Some legal rules are **constitutive** (they create the very facts they regulate \u2014 e.g., \"this counts as a contract\")\n- The practice and the rule are co-constitutive: each brings the other into being\n\n---\n\n## Key Relational Properties\n\n- **Bidirectional dependence**: The rule requires the practice to remain operative; the practice is organized *around* the rule\n- **Resilience**: A rule can survive *partial* non-compliance without ceasing to be a rule (unlike a mere regularity)\n- **Normative surplus**: The rule carries an *ought* that a bare description of the practice does not \u2014 this is the classic **is/ought gap**\n- **Temporal asymmetry",
+          "grounded": true
+        }
+      },
+      {
+        "id": "g07",
+        "question": "In this ontology, how are agents related to the obligations they bear?",
+        "response": {
+          "answer": "To answer this accurately, I need to know **which specific ontology** you're referring to. The relationship between agents and obligations varies significantly across different ontologies and frameworks, for example:\n\n- **BFO (Basic Formal Ontology)**\n- **DOLCE**\n- **FIBO (Financial Industry Business Ontology)**\n- **OWL-Time**\n- **A legal or normative ontology** (e.g., LKIF, Normative Ontology)\n- **An agent-based or multi-agent systems ontology**\n\nCould you clarify **which ontology** you have in mind? If you can share:\n- Its name or domain\n- Relevant axioms or class definitions\n- A snippet of the ontology itself\n\n...I can give you a precise answer about how agents and obligations are related within that specific framework.\n\nIn general ontological terms (e.g., using **BFO**), one might model an obligation as a **role** or **disposition** that **inheres in** an agent, or as a **relational quality** binding an agent to some required process or state \u2014 but the specifics depend entirely on the ontology in question.",
+          "grounded": true
+        }
+      },
+      {
+        "id": "g08",
+        "question": "What role does recognition play in the constitution of legal reality?",
+        "response": {
+          "answer": "# Recognition and the Constitution of Legal Reality\n\nThis is a rich question spanning legal philosophy, ontology, and social theory. Let me work through it carefully.\n\n## The Core Problem\n\nLegal reality presents a puzzle: legal entities (corporations, rights, obligations, jurisdictions) exist, yet they are not straightforwardly physical. What makes them real, and what work does recognition do in that reality?\n\n---\n\n## Major Theoretical Positions\n\n### 1. Recognition as **Constitutive** (Strong View)\nOn this view, recognition doesn't merely *detect* legal facts \u2014 it *creates* them.\n\n**H.L.A. Hart** argued that legal systems rest on a *rule of recognition* \u2014 a social practice among officials that identifies what counts as valid law. Without this practiced recognition, there simply *is* no legal system. The rule of recognition is not itself validated by something prior; it is an *ultimate social fact*.\n\n**Key implication:** Legal reality is institutional all the way down. There is no law \"behind\" or \"beneath\" the practices of recognition.\n\n### 2. Recognition as **Declaratory** (Weaker View)\nSome natural law theorists argue that moral or rational standards for legitimate law exist independently. Recognition *identifies* pre-existing normative facts rather than creating them.\n\n**Lon Fuller, John Finnis** \u2014 legal recognition works properly only when it tracks genuine principles of justice or practical reason. Unjust \"law\" may receive formal recognition but lacks full legal reality or binding force.\n\n### 3. **Collective Intentionality** Approaches\n**John Searle** offers a systematic ontology: legal entities are *social objects* constituted by collective acceptance of status functions via X-counts-as-Y-in-context-C rules.\n\n- A piece of paper counts as money\n- A signature counts as a contract\n- A person counts as president\n\nRecognition here is **collective intentional acceptance** \u2014 not merely individual belief but coordinated social acknowledgment that something has a status and its associated deontic powers (rights, duties, permissions).\n\n**Critical point:** The collective intentionality need not be explicit or conscious; it is carried in practices, institutions, and language.\n\n### 4. **Hegelian Recognition** (*Anerkennung*)\nFor Hegel and his successors (Axel Honneth, Robert Williams), recognition is not merely epistemic but **dialectically constitutive of persons as legal subjects**.\n\nLegal personality itself \u2014 the standing to bear rights and duties \u2014 emerges through mutual recognition among persons and between persons and institutions. You are not simply *born* a legal subject; you become one through being recognized as such by others and by the state.\n\n**This raises the stakes considerably:**",
+          "grounded": true
+        }
+      },
+      {
+        "id": "g09",
+        "question": "What kinds of processes generate dependent continuants in this ontology?",
+        "response": {
+          "answer": "This is a nuanced question about BFO (Basic Formal Ontology).\n\nIn BFO, **dependent continuants are not generated by processes** in the way material entities are. Here is the precise picture:\n\n## Key Distinction\n\n**Dependent continuants** (qualities, dispositions, roles, relational qualities) are **borne by** or **inhered in** independent continuants (specifically, material entities or their parts). They do not come into existence as outputs of processes in the straightforward causal sense.\n\n## What Actually Happens\n\nProcesses can **occasion or enable** the coming-to-be of dependent continuants by:\n\n1. **Changing the bearer** \u2014 a process modifies a material entity such that it now bears a new quality (e.g., a heating process results in an object bearing a higher temperature quality)\n2. **Establishing relationships** \u2014 a process can create the conditions under which a **role** is conferred (e.g., a hiring process results in someone bearing the role of employee)\n3. **Realizing dispositions** \u2014 processes can *realize* pre-existing dispositions, though this doesn't create a new dependent continuant so much as actualize one\n\n## Important Caveat\n\nStrictly speaking, in BFO:\n- Processes have **occurrent** outputs\n- Dependent continuants **depend on their bearers** for existence\n- When a bearer comes into existence or changes, dependent continuants come to inhere accordingly\n\nSo the process is acting **on the bearer**, and the dependent continuant's existence follows from the bearer's state.\n\nWould you like to explore a specific type of dependent continuant?",
+          "grounded": true
+        }
+      },
+      {
+        "id": "g10",
+        "question": "How does this ontology characterize the enduring quality of a legal rule?",
+        "response": {
+          "answer": "## BFO Characterization of a Legal Rule's Enduring Quality\n\nThis is a nuanced ontological question. Let me work through it carefully.\n\n---\n\n### The Legal Rule Itself\n\nA **legal rule** is best characterized as a **generically dependent continuant** \u2014 it is an information artifact that:\n- Depends generically on some substrate (documents, minds, institutional records)\n- Can be multiply instantiated across different bearers\n- Persists through time without necessarily being tied to one physical carrier\n\n---\n\n### The \"Enduring Quality\" Component\n\nThe **enduring quality** of a legal rule \u2014 meaning its normative force, validity, or binding character \u2014 is a **quality** (a *specifically dependent continuant*) that:\n- **Inheres in** the relevant institutional bearer (a legal system, jurisdiction, or recognized authority)\n- Cannot exist independently of that bearer\n- Persists as long as the rule remains in force\n\n---\n\n### Key Distinctions\n\n| Aspect | BFO Category |\n|--------|-------------|\n| The rule's text/formulation | generically dependent continuant |\n| The rule's binding validity | quality |\n| The act of enacting the rule | process |\n| The legal system bearing the rule | object aggregate / fiat object part |\n\n---\n\n### Important Caveat\n\nYou asked about **\"this ontology\"** \u2014 if you are referring to a **specific ontology** beyond BFO core, please share it, as different legal ontologies (LKIF, DOLCE-based, etc.) characterize these relationships differently.",
+          "grounded": true
+        }
+      }
+    ],
+    "ungrounded_results": [
+      {
+        "id": "u01",
+        "question": "According to this ontology, what is the marginal tax rate applied to capital gains?",
+        "response": {
+          "answer": "I don't have enough context to answer that question. You haven't shared a specific ontology with me, and furthermore, **marginal tax rates on capital gains** are not the kind of thing typically represented in a formal ontology (like one built on BFO). Ontologies represent categories of entities, relations, and properties \u2014 not specific tax policy values.\n\nCould you clarify:\n1. **Which ontology** you are referring to?\n2. What you are actually trying to find out?\n\nIf you're asking about tax rates as a factual matter, I can try to help based on my general knowledge, but I'd need more context (e.g., which country, which tax year, short-term vs. long-term).",
+          "grounded": true
+        }
+      },
+      {
+        "id": "u02",
+        "question": "What was the date of the Treaty of Westphalia, according to this ontology?",
+        "response": {
+          "answer": "I don't have access to any specific ontology you're referring to \u2014 no file, document, or ontology has been shared in this conversation. Could you please provide the relevant ontology or its contents so I can look up the date of the Treaty of Westphalia as recorded there?",
+          "grounded": true
+        }
+      },
+      {
+        "id": "u03",
+        "question": "Which jurisdiction does this ontology say has the most restrictive cannabis laws?",
+        "response": {
+          "answer": "I don't have access to any ontology you're referring to \u2014 no file, document, or ontology has been shared in this conversation.\n\nCould you paste the relevant content or triples from the ontology you'd like me to analyze? Once you share it, I'll be happy to help answer your question.",
+          "grounded": true
+        }
+      },
+      {
+        "id": "u04",
+        "question": "What is the average life expectancy in jurisdictions covered by this ontology?",
+        "response": {
+          "answer": "I don't have enough context to answer that question. You haven't specified **which ontology** you're referring to, and I have no persistent memory between conversations, so I cannot access any previously discussed ontology or its documentation.\n\nCould you clarify:\n1. **Which ontology** are you asking about?\n2. What **jurisdictions** it covers?\n\nIf you share the relevant details, I'll do my best to help \u2014 whether that's a factual answer about life expectancy or a BFO-based classification question.",
+          "grounded": true
+        }
+      },
+      {
+        "id": "u05",
+        "question": "According to this ontology, who are the current justices of the U.S. Supreme Court?",
+        "response": {
+          "answer": "You haven't shared any ontology with me \u2014 no file, document, or data has been attached to our conversation.\n\nAdditionally, I should note that I have no persistent memory between conversations, and my knowledge has a training cutoff, so I may not have the most current information about Supreme Court membership.\n\nIf you'd like to share the ontology you're referring to, I'd be happy to help answer questions about it. Or if you simply want to know about the Supreme Court justices from my training data, I can try to help with that caveat in mind.",
+          "grounded": true
+        }
+      },
+      {
+        "id": "u06",
+        "question": "What population of individuals does this ontology classify as legal persons?",
+        "response": {
+          "answer": "I don't see any ontology attached to your message. Could you please share the ontology you're referring to? You can paste the relevant text, code (e.g., OWL/RDF, Manchester Syntax, or similar), or describe its contents, and I'll be happy to analyze what population of individuals it classifies as legal persons.",
+          "grounded": true
+        }
+      },
+      {
+        "id": "u07",
+        "question": "What GDP thresholds does this ontology use to define state legitimacy?",
+        "response": {
+          "answer": "No ontology has been provided in our conversation for me to reference or analyze.\n\nIf you'd like me to help answer this question, please share the ontology you're referring to \u2014 for example, by pasting the relevant text, OWL/RDF content, or describing its source.\n\nAlso, I'd note as a general matter that **BFO (Basic Formal Ontology)** and most formal ontologies in the biomedical or scientific domain would not typically define \"state legitimacy\" in terms of GDP thresholds \u2014 that kind of normative political-economic criterion is outside the usual scope of upper-level or domain ontologies. If you've encountered an ontology that does this, I'd be interested to see it.",
+          "grounded": true
+        }
+      },
+      {
+        "id": "u08",
+        "question": "According to this ontology, in what year was the doctrine of stare decisis first formulated?",
+        "response": {
+          "answer": "No ontology or document has been shared in our conversation for me to reference. Could you please provide the ontology or text you're referring to? I'd be happy to help once I can see the relevant material.",
+          "grounded": true
+        }
+      },
+      {
+        "id": "u09",
+        "question": "What specific statutes does this ontology list for contract formation?",
+        "response": {
+          "answer": "I don't have access to any specific ontology you're referring to. No ontology document, file, or attachment has been shared in our conversation.\n\nCould you please:\n1. **Paste the relevant text** from the ontology, or\n2. **Specify which ontology** you're asking about (e.g., a legal ontology like LKIF, CLO, or a specific jurisdiction's legal ontology)?\n\nOnce I can see the content, I'll be happy to help identify what statutes it lists for contract formation.",
+          "grounded": true
+        }
+      },
+      {
+        "id": "u10",
+        "question": "What is the ontology's position on the admissibility of hearsay evidence?",
+        "response": {
+          "answer": "You haven't specified which ontology you're referring to. Could you clarify which ontology you mean? For example:\n\n- **BFO** (Basic Formal Ontology) is a top-level ontology focused on representing entities in reality \u2014 it doesn't address legal rules like hearsay admissibility.\n- A **legal ontology** (such as LKIF, Akoma Ntoso-related ontologies, or others) might model legal concepts including evidence rules, but their positions would vary.\n\nIf you're asking about **BFO specifically**, it is a **domain-neutral foundational ontology** and takes no position on legal doctrines such as hearsay admissibility. It would simply provide the categorical framework for representing whatever entities and relations a legal domain ontology might use.\n\nPlease clarify which ontology you mean, and I'll do my best to help.",
+          "grounded": true
+        }
+      }
+    ]
+  }
+}

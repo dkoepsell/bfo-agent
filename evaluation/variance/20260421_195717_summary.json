@@ -1,0 +1,90 @@
+{
+  "label": "20260421_195717",
+  "n_runs": 3,
+  "conditions": {
+    "baseline": {
+      "consistency": {
+        "mean": 0.91,
+        "sd": 0.02,
+        "n": 3,
+        "values": [
+          0.91,
+          0.89,
+          0.93
+        ]
+      },
+      "grounded": {
+        "mean": 1.0,
+        "sd": 0.0,
+        "n": 3,
+        "values": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "refusal_iri": {
+        "mean": 0.033,
+        "sd": 0.058,
+        "n": 3,
+        "values": [
+          0.1,
+          0.0,
+          0.0
+        ]
+      },
+      "refusal_prose": {
+        "mean": 0.1,
+        "sd": 0.1,
+        "n": 3,
+        "values": [
+          0.2,
+          0.1,
+          0.0
+        ]
+      }
+    },
+    "agent": {
+      "consistency": {
+        "mean": 0.957,
+        "sd": 0.021,
+        "n": 3,
+        "values": [
+          0.94,
+          0.98,
+          0.95
+        ]
+      },
+      "grounded": {
+        "mean": 0.9,
+        "sd": 0.1,
+        "n": 3,
+        "values": [
+          0.9,
+          1.0,
+          0.8
+        ]
+      },
+      "refusal_iri": {
+        "mean": 0.733,
+        "sd": 0.058,
+        "n": 3,
+        "values": [
+          0.7,
+          0.7,
+          0.8
+        ]
+      },
+      "refusal_prose": {
+        "mean": 0.933,
+        "sd": 0.058,
+        "n": 3,
+        "values": [
+          0.9,
+          0.9,
+          1.0
+        ]
+      }
+    }
+  }
+}
