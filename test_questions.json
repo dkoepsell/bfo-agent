@@ -1,5 +1,10 @@
 {
-  "_description": "Evaluation probe set for the SOoL pilot graph (~1243 committed claims, ~1664 classes). Three sub-tests: cross-session classification consistency, grounded vs. ungrounded refusal, and (for the agent condition) dialogue-driven convergence on new sections. Probes target concepts actually present in the working ontology as of the pilot snapshot.",
+  "_description": "Evaluation probe set for the SOoL pilot graph (~1243 committed claims, 1664 classes). Three sub-tests: cross-session classification consistency, grounded vs. ungrounded refusal, and (for the agent condition) dialogue-driven convergence on new sections. Probes are targeted at concepts actually present in the working ontology as of the pilot snapshot.",
+  "_build_notes": {
+    "targets_in_graph": ["ActOfRecognition", "AgentConnectedness", "LegalRuleEnduringRelation", "SustainingPractice", "UnjustCommand", "RuleRelation", "PropertyStatus", "Abusus", "AdjudicationProcess", "NormativeDependencyRelation", "AgentObligationBinding"],
+    "ungrounded_targets": "plausible-sounding legal or institutional questions the graph has NO commitment on",
+    "consistency_answer_keys": "the expected BFO top-level a Koepsell-consistent reading should pick; used for scoring agreement, not for exact-match correctness"
+  },
   "consistency_probes": [
     {
       "id": "c01",
@@ -103,7 +108,7 @@
     }
   ],
   "grounded_probes": {
-    "_description": "Agent condition has the SOoL pilot graph preloaded; baseline has no graph. The grounded set targets things the graph DOES know; the ungrounded set targets things the graph plausibly-seems-to-know-about but does NOT actually contain.",
+    "_description": "The agent condition has the SOoL pilot graph preloaded; no seeding utterances are needed. The baseline condition has no graph at all; its 'grounded' answers come from model priors. The grounded set targets things the graph DOES know; the ungrounded set targets things the graph plausibly-but-falsely-seems-to-know-about but does not actually contain.",
     "seed_utterances": [],
     "grounded": [
       {"id": "g01", "question": "According to this ontology, what kind of entity is an act of recognition, and what does it do?"},
@@ -131,7 +136,7 @@
     ]
   },
   "seed_dialogue_scripts": {
-    "_description": "For the convergence experiment. These utterances go through /propose and are NOT committed by the evaluation harness. We count how many new top-level classes the proposer introduces on a graph that already has ~1664 classes, vs. how many it reuses.",
+    "_description": "For the convergence experiment. These utterances go through /propose and are NOT committed by the evaluation harness. We just count how many new top-level classes the proposer introduces on a graph that already has 1664 classes, vs. how many it reuses. Expect near-total reuse on SOoL-native content and more minting on adjacent domains.",
     "sool_native_followups": [
       "Recognition can fail to occur, leaving an obligation ungrounded.",
       "A custom becomes a legal rule when sustained by institutional recognition.",

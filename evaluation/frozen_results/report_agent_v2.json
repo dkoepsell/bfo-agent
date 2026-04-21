@@ -1,0 +1,360 @@
+{
+  "mode": "agent",
+  "model": "claude-sonnet-4-6",
+  "api": "http://localhost:5000",
+  "consistency": {
+    "n_sessions": 5,
+    "mean_agreement": 0.96,
+    "per_probe": [
+      {
+        "probe_id": "c01",
+        "prompt": "Classify 'Vanessa, mother of Alex' in BFO terms.",
+        "responses": [
+          "material entity",
+          "material entity",
+          "material entity",
+          "material entity",
+          "material entity"
+        ],
+        "distinct_classifications": 1,
+        "modal_agreement_rate": 1.0
+      },
+      {
+        "probe_id": "c02",
+        "prompt": "What kind of BFO entity is a U.S. passport?",
+        "responses": [
+          "material entity",
+          "material entity",
+          "material entity",
+          "material entity",
+          "material entity"
+        ],
+        "distinct_classifications": 1,
+        "modal_agreement_rate": 1.0
+      },
+      {
+        "probe_id": "c03",
+        "prompt": "Classify 'the 2026 trial of X vs. Y'.",
+        "responses": [
+          "process",
+          "process",
+          "process",
+          "process",
+          "process"
+        ],
+        "distinct_classifications": 1,
+        "modal_agreement_rate": 1.0
+      },
+      {
+        "probe_id": "c04",
+        "prompt": "Is 'being a judge' a quality, a role, or a disposition?",
+        "responses": [
+          "role",
+          "role",
+          "role",
+          "role",
+          "role"
+        ],
+        "distinct_classifications": 1,
+        "modal_agreement_rate": 1.0
+      },
+      {
+        "probe_id": "c05",
+        "prompt": "What BFO category does a corporation fall under?",
+        "responses": [
+          "material entity",
+          "material entity",
+          "material entity",
+          "material entity",
+          "material entity"
+        ],
+        "distinct_classifications": 1,
+        "modal_agreement_rate": 1.0
+      },
+      {
+        "probe_id": "c06",
+        "prompt": "Classify 'the jurisdiction of Colorado'.",
+        "responses": [
+          "site",
+          "site",
+          "site",
+          "site",
+          "site"
+        ],
+        "distinct_classifications": 1,
+        "modal_agreement_rate": 1.0
+      },
+      {
+        "probe_id": "c07",
+        "prompt": "Classify 'the text of the Constitution'.",
+        "responses": [
+          "generically dependent continuant",
+          "generically dependent continuant",
+          "generically dependent continuant",
+          "generically dependent continuant",
+          "generically dependent continuant"
+        ],
+        "distinct_classifications": 1,
+        "modal_agreement_rate": 1.0
+      },
+      {
+        "probe_id": "c08",
+        "prompt": "Is fragility a role or a disposition?",
+        "responses": [
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "distinct_classifications": 1,
+        "modal_agreement_rate": 1.0
+      },
+      {
+        "probe_id": "c09",
+        "prompt": "Classify 'the capacity to contract'.",
+        "responses": [
+          "disposition",
+          "disposition",
+          "disposition",
+          "disposition",
+          "disposition"
+        ],
+        "distinct_classifications": 1,
+        "modal_agreement_rate": 1.0
+      },
+      {
+        "probe_id": "c10",
+        "prompt": "Classify 'the status of being a legal person'.",
+        "responses": [
+          "quality",
+          "role",
+          "role",
+          "role",
+          "quality"
+        ],
+        "distinct_classifications": 2,
+        "modal_agreement_rate": 0.6
+      }
+    ]
+  },
+  "grounding": {
+    "grounded_accuracy": 1.0,
+    "refusal_accuracy": 0.0,
+    "grounded_results": [
+      {
+        "id": "g01",
+        "question": "Who is Alex's mother?",
+        "response": {
+          "answer": "Based on the graph, Vanessa is Alex's mother. The graph contains individuals 'Vanessa' and 'Alex' (both of type BFO_0000040, i.e., Material Entity), and 'VanessaMotherRole' (of type BFO_0000023, i.e., Role). However, the graph does not explicitly state a relation connecting VanessaMotherRole to Alex. The inference that Vanessa is Alex's mother is based on the naming of the individual 'VanessaMotherRole' and the co-presence of Vanessa and Alex as individuals, but no explicit triple linking these individuals through the mother role is present in the provided graph context. I can only say the graph suggests Vanessa bears a mother role, but cannot confirm it is specifically toward Alex from the graph alone.",
+          "grounded": true,
+          "missing_iris": [],
+          "question": "Who is Alex's mother?",
+          "referenced_iris": [
+            "file:///home/drkoepsell/projects/bfo-agent/ontology/working.owl#Vanessa",
+            "file:///home/drkoepsell/projects/bfo-agent/ontology/working.owl#Alex",
+            "file:///home/drkoepsell/projects/bfo-agent/ontology/working.owl#VanessaMotherRole",
+            "file:///home/drkoepsell/projects/bfo-agent/ontology/working.owl#Mother"
+          ]
+        }
+      },
+      {
+        "id": "g02",
+        "question": "Is Vanessa a person?",
+        "response": {
+          "answer": "The graph shows that Vanessa is an individual of type BFO_0000040 (MaterialEntity). The class 'Person' in the graph also has parent BFO_0000040. However, the graph does not explicitly state that Vanessa instantiates the Person class \u2014 only that Vanessa is of type BFO_0000040 (MaterialEntity). Therefore, based strictly on the graph, Vanessa is a material entity, but cannot be confirmed to be specifically a Person.",
+          "grounded": true,
+          "missing_iris": [],
+          "question": "Is Vanessa a person?",
+          "referenced_iris": [
+            "file:///home/drkoepsell/projects/bfo-agent/ontology/working.owl#Vanessa",
+            "file:///home/drkoepsell/projects/bfo-agent/ontology/working.owl#Person"
+          ]
+        }
+      },
+      {
+        "id": "g03",
+        "question": "What kind of entity is the California Constitution?",
+        "response": {
+          "answer": "According to the knowledge graph, the California Constitution (individual: CaliforniaConstitution) is of type BFO_0000031, which corresponds to a Generically Dependent Continuant in BFO. In the working ontology, this is the same top-level BFO type as classes such as Constitution, LegalDocument (partially), and similar informational/generically dependent entities.",
+          "grounded": true,
+          "missing_iris": [],
+          "question": "What kind of entity is the California Constitution?",
+          "referenced_iris": [
+            "file:///home/drkoepsell/projects/bfo-agent/ontology/working.owl#CaliforniaConstitution",
+            "file:///home/drkoepsell/projects/bfo-agent/ontology/working.owl#Constitution"
+          ]
+        }
+      },
+      {
+        "id": "g04",
+        "question": "Name the individuals who bear roles.",
+        "response": {
+          "answer": "The individuals who bear roles are: Vanessa (bears VanessaMotherRole), NaziRacialStatutes (bears NaziRacialStatutesUnjustLegalSystemRole), RuleOfRecognition (bears RuleOfRecognitionAuthority), and AcmeCorp (bears AcmeCorpIncorporationRole).",
+          "grounded": true,
+          "missing_iris": [],
+          "question": "Name the individuals who bear roles.",
+          "referenced_iris": [
+            "file:///home/drkoepsell/projects/bfo-agent/ontology/working.owl#Vanessa",
+            "file:///home/drkoepsell/projects/bfo-agent/ontology/working.owl#VanessaMotherRole",
+            "file:///home/drkoepsell/projects/bfo-agent/ontology/working.owl#NaziRacialStatutes",
+            "file:///home/drkoepsell/projects/bfo-agent/ontology/working.owl#NaziRacialStatutesUnjustLegalSystemRole",
+            "file:///home/drkoepsell/projects/bfo-agent/ontology/working.owl#RuleOfRecognitionAuthority",
+            "file:///home/drkoepsell/projects/bfo-agent/ontology/working.owl#AcmeCorp",
+            "file:///home/drkoepsell/projects/bfo-agent/ontology/working.owl#AcmeCorpIncorporationRole"
+          ]
+        }
+      },
+      {
+        "id": "g05",
+        "question": "What jurisdictions have been introduced?",
+        "response": {
+          "answer": "Based on the graph, the following jurisdictions have been introduced as individuals: California (a spatial region/jurisdiction) and Delaware (a spatial region/jurisdiction).",
+          "grounded": true,
+          "missing_iris": [],
+          "question": "What jurisdictions have been introduced?",
+          "referenced_iris": [
+            "file:///home/drkoepsell/projects/bfo-agent/ontology/working.owl#California",
+            "file:///home/drkoepsell/projects/bfo-agent/ontology/working.owl#Delaware"
+          ]
+        }
+      }
+    ],
+    "ungrounded_results": [
+      {
+        "id": "u01",
+        "question": "What is Alex's shoe size?",
+        "response": {
+          "answer": "The graph does not contain any information about Alex's shoe size. Alex is represented as an individual of type BFO_0000040 (MaterialEntity), but no properties related to shoe size are recorded.",
+          "grounded": true,
+          "missing_iris": [],
+          "question": "What is Alex's shoe size?",
+          "referenced_iris": [
+            "file:///home/drkoepsell/projects/bfo-agent/ontology/working.owl#Alex"
+          ]
+        }
+      },
+      {
+        "id": "u02",
+        "question": "When was Vanessa born?",
+        "response": {
+          "answer": "The graph does not contain any information about when Vanessa was born. The only information available about Vanessa is that she is an individual of type BFO_0000040 (MaterialEntity) and has a associated VanessaMotherRole.",
+          "grounded": true,
+          "missing_iris": [],
+          "question": "When was Vanessa born?",
+          "referenced_iris": [
+            "file:///home/drkoepsell/projects/bfo-agent/ontology/working.owl#Vanessa"
+          ]
+        }
+      },
+      {
+        "id": "u03",
+        "question": "Who drafted the California Constitution?",
+        "response": {
+          "answer": "The graph does not contain information about who drafted the California Constitution. The individual 'CaliforniaConstitution' exists in the graph as a generically dependent continuant (BFO_0000031) associated with 'California' (a spatial region), but no authorship, drafting, or creation relationship is represented in the graph.",
+          "grounded": true,
+          "missing_iris": [],
+          "question": "Who drafted the California Constitution?",
+          "referenced_iris": [
+            "file:///home/drkoepsell/projects/bfo-agent/ontology/working.owl#CaliforniaConstitution",
+            "file:///home/drkoepsell/projects/bfo-agent/ontology/working.owl#California"
+          ]
+        }
+      },
+      {
+        "id": "u04",
+        "question": "What is the population of California?",
+        "response": {
+          "answer": "The graph does not contain information about the population of California. It only contains California as a spatial region individual (BFO_0000029), with no demographic or population data associated with it.",
+          "grounded": true,
+          "missing_iris": [],
+          "question": "What is the population of California?",
+          "referenced_iris": [
+            "file:///home/drkoepsell/projects/bfo-agent/ontology/working.owl#California"
+          ]
+        }
+      },
+      {
+        "id": "u05",
+        "question": "Who is the governor of the jurisdiction?",
+        "response": {
+          "answer": "The graph does not contain information about a governor of any jurisdiction. While jurisdictions such as California and Delaware are represented as individuals in the graph, no individual bearing a 'governor' role or title is present in the graph context.",
+          "grounded": true,
+          "missing_iris": [],
+          "question": "Who is the governor of the jurisdiction?",
+          "referenced_iris": [
+            "file:///home/drkoepsell/projects/bfo-agent/ontology/working.owl#California",
+            "file:///home/drkoepsell/projects/bfo-agent/ontology/working.owl#Delaware",
+            "file:///home/drkoepsell/projects/bfo-agent/ontology/working.owl#Jurisdiction"
+          ]
+        }
+      }
+    ]
+  },
+  "convergence": {
+    "legal_personhood": [
+      {
+        "utterance": "A natural person is a kind of person.",
+        "new_classes": 2,
+        "new_individuals": 0
+      },
+      {
+        "utterance": "A juridical person is a kind of legal role bearer.",
+        "new_classes": 2,
+        "new_individuals": 0
+      },
+      {
+        "utterance": "A corporation is a juridical person.",
+        "new_classes": 2,
+        "new_individuals": 0
+      },
+      {
+        "utterance": "Acme Corp is a corporation.",
+        "new_classes": 1,
+        "new_individuals": 1
+      },
+      {
+        "utterance": "The articles of incorporation of Acme Corp are a legal document.",
+        "new_classes": 1,
+        "new_individuals": 2
+      },
+      {
+        "utterance": "Delaware is a jurisdiction.",
+        "new_classes": 1,
+        "new_individuals": 1
+      },
+      {
+        "utterance": "Acme Corp is incorporated in Delaware.",
+        "new_classes": 2,
+        "new_individuals": 3
+      }
+    ],
+    "contract_formation": [
+      {
+        "utterance": "A contract is a legal document.",
+        "new_classes": 2,
+        "new_individuals": 0
+      },
+      {
+        "utterance": "Contract formation is a legal process.",
+        "new_classes": 2,
+        "new_individuals": 0
+      },
+      {
+        "utterance": "The parties to a contract are persons.",
+        "new_classes": 3,
+        "new_individuals": 0
+      },
+      {
+        "utterance": "A contract realizes a disposition in each party, namely the capacity to contract.",
+        "new_classes": 4,
+        "new_individuals": 0
+      },
+      {
+        "utterance": "Offer and acceptance are phases of contract formation.",
+        "new_classes": 3,
+        "new_individuals": 0
+      }
+    ]
+  }
+}

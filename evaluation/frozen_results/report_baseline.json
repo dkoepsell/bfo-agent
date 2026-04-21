@@ -1,0 +1,229 @@
+{
+  "mode": "baseline",
+  "model": "claude-sonnet-4-6",
+  "api": "http://localhost:5000",
+  "consistency": {
+    "n_sessions": 5,
+    "mean_agreement": 0.94,
+    "per_probe": [
+      {
+        "probe_id": "c01",
+        "prompt": "Classify 'Vanessa, mother of Alex' in BFO terms.",
+        "responses": [
+          "material entity",
+          "role",
+          "role",
+          "role",
+          "material entity"
+        ],
+        "distinct_classifications": 2,
+        "modal_agreement_rate": 0.6
+      },
+      {
+        "probe_id": "c02",
+        "prompt": "What kind of BFO entity is a U.S. passport?",
+        "responses": [
+          "generically dependent continuant",
+          "generically dependent continuant",
+          "generically dependent continuant",
+          "generically dependent continuant",
+          "generically dependent continuant"
+        ],
+        "distinct_classifications": 1,
+        "modal_agreement_rate": 1.0
+      },
+      {
+        "probe_id": "c03",
+        "prompt": "Classify 'the 2026 trial of X vs. Y'.",
+        "responses": [
+          "process",
+          "process",
+          "process",
+          "process",
+          "process"
+        ],
+        "distinct_classifications": 1,
+        "modal_agreement_rate": 1.0
+      },
+      {
+        "probe_id": "c04",
+        "prompt": "Is 'being a judge' a quality, a role, or a disposition?",
+        "responses": [
+          "role",
+          "role",
+          "role",
+          "role",
+          "role"
+        ],
+        "distinct_classifications": 1,
+        "modal_agreement_rate": 1.0
+      },
+      {
+        "probe_id": "c05",
+        "prompt": "What BFO category does a corporation fall under?",
+        "responses": [
+          "material entity",
+          "material entity",
+          "material entity",
+          "material entity",
+          "material entity"
+        ],
+        "distinct_classifications": 1,
+        "modal_agreement_rate": 1.0
+      },
+      {
+        "probe_id": "c06",
+        "prompt": "Classify 'the jurisdiction of Colorado'.",
+        "responses": [
+          "site",
+          "site",
+          "specifically dependent continuant",
+          "site",
+          "site"
+        ],
+        "distinct_classifications": 2,
+        "modal_agreement_rate": 0.8
+      },
+      {
+        "probe_id": "c07",
+        "prompt": "Classify 'the text of the Constitution'.",
+        "responses": [
+          "generically dependent continuant",
+          "generically dependent continuant",
+          "generically dependent continuant",
+          "generically dependent continuant",
+          "generically dependent continuant"
+        ],
+        "distinct_classifications": 1,
+        "modal_agreement_rate": 1.0
+      },
+      {
+        "probe_id": "c08",
+        "prompt": "Is fragility a role or a disposition?",
+        "responses": [
+          "disposition",
+          "disposition",
+          "disposition",
+          "disposition",
+          "disposition"
+        ],
+        "distinct_classifications": 1,
+        "modal_agreement_rate": 1.0
+      },
+      {
+        "probe_id": "c09",
+        "prompt": "Classify 'the capacity to contract'.",
+        "responses": [
+          "disposition",
+          "disposition",
+          "disposition",
+          "disposition",
+          "disposition"
+        ],
+        "distinct_classifications": 1,
+        "modal_agreement_rate": 1.0
+      },
+      {
+        "probe_id": "c10",
+        "prompt": "Classify 'the status of being a legal person'.",
+        "responses": [
+          "role",
+          "role",
+          "role",
+          "role",
+          "role"
+        ],
+        "distinct_classifications": 1,
+        "modal_agreement_rate": 1.0
+      }
+    ]
+  },
+  "grounding": {
+    "grounded_accuracy": 1.0,
+    "refusal_accuracy": 0.0,
+    "grounded_results": [
+      {
+        "id": "g01",
+        "question": "Who is Alex's mother?",
+        "response": {
+          "answer": "I don't have any context about which \"Alex\" you're referring to. Could you provide more details? For example, are you asking about:\n\n- A **fictional character** (from a book, film, or TV show)?\n- A **historical or public figure**?\n- Someone else entirely?\n\nWith more context, I'll do my best to help!",
+          "grounded": true
+        }
+      },
+      {
+        "id": "g02",
+        "question": "Is Vanessa a person?",
+        "response": {
+          "answer": "Yes, **Vanessa** is a person's name (a feminine given name). It was famously coined by the writer **Jonathan Swift** in the early 18th century.\n\nIf you're asking about a specific individual named Vanessa, could you provide more context? I'm happy to help!",
+          "grounded": true
+        }
+      },
+      {
+        "id": "g03",
+        "question": "What kind of entity is the California Constitution?",
+        "response": {
+          "answer": "In BFO terms, the California Constitution is a **generically dependent continuant**.\n\nIt is an information artifact \u2014 a document whose content (the legal text, rules, and provisions) depends generically on being encoded in some physical medium or instantiated in some bearer, but is not tied to any single particular physical copy. It can be multiply instantiated across many documents, digital files, and publications simultaneously.",
+          "grounded": true
+        }
+      },
+      {
+        "id": "g04",
+        "question": "Name the individuals who bear roles.",
+        "response": {
+          "answer": "In BFO (Basic Formal Ontology), **roles** are a type of **realizable entity** (specifically a subtype of disposition) that are borne by **independent continuants** \u2014 most typically **material entities** (such as persons, organizations, or objects).\n\nSo the individuals who bear roles are **independent continuants**, such as:\n\n- **Persons** (e.g., a person bearing the role of *physician*, *student*, *patient*)\n- **Organizations** (e.g., a hospital bearing the role of *care provider*)\n- **Material objects** (e.g., a substance bearing the role of *reagent* or *catalyst*)\n\nIn BFO terms, the relation is: a **role** is **borne by** (inheres in) an **independent continuant**.\n\nWould you like examples from a specific domain or ontology?",
+          "grounded": true
+        }
+      },
+      {
+        "id": "g05",
+        "question": "What jurisdictions have been introduced?",
+        "response": {
+          "answer": "It seems like your question is missing some context. Could you clarify what you're referring to? For example:\n\n- **Jurisdictions introduced in a specific piece of legislation or legal reform?**\n- **Jurisdictions introduced in a particular database, system, or dataset?**\n- **New jurisdictions (countries, states, territories) recognized internationally?**\n- **Something from a previous part of a conversation?**\n\nPlease provide more context and I'll be happy to help!",
+          "grounded": true
+        }
+      }
+    ],
+    "ungrounded_results": [
+      {
+        "id": "u01",
+        "question": "What is Alex's shoe size?",
+        "response": {
+          "answer": "I don't have any information about an \"Alex\" in our conversation. You haven't shared details about any specific person named Alex, and I have no persistent memory between conversations, so I wouldn't have that information from any previous interaction.\n\nCould you clarify who Alex is, or provide more context?",
+          "grounded": true
+        }
+      },
+      {
+        "id": "u02",
+        "question": "When was Vanessa born?",
+        "response": {
+          "answer": "Could you please clarify which **Vanessa** you're referring to? There are many notable people named Vanessa \u2014 for example:\n\n- **Vanessa Hudgens** (actress) \u2013 born December 14, 1988\n- **Vanessa Williams** (singer/actress) \u2013 born March 18, 1963\n- **Vanessa Paradis** (French singer/actress) \u2013 born December 22, 1972\n\nCould you provide more context so I can give you the right answer?",
+          "grounded": true
+        }
+      },
+      {
+        "id": "u03",
+        "question": "Who drafted the California Constitution?",
+        "response": {
+          "answer": "The California Constitution has actually gone through multiple versions.\n\n**Current Constitution (1879):** The second California Constitution was drafted by delegates to a constitutional convention held in Sacramento. The convention included 152 delegates representing various interests, including farmers, lawyers, and workingmen. Notable figures involved included **Joseph Winans** (who presided as president of the convention) and delegates influenced by the **Workingmen's Party** led by Denis Kearney, though Kearney himself was not a delegate.\n\n**Original Constitution (1849):** The first California Constitution was drafted at the **Monterey Constitutional Convention** in 1849, before California achieved statehood. Key figures included **Robert Semple** (who presided over the convention) and **William Gwin**, a prominent political figure. The delegate **Elisha Oscar Crosby** also played a significant role. The document drew heavily from the constitutions of Iowa and New York.\n\nThe 1879 constitution replaced the original, partly in response to economic grievances, railroad monopoly power, and tensions over Chinese immigration and labor.",
+          "grounded": true
+        }
+      },
+      {
+        "id": "u04",
+        "question": "What is the population of California?",
+        "response": {
+          "answer": "As of the most recent estimates, California's population is approximately **39 million people**, making it the most populous state in the United States. (The 2020 Census recorded about 39.5 million.)",
+          "grounded": true
+        }
+      },
+      {
+        "id": "u05",
+        "question": "Who is the governor of the jurisdiction?",
+        "response": {
+          "answer": "I'd be happy to help, but I need a bit more information \u2014 **which jurisdiction** are you referring to? Could you please specify the state, province, territory, or region you have in mind?",
+          "grounded": true
+        }
+      }
+    ]
+  }
+}

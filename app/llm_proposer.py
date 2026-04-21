@@ -180,7 +180,7 @@ Return JSON only."""
 
         resp = self.client.messages.create(
             model=self.model,
-            max_tokens=1000,
+            max_tokens=2000,
             messages=[{"role": "user", "content": prompt}],
         )
         text = "".join(
@@ -190,17 +190,42 @@ Return JSON only."""
 
 
 def _extract_json(text: str) -> dict:
-    """Robustly extract a JSON object from LLM output."""
+    """Robustly extract a JSON object from LLM output.
+
+    Handles markdown fences and attempts a best-effort recovery when the
+    JSON is truncated (e.g. because the model hit max_tokens mid-output).
+    """
     text = text.strip()
-    # Strip markdown fences if present
     if text.startswith("```"):
         lines = text.split("\n")
         lines = [l for l in lines if not l.strip().startswith("```")]
         text = "\n".join(lines).strip()
-    # Find first { and last }
     start = text.find("{")
-    end = text.rfind("}")
-    if start == -1 or end == -1:
+    if start == -1:
         raise ValueError(f"No JSON object found in LLM output:\n{text[:500]}")
-    blob = text[start : end + 1]
-    return json.loads(blob)
+    end = text.rfind("}")
+    if end != -1:
+        try:
+            return json.loads(text[start : end + 1])
+        except json.JSONDecodeError:
+            pass  # fall through to truncation recovery
+
+    # Truncation recovery: try to parse what we can by closing open
+    # brackets/braces and stripping trailing garbage. Works for the common
+    # case where max_tokens cut off a long answer string.
+    import re
+    snippet = text[start:]
+    # Close an unterminated string (odd number of unescaped quotes)
+    quotes = len(re.findall(r'(?<!\\)"', snippet))
+    if quotes % 2 == 1:
+        snippet = snippet + '"'
+    # Balance braces and brackets
+    snippet += "}" * max(0, snippet.count("{") - snippet.count("}"))
+    snippet = snippet.rsplit(",", 1)[0]  # drop trailing partial field
+    snippet += "}" * max(0, snippet.count("{") - snippet.count("}"))
+    try:
+        return json.loads(snippet)
+    except json.JSONDecodeError:
+        raise ValueError(
+            f"No parseable JSON object in LLM output (possibly truncated):\n{text[:500]}"
+        )

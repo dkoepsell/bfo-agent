@@ -167,8 +167,24 @@ class OntologyManager:
         return out
 
     def iri_exists(self, iri: str) -> bool:
+        # Try the given IRI as-is (handles full URIs including file:// form)
+        if self.world[iri] is not None:
+            return True
+        # Try prefix-resolved form (working:Foo, bfo:BFO_..., etc.)
         full = _resolve_iri(iri, WORKING_IRI)
-        return self.world[full] is not None
+        if self.world[full] is not None:
+            return True
+        # Fall back to local-name match. owlready2 sometimes serializes the
+        # working ontology with a file:// base URI instead of the canonical
+        # WORKING_IRI, so two IRIs can refer to the same class while not
+        # being string-equal. Matching on fragment/local name catches this.
+        local = _local_name(iri)
+        if not local:
+            return False
+        for entity in list(self.working.classes()) + list(self.working.individuals()):
+            if entity.name == local:
+                return True
+        return False
 
     # -------------------------------------------------- apply a proposal
     def apply_proposal(self, proposal) -> list[str]:

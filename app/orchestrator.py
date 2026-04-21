@@ -239,11 +239,28 @@ def create_app() -> Flask:
             try:
                 raw = proposer.answer_grounded(body.question, graph_ctx)
             except Exception as e:
-                return jsonify({"error": f"Query error: {e}"}), 500
+                # Degrade gracefully: return an ungrounded response rather
+                # than a 500 so eval harnesses can continue past bad LLM
+                # output (e.g. malformed or truncated JSON).
+                log_event(session_id, "query_error",
+                          {"question": body.question, "error": str(e)})
+                resp = QueryResponse(
+                    question=body.question,
+                    answer=f"[query error] {e}",
+                    grounded=False,
+                    referenced_iris=[],
+                    missing_iris=[],
+                )
+                return jsonify(resp.model_dump())
 
             referenced = raw.get("referenced_iris", [])
             missing = [iri for iri in referenced if not mgr.iri_exists(iri)]
-            grounded = bool(raw.get("grounded", False)) and not missing
+            # Grounded iff the answer cites at least one IRI AND every
+            # cited IRI resolves in the graph. Empty referenced means the
+            # answer is narrative-only (typically a refusal), which is
+            # correctly scored as not-grounded regardless of Claude's
+            # self-reported `grounded` flag (which is unreliable).
+            grounded = bool(referenced) and len(missing) == 0
 
             resp = QueryResponse(
                 question=body.question,

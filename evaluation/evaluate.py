@@ -1,3 +1,4 @@
+
 """Evaluation harness for the BFO-Agent.
 
 Runs three measurements:
@@ -12,8 +13,11 @@ Usage:
   python evaluation/evaluate.py --agent     # against the BFO-Agent orchestrator
   python evaluation/evaluate.py --baseline  # against plain Claude for comparison
 """
-from __future__ import annotations
 
+from __future__ import annotations
+from dotenv import load_dotenv
+from pathlib import Path as _P
+load_dotenv(_P(__file__).resolve().parent.parent / ".env")
 import argparse
 import json
 import os
