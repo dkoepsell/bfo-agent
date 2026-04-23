@@ -1,331 +1,285 @@
 """Execute canonicalization merges from a detection report.
 
-Applies approved merges by:
-  1. Choosing a canonical class from each merge bucket.
-  2. For each non-canonical class in the bucket:
-     a. Redirecting every triple that references it to the canonical class.
-     b. Preserving the non-canonical name as an rdfs:altLabel on the
-        canonical class, so nothing is lost.
-     c. Removing the non-canonical class declaration.
-  3. Writing the modified ontology to a NEW file, leaving the original
-     intact. You move it into place manually after review.
-  4. Running HermiT on the result to confirm consistency is preserved.
+This version works at the RDF triple level using rdflib, which avoids
+the owlready2 class-lifecycle issues that made the previous
+implementation silently not-actually-delete merged classes.
+
+For each (canonical, merged) pair:
+  1. Every triple (merged, P, O) becomes (canonical, P, O).
+  2. Every triple (S, P, merged) becomes (S, P, canonical).
+  3. The merged local name is added as a skos:altLabel on canonical.
+  4. Self-subclass loops created by the rewrite are removed.
+  5. Duplicate triples are implicitly removed by set semantics.
+  6. The modified graph is written as RDF/XML, and HermiT is run on
+     the result.
 
 SAFETY:
-  - The feed MUST be paused before running this. The script refuses to
-    run if it detects recent feed activity.
+  - The feed MUST be paused before running this.
   - Produces a NEW OWL file; does not overwrite the working ontology.
-  - All merges are logged with before/after IRIs.
-  - Reversible by simply restoring the old working.owl.
+  - Reversible by restoring the original working.owl.
 
 Usage:
     python scripts/execute_canonicalization.py \\
-        --report evaluation/canonicalization_report.json \\
-        --dry-run                              # print what would change, no files written
+        --report evaluation/canonicalization_report.json --dry-run
     python scripts/execute_canonicalization.py \\
         --report evaluation/canonicalization_report.json \\
-        --kinds wordbag_identity \\
-        --out ontology/working.canonicalized.owl
-    python scripts/execute_canonicalization.py \\
-        --report evaluation/canonicalization_report.json \\
-        --kinds wordbag_identity embedding_cluster \\
-        --min-confidence high \\
         --out ontology/working.canonicalized.owl
 """
 from __future__ import annotations
 
 import argparse
 import json
-import shutil
 import sys
 import time
-from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
-from app.ontology_manager import OntologyManager, WORKING_IRI
 from app import config
 
 
+WORKING_BASE = "http://davidkoepsell.com/bfo-agent/working"
+
+
 def check_feed_paused(sessions_dir: Path, min_idle_seconds: int = 60) -> bool:
-    """Refuse to run if the feed has been active in the last N seconds."""
     if not sessions_dir.exists():
         return True
-
-    latest_mtime = 0.0
-    for session_file in sessions_dir.glob("feed_*.jsonl"):
-        latest_mtime = max(latest_mtime, session_file.stat().st_mtime)
-
-    idle = time.time() - latest_mtime
+    latest = 0.0
+    for s in sessions_dir.glob("feed_*.jsonl"):
+        latest = max(latest, s.stat().st_mtime)
+    idle = time.time() - latest
     if idle < min_idle_seconds:
-        print(f"REFUSING: feed session file modified {int(idle)}s ago "
-              f"(need {min_idle_seconds}s of idle time)")
-        print("Pause the feed in the browser, then retry.")
+        print(f"REFUSING: feed session modified {int(idle)}s ago; "
+              f"need {min_idle_seconds}s idle.")
         return False
     return True
 
 
 def choose_canonical(members: list[str]) -> str:
-    """Pick the best canonical name from a merge bucket.
-
-    Heuristic:
-      - Prefer shorter names (less ornamentation)
-      - Among equal lengths, prefer alphabetically first (deterministic)
-      - Avoid names starting with lowercase or digits
-    """
     valid = [m for m in members if m and m[0].isupper()]
     if not valid:
         valid = list(members)
     return min(valid, key=lambda m: (len(m), m))
 
 
-def load_report(path: Path) -> dict:
-    return json.loads(path.read_text())
-
-
-def filter_candidates(
-    candidates: list[dict],
-    kinds: set[str] | None,
-    min_confidence: str,
-) -> list[dict]:
+def filter_candidates(cands, kinds, min_confidence):
     conf_rank = {"high": 0, "medium": 1, "review_required": 2}
     threshold = conf_rank.get(min_confidence, 0)
-    result = []
-    for c in candidates:
+    out = []
+    for c in cands:
         if kinds and c["kind"] not in kinds:
             continue
         if conf_rank.get(c["confidence"], 3) > threshold:
             continue
-        result.append(c)
-    return result
+        out.append(c)
+    return out
 
 
-def build_merge_plan(candidates: list[dict]) -> list[dict]:
-    """From filtered candidates, build explicit merge actions.
-
-    Returns a list of dicts with 'canonical', 'merged', 'kind'.
-    """
-    plan = []
-    seen = set()
-    for cand in candidates:
-        members = cand["members"]
+def build_merge_plan(cands):
+    plan, seen = [], set()
+    for c in cands:
+        members = c["members"]
         canonical = choose_canonical(members)
-        merged = [m for m in members if m != canonical]
-        for m in merged:
-            if m in seen:
-                # Already scheduled for merge elsewhere; skip to avoid chains
+        for m in members:
+            if m == canonical or m in seen:
                 continue
             seen.add(m)
-            plan.append({
-                "canonical": canonical,
-                "merged": m,
-                "kind": cand["kind"],
-                "confidence": cand["confidence"],
-            })
+            plan.append({"canonical": canonical, "merged": m,
+                         "kind": c["kind"], "confidence": c["confidence"]})
     return plan
 
 
-def apply_merges(mgr: OntologyManager, plan: list[dict],
-                 dry_run: bool = False) -> dict:
-    """Apply the merge plan to the working ontology.
+def resolve_class_iri(graph, name):
+    """Find the full IRI for a class by local name."""
+    from rdflib import URIRef, RDF, OWL
+    candidate = URIRef(f"{WORKING_BASE}#{name}")
+    if (candidate, RDF.type, OWL.Class) in graph:
+        return str(candidate)
+    for s in graph.subjects(RDF.type, OWL.Class):
+        s_str = str(s)
+        if s_str.endswith(f"#{name}") or s_str.endswith(f"/{name}"):
+            return s_str
+    return None
 
-    For each (canonical, merged) pair:
-      - Copy every subClassOf edge from `merged` to `canonical`
-      - Copy every other relation from `merged` to `canonical`
-      - Record `merged`'s name as an rdfs:altLabel on `canonical`
-      - Destroy `merged`
-    """
-    from owlready2 import destroy_entity, rdfs, Thing
 
-    stats = {"merges_attempted": 0, "merges_applied": 0, "skipped": []}
-    working_base = f"{WORKING_IRI}"
+def apply_merges_rdflib(input_path, output_path, plan, dry_run=False):
+    from rdflib import Graph, URIRef, Literal, RDF, RDFS, OWL
+    SKOS_ALT = URIRef("http://www.w3.org/2004/02/skos/core#altLabel")
 
-    for action in plan:
-        stats["merges_attempted"] += 1
-        canonical_iri = f"{working_base}#{action['canonical']}"
-        merged_iri = f"{working_base}#{action['merged']}"
+    print(f"Loading {input_path} as RDF ...")
+    g = Graph()
+    g.parse(str(input_path), format="xml")
+    print(f"  loaded {len(g)} triples")
 
-        canonical = mgr.world[canonical_iri]
-        merged = mgr.world[merged_iri]
-
-        if canonical is None:
-            # Try local-name match as fallback (for file:// serialized graphs)
-            for c in mgr.working.classes():
-                if c.name == action["canonical"]:
-                    canonical = c
-                    break
-        if merged is None:
-            for c in mgr.working.classes():
-                if c.name == action["merged"]:
-                    merged = c
-                    break
-
-        if canonical is None or merged is None:
-            stats["skipped"].append({
-                "action": action,
-                "reason": f"canonical={canonical is not None}, "
-                          f"merged={merged is not None} (name lookup failed)"
-            })
+    iri_map, skipped = {}, []
+    for a in plan:
+        m_iri = resolve_class_iri(g, a["merged"])
+        c_iri = resolve_class_iri(g, a["canonical"])
+        if not m_iri or not c_iri:
+            skipped.append({"action": a,
+                            "reason": f"m={bool(m_iri)}, c={bool(c_iri)}"})
             continue
+        iri_map[URIRef(m_iri)] = URIRef(c_iri)
+    print(f"  resolved {len(iri_map)} merges, skipped {len(skipped)}")
 
-        if dry_run:
-            print(f"  [DRY] would merge {action['merged']!r} "
-                  f"-> {action['canonical']!r} ({action['kind']})")
-            stats["merges_applied"] += 1
-            continue
+    if dry_run:
+        for i, (m, c) in enumerate(list(iri_map.items())[:10]):
+            mn = str(m).rsplit('#', 1)[-1].rsplit('/', 1)[-1]
+            cn = str(c).rsplit('#', 1)[-1].rsplit('/', 1)[-1]
+            print(f"  [DRY] {mn} -> {cn}")
+        if len(iri_map) > 10:
+            print(f"  ... and {len(iri_map) - 10} more")
+        return {"merges_attempted": len(plan),
+                "merges_resolved": len(iri_map),
+                "skipped": skipped, "triples_before": len(g),
+                "triples_after": len(g)}
 
-        # Apply the merge
-        with mgr.working:
-            # Transfer parents: every parent of merged becomes a parent
-            # of canonical (if not already)
-            for parent in list(merged.is_a):
-                if parent is not Thing and parent not in canonical.is_a:
-                    canonical.is_a.append(parent)
+    # Step 1: preserve merged names as altLabels
+    altlabel_adds = 0
+    for merged, canonical in iri_map.items():
+        mn = str(merged).rsplit('#', 1)[-1].rsplit('/', 1)[-1]
+        labels = [Literal(mn)]
+        for _, _, lit in g.triples((merged, RDFS.label, None)):
+            labels.append(lit)
+        for lbl in labels:
+            t = (canonical, SKOS_ALT, lbl)
+            if t not in g:
+                g.add(t)
+                altlabel_adds += 1
 
-            # Preserve the merged name as an altLabel on canonical
-            try:
-                existing_alts = list(canonical.altLabel)
-            except AttributeError:
-                existing_alts = []
-            if action["merged"] not in existing_alts:
-                try:
-                    canonical.altLabel.append(action["merged"])
-                except AttributeError:
-                    # altLabel not yet a recognized property; skip gracefully
-                    pass
+    # Step 2: rewrite all triples
+    to_remove, to_add = [], []
+    for s, p, o in g:
+        ns = iri_map.get(s, s)
+        no = iri_map.get(o, o) if isinstance(o, URIRef) else o
+        if ns != s or no != o:
+            to_remove.append((s, p, o))
+            to_add.append((ns, p, no))
+    for t in to_remove:
+        g.remove(t)
+    for t in to_add:
+        g.add(t)
 
-            # Reassign subclasses of merged to canonical
-            for subcls in list(merged.subclasses()):
-                if canonical not in subcls.is_a:
-                    subcls.is_a.append(canonical)
-                subcls.is_a = [p for p in subcls.is_a if p is not merged]
+    # Step 3: belt-and-suspenders
+    for merged in iri_map.keys():
+        g.remove((merged, None, None))
+        g.remove((None, None, merged))
 
-            # Destroy the merged class
-            destroy_entity(merged)
+    # Step 4: remove self-subclass loops
+    self_loops = [(s, p, o) for s, p, o in g.triples((None, RDFS.subClassOf, None))
+                  if s == o]
+    for t in self_loops:
+        g.remove(t)
 
-        stats["merges_applied"] += 1
-        print(f"  merged {action['merged']!r} -> {action['canonical']!r}")
+    print(f"  triples rewritten: {len(to_remove)}")
+    print(f"  altLabel additions: {altlabel_adds}")
+    print(f"  self-loops removed: {len(self_loops)}")
+    print(f"  final triples: {len(g)}")
 
-    return stats
+    print(f"Writing {output_path} ...")
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    g.serialize(destination=str(output_path), format="xml")
+
+    return {"merges_attempted": len(plan),
+            "merges_resolved": len(iri_map),
+            "skipped": skipped,
+            "triples_rewritten": len(to_remove),
+            "altlabel_adds": altlabel_adds,
+            "self_loops_removed": len(self_loops),
+            "triples_after": len(g)}
+
+
+def verify_output(output_path):
+    from owlready2 import World, onto_path
+    onto_path.append(str(config.BFO_PATH.parent))
+    w = World()
+    onto = w.get_ontology(f"file://{output_path.resolve()}").load()
+    classes = list(onto.classes())
+    return len(classes)
+
+
+def run_consistency_check(output_path):
+    from app.ontology_manager import OntologyManager
+    mgr = OntologyManager(
+        bfo_path=config.BFO_PATH,
+        working_path=output_path,
+        seed_path=config.SEED_PATH,
+    )
+    class Empty:
+        entities = []
+        relations = []
+    return mgr.check_consistency_dry_run(Empty())
 
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--report", required=True,
-                    help="Path to canonicalization report JSON")
-    ap.add_argument("--kinds", nargs="+",
-                    default=["wordbag_identity"],
-                    help="Which kinds of candidates to apply "
-                         "(wordbag_identity, embedding_cluster, stem_variant)")
+    ap.add_argument("--report", required=True)
+    ap.add_argument("--kinds", nargs="+", default=["wordbag_identity"])
     ap.add_argument("--min-confidence", default="high",
-                    choices=["high", "medium", "review_required"],
-                    help="Minimum confidence to include")
-    ap.add_argument("--out",
-                    default="ontology/working.canonicalized.owl",
-                    help="Output OWL path")
-    ap.add_argument("--dry-run", action="store_true",
-                    help="Print merges without modifying anything")
-    ap.add_argument("--skip-consistency-check", action="store_true",
-                    help="Skip the HermiT consistency check after merge (faster)")
+                    choices=["high", "medium", "review_required"])
+    ap.add_argument("--out", default="ontology/working.canonicalized.owl")
+    ap.add_argument("--dry-run", action="store_true")
+    ap.add_argument("--skip-consistency-check", action="store_true")
     args = ap.parse_args()
 
-    # Safety: feed must be paused (unless dry-run)
-    if not args.dry_run:
-        if not check_feed_paused(config.SESSIONS_DIR):
-            return 1
+    if not args.dry_run and not check_feed_paused(config.SESSIONS_DIR):
+        return 1
 
-    # Load report and filter
-    report = load_report(Path(args.report))
+    report = json.loads(Path(args.report).read_text())
     print(f"Loaded report: {report['candidates_total']} candidates total")
 
-    kinds_set = set(args.kinds)
-    selected = filter_candidates(
-        report["candidates"],
-        kinds=kinds_set,
-        min_confidence=args.min_confidence,
-    )
-    print(f"After filters (kinds={sorted(kinds_set)}, "
+    selected = filter_candidates(report["candidates"], set(args.kinds),
+                                  args.min_confidence)
+    print(f"After filters (kinds={sorted(args.kinds)}, "
           f"min_confidence={args.min_confidence}): {len(selected)} candidates")
-
     plan = build_merge_plan(selected)
-    print(f"Merge plan: {len(plan)} actions")
-    print()
+    print(f"Merge plan: {len(plan)} actions\n")
 
     if not plan:
         print("Nothing to do.")
         return 0
 
-    # Load the ontology
-    print(f"Loading working ontology from {config.WORKING_PATH} ...")
-    mgr = OntologyManager(
-        bfo_path=config.BFO_PATH,
-        working_path=config.WORKING_PATH,
-        seed_path=config.SEED_PATH,
-    )
-    print(f"Loaded {len(list(mgr.working.classes()))} classes.")
-    print()
+    input_path = Path(config.WORKING_PATH)
+    output_path = Path(args.out)
 
-    # Apply (or dry-run)
-    if args.dry_run:
-        print("DRY RUN -- no changes will be written")
-        print()
-    else:
-        print(f"APPLYING merges. Output will go to {args.out}")
-        print()
-
-    stats = apply_merges(mgr, plan, dry_run=args.dry_run)
-
+    stats = apply_merges_rdflib(input_path, output_path, plan,
+                                 dry_run=args.dry_run)
     print()
     print(f"Merges attempted: {stats['merges_attempted']}")
-    print(f"Merges applied:   {stats['merges_applied']}")
-    if stats["skipped"]:
+    print(f"Merges resolved:  {stats['merges_resolved']}")
+    if stats.get("skipped"):
         print(f"Skipped:          {len(stats['skipped'])}")
-        for s in stats["skipped"][:5]:
-            print(f"  - {s}")
 
     if args.dry_run:
         return 0
 
-    # Consistency check before writing
+    print()
+    print("Verifying output file ...")
+    n_classes = verify_output(output_path)
+    print(f"  classes in output: {n_classes}")
+
     if not args.skip_consistency_check:
         print()
-        print("Running HermiT consistency check on merged ontology ...")
-        class Empty:
-            entities = []
-            relations = []
-        ok, detail = mgr.check_consistency_dry_run(Empty())
-        if ok:
-            print("  consistent: True")
-        else:
-            print("  consistent: FALSE")
+        print("Running HermiT on canonicalized ontology ...")
+        ok, detail = run_consistency_check(output_path)
+        print(f"  consistent: {ok}")
+        if not ok:
             print(detail[:1500])
-            print()
-            print("ABORTING: merged ontology failed consistency check.")
-            print("Your original working.owl is untouched.")
             return 2
 
-    # Save to the output path (NOT the working path)
-    out_path = Path(args.out)
-    out_path.parent.mkdir(parents=True, exist_ok=True)
-
-    # Temporarily redirect working_path for save(), then restore
-    original_path = mgr.working_path
-    mgr.working_path = out_path
-    mgr.save()
-    mgr.working_path = original_path
-
     print()
-    print(f"Wrote canonicalized ontology to {out_path}")
+    print("=" * 60)
+    print("CANONICALIZATION COMPLETE")
+    print("=" * 60)
+    print(f"  Output file:     {output_path}")
+    print(f"  Classes before:  {report['ontology_class_count']}")
+    print(f"  Classes after:   {n_classes}")
+    print(f"  Reduction:       {report['ontology_class_count'] - n_classes}")
     print()
-    print(f"Class count before: {report['ontology_class_count']}")
-    print(f"Class count after:  {len(list(mgr.working.classes()))}")
-    print(f"Reduction:          {report['ontology_class_count'] - len(list(mgr.working.classes()))}")
-    print()
-    print("To accept the canonicalization:")
+    print("To accept:")
     print(f"  cp {config.WORKING_PATH} {config.WORKING_PATH}.pre_canonicalize")
-    print(f"  cp {out_path} {config.WORKING_PATH}")
-    print(f"  # Then restart Flask")
+    print(f"  cp {output_path} {config.WORKING_PATH}")
+    print("  # Restart Flask")
     return 0
 
 
