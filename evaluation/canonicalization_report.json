@@ -1,0 +1,5509 @@
+{
+  "generated_at": "2026-04-23T11:36:00.303877",
+  "ontology_class_count": 7036,
+  "candidates_total": 385,
+  "summary": {
+    "wordbag_identity_count": 154,
+    "stem_variant_count": 231,
+    "embedding_cluster_count": 0,
+    "classes_in_wordbag_merges": 309
+  },
+  "candidates": [
+    {
+      "kind": "wordbag_identity",
+      "confidence": "high",
+      "members": [
+        "ComplianceObligation",
+        "ObligationCompliance",
+        "ObligationOfCompliance"
+      ],
+      "suggestion": "merge all into a single canonical class",
+      "provenance": {
+        "ComplianceObligation": "",
+        "ObligationCompliance": "",
+        "ObligationOfCompliance": ""
+      }
+    },
+    {
+      "kind": "wordbag_identity",
+      "confidence": "high",
+      "members": [
+        "StatusFunctionSustaining",
+        "SustainingStatusFunction"
+      ],
+      "suggestion": "merge all into a single canonical class",
+      "provenance": {
+        "StatusFunctionSustaining": "",
+        "SustainingStatusFunction": ""
+      }
+    },
+    {
+      "kind": "wordbag_identity",
+      "confidence": "high",
+      "members": [
+        "ActOfRecognition",
+        "RecognitionAct"
+      ],
+      "suggestion": "merge all into a single canonical class",
+      "provenance": {
+        "ActOfRecognition": "",
+        "RecognitionAct": ""
+      }
+    },
+    {
+      "kind": "wordbag_identity",
+      "confidence": "high",
+      "members": [
+        "ConferralOfStatusFunction",
+        "StatusFunctionConferral"
+      ],
+      "suggestion": "merge all into a single canonical class",
+      "provenance": {
+        "ConferralOfStatusFunction": "",
+        "StatusFunctionConferral": ""
+      }
+    },
+    {
+      "kind": "wordbag_identity",
+      "confidence": "high",
+      "members": [
+        "FieldOfRecognition",
+        "RecognitionField"
+      ],
+      "suggestion": "merge all into a single canonical class",
+      "provenance": {
+        "FieldOfRecognition": "",
+        "RecognitionField": ""
+      }
+    },
+    {
+      "kind": "wordbag_identity",
+      "confidence": "high",
+      "members": [
+        "RecognitionStabilization",
+        "StabilizationOfRecognition"
+      ],
+      "suggestion": "merge all into a single canonical class",
+      "provenance": {
+        "RecognitionStabilization": "",
+        "StabilizationOfRecognition": ""
+      }
+    },
+    {
+      "kind": "wordbag_identity",
+      "confidence": "high",
+      "members": [
+        "LegalRelationalContinuant",
+        "RelationalLegalContinuant"
+      ],
+      "suggestion": "merge all into a single canonical class",
+      "provenance": {
+        "LegalRelationalContinuant": "",
+        "RelationalLegalContinuant": ""
+      }
+    },
+    {
+      "kind": "wordbag_identity",
+      "confidence": "high",
+      "members": [
+        "SubstrateStatusFunctionDependency",
+        "SubstrateToStatusFunctionDependency"
+      ],
+      "suggestion": "merge all into a single canonical class",
+      "provenance": {
+        "SubstrateStatusFunctionDependency": "",
+        "SubstrateToStatusFunctionDependency": ""
+      }
+    },
+    {
+      "kind": "wordbag_identity",
+      "confidence": "high",
+      "members": [
+        "EmbeddednessInNetwork",
+        "NetworkEmbeddedness"
+      ],
+      "suggestion": "merge all into a single canonical class",
+      "provenance": {
+        "EmbeddednessInNetwork": "",
+        "NetworkEmbeddedness": ""
+      }
+    },
+    {
+      "kind": "wordbag_identity",
+      "confidence": "high",
+      "members": [
+        "DynamicLegalDimension",
+        "LegalDynamicDimension"
+      ],
+      "suggestion": "merge all into a single canonical class",
+      "provenance": {
+        "DynamicLegalDimension": "",
+        "LegalDynamicDimension": ""
+      }
+    },
+    {
+      "kind": "wordbag_identity",
+      "confidence": "high",
+      "members": [
+        "LegalStaticDimension",
+        "StaticLegalDimension"
+      ],
+      "suggestion": "merge all into a single canonical class",
+      "provenance": {
+        "LegalStaticDimension": "",
+        "StaticLegalDimension": ""
+      }
+    },
+    {
+      "kind": "wordbag_identity",
+      "confidence": "high",
+      "members": [
+        "ConditionOfRecognition",
+        "RecognitionCondition"
+      ],
+      "suggestion": "merge all into a single canonical class",
+      "provenance": {
+        "ConditionOfRecognition": "",
+        "RecognitionCondition": ""
+      }
+    },
+    {
+      "kind": "wordbag_identity",
+      "confidence": "high",
+      "members": [
+        "CollapseOfRecognition",
+        "RecognitionCollapse"
+      ],
+      "suggestion": "merge all into a single canonical class",
+      "provenance": {
+        "CollapseOfRecognition": "",
+        "RecognitionCollapse": ""
+      }
+    },
+    {
+      "kind": "wordbag_identity",
+      "confidence": "high",
+      "members": [
+        "CapacityForSelfRepair",
+        "SelfRepairCapacity"
+      ],
+      "suggestion": "merge all into a single canonical class",
+      "provenance": {
+        "CapacityForSelfRepair": "",
+        "SelfRepairCapacity": ""
+      }
+    },
+    {
+      "kind": "wordbag_identity",
+      "confidence": "high",
+      "members": [
+        "CapacityForSelfCorrection",
+        "SelfCorrectionCapacity"
+      ],
+      "suggestion": "merge all into a single canonical class",
+      "provenance": {
+        "CapacityForSelfCorrection": "",
+        "SelfCorrectionCapacity": ""
+      }
+    },
+    {
+      "kind": "wordbag_identity",
+      "confidence": "high",
+      "members": [
+        "LegalStructuralBeing",
+        "StructuralLegalBeing"
+      ],
+      "suggestion": "merge all into a single canonical class",
+      "provenance": {
+        "LegalStructuralBeing": "",
+        "StructuralLegalBeing": ""
+      }
+    },
+    {
+      "kind": "wordbag_identity",
+      "confidence": "high",
+      "members": [
+        "FilingAPetition",
+        "FilingOfPetition"
+      ],
+      "suggestion": "merge all into a single canonical class",
+      "provenance": {
+        "FilingAPetition": "",
+        "FilingOfPetition": ""
+      }
+    },
+    {
+      "kind": "wordbag_identity",
+      "confidence": "high",
+      "members": [
+        "ActOfFiling",
+        "FilingAct"
+      ],
+      "suggestion": "merge all into a single canonical class",
+      "provenance": {
+        "ActOfFiling": "",
+        "FilingAct": ""
+      }
+    },
+    {
+      "kind": "wordbag_identity",
+      "confidence": "high",
+      "members": [
+        "IntegrityOfRecognition",
+        "RecognitionIntegrity"
+      ],
+      "suggestion": "merge all into a single canonical class",
+      "provenance": {
+        "IntegrityOfRecognition": "",
+        "RecognitionIntegrity": ""
+      }
+    },
+    {
+      "kind": "wordbag_identity",
+      "confidence": "high",
+      "members": [
+        "OntologicalExpressionRelation",
+        "OntologicalRelationExpression"
+      ],
+      "suggestion": "merge all into a single canonical class",
+      "provenance": {
+        "OntologicalExpressionRelation": "",
+        "OntologicalRelationExpression": ""
+      }
+    },
+    {
+      "kind": "wordbag_identity",
+      "confidence": "high",
+      "members": [
+        "AlignmentWithRuleOfRecognition",
+        "RuleOfRecognitionAlignment"
+      ],
+      "suggestion": "merge all into a single canonical class",
+      "provenance": {
+        "AlignmentWithRuleOfRecognition": "",
+        "RuleOfRecognitionAlignment": ""
+      }
+    },
+    {
+      "kind": "wordbag_identity",
+      "confidence": "high",
+      "members": [
+        "ClosureOfLegalField",
+        "LegalFieldClosure"
+      ],
+      "suggestion": "merge all into a single canonical class",
+      "provenance": {
+        "ClosureOfLegalField": "",
+        "LegalFieldClosure": ""
+      }
+    },
+    {
+      "kind": "wordbag_identity",
+      "confidence": "high",
+      "members": [
+        "RealizationOfRuleOfRecognition",
+        "RuleOfRecognitionRealization"
+      ],
+      "suggestion": "merge all into a single canonical class",
+      "provenance": {
+        "RealizationOfRuleOfRecognition": "",
+        "RuleOfRecognitionRealization": ""
+      }
+    },
+    {
+      "kind": "wordbag_identity",
+      "confidence": "high",
+      "members": [
+        "DependencyRepair",
+        "RepairDependency"
+      ],
+      "suggestion": "merge all into a single canonical class",
+      "provenance": {
+        "DependencyRepair": "",
+        "RepairDependency": ""
+      }
+    },
+    {
+      "kind": "wordbag_identity",
+      "confidence": "high",
+      "members": [
+        "LossOfOntologicalGrounding",
+        "OntologicalGroundingLoss"
+      ],
+      "suggestion": "merge all into a single canonical class",
+      "provenance": {
+        "LossOfOntologicalGrounding": "",
+        "OntologicalGroundingLoss": ""
+      }
+    },
+    {
+      "kind": "wordbag_identity",
+      "confidence": "high",
+      "members": [
+        "LegalOperativeStatus",
+        "OperativeLegalStatus"
+      ],
+      "suggestion": "merge all into a single canonical class",
+      "provenance": {
+        "LegalOperativeStatus": "",
+        "OperativeLegalStatus": ""
+      }
+    },
+    {
+      "kind": "wordbag_identity",
+      "confidence": "high",
+      "members": [
+        "ActOfMutualRecognition",
+        "MutualRecognitionAct"
+      ],
+      "suggestion": "merge all into a single canonical class",
+      "provenance": {
+        "ActOfMutualRecognition": "",
+        "MutualRecognitionAct": ""
+      }
+    },
+    {
+      "kind": "wordbag_identity",
+      "confidence": "high",
+      "members": [
+        "MisalignmentOfRecognition",
+        "RecognitionMisalignment"
+      ],
+      "suggestion": "merge all into a single canonical class",
+      "provenance": {
+        "MisalignmentOfRecognition": "",
+        "RecognitionMisalignment": ""
+      }
+    },
+    {
+      "kind": "wordbag_identity",
+      "confidence": "high",
+      "members": [
+        "LegalBeingMetaStructure",
+        "MetaStructureOfLegalBeing"
+      ],
+      "suggestion": "merge all into a single canonical class",
+      "provenance": {
+        "LegalBeingMetaStructure": "",
+        "MetaStructureOfLegalBeing": ""
+      }
+    },
+    {
+      "kind": "wordbag_identity",
+      "confidence": "high",
+      "members": [
+        "EmergenceOfRuleOfRecognition",
+        "RuleOfRecognitionEmergence"
+      ],
+      "suggestion": "merge all into a single canonical class",
+      "provenance": {
+        "EmergenceOfRuleOfRecognition": "",
+        "RuleOfRecognitionEmergence": ""
+      }
+    },
+    {
+      "kind": "wordbag_identity",
+      "confidence": "high",
+      "members": [
+        "LevelOfOntologicalDependence",
+        "OntologicalDependenceLevel"
+      ],
+      "suggestion": "merge all into a single canonical class",
+      "provenance": {
+        "LevelOfOntologicalDependence": "",
+        "OntologicalDependenceLevel": ""
+      }
+    },
+    {
+      "kind": "wordbag_identity",
+      "confidence": "high",
+      "members": [
+        "AgentRecognition",
+        "RecognitionAgent"
+      ],
+      "suggestion": "merge all into a single canonical class",
+      "provenance": {
+        "AgentRecognition": "",
+        "RecognitionAgent": ""
+      }
+    },
+    {
+      "kind": "wordbag_identity",
+      "confidence": "high",
+      "members": [
+        "RecognitionStructure",
+        "StructureOfRecognition"
+      ],
+      "suggestion": "merge all into a single canonical class",
+      "provenance": {
+        "RecognitionStructure": "",
+        "StructureOfRecognition": ""
+      }
+    },
+    {
+      "kind": "wordbag_identity",
+      "confidence": "high",
+      "members": [
+        "DependencyStructureSubversion",
+        "SubversionOfDependencyStructure"
+      ],
+      "suggestion": "merge all into a single canonical class",
+      "provenance": {
+        "DependencyStructureSubversion": "",
+        "SubversionOfDependencyStructure": ""
+      }
+    },
+    {
+      "kind": "wordbag_identity",
+      "confidence": "high",
+      "members": [
+        "AccumulationOfContradictionDebt",
+        "ContradictionDebtAccumulation"
+      ],
+      "suggestion": "merge all into a single canonical class",
+      "provenance": {
+        "AccumulationOfContradictionDebt": "",
+        "ContradictionDebtAccumulation": ""
+      }
+    },
+    {
+      "kind": "wordbag_identity",
+      "confidence": "high",
+      "members": [
+        "ChainOfRecognition",
+        "RecognitionChain"
+      ],
+      "suggestion": "merge all into a single canonical class",
+      "provenance": {
+        "ChainOfRecognition": "",
+        "RecognitionChain": ""
+      }
+    },
+    {
+      "kind": "wordbag_identity",
+      "confidence": "high",
+      "members": [
+        "ChainOfRecognitionBreach",
+        "RecognitionChainBreach"
+      ],
+      "suggestion": "merge all into a single canonical class",
+      "provenance": {
+        "ChainOfRecognitionBreach": "",
+        "RecognitionChainBreach": ""
+      }
+    },
+    {
+      "kind": "wordbag_identity",
+      "confidence": "high",
+      "members": [
+        "LegalFieldOfRecognition",
+        "LegalRecognitionField"
+      ],
+      "suggestion": "merge all into a single canonical class",
+      "provenance": {
+        "LegalFieldOfRecognition": "",
+        "LegalRecognitionField": ""
+      }
+    },
+    {
+      "kind": "wordbag_identity",
+      "confidence": "high",
+      "members": [
+        "AbsorptionOfContradiction",
+        "ContradictionAbsorption"
+      ],
+      "suggestion": "merge all into a single canonical class",
+      "provenance": {
+        "AbsorptionOfContradiction": "",
+        "ContradictionAbsorption": ""
+      }
+    },
+    {
+      "kind": "wordbag_identity",
+      "confidence": "high",
+      "members": [
+        "LegalPerformativeAct",
+        "PerformativeLegalAct"
+      ],
+      "suggestion": "merge all into a single canonical class",
+      "provenance": {
+        "LegalPerformativeAct": "",
+        "PerformativeLegalAct": ""
+      }
+    },
+    {
+      "kind": "wordbag_identity",
+      "confidence": "high",
+      "members": [
+        "RecognitionWithdrawal",
+        "WithdrawalOfRecognition"
+      ],
+      "suggestion": "merge all into a single canonical class",
+      "provenance": {
+        "RecognitionWithdrawal": "",
+        "WithdrawalOfRecognition": ""
+      }
+    },
+    {
+      "kind": "wordbag_identity",
+      "confidence": "high",
+      "members": [
+        "RecognitionRelation",
+        "RelationOfRecognition"
+      ],
+      "suggestion": "merge all into a single canonical class",
+      "provenance": {
+        "RecognitionRelation": "",
+        "RelationOfRecognition": ""
+      }
+    },
+    {
+      "kind": "wordbag_identity",
+      "confidence": "high",
+      "members": [
+        "OntologicalUnityOfProperty",
+        "PropertyOntologicalUnity"
+      ],
+      "suggestion": "merge all into a single canonical class",
+      "provenance": {
+        "OntologicalUnityOfProperty": "",
+        "PropertyOntologicalUnity": ""
+      }
+    },
+    {
+      "kind": "wordbag_identity",
+      "confidence": "high",
+      "members": [
+        "RelationalRecognitionOfProperty",
+        "RelationalRecognitionProperty"
+      ],
+      "suggestion": "merge all into a single canonical class",
+      "provenance": {
+        "RelationalRecognitionOfProperty": "",
+        "RelationalRecognitionProperty": ""
+      }
+    },
+    {
+      "kind": "wordbag_identity",
+      "confidence": "high",
+      "members": [
+        "ExtensionOfRecognition",
+        "RecognitionExtension"
+      ],
+      "suggestion": "merge all into a single canonical class",
+      "provenance": {
+        "ExtensionOfRecognition": "",
+        "RecognitionExtension": ""
+      }
+    },
+    {
+      "kind": "wordbag_identity",
+      "confidence": "high",
+      "members": [
+        "LapseOfRecognition",
+        "RecognitionLapse"
+      ],
+      "suggestion": "merge all into a single canonical class",
+      "provenance": {
+        "LapseOfRecognition": "",
+        "RecognitionLapse": ""
+      }
+    },
+    {
+      "kind": "wordbag_identity",
+      "confidence": "high",
+      "members": [
+        "ActOfRegistration",
+        "RegistrationAct"
+      ],
+      "suggestion": "merge all into a single canonical class",
+      "provenance": {
+        "ActOfRegistration": "",
+        "RegistrationAct": ""
+      }
+    },
+    {
+      "kind": "wordbag_identity",
+      "confidence": "high",
+      "members": [
+        "ExtinctionOfObligation",
+        "ObligationExtinction"
+      ],
+      "suggestion": "merge all into a single canonical class",
+      "provenance": {
+        "ExtinctionOfObligation": "",
+        "ObligationExtinction": ""
+      }
+    },
+    {
+      "kind": "wordbag_identity",
+      "confidence": "high",
+      "members": [
+        "RecognitionSystem",
+        "SystemOfRecognition"
+      ],
+      "suggestion": "merge all into a single canonical class",
+      "provenance": {
+        "RecognitionSystem": "",
+        "SystemOfRecognition": ""
+      }
+    },
+    {
+      "kind": "wordbag_identity",
+      "confidence": "high",
+      "members": [
+        "OntologicalCoherenceLevel",
+        "OntologicalLevelCoherence"
+      ],
+      "suggestion": "merge all into a single canonical class",
+      "provenance": {
+        "OntologicalCoherenceLevel": "",
+        "OntologicalLevelCoherence": ""
+      }
+    },
+    {
+      "kind": "wordbag_identity",
+      "confidence": "high",
+      "members": [
+        "FailureOfRecognition",
+        "RecognitionFailure"
+      ],
+      "suggestion": "merge all into a single canonical class",
+      "provenance": {
+        "FailureOfRecognition": "",
+        "RecognitionFailure": ""
+      }
+    },
+    {
+      "kind": "wordbag_identity",
+      "confidence": "high",
+      "members": [
+        "ActOfSigning",
+        "SigningAct"
+      ],
+      "suggestion": "merge all into a single canonical class",
+      "provenance": {
+        "ActOfSigning": "",
+        "SigningAct": ""
+      }
+    },
+    {
+      "kind": "wordbag_identity",
+      "confidence": "high",
+      "members": [
+        "ActOfPerforming",
+        "PerformingAct"
+      ],
+      "suggestion": "merge all into a single canonical class",
+      "provenance": {
+        "ActOfPerforming": "",
+        "PerformingAct": ""
+      }
+    },
+    {
+      "kind": "wordbag_identity",
+      "confidence": "high",
+      "members": [
+        "ActOfBreaching",
+        "BreachingAct"
+      ],
+      "suggestion": "merge all into a single canonical class",
+      "provenance": {
+        "ActOfBreaching": "",
+        "BreachingAct": ""
+      }
+    },
+    {
+      "kind": "wordbag_identity",
+      "confidence": "high",
+      "members": [
+        "ActOfDischarging",
+        "DischargingAct"
+      ],
+      "suggestion": "merge all into a single canonical class",
+      "provenance": {
+        "ActOfDischarging": "",
+        "DischargingAct": ""
+      }
+    },
+    {
+      "kind": "wordbag_identity",
+      "confidence": "high",
+      "members": [
+        "ProcessOfRecognition",
+        "RecognitionProcess"
+      ],
+      "suggestion": "merge all into a single canonical class",
+      "provenance": {
+        "ProcessOfRecognition": "",
+        "RecognitionProcess": ""
+      }
+    },
+    {
+      "kind": "wordbag_identity",
+      "confidence": "high",
+      "members": [
+        "HorizonOfRecognition",
+        "RecognitionHorizon"
+      ],
+      "suggestion": "merge all into a single canonical class",
+      "provenance": {
+        "HorizonOfRecognition": "",
+        "RecognitionHorizon": ""
+      }
+    },
+    {
+      "kind": "wordbag_identity",
+      "confidence": "high",
+      "members": [
+        "InstitutionalRealizationOfValue",
+        "InstitutionalValueRealization"
+      ],
+      "suggestion": "merge all into a single canonical class",
+      "provenance": {
+        "InstitutionalRealizationOfValue": "",
+        "InstitutionalValueRealization": ""
+      }
+    },
+    {
+      "kind": "wordbag_identity",
+      "confidence": "high",
+      "members": [
+        "EmergenceFromRelation",
+        "EmergenceRelation"
+      ],
+      "suggestion": "merge all into a single canonical class",
+      "provenance": {
+        "EmergenceFromRelation": "",
+        "EmergenceRelation": ""
+      }
+    },
+    {
+      "kind": "wordbag_identity",
+      "confidence": "high",
+      "members": [
+        "InstitutionParticipation",
+        "ParticipationInInstitution"
+      ],
+      "suggestion": "merge all into a single canonical class",
+      "provenance": {
+        "InstitutionParticipation": "",
+        "ParticipationInInstitution": ""
+      }
+    },
+    {
+      "kind": "wordbag_identity",
+      "confidence": "high",
+      "members": [
+        "EncodingAndSustainingSystem",
+        "EncodingSustainingSystem"
+      ],
+      "suggestion": "merge all into a single canonical class",
+      "provenance": {
+        "EncodingAndSustainingSystem": "",
+        "EncodingSustainingSystem": ""
+      }
+    },
+    {
+      "kind": "wordbag_identity",
+      "confidence": "high",
+      "members": [
+        "CessationOfRecognition",
+        "RecognitionCessation"
+      ],
+      "suggestion": "merge all into a single canonical class",
+      "provenance": {
+        "CessationOfRecognition": "",
+        "RecognitionCessation": ""
+      }
+    },
+    {
+      "kind": "wordbag_identity",
+      "confidence": "high",
+      "members": [
+        "AuthoritativeRecognitionOfBlockchain",
+        "BlockchainAuthoritativeRecognition"
+      ],
+      "suggestion": "merge all into a single canonical class",
+      "provenance": {
+        "AuthoritativeRecognitionOfBlockchain": "",
+        "BlockchainAuthoritativeRecognition": ""
+      }
+    },
+    {
+      "kind": "wordbag_identity",
+      "confidence": "high",
+      "members": [
+        "ProceduralRealizationOfRecognition",
+        "ProceduralRecognitionRealization"
+      ],
+      "suggestion": "merge all into a single canonical class",
+      "provenance": {
+        "ProceduralRealizationOfRecognition": "",
+        "ProceduralRecognitionRealization": ""
+      }
+    },
+    {
+      "kind": "wordbag_identity",
+      "confidence": "high",
+      "members": [
+        "MaterialOwnershipLayer",
+        "OwnershipMaterialLayer"
+      ],
+      "suggestion": "merge all into a single canonical class",
+      "provenance": {
+        "MaterialOwnershipLayer": "",
+        "OwnershipMaterialLayer": ""
+      }
+    },
+    {
+      "kind": "wordbag_identity",
+      "confidence": "high",
+      "members": [
+        "ImmaterialOwnershipLayer",
+        "OwnershipImmaterialLayer"
+      ],
+      "suggestion": "merge all into a single canonical class",
+      "provenance": {
+        "ImmaterialOwnershipLayer": "",
+        "OwnershipImmaterialLayer": ""
+      }
+    },
+    {
+      "kind": "wordbag_identity",
+      "confidence": "high",
+      "members": [
+        "BreachOfContract",
+        "ContractBreach"
+      ],
+      "suggestion": "merge all into a single canonical class",
+      "provenance": {
+        "BreachOfContract": "",
+        "ContractBreach": ""
+      }
+    },
+    {
+      "kind": "wordbag_identity",
+      "confidence": "high",
+      "members": [
+        "InstitutionalRecognitionSustainment",
+        "InstitutionalSustainmentOfRecognition"
+      ],
+      "suggestion": "merge all into a single canonical class",
+      "provenance": {
+        "InstitutionalRecognitionSustainment": "",
+        "InstitutionalSustainmentOfRecognition": ""
+      }
+    },
+    {
+      "kind": "wordbag_identity",
+      "confidence": "high",
+      "members": [
+        "CapacityForRepair",
+        "RepairCapacity"
+      ],
+      "suggestion": "merge all into a single canonical class",
+      "provenance": {
+        "CapacityForRepair": "",
+        "RepairCapacity": ""
+      }
+    },
+    {
+      "kind": "wordbag_identity",
+      "confidence": "high",
+      "members": [
+        "InstitutionalDependenceOnRecognition",
+        "InstitutionalRecognitionDependence"
+      ],
+      "suggestion": "merge all into a single canonical class",
+      "provenance": {
+        "InstitutionalDependenceOnRecognition": "",
+        "InstitutionalRecognitionDependence": ""
+      }
+    },
+    {
+      "kind": "wordbag_identity",
+      "confidence": "high",
+      "members": [
+        "ContributionToInstitutionalPersistence",
+        "InstitutionalPersistenceContribution"
+      ],
+      "suggestion": "merge all into a single canonical class",
+      "provenance": {
+        "ContributionToInstitutionalPersistence": "",
+        "InstitutionalPersistenceContribution": ""
+      }
+    },
+    {
+      "kind": "wordbag_identity",
+      "confidence": "high",
+      "members": [
+        "DeterminationOfFact",
+        "FactDetermination"
+      ],
+      "suggestion": "merge all into a single canonical class",
+      "provenance": {
+        "DeterminationOfFact": "",
+        "FactDetermination": ""
+      }
+    },
+    {
+      "kind": "wordbag_identity",
+      "confidence": "high",
+      "members": [
+        "CollectiveRealizationOfRecognition",
+        "CollectiveRecognitionRealization"
+      ],
+      "suggestion": "merge all into a single canonical class",
+      "provenance": {
+        "CollectiveRealizationOfRecognition": "",
+        "CollectiveRecognitionRealization": ""
+      }
+    },
+    {
+      "kind": "wordbag_identity",
+      "confidence": "high",
+      "members": [
+        "ExerciseOfPower",
+        "PowerExercise"
+      ],
+      "suggestion": "merge all into a single canonical class",
+      "provenance": {
+        "ExerciseOfPower": "",
+        "PowerExercise": ""
+      }
+    },
+    {
+      "kind": "wordbag_identity",
+      "confidence": "high",
+      "members": [
+        "BurdenOfRecognition",
+        "RecognitionBurden"
+      ],
+      "suggestion": "merge all into a single canonical class",
+      "provenance": {
+        "BurdenOfRecognition": "",
+        "RecognitionBurden": ""
+      }
+    },
+    {
+      "kind": "wordbag_identity",
+      "confidence": "high",
+      "members": [
+        "SociallyInstantiatedCoherenceField",
+        "SociallyInstantiatedFieldOfCoherence"
+      ],
+      "suggestion": "merge all into a single canonical class",
+      "provenance": {
+        "SociallyInstantiatedCoherenceField": "",
+        "SociallyInstantiatedFieldOfCoherence": ""
+      }
+    },
+    {
+      "kind": "wordbag_identity",
+      "confidence": "high",
+      "members": [
+        "CapacityForRecognition",
+        "RecognitionCapacity"
+      ],
+      "suggestion": "merge all into a single canonical class",
+      "provenance": {
+        "CapacityForRecognition": "",
+        "RecognitionCapacity": ""
+      }
+    },
+    {
+      "kind": "wordbag_identity",
+      "confidence": "high",
+      "members": [
+        "EvidenceRecognition",
+        "RecognitionOfEvidence"
+      ],
+      "suggestion": "merge all into a single canonical class",
+      "provenance": {
+        "EvidenceRecognition": "",
+        "RecognitionOfEvidence": ""
+      }
+    },
+    {
+      "kind": "wordbag_identity",
+      "confidence": "high",
+      "members": [
+        "RecognitionRole",
+        "RoleRecognition"
+      ],
+      "suggestion": "merge all into a single canonical class",
+      "provenance": {
+        "RecognitionRole": "",
+        "RoleRecognition": ""
+      }
+    },
+    {
+      "kind": "wordbag_identity",
+      "confidence": "high",
+      "members": [
+        "IncoherenceToCoherenceTransformation",
+        "TransformationFromIncoherenceToCoherence"
+      ],
+      "suggestion": "merge all into a single canonical class",
+      "provenance": {
+        "IncoherenceToCoherenceTransformation": "",
+        "TransformationFromIncoherenceToCoherence": ""
+      }
+    },
+    {
+      "kind": "wordbag_identity",
+      "confidence": "high",
+      "members": [
+        "LawSelfOrganizingCapacity",
+        "SelfOrganizingCapacityOfLaw"
+      ],
+      "suggestion": "merge all into a single canonical class",
+      "provenance": {
+        "LawSelfOrganizingCapacity": "",
+        "SelfOrganizingCapacityOfLaw": ""
+      }
+    },
+    {
+      "kind": "wordbag_identity",
+      "confidence": "high",
+      "members": [
+        "ProofStandard",
+        "StandardOfProof"
+      ],
+      "suggestion": "merge all into a single canonical class",
+      "provenance": {
+        "ProofStandard": "",
+        "StandardOfProof": ""
+      }
+    },
+    {
+      "kind": "wordbag_identity",
+      "confidence": "high",
+      "members": [
+        "NegatingOrReactiveFunction",
+        "ReactiveNegatingFunction"
+      ],
+      "suggestion": "merge all into a single canonical class",
+      "provenance": {
+        "NegatingOrReactiveFunction": "",
+        "ReactiveNegatingFunction": ""
+      }
+    },
+    {
+      "kind": "wordbag_identity",
+      "confidence": "high",
+      "members": [
+        "SelfImposedConstraintOnRecognition",
+        "SelfImposedRecognitionConstraint"
+      ],
+      "suggestion": "merge all into a single canonical class",
+      "provenance": {
+        "SelfImposedConstraintOnRecognition": "",
+        "SelfImposedRecognitionConstraint": ""
+      }
+    },
+    {
+      "kind": "wordbag_identity",
+      "confidence": "high",
+      "members": [
+        "LegalProcessScope",
+        "ScopeOfLegalProcess"
+      ],
+      "suggestion": "merge all into a single canonical class",
+      "provenance": {
+        "LegalProcessScope": "",
+        "ScopeOfLegalProcess": ""
+      }
+    },
+    {
+      "kind": "wordbag_identity",
+      "confidence": "high",
+      "members": [
+        "DependenceOnPublicRecognition",
+        "PublicRecognitionDependence"
+      ],
+      "suggestion": "merge all into a single canonical class",
+      "provenance": {
+        "DependenceOnPublicRecognition": "",
+        "PublicRecognitionDependence": ""
+      }
+    },
+    {
+      "kind": "wordbag_identity",
+      "confidence": "high",
+      "members": [
+        "RecognitionOfValidity",
+        "ValidityRecognition"
+      ],
+      "suggestion": "merge all into a single canonical class",
+      "provenance": {
+        "RecognitionOfValidity": "",
+        "ValidityRecognition": ""
+      }
+    },
+    {
+      "kind": "wordbag_identity",
+      "confidence": "high",
+      "members": [
+        "RecognitionTransfer",
+        "TransferOfRecognition"
+      ],
+      "suggestion": "merge all into a single canonical class",
+      "provenance": {
+        "RecognitionTransfer": "",
+        "TransferOfRecognition": ""
+      }
+    },
+    {
+      "kind": "wordbag_identity",
+      "confidence": "high",
+      "members": [
+        "EvidenceInstitutionalRole",
+        "InstitutionalEvidenceRole"
+      ],
+      "suggestion": "merge all into a single canonical class",
+      "provenance": {
+        "EvidenceInstitutionalRole": "",
+        "InstitutionalEvidenceRole": ""
+      }
+    },
+    {
+      "kind": "wordbag_identity",
+      "confidence": "high",
+      "members": [
+        "DigitalEvidenceOntologicalCoherence",
+        "OntologicalCoherenceOfDigitalEvidence"
+      ],
+      "suggestion": "merge all into a single canonical class",
+      "provenance": {
+        "DigitalEvidenceOntologicalCoherence": "",
+        "OntologicalCoherenceOfDigitalEvidence": ""
+      }
+    },
+    {
+      "kind": "wordbag_identity",
+      "confidence": "high",
+      "members": [
+        "InstitutionalRecognitionWithdrawal",
+        "WithdrawalOfInstitutionalRecognition"
+      ],
+      "suggestion": "merge all into a single canonical class",
+      "provenance": {
+        "InstitutionalRecognitionWithdrawal": "",
+        "WithdrawalOfInstitutionalRecognition": ""
+      }
+    },
+    {
+      "kind": "wordbag_identity",
+      "confidence": "high",
+      "members": [
+        "LegalCoherenceRestoration",
+        "RestorationOfLegalCoherence"
+      ],
+      "suggestion": "merge all into a single canonical class",
+      "provenance": {
+        "LegalCoherenceRestoration": "",
+        "RestorationOfLegalCoherence": ""
+      }
+    },
+    {
+      "kind": "wordbag_identity",
+      "confidence": "high",
+      "members": [
+        "LawAsObjectOfRecognition",
+        "RecognitionAsObjectOfLaw"
+      ],
+      "suggestion": "merge all into a single canonical class",
+      "provenance": {
+        "LawAsObjectOfRecognition": "",
+        "RecognitionAsObjectOfLaw": ""
+      }
+    },
+    {
+      "kind": "wordbag_identity",
+      "confidence": "high",
+      "members": [
+        "SharedFieldOfRecognition",
+        "SharedRecognitionField"
+      ],
+      "suggestion": "merge all into a single canonical class",
+      "provenance": {
+        "SharedFieldOfRecognition": "",
+        "SharedRecognitionField": ""
+      }
+    },
+    {
+      "kind": "wordbag_identity",
+      "confidence": "high",
+      "members": [
+        "RecognitionStructureTransformation",
+        "StructureOfRecognitionTransformation"
+      ],
+      "suggestion": "merge all into a single canonical class",
+      "provenance": {
+        "RecognitionStructureTransformation": "",
+        "StructureOfRecognitionTransformation": ""
+      }
+    },
+    {
+      "kind": "wordbag_identity",
+      "confidence": "high",
+      "members": [
+        "RecognitionRelationRepair",
+        "RepairOfRecognitionRelation"
+      ],
+      "suggestion": "merge all into a single canonical class",
+      "provenance": {
+        "RecognitionRelationRepair": "",
+        "RepairOfRecognitionRelation": ""
+      }
+    },
+    {
+      "kind": "wordbag_identity",
+      "confidence": "high",
+      "members": [
+        "ReconstructedJusticeOntology",
+        "ReconstructedOntologyOfJustice"
+      ],
+      "suggestion": "merge all into a single canonical class",
+      "provenance": {
+        "ReconstructedJusticeOntology": "",
+        "ReconstructedOntologyOfJustice": ""
+      }
+    },
+    {
+      "kind": "wordbag_identity",
+      "confidence": "high",
+      "members": [
+        "LegalCorrectionMechanism",
+        "MechanismOfLegalCorrection"
+      ],
+      "suggestion": "merge all into a single canonical class",
+      "provenance": {
+        "LegalCorrectionMechanism": "",
+        "MechanismOfLegalCorrection": ""
+      }
+    },
+    {
+      "kind": "wordbag_identity",
+      "confidence": "high",
+      "members": [
+        "ContradictionResolution",
+        "ResolutionOfContradiction"
+      ],
+      "suggestion": "merge all into a single canonical class",
+      "provenance": {
+        "ContradictionResolution": "",
+        "ResolutionOfContradiction": ""
+      }
+    },
+    {
+      "kind": "wordbag_identity",
+      "confidence": "high",
+      "members": [
+        "ActOfLegalReform",
+        "LegalReformAct"
+      ],
+      "suggestion": "merge all into a single canonical class",
+      "provenance": {
+        "ActOfLegalReform": "",
+        "LegalReformAct": ""
+      }
+    },
+    {
+      "kind": "wordbag_identity",
+      "confidence": "high",
+      "members": [
+        "ContradictionDebtGeneration",
+        "GenerationOfContradictionDebt"
+      ],
+      "suggestion": "merge all into a single canonical class",
+      "provenance": {
+        "ContradictionDebtGeneration": "",
+        "GenerationOfContradictionDebt": ""
+      }
+    },
+    {
+      "kind": "wordbag_identity",
+      "confidence": "high",
+      "members": [
+        "DestructionOfLegalEntity",
+        "LegalEntityDestruction"
+      ],
+      "suggestion": "merge all into a single canonical class",
+      "provenance": {
+        "DestructionOfLegalEntity": "",
+        "LegalEntityDestruction": ""
+      }
+    },
+    {
+      "kind": "wordbag_identity",
+      "confidence": "high",
+      "members": [
+        "CreationOfLegalEntity",
+        "LegalEntityCreation"
+      ],
+      "suggestion": "merge all into a single canonical class",
+      "provenance": {
+        "CreationOfLegalEntity": "",
+        "LegalEntityCreation": ""
+      }
+    },
+    {
+      "kind": "wordbag_identity",
+      "confidence": "high",
+      "members": [
+        "ActOfRepair",
+        "RepairAct"
+      ],
+      "suggestion": "merge all into a single canonical class",
+      "provenance": {
+        "ActOfRepair": "",
+        "RepairAct": ""
+      }
+    },
+    {
+      "kind": "wordbag_identity",
+      "confidence": "high",
+      "members": [
+        "CoherentFieldOfRecognition",
+        "CoherentRecognitionField"
+      ],
+      "suggestion": "merge all into a single canonical class",
+      "provenance": {
+        "CoherentFieldOfRecognition": "",
+        "CoherentRecognitionField": ""
+      }
+    },
+    {
+      "kind": "wordbag_identity",
+      "confidence": "high",
+      "members": [
+        "LegalEntityReplacement",
+        "ReplacementLegalEntity"
+      ],
+      "suggestion": "merge all into a single canonical class",
+      "provenance": {
+        "LegalEntityReplacement": "",
+        "ReplacementLegalEntity": ""
+      }
+    },
+    {
+      "kind": "wordbag_identity",
+      "confidence": "high",
+      "members": [
+        "RecognitionReflexivity",
+        "ReflexivityOfRecognition"
+      ],
+      "suggestion": "merge all into a single canonical class",
+      "provenance": {
+        "RecognitionReflexivity": "",
+        "ReflexivityOfRecognition": ""
+      }
+    },
+    {
+      "kind": "wordbag_identity",
+      "confidence": "high",
+      "members": [
+        "ReflexivitySuppression",
+        "SuppressionOfReflexivity"
+      ],
+      "suggestion": "merge all into a single canonical class",
+      "provenance": {
+        "ReflexivitySuppression": "",
+        "SuppressionOfReflexivity": ""
+      }
+    },
+    {
+      "kind": "wordbag_identity",
+      "confidence": "high",
+      "members": [
+        "LawAsStableFrameworkOfMeaning",
+        "LawAsStableMeaningFramework"
+      ],
+      "suggestion": "merge all into a single canonical class",
+      "provenance": {
+        "LawAsStableFrameworkOfMeaning": "",
+        "LawAsStableMeaningFramework": ""
+      }
+    },
+    {
+      "kind": "wordbag_identity",
+      "confidence": "high",
+      "members": [
+        "FailureOfRelationalBeing",
+        "RelationalBeingFailure"
+      ],
+      "suggestion": "merge all into a single canonical class",
+      "provenance": {
+        "FailureOfRelationalBeing": "",
+        "RelationalBeingFailure": ""
+      }
+    },
+    {
+      "kind": "wordbag_identity",
+      "confidence": "high",
+      "members": [
+        "PhysicalSocialEvent",
+        "SocialPhysicalEvent"
+      ],
+      "suggestion": "merge all into a single canonical class",
+      "provenance": {
+        "PhysicalSocialEvent": "",
+        "SocialPhysicalEvent": ""
+      }
+    },
+    {
+      "kind": "wordbag_identity",
+      "confidence": "high",
+      "members": [
+        "JudgmentRendering",
+        "RenderingJudgment"
+      ],
+      "suggestion": "merge all into a single canonical class",
+      "provenance": {
+        "JudgmentRendering": "",
+        "RenderingJudgment": ""
+      }
+    },
+    {
+      "kind": "wordbag_identity",
+      "confidence": "high",
+      "members": [
+        "LegalFunctionalityLoss",
+        "LossOfLegalFunctionality"
+      ],
+      "suggestion": "merge all into a single canonical class",
+      "provenance": {
+        "LegalFunctionalityLoss": "",
+        "LossOfLegalFunctionality": ""
+      }
+    },
+    {
+      "kind": "wordbag_identity",
+      "confidence": "high",
+      "members": [
+        "ActOfLegalRecognition",
+        "LegalRecognitionAct"
+      ],
+      "suggestion": "merge all into a single canonical class",
+      "provenance": {
+        "ActOfLegalRecognition": "",
+        "LegalRecognitionAct": ""
+      }
+    },
+    {
+      "kind": "wordbag_identity",
+      "confidence": "high",
+      "members": [
+        "LossOfStructuralIntegrity",
+        "StructuralIntegrityLoss"
+      ],
+      "suggestion": "merge all into a single canonical class",
+      "provenance": {
+        "LossOfStructuralIntegrity": "",
+        "StructuralIntegrityLoss": ""
+      }
+    },
+    {
+      "kind": "wordbag_identity",
+      "confidence": "high",
+      "members": [
+        "ExerciseOfLegalPower",
+        "LegalPowerExercise"
+      ],
+      "suggestion": "merge all into a single canonical class",
+      "provenance": {
+        "ExerciseOfLegalPower": "",
+        "LegalPowerExercise": ""
+      }
+    },
+    {
+      "kind": "wordbag_identity",
+      "confidence": "high",
+      "members": [
+        "CoherenceLoss",
+        "LossOfCoherence"
+      ],
+      "suggestion": "merge all into a single canonical class",
+      "provenance": {
+        "CoherenceLoss": "",
+        "LossOfCoherence": ""
+      }
+    },
+    {
+      "kind": "wordbag_identity",
+      "confidence": "high",
+      "members": [
+        "ContradictionPersistence",
+        "PersistenceOfContradiction"
+      ],
+      "suggestion": "merge all into a single canonical class",
+      "provenance": {
+        "ContradictionPersistence": "",
+        "PersistenceOfContradiction": ""
+      }
+    },
+    {
+      "kind": "wordbag_identity",
+      "confidence": "high",
+      "members": [
+        "ConferralOfRecognition",
+        "RecognitionConferral"
+      ],
+      "suggestion": "merge all into a single canonical class",
+      "provenance": {
+        "ConferralOfRecognition": "",
+        "RecognitionConferral": ""
+      }
+    },
+    {
+      "kind": "wordbag_identity",
+      "confidence": "high",
+      "members": [
+        "ActOfTreatment",
+        "TreatmentAct"
+      ],
+      "suggestion": "merge all into a single canonical class",
+      "provenance": {
+        "ActOfTreatment": "",
+        "TreatmentAct": ""
+      }
+    },
+    {
+      "kind": "wordbag_identity",
+      "confidence": "high",
+      "members": [
+        "PositionInRecognitionNetwork",
+        "RecognitionNetworkPosition"
+      ],
+      "suggestion": "merge all into a single canonical class",
+      "provenance": {
+        "PositionInRecognitionNetwork": "",
+        "RecognitionNetworkPosition": ""
+      }
+    },
+    {
+      "kind": "wordbag_identity",
+      "confidence": "high",
+      "members": [
+        "NonHumanRecognitionExtension",
+        "RecognitionExtensionToNonHuman"
+      ],
+      "suggestion": "merge all into a single canonical class",
+      "provenance": {
+        "NonHumanRecognitionExtension": "",
+        "RecognitionExtensionToNonHuman": ""
+      }
+    },
+    {
+      "kind": "wordbag_identity",
+      "confidence": "high",
+      "members": [
+        "AutomatedSystemIntegration",
+        "IntegrationOfAutomatedSystem"
+      ],
+      "suggestion": "merge all into a single canonical class",
+      "provenance": {
+        "AutomatedSystemIntegration": "",
+        "IntegrationOfAutomatedSystem": ""
+      }
+    },
+    {
+      "kind": "wordbag_identity",
+      "confidence": "high",
+      "members": [
+        "ConcealmentOfNormativity",
+        "NormativityConcealment"
+      ],
+      "suggestion": "merge all into a single canonical class",
+      "provenance": {
+        "ConcealmentOfNormativity": "",
+        "NormativityConcealment": ""
+      }
+    },
+    {
+      "kind": "wordbag_identity",
+      "confidence": "high",
+      "members": [
+        "DelegationOfLegalFunction",
+        "LegalFunctionDelegation"
+      ],
+      "suggestion": "merge all into a single canonical class",
+      "provenance": {
+        "DelegationOfLegalFunction": "",
+        "LegalFunctionDelegation": ""
+      }
+    },
+    {
+      "kind": "wordbag_identity",
+      "confidence": "high",
+      "members": [
+        "CapacityForNormRecognition",
+        "NormRecognitionCapacity"
+      ],
+      "suggestion": "merge all into a single canonical class",
+      "provenance": {
+        "CapacityForNormRecognition": "",
+        "NormRecognitionCapacity": ""
+      }
+    },
+    {
+      "kind": "wordbag_identity",
+      "confidence": "high",
+      "members": [
+        "ContractAsText",
+        "ContractText"
+      ],
+      "suggestion": "merge all into a single canonical class",
+      "provenance": {
+        "ContractAsText": "",
+        "ContractText": ""
+      }
+    },
+    {
+      "kind": "wordbag_identity",
+      "confidence": "high",
+      "members": [
+        "ContractAsCode",
+        "ContractCode"
+      ],
+      "suggestion": "merge all into a single canonical class",
+      "provenance": {
+        "ContractAsCode": "",
+        "ContractCode": ""
+      }
+    },
+    {
+      "kind": "wordbag_identity",
+      "confidence": "high",
+      "members": [
+        "AbsenceOfInstitutionalRecognition",
+        "InstitutionalRecognitionAbsence"
+      ],
+      "suggestion": "merge all into a single canonical class",
+      "provenance": {
+        "AbsenceOfInstitutionalRecognition": "",
+        "InstitutionalRecognitionAbsence": ""
+      }
+    },
+    {
+      "kind": "wordbag_identity",
+      "confidence": "high",
+      "members": [
+        "CompressionOfOntologicalField",
+        "OntologicalFieldCompression"
+      ],
+      "suggestion": "merge all into a single canonical class",
+      "provenance": {
+        "CompressionOfOntologicalField": "",
+        "OntologicalFieldCompression": ""
+      }
+    },
+    {
+      "kind": "wordbag_identity",
+      "confidence": "high",
+      "members": [
+        "LegalRealityUndermining",
+        "UnderminingOfLegalReality"
+      ],
+      "suggestion": "merge all into a single canonical class",
+      "provenance": {
+        "LegalRealityUndermining": "",
+        "UnderminingOfLegalReality": ""
+      }
+    },
+    {
+      "kind": "wordbag_identity",
+      "confidence": "high",
+      "members": [
+        "CoordinationRequirementForRecognition",
+        "CoordinationRequirementOfRecognition"
+      ],
+      "suggestion": "merge all into a single canonical class",
+      "provenance": {
+        "CoordinationRequirementForRecognition": "",
+        "CoordinationRequirementOfRecognition": ""
+      }
+    },
+    {
+      "kind": "wordbag_identity",
+      "confidence": "high",
+      "members": [
+        "LegalConstitutionProcess",
+        "LegalProcessConstitution"
+      ],
+      "suggestion": "merge all into a single canonical class",
+      "provenance": {
+        "LegalConstitutionProcess": "",
+        "LegalProcessConstitution": ""
+      }
+    },
+    {
+      "kind": "wordbag_identity",
+      "confidence": "high",
+      "members": [
+        "FactFinding",
+        "FindingOfFact"
+      ],
+      "suggestion": "merge all into a single canonical class",
+      "provenance": {
+        "FactFinding": "",
+        "FindingOfFact": ""
+      }
+    },
+    {
+      "kind": "wordbag_identity",
+      "confidence": "high",
+      "members": [
+        "AgentOccupancyOfRole",
+        "AgentRoleOccupancy"
+      ],
+      "suggestion": "merge all into a single canonical class",
+      "provenance": {
+        "AgentOccupancyOfRole": "",
+        "AgentRoleOccupancy": ""
+      }
+    },
+    {
+      "kind": "wordbag_identity",
+      "confidence": "high",
+      "members": [
+        "ActionSpaceExpansion",
+        "ExpansionOfActionSpace"
+      ],
+      "suggestion": "merge all into a single canonical class",
+      "provenance": {
+        "ActionSpaceExpansion": "",
+        "ExpansionOfActionSpace": ""
+      }
+    },
+    {
+      "kind": "wordbag_identity",
+      "confidence": "high",
+      "members": [
+        "ConstitutiveActOfRecognition",
+        "ConstitutiveRecognitionAct"
+      ],
+      "suggestion": "merge all into a single canonical class",
+      "provenance": {
+        "ConstitutiveActOfRecognition": "",
+        "ConstitutiveRecognitionAct": ""
+      }
+    },
+    {
+      "kind": "wordbag_identity",
+      "confidence": "high",
+      "members": [
+        "RecognitionStabilizingFunction",
+        "StabilizingRecognitionFunction"
+      ],
+      "suggestion": "merge all into a single canonical class",
+      "provenance": {
+        "RecognitionStabilizingFunction": "",
+        "StabilizingRecognitionFunction": ""
+      }
+    },
+    {
+      "kind": "wordbag_identity",
+      "confidence": "high",
+      "members": [
+        "JusticeMaintenance",
+        "MaintenanceOfJustice"
+      ],
+      "suggestion": "merge all into a single canonical class",
+      "provenance": {
+        "JusticeMaintenance": "",
+        "MaintenanceOfJustice": ""
+      }
+    },
+    {
+      "kind": "wordbag_identity",
+      "confidence": "high",
+      "members": [
+        "FairnessProcedural",
+        "ProceduralFairness"
+      ],
+      "suggestion": "merge all into a single canonical class",
+      "provenance": {
+        "FairnessProcedural": "",
+        "ProceduralFairness": ""
+      }
+    },
+    {
+      "kind": "wordbag_identity",
+      "confidence": "high",
+      "members": [
+        "DissolutionOfPropertyRelation",
+        "PropertyRelationDissolution"
+      ],
+      "suggestion": "merge all into a single canonical class",
+      "provenance": {
+        "DissolutionOfPropertyRelation": "",
+        "PropertyRelationDissolution": ""
+      }
+    },
+    {
+      "kind": "wordbag_identity",
+      "confidence": "high",
+      "members": [
+        "RecognitionRoleAlignment",
+        "RoleRecognitionAlignment"
+      ],
+      "suggestion": "merge all into a single canonical class",
+      "provenance": {
+        "RecognitionRoleAlignment": "",
+        "RoleRecognitionAlignment": ""
+      }
+    },
+    {
+      "kind": "wordbag_identity",
+      "confidence": "high",
+      "members": [
+        "SocialExistenceStructuring",
+        "StructuringSocialExistence"
+      ],
+      "suggestion": "merge all into a single canonical class",
+      "provenance": {
+        "SocialExistenceStructuring": "",
+        "StructuringSocialExistence": ""
+      }
+    },
+    {
+      "kind": "wordbag_identity",
+      "confidence": "high",
+      "members": [
+        "RecognitionAndRepairProcess",
+        "RecognitionRepairProcess"
+      ],
+      "suggestion": "merge all into a single canonical class",
+      "provenance": {
+        "RecognitionAndRepairProcess": "",
+        "RecognitionRepairProcess": ""
+      }
+    },
+    {
+      "kind": "wordbag_identity",
+      "confidence": "high",
+      "members": [
+        "SustainmentByRecognition",
+        "SustainmentOfRecognition"
+      ],
+      "suggestion": "merge all into a single canonical class",
+      "provenance": {
+        "SustainmentByRecognition": "",
+        "SustainmentOfRecognition": ""
+      }
+    },
+    {
+      "kind": "wordbag_identity",
+      "confidence": "high",
+      "members": [
+        "PhysicalAspectOfProperty",
+        "PhysicalPropertyAspect"
+      ],
+      "suggestion": "merge all into a single canonical class",
+      "provenance": {
+        "PhysicalAspectOfProperty": "",
+        "PhysicalPropertyAspect": ""
+      }
+    },
+    {
+      "kind": "wordbag_identity",
+      "confidence": "high",
+      "members": [
+        "LegalAspectOfProperty",
+        "LegalPropertyAspect"
+      ],
+      "suggestion": "merge all into a single canonical class",
+      "provenance": {
+        "LegalAspectOfProperty": "",
+        "LegalPropertyAspect": ""
+      }
+    },
+    {
+      "kind": "wordbag_identity",
+      "confidence": "high",
+      "members": [
+        "EmbodimentOfInstitutionalRecognition",
+        "InstitutionalRecognitionEmbodiment"
+      ],
+      "suggestion": "merge all into a single canonical class",
+      "provenance": {
+        "EmbodimentOfInstitutionalRecognition": "",
+        "InstitutionalRecognitionEmbodiment": ""
+      }
+    },
+    {
+      "kind": "wordbag_identity",
+      "confidence": "high",
+      "members": [
+        "AuthorityConvergence",
+        "ConvergenceOfAuthority"
+      ],
+      "suggestion": "merge all into a single canonical class",
+      "provenance": {
+        "AuthorityConvergence": "",
+        "ConvergenceOfAuthority": ""
+      }
+    },
+    {
+      "kind": "wordbag_identity",
+      "confidence": "high",
+      "members": [
+        "ActOfInstitutionalAcknowledgment",
+        "InstitutionalAcknowledgmentAct"
+      ],
+      "suggestion": "merge all into a single canonical class",
+      "provenance": {
+        "ActOfInstitutionalAcknowledgment": "",
+        "InstitutionalAcknowledgmentAct": ""
+      }
+    },
+    {
+      "kind": "wordbag_identity",
+      "confidence": "high",
+      "members": [
+        "FunctionalLegalCoherence",
+        "LegalFunctionalCoherence"
+      ],
+      "suggestion": "merge all into a single canonical class",
+      "provenance": {
+        "FunctionalLegalCoherence": "",
+        "LegalFunctionalCoherence": ""
+      }
+    },
+    {
+      "kind": "wordbag_identity",
+      "confidence": "high",
+      "members": [
+        "AbsenceOfRecognitionTrace",
+        "TraceOfRecognitionAbsence"
+      ],
+      "suggestion": "merge all into a single canonical class",
+      "provenance": {
+        "AbsenceOfRecognitionTrace": "",
+        "TraceOfRecognitionAbsence": ""
+      }
+    },
+    {
+      "kind": "wordbag_identity",
+      "confidence": "high",
+      "members": [
+        "AILegalSystem",
+        "LegalAISystem"
+      ],
+      "suggestion": "merge all into a single canonical class",
+      "provenance": {
+        "AILegalSystem": "",
+        "LegalAISystem": ""
+      }
+    },
+    {
+      "kind": "wordbag_identity",
+      "confidence": "high",
+      "members": [
+        "StructuredRelationAmongAgentsInstitutionsAndNorms",
+        "StructuredRelationAmongAgentsInstitutionsNorms"
+      ],
+      "suggestion": "merge all into a single canonical class",
+      "provenance": {
+        "StructuredRelationAmongAgentsInstitutionsAndNorms": "",
+        "StructuredRelationAmongAgentsInstitutionsNorms": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "institutional",
+      "members": [
+        "InstitutionalAct",
+        "InstitutionalClaim",
+        "InstitutionalCondition",
+        "InstitutionalDependence",
+        "InstitutionalEntity",
+        "InstitutionalFramework",
+        "InstitutionalFunction",
+        "InstitutionalNetwork",
+        "InstitutionalProcess",
+        "InstitutionalRelation",
+        "InstitutionalRole",
+        "InstitutionalStructure"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "InstitutionalAct": "",
+        "InstitutionalClaim": "",
+        "InstitutionalCondition": "",
+        "InstitutionalDependence": "",
+        "InstitutionalEntity": "",
+        "InstitutionalFramework": "",
+        "InstitutionalFunction": "",
+        "InstitutionalNetwork": "",
+        "InstitutionalProcess": "",
+        "InstitutionalRelation": "",
+        "InstitutionalRole": "",
+        "InstitutionalStructure": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "recognition",
+      "members": [
+        "RecognitionAct",
+        "RecognitionCapacity",
+        "RecognitionCondition",
+        "RecognitionDependence",
+        "RecognitionEvent",
+        "RecognitionFunction",
+        "RecognitionNetwork",
+        "RecognitionProcess",
+        "RecognitionRelation",
+        "RecognitionRole",
+        "RecognitionStructure"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "RecognitionAct": "",
+        "RecognitionCapacity": "",
+        "RecognitionCondition": "",
+        "RecognitionDependence": "",
+        "RecognitionEvent": "",
+        "RecognitionFunction": "",
+        "RecognitionNetwork": "",
+        "RecognitionProcess": "",
+        "RecognitionRelation": "",
+        "RecognitionRole": "",
+        "RecognitionStructure": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "legal",
+      "members": [
+        "LegalAct",
+        "LegalClaim",
+        "LegalEntity",
+        "LegalEvent",
+        "LegalFunction",
+        "LegalPrinciple",
+        "LegalProcess",
+        "LegalRelation",
+        "LegalRole",
+        "LegalStructure"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "LegalAct": "",
+        "LegalClaim": "",
+        "LegalEntity": "",
+        "LegalEvent": "",
+        "LegalFunction": "",
+        "LegalPrinciple": "",
+        "LegalProcess": "",
+        "LegalRelation": "",
+        "LegalRole": "",
+        "LegalStructure": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "procedural",
+      "members": [
+        "ProceduralAct",
+        "ProceduralCondition",
+        "ProceduralDependence",
+        "ProceduralDisposition",
+        "ProceduralEvent",
+        "ProceduralFramework",
+        "ProceduralFunction",
+        "ProceduralProcess",
+        "ProceduralRole"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "ProceduralAct": "",
+        "ProceduralCondition": "",
+        "ProceduralDependence": "",
+        "ProceduralDisposition": "",
+        "ProceduralEvent": "",
+        "ProceduralFramework": "",
+        "ProceduralFunction": "",
+        "ProceduralProcess": "",
+        "ProceduralRole": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "relational",
+      "members": [
+        "RelationalAct",
+        "RelationalCapacity",
+        "RelationalDependence",
+        "RelationalDisposition",
+        "RelationalQuality",
+        "RelationalStructure"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "RelationalAct": "",
+        "RelationalCapacity": "",
+        "RelationalDependence": "",
+        "RelationalDisposition": "",
+        "RelationalQuality": "",
+        "RelationalStructure": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "institutionalrecognition",
+      "members": [
+        "InstitutionalRecognitionCondition",
+        "InstitutionalRecognitionDependence",
+        "InstitutionalRecognitionFramework",
+        "InstitutionalRecognitionProcess",
+        "InstitutionalRecognitionQuality",
+        "InstitutionalRecognitionRelation"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "InstitutionalRecognitionCondition": "",
+        "InstitutionalRecognitionDependence": "",
+        "InstitutionalRecognitionFramework": "",
+        "InstitutionalRecognitionProcess": "",
+        "InstitutionalRecognitionQuality": "",
+        "InstitutionalRecognitionRelation": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "enforcement",
+      "members": [
+        "EnforcementAct",
+        "EnforcementCapacity",
+        "EnforcementFunction",
+        "EnforcementProcess",
+        "EnforcementRelation",
+        "EnforcementRole"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "EnforcementAct": "",
+        "EnforcementCapacity": "",
+        "EnforcementFunction": "",
+        "EnforcementProcess": "",
+        "EnforcementRelation": "",
+        "EnforcementRole": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "institutionalacknowledgment",
+      "members": [
+        "InstitutionalAcknowledgmentAct",
+        "InstitutionalAcknowledgmentCondition",
+        "InstitutionalAcknowledgmentDependence",
+        "InstitutionalAcknowledgmentDisposition",
+        "InstitutionalAcknowledgmentFunction",
+        "InstitutionalAcknowledgmentProcess"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "InstitutionalAcknowledgmentAct": "",
+        "InstitutionalAcknowledgmentCondition": "",
+        "InstitutionalAcknowledgmentDependence": "",
+        "InstitutionalAcknowledgmentDisposition": "",
+        "InstitutionalAcknowledgmentFunction": "",
+        "InstitutionalAcknowledgmentProcess": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "institutionalrepair",
+      "members": [
+        "InstitutionalRepairAct",
+        "InstitutionalRepairCapacity",
+        "InstitutionalRepairCondition",
+        "InstitutionalRepairDisposition",
+        "InstitutionalRepairProcess",
+        "InstitutionalRepairRole"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "InstitutionalRepairAct": "",
+        "InstitutionalRepairCapacity": "",
+        "InstitutionalRepairCondition": "",
+        "InstitutionalRepairDisposition": "",
+        "InstitutionalRepairProcess": "",
+        "InstitutionalRepairRole": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "repair",
+      "members": [
+        "RepairAct",
+        "RepairCapacity",
+        "RepairEvent",
+        "RepairProcess",
+        "RepairStructure"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "RepairAct": "",
+        "RepairCapacity": "",
+        "RepairEvent": "",
+        "RepairProcess": "",
+        "RepairStructure": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "recognitionsustaining",
+      "members": [
+        "RecognitionSustainingCapacity",
+        "RecognitionSustainingDisposition",
+        "RecognitionSustainingFunction",
+        "RecognitionSustainingProcess",
+        "RecognitionSustainingRelation"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "RecognitionSustainingCapacity": "",
+        "RecognitionSustainingDisposition": "",
+        "RecognitionSustainingFunction": "",
+        "RecognitionSustainingProcess": "",
+        "RecognitionSustainingRelation": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "role",
+      "members": [
+        "RoleCapacity",
+        "RoleCondition",
+        "RoleFunction",
+        "RoleNetwork",
+        "RoleStructure"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "RoleCapacity": "",
+        "RoleCondition": "",
+        "RoleFunction": "",
+        "RoleNetwork": "",
+        "RoleStructure": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "normative",
+      "members": [
+        "NormativeDependence",
+        "NormativeEntity",
+        "NormativeFramework",
+        "NormativeRelation",
+        "NormativeStructure"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "NormativeDependence": "",
+        "NormativeEntity": "",
+        "NormativeFramework": "",
+        "NormativeRelation": "",
+        "NormativeStructure": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "adjudicative",
+      "members": [
+        "AdjudicativeAct",
+        "AdjudicativeDisposition",
+        "AdjudicativeFunction",
+        "AdjudicativeProcess",
+        "AdjudicativeRole"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "AdjudicativeAct": "",
+        "AdjudicativeDisposition": "",
+        "AdjudicativeFunction": "",
+        "AdjudicativeProcess": "",
+        "AdjudicativeRole": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "legalsystem",
+      "members": [
+        "LegalSystemNetwork",
+        "LegalSystemQuality",
+        "LegalSystemRole",
+        "LegalSystemStructure"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "LegalSystemNetwork": "",
+        "LegalSystemQuality": "",
+        "LegalSystemRole": "",
+        "LegalSystemStructure": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "evidentiary",
+      "members": [
+        "EvidentiaryDependence",
+        "EvidentiaryEntity",
+        "EvidentiaryFunction",
+        "EvidentiaryRole"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "EvidentiaryDependence": "",
+        "EvidentiaryEntity": "",
+        "EvidentiaryFunction": "",
+        "EvidentiaryRole": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "judicial",
+      "members": [
+        "JudicialAct",
+        "JudicialFunction",
+        "JudicialProcess",
+        "JudicialRole"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "JudicialAct": "",
+        "JudicialFunction": "",
+        "JudicialProcess": "",
+        "JudicialRole": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "evidential",
+      "members": [
+        "EvidentialEntity",
+        "EvidentialProcess",
+        "EvidentialRelation",
+        "EvidentialRole"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "EvidentialEntity": "",
+        "EvidentialProcess": "",
+        "EvidentialRelation": "",
+        "EvidentialRole": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "coherencerestoration",
+      "members": [
+        "CoherenceRestorationDisposition",
+        "CoherenceRestorationFunction",
+        "CoherenceRestorationProcess",
+        "CoherenceRestorationQuality"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "CoherenceRestorationDisposition": "",
+        "CoherenceRestorationFunction": "",
+        "CoherenceRestorationProcess": "",
+        "CoherenceRestorationQuality": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "epistemic",
+      "members": [
+        "EpistemicAct",
+        "EpistemicFunction",
+        "EpistemicRole",
+        "EpistemicStructure"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "EpistemicAct": "",
+        "EpistemicFunction": "",
+        "EpistemicRole": "",
+        "EpistemicStructure": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "rolerealization",
+      "members": [
+        "RoleRealizationCapacity",
+        "RoleRealizationCondition",
+        "RoleRealizationFunction",
+        "RoleRealizationProcess"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "RoleRealizationCapacity": "",
+        "RoleRealizationCondition": "",
+        "RoleRealizationFunction": "",
+        "RoleRealizationProcess": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "accountability",
+      "members": [
+        "AccountabilityCapacity",
+        "AccountabilityCondition",
+        "AccountabilityQuality",
+        "AccountabilityRole"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "AccountabilityCapacity": "",
+        "AccountabilityCondition": "",
+        "AccountabilityQuality": "",
+        "AccountabilityRole": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "physical",
+      "members": [
+        "PhysicalCapacity",
+        "PhysicalEvent",
+        "PhysicalStructure"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "PhysicalCapacity": "",
+        "PhysicalEvent": "",
+        "PhysicalStructure": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "authority",
+      "members": [
+        "AuthorityDependence",
+        "AuthorityRole",
+        "AuthorityStructure"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "AuthorityDependence": "",
+        "AuthorityRole": "",
+        "AuthorityStructure": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "mutualacknowledgment",
+      "members": [
+        "MutualAcknowledgmentCapacity",
+        "MutualAcknowledgmentNetwork",
+        "MutualAcknowledgmentRelation"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "MutualAcknowledgmentCapacity": "",
+        "MutualAcknowledgmentNetwork": "",
+        "MutualAcknowledgmentRelation": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "recognizedlegal",
+      "members": [
+        "RecognizedLegalEntity",
+        "RecognizedLegalProcess",
+        "RecognizedLegalRelation"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "RecognizedLegalEntity": "",
+        "RecognizedLegalProcess": "",
+        "RecognizedLegalRelation": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "ownership",
+      "members": [
+        "OwnershipClaim",
+        "OwnershipRelation",
+        "OwnershipRole"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "OwnershipClaim": "",
+        "OwnershipRelation": "",
+        "OwnershipRole": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "recordkeeping",
+      "members": [
+        "RecordKeepingFunction",
+        "RecordKeepingProcess",
+        "RecordkeepingProcess"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "RecordKeepingFunction": "",
+        "RecordKeepingProcess": "",
+        "RecordkeepingProcess": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "realization",
+      "members": [
+        "RealizationCondition",
+        "RealizationNetwork",
+        "RealizationProcess"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "RealizationCondition": "",
+        "RealizationNetwork": "",
+        "RealizationProcess": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "bridging",
+      "members": [
+        "BridgingFunction",
+        "BridgingRelation",
+        "BridgingRole"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "BridgingFunction": "",
+        "BridgingRelation": "",
+        "BridgingRole": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "selfcorrection",
+      "members": [
+        "SelfCorrectionCapacity",
+        "SelfCorrectionDisposition",
+        "SelfCorrectionProcess"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "SelfCorrectionCapacity": "",
+        "SelfCorrectionDisposition": "",
+        "SelfCorrectionProcess": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "mutualrecognition",
+      "members": [
+        "MutualRecognitionAct",
+        "MutualRecognitionCondition",
+        "MutualRecognitionProcess"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "MutualRecognitionAct": "",
+        "MutualRecognitionCondition": "",
+        "MutualRecognitionProcess": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "obligationpersistence",
+      "members": [
+        "ObligationPersistenceCondition",
+        "ObligationPersistenceProcess",
+        "ObligationPersistenceQuality"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "ObligationPersistenceCondition": "",
+        "ObligationPersistenceProcess": "",
+        "ObligationPersistenceQuality": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "binding",
+      "members": [
+        "BindingCapacity",
+        "BindingProcess",
+        "BindingRelation"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "BindingCapacity": "",
+        "BindingProcess": "",
+        "BindingRelation": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "adjudication",
+      "members": [
+        "AdjudicationFunction",
+        "AdjudicationProcess",
+        "AdjudicationRole"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "AdjudicationFunction": "",
+        "AdjudicationProcess": "",
+        "AdjudicationRole": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "justice",
+      "members": [
+        "JusticeCapacity",
+        "JusticeCondition",
+        "JusticeQuality"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "JusticeCapacity": "",
+        "JusticeCondition": "",
+        "JusticeQuality": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "social",
+      "members": [
+        "SocialAct",
+        "SocialEvent",
+        "SocialStructure"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "SocialAct": "",
+        "SocialEvent": "",
+        "SocialStructure": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "moral",
+      "members": [
+        "MoralClaim",
+        "MoralPrinciple",
+        "MoralStructure"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "MoralClaim": "",
+        "MoralPrinciple": "",
+        "MoralStructure": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "enduringlegal",
+      "members": [
+        "EnduringLegalEntity",
+        "EnduringLegalRelation",
+        "EnduringLegalStructure"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "EnduringLegalEntity": "",
+        "EnduringLegalRelation": "",
+        "EnduringLegalStructure": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "normrecognition",
+      "members": [
+        "NormRecognitionCapacity",
+        "NormRecognitionCondition",
+        "NormRecognitionProcess"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "NormRecognitionCapacity": "",
+        "NormRecognitionCondition": "",
+        "NormRecognitionProcess": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "diagnostic",
+      "members": [
+        "DiagnosticAct",
+        "DiagnosticFunction",
+        "DiagnosticProcess"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "DiagnosticAct": "",
+        "DiagnosticFunction": "",
+        "DiagnosticProcess": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "performativelegal",
+      "members": [
+        "PerformativeLegalAct",
+        "PerformativeLegalFunction",
+        "PerformativeLegalProcess"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "PerformativeLegalAct": "",
+        "PerformativeLegalFunction": "",
+        "PerformativeLegalProcess": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "property",
+      "members": [
+        "PropertyEntity",
+        "PropertyRelation",
+        "PropertyRole"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "PropertyEntity": "",
+        "PropertyRelation": "",
+        "PropertyRole": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "legalrecognition",
+      "members": [
+        "LegalRecognitionAct",
+        "LegalRecognitionCondition",
+        "LegalRecognitionProcess"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "LegalRecognitionAct": "",
+        "LegalRecognitionCondition": "",
+        "LegalRecognitionProcess": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "propertyrecognition",
+      "members": [
+        "PropertyRecognitionFramework",
+        "PropertyRecognitionProcess",
+        "PropertyRecognitionQuality"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "PropertyRecognitionFramework": "",
+        "PropertyRecognitionProcess": "",
+        "PropertyRecognitionQuality": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "propertyownership",
+      "members": [
+        "PropertyOwnershipQuality",
+        "PropertyOwnershipRelation",
+        "PropertyOwnershipStructure"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "PropertyOwnershipQuality": "",
+        "PropertyOwnershipRelation": "",
+        "PropertyOwnershipStructure": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "deontic",
+      "members": [
+        "DeonticEntity",
+        "DeonticRelation",
+        "DeonticStructure"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "DeonticEntity": "",
+        "DeonticRelation": "",
+        "DeonticStructure": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "juridical",
+      "members": [
+        "JuridicalEntity",
+        "JuridicalRole",
+        "JuridicalStructure"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "JuridicalEntity": "",
+        "JuridicalRole": "",
+        "JuridicalStructure": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "rolerecognition",
+      "members": [
+        "RoleRecognitionCondition",
+        "RoleRecognitionDependence",
+        "RoleRecognitionProcess"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "RoleRecognitionCondition": "",
+        "RoleRecognitionDependence": "",
+        "RoleRecognitionProcess": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "institutionalconferral",
+      "members": [
+        "InstitutionalConferralCapacity",
+        "InstitutionalConferralProcess",
+        "InstitutionalConferralStructure"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "InstitutionalConferralCapacity": "",
+        "InstitutionalConferralProcess": "",
+        "InstitutionalConferralStructure": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "knowledgeproduction",
+      "members": [
+        "KnowledgeProductionCapacity",
+        "KnowledgeProductionFunction",
+        "KnowledgeProductionProcess"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "KnowledgeProductionCapacity": "",
+        "KnowledgeProductionFunction": "",
+        "KnowledgeProductionProcess": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "legislative",
+      "members": [
+        "LegislativeAct",
+        "LegislativeProcess",
+        "LegislativeRole"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "LegislativeAct": "",
+        "LegislativeProcess": "",
+        "LegislativeRole": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "errorcontainment",
+      "members": [
+        "ErrorContainmentDisposition",
+        "ErrorContainmentFunction",
+        "ErrorContainmentProcess"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "ErrorContainmentDisposition": "",
+        "ErrorContainmentFunction": "",
+        "ErrorContainmentProcess": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "truthproduction",
+      "members": [
+        "TruthProductionDisposition",
+        "TruthProductionFunction",
+        "TruthProductionProcess"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "TruthProductionDisposition": "",
+        "TruthProductionFunction": "",
+        "TruthProductionProcess": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "legalrepair",
+      "members": [
+        "LegalRepairCapacity",
+        "LegalRepairFunction",
+        "LegalRepairProcess"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "LegalRepairCapacity": "",
+        "LegalRepairFunction": "",
+        "LegalRepairProcess": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "legalextinction",
+      "members": [
+        "LegalExtinctionCondition",
+        "LegalExtinctionEvent",
+        "LegalExtinctionProcess"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "LegalExtinctionCondition": "",
+        "LegalExtinctionEvent": "",
+        "LegalExtinctionProcess": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "active",
+      "members": [
+        "ActiveProcess",
+        "ActiveRole",
+        "ActiveStructure"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "ActiveProcess": "",
+        "ActiveRole": "",
+        "ActiveStructure": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "biological",
+      "members": [
+        "BiologicalCapacity",
+        "BiologicalEntity",
+        "BiologicalFunction"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "BiologicalCapacity": "",
+        "BiologicalEntity": "",
+        "BiologicalFunction": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "ontological",
+      "members": [
+        "OntologicalEvent",
+        "OntologicalFramework",
+        "OntologicalStructure"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "OntologicalEvent": "",
+        "OntologicalFramework": "",
+        "OntologicalStructure": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "calculation",
+      "members": [
+        "CalculationCapacity",
+        "CalculationDisposition",
+        "CalculationProcess"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "CalculationCapacity": "",
+        "CalculationDisposition": "",
+        "CalculationProcess": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "patterndetection",
+      "members": [
+        "PatternDetectionCapacity",
+        "PatternDetectionDisposition",
+        "PatternDetectionProcess"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "PatternDetectionCapacity": "",
+        "PatternDetectionDisposition": "",
+        "PatternDetectionProcess": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "institutionalanchoring",
+      "members": [
+        "InstitutionalAnchoringFunction",
+        "InstitutionalAnchoringProcess",
+        "InstitutionalAnchoringRelation"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "InstitutionalAnchoringFunction": "",
+        "InstitutionalAnchoringProcess": "",
+        "InstitutionalAnchoringRelation": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "alignment",
+      "members": [
+        "AlignmentCondition",
+        "AlignmentQuality",
+        "AlignmentRelation"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "AlignmentCondition": "",
+        "AlignmentQuality": "",
+        "AlignmentRelation": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "transitiverecognition",
+      "members": [
+        "TransitiveRecognitionFunction",
+        "TransitiveRecognitionProcess",
+        "TransitiveRecognitionRole"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "TransitiveRecognitionFunction": "",
+        "TransitiveRecognitionProcess": "",
+        "TransitiveRecognitionRole": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "formalrecognition",
+      "members": [
+        "FormalRecognitionAct",
+        "FormalRecognitionProcess",
+        "FormalRecognitionRelation"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "FormalRecognitionAct": "",
+        "FormalRecognitionProcess": "",
+        "FormalRecognitionRelation": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "interpretive",
+      "members": [
+        "InterpretiveAct",
+        "InterpretiveFramework",
+        "InterpretiveProcess"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "InterpretiveAct": "",
+        "InterpretiveFramework": "",
+        "InterpretiveProcess": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "relationaldependency",
+      "members": [
+        "RelationalDependencyNetwork",
+        "RelationalDependencyStructure"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "RelationalDependencyNetwork": "",
+        "RelationalDependencyStructure": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "structuredlegal",
+      "members": [
+        "StructuredLegalProcess",
+        "StructuredLegalRelation"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "StructuredLegalProcess": "",
+        "StructuredLegalRelation": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "legalstatus",
+      "members": [
+        "LegalStatusFunction",
+        "LegalStatusQuality"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "LegalStatusFunction": "",
+        "LegalStatusQuality": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "signaturevalidity",
+      "members": [
+        "SignatureValidityCondition",
+        "SignatureValidityDependence"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "SignatureValidityCondition": "",
+        "SignatureValidityDependence": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "constitutive",
+      "members": [
+        "ConstitutiveFunction",
+        "ConstitutiveRelation"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "ConstitutiveFunction": "",
+        "ConstitutiveRelation": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "legalenactment",
+      "members": [
+        "LegalEnactmentProcess",
+        "LegalEnactmentRole"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "LegalEnactmentProcess": "",
+        "LegalEnactmentRole": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "obligationgrounding",
+      "members": [
+        "ObligationGroundingProcess",
+        "ObligationGroundingRelation"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "ObligationGroundingProcess": "",
+        "ObligationGroundingRelation": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "governancepresupposition",
+      "members": [
+        "GovernancePresuppositionCondition",
+        "GovernancePresuppositionRelation"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "GovernancePresuppositionCondition": "",
+        "GovernancePresuppositionRelation": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "socialcoexistence",
+      "members": [
+        "SocialCoexistenceProcess",
+        "SocialCoexistenceRelation"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "SocialCoexistenceProcess": "",
+        "SocialCoexistenceRelation": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "statussustainment",
+      "members": [
+        "StatusSustainmentDisposition",
+        "StatusSustainmentProcess"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "StatusSustainmentDisposition": "",
+        "StatusSustainmentProcess": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "embedding",
+      "members": [
+        "EmbeddingProcess",
+        "EmbeddingRelation"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "EmbeddingProcess": "",
+        "EmbeddingRelation": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "temporalpersistence",
+      "members": [
+        "TemporalPersistenceCondition",
+        "TemporalPersistenceQuality"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "TemporalPersistenceCondition": "",
+        "TemporalPersistenceQuality": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "ontologicalmaintenance",
+      "members": [
+        "OntologicalMaintenanceAct",
+        "OntologicalMaintenanceThesis"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "OntologicalMaintenanceAct": "",
+        "OntologicalMaintenanceThesis": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "selfrepair",
+      "members": [
+        "SelfRepairCapacity",
+        "SelfRepairProcess"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "SelfRepairCapacity": "",
+        "SelfRepairProcess": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "legalsystemcontinuity",
+      "members": [
+        "LegalSystemContinuityCondition",
+        "LegalSystemContinuityDisposition"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "LegalSystemContinuityCondition": "",
+        "LegalSystemContinuityDisposition": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "legitimacyrenewal",
+      "members": [
+        "LegitimacyRenewalDisposition",
+        "LegitimacyRenewalProcess"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "LegitimacyRenewalDisposition": "",
+        "LegitimacyRenewalProcess": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "trial",
+      "members": [
+        "TrialFunction",
+        "TrialProcess"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "TrialFunction": "",
+        "TrialProcess": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "filing",
+      "members": [
+        "FilingAct",
+        "FilingProcess"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "FilingAct": "",
+        "FilingProcess": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "dispute",
+      "members": [
+        "DisputeProcess",
+        "DisputeStructure"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "DisputeProcess": "",
+        "DisputeStructure": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "networkpersistence",
+      "members": [
+        "NetworkPersistenceCapacity",
+        "NetworkPersistenceCondition"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "NetworkPersistenceCapacity": "",
+        "NetworkPersistenceCondition": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "recognitionmaintenance",
+      "members": [
+        "RecognitionMaintenanceFunction",
+        "RecognitionMaintenanceRole"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "RecognitionMaintenanceFunction": "",
+        "RecognitionMaintenanceRole": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "dependency",
+      "members": [
+        "DependencyNetwork",
+        "DependencyRelation"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "DependencyNetwork": "",
+        "DependencyRelation": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "socialact",
+      "members": [
+        "SocialActCapacity",
+        "SocialActStructure"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "SocialActCapacity": "",
+        "SocialActStructure": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "temporalorder",
+      "members": [
+        "TemporalOrderDisposition",
+        "TemporalOrderPrinciple"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "TemporalOrderDisposition": "",
+        "TemporalOrderPrinciple": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "proceduralrealization",
+      "members": [
+        "ProceduralRealizationCondition",
+        "ProceduralRealizationProcess"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "ProceduralRealizationCondition": "",
+        "ProceduralRealizationProcess": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "ontologicalanchor",
+      "members": [
+        "OntologicalAnchorFunction",
+        "OntologicalAnchorRole"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "OntologicalAnchorFunction": "",
+        "OntologicalAnchorRole": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "legalgenerative",
+      "members": [
+        "LegalGenerativeAct",
+        "LegalGenerativeCapacity"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "LegalGenerativeAct": "",
+        "LegalGenerativeCapacity": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "ontologicaloperator",
+      "members": [
+        "OntologicalOperatorFunction",
+        "OntologicalOperatorRole"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "OntologicalOperatorFunction": "",
+        "OntologicalOperatorRole": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "descriptive",
+      "members": [
+        "DescriptiveCapacity",
+        "DescriptiveFunction"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "DescriptiveCapacity": "",
+        "DescriptiveFunction": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "normcessation",
+      "members": [
+        "NormCessationEvent",
+        "NormCessationProcess"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "NormCessationEvent": "",
+        "NormCessationProcess": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "signing",
+      "members": [
+        "SigningAct",
+        "SigningEvent"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "SigningAct": "",
+        "SigningEvent": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "normpersistence",
+      "members": [
+        "NormPersistenceCondition",
+        "NormPersistenceProcess"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "NormPersistenceCondition": "",
+        "NormPersistenceProcess": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "legalselfcorrection",
+      "members": [
+        "LegalSelfCorrectionCapacity",
+        "LegalSelfCorrectionProcess"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "LegalSelfCorrectionCapacity": "",
+        "LegalSelfCorrectionProcess": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "contradictionabsorption",
+      "members": [
+        "ContradictionAbsorptionCapacity",
+        "ContradictionAbsorptionProcess"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "ContradictionAbsorptionCapacity": "",
+        "ContradictionAbsorptionProcess": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "relationalexistence",
+      "members": [
+        "RelationalExistenceCondition",
+        "RelationalExistenceQuality"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "RelationalExistenceCondition": "",
+        "RelationalExistenceQuality": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "ontologicalcorrespondence",
+      "members": [
+        "OntologicalCorrespondenceClaim",
+        "OntologicalCorrespondenceRelation"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "OntologicalCorrespondenceClaim": "",
+        "OntologicalCorrespondenceRelation": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "ownershiprecognition",
+      "members": [
+        "OwnershipRecognitionCondition",
+        "OwnershipRecognitionNetwork"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "OwnershipRecognitionCondition": "",
+        "OwnershipRecognitionNetwork": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "distributedrecognition",
+      "members": [
+        "DistributedRecognitionFunction",
+        "DistributedRecognitionProcess"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "DistributedRecognitionFunction": "",
+        "DistributedRecognitionProcess": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "registration",
+      "members": [
+        "RegistrationAct",
+        "RegistrationProcess"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "RegistrationAct": "",
+        "RegistrationProcess": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "obligationrecognition",
+      "members": [
+        "ObligationRecognitionCondition",
+        "ObligationRecognitionDependence"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "ObligationRecognitionCondition": "",
+        "ObligationRecognitionDependence": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "contractformation",
+      "members": [
+        "ContractFormationCondition",
+        "ContractFormationProcess"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "ContractFormationCondition": "",
+        "ContractFormationProcess": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "legallyrecognized",
+      "members": [
+        "LegallyRecognizedEntity",
+        "LegallyRecognizedRelation"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "LegallyRecognizedEntity": "",
+        "LegallyRecognizedRelation": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "privateproperty",
+      "members": [
+        "PrivatePropertyRelation",
+        "PrivatePropertyRole"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "PrivatePropertyRelation": "",
+        "PrivatePropertyRole": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "value",
+      "members": [
+        "ValueCapacity",
+        "ValueQuality"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "ValueCapacity": "",
+        "ValueQuality": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "socialreality",
+      "members": [
+        "SocialRealityQuality",
+        "SocialRealityStructure"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "SocialRealityQuality": "",
+        "SocialRealityStructure": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "enduring",
+      "members": [
+        "EnduringQuality",
+        "EnduringRelation"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "EnduringQuality": "",
+        "EnduringRelation": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "constitutionalrecognition",
+      "members": [
+        "ConstitutionalRecognitionEvent",
+        "ConstitutionalRecognitionProcess"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "ConstitutionalRecognitionEvent": "",
+        "ConstitutionalRecognitionProcess": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "ontologicalextension",
+      "members": [
+        "OntologicalExtensionProcess",
+        "OntologicalExtensionRelation"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "OntologicalExtensionProcess": "",
+        "OntologicalExtensionRelation": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "foundationalmechanism",
+      "members": [
+        "FoundationalMechanismRelation",
+        "FoundationalMechanismRole"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "FoundationalMechanismRelation": "",
+        "FoundationalMechanismRole": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "reciprocity",
+      "members": [
+        "ReciprocityCondition",
+        "ReciprocityQuality"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "ReciprocityCondition": "",
+        "ReciprocityQuality": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "institutionalmediation",
+      "members": [
+        "InstitutionalMediationCondition",
+        "InstitutionalMediationRelation"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "InstitutionalMediationCondition": "",
+        "InstitutionalMediationRelation": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "valuerealization",
+      "members": [
+        "ValueRealizationCondition",
+        "ValueRealizationProcess"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "ValueRealizationCondition": "",
+        "ValueRealizationProcess": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "legalexistencepreservation",
+      "members": [
+        "LegalExistencePreservationCondition",
+        "LegalExistencePreservationProcess"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "LegalExistencePreservationCondition": "",
+        "LegalExistencePreservationProcess": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "citizen",
+      "members": [
+        "CitizenRelation",
+        "CitizenRole"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "CitizenRelation": "",
+        "CitizenRole": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "software",
+      "members": [
+        "SoftwareDisposition",
+        "SoftwareEntity"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "SoftwareDisposition": "",
+        "SoftwareEntity": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "computational",
+      "members": [
+        "ComputationalCapacity",
+        "ComputationalProcess"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "ComputationalCapacity": "",
+        "ComputationalProcess": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "trieroffact",
+      "members": [
+        "TrierOfFactFunction",
+        "TrierOfFactRole"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "TrierOfFactFunction": "",
+        "TrierOfFactRole": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "institutionalpersistence",
+      "members": [
+        "InstitutionalPersistenceCondition",
+        "InstitutionalPersistenceProcess"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "InstitutionalPersistenceCondition": "",
+        "InstitutionalPersistenceProcess": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "embeddedness",
+      "members": [
+        "EmbeddednessCondition",
+        "EmbeddednessRelation"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "EmbeddednessCondition": "",
+        "EmbeddednessRelation": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "activeinstitutional",
+      "members": [
+        "ActiveInstitutionalProcess",
+        "ActiveInstitutionalRole"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "ActiveInstitutionalProcess": "",
+        "ActiveInstitutionalRole": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "collectiverecognition",
+      "members": [
+        "CollectiveRecognitionProcess",
+        "CollectiveRecognitionRole"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "CollectiveRecognitionProcess": "",
+        "CollectiveRecognitionRole": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "jury",
+      "members": [
+        "JuryFunction",
+        "JuryRole"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "JuryFunction": "",
+        "JuryRole": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "witness",
+      "members": [
+        "WitnessDisposition",
+        "WitnessRole"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "WitnessDisposition": "",
+        "WitnessRole": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "defense",
+      "members": [
+        "DefenseFunction",
+        "DefenseRole"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "DefenseFunction": "",
+        "DefenseRole": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "evidence",
+      "members": [
+        "EvidenceProcess",
+        "EvidenceRole"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "EvidenceProcess": "",
+        "EvidenceRole": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "stabledependency",
+      "members": [
+        "StableDependencyCondition",
+        "StableDependencyRelation"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "StableDependencyCondition": "",
+        "StableDependencyRelation": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "legalfallibility",
+      "members": [
+        "LegalFallibilityDisposition",
+        "LegalFallibilityStructure"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "LegalFallibilityDisposition": "",
+        "LegalFallibilityStructure": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "stabilization",
+      "members": [
+        "StabilizationCapacity",
+        "StabilizationFunction"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "StabilizationCapacity": "",
+        "StabilizationFunction": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "institutionalcollapse",
+      "members": [
+        "InstitutionalCollapseCondition",
+        "InstitutionalCollapseProcess"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "InstitutionalCollapseCondition": "",
+        "InstitutionalCollapseProcess": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "authorityconferral",
+      "members": [
+        "AuthorityConferralDisposition",
+        "AuthorityConferralProcess"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "AuthorityConferralDisposition": "",
+        "AuthorityConferralProcess": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "corporate",
+      "members": [
+        "CorporateEntity",
+        "CorporateRole"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "CorporateEntity": "",
+        "CorporateRole": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "emergence",
+      "members": [
+        "EmergenceProcess",
+        "EmergenceRelation"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "EmergenceProcess": "",
+        "EmergenceRelation": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "obligationanchoring",
+      "members": [
+        "ObligationAnchoringFunction",
+        "ObligationAnchoringProcess"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "ObligationAnchoringFunction": "",
+        "ObligationAnchoringProcess": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "incompletedependency",
+      "members": [
+        "IncompleteDependencyCondition",
+        "IncompleteDependencyStructure"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "IncompleteDependencyCondition": "",
+        "IncompleteDependencyStructure": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "prosecution",
+      "members": [
+        "ProsecutionProcess",
+        "ProsecutionRole"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "ProsecutionProcess": "",
+        "ProsecutionRole": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "verdictgeneration",
+      "members": [
+        "VerdictGenerationCondition",
+        "VerdictGenerationProcess"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "VerdictGenerationCondition": "",
+        "VerdictGenerationProcess": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "recognitionconferral",
+      "members": [
+        "RecognitionConferralCapacity",
+        "RecognitionConferralProcess"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "RecognitionConferralCapacity": "",
+        "RecognitionConferralProcess": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "regulatory",
+      "members": [
+        "RegulatoryDisposition",
+        "RegulatoryFunction"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "RegulatoryDisposition": "",
+        "RegulatoryFunction": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "recognized",
+      "members": [
+        "RecognizedRelation",
+        "RecognizedRole"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "RecognizedRelation": "",
+        "RecognizedRole": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "publicrecognition",
+      "members": [
+        "PublicRecognitionDependence",
+        "PublicRecognitionRelation"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "PublicRecognitionDependence": "",
+        "PublicRecognitionRelation": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "contradictionrepair",
+      "members": [
+        "ContradictionRepairCapacity",
+        "ContradictionRepairProcess"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "ContradictionRepairCapacity": "",
+        "ContradictionRepairProcess": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "roleoccupancy",
+      "members": [
+        "RoleOccupancyCondition",
+        "RoleOccupancyProcess"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "RoleOccupancyCondition": "",
+        "RoleOccupancyProcess": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "roleacknowledgment",
+      "members": [
+        "RoleAcknowledgmentCondition",
+        "RoleAcknowledgmentProcess"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "RoleAcknowledgmentCondition": "",
+        "RoleAcknowledgmentProcess": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "guardianship",
+      "members": [
+        "GuardianshipRelation",
+        "GuardianshipRole"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "GuardianshipRelation": "",
+        "GuardianshipRole": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "coherentrecognition",
+      "members": [
+        "CoherentRecognitionProcess",
+        "CoherentRecognitionRelation"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "CoherentRecognitionProcess": "",
+        "CoherentRecognitionRelation": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "structuredrecognition",
+      "members": [
+        "StructuredRecognitionCapacity",
+        "StructuredRecognitionProcess"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "StructuredRecognitionCapacity": "",
+        "StructuredRecognitionProcess": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "institutionaldependency",
+      "members": [
+        "InstitutionalDependencyRelation",
+        "InstitutionalDependencyStructure"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "InstitutionalDependencyRelation": "",
+        "InstitutionalDependencyStructure": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "institutionalrole",
+      "members": [
+        "InstitutionalRoleFunction",
+        "InstitutionalRoleNetwork"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "InstitutionalRoleFunction": "",
+        "InstitutionalRoleNetwork": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "institutionaladaptation",
+      "members": [
+        "InstitutionalAdaptationDisposition",
+        "InstitutionalAdaptationProcess"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "InstitutionalAdaptationDisposition": "",
+        "InstitutionalAdaptationProcess": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "legalentitycreation",
+      "members": [
+        "LegalEntityCreationCondition",
+        "LegalEntityCreationProcess"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "LegalEntityCreationCondition": "",
+        "LegalEntityCreationProcess": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "legalinvalidity",
+      "members": [
+        "LegalInvalidityCondition",
+        "LegalInvalidityQuality"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "LegalInvalidityCondition": "",
+        "LegalInvalidityQuality": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "staterecognition",
+      "members": [
+        "StateRecognitionAct",
+        "StateRecognitionProcess"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "StateRecognitionAct": "",
+        "StateRecognitionProcess": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "roleconferral",
+      "members": [
+        "RoleConferralCondition",
+        "RoleConferralProcess"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "RoleConferralCondition": "",
+        "RoleConferralProcess": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "ontologicalcollapse",
+      "members": [
+        "OntologicalCollapseCondition",
+        "OntologicalCollapseProcess"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "OntologicalCollapseCondition": "",
+        "OntologicalCollapseProcess": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "conferral",
+      "members": [
+        "ConferralProcess",
+        "ConferralStructure"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "ConferralProcess": "",
+        "ConferralStructure": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "absenceofselfcorrection",
+      "members": [
+        "AbsenceOfSelfCorrectionCapacity",
+        "AbsenceOfSelfCorrectionQuality"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "AbsenceOfSelfCorrectionCapacity": "",
+        "AbsenceOfSelfCorrectionQuality": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "contradictionsustaining",
+      "members": [
+        "ContradictionSustainingCapacity",
+        "ContradictionSustainingProcess"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "ContradictionSustainingCapacity": "",
+        "ContradictionSustainingProcess": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "rapidrecognition",
+      "members": [
+        "RapidRecognitionCapacity",
+        "RapidRecognitionProcess"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "RapidRecognitionCapacity": "",
+        "RapidRecognitionProcess": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "sentencing",
+      "members": [
+        "SentencingAct",
+        "SentencingProcess"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "SentencingAct": "",
+        "SentencingProcess": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "authorization",
+      "members": [
+        "AuthorizationProcess",
+        "AuthorizationRelation"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "AuthorizationProcess": "",
+        "AuthorizationRelation": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "legalartifact",
+      "members": [
+        "LegalArtifactQuality",
+        "LegalArtifactRole"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "LegalArtifactQuality": "",
+        "LegalArtifactRole": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "authoritative",
+      "members": [
+        "AuthoritativeRelation",
+        "AuthoritativeRole"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "AuthoritativeRelation": "",
+        "AuthoritativeRole": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "contradictiondetection",
+      "members": [
+        "ContradictionDetectionCapacity",
+        "ContradictionDetectionProcess"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "ContradictionDetectionCapacity": "",
+        "ContradictionDetectionProcess": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "legaltruthgeneration",
+      "members": [
+        "LegalTruthGenerationCapacity",
+        "LegalTruthGenerationProcess"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "LegalTruthGenerationCapacity": "",
+        "LegalTruthGenerationProcess": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "conviction",
+      "members": [
+        "ConvictionEvent",
+        "ConvictionProcess"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "ConvictionEvent": "",
+        "ConvictionProcess": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "moralcorrection",
+      "members": [
+        "MoralCorrectionAct",
+        "MoralCorrectionProcess"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "MoralCorrectionAct": "",
+        "MoralCorrectionProcess": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "judicialrecognition",
+      "members": [
+        "JudicialRecognitionAct",
+        "JudicialRecognitionProcess"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "JudicialRecognitionAct": "",
+        "JudicialRecognitionProcess": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "performance",
+      "members": [
+        "PerformanceAct",
+        "PerformanceEvent"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "PerformanceAct": "",
+        "PerformanceEvent": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "institutionalenforcement",
+      "members": [
+        "InstitutionalEnforcementCapacity",
+        "InstitutionalEnforcementProcess"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "InstitutionalEnforcementCapacity": "",
+        "InstitutionalEnforcementProcess": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "legalontology",
+      "members": [
+        "LegalOntologyFramework",
+        "LegalOntologyRelation"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "LegalOntologyFramework": "",
+        "LegalOntologyRelation": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "ontologicalmodeling",
+      "members": [
+        "OntologicalModelingCapacity",
+        "OntologicalModelingProcess"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "OntologicalModelingCapacity": "",
+        "OntologicalModelingProcess": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "legalrolebearing",
+      "members": [
+        "LegalRoleBearingCapacity",
+        "LegalRoleBearingCondition"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "LegalRoleBearingCapacity": "",
+        "LegalRoleBearingCondition": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "normativeparticipation",
+      "members": [
+        "NormativeParticipationCapacity",
+        "NormativeParticipationCondition"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "NormativeParticipationCapacity": "",
+        "NormativeParticipationCondition": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "instrumental",
+      "members": [
+        "InstrumentalFunction",
+        "InstrumentalRole"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "InstrumentalFunction": "",
+        "InstrumentalRole": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "recognitionextension",
+      "members": [
+        "RecognitionExtensionEvent",
+        "RecognitionExtensionProcess"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "RecognitionExtensionEvent": "",
+        "RecognitionExtensionProcess": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "brute",
+      "members": [
+        "BruteEntity",
+        "BruteEvent"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "BruteEntity": "",
+        "BruteEvent": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "absenceofrecognition",
+      "members": [
+        "AbsenceOfRecognitionCondition",
+        "AbsenceOfRecognitionStructure"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "AbsenceOfRecognitionCondition": "",
+        "AbsenceOfRecognitionStructure": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "technical",
+      "members": [
+        "TechnicalProcess",
+        "TechnicalStructure"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "TechnicalProcess": "",
+        "TechnicalStructure": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "coherencesustaining",
+      "members": [
+        "CoherenceSustainingCondition",
+        "CoherenceSustainingProcess"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "CoherenceSustainingCondition": "",
+        "CoherenceSustainingProcess": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "auditability",
+      "members": [
+        "AuditabilityDisposition",
+        "AuditabilityQuality"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "AuditabilityDisposition": "",
+        "AuditabilityQuality": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "recognitiondependency",
+      "members": [
+        "RecognitionDependencyCondition",
+        "RecognitionDependencyRelation"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "RecognitionDependencyCondition": "",
+        "RecognitionDependencyRelation": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "physicalcausal",
+      "members": [
+        "PhysicalCausalDependence",
+        "PhysicalCausalRelation"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "PhysicalCausalDependence": "",
+        "PhysicalCausalRelation": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "contractualrepair",
+      "members": [
+        "ContractualRepairCapacity",
+        "ContractualRepairProcess"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "ContractualRepairCapacity": "",
+        "ContractualRepairProcess": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "machine",
+      "members": [
+        "MachineFunction",
+        "MachineProcess"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "MachineFunction": "",
+        "MachineProcess": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "reachextension",
+      "members": [
+        "ReachExtensionProcess",
+        "ReachExtensionQuality"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "ReachExtensionProcess": "",
+        "ReachExtensionQuality": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "institutionalintegration",
+      "members": [
+        "InstitutionalIntegrationCapacity",
+        "InstitutionalIntegrationProcess"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "InstitutionalIntegrationCapacity": "",
+        "InstitutionalIntegrationProcess": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "legaladaptation",
+      "members": [
+        "LegalAdaptationCapacity",
+        "LegalAdaptationDisposition"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "LegalAdaptationCapacity": "",
+        "LegalAdaptationDisposition": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "normativeintegration",
+      "members": [
+        "NormativeIntegrationCondition",
+        "NormativeIntegrationStructure"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "NormativeIntegrationCondition": "",
+        "NormativeIntegrationStructure": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "citizenship",
+      "members": [
+        "CitizenshipProcess",
+        "CitizenshipRole"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "CitizenshipProcess": "",
+        "CitizenshipRole": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "legalrole",
+      "members": [
+        "LegalRoleCapacity",
+        "LegalRoleNetwork"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "LegalRoleCapacity": "",
+        "LegalRoleNetwork": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "correlative",
+      "members": [
+        "CorrelativeRelation",
+        "CorrelativeStructure"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "CorrelativeRelation": "",
+        "CorrelativeStructure": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "constitutiverecognition",
+      "members": [
+        "ConstitutiveRecognitionAct",
+        "ConstitutiveRecognitionProcess"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "ConstitutiveRecognitionAct": "",
+        "ConstitutiveRecognitionProcess": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "legalroleinstantiation",
+      "members": [
+        "LegalRoleInstantiationCondition",
+        "LegalRoleInstantiationProcess"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "LegalRoleInstantiationCondition": "",
+        "LegalRoleInstantiationProcess": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "recognitive",
+      "members": [
+        "RecognitiveAct",
+        "RecognitiveCapacity"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "RecognitiveAct": "",
+        "RecognitiveCapacity": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "stabilizinganchor",
+      "members": [
+        "StabilizingAnchorFunction",
+        "StabilizingAnchorRole"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "StabilizingAnchorFunction": "",
+        "StabilizingAnchorRole": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "fraud",
+      "members": [
+        "FraudProcess",
+        "FraudQuality"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "FraudProcess": "",
+        "FraudQuality": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "consent",
+      "members": [
+        "ConsentAct",
+        "ConsentQuality"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "ConsentAct": "",
+        "ConsentQuality": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "citationissuance",
+      "members": [
+        "CitationIssuanceAct",
+        "CitationIssuanceProcess"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "CitationIssuanceAct": "",
+        "CitationIssuanceProcess": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "legalparticipation",
+      "members": [
+        "LegalParticipationRelation",
+        "LegalParticipationStructure"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "LegalParticipationRelation": "",
+        "LegalParticipationStructure": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "roleanchoring",
+      "members": [
+        "RoleAnchoringDisposition",
+        "RoleAnchoringFunction"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "RoleAnchoringDisposition": "",
+        "RoleAnchoringFunction": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "operator",
+      "members": [
+        "OperatorClaim",
+        "OperatorRole"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "OperatorClaim": "",
+        "OperatorRole": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "correlaterecognition",
+      "members": [
+        "CorrelateRecognitionCondition",
+        "CorrelateRecognitionProcess"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "CorrelateRecognitionCondition": "",
+        "CorrelateRecognitionProcess": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "justiceemergence",
+      "members": [
+        "JusticeEmergenceCondition",
+        "JusticeEmergenceProcess"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "JusticeEmergenceCondition": "",
+        "JusticeEmergenceProcess": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "legalinterpretation",
+      "members": [
+        "LegalInterpretationAct",
+        "LegalInterpretationProcess"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "LegalInterpretationAct": "",
+        "LegalInterpretationProcess": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "injusticeemergence",
+      "members": [
+        "InjusticeEmergenceCondition",
+        "InjusticeEmergenceProcess"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "InjusticeEmergenceCondition": "",
+        "InjusticeEmergenceProcess": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "valuestabilization",
+      "members": [
+        "ValueStabilizationFunction",
+        "ValueStabilizationProcess"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "ValueStabilizationFunction": "",
+        "ValueStabilizationProcess": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "justicerealization",
+      "members": [
+        "JusticeRealizationCondition",
+        "JusticeRealizationProcess"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "JusticeRealizationCondition": "",
+        "JusticeRealizationProcess": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "ontologicalexpression",
+      "members": [
+        "OntologicalExpressionProcess",
+        "OntologicalExpressionRelation"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "OntologicalExpressionProcess": "",
+        "OntologicalExpressionRelation": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "emergent",
+      "members": [
+        "EmergentCondition",
+        "EmergentQuality"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "EmergentCondition": "",
+        "EmergentQuality": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "legaldrafting",
+      "members": [
+        "LegalDraftingAct",
+        "LegalDraftingProcess"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "LegalDraftingAct": "",
+        "LegalDraftingProcess": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "stewardship",
+      "members": [
+        "StewardshipDisposition",
+        "StewardshipProcess"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "StewardshipDisposition": "",
+        "StewardshipProcess": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "ontologicalsustainment",
+      "members": [
+        "OntologicalSustainmentProcess",
+        "OntologicalSustainmentRole"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "OntologicalSustainmentProcess": "",
+        "OntologicalSustainmentRole": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "properdependency",
+      "members": [
+        "ProperDependencyRelation",
+        "ProperDependencyStructure"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "ProperDependencyRelation": "",
+        "ProperDependencyStructure": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "collectiveownership",
+      "members": [
+        "CollectiveOwnershipRelation",
+        "CollectiveOwnershipRole"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "CollectiveOwnershipRelation": "",
+        "CollectiveOwnershipRole": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "collective",
+      "members": [
+        "CollectiveEntity",
+        "CollectiveRole"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "CollectiveEntity": "",
+        "CollectiveRole": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "commonproperty",
+      "members": [
+        "CommonPropertyRelation",
+        "CommonPropertyRole"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "CommonPropertyRelation": "",
+        "CommonPropertyRole": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "commonsmaintenance",
+      "members": [
+        "CommonsMaintenanceDisposition",
+        "CommonsMaintenanceProcess"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "CommonsMaintenanceDisposition": "",
+        "CommonsMaintenanceProcess": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "legalselfstabilization",
+      "members": [
+        "LegalSelfStabilizationCapacity",
+        "LegalSelfStabilizationProcess"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "LegalSelfStabilizationCapacity": "",
+        "LegalSelfStabilizationProcess": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "automatedrecognition",
+      "members": [
+        "AutomatedRecognitionEvent",
+        "AutomatedRecognitionProcess"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "AutomatedRecognitionEvent": "",
+        "AutomatedRecognitionProcess": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "reciprocalrecognition",
+      "members": [
+        "ReciprocalRecognitionAct",
+        "ReciprocalRecognitionCondition"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "ReciprocalRecognitionAct": "",
+        "ReciprocalRecognitionCondition": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "recognitionwithdrawal",
+      "members": [
+        "RecognitionWithdrawalCondition",
+        "RecognitionWithdrawalProcess"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "RecognitionWithdrawalCondition": "",
+        "RecognitionWithdrawalProcess": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "socialrecognition",
+      "members": [
+        "SocialRecognitionCapacity",
+        "SocialRecognitionProcess"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "SocialRecognitionCapacity": "",
+        "SocialRecognitionProcess": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "legalrecognitionconferral",
+      "members": [
+        "LegalRecognitionConferralCapacity",
+        "LegalRecognitionConferralProcess"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "LegalRecognitionConferralCapacity": "",
+        "LegalRecognitionConferralProcess": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "genuinerecognition",
+      "members": [
+        "GenuineRecognitionCondition",
+        "GenuineRecognitionDisposition"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "GenuineRecognitionCondition": "",
+        "GenuineRecognitionDisposition": ""
+      }
+    },
+    {
+      "kind": "stem_variant",
+      "confidence": "review_required",
+      "stem": "institutionsustaining",
+      "members": [
+        "InstitutionSustainingProcess",
+        "InstitutionSustainingRole"
+      ],
+      "suggestion": "these share a root concept but have different BFO suffixes; usually DO NOT merge, as they express different aspects (process vs role vs relation, etc.)",
+      "provenance": {
+        "InstitutionSustainingProcess": "",
+        "InstitutionSustainingRole": ""
+      }
+    }
+  ]
+}

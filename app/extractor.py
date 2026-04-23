@@ -13,7 +13,7 @@ from typing import Optional
 
 from anthropic import Anthropic
 
-from .config import ANTHROPIC_API_KEY, ANTHROPIC_MODEL, require_api_key
+from .config import ANTHROPIC_API_KEY, ANTHROPIC_EXTRACTOR_MODEL, require_api_key
 
 
 EXTRACTION_SYSTEM = (
@@ -145,7 +145,7 @@ def _extract_json(text: str) -> dict:
 
 
 class ClaimExtractor:
-    def __init__(self, model: str = ANTHROPIC_MODEL):
+    def __init__(self, model: str = ANTHROPIC_EXTRACTOR_MODEL):
         require_api_key()
         self.client = Anthropic(api_key=ANTHROPIC_API_KEY)
         self.model = model

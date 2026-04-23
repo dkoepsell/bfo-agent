@@ -99,24 +99,40 @@ class OntologyManager:
             self.save()
 
     def _apply_seed(self):
-        """Apply a minimal seed ontology from a Turtle file.
+        """Apply all seed files from the seed directory.
 
-        For MVP we parse seed as simple class declarations via rdflib and
-        mint subclasses in the working ontology. More elaborate seeds can
-        extend this.
+        Discovers every .ttl file in the same directory as `seed_path`
+        and applies them in alphabetical order. This lets us keep
+        separate seed files for class declarations (legal_seed.ttl) and
+        BFO property/disjointness declarations (bfo_relations.ttl)
+        without conflating them.
+        """
+        seed_dir = self.seed_path.parent
+        seed_files = sorted(seed_dir.glob("*.ttl"))
+        for seed_file in seed_files:
+            self._apply_one_seed(seed_file)
+
+    def _apply_one_seed(self, seed_path):
+        """Apply a single seed file: classes, properties, and axioms.
+
+        Handles: class subsumption, object property declarations with
+        characteristics (transitive, inverse, domain, range), and
+        direct disjointness axioms.
         """
         from rdflib import Graph, RDF, RDFS, OWL, URIRef
 
         g = Graph()
-        g.parse(str(self.seed_path), format="turtle")
+        try:
+            g.parse(str(seed_path), format="turtle")
+        except Exception as e:
+            print(f"[seed] could not parse {seed_path.name}: {e}")
+            return
 
         with self.working:
-            # For each OWL Class declaration in the seed, create a subclass
+            # --- Class declarations ---
             for s in g.subjects(RDF.type, OWL.Class):
-                # Find parent via rdfs:subClassOf
                 parents = list(g.objects(s, RDFS.subClassOf))
                 parent_iri = str(parents[0]) if parents else None
-                # Find label
                 labels = list(g.objects(s, RDFS.label))
                 label = str(labels[0]) if labels else _local_name(str(s))
 
@@ -125,8 +141,34 @@ class OntologyManager:
                     if parent_cls is None:
                         continue
                     name = _local_name(str(s))
+                    if self.world[str(s)] is not None:
+                        continue  # already exists
                     new_cls = types.new_class(name, (parent_cls,))
                     new_cls.label = [label]
+
+            # --- Object property declarations ---
+            # We assert these directly into the rdflib graph backing the
+            # world, so that owlready2 picks up the property axioms
+            # without us needing to construct Python classes for them.
+            rdf_g = self.world.as_rdflib_graph()
+            for s, p, o in g.triples((None, RDF.type, OWL.ObjectProperty)):
+                rdf_g.add((s, RDF.type, OWL.ObjectProperty))
+            for s, p, o in g.triples((None, RDF.type, OWL.TransitiveProperty)):
+                rdf_g.add((s, RDF.type, OWL.TransitiveProperty))
+            for s, p, o in g.triples((None, OWL.inverseOf, None)):
+                rdf_g.add((s, OWL.inverseOf, o))
+            for s, p, o in g.triples((None, RDFS.domain, None)):
+                rdf_g.add((s, RDFS.domain, o))
+            for s, p, o in g.triples((None, RDFS.range, None)):
+                rdf_g.add((s, RDFS.range, o))
+            for s, p, o in g.triples((None, RDFS.label, None)):
+                rdf_g.add((s, RDFS.label, o))
+            for s, p, o in g.triples((None, RDFS.comment, None)):
+                rdf_g.add((s, RDFS.comment, o))
+
+            # --- Disjointness axioms ---
+            for s, p, o in g.triples((None, OWL.disjointWith, None)):
+                rdf_g.add((s, OWL.disjointWith, o))
 
     # ------------------------------------------------------------- inventory
     def list_bfo_classes(self) -> list[dict]:

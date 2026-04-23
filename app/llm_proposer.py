@@ -130,10 +130,21 @@ class LLMProposer:
             utterance=utterance,
         )
 
+        # Split prompt into static (cached) and dynamic parts. The
+        # BFO primer, rules, and schema are identical on every call and
+        # account for ~80% of input tokens, so caching them drops cost
+        # dramatically for a full-book feed.
+        static_system, dynamic_user = _split_for_caching(prompt)
+
         resp = self.client.messages.create(
             model=self.model,
             max_tokens=2000,
-            messages=[{"role": "user", "content": prompt}],
+            system=[{
+                "type": "text",
+                "text": static_system,
+                "cache_control": {"type": "ephemeral"},
+            }],
+            messages=[{"role": "user", "content": dynamic_user}],
         )
 
         text = "".join(
@@ -229,3 +240,22 @@ def _extract_json(text: str) -> dict:
         raise ValueError(
             f"No parseable JSON object in LLM output (possibly truncated):\n{text[:500]}"
         )
+
+
+def _split_for_caching(full_prompt: str) -> tuple[str, str]:
+    """Split the fully-rendered proposer prompt into (static_system, dynamic_user).
+
+    The static part contains everything up to and including the
+    "CURRENT WORKING ONTOLOGY CONTEXT:" header boundary. The dynamic
+    part contains the current graph summary and the user utterance,
+    which changes every call and cannot be cached.
+    """
+    marker = "CURRENT WORKING ONTOLOGY CONTEXT:"
+    idx = full_prompt.find(marker)
+    if idx == -1:
+        # Fallback: don't split, whole thing becomes user message.
+        return "", full_prompt
+    static = full_prompt[:idx].rstrip()
+    dynamic = full_prompt[idx:]
+    return static, dynamic
+
