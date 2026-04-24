@@ -13,3 +13,4 @@ ontology/working.owl.bak
 
 # Windows NTFS metadata from WSL-side downloads
 *:Zone.Identifier
+backup_pre_phase1_*/
