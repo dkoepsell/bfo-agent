@@ -147,8 +147,17 @@ def _finalized_guard_response():
 
 
 def create_app() -> Flask:
-    app = Flask(__name__)
+    app = Flask(
+        __name__,
+        static_folder=str(Path(__file__).resolve().parent.parent / "client"),
+        static_url_path="/static",
+    )
     CORS(app)
+
+    @app.get("/")
+    def serve_client():
+        from flask import send_from_directory
+        return send_from_directory(app.static_folder, "index.html")
 
     @app.get("/health")
     def health():
