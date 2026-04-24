@@ -14,3 +14,9 @@ ontology/working.owl.bak
 # Windows NTFS metadata from WSL-side downloads
 *:Zone.Identifier
 backup_pre_phase1_*/
+
+# Phase 6: ignore per-phase backup files (rollback via git tags instead)
+app/*.pre_phase*
+client/*.pre_phase*
+scripts/phase*_patch.py.bak
+backup_pre_phase*/

@@ -167,7 +167,7 @@
   .ontology-panel.open { display: block; }
   .ontology-panel .op-list { display: flex; flex-direction: column; gap: 4px; }
   .ontology-panel .op-entry {
-    display: grid; grid-template-columns: 1fr auto auto; gap: 10px;
+    display: grid; grid-template-columns: 1fr auto auto auto; gap: 10px;
     align-items: center;
     padding: 8px 10px;
     background: var(--panel-2); border: 1px solid var(--border);
@@ -1076,6 +1076,12 @@ function renderOntologyPanel() {
     const status = o.manifest?.status || "active";
     const classes = o.stats?.classes ?? "?";
     const individuals = o.stats?.individuals ?? "?";
+    const canDelete = !o.active && status !== "finalized";
+    const deleteTitle = o.active
+      ? "Cannot delete the active ontology. Activate a different one first."
+      : (status === "finalized"
+          ? "Finalized ontologies are preserved for audit."
+          : "Delete this ontology from the library.");
     const entry = el(`
       <div class="op-entry ${o.active ? "is-active" : ""}">
         <div class="op-name">
@@ -1085,6 +1091,8 @@ function renderOntologyPanel() {
         <div class="op-stats">${classes} classes, ${individuals} indivs</div>
         <button class="${o.active ? "secondary" : ""}" ${o.active ? "disabled" : ""}
                 data-activate="${esc(o.name)}">${o.active ? "current" : "Activate"}</button>
+        <button class="danger" ${canDelete ? "" : "disabled"}
+                data-delete="${esc(o.name)}" title="${esc(deleteTitle)}">Delete</button>
       </div>
     `);
     list.appendChild(entry);
@@ -1199,9 +1207,39 @@ document.getElementById("ontology-panel").addEventListener("click", (e) => {
     activateOntology(actBtn.dataset.activate);
     return;
   }
+  // Delete buttons (phase 6)
+  const delBtn = e.target.closest("[data-delete]");
+  if (delBtn && !delBtn.disabled) {
+    e.stopPropagation();
+    deleteOntology(delBtn.dataset.delete);
+    return;
+  }
   // Don't close when clicking inside the panel
   e.stopPropagation();
 });
+
+async function deleteOntology(name) {
+  if (!confirm(
+    `Delete ontology "${name}"?\n\n` +
+    "This removes the directory, working.owl, seeds, sessions, and jobs " +
+    "for this ontology. The action is recorded in git, so it can be " +
+    "recovered by a git revert if needed, but the in-place data will " +
+    "be gone.\n\nContinue?"
+  )) return;
+  try {
+    const r = await fetch(API + "/ontologies/" + encodeURIComponent(name), {
+      method: "DELETE",
+    });
+    if (!r.ok && r.status !== 204) {
+      const err = await r.json().catch(() => ({}));
+      alert("Delete failed: " + (err.error || r.statusText));
+      return;
+    }
+    await refreshOntologies();
+  } catch (e) {
+    alert("Delete failed: " + e.message);
+  }
+}
 
 // Close panel on outside click
 document.addEventListener("click", () => {
