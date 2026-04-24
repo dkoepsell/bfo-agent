@@ -25,7 +25,6 @@ from . import jobs as jobs_store
 from .extractor import ClaimExtractor, chunk_text
 from .llm_proposer import LLMProposer
 from .ontology_manager import OntologyManager
-from .registry import OntologyRegistry
 from .schema import (
     CommitRequest,
     Proposal,
@@ -44,37 +43,22 @@ from .storage import (
 # Global single-instance state. The orchestrator is not designed for
 # concurrent writers; a single lock serializes proposal/commit operations.
 _lock = threading.Lock()
-_registry: OntologyRegistry | None = None
+_manager: OntologyManager | None = None
 _proposer: LLMProposer | None = None
 _extractor: ClaimExtractor | None = None
 # Small in-memory store of the latest proposal per id so /commit can round-trip
 _proposal_cache: dict[str, Proposal] = {}
 
 
-def _get_registry() -> OntologyRegistry:
-    global _registry
-    if _registry is None:
-        active = config.active_ontology_name()
-        if active is None:
-            raise RuntimeError(
-                "No active ontology name in config. Did phase 1 run?"
-            )
-        _registry = OntologyRegistry(
-            bfo_path=config.BFO_PATH,
-            library_root=config.LIBRARY_ROOT,
-            active_name=active,
-        )
-    return _registry
-
-
 def _get_manager() -> OntologyManager:
-    """Backward-compatible shortcut to the active manager.
-
-    Preserves the method name used throughout this module so the phase 2
-    diff stays minimal. Phase 3 will add a dispatcher that honors an
-    optional ontology-name parameter.
-    """
-    return _get_registry().active_manager()
+    global _manager
+    if _manager is None:
+        _manager = OntologyManager(
+            bfo_path=config.BFO_PATH,
+            working_path=config.WORKING_PATH,
+            seed_path=config.SEED_PATH,
+        )
+    return _manager
 
 
 def _get_proposer() -> LLMProposer:
@@ -102,25 +86,6 @@ def create_app() -> Flask:
             return jsonify({"status": "ok", "stats": mgr.stats()})
         except Exception as e:
             return jsonify({"status": "error", "error": str(e)}), 500
-
-    @app.get("/ontologies")
-    def list_ontologies():
-        """Phase 2 preview: read-only listing of the ontology library.
-
-        Added in phase 2 so that post-migration we can inspect the registry
-        state via curl. UI integration arrives in phase 5.
-        """
-        try:
-            reg = _get_registry()
-            return jsonify({
-                "active": reg.active_name(),
-                "ontologies": reg.list_ontologies(),
-            })
-        except Exception as e:
-            return jsonify({"status": "error", "error": str(e)}), 500
-
-    # All endpoints below are copied verbatim from pre-phase-2. They
-    # reference _get_manager(), which now routes through the registry.
 
     @app.post("/propose")
     def propose():
