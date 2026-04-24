@@ -102,32 +102,3 @@ def recent_commits(n: int = 10) -> list[dict]:
         return out
     except Exception:
         return []
-
-def git_commit_library_change(paths: list, message: str):
-    """Commit a library-layout change (active.txt, new/deleted manifest, etc).
-
-    Used by phase-4 lifecycle operations. Silently skips if git is
-    unavailable. Commits paths relative to the repo root.
-    """
-    if not ENABLE_GIT_COMMITS:
-        return
-
-    try:
-        _run(["git", "rev-parse", "--git-dir"], check=True)
-    except Exception:
-        try:
-            _run(["git", "init"], check=True)
-            _run(["git", "config", "user.email", "bfo-agent@local"], check=True)
-            _run(["git", "config", "user.name", "BFO Agent"], check=True)
-        except Exception:
-            return
-
-    try:
-        for p in paths:
-            p = Path(p)
-            rel = p.relative_to(ROOT) if p.is_absolute() else p
-            _run(["git", "add", str(rel)], check=False)
-        _run(["git", "commit", "-m", message, "--allow-empty"], check=False)
-    except Exception:
-        pass
-
