@@ -1,0 +1,1 @@
+{"ts": "2026-04-21T12:50:38.262112+00:00", "session_id": "eval_consistency_c19_4_ba543b", "event_type": "propose_error", "payload": {"utterance": "In BFO terms, what is 'an institution' such as a court or legislature?", "error": "Expecting ',' delimiter: line 118 column 6 (char 5130)"}}

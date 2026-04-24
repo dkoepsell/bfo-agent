@@ -1,0 +1,16 @@
+{
+  "name": "SOoL_v1",
+  "description": "Formal rendering of David R. Koepsell's A Structural Ontology of the Law (forthcoming, Palgrave 2026). Pilot artifact derived via BFO-grounded dialogue agent; Zenodo DOI 10.5281/zenodo.19713357.",
+  "source_text": "A Structural Ontology of the Law (Koepsell, forthcoming)",
+  "author": "David R. Koepsell",
+  "created_at": "2026-04-24T01:11:59.548878+00:00",
+  "status": "active",
+  "stats": {
+    "note": "recompute after migration"
+  },
+  "migration": {
+    "phase": 1,
+    "from_version": "v1-singleton-working-owl",
+    "backup_location": "backup_pre_phase1_20260424_011158"
+  }
+}

@@ -1,0 +1,1 @@
+{"ts": "2026-04-21T12:31:49.071909+00:00", "session_id": "eval_consistency_c09_0_4494f9", "event_type": "propose_error", "payload": {"utterance": "In BFO terms, what is an unjust command?", "error": "Expecting ',' delimiter: line 118 column 6 (char 5277)"}}
