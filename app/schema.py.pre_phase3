@@ -82,7 +82,6 @@ class CommitRequest(BaseModel):
 class QueryRequest(BaseModel):
     question: str
     session_id: Optional[str] = None
-    ontology: Optional[str] = None
 
 
 class QueryResponse(BaseModel):

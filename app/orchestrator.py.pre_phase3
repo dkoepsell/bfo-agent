@@ -91,60 +91,6 @@ def _get_extractor() -> ClaimExtractor:
     return _extractor
 
 
-# ---------------------------------------------------------------------------
-# Phase 3: per-request ontology resolution
-# ---------------------------------------------------------------------------
-
-def _resolve_ontology_for_read(name: str | None):
-    """Return (manager, resolved_name) for a read endpoint.
-
-    If `name` is None, returns the active manager. If `name` is given
-    but unknown, raises KeyError which the caller should map to 404.
-    """
-    reg = _get_registry()
-    if name is None:
-        return reg.active_manager(), reg.active_name()
-    mgr = reg.get(name)  # raises OntologyNotFoundError (a KeyError) if absent
-    return mgr, name
-
-
-def _ontology_query_arg():
-    """Read the ?ontology=NAME query string, or None."""
-    return request.args.get("ontology", None)
-
-
-def _not_found_response(name: str):
-    return jsonify({
-        "status": "error",
-        "error": f"ontology not found: {name!r}",
-    }), 404
-
-
-def _active_is_finalized() -> bool:
-    """True iff the active ontology's manifest declares status=='finalized'.
-
-    Used to guard write endpoints. Phase 4 is what actually sets that
-    status; for now this returns False in normal operation.
-    """
-    try:
-        reg = _get_registry()
-        manifest = reg.manifest(reg.active_name())
-        return manifest.get("status") == "finalized"
-    except Exception:
-        return False
-
-
-def _finalized_guard_response():
-    reg = _get_registry()
-    return jsonify({
-        "status": "error",
-        "error": (
-            f"active ontology {reg.active_name()!r} is finalized; "
-            f"writes are disabled. Create a new active ontology first."
-        ),
-    }), 409
-
-
 def create_app() -> Flask:
     app = Flask(__name__)
     CORS(app)
@@ -152,16 +98,8 @@ def create_app() -> Flask:
     @app.get("/health")
     def health():
         try:
-            name = _ontology_query_arg()
-            try:
-                mgr, resolved = _resolve_ontology_for_read(name)
-            except KeyError:
-                return _not_found_response(name)
-            return jsonify({
-                "status": "ok",
-                "ontology": resolved,
-                "stats": mgr.stats(),
-            })
+            mgr = _get_manager()
+            return jsonify({"status": "ok", "stats": mgr.stats()})
         except Exception as e:
             return jsonify({"status": "error", "error": str(e)}), 500
 
@@ -186,9 +124,6 @@ def create_app() -> Flask:
 
     @app.post("/propose")
     def propose():
-        # Phase 3: refuse writes against a finalized ontology.
-        if _active_is_finalized():
-            return _finalized_guard_response()
         try:
             body = ProposeRequest(**request.get_json(force=True))
         except ValidationError as e:
@@ -236,9 +171,6 @@ def create_app() -> Flask:
 
     @app.post("/commit")
     def commit():
-        # Phase 3: refuse writes against a finalized ontology.
-        if _active_is_finalized():
-            return _finalized_guard_response()
         try:
             body = CommitRequest(**request.get_json(force=True))
         except ValidationError as e:
@@ -292,47 +224,25 @@ def create_app() -> Flask:
 
     @app.get("/graph")
     def graph():
-        name = _ontology_query_arg()
-        try:
-            mgr, resolved = _resolve_ontology_for_read(name)
-        except KeyError:
-            return _not_found_response(name)
+        mgr = _get_manager()
         return jsonify(
             {
-                "ontology": resolved,
                 "stats": mgr.stats(),
-                # recent_commits is still global across all ontologies;
-                # scoping per-ontology is deferred to phase 6.
                 "recent_commits": recent_commits(10),
             }
         )
 
     @app.get("/graph/classes")
     def graph_classes():
-        name = _ontology_query_arg()
-        try:
-            mgr, _ = _resolve_ontology_for_read(name)
-        except KeyError:
-            return _not_found_response(name)
-        return jsonify(mgr.list_working_classes())
+        return jsonify(_get_manager().list_working_classes())
 
     @app.get("/graph/individuals")
     def graph_individuals():
-        name = _ontology_query_arg()
-        try:
-            mgr, _ = _resolve_ontology_for_read(name)
-        except KeyError:
-            return _not_found_response(name)
-        return jsonify(mgr.list_individuals())
+        return jsonify(_get_manager().list_individuals())
 
     @app.get("/graph/bfo")
     def graph_bfo():
-        name = _ontology_query_arg()
-        try:
-            mgr, _ = _resolve_ontology_for_read(name)
-        except KeyError:
-            return _not_found_response(name)
-        return jsonify(mgr.list_bfo_classes())
+        return jsonify(_get_manager().list_bfo_classes())
 
     @app.post("/query")
     def query():
@@ -343,14 +253,8 @@ def create_app() -> Flask:
 
         session_id = body.session_id or f"sess_{uuid4().hex[:12]}"
 
-        # Phase 3: /query can target a specific ontology via body.ontology.
-        # Defaults to active if not given. Unknown name returns 404.
-        try:
-            mgr, resolved_ontology = _resolve_ontology_for_read(body.ontology)
-        except KeyError:
-            return _not_found_response(body.ontology)
-
         with _lock:
+            mgr = _get_manager()
             proposer = _get_proposer()
             # For MVP we pass the full class/individual list as text context.
             # This will need a retrieval step when the graph grows.
@@ -406,9 +310,6 @@ def create_app() -> Flask:
 
     @app.post("/extract/prepare")
     def extract_prepare():
-        # Phase 3: refuse writes against a finalized ontology.
-        if _active_is_finalized():
-            return _finalized_guard_response()
         """Chunk raw text server-side. No LLM call.
 
         Body: {text, chunk_chars?, overlap?, section?}
@@ -434,9 +335,6 @@ def create_app() -> Flask:
 
     @app.post("/extract/chunk")
     def extract_chunk():
-        # Phase 3: refuse writes against a finalized ontology.
-        if _active_is_finalized():
-            return _finalized_guard_response()
         """Run extraction on a single chunk.
 
         Body: {chunk, section?, chunk_index?}
@@ -469,9 +367,6 @@ def create_app() -> Flask:
 
     @app.post("/jobs")
     def jobs_create():
-        # Phase 3: refuse writes against a finalized ontology.
-        if _active_is_finalized():
-            return _finalized_guard_response()
         body = request.get_json(force=True) or {}
         name = (body.get("name") or "").strip()
         if not name:
@@ -494,9 +389,6 @@ def create_app() -> Flask:
 
     @app.post("/jobs/<job_id>/append_claims")
     def jobs_append_claims(job_id):
-        # Phase 3: refuse writes against a finalized ontology.
-        if _active_is_finalized():
-            return _finalized_guard_response()
         """Append already-extracted claims to a job. Used after the client
         has run extract/prepare + extract/chunk on a chapter; can be called
         repeatedly to add more chapters to the same job."""
@@ -512,9 +404,6 @@ def create_app() -> Flask:
 
     @app.post("/jobs/<job_id>/approve")
     def jobs_approve(job_id):
-        # Phase 3: refuse writes against a finalized ontology.
-        if _active_is_finalized():
-            return _finalized_guard_response()
         """Bulk-set approval flags. Body: {approvals: {claim_id: bool, ...}}"""
         body = request.get_json(force=True) or {}
         approvals_raw = body.get("approvals") or {}
@@ -530,9 +419,6 @@ def create_app() -> Flask:
 
     @app.post("/jobs/<job_id>/feed_one")
     def jobs_feed_one(job_id):
-        # Phase 3: refuse writes against a finalized ontology.
-        if _active_is_finalized():
-            return _finalized_guard_response()
         """Feed the next pending+approved claim in the job.
 
         Runs /propose internally (not the HTTP route) so the full proposal
