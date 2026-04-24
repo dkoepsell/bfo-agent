@@ -4,9 +4,10 @@
   "source_text": null,
   "author": null,
   "created_at": "2026-04-24T17:39:04.158021+00:00",
-  "status": "inactive",
+  "status": "finalized",
   "seeded_from": "SOoL_v1",
   "stats": {
     "note": "bootstrapped from seeds only"
-  }
+  },
+  "finalized_at": "2026-04-24T17:45:40.171687+00:00"
 }
