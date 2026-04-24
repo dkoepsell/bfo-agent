@@ -1,0 +1,12 @@
+{
+  "name": "sandbox",
+  "description": "phase 4 smoke test",
+  "source_text": null,
+  "author": null,
+  "created_at": "2026-04-24T17:39:04.158021+00:00",
+  "status": "inactive",
+  "seeded_from": "SOoL_v1",
+  "stats": {
+    "note": "bootstrapped from seeds only"
+  }
+}
