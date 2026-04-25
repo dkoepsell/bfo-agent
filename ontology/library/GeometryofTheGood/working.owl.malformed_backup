@@ -19840,7 +19840,7 @@
 
 <owl:NamedIndividual rdf:about="#DirectednessImpliesDemand">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
-  <rdfs:comment>There is no directionality without demand.</rdfs:comment>
+  <work:comment rdf:resource="#"There is no directionality without demand.""/>
   <obo:BFO_0000050 rdf:resource="#DirectednessImpliesObligation"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DirectednessImpliesDemand</rdfs:label>
 </owl:NamedIndividual>
