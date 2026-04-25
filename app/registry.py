@@ -316,3 +316,184 @@ class OntologyRegistry:
         self._managers.pop(name, None)
         self._manifests.pop(name, None)
 
+    # ------------------------------------------------------------------
+    # Phase 7: import existing OWL as a new ontology
+    # ------------------------------------------------------------------
+
+    def preview_owl(self, file_path: Path) -> dict:
+        """Inspect an OWL file without committing it.
+
+        Returns a structured report with class/individual counts, BFO
+        alignment summary, and HermiT consistency under standard BFO
+        axioms (using the active ontology's seeds).
+
+        The file_path can point anywhere readable; nothing is moved.
+        """
+        from owlready2 import World
+        import json as _json
+
+        report = {
+            "filename": file_path.name,
+            "size_bytes": file_path.stat().st_size,
+            "loaded": False,
+            "classes": 0,
+            "individuals": 0,
+            "object_properties": 0,
+            "data_properties": 0,
+            "annotation_properties": 0,
+            "base_iri": None,
+            "bfo_aligned_classes": 0,
+            "consistent": None,
+            "consistency_detail": None,
+            "warnings": [],
+        }
+
+        try:
+            w = World()
+            # Load BFO first so cross-references can resolve
+            w.get_ontology(str(self._bfo_path)).load()
+            onto = w.get_ontology(file_path.as_uri()).load()
+        except Exception as e:
+            report["warnings"].append(f"Failed to load: {e}")
+            return report
+
+        report["loaded"] = True
+        report["base_iri"] = str(onto.base_iri) if onto.base_iri else None
+
+        classes = list(onto.classes())
+        individuals = list(onto.individuals())
+        report["classes"] = len(classes)
+        report["individuals"] = len(individuals)
+        report["object_properties"] = len(list(onto.object_properties()))
+        report["data_properties"] = len(list(onto.data_properties()))
+        report["annotation_properties"] = len(list(onto.annotation_properties()))
+
+        # BFO alignment: count classes whose ancestor chain includes a
+        # BFO_xxxxxxx class.
+        bfo_count = 0
+        for c in classes:
+            ancestors = c.ancestors() if hasattr(c, "ancestors") else set()
+            for a in ancestors:
+                name = getattr(a, "name", "") or ""
+                if name.startswith("BFO_"):
+                    bfo_count += 1
+                    break
+        report["bfo_aligned_classes"] = bfo_count
+
+        # Consistency check using owlready2/HermiT
+        try:
+            from owlready2 import sync_reasoner_hermit
+            with onto:
+                sync_reasoner_hermit(w, infer_property_values=False,
+                                    debug=0)
+            report["consistent"] = True
+        except Exception as e:
+            report["consistent"] = False
+            report["consistency_detail"] = str(e)[:500]
+
+        # Warnings
+        if report["classes"] == 0:
+            report["warnings"].append("Ontology has no classes")
+        if bfo_count == 0 and report["classes"] > 0:
+            report["warnings"].append(
+                "No BFO-aligned classes detected. Imported ontology will "
+                "load but lacks formal BFO grounding."
+            )
+        elif bfo_count < report["classes"] / 2:
+            report["warnings"].append(
+                f"Only {bfo_count}/{report['classes']} classes have BFO "
+                f"ancestors. Coverage is partial."
+            )
+        if not report["consistent"]:
+            report["warnings"].append("Ontology is inconsistent under HermiT")
+
+        return report
+
+    def import_from_file(
+        self,
+        file_path: Path,
+        name: str,
+        description: str,
+        source_text: str | None = None,
+        author: str | None = None,
+        clone_seeds_from: str | None = None,
+    ) -> dict:
+        """Create a new library entry whose working.owl is the imported file.
+
+        Validates name and uniqueness, copies the file in, optionally
+        clones seeds from another library entry (default: active),
+        writes manifest, and registers.
+
+        Raises ValueError on bad name or duplicate, KeyError on bad
+        clone source.
+        """
+        from datetime import datetime, timezone
+        import json as _json
+        import re
+        import shutil as _shutil
+
+        if not re.fullmatch(r"[A-Za-z][A-Za-z0-9_-]{0,63}", name):
+            raise ValueError(
+                f"Invalid ontology name {name!r}. Must match "
+                f"[A-Za-z][A-Za-z0-9_-]{{0,63}}."
+            )
+
+        target = self._library_root / name
+        if target.exists():
+            raise ValueError(f"Ontology {name!r} already exists.")
+
+        if not file_path.exists():
+            raise FileNotFoundError(f"Source file not found: {file_path}")
+
+        seed_source_name = clone_seeds_from or self._active_name
+        if seed_source_name not in self._managers:
+            raise KeyError(
+                f"Seed source {seed_source_name!r} not in library."
+            )
+        seed_src = self._library_root / seed_source_name / "seed"
+
+        # Lay out the new ontology directory.
+        target.mkdir(parents=True)
+        (target / "sessions").mkdir()
+        (target / "jobs").mkdir()
+        new_seed = target / "seed"
+        if seed_src.exists():
+            _shutil.copytree(seed_src, new_seed)
+        else:
+            new_seed.mkdir()
+
+        # Copy the OWL into place as working.owl
+        _shutil.copy(file_path, target / "working.owl")
+
+        # Run the preview again on the now-canonical location to get
+        # final stats for the manifest.
+        preview = self.preview_owl(target / "working.owl")
+
+        manifest = {
+            "name": name,
+            "description": description,
+            "source_text": source_text,
+            "author": author,
+            "created_at": datetime.now(timezone.utc).isoformat(),
+            "status": "inactive",
+            "imported_from": file_path.name,
+            "import_preview": {
+                "classes": preview["classes"],
+                "individuals": preview["individuals"],
+                "bfo_aligned_classes": preview["bfo_aligned_classes"],
+                "consistent": preview["consistent"],
+                "warnings": preview["warnings"],
+            },
+            "stats": {
+                "classes": preview["classes"],
+                "individuals": preview["individuals"],
+            },
+        }
+        (target / "manifest.json").write_text(_json.dumps(manifest, indent=2))
+
+        # Register in the live registry. Use _load_one which now
+        # tolerates an existing working.owl (post phase-4 fix).
+        self._load_one(target)
+
+        return dict(manifest)
+

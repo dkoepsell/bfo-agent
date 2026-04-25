@@ -297,6 +297,102 @@ def create_app() -> Flask:
         except Exception as e:
             return jsonify({"status": "error", "error": str(e)}), 500
 
+
+
+    @app.post("/ontologies/preview-import")
+    def preview_import_ontology():
+        """Inspect an uploaded OWL file. Does NOT commit."""
+        try:
+            if "file" not in request.files:
+                return jsonify({"error": "missing file upload"}), 400
+            uploaded = request.files["file"]
+            if not uploaded.filename:
+                return jsonify({"error": "empty filename"}), 400
+
+            import tempfile
+            from pathlib import Path as _Path
+            with tempfile.NamedTemporaryFile(
+                suffix=_Path(uploaded.filename).suffix or ".owl",
+                delete=False,
+            ) as tmp:
+                uploaded.save(tmp.name)
+                tmp_path = _Path(tmp.name)
+
+            try:
+                reg = _get_registry()
+                report = reg.preview_owl(tmp_path)
+                return jsonify(report)
+            finally:
+                try:
+                    tmp_path.unlink()
+                except Exception:
+                    pass
+        except Exception as e:
+            return jsonify({"status": "error", "error": str(e)}), 500
+
+    @app.post("/ontologies/import")
+    def import_ontology():
+        """Import an OWL file as a new library entry."""
+        try:
+            if "file" not in request.files:
+                return jsonify({"error": "missing file upload"}), 400
+            uploaded = request.files["file"]
+            if not uploaded.filename:
+                return jsonify({"error": "empty filename"}), 400
+
+            name = (request.form.get("name") or "").strip()
+            description = (request.form.get("description") or "").strip()
+            if not name:
+                return jsonify({"error": "name required"}), 400
+            if not description:
+                return jsonify({"error": "description required"}), 400
+
+            import tempfile
+            from pathlib import Path as _Path
+            with tempfile.NamedTemporaryFile(
+                suffix=_Path(uploaded.filename).suffix or ".owl",
+                delete=False,
+            ) as tmp:
+                uploaded.save(tmp.name)
+                tmp_path = _Path(tmp.name)
+
+            try:
+                with _lock:
+                    reg = _get_registry()
+                    try:
+                        manifest = reg.import_from_file(
+                            file_path=tmp_path,
+                            name=name,
+                            description=description,
+                            source_text=request.form.get("source_text") or None,
+                            author=request.form.get("author") or None,
+                            clone_seeds_from=request.form.get("clone_seeds_from") or None,
+                        )
+                    except ValueError as e:
+                        return jsonify({"error": str(e)}), 400
+                    except KeyError as e:
+                        return jsonify({"error": f"not found: {e}"}), 404
+
+                    lib_entry = config.LIBRARY_ROOT / name
+                    git_commit_library_change(
+                        [lib_entry],
+                        f"Import ontology {name} (from {uploaded.filename})",
+                    )
+
+                return jsonify({
+                    "name": name,
+                    "manifest": manifest,
+                    "status": "imported",
+                }), 201
+            finally:
+                try:
+                    tmp_path.unlink()
+                except Exception:
+                    pass
+        except Exception as e:
+            return jsonify({"status": "error", "error": str(e)}), 500
+
+
     @app.delete("/ontologies/<name>")
     def delete_ontology(name):
         """Delete a non-active, non-finalized ontology."""
