@@ -4,9 +4,10 @@
   "source_text": "Koepsell-Geometry of the Good 2025",
   "author": null,
   "created_at": "2026-04-24T18:26:46.090691+00:00",
-  "status": "inactive",
+  "status": "finalized",
   "seeded_from": "SOoL_v1",
   "stats": {
     "note": "bootstrapped from seeds only"
-  }
+  },
+  "finalized_at": "2026-04-25T14:51:34.634965+00:00"
 }
