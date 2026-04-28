@@ -571,6 +571,18 @@ def create_app() -> Flask:
             return jsonify({"error": "iri parameter required"}), 400
         return jsonify(mgr.get_class_triples(iri))
 
+    @app.get("/graph/argmap")
+    def graph_argmap():
+        name = _ontology_query_arg()
+        try:
+            mgr, _ = _resolve_ontology_for_read(name)
+        except KeyError:
+            return _not_found_response(name)
+        expand = request.args.get("expand")
+        if expand:
+            return jsonify(mgr.expand_argmap_node(expand))
+        return jsonify(mgr.build_argmap_spine())
+
     @app.get("/graph/bfo")
     def graph_bfo():
         name = _ontology_query_arg()

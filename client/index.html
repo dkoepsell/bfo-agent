@@ -238,6 +238,32 @@
   }
   .triple-line code { white-space: nowrap; }
 
+  /* --- argument map tab --- */
+  .argmap-row {
+    display: flex; align-items: center; gap: 6px;
+    padding: 4px 8px; cursor: pointer;
+    border-left: 3px solid transparent; user-select: none;
+  }
+  .argmap-row:hover { background: rgba(125,211,252,0.05); }
+  .argmap-row.kind-bfo        { border-left-color: var(--warn); }
+  .argmap-row.kind-class      { border-left-color: var(--accent); }
+  .argmap-row.kind-individual { border-left-color: var(--good); }
+  .argmap-row.expanded { background: rgba(125,211,252,0.04); }
+  .argmap-label { flex: 1; font-size: 13px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .argmap-count { font-family: var(--font); font-size: 11px; color: var(--muted); flex-shrink: 0; }
+  .argmap-toggle { font-family: var(--font); font-size: 10px; color: var(--muted); width: 14px; flex-shrink: 0; }
+  .argmap-children { padding-left: 18px; }
+  .argmap-depth-pip { width: 6px; height: 6px; border-radius: 50%; background: var(--muted); flex-shrink: 0; }
+  .depth-0 .argmap-depth-pip, .depth-1 .argmap-depth-pip { background: var(--warn); }
+  .depth-2 .argmap-depth-pip, .depth-3 .argmap-depth-pip { background: var(--accent); }
+  .depth-4 .argmap-depth-pip, .depth-5 .argmap-depth-pip { background: var(--good); opacity: 0.7; }
+  .argmap-triple-panel { padding: 4px 8px 6px 18px; }
+  #argmap-filter {
+    width: 100%; background: var(--panel-2); color: var(--text);
+    border: 1px solid var(--border); border-radius: 4px;
+    padding: 6px 10px; font: inherit; margin-bottom: 10px; box-sizing: border-box;
+  }
+
   /* --- read-only mode indicators --- */
   body.readonly #btn-propose { opacity: 0.4; cursor: not-allowed; }
   body.readonly .tab[data-tab="extract"] { display: none; }
@@ -349,6 +375,7 @@
       <div class="tab active" data-tab="proposal">Proposal Review</div>
       <div class="tab" data-tab="extract">Extract</div>
       <div class="tab" data-tab="graph">Graph</div>
+      <div class="tab" data-tab="argmap">Argument Map</div>
       <div class="tab" data-tab="log">Session Log</div>
     </div>
     <div class="pane-body" id="right-body">
@@ -424,6 +451,11 @@
 
       <div id="tab-graph" class="tab-pane" style="display:none;">
         <div class="muted">Loading graph...</div>
+      </div>
+
+      <div id="tab-argmap" class="tab-pane" style="display:none;">
+        <input id="argmap-filter" placeholder="Filter BFO categories by label…" />
+        <div id="argmap-body"><div class="muted">Loading argument map…</div></div>
       </div>
 
       <div id="tab-log" class="tab-pane" style="display:none;">
@@ -1082,11 +1114,146 @@ async function refreshLog() {
   }
 }
 
+// ---------- argument map ----------
+let _argmapLoaded = false;
+
+function makeArgmapRow(node) {
+  const wrap = document.createElement("div");
+  wrap.className = `argmap-section depth-${node.depth}`;
+
+  const row = document.createElement("div");
+  row.className = `argmap-row kind-${node.kind}`;
+  row.title = node.iri;
+
+  const pip = document.createElement("span");
+  pip.className = "argmap-depth-pip";
+
+  const toggle = document.createElement("span");
+  toggle.className = "argmap-toggle";
+  toggle.textContent = node.kind === "bfo" ? "▶" : "";
+
+  const label = document.createElement("span");
+  label.className = "argmap-label";
+  label.textContent = node.label;
+
+  const count = document.createElement("span");
+  count.className = "argmap-count";
+  if (node.kind === "bfo") {
+    const parts = [];
+    if (node.class_count) parts.push(`${node.class_count} classes`);
+    if (node.individual_count) parts.push(`${node.individual_count} ind`);
+    if (parts.length) count.textContent = `(${parts.join(", ")})`;
+  } else if (node.kind === "class" && node.parents) {
+    const wp = node.parents.filter(p => !p.startsWith("BFO_"));
+    if (wp.length) count.textContent = `↳ ${wp.slice(0, 2).join(", ")}`;
+  } else if (node.kind === "individual" && node.types) {
+    count.textContent = node.types.slice(0, 2).join(", ");
+  }
+
+  row.appendChild(pip);
+  row.appendChild(toggle);
+  row.appendChild(label);
+  row.appendChild(count);
+  wrap.appendChild(row);
+
+  const children = document.createElement("div");
+  children.className = "argmap-children";
+  children.style.display = "none";
+  wrap.appendChild(children);
+
+  const triplePanel = document.createElement("div");
+  triplePanel.className = "argmap-triple-panel";
+  triplePanel.style.display = "none";
+  wrap.appendChild(triplePanel);
+
+  row.addEventListener("click", async () => {
+    if (node.kind === "bfo") {
+      if (children.style.display !== "none") {
+        children.innerHTML = "";
+        children.style.display = "none";
+        toggle.textContent = "▶";
+        row.classList.remove("expanded");
+        return;
+      }
+      row.classList.add("expanded");
+      toggle.textContent = "▼";
+      children.innerHTML = `<div class="muted" style="padding:4px 8px">Loading…</div>`;
+      children.style.display = "";
+      try {
+        const exp = await api(`/graph/argmap?expand=${encodeURIComponent(node.id)}`);
+        children.innerHTML = "";
+        const sorted = exp.nodes.sort((a, b) =>
+          a.kind !== b.kind ? (a.kind === "class" ? -1 : 1) : a.label.localeCompare(b.label)
+        );
+        if (!sorted.length) {
+          children.innerHTML = `<div class="muted" style="padding:4px 8px">(none)</div>`;
+        } else {
+          for (const child of sorted) children.appendChild(makeArgmapRow(child));
+        }
+      } catch (e) {
+        children.innerHTML = `<div class="muted" style="padding:4px 8px">error: ${esc(e.message)}</div>`;
+      }
+    } else {
+      if (triplePanel.style.display !== "none") {
+        triplePanel.innerHTML = "";
+        triplePanel.style.display = "none";
+        row.classList.remove("expanded");
+        return;
+      }
+      row.classList.add("expanded");
+      triplePanel.innerHTML = `<span class="muted">loading…</span>`;
+      triplePanel.style.display = "";
+      try {
+        const triples = await api(`/graph/triples?iri=${encodeURIComponent(node.iri)}`);
+        if (!triples.length) {
+          triplePanel.innerHTML = `<span class="muted">(no explicit triples found)</span>`;
+        } else {
+          triplePanel.innerHTML = triples.map(t =>
+            `<div class="triple-line">
+              <code class="iri">${esc(t.s)}</code>
+              <code class="bfo">${esc(t.p)}</code>
+              <code>${esc(t.o)}</code>
+            </div>`
+          ).join("");
+        }
+      } catch (e) {
+        triplePanel.innerHTML = `<span class="muted">error: ${esc(e.message)}</span>`;
+      }
+    }
+  });
+
+  return wrap;
+}
+
+async function refreshArgmap() {
+  if (_argmapLoaded) return;
+  const body = document.getElementById("argmap-body");
+  body.innerHTML = `<div class="muted">Loading spine…</div>`;
+  try {
+    const data = await api("/graph/argmap");
+    const nodes = data.nodes.sort((a, b) => a.depth - b.depth || a.label.localeCompare(b.label));
+    body.innerHTML = "";
+    for (const node of nodes) body.appendChild(makeArgmapRow(node));
+    _argmapLoaded = true;
+  } catch (e) {
+    body.innerHTML = `<div class="muted">error: ${esc(e.message)}</div>`;
+  }
+}
+
+document.getElementById("argmap-filter").addEventListener("input", function () {
+  const q = this.value.toLowerCase();
+  document.querySelectorAll("#argmap-body > .argmap-section").forEach(section => {
+    const label = section.querySelector(".argmap-label")?.textContent.toLowerCase() || "";
+    section.style.display = !q || label.includes(q) ? "" : "none";
+  });
+});
+
 // ---------- tabs ----------
 function switchTab(name) {
   document.querySelectorAll(".tab").forEach(t => t.classList.toggle("active", t.dataset.tab === name));
   document.querySelectorAll(".tab-pane").forEach(p => p.style.display = p.id === `tab-${name}` ? "" : "none");
   if (name === "graph") refreshGraph();
+  if (name === "argmap") refreshArgmap();
   if (name === "log") refreshLog();
   if (name === "extract") initJobsOnFirstView();
 }
@@ -1119,8 +1286,10 @@ let currentActive = null;
 async function refreshOntologies() {
   try {
     const data = await api("/ontologies");
+    const prevActive = currentActive;
     currentOntologies = data.ontologies || [];
     currentActive = data.active;
+    if (prevActive !== currentActive) _argmapLoaded = false;
     updateSelector();
     renderOntologyPanel();
     applyReadonlyMode();

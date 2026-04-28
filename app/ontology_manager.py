@@ -83,6 +83,8 @@ class OntologyManager:
     # ------------------------------------------------------------------ load
     def _load(self):
         """(Re)load BFO and working ontology from disk into a fresh World."""
+        for attr in ("_bfo_depth_cache", "_bfo_anchor_cache", "_working_depth_cache"):
+            self.__dict__.pop(attr, None)
         self.world = World()
         self.bfo = self.world.get_ontology(str(self.bfo_path)).load()
 
@@ -225,6 +227,179 @@ class OntologyManager:
             {"s": shorten(s), "p": shorten(p), "o": shorten(o)}
             for s, p, o in g.triples((URIRef(full_iri), None, None))
         ]
+
+    # ------------------------------------------------------------------ argmap
+
+    def _bfo_depth_map(self) -> dict:
+        if hasattr(self, "_bfo_depth_cache"):
+            return self._bfo_depth_cache
+        from collections import deque
+        parents_map = {}
+        for cls in self.bfo.classes():
+            frag = _local_name(cls.iri)
+            bfo_parents = [
+                _local_name(p.iri) for p in cls.is_a
+                if hasattr(p, "iri") and "BFO_" in _local_name(p.iri)
+            ]
+            parents_map[frag] = bfo_parents
+        children_map = {f: [] for f in parents_map}
+        for frag, parents in parents_map.items():
+            for p in parents:
+                if p in children_map:
+                    children_map[p].append(frag)
+        depths = {}
+        queue = deque()
+        for frag, parents in parents_map.items():
+            if not parents:
+                depths[frag] = 0
+                queue.append(frag)
+        while queue:
+            frag = queue.popleft()
+            for child in children_map.get(frag, []):
+                if child not in depths:
+                    depths[child] = depths[frag] + 1
+                    queue.append(child)
+        self._bfo_depth_cache = depths
+        return depths
+
+    def _bfo_anchor_map(self) -> dict:
+        if hasattr(self, "_bfo_anchor_cache"):
+            return self._bfo_anchor_cache
+        bfo_frags = {_local_name(cls.iri) for cls in self.bfo.classes()}
+        w_parents: dict[str, list[str]] = {}
+        for cls in self.working.classes():
+            frag = _local_name(cls.iri)
+            w_parents[frag] = [_local_name(p.iri) for p in cls.is_a if hasattr(p, "iri")]
+        anchor_cache: dict[str, str | None] = {}
+
+        def get_anchor(frag: str, visiting: frozenset = frozenset()) -> str | None:
+            if frag in anchor_cache:
+                return anchor_cache[frag]
+            if frag in bfo_frags:
+                return frag
+            if frag in visiting:
+                return None
+            visiting = visiting | {frag}
+            for p in w_parents.get(frag, []):
+                a = get_anchor(p, visiting)
+                if a:
+                    anchor_cache[frag] = a
+                    return a
+            anchor_cache[frag] = None
+            return None
+
+        for frag in w_parents:
+            get_anchor(frag)
+        self._bfo_anchor_cache = anchor_cache
+        return anchor_cache
+
+    def _working_depth_map(self) -> dict:
+        if hasattr(self, "_working_depth_cache"):
+            return self._working_depth_cache
+        bfo_depths = self._bfo_depth_map()
+        w_parents: dict[str, list[str]] = {}
+        for cls in self.working.classes():
+            frag = _local_name(cls.iri)
+            w_parents[frag] = [_local_name(p.iri) for p in cls.is_a if hasattr(p, "iri")]
+        cache: dict[str, int] = {}
+
+        def get_depth(frag: str, visiting: frozenset = frozenset()) -> int:
+            if frag in cache:
+                return cache[frag]
+            if frag in bfo_depths:
+                return bfo_depths[frag]
+            if frag in visiting:
+                cache[frag] = 8
+                return 8
+            visiting = visiting | {frag}
+            parents = w_parents.get(frag, [])
+            d = (min(get_depth(p, visiting) for p in parents) + 1) if parents else 6
+            cache[frag] = d
+            return d
+
+        for frag in w_parents:
+            get_depth(frag)
+        self._working_depth_cache = cache
+        return cache
+
+    def _working_counts_by_bfo_anchor(self) -> dict:
+        anchors = self._bfo_anchor_map()
+        counts: dict[str, int] = {}
+        for anchor in anchors.values():
+            if anchor:
+                counts[anchor] = counts.get(anchor, 0) + 1
+        return counts
+
+    def _individual_counts_by_bfo_anchor(self) -> dict:
+        bfo_frags = {_local_name(cls.iri) for cls in self.bfo.classes()}
+        counts: dict[str, int] = {}
+        for ind in self.working.individuals():
+            for t in ind.is_a:
+                if hasattr(t, "iri"):
+                    frag = _local_name(t.iri)
+                    if frag in bfo_frags:
+                        counts[frag] = counts.get(frag, 0) + 1
+                        break
+        return counts
+
+    def build_argmap_spine(self) -> dict:
+        """Return the 36-node BFO skeleton with class/individual counts per node."""
+        depth_map = self._bfo_depth_map()
+        class_counts = self._working_counts_by_bfo_anchor()
+        ind_counts = self._individual_counts_by_bfo_anchor()
+        nodes, edges = [], []
+        for cls in self.bfo.classes():
+            frag = _local_name(cls.iri)
+            label = (cls.label.first() if cls.label else cls.name) or cls.name
+            parents = [
+                _local_name(p.iri) for p in cls.is_a
+                if hasattr(p, "iri") and "BFO_" in _local_name(p.iri)
+            ]
+            nodes.append({
+                "id": frag, "label": str(label), "kind": "bfo",
+                "depth": depth_map.get(frag, 0), "iri": cls.iri,
+                "parents": parents,
+                "class_count": class_counts.get(frag, 0),
+                "individual_count": ind_counts.get(frag, 0),
+            })
+            for p in parents:
+                edges.append({"s": frag, "p": "subClassOf", "o": p})
+        return {"nodes": nodes, "edges": edges}
+
+    def expand_argmap_node(self, bfo_fragment: str) -> dict:
+        """Return working classes and individuals whose BFO anchor is bfo_fragment."""
+        depth_map = self._bfo_depth_map()
+        wdepth = self._working_depth_map()
+        anchor_map = self._bfo_anchor_map()
+        bfo_depth = depth_map.get(bfo_fragment, 0)
+        nodes, edges = [], []
+
+        for cls in self.working.classes():
+            frag = _local_name(cls.iri)
+            if anchor_map.get(frag) != bfo_fragment:
+                continue
+            label = (cls.label.first() if cls.label else cls.name) or cls.name
+            all_parents = [_local_name(p.iri) for p in cls.is_a if hasattr(p, "iri")]
+            nodes.append({
+                "id": frag, "label": str(label), "kind": "class",
+                "depth": wdepth.get(frag, bfo_depth + 1),
+                "iri": cls.iri, "parents": all_parents,
+            })
+            edges.append({"s": frag, "p": "subClassOf", "o": bfo_fragment})
+
+        for ind in self.working.individuals():
+            for t in ind.is_a:
+                if hasattr(t, "iri") and _local_name(t.iri) == bfo_fragment:
+                    label = (ind.label.first() if ind.label else ind.name) or ind.name
+                    type_frags = [_local_name(t2.iri) for t2 in ind.is_a if hasattr(t2, "iri")]
+                    nodes.append({
+                        "id": ind.name, "label": str(label), "kind": "individual",
+                        "depth": bfo_depth + 2, "iri": ind.iri, "types": type_frags,
+                    })
+                    edges.append({"s": ind.name, "p": "type", "o": bfo_fragment})
+                    break
+
+        return {"bfo_parent": bfo_fragment, "nodes": nodes, "edges": edges}
 
     def list_object_properties(self) -> list[dict]:
         out = []
