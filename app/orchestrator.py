@@ -152,7 +152,14 @@ def create_app() -> Flask:
         static_folder=str(Path(__file__).resolve().parent.parent / "client"),
         static_url_path="/static",
     )
-    CORS(app)
+    CORS(app, origins=["*", "null"])
+
+    @app.after_request
+    def _cors_null_origin(response):
+        # Browsers send Origin: null for file:// requests; * doesn't cover null
+        if request.headers.get("Origin") == "null":
+            response.headers["Access-Control-Allow-Origin"] = "null"
+        return response
 
     @app.get("/")
     def serve_client():

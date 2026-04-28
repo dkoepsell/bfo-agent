@@ -466,7 +466,9 @@
 </div>
 
 <script>
-const API = window.location.port === "5000" ? "" : "/api";
+const API = window.location.protocol === "file:"
+  ? "http://localhost:5000"
+  : window.location.port === "5000" ? "" : "/api";
 const SESSION_ID = "sess_" + Math.random().toString(16).slice(2, 14);
 
 let currentProposal = null;
