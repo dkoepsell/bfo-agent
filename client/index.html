@@ -221,6 +221,23 @@
   .modal .hint { font-size: 11px; color: var(--muted); margin-top: -8px; margin-bottom: 12px; }
   .modal .actions { display: flex; gap: 8px; justify-content: flex-end; margin-top: 8px; }
 
+  /* --- graph triple expansion --- */
+  .entity-row { cursor: pointer; }
+  .entity-row:hover { background: rgba(125, 211, 252, 0.06); }
+  .entity-row.expanded { background: rgba(125, 211, 252, 0.04); }
+  .triple-detail td { padding: 0; }
+  .triple-panel {
+    padding: 6px 10px 8px 16px;
+    background: var(--panel-2);
+    border-left: 2px solid var(--accent);
+    border-bottom: 1px solid var(--border);
+  }
+  .triple-line {
+    font-family: var(--font); font-size: 11px;
+    padding: 2px 0; display: flex; gap: 8px; flex-wrap: wrap;
+  }
+  .triple-line code { white-space: nowrap; }
+
   /* --- read-only mode indicators --- */
   body.readonly #btn-propose { opacity: 0.4; cursor: not-allowed; }
   body.readonly .tab[data-tab="extract"] { display: none; }
@@ -417,7 +434,7 @@
 </div>
 
 <script>
-const API = "";
+const API = window.location.port === "5000" ? "" : "/api";
 const SESSION_ID = "sess_" + Math.random().toString(16).slice(2, 14);
 
 let currentProposal = null;
@@ -982,14 +999,15 @@ async function refreshGraph() {
     document.getElementById("stats").textContent =
       `classes: ${stats.stats.num_classes}  |  individuals: ${stats.stats.num_individuals}  |  props: ${stats.stats.num_object_properties}`;
 
-    const clsRows = classes.map(c => `
-      <tr><td><code class="iri">${esc(c.iri.split("#").pop())}</code></td>
-          <td>${esc(c.label)}</td>
-          <td class="muted">${esc((c.parents || []).join(", "))}</td></tr>`).join("");
-    const indRows = indivs.map(i => `
-      <tr><td><code class="iri">${esc(i.iri.split("#").pop())}</code></td>
-          <td>${esc(i.label)}</td>
-          <td class="muted">${esc((i.types || []).join(", "))}</td></tr>`).join("");
+    function entityRow(item, thirdVal) {
+      return `<tr class="entity-row" data-iri="${esc(item.iri)}" title="Click to show triples">
+        <td><code class="iri">${esc(item.iri.split("#").pop())}</code></td>
+        <td>${esc(item.label)}</td>
+        <td class="muted">${esc(thirdVal)}</td></tr>`;
+    }
+
+    const clsRows = classes.map(c => entityRow(c, (c.parents || []).join(", "))).join("");
+    const indRows = indivs.map(i => entityRow(i, (i.types || []).join(", "))).join("");
 
     const commitRows = (stats.recent_commits || []).map(c => `
       <tr><td><code>${esc(c.hash.slice(0, 7))}</code></td>
@@ -1003,6 +1021,43 @@ async function refreshGraph() {
       <table><thead><tr><th>IRI</th><th>Label</th><th>Types</th></tr></thead><tbody>${indRows || '<tr><td colspan=3 class="muted">(none)</td></tr>'}</tbody></table>
       ${commitRows ? `<h4 class="section-head">Recent Commits</h4><table><thead><tr><th>hash</th><th>time</th><th>message</th></tr></thead><tbody>${commitRows}</tbody></table>` : ""}
     `;
+
+    document.querySelectorAll(".entity-row").forEach(row => {
+      row.addEventListener("click", async function () {
+        const iri = this.dataset.iri;
+        const detailId = `td-${CSS.escape(iri)}`;
+        const existing = document.getElementById(detailId);
+        if (existing) {
+          existing.remove();
+          this.classList.remove("expanded");
+          return;
+        }
+        this.classList.add("expanded");
+        const detailRow = document.createElement("tr");
+        detailRow.id = detailId;
+        detailRow.className = "triple-detail";
+        detailRow.innerHTML = `<td colspan="3"><div class="triple-panel"><span class="muted">loading…</span></div></td>`;
+        this.insertAdjacentElement("afterend", detailRow);
+        try {
+          const triples = await api(`/graph/triples?iri=${encodeURIComponent(iri)}`);
+          const panel = detailRow.querySelector(".triple-panel");
+          if (!triples.length) {
+            panel.innerHTML = `<span class="muted">(no explicit triples found)</span>`;
+          } else {
+            panel.innerHTML = triples.map(t =>
+              `<div class="triple-line">
+                <code class="iri">${esc(t.s)}</code>
+                <code class="bfo">${esc(t.p)}</code>
+                <code>${esc(t.o)}</code>
+              </div>`
+            ).join("");
+          }
+        } catch (e) {
+          detailRow.querySelector(".triple-panel").innerHTML =
+            `<span class="muted">error: ${esc(e.message)}</span>`;
+        }
+      });
+    });
   } catch (e) {
     document.getElementById("stats").textContent = "error: " + e.message;
   }

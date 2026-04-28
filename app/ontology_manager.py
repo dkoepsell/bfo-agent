@@ -40,7 +40,7 @@ def _resolve_iri(iri_suggestion: str, working_base: str) -> str:
       'BFO_0000040'       -> http://purl.obolibrary.org/obo/BFO_0000040
       'http://...'        -> returned unchanged
     """
-    if iri_suggestion.startswith("http"):
+    if iri_suggestion.startswith(("http", "file:")):
         return iri_suggestion
     if iri_suggestion.startswith("bfo:"):
         return BFO_OBO_PREFIX + iri_suggestion.split(":", 1)[1]
@@ -196,6 +196,35 @@ class OntologyManager:
             types_ = [c.name for c in ind.is_a if hasattr(c, "name")]
             out.append({"iri": ind.iri, "label": str(label), "types": types_})
         return out
+
+    def get_class_triples(self, iri: str) -> list[dict]:
+        """Return all explicit triples with the given IRI as subject."""
+        from rdflib import URIRef
+
+        full_iri = _resolve_iri(iri, WORKING_IRI)
+        g = self.world.as_rdflib_graph()
+
+        _PREFIXES = [
+            ("http://www.w3.org/1999/02/22-rdf-syntax-ns#", "rdf:"),
+            ("http://www.w3.org/2000/01/rdf-schema#", "rdfs:"),
+            ("http://www.w3.org/2002/07/owl#", "owl:"),
+            ("http://purl.obolibrary.org/obo/", "obo:"),
+            (WORKING_IRI + "#", ""),
+        ]
+
+        def shorten(term):
+            s = str(term)
+            for prefix, short in _PREFIXES:
+                if s.startswith(prefix):
+                    return short + s[len(prefix):]
+            if "#" in s:
+                return s.rsplit("#", 1)[-1]
+            return s
+
+        return [
+            {"s": shorten(s), "p": shorten(p), "o": shorten(o)}
+            for s, p, o in g.triples((URIRef(full_iri), None, None))
+        ]
 
     def list_object_properties(self) -> list[dict]:
         out = []
