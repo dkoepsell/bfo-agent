@@ -1,0 +1,12 @@
+{
+  "name": "SpinozaCorpus",
+  "description": "Entire works of Spinoza",
+  "source_text": null,
+  "author": null,
+  "created_at": "2026-05-03T13:42:07.632585+00:00",
+  "status": "inactive",
+  "seeded_from": "GeometryofTheGood",
+  "stats": {
+    "note": "bootstrapped from seeds only"
+  }
+}
