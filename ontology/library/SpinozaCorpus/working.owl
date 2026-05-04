@@ -18507,6 +18507,13 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ActingFromGodCommandDisposition</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#AgentActingProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000055 rdf:resource="#ActingFromGodCommandDisposition"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AgentActingProcess</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#GodCommand">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
@@ -18521,11 +18528,23 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ActionNecessitatedByGodCommandQuality</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#AgentActingProcess">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <obo:BFO_0000055 rdf:resource="#ActingFromGodCommandDisposition"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AgentActingProcess</rdfs:label>
+<owl:Class rdf:about="#HumanBeings">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HumanBeings</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ParticipationInDivineNature">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <obo:RO_0000052 rdf:resource="#HumanBeings"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ParticipationInDivineNature</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DivineNatureParticipationQuality">
+  <rdfs:subClassOf rdf:resource="#DivineAttribute"/>
+  <work:subClassOf rdf:resource="#DivineAttribute"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivineNatureParticipationQuality</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
