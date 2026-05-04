@@ -1314,6 +1314,7 @@
   <obo:RO_0000056 rdf:resource="#TransitionToGreaterPerfection"/>
   <obo:RO_0000056 rdf:resource="#TransitionToLesserPerfection"/>
   <obo:RO_0000053 rdf:resource="#Desire"/>
+  <obo:RO_0000053 rdf:resource="#EternalIdeaOfBodyPertainsToMindEssenceQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HumanMind</rdfs:label>
 </owl:Class>
 
@@ -36628,6 +36629,19 @@
   <work3:type rdf:resource="#SpeciesOfEternityQuality"/>
   <obo:RO_0000052 rdf:resource="#IdeaOfHumanBodyEssence"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SpeciesOfEternityQualityInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#EternalIdeaOfHumanBody">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <obo:BFO_0000050 rdf:resource="#HumanMind"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EternalIdeaOfHumanBody</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#EternalIdeaOfBodyPertainsToMindEssenceQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#HumanMind"/>
+  <work:subClassOf rdf:resource="#EssentialExistenceQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EternalIdeaOfBodyPertainsToMindEssenceQuality</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
