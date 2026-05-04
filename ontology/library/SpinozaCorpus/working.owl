@@ -32228,6 +32228,11 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EarlyYear1662</rdfs:label>
 </owl:NamedIndividual>
 
+<owl:NamedIndividual rdf:about="#GreekAsOriginalLanguageOfNTClaim">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GreekAsOriginalLanguageOfNTClaim</rdfs:label>
+</owl:NamedIndividual>
+
 <owl:NamedIndividual rdf:about="#OtherSpinozisticTextsInterpretiveRole">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
   <work3:type rdf:resource="#PrimaryInterpretiveSourceRole"/>
@@ -40050,11 +40055,6 @@
 <owl:NamedIndividual rdf:about="#GreekLanguage">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GreekLanguage</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#GreekAsOriginalLanguageOfNTClaim">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GreekAsOriginalLanguageOfNTClaim</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
