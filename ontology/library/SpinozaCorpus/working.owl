@@ -2705,6 +2705,8 @@
 
 <owl:Class rdf:about="#Privation">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000020"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000020"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Privation</rdfs:label>
 </owl:Class>
 
@@ -13539,6 +13541,13 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EssenceExtentQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#NothingPositiveQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#Privation"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NothingPositiveQuality</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#God">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
   <obo:BFO_0000051 rdf:resource="#DivineAttribute"/>
@@ -15940,6 +15949,22 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodWillCausesAllProcess</rdfs:label>
 </owl:NamedIndividual>
 
+<owl:NamedIndividual rdf:about="#GodIntellect">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
+  <work3:type rdf:resource="#Intellect"/>
+  <obo:BFO_0000050 rdf:resource="#God"/>
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work3:type rdf:resource="#Attribute"/>
+  <obo:RO_0000052 rdf:resource="#God"/>
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:RO_0000053 rdf:resource="#GodIntellectEternalityQuality"/>
+  <work3:type rdf:resource="#IntellectualGraspability"/>
+  <work2:sameAs rdf:resource="#GodWill"/>
+  <work2:sameAs rdf:resource="#GodPower"/>
+  <work2:sameAs rdf:resource="#GodEssence"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodIntellect</rdfs:label>
+</owl:NamedIndividual>
+
 <owl:NamedIndividual rdf:about="#AttributeUnityConstraint">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <obo:RO_0000052 rdf:resource="#WholeOfNature"/>
@@ -16984,22 +17009,6 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#PhilosophicalWork"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IntellectToNatureCorrespondencePrinciple</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#GodIntellect">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
-  <work3:type rdf:resource="#Intellect"/>
-  <obo:BFO_0000050 rdf:resource="#God"/>
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <work3:type rdf:resource="#Attribute"/>
-  <obo:RO_0000052 rdf:resource="#God"/>
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <obo:RO_0000053 rdf:resource="#GodIntellectEternalityQuality"/>
-  <work3:type rdf:resource="#IntellectualGraspability"/>
-  <work2:sameAs rdf:resource="#GodWill"/>
-  <work2:sameAs rdf:resource="#GodPower"/>
-  <work2:sameAs rdf:resource="#GodEssence"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodIntellect</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#GodIntellectEternalityQuality">
