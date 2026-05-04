@@ -18561,6 +18561,18 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NecessaryFollowingFromDecree</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#OrderOfNatureConformityDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OrderOfNatureConformityDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#OrderOfNatureDisturbanceIncapacity">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OrderOfNatureDisturbanceIncapacity</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
@@ -21133,6 +21145,13 @@
 <owl:NamedIndividual rdf:about="#GodlessPersonActProcess">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodlessPersonActProcess</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#AllThingsFollowFromDecreeProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#God"/>
+  <obo:RO_0000057 rdf:resource="#EternalDecreeOfGod"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AllThingsFollowFromDecreeProcess</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#AllEventsProcess">
@@ -25958,6 +25977,8 @@
 <owl:NamedIndividual rdf:about="#OrderOfNature">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <obo:BFO_0000050 rdf:resource="#WholeOfNature"/>
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#WholeOfNature"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OrderOfNature</rdfs:label>
 </owl:NamedIndividual>
 
@@ -27989,18 +28010,24 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EternalDecreeOfGod</rdfs:label>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#AllThingsFollowFromDecreeProcess">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <obo:RO_0000057 rdf:resource="#God"/>
-  <obo:RO_0000057 rdf:resource="#EternalDecreeOfGod"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AllThingsFollowFromDecreeProcess</rdfs:label>
-</owl:NamedIndividual>
-
 <owl:NamedIndividual rdf:about="#NecessaryFollowingFromDecreeInstance">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <obo:RO_0000052 rdf:resource="#God"/>
   <obo:BFO_0000054 rdf:resource="#AllThingsFollowFromDecreeProcess"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NecessaryFollowingFromDecreeInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ManFollowsOrderOfNatureQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#WholeOfNature"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ManFollowsOrderOfNatureQuality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ManFollowingNatureProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000055 rdf:resource="#OrderOfNatureConformityDisposition"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ManFollowingNatureProcess</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
