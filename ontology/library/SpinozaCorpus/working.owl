@@ -19729,6 +19729,8 @@
   <rdfs:subClassOf rdf:resource="#Attribute"/>
   <work:subClassOf rdf:resource="#Love"/>
   <work:subClassOf rdf:resource="#FavorDirectednessTowardBenefactor"/>
+  <rdfs:subClassOf rdf:resource="#Love"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Favor</rdfs:label>
 </owl:Class>
 
@@ -21060,6 +21062,18 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SimilarityImagination</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#BenefitingAnother">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BenefitingAnother</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#FavorDirectednessRole">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <obo:BFO_0000054 rdf:resource="#BenefitingAnother"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FavorDirectednessRole</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
