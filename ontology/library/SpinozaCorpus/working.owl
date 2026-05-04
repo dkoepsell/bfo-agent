@@ -24123,6 +24123,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FearMotivatedConduct</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#FearMotivatedGoodAction">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FearMotivatedGoodAction</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#FearQuality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
@@ -24135,16 +24141,21 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GuidedByReason</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#FearMotivatedGoodAction">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FearMotivatedGoodAction</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#AbsenceOfRationalGuidanceQuality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AbsenceOfRationalGuidanceQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#KnowledgeOfEvil">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#InadequateKnowledge"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">KnowledgeOfEvil</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#InadequateKnowledge">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">InadequateKnowledge</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
@@ -24726,6 +24737,7 @@
   <work3:type rdf:resource="#InadequateIdeaQuality"/>
   <work:subClassOf rdf:resource="#InadequateOrConfusedIdeaQuality"/>
   <work:subClassOf rdf:resource="#PrivationOfKnowledge"/>
+  <work:subClassOf rdf:resource="#InadequateKnowledge"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">InadequateKnowledgeOfBodyPartsQuality</rdfs:label>
 </owl:NamedIndividual>
 
@@ -24750,6 +24762,7 @@
   <work3:type rdf:resource="#InadequateIdeaQuality"/>
   <work:subClassOf rdf:resource="#InadequateOrConfusedIdeaQuality"/>
   <work:subClassOf rdf:resource="#PrivationOfKnowledge"/>
+  <work:subClassOf rdf:resource="#InadequateKnowledge"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">InadequateKnowledgeOfExternalBodyQuality</rdfs:label>
 </owl:NamedIndividual>
 
