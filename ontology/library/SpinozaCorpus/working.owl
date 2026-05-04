@@ -910,6 +910,7 @@
   <work:subClassOf rdf:resource="#ThinkingThingQuality"/>
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
   <obo:BFO_0000050 rdf:resource="#Man"/>
+  <obo:RO_0000053 rdf:resource="#MindPerceptualCapacity"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Mind</rdfs:label>
 </owl:Class>
 
@@ -1096,6 +1097,7 @@
   <rdfs:subClassOf rdf:resource="#ModificationBearer"/>
   <work:subClassOf rdf:resource="#ModificationBearer"/>
   <obo:BFO_0000050 rdf:resource="#Man"/>
+  <obo:RO_0000053 rdf:resource="#BodyActionCapacity"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body</rdfs:label>
 </owl:Class>
 
@@ -16844,6 +16846,24 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ObjectiveRealityDegreeQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#MindPerceptualCapacity">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindPerceptualCapacity</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#BodyActionCapacity">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BodyActionCapacity</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ProportionalityQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ProportionalityQuality</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
@@ -25563,6 +25583,13 @@
   <obo:RO_0000057 rdf:resource="#Idea"/>
   <obo:RO_0000057 rdf:resource="#IdeaObject"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IdeaDifferentiationByObjectProcess</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#MindBodyCapacityProportionality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work3:type rdf:resource="#ProportionalityQuality"/>
+  <obo:RO_0000052 rdf:resource="#MindPerceptualCapacity"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindBodyCapacityProportionality</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
