@@ -1316,6 +1316,7 @@
   <obo:RO_0000056 rdf:resource="#TransitionToLesserPerfection"/>
   <obo:RO_0000053 rdf:resource="#Desire"/>
   <obo:RO_0000053 rdf:resource="#EternalIdeaOfBodyPertainsToMindEssenceQuality"/>
+  <obo:RO_0000053 rdf:resource="#MindEssenceKnowledgeConstitutionQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HumanMind</rdfs:label>
 </owl:Class>
 
@@ -26125,6 +26126,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivineIntellectualLoveDisposition</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#MindEssenceConsistsInKnowledgeOnlyQuality">
+  <rdfs:subClassOf rdf:resource="#EssentialExistenceQuality"/>
+  <work:subClassOf rdf:resource="#KnowledgeQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindEssenceConsistsInKnowledgeOnlyQuality</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
@@ -37122,6 +37129,13 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <obo:RO_0000052 rdf:resource="#GodsLoveOfMen"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IntellectualLoveIdentityQuality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#MindEssenceKnowledgeConstitutionQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work3:type rdf:resource="#MindEssenceConsistsInKnowledgeOnlyQuality"/>
+  <obo:RO_0000052 rdf:resource="#HumanMind"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindEssenceKnowledgeConstitutionQuality</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
