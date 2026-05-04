@@ -4273,6 +4273,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">VirtuePowerIdentityQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#HumanPower">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HumanPower</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#Animal">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
   <obo:RO_0000053 rdf:resource="#AnimalExistenceQuality"/>
@@ -6327,12 +6333,6 @@
   <work:subClassOf rdf:resource="#CorruptibilityDisposition"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CorruptibilityDisposition</rdfs:label>
-</owl:Class>
-
-<owl:Class rdf:about="#HumanPower">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HumanPower</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#OutsideHumanPowerQuality">
@@ -22539,6 +22539,18 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">VirtueDefinedByEssenceQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#StrivingToPreserveBeingEssenceQuality">
+  <rdfs:subClassOf rdf:resource="#EssentialExistenceQuality"/>
+  <work:subClassOf rdf:resource="#EssentialExistenceQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">StrivingToPreserveBeingEssenceQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ConatusStriving">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConatusStriving</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
@@ -23007,6 +23019,7 @@
   <work3:type rdf:resource="#PowerToPersevereInBeing"/>
   <work3:type rdf:resource="#Desire"/>
   <work3:type rdf:resource="#StrivingToPreserveOwnBeing"/>
+  <work3:type rdf:resource="#ConatusStriving"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConatusMentalDispositionInstance</rdfs:label>
 </owl:NamedIndividual>
 
@@ -32644,6 +32657,12 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <obo:BFO_0000050 rdf:resource="#TheEthics"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HappinessDefinitionContent</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ConatusEssenceIdentityQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work3:type rdf:resource="#StrivingToPreserveBeingEssenceQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConatusEssenceIdentityQuality</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
