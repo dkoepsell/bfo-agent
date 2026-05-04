@@ -16493,6 +16493,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NecessaryIdeaPossessionDisposition</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#IdeaCausalAdmissibilityConstraint">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IdeaCausalAdmissibilityConstraint</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
@@ -16844,6 +16850,7 @@
   <obo:RO_0000052 rdf:resource="#Mind"/>
   <obo:BFO_0000051 rdf:resource="#CreatedMind"/>
   <obo:BFO_0000051 rdf:resource="#God"/>
+  <obo:RO_0000052 rdf:resource="#God"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ThinkingAttribute</rdfs:label>
 </owl:NamedIndividual>
 
@@ -21682,6 +21689,20 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodIdea</rdfs:label>
 </owl:NamedIndividual>
 
+<owl:NamedIndividual rdf:about="#UniquenessOfGodIdeaQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#GodIdea"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UniquenessOfGodIdeaQuality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#InfinitelyManyThingsFollowingDisposition">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:RO_0000052 rdf:resource="#GodIdea"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">InfinitelyManyThingsFollowingDisposition</rdfs:label>
+</owl:NamedIndividual>
+
 <owl:NamedIndividual rdf:about="#GodIdeaExistsInItselfQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <obo:RO_0000052 rdf:resource="#GodIdea"/>
@@ -24906,18 +24927,17 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NecessityEquivalenceQuality</rdfs:label>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#UniquenessOfGodIdeaQuality">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <obo:RO_0000052 rdf:resource="#GodIdea"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UniquenessOfGodIdeaQuality</rdfs:label>
+<owl:NamedIndividual rdf:about="#GodAsThinkingThingRole">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <obo:RO_0000052 rdf:resource="#God"/>
+  <obo:BFO_0000054 rdf:resource="#EssenceCausationProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodAsThinkingThingRole</rdfs:label>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#InfinitelyManyThingsFollowingDisposition">
+<owl:NamedIndividual rdf:about="#IdeaCausalAdmissibilityInstance">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <obo:RO_0000052 rdf:resource="#GodIdea"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">InfinitelyManyThingsFollowingDisposition</rdfs:label>
+  <obo:RO_0000052 rdf:resource="#Idea"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IdeaCausalAdmissibilityInstance</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
