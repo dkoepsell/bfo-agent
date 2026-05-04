@@ -3721,6 +3721,8 @@
   <obo:RO_0000052 rdf:resource="#God"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <obo:BFO_0000054 rdf:resource="#DesireForOwnPossessionArisingProcess"/>
+  <work:subClassOf rdf:resource="#IntellectualGraspability"/>
+  <work:subClassOf rdf:resource="#HumanEssentialQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">KnowledgeOfGod</rdfs:label>
 </owl:Class>
 
@@ -3728,6 +3730,19 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <obo:RO_0000057 rdf:resource="#PiousAgent"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DesireForOwnPossessionArisingProcess</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PiousAgent">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <obo:BFO_0000054 rdf:resource="#HonoringGodProcess"/>
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <work:subClassOf rdf:resource="#EssenceReceptionFromGodQuality"/>
+  <obo:RO_0000053 rdf:resource="#PietyRole"/>
+  <obo:RO_0000053 rdf:resource="#ClearSelfKnowledge"/>
+  <obo:RO_0000053 rdf:resource="#KnowledgeOfGod"/>
+  <obo:RO_0000053 rdf:resource="#DesireForOwnPossession"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PiousAgent</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#FirstCauseRole">
@@ -6861,6 +6876,7 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
   <work:subClassOf rdf:resource="#FiniteSingularThing"/>
   <obo:RO_0000053 rdf:resource="#ServingGodRole"/>
+  <work:subClassOf rdf:resource="#Substance"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HumanBeing</rdfs:label>
 </owl:Class>
 
@@ -14237,19 +14253,6 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SolidKnowledge</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#PiousAgent">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
-  <obo:BFO_0000054 rdf:resource="#HonoringGodProcess"/>
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
-  <work:subClassOf rdf:resource="#EssenceReceptionFromGodQuality"/>
-  <obo:RO_0000053 rdf:resource="#PietyRole"/>
-  <obo:RO_0000053 rdf:resource="#ClearSelfKnowledge"/>
-  <obo:RO_0000053 rdf:resource="#KnowledgeOfGod"/>
-  <obo:RO_0000053 rdf:resource="#DesireForOwnPossession"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PiousAgent</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#HonoringGodProcess">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <obo:RO_0000057 rdf:resource="#God"/>
@@ -14696,6 +14699,19 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">KnowledgeOfSelfQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#KnowledgeOfSelf">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="#HumanEssentialQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">KnowledgeOfSelf</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#HumanEssentialQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#EssentialExistenceQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HumanEssentialQuality</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#God">
