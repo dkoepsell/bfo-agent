@@ -1982,6 +1982,11 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Falsity</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#PropositionalAct">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PropositionalAct</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#EarliestWorksTemporalRole">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EarliestWorksTemporalRole</rdfs:label>
@@ -3046,11 +3051,6 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConfusedIdea</rdfs:label>
-</owl:Class>
-
-<owl:Class rdf:about="#PropositionalAct">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PropositionalAct</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#EternalEssenceNature">
@@ -25847,12 +25847,40 @@
 
 <owl:Class rdf:about="#ClearAndDistinctKnowledge">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ClearAndDistinctKnowledge</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#PassionAsPartOfMind">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PassionAsPartOfMind</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#LoveTowardImmutableEternalThing">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="#IntellectualLoveOfGodQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LoveTowardImmutableEternalThing</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ImmutableAndEternalThing">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ImmutableAndEternalThing</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ClearAndDistinctKnowledgeBearsLoveProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#ClearAndDistinctKnowledge"/>
+  <obo:BFO_0000055 rdf:resource="#LoveTowardImmutableEternalThing"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ClearAndDistinctKnowledgeBearsLoveProcess</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#IntellectualLoveOfGodQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IntellectualLoveOfGodQuality</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
