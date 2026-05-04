@@ -30428,6 +30428,25 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GroupPreservationDisposition</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#NecessaryFollowingFromEssence">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="#FormalExistenceNecessitation"/>
+  <obo:BFO_0000054 rdf:resource="#NaturalNecessitationProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NecessaryFollowingFromEssence</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#EssenceOrDefinitionOfAThing">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#EssentialExistenceQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EssenceOrDefinitionOfAThing</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#NaturalNecessitationProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000055 rdf:resource="#NecessaryFollowingFromEssence"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NaturalNecessitationProcess</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
