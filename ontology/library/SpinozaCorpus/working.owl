@@ -19107,6 +19107,8 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
   <obo:BFO_0000054 rdf:resource="#ThirdKindKnowledgeProduction"/>
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ThirdKindOfKnowledge</rdfs:label>
 </owl:Class>
 
@@ -25965,6 +25967,11 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SubSpecieAeternitatis</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#GreatestVirtueOfMindQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GreatestVirtueOfMindQuality</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
@@ -26648,6 +26655,7 @@
   <work:subClassOf rdf:resource="#EssentialExistenceQuality"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <obo:BFO_0000050 rdf:resource="#MindEternalityUnderSpeciesOfEternityQuality"/>
+  <obo:BFO_0000050 rdf:resource="#ThirdKindOfKnowledgeInstance"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EternalIdeaOfBodyPertainsToMindEssenceQuality</rdfs:label>
 </owl:NamedIndividual>
 
@@ -28978,6 +28986,13 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <obo:RO_0000052 rdf:resource="#HumanMind"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LesserPerfectionQualityInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#MindEternalityUnderSpeciesOfEternityQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#InfiniteIntellectOfGod"/>
+  <work:subClassOf rdf:resource="#SubstanceExistenceEternalityQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindEternalityUnderSpeciesOfEternityQuality</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#SelfPreservationPowerInstance">
@@ -36700,13 +36715,6 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IdeaPertainingToMindEssence</rdfs:label>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#MindEternalityUnderSpeciesOfEternityQuality">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <obo:RO_0000052 rdf:resource="#InfiniteIntellectOfGod"/>
-  <work:subClassOf rdf:resource="#SubstanceExistenceEternalityQuality"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindEternalityUnderSpeciesOfEternityQuality</rdfs:label>
-</owl:NamedIndividual>
-
 <owl:NamedIndividual rdf:about="#BodyEssenceInvolvementUnderEternityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <obo:RO_0000052 rdf:resource="#InfiniteIntellectOfGod"/>
@@ -36717,6 +36725,25 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <obo:BFO_0000055 rdf:resource="#BodyEssenceInvolvementUnderEternityQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindEternalityProcess</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ThirdKindOfKnowledgeInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work3:type rdf:resource="#ThirdKindOfKnowledge"/>
+  <obo:BFO_0000054 rdf:resource="#UnderstandingByThirdKindProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ThirdKindOfKnowledgeInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#GreatestVirtueOfMindQualityInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#ThirdKindOfKnowledgeInstance"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GreatestVirtueOfMindQualityInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#UnderstandingByThirdKindProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000055 rdf:resource="#ThirdKindOfKnowledgeInstance"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UnderstandingByThirdKindProcess</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
