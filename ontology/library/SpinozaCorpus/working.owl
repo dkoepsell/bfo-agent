@@ -20631,6 +20631,8 @@
   <work:subClassOf rdf:resource="#EvilAffect"/>
   <obo:BFO_0000054 rdf:resource="#BeingMovedByEnvyOrHateProcess"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#EnvyAndBadHeartDisposition"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Envy</rdfs:label>
 </owl:Class>
 
@@ -30083,6 +30085,39 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HappinessConstitutedByGoodEnjoymentQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#JoyFromComparison">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">JoyFromComparison</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#BadHeart">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#EnvyAndBadHeartDisposition"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BadHeart</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ComparisonWithOthers">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ComparisonWithOthers</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#JoyFromComparisonArisingProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000050 rdf:resource="#ComparisonWithOthers"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">JoyFromComparisonArisingProcess</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#EnvyAndBadHeartDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:BFO_0000054 rdf:resource="#JoyFromComparisonArisingProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EnvyAndBadHeartDisposition</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -31326,6 +31361,11 @@
   <obo:RO_0000052 rdf:resource="#Christ"/>
   <work3:type rdf:resource="#AccommodationOfReasoning"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AccommodationOfReasoningInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#TheGood">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TheGood</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#ExtendedSubstance">
@@ -43286,11 +43326,6 @@
   <obo:RO_0000056 rdf:resource="#ApostolicReasoning"/>
   <obo:RO_0000056 rdf:resource="#ApostolicSigns"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ApostolicAudience</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#TheGood">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TheGood</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
