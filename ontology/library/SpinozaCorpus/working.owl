@@ -541,6 +541,17 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Duration</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#DeterminateExpressionQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DeterminateExpressionQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DeterminateAttributeExpression">
+  <rdfs:subClassOf rdf:resource="#AttributeExpressesEternalInfiniteEssenceRelation"/>
+  <work:subClassOf rdf:resource="#AttributeExpressesEternalInfiniteEssenceRelation"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DeterminateAttributeExpression</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#Finitude">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
@@ -1590,6 +1601,13 @@
 <owl:Class rdf:about="#OnlySubstancesExistQuality">
   <rdfs:subClassOf rdf:resource="#EssentialExistenceQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OnlySubstancesExistQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#Life">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:BFO_0000054 rdf:resource="#PerseveranceProcess"/>
+  <obo:RO_0000052 rdf:resource="#God"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Life</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#TrueIdeaReflexiveKnowledgeDisposition">
@@ -13135,13 +13153,6 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ForceOfPerseveringInState</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#Life">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <obo:BFO_0000054 rdf:resource="#PerseveranceProcess"/>
-  <obo:RO_0000052 rdf:resource="#God"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Life</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#PerseveranceProcess">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PerseveranceProcess</rdfs:label>
@@ -18237,6 +18248,7 @@
 <owl:Class rdf:about="#ActuallyExistingBody">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
   <work:subClassOf rdf:resource="#SingularThing"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ActuallyExistingBody</rdfs:label>
 </owl:Class>
 
@@ -18907,15 +18919,17 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConatusQuality</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#DeterminateExpressionQuality">
+<owl:Class rdf:about="#MindEssenceQuality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DeterminateExpressionQuality</rdfs:label>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#IdeaOfActuallyExistingBody"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindEssenceQuality</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#DeterminateAttributeExpression">
-  <rdfs:subClassOf rdf:resource="#AttributeExpressesEternalInfiniteEssenceRelation"/>
-  <work:subClassOf rdf:resource="#AttributeExpressesEternalInfiniteEssenceRelation"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DeterminateAttributeExpression</rdfs:label>
+<owl:Class rdf:about="#IdeaOfActuallyExistingBody">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IdeaOfActuallyExistingBody</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
@@ -28556,6 +28570,13 @@
   <obo:RO_0000052 rdf:resource="#BodyDetermination"/>
   <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExtensionAttributeConsideration</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#MindEssenceIsIdeaOfBodyQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work3:type rdf:resource="#MindEssenceQuality"/>
+  <obo:RO_0000052 rdf:resource="#HumanMind"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindEssenceIsIdeaOfBodyQuality</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
