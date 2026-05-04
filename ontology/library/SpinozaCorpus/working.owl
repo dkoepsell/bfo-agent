@@ -21828,6 +21828,25 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindEssenceConsistsInBodyExistenceAffirmation</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#PerfectionAsModeOfThinking">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#ModeOfThinkingQuality"/>
+  <work:subClassOf rdf:resource="#FeignedNotion"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PerfectionAsModeOfThinking</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ImperfectionAsModeOfThinking">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#ModeOfThinkingQuality"/>
+  <work:subClassOf rdf:resource="#FeignedNotion"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ImperfectionAsModeOfThinking</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#FeignedNotion">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FeignedNotion</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
