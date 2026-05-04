@@ -30435,16 +30435,45 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NecessaryFollowingFromEssence</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#NaturalNecessitationProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000055 rdf:resource="#NecessaryFollowingFromEssence"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NaturalNecessitationProcess</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#EssenceOrDefinitionOfAThing">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="#EssentialExistenceQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EssenceOrDefinitionOfAThing</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#NaturalNecessitationProcess">
+<owl:Class rdf:about="#HumanDecisionDependentLaw">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work:subClassOf rdf:resource="#Prescription"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HumanDecisionDependentLaw</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#Prescription">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Prescription</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#HumanDecision">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <obo:BFO_0000055 rdf:resource="#NecessaryFollowingFromEssence"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NaturalNecessitationProcess</rdfs:label>
+  <obo:BFO_0000050 rdf:resource="#LawEstablishmentProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HumanDecision</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#HumanAgent">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HumanAgent</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#LawEstablishmentProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#HumanAgent"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LawEstablishmentProcess</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
