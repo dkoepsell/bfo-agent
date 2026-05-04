@@ -13588,6 +13588,7 @@
   <work:subClassOf rdf:resource="#ImperfectionQuality"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000020"/>
   <work:subClassOf rdf:resource="#PrivationOfPerfection"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Sin</rdfs:label>
 </owl:Class>
 
@@ -13989,6 +13990,26 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="#RelationalQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WillIntellectAlignmentQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DivineOrder">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivineOrder</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#TransgressionOfDivineOrder">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#God"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TransgressionOfDivineOrder</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SinAgainstGodQuality">
+  <rdfs:subClassOf rdf:resource="#Sin"/>
+  <work:subClassOf rdf:resource="#Sin"/>
+  <obo:RO_0000052 rdf:resource="#TransgressionOfDivineOrder"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SinAgainstGodQuality</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#God">
