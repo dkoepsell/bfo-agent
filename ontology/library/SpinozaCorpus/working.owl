@@ -26855,6 +26855,13 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MensAnimaIdentityQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#VisSeMovendiDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/RO_0000052 some working:Body"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">VisSeMovendiDisposition</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
