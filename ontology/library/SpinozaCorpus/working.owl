@@ -1173,6 +1173,8 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
   <obo:RO_0000053 rdf:resource="#IntellectPerfectionQuality"/>
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Intellect</rdfs:label>
 </owl:Class>
 
@@ -23889,6 +23891,11 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Law</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#PrincipleOfLiving">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PrincipleOfLiving</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#StateMaintainedByLawsQuality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
@@ -30526,11 +30533,6 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LawProductionFromHumanPowerProcess</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#PrincipleOfLiving">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PrincipleOfLiving</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#Prescribing">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <obo:RO_0000057 rdf:resource="#Prescriber"/>
@@ -30558,6 +30560,13 @@
   <rdfs:subClassOf rdf:resource="#Law"/>
   <work:subClassOf rdf:resource="#Law"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OtherPrescribedLaw</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#BetterPartOfUsQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#Intellect"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BetterPartOfUsQuality</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
