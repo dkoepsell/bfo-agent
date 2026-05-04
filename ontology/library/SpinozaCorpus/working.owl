@@ -18490,6 +18490,16 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IdeasDifferByAffirmationQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#PositiveContentOfIdea">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PositiveContentOfIdea</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#FormalContentOfIdea">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FormalContentOfIdea</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
@@ -27892,6 +27902,18 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work:seeAlso rdf:resource="#WillIsUniversalBeingQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WillAsUniversalIdea</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#FalsityInIdeas">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work3:type rdf:resource="#FormalContentOfIdea"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FalsityInIdeas</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#AbsenceOfPositiveContentInFalsity">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#FalsityInIdeas"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AbsenceOfPositiveContentInFalsity</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
