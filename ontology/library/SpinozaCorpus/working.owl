@@ -14592,6 +14592,24 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ContinualDependenceOnGod</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#PiousAct">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PiousAct</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#GodlessAct">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodlessAct</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#EssentialActDifferenceQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EssentialActDifferenceQuality</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#God">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
   <obo:BFO_0000051 rdf:resource="#DivineAttribute"/>
@@ -16628,6 +16646,13 @@
   <work3:type rdf:resource="#ExistenceGodDependence"/>
   <obo:RO_0000052 rdf:resource="#FiniteSingularThing"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HumanExistenceGodDependence</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ContinualDependenceOnGodInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work3:type rdf:resource="#ContinualDependenceOnGod"/>
+  <obo:RO_0000052 rdf:resource="#AllThings"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ContinualDependenceOnGodInstance</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#FormalExistenceNecessitationFromIdea">
@@ -21934,13 +21959,6 @@
   <obo:BFO_0000054 rdf:resource="#GodlessPersonActProcess"/>
   <obo:BFO_0000050 rdf:resource="#GodEternalLaw"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodlessPersonActNecessitation</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#ContinualDependenceOnGodInstance">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <work3:type rdf:resource="#ContinualDependenceOnGod"/>
-  <obo:RO_0000052 rdf:resource="#AllThings"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ContinualDependenceOnGodInstance</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
