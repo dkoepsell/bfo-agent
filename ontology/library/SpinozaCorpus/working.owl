@@ -1218,6 +1218,8 @@
   <obo:RO_0000053 rdf:resource="#InadequateKnowledgeOfBodyPartsQuality"/>
   <obo:RO_0000053 rdf:resource="#PerceptionOfExternalBodyViaBodyAffectionDispositionInstance"/>
   <obo:RO_0000056 rdf:resource="#ExternalBodyPerceptionProcess"/>
+  <obo:RO_0000056 rdf:resource="#ImaginationOfExternalBody"/>
+  <obo:RO_0000053 rdf:resource="#InadequateKnowledgeOfExternalBodyQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HumanMind</rdfs:label>
 </owl:Class>
 
@@ -1435,6 +1437,12 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindCreatedNotTransmittedQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ExternalBodyPerceptionProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExternalBodyPerceptionProcess</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#ConatusRealizationProcess">
@@ -17598,10 +17606,9 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PerceptionOfExternalBodyViaBodyAffectionDisposition</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#ExternalBodyPerceptionProcess">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExternalBodyPerceptionProcess</rdfs:label>
+<owl:Class rdf:about="#InadequateKnowledgeOfExternalBodyQualityClass">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">InadequateKnowledgeOfExternalBodyQualityClass</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
@@ -18138,6 +18145,13 @@
   <work3:type rdf:resource="#InadequateKnowledgeOfBodyPartsQuality"/>
   <obo:RO_0000052 rdf:resource="#HumanMind"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">InadequateKnowledgeOfBodyPartsQuality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#PerceptionOfExternalBodyViaBodyAffectionDispositionInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:RO_0000052 rdf:resource="#HumanMind"/>
+  <obo:BFO_0000054 rdf:resource="#ExternalBodyPerceptionProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PerceptionOfExternalBodyViaBodyAffectionDispositionInstance</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#AnotherBeing">
@@ -26594,16 +26608,23 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IdeaOfHumanBodyAffectionLacksAdequateKnowledgeOfExternalBodyQuality</rdfs:label>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#PerceptionOfExternalBodyViaBodyAffectionDispositionInstance">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <obo:RO_0000052 rdf:resource="#HumanMind"/>
-  <obo:BFO_0000054 rdf:resource="#ExternalBodyPerceptionProcess"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PerceptionOfExternalBodyViaBodyAffectionDispositionInstance</rdfs:label>
-</owl:NamedIndividual>
-
 <owl:NamedIndividual rdf:about="#ExternalBodyPerceptionOnlyViaAffectionIdeasQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExternalBodyPerceptionOnlyViaAffectionIdeasQuality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ImaginationOfExternalBody">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#HumanMind"/>
+  <obo:RO_0000057 rdf:resource="#ExternalBody"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ImaginationOfExternalBody</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#InadequateKnowledgeOfExternalBodyQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#HumanMind"/>
+  <work3:type rdf:resource="#InadequateKnowledgeOfExternalBodyQualityClass"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">InadequateKnowledgeOfExternalBodyQuality</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
