@@ -15736,6 +15736,8 @@
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
   <work:subClassOf rdf:resource="#_:bearerOfCounselorRole"/>
   <work:subClassOf rdf:resource="#_:bearerOfMessengerRole"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <work:subClassOf rdf:resource="#DivineAttribute"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Prophet</rdfs:label>
 </owl:Class>
 
@@ -15744,6 +15746,8 @@
   <obo:RO_0000057 rdf:resource="#God"/>
   <obo:RO_0000057 rdf:resource="#DivineWord"/>
   <obo:BFO_0000055 rdf:resource="#TeleologicalEnd"/>
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivineRevelation</rdfs:label>
 </owl:Class>
 
@@ -28459,16 +28463,16 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CertainKnowledge</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#PropheticSubjectMatter">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PropheticSubjectMatter</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#DivineRevelationProcess">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <obo:RO_0000057 rdf:resource="#God"/>
   <obo:RO_0000057 rdf:resource="#PropheticRecipient"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivineRevelationProcess</rdfs:label>
-</owl:Class>
-
-<owl:Class rdf:about="#PropheticSubjectMatter">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PropheticSubjectMatter</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#PropheticRecipient">
@@ -28480,6 +28484,27 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="#DivineAttribute"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivineCertaintyQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PropheticInterpretationDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="#PropheticInterpretationDisposition"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:BFO_0000054 rdf:resource="#PropheticInterpretationProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PropheticInterpretationDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PropheticInterpretationProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000055 rdf:resource="#PropheticInterpretationDisposition"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PropheticInterpretationProcess</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#CertainKnowledgeAccessibilityQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CertainKnowledgeAccessibilityQuality</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
