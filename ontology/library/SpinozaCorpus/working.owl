@@ -27198,6 +27198,32 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConceivabilityThroughCorporealSubstanceDisposition</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#MutualDetermination">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:BFO_0000054 rdf:resource="#MutualDeterminationProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MutualDetermination</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SurroundedByOthersQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SurroundedByOthersQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DefiniteAndConstantManner">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DefiniteAndConstantManner</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#MutualDeterminationProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#Body"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MutualDeterminationProcess</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
