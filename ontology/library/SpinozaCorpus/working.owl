@@ -26328,6 +26328,11 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConsciousnessOfSelfByEternalNecessity</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#EternalNecessityConsciousness">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EternalNecessityConsciousness</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#ConsciousnessOfGodByEternalNecessity">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="#EternalNecessityConsciousness"/>
@@ -26340,9 +26345,17 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConsciousnessOfThingsByEternalNecessity</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#EternalNecessityConsciousness">
+<owl:Class rdf:about="#WisdomQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#WiseMan"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WisdomQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PerseveranceInBeingDisposition">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EternalNecessityConsciousness</rdfs:label>
+  <obo:RO_0000052 rdf:resource="#WiseMan"/>
+  <obo:BFO_0000054 rdf:resource="#PerseveranceInBeingProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PerseveranceInBeingDisposition</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
