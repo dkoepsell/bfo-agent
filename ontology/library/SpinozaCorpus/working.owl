@@ -1692,6 +1692,7 @@
   <rdfs:subClassOf rdf:resource="#ModeOfThinking"/>
   <work:subClassOf rdf:resource="#ModeOfThinking"/>
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="#TransitionToGreaterPerfection"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Joy</rdfs:label>
 </owl:Class>
 
@@ -19873,6 +19874,14 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DiminishingPowerOfActingProcess</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#JoyIncreasesActingPowerProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#Joy"/>
+  <obo:RO_0000057 rdf:resource="#PowerOfActing"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">JoyIncreasesPowerOfActingProcess</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
