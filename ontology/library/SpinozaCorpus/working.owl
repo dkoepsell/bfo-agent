@@ -1623,6 +1623,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Individual</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#AffirmationOfBodyForceProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AffirmationOfBodyForceProcess</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#ConatusRealizationProcess">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConatusRealizationProcess</rdfs:label>
@@ -22355,10 +22361,25 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AffectIdeaContentRole</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#AffirmationOfBodyForceProcess">
+<owl:Class rdf:about="#TrueKnowledgeOfGoodAndEvil">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TrueKnowledgeOfGoodAndEvil</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#GoodAndEvilKnowledgeArisesDesireProcess">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AffirmationOfBodyForceProcess</rdfs:label>
+  <obo:RO_0000057 rdf:resource="#TrueKnowledgeOfGoodAndEvil"/>
+  <obo:BFO_0000055 rdf:resource="#Desire"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GoodAndEvilKnowledgeArisesDesireProcess</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DesireFromTrueKnowledgeDependenceQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#Desire"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DesireFromTrueKnowledgeDependenceQuality</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
