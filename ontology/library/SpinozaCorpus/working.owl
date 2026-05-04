@@ -2587,6 +2587,7 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <obo:RO_0000052 rdf:resource="#Idea"/>
+  <obo:RO_0000052 rdf:resource="#Proposition"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TruthQuality</rdfs:label>
 </owl:Class>
 
@@ -26811,6 +26812,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TruthFalsityBearerRole</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#Cognitio">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Cognitio</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
@@ -38118,6 +38125,11 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work:comment rdf:resource="#Achting (as a disposition) is disjoint from MisjudgmentOfWorth (as a quality): bearing Achting toward X does not entail that the bearer holds an erroneous appraisal of X's worth."/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AchtingDoesNotImplyMisjudgmentAxiom</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#CognitioImpliesTruthQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CognitioImpliesTruthQuality</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
