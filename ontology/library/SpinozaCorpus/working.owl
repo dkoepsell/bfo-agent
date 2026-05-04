@@ -6956,6 +6956,8 @@
   <work:subClassOf rdf:resource="#IdeaOfAction"/>
   <rdfs:subClassOf rdf:resource="#ContingentExistenceQuality"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#FearOrTimidity"/>
+  <obo:BFO_0000054 rdf:resource="#BehavioralRestraintFromShame"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Shame</rdfs:label>
 </owl:Class>
 
@@ -20252,6 +20254,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ShameAsEvilQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#DishonorablenessAvoidanceProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000055 rdf:resource="#SenseOfShame"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DishonorablenessAvoidanceProcess</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#Consternation">
   <rdfs:subClassOf rdf:resource="#Fear"/>
   <work:subClassOf rdf:resource="#FearRestrainedByTimidityDisposition"/>
@@ -21322,13 +21330,25 @@
 
 <owl:Class rdf:about="#DishonorablenessQuality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DishonorablenessQuality</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#DishonorablenessAvoidanceProcess">
+<owl:Class rdf:about="#FearOrTimidity">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FearOrTimidity</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DishonorableAction">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <obo:BFO_0000055 rdf:resource="#SenseOfShame"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DishonorablenessAvoidanceProcess</rdfs:label>
+  <obo:RO_0000053 rdf:resource="#DishonorablenessQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DishonorableAction</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#BehavioralRestraintFromShame">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BehavioralRestraintFromShame</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
