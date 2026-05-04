@@ -31405,6 +31405,32 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CustomMotivation</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#SelfPreservationDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:BFO_0000054 rdf:resource="#SelfPreservationProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SelfPreservationDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SelfPreservationProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SelfPreservationProcess</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DevelopmentOfArtsAndSciencesProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DevelopmentOfArtsAndSciencesProcess</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SocialOrderNecessityForPreservationDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:BFO_0000054 rdf:resource="#SelfPreservationProcess"/>
+  <obo:BFO_0000054 rdf:resource="#DevelopmentOfArtsAndSciencesProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SocialOrderNecessityForPreservationDisposition</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
