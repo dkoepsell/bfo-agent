@@ -1254,6 +1254,8 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Affect</rdfs:label>
 </owl:Class>
 
@@ -18585,6 +18587,24 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HumanActionFollowsFromNaturalNecessityQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#AffectCause">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AffectCause</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#AffectProperty">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AffectProperty</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#KnowledgeworthinessQuality">
+  <rdfs:subClassOf rdf:resource="#AffectProperty"/>
+  <work:subClassOf rdf:resource="#AffectProperty"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">KnowledgeworthinessQuality</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
