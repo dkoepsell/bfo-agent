@@ -3555,6 +3555,7 @@
   <work:subClassOf rdf:resource="#_:bearerOfInstrumentRole"/>
   <work:subClassOf rdf:resource="#WholeOfNature"/>
   <work:subClassOf rdf:resource="#_:participatesInThinking"/>
+  <work:subClassOf rdf:resource="#_:bearerOfThinkingDisposition"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Man</rdfs:label>
 </owl:Class>
 
@@ -13496,6 +13497,8 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="#Mode"/>
   <obo:RO_0000052 rdf:resource="#Mind"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:BFO_0000054 rdf:resource="#ThinkingProcess"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ThinkingDisposition</rdfs:label>
 </owl:Class>
 
@@ -16448,6 +16451,12 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IdeaExistenceWithoutCooccurringModeDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ThinkingProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ThinkingProcess</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
