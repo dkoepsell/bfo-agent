@@ -4280,6 +4280,14 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HumanPower</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#ActingFromVirtue">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000051 rdf:resource="#PreservingOnesBeingProcess"/>
+  <obo:BFO_0000055 rdf:resource="#Virtue"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ActingFromVirtue</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#Animal">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
   <obo:RO_0000053 rdf:resource="#AnimalExistenceQuality"/>
@@ -22588,12 +22596,10 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DeterminationToActByUnderstandingQuality</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#ActingFromVirtue">
+<owl:Class rdf:about="#PreservingOnesBeingProcess">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <obo:BFO_0000051 rdf:resource="#PreservingOnesBeingProcess"/>
-  <obo:BFO_0000055 rdf:resource="#Virtue"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ActingFromVirtue</rdfs:label>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PreservingOnesBeingProcess</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#GuidanceOfReason">
@@ -22603,16 +22609,21 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GuidanceOfReason</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#PreservingOnesBeingProcess">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PreservingOnesBeingProcess</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#RationalGuidanceRealization">
   <rdfs:subClassOf rdf:resource="#ActingFromVirtue"/>
   <work:subClassOf rdf:resource="#ActingFromVirtue"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RationalGuidanceRealization</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#StriveForBeingForItsOwnSakeDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">StriveForBeingForItsOwnSakeDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#IntrinsicSelfPreservationQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IntrinsicSelfPreservationQuality</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
@@ -32735,6 +32746,19 @@
   <work3:type rdf:resource="#VirtueFoundation"/>
   <obo:RO_0000052 rdf:resource="#SelfPreservationStriving"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FirstAndOnlyFoundationOfVirtueQuality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#StriveForBeingForItsOwnSakeDispositionInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="#ConatusMentalDispositionInstance"/>
+  <obo:RO_0000052 rdf:resource="#ConatusMentalDispositionInstance"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">StriveForBeingForItsOwnSakeDispositionInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#IntrinsicSelfPreservationQualityInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#StriveForBeingForItsOwnSakeDispositionInstance"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IntrinsicSelfPreservationQualityInstance</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
