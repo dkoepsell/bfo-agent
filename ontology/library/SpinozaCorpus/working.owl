@@ -17219,6 +17219,11 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BodyPreservationProcess</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#OtherBody">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OtherBody</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#BodyRegenerationDisposition">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
@@ -17232,11 +17237,6 @@
   <obo:RO_0000057 rdf:resource="#HumanBody"/>
   <obo:RO_0000057 rdf:resource="#OtherBody"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BodyRegenerationProcess</rdfs:label>
-</owl:Class>
-
-<owl:Class rdf:about="#OtherBody">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OtherBody</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#RequirementForOtherBodiesQuality">
@@ -17299,6 +17299,30 @@
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <obo:BFO_0000050 rdf:resource="#SurfaceChangeProcess"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TraceImpressionProcess</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#BodyMotionDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:BFO_0000054 rdf:resource="#BodyMovingExternalBodiesProcess"/>
+  <obo:RO_0000052 rdf:resource="#HumanBody"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BodyMotionDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ExternalBodyDispositionCapacity">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:BFO_0000054 rdf:resource="#BodyMovingExternalBodiesProcess"/>
+  <obo:RO_0000052 rdf:resource="#HumanBody"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExternalBodyDispositionCapacity</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#BodyMovingExternalBodiesProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#HumanBody"/>
+  <obo:RO_0000057 rdf:resource="#ExternalBody"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BodyMovingExternalBodiesProcess</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
