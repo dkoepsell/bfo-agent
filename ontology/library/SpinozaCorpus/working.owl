@@ -30321,6 +30321,11 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ProphecyGift</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#TrueProphetQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TrueProphetQuality</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -43662,6 +43667,27 @@
   <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <obo:RO_0000052 rdf:resource="#ProphecyGift"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ProphecyUniversalityQuality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Balaam">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <obo:RO_0000053 rdf:resource="#BalaamProphetRole"/>
+  <obo:RO_0000053 rdf:resource="#BalaamTrueProphetQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Balaam</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#BalaamProphetRole">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <obo:RO_0000052 rdf:resource="#Balaam"/>
+  <work3:type rdf:resource="#ProphetRole"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BalaamProphetRole</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#BalaamTrueProphetQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#Balaam"/>
+  <work3:type rdf:resource="#TrueProphetQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BalaamTrueProphetQuality</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
