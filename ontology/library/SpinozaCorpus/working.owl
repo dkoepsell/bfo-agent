@@ -25960,6 +25960,11 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PertainsToMindEssenceQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#SubSpecieAeternitatis">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SubSpecieAeternitatis</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
@@ -26642,6 +26647,7 @@
   <obo:RO_0000052 rdf:resource="#HumanMind"/>
   <work:subClassOf rdf:resource="#EssentialExistenceQuality"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:BFO_0000050 rdf:resource="#MindEternalityUnderSpeciesOfEternityQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EternalIdeaOfBodyPertainsToMindEssenceQuality</rdfs:label>
 </owl:NamedIndividual>
 
@@ -36692,6 +36698,25 @@
   <work3:type rdf:resource="#PertainsToMindEssenceQuality"/>
   <obo:RO_0000052 rdf:resource="#FormalBeingOfHumanMind"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IdeaPertainingToMindEssence</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#MindEternalityUnderSpeciesOfEternityQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#InfiniteIntellectOfGod"/>
+  <work:subClassOf rdf:resource="#SubstanceExistenceEternalityQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindEternalityUnderSpeciesOfEternityQuality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#BodyEssenceInvolvementUnderEternityQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#InfiniteIntellectOfGod"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BodyEssenceInvolvementUnderEternityQuality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#MindEternalityProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000055 rdf:resource="#BodyEssenceInvolvementUnderEternityQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindEternalityProcess</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
