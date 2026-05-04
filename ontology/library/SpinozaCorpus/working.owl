@@ -25383,6 +25383,47 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MultiCausalAffectNecessitation</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#AffectWithMultipleCauses">
+  <rdfs:subClassOf rdf:resource="#Attribute"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="#AffectWithFewerCauses"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AffectWithMultipleCauses</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#AffectWithFewerCauses">
+  <rdfs:subClassOf rdf:resource="#Attribute"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AffectWithFewerCauses</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#HarmfulnessQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HarmfulnessQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ReducedHarmfulnessQuality">
+  <rdfs:subClassOf rdf:resource="#HarmfulnessQuality"/>
+  <work:subClassOf rdf:resource="#HarmfulnessQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ReducedHarmfulnessQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#MindActingOnAffectDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindActingOnAffectDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#MultiCauseAffectReducedMindActingQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MultiCauseAffectReducedMindActingQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#AffectCausalMultiplicityQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AffectCausalMultiplicityQuality</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
