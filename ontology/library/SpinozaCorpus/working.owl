@@ -1388,6 +1388,13 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PrimaryAffect</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#HumanEssenceQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#AffectEssentiality"/>
+  <work:subClassOf rdf:resource="#EssentialExistenceQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HumanEssenceQuality</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#SoulDirectionProcess">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <obo:RO_0000057 rdf:resource="#Soul"/>
@@ -4240,6 +4247,8 @@
   <work:subClassOf rdf:resource="#GovernanceByIntellect"/>
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="#VirtuePowerIdentityQuality"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#EssentialExistenceQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Virtue</rdfs:label>
 </owl:Class>
 
@@ -7868,13 +7877,6 @@
   <work:subClassOf rdf:resource="#Hell"/>
   <obo:RO_0000052 rdf:resource="#EvilPassion"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EvilPassionIsHellQuality</rdfs:label>
-</owl:Class>
-
-<owl:Class rdf:about="#HumanEssenceQuality">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <work:subClassOf rdf:resource="#AffectEssentiality"/>
-  <work:subClassOf rdf:resource="#EssentialExistenceQuality"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HumanEssenceQuality</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#AwarenessCapacity">
@@ -22402,6 +22404,25 @@
 <owl:Class rdf:about="#TrueUnderstandingRealizesDesireRelation">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TrueUnderstandingRealizesDesireRelation</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ActingFromOwnNatureLaws">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ActingFromOwnNatureLaws</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#OwnNatureLaw">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:BFO_0000054 rdf:resource="#ActingFromOwnNatureLaws"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OwnNatureLaw</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#VirtueIdentityWithActingFromNatureQuality">
+  <rdfs:subClassOf rdf:resource="#Virtue"/>
+  <work:subClassOf rdf:resource="#Virtue"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">VirtueIdentityWithActingFromNatureQuality</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
