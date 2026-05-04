@@ -8437,6 +8437,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BodyAffection</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#ImageFormationProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000055 rdf:resource="#DistinctImageFormationCapacity"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ImageFormationProcess</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#AssociationOfParticles">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
@@ -12359,6 +12365,7 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
   <work:subClassOf rdf:resource="#_:hasDispositionRestriction"/>
+  <work3:type rdf:resource="#TranscendentalTerm"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Being</rdfs:label>
 </owl:Class>
 
@@ -16949,6 +16956,8 @@
 <owl:Class rdf:about="#Thing">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work3:type rdf:resource="#TranscendentalTerm"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Thing</rdfs:label>
 </owl:Class>
 
@@ -17916,10 +17925,20 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FiniteDistinctImageCapacityQuality</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#ImageFormationProcess">
+<owl:Class rdf:about="#ConfusedImage">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConfusedImage</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ConfusedImageFormation">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <obo:BFO_0000055 rdf:resource="#DistinctImageFormationCapacity"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ImageFormationProcess</rdfs:label>
+  <obo:BFO_0000055 rdf:resource="#TranscendentalTermOriginDisposition"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConfusedImageFormation</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#TranscendentalTermOriginDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TranscendentalTermOriginDisposition</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
