@@ -14606,6 +14606,7 @@
 
 <owl:Class rdf:about="#OmnipotenceDisposition">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:RO_0000052 rdf:resource="#God"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OmnipotenceDisposition</rdfs:label>
 </owl:Class>
 
@@ -27512,6 +27513,7 @@
 <owl:Class rdf:about="#AbsolutePerfectionQuality">
   <rdfs:subClassOf rdf:resource="#SubstanceInfinityOrPerfectionQuality"/>
   <work:subClassOf rdf:resource="#SubstanceInfinityOrPerfectionQuality"/>
+  <obo:RO_0000052 rdf:resource="#God"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AbsolutePerfectionQuality</rdfs:label>
 </owl:Class>
 
@@ -27835,6 +27837,9 @@
   <obo:RO_0000053 rdf:resource="#AllPerfectionsQuality"/>
   <obo:RO_0000053 rdf:resource="#UniqueNecessaryExistentDisposition"/>
   <obo:RO_0000053 rdf:resource="#NecessaryExistenceExclusivityQuality"/>
+  <obo:RO_0000053 rdf:resource="#AbsolutePerfectionQuality"/>
+  <obo:RO_0000053 rdf:resource="#AbsoluteUnlimitednessInBeingQuality"/>
+  <obo:RO_0000053 rdf:resource="#OmnipotenceDisposition"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">God</rdfs:label>
 </owl:NamedIndividual>
 
@@ -39114,6 +39119,12 @@
   <work3:type rdf:resource="#AbsolutePerfectionQuality"/>
   <obo:RO_0000052 rdf:resource="#God"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AbsolutePerfectionQualityInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#AbsoluteUnlimitednessInBeingQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#God"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AbsoluteUnlimitednessInBeingQuality</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
