@@ -20241,6 +20241,11 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FutureEvilAvoidanceDisposition</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#DesireToAvoidEvil">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DesireToAvoidEvil</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#LesserEvil">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
@@ -21507,15 +21512,33 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PityQuality</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#DesireToAvoidEvil">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DesireToAvoidEvil</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#GreaterEvil">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="#EvilQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GreaterEvil</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#Daring">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="#Desire"/>
+  <obo:BFO_0000054 rdf:resource="#DangerousAction"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Daring</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DangerousAction">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DangerousAction</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#FearOfDangerousAction">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:BFO_0000054 rdf:resource="#DangerousAction"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FearOfDangerousAction</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#Equal">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Equal</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
