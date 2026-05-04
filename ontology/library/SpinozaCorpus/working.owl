@@ -16840,6 +16840,8 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
   <work:subClassOf rdf:resource="#_:universalAnimacyRestriction"/>
+  <rdfs:subClassOf rdf:resource="#Body"/>
+  <work:subClassOf rdf:resource="#Body"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Individual</rdfs:label>
 </owl:Class>
 
@@ -17004,6 +17006,26 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <obo:BFO_0000054 rdf:resource="#AffectionOfBodyByBody"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">JointNatureDeterminesAffectionDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#MutualConstraintDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:BFO_0000054 rdf:resource="#BodyCompositionProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MutualConstraintDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#BodyCompositionProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#Body"/>
+  <obo:RO_0000057 rdf:resource="#Individual"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BodyCompositionProcess</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#FixedMotionConstraintQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FixedMotionConstraintQuality</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
