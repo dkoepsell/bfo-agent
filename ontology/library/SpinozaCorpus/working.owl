@@ -22860,6 +22860,7 @@
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <obo:BFO_0000055 rdf:resource="#ReasonsGuidance"/>
+  <obo:BFO_0000055 rdf:resource="#GuidanceOfReason"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LivingAccordingToReason</rdfs:label>
 </owl:Class>
 
@@ -23112,6 +23113,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BeingHonorable</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#JoiningOthersInFriendship">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#ReasonableMan"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">JoiningOthersInFriendship</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#ReasonableMan">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
@@ -23120,15 +23127,15 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ReasonableMan</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#JoiningOthersInFriendship">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <obo:RO_0000057 rdf:resource="#ReasonableMan"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">JoiningOthersInFriendship</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#FriendshipObligation">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FriendshipObligation</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#TrueVirtue">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:BFO_0000054 rdf:resource="#LivingAccordingToReason"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TrueVirtue</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
@@ -33342,6 +33349,13 @@
   <work3:type rdf:resource="#EqualEnjoyabilityQuality"/>
   <RO_0000052 rdf:resource="#VirtueSeeker"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GreatestGoodOfVirtueSeekers</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#TrueVirtueDefinitionContent">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <obo:BFO_0000050 rdf:resource="#TheEthics"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TrueVirtueDefinitionContent</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
