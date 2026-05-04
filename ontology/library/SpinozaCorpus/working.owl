@@ -24692,6 +24692,36 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RarityOfRationalLivingQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#CommonSociety">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CommonSociety</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SocialFormationProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#CommonSociety"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SocialFormationProcess</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#AdvantageOfCommonSociety">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AdvantageOfCommonSociety</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DisadvantageOfCommonSociety">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DisadvantageOfCommonSociety</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#AdvantageExceedsDisadvantageQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#CommonSociety"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AdvantageExceedsDisadvantageQuality</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
