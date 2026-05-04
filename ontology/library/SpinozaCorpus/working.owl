@@ -24092,6 +24092,30 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IdeaOfFutureOrPastOrPresentThing</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#MindActsQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindActsQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ActiveAffectOfJoy">
+  <rdfs:subClassOf rdf:resource="#ActiveAffect"/>
+  <work:subClassOf rdf:resource="#ActiveAffect"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ActiveAffectOfJoy</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ActiveAffectOfDesire">
+  <rdfs:subClassOf rdf:resource="#ActiveAffect"/>
+  <work:subClassOf rdf:resource="#ActiveAffect"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ActiveAffectOfDesire</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ActiveAffectExclusionQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ActiveAffectExclusionAxiom</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
