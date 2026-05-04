@@ -424,6 +424,13 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PerfectionLossProcess</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#AdequateCausation">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:BFO_0000054 rdf:resource="#Action"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AdequateCausation</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#EternalInfiniteEssence">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
@@ -11860,13 +11867,6 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <work:subClassOf rdf:resource="#Action"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Assenting</rdfs:label>
-</owl:Class>
-
-<owl:Class rdf:about="#AdequateCausation">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <obo:BFO_0000054 rdf:resource="#Action"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AdequateCausation</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#AssentingToConfusedThings">
@@ -24009,6 +24009,29 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="#ConatusMentalDispositionInstance"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindStriveToPreserveBodyPartStateDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PartialBodyAffection">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PartialBodyAffection</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DesireArisingFromPartialBodyAffection">
+  <rdfs:subClassOf rdf:resource="#Desire"/>
+  <work:subClassOf rdf:resource="#Desire"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DesireArisingFromPartialBodyAffection</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#WholePersonAdvantage">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WholePersonAdvantage</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#LackOfRegardForWholePersonAdvantage">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LackOfRegardForWholePersonAdvantage</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
