@@ -22685,6 +22685,7 @@
 
 <owl:Class rdf:about="#ImmoderateDesire">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ImmoderateDesire</rdfs:label>
 </owl:Class>
 
@@ -31429,6 +31430,31 @@
   <obo:BFO_0000054 rdf:resource="#SelfPreservationProcess"/>
   <obo:BFO_0000054 rdf:resource="#DevelopmentOfArtsAndSciencesProcess"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SocialOrderNecessityForPreservationDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SelfAdvantageSeekingDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="#SelfAdvantageSeekingDisposition"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Self-AdvantageSeeking</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SoundReason">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SoundReason</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#JudgingUsefulnessByDesireProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000055 rdf:resource="#ImmoderateDesire"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">JudgingUsefulnessByDesireProcess</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#UtilityJudgmentQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UtilityJudgmentQuality</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
