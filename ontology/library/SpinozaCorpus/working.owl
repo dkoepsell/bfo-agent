@@ -232,6 +232,18 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CausalReasonForExistence</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#ExistenceNonEvilQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExistenceNonEvilQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ExistenceNonImperfectionQuality">
+  <rdfs:subClassOf rdf:resource="#ImperfectionQuality"/>
+  <work:subClassOf rdf:resource="#ImperfectionQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExistenceNonImperfectionQuality</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#EssentialExistenceQuality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="#DivineAttribute"/>
@@ -253,6 +265,7 @@
   <obo:RO_0000052 rdf:resource="#Speaker"/>
   <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#PerfectionLossDisposition"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ImperfectionQuality</rdfs:label>
 </owl:Class>
 
@@ -2719,6 +2732,13 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000020"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000020"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Privation</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#MorePerfectState">
+  <rdfs:subClassOf rdf:resource="#ImperfectionQuality"/>
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MorePerfectState</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#WordCausedErrorProcess">
@@ -13665,12 +13685,6 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AbsoluteEvilQuality</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#MorePerfectState">
-  <rdfs:subClassOf rdf:resource="#ImperfectionQuality"/>
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MorePerfectState</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#ConceptualCapacityLimitDisposition">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
@@ -13678,16 +13692,37 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConceptualCapacityLimitDisposition</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#ExistenceNonEvilQuality">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExistenceNonEvilQuality</rdfs:label>
+<owl:Class rdf:about="#PerfectAct">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="#PerfectionPreservationDisposition"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PerfectAct</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#ExistenceNonImperfectionQuality">
-  <rdfs:subClassOf rdf:resource="#ImperfectionQuality"/>
-  <work:subClassOf rdf:resource="#ImperfectionQuality"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExistenceNonImperfectionQuality</rdfs:label>
+<owl:Class rdf:about="#ImperfectAct">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="#PerfectionLossDisposition"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ImperfectAct</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PerfectionPreservationDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PerfectionPreservationDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PerfectionLossDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:BFO_0000054 rdf:resource="#PerfectionLossProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PerfectionLossDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PerfectionLossProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PerfectionLossProcess</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#God">
