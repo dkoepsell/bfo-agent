@@ -14038,6 +14038,16 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HumanIntellectBoundQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#ErrorAvoidanceCapacity">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ErrorAvoidanceCapacity</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#CapacityLossProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CapacityLossProcess</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#God">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
   <obo:BFO_0000051 rdf:resource="#DivineAttribute"/>
@@ -20979,6 +20989,33 @@
   <obo:RO_0000057 rdf:resource="#Speaker"/>
   <obo:BFO_0000055 rdf:resource="#GodProximateCauseRole"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ImpressingOfIntellectWillOrderProcess</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#FirstHuman">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <obo:RO_0000053 rdf:resource="#ErrorAvoidanceCapacityInstance"/>
+  <obo:RO_0000056 rdf:resource="#FirstHumanCapacityLossProcess"/>
+  <obo:RO_0000056 rdf:resource="#MisuseOfCapacityProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FirstHuman</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ErrorAvoidanceCapacityInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work3:type rdf:resource="#ErrorAvoidanceCapacity"/>
+  <obo:RO_0000052 rdf:resource="#FirstHuman"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ErrorAvoidanceCapacityInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#MisuseOfCapacityProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000050 rdf:resource="#FirstHumanCapacityLossProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MisuseOfCapacityProcess</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#FirstHumanCapacityLossProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work3:type rdf:resource="#CapacityLossProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FirstHumanCapacityLossProcess</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
