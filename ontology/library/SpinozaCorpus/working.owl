@@ -20996,6 +20996,7 @@
   <work3:type rdf:resource="#OntologicalDependenceOnGodClass"/>
   <obo:RO_0000052 rdf:resource="#WholeOfNature"/>
   <obo:BFO_0000054 rdf:resource="#GodCausesAllThingsProcess"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OntologicalDependenceOnGod</rdfs:label>
 </owl:NamedIndividual>
 
@@ -21003,6 +21004,7 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work3:type rdf:resource="#ConceptualDependenceOnGodClass"/>
   <obo:RO_0000052 rdf:resource="#WholeOfNature"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConceptualDependenceOnGod</rdfs:label>
 </owl:NamedIndividual>
 
@@ -25358,6 +25360,20 @@
   <RO_0000052 rdf:resource="#God"/>
   <obo:BFO_0000054 rdf:resource="#GodCausesAllThingsProcess"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CausalRoleOfGodOverEssenceAndExistence</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#SingularThingOntologicalDependenceInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work3:type rdf:resource="#OntologicalDependenceOnGod"/>
+  <obo:RO_0000052 rdf:resource="#SingularThing"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SingularThingOntologicalDependenceInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#SingularThingConceptualDependenceInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work3:type rdf:resource="#ConceptualDependenceOnGod"/>
+  <obo:RO_0000052 rdf:resource="#SingularThing"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SingularThingConceptualDependenceInstance</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
