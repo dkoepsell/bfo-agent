@@ -8488,6 +8488,7 @@
   <obo:BFO_0000050 rdf:resource="#WholeOfNature"/>
   <work:subClassOf rdf:resource="#ModificationBearer"/>
   <obo:RO_0000056 rdf:resource="#ImageFormationProcess"/>
+  <obo:RO_0000057 rdf:resource="#BodyAffectionProcess"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HumanBody</rdfs:label>
 </owl:Class>
 
@@ -18677,6 +18678,7 @@
 <owl:Class rdf:about="#PowerOfActing">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <obo:RO_0000052 rdf:resource="#Body"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PowerOfActing</rdfs:label>
 </owl:Class>
 
@@ -18684,6 +18686,20 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="#BodyAffection"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PowerOfActingChange</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PowerOfActingIncreaseQuality">
+  <rdfs:subClassOf rdf:resource="#PowerOfActing"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#HumanBody"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PowerOfActingIncreaseQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PowerOfActingDiminutionQuality">
+  <rdfs:subClassOf rdf:resource="#PowerOfActing"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#HumanBody"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PowerOfActingDiminutionQuality</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
