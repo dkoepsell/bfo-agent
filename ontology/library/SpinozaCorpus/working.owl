@@ -24051,18 +24051,26 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="#HumanEssenceDetermination"/>
   <obo:BFO_0000054 rdf:resource="#ReasonDeterminesDesireProcess"/>
+  <rdfs:subClassOf rdf:resource="#Desire"/>
+  <work:subClassOf rdf:resource="#Desire"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DesireArisingFromReason</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#HumanEssenceDetermination">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HumanEssenceDetermination</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ReasonDeterminesDesireProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#HumanNatureInsofar"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ReasonDeterminesDesireProcess</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#AdequateCognitionThroughEssenceQuality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="#ConceptualIndependence"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AdequateCognitionThroughEssenceQuality</rdfs:label>
-</owl:Class>
-
-<owl:Class rdf:about="#HumanEssenceDetermination">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HumanEssenceDetermination</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#HumanNatureInsofar">
@@ -24072,10 +24080,10 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HumanNatureInsofar</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#ReasonDeterminesDesireProcess">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <obo:RO_0000057 rdf:resource="#HumanNatureInsofar"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ReasonDeterminesDesireProcess</rdfs:label>
+<owl:Class rdf:about="#AbsenceOfExcessivenessQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AbsenceOfExcessivenessQuality</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
