@@ -15636,6 +15636,17 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">InfiniteModesQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#OmnipotenceQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OmnipotenceQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ActualFromEternityQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#SubstanceExistenceEternalityQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ActualFromEternityQuality</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
@@ -17465,6 +17476,7 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#Omnipotence"/>
   <obo:RO_0000052 rdf:resource="#God"/>
+  <work3:type rdf:resource="#OmnipotenceQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodOmnipotenceQuality</rdfs:label>
 </owl:NamedIndividual>
 
@@ -23374,6 +23386,13 @@
   <work3:type rdf:resource="#WillNonPertinenceToGodNatureClass"/>
   <obo:RO_0000052 rdf:resource="#God"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WillNotPertainingToGodQuality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#GodOmnipotenceActualityQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work3:type rdf:resource="#ActualFromEternityQuality"/>
+  <obo:RO_0000052 rdf:resource="#GodOmnipotenceQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodOmnipotenceActualityQuality</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
