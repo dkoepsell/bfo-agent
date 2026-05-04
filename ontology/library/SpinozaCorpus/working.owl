@@ -28219,6 +28219,7 @@
   <obo:BFO_0000055 rdf:resource="#ContinualDependenceOnGodInstance"/>
   <obo:BFO_0000051 rdf:resource="#EssenceCausationProcess"/>
   <obo:BFO_0000051 rdf:resource="#FormalExistenceNecessitationProcess"/>
+  <obo:BFO_0000055 rdf:resource="#GodActivityIdentityWithNatureLawsQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodCausesAllThingsProcess</rdfs:label>
 </owl:NamedIndividual>
 
@@ -30714,6 +30715,13 @@
   <work3:type rdf:resource="#SelfSufficiencyQuality"/>
   <obo:RO_0000052 rdf:resource="#God"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodSelfSufficiencyQualityInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ImmutableFirstCauseRoleInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <obo:RO_0000052 rdf:resource="#God"/>
+  <obo:BFO_0000054 rdf:resource="#FirstCausationProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ImmutableFirstCauseRoleInstance</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#ThinkingThingRole">
@@ -39639,18 +39647,23 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ShortTubeWaterFlowProcess</rdfs:label>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#ImmutableFirstCauseRoleInstance">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
-  <obo:RO_0000052 rdf:resource="#God"/>
-  <obo:BFO_0000054 rdf:resource="#FirstCausationProcess"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ImmutableFirstCauseRoleInstance</rdfs:label>
-</owl:NamedIndividual>
-
 <owl:NamedIndividual rdf:about="#FirstCausationProcess">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <obo:RO_0000057 rdf:resource="#God"/>
   <obo:RO_0000057 rdf:resource="#Universe"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FirstCausationProcess</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#UniversalLawsOfNature">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UniversalLawsOfNature</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#GodActivityIdentityWithNatureLawsQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#God"/>
+  <work:seeAlso rdf:resource="#UniversalLawsOfNature"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodActivityIdentityWithNatureLawsQuality</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
