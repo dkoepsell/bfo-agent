@@ -2002,6 +2002,7 @@
   <rdfs:subClassOf rdf:resource="#Falsity"/>
   <work:subClassOf rdf:resource="#PrivationOfKnowledge"/>
   <work:subClassOf rdf:resource="#Falsity"/>
+  <obo:RO_0000052 rdf:resource="#Idea"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FalsityQuality</rdfs:label>
 </owl:Class>
 
@@ -2585,6 +2586,7 @@
 <owl:Class rdf:about="#TruthQuality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#Idea"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TruthQuality</rdfs:label>
 </owl:Class>
 
@@ -26800,6 +26802,13 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IdeaImageDistinction</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#TruthFalsityBearerRole">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <obo:RO_0000052 rdf:resource="#Idea"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TruthFalsityBearerRole</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
