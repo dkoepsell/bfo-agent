@@ -17881,6 +17881,20 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CommonNotionGround</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#AdequacyPreservingClosure">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:BFO_0000054 rdf:resource="#IdeaFollowingFromAdequateIdeasProcess"/>
+  <work:subClassOf rdf:resource="#AdequacyPreservingClosure"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AdequacyPreservingClosure</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#IdeaFollowingFromAdequateIdeasProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IdeaFollowingFromAdequateIdeasProcess</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
