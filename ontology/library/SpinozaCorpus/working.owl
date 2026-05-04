@@ -19536,6 +19536,18 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UnfairlyElevatedOpinionOfAnother</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#Scorn">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#Joy"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Scorn</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#UnjustUndervaluationOfAnother">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UnjustUndervaluationOfAnother</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
