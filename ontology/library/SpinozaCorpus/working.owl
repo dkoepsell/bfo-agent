@@ -1215,6 +1215,7 @@
   <obo:RO_0000053 rdf:resource="#MindBodyKnowledgeThroughAffectionsDisposition"/>
   <obo:RO_0000053 rdf:resource="#MindKnowsBodyOnlyViaAffectionIdeasQuality"/>
   <obo:BFO_0000050 rdf:resource="#WholeOfNature"/>
+  <obo:RO_0000053 rdf:resource="#InadequateKnowledgeOfBodyPartsQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HumanMind</rdfs:label>
 </owl:Class>
 
@@ -17568,6 +17569,11 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WithoutRelationToObject</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#AdequateKnowledge">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AdequateKnowledge</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
@@ -26525,6 +26531,19 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <obo:RO_0000057 rdf:resource="#FormalBeingOfHumanMind"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PerceptionOfBodyAffectionIdeasProcess</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#PartsOfHumanBody">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <obo:BFO_0000050 rdf:resource="#HumanBody"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PartsOfHumanBody</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#InadequateKnowledgeOfBodyPartsQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work3:type rdf:resource="#InadequateKnowledgeOfBodyPartsQuality"/>
+  <obo:RO_0000052 rdf:resource="#HumanMind"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">InadequateKnowledgeOfBodyPartsQuality</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
