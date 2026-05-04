@@ -6954,6 +6954,8 @@
   <work:subClassOf rdf:resource="#SadnessQuality"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000020"/>
   <work:subClassOf rdf:resource="#IdeaOfAction"/>
+  <rdfs:subClassOf rdf:resource="#ContingentExistenceQuality"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Shame</rdfs:label>
 </owl:Class>
 
@@ -6961,6 +6963,12 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ShameAccompanimentRelation</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#IdeaOfAction">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IdeaOfAction</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#EvilPassion">
@@ -21282,16 +21290,22 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ImaginedPraiseOfOthers</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#IdeaOfAction">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IdeaOfAction</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#ImaginedBlameQuality">
   <rdfs:subClassOf rdf:resource="#IdeaOfAction"/>
   <work:subClassOf rdf:resource="#IdeaOfAction"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ImaginedBlameQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ShameInducingDeed">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ShameInducingDeed</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ShameFollowsFromDeedDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:BFO_0000054 rdf:resource="#ShameInducingDeed"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ShameFollowsFromDeedDisposition</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
