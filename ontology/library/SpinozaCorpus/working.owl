@@ -22256,6 +22256,8 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="#Affect"/>
   <work:subClassOf rdf:resource="#JoyAffect"/>
+  <work:subClassOf rdf:resource="#ConsciousnessOfAffect"/>
+  <work:subClassOf rdf:resource="#GoodAndEvilDistinction"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">KnowledgeOfGoodAndEvil</rdfs:label>
 </owl:Class>
 
@@ -22268,6 +22270,8 @@
 <owl:Class rdf:about="#ConsciousnessOfAffect">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#Affect"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConsciousnessOfAffect</rdfs:label>
 </owl:Class>
 
@@ -22287,6 +22291,11 @@
   <rdfs:subClassOf rdf:resource="#Affect"/>
   <work:subClassOf rdf:resource="#Affect"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AffectIntensificationByPresentCauseImagining</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#GoodAndEvilDistinction">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GoodAndEvilDistinction</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
