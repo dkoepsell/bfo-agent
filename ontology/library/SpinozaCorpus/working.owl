@@ -30465,15 +30465,33 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HumanDecision</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#LawEstablishmentProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#HumanAgent"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LawEstablishmentProcess</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#HumanAgent">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HumanAgent</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#LawEstablishmentProcess">
+<owl:Class rdf:about="#DeterminationByNaturalLawDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:BFO_0000054 rdf:resource="#DeterminateProductionOfEffectsProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DeterminationByNaturalLawDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DeterminateProductionOfEffectsProcess">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <obo:RO_0000057 rdf:resource="#HumanAgent"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LawEstablishmentProcess</rdfs:label>
+  <obo:BFO_0000055 rdf:resource="#DeterminationByNaturalLawDisposition"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DeterminateProductionOfEffectsProcess</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#CausalDeterminismQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#EssentialExistenceQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CausalDeterminismQuality</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
@@ -34530,6 +34548,7 @@
 
 <owl:NamedIndividual rdf:about="#UniversalLawsOfNature">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UniversalLawsOfNature</rdfs:label>
 </owl:NamedIndividual>
 
