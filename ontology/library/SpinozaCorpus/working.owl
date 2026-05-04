@@ -16053,6 +16053,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodAffection</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#WillFreedomCausalAbsenceDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WillFreedomCausalAbsenceDisposition</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
@@ -16323,6 +16329,7 @@
   <obo:RO_0000057 rdf:resource="#NaturaNaturataDefinitionContent"/>
   <work3:type rdf:resource="#UniquenessInNatureQuality"/>
   <obo:BFO_0000050 rdf:resource="#NaturaNaturans"/>
+  <obo:RO_0000053 rdf:resource="#GodWillFreedomAbsenceQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">God</rdfs:label>
 </owl:NamedIndividual>
 
@@ -24012,6 +24019,19 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <obo:BFO_0000050 rdf:resource="#WillProductionIncapacity"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WillFreeCauseIncapacity</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#GodWillFreedomAbsenceQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work3:type rdf:resource="#WillFreedomCausalAbsenceDisposition"/>
+  <obo:RO_0000052 rdf:resource="#God"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodWillFreedomAbsenceQuality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#GodEffectProductionProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#God"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodEffectProductionProcess</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
