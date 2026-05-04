@@ -1193,6 +1193,7 @@
   <obo:BFO_0000050 rdf:resource="#InfiniteIntellectOfGod"/>
   <obo:RO_0000052 rdf:resource="#God"/>
   <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
+  <obo:BFO_0000050 rdf:resource="#God"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HumanMind</rdfs:label>
 </owl:Class>
 
@@ -1354,6 +1355,15 @@
   <obo:RO_0000057 rdf:resource="#Body"/>
   <work:subClassOf rdf:resource="#SoulBodyAffectionProcess"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PerceptionProcess</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#HumanEssence">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#EssentialExistenceQuality"/>
+  <work:subClassOf rdf:resource="#AttributeModification"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#God"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HumanEssence</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#ImaginativeRepresentation">
@@ -3582,15 +3592,6 @@
   <obo:RO_0000057 rdf:resource="#Man"/>
   <obo:RO_0000057 rdf:resource="#StrongerNature"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConceptionOfStrongerNature</rdfs:label>
-</owl:Class>
-
-<owl:Class rdf:about="#HumanEssence">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <work:subClassOf rdf:resource="#EssentialExistenceQuality"/>
-  <work:subClassOf rdf:resource="#AttributeModification"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <obo:RO_0000052 rdf:resource="#God"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HumanEssence</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#AttributeModification">
@@ -8314,6 +8315,7 @@
   <obo:BFO_0000050 rdf:resource="#Human"/>
   <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
   <work3:type rdf:resource="#ModificationBearer"/>
+  <obo:BFO_0000050 rdf:resource="#PartOfExtendedSubstance"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HumanBody</rdfs:label>
 </owl:Class>
 
@@ -16776,6 +16778,11 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IdeaObjectRelation</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#MindBodyUnionQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindBodyUnionQuality</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
@@ -25474,6 +25481,13 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <obo:RO_0000052 rdf:resource="#IdeaOfBody"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IdeaOfBodyObjectDisposition</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#MindBodyUnion">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work3:type rdf:resource="#MindBodyUnionQuality"/>
+  <obo:RO_0000052 rdf:resource="#HumanMind"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindBodyUnion</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
