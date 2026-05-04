@@ -9207,6 +9207,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivineLawClass</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#TrueMannerOfLiving">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TrueMannerOfLiving</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#Inviolability">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
@@ -23993,6 +23999,7 @@
 
 <owl:Class rdf:about="#Institution">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Institution</rdfs:label>
 </owl:Class>
 
@@ -31166,16 +31173,28 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CeremonialConcernDisposition</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#TrueMannerOfLiving">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TrueMannerOfLiving</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#DivineLawConsistsInTrueMannerOfLivingQuality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivineLawConsistsInTrueMannerOfLivingQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#InstitutionalGoodness">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">InstitutionalGoodness</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#NaturalGoodness">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NaturalGoodness</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#CeremonyGoodnessFromInstitution">
+  <rdfs:subClassOf rdf:resource="#InstitutionalGoodness"/>
+  <work:subClassOf rdf:resource="#InstitutionalGoodness"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CeremonyGoodnessFromInstitution</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
