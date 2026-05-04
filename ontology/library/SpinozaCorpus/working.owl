@@ -137,6 +137,7 @@
   <work:subClassOf rdf:resource="#ModificationBearer"/>
   <work:subClassOf rdf:resource="#SubstanceExistenceEternalityQuality"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000051"/>
+  <obo:BFO_0000051 rdf:resource="#Attribute"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Substance</rdfs:label>
 </owl:Class>
 
