@@ -25964,6 +25964,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EternalModeOfThinkingQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#EternalModeOfThinking">
+  <rdfs:subClassOf rdf:resource="#Attribute"/>
+  <work:subClassOf rdf:resource="#Attribute"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EternalModeOfThinking</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#EssentialMindModeEternityDisposition">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="#SubstanceExistsByEternity"/>
@@ -26211,11 +26217,6 @@
 <owl:Class rdf:about="#EternalityOfMindIntellectQuality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EternalityOfMindIntellectQuality</rdfs:label>
-</owl:Class>
-
-<owl:Class rdf:about="#EternalModeOfThinking">
-  <rdfs:subClassOf rdf:resource="#Attribute"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EternalModeOfThinking</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
@@ -26593,6 +26594,7 @@
   <obo:BFO_0000051 rdf:resource="#God"/>
   <obo:RO_0000052 rdf:resource="#God"/>
   <obo:BFO_0000051 rdf:resource="#DeterminateModeOfThinkingQualityInstance"/>
+  <obo:BFO_0000051 rdf:resource="#CollectionOfEternalModesOfThinking"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ThinkingAttribute</rdfs:label>
 </owl:NamedIndividual>
 
@@ -26726,6 +26728,7 @@
   <obo:BFO_0000051 rdf:resource="#IdeaOfHumanMindInGod"/>
   <obo:BFO_0000051 rdf:resource="#IdeaOfHumanBodyInGod"/>
   <obo:BFO_0000051 rdf:resource="#IdeaOfHumanBodyEssence"/>
+  <obo:BFO_0000051 rdf:resource="#CollectionOfEternalModesOfThinking"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">InfiniteIntellectOfGod</rdfs:label>
 </owl:NamedIndividual>
 
@@ -37303,6 +37306,12 @@
   <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <RO_0000052 rdf:resource="#FormalBeingOfHumanMind"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindUnderstandingQuality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#CollectionOfEternalModesOfThinking">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
+  <obo:BFO_0000050 rdf:resource="#InfiniteIntellectOfGod"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CollectionOfEternalModesOfThinking</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
