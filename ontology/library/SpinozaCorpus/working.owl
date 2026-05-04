@@ -28530,6 +28530,11 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RevelationInWords</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#PropheticWordContent">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PropheticWordContent</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#RevelationInVisibleForms">
   <rdfs:subClassOf rdf:resource="#DivineRevelation"/>
   <work:subClassOf rdf:resource="#DivineRevelation"/>
@@ -28537,14 +28542,51 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RevelationInVisibleForms</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#PropheticWordContent">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PropheticWordContent</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#VisibleForm">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">VisibleForm</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#RevealedWord">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RevealedWord</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#RevealedForm">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RevealedForm</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#TrueExternalRevelationQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#TruePerceptionQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TrueExternalRevelationQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ImaginaryRevelationQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ImaginaryRevelationQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ProphetImagination">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ProphetImagination</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ProphetRole">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ProphetRole</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ImaginaryProductionProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000055 rdf:resource="#ProphetImagination"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ImaginaryProductionProcess</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
@@ -32030,6 +32072,16 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <obo:BFO_0000054 rdf:resource="#UnionWithGod"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UnionWithGodProducedByLoveDisposition</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Moses">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Moses</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#TrueVoice">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TrueVoice</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#EternityNonCommunicabilityToCreatures">
@@ -40585,16 +40637,6 @@
   <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
   <obo:RO_0000052 rdf:resource="#MindPowerToFormNotions"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FirstCauseCausalRole</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#Moses">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Moses</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#TrueVoice">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TrueVoice</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#TrueVoiceQuality">
