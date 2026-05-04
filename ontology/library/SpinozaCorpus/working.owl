@@ -11505,6 +11505,7 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000054 rdf:resource="#PrescribingLawProcess"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Understanding</rdfs:label>
 </owl:Class>
 
@@ -30885,6 +30886,23 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FountainOfTrueLife</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#WisePerson">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WisePerson</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PrescribedLaw">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PrescribedLaw</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PrescribingLawProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#WisePerson"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PrescribingLawProcess</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -36365,6 +36383,8 @@
   <obo:RO_0000052 rdf:resource="#TrueIntellect"/>
   <work3:type rdf:resource="#Mode"/>
   <obo:RO_0000052 rdf:resource="#God"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <obo:RO_0000052 rdf:resource="#WisePerson"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Wisdom</rdfs:label>
 </owl:NamedIndividual>
 
