@@ -23994,6 +23994,7 @@
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work:subClassOf rdf:resource="#PrincipleOfLiving"/>
   <work:subClassOf rdf:resource="#Institution"/>
+  <obo:BFO_0000054 rdf:resource="#BehavioralCheckingRole"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Law</rdfs:label>
 </owl:Class>
 
@@ -31551,6 +31552,36 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SovereigntyDichotomyConstraint</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#LawInstitutionProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LawInstitutionProcess</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#HopeOfDesiredGood">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HopeOfDesiredGood</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#FearDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FearDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#BehavioralCheckingRole">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BehavioralCheckingRole</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#NormativeMotivationQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NormativeMotivationQuality</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
