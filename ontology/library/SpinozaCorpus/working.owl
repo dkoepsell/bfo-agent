@@ -2524,6 +2524,8 @@
 <owl:Class rdf:about="#ConfusedIdea">
   <rdfs:subClassOf rdf:resource="#Idea"/>
   <work:subClassOf rdf:resource="#Idea"/>
+  <rdfs:subClassOf rdf:resource="#InadequateIdea"/>
+  <work:subClassOf rdf:resource="#InadequateIdea"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConfusedIdea</rdfs:label>
 </owl:Class>
 
@@ -2598,6 +2600,7 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <obo:RO_0000052 rdf:resource="#PropositionalAct"/>
+  <work:subClassOf rdf:resource="#PrivationOfKnowledge"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Falsity</rdfs:label>
 </owl:Class>
 
@@ -2642,6 +2645,8 @@
 <owl:Class rdf:about="#InadequateIdea">
   <rdfs:subClassOf rdf:resource="#Idea"/>
   <work:subClassOf rdf:resource="#Idea"/>
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">InadequateIdea</rdfs:label>
 </owl:Class>
 
@@ -17730,6 +17735,26 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TruthQualityOfIdea</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PrivationOfKnowledge">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#InadequateIdea"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PrivationOfKnowledge</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#InadequacyQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#InadequateIdea"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">InadequacyQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ConfusionQuality">
+  <rdfs:subClassOf rdf:resource="#InadequacyQuality"/>
+  <work:subClassOf rdf:resource="#InadequacyQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConfusionQuality</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
