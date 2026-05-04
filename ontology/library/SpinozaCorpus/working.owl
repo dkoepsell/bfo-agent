@@ -6572,6 +6572,7 @@
   <work:subClassOf rdf:resource="#InconstantJoy"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="#Joy"/>
+  <work:subClassOf rdf:resource="#InconstantQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Hope</rdfs:label>
 </owl:Class>
 
@@ -19618,6 +19619,7 @@
 
 <owl:Class rdf:about="#DoubtQuality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DoubtQuality</rdfs:label>
 </owl:Class>
 
@@ -20962,6 +20964,17 @@
 <owl:Class rdf:about="#AccidentalCauseOfSadness">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AccidentalCauseOfSadness</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#InconstantQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">InconstantQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#IdeaOfFutureOrPastThing">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IdeaOfFutureOrPastThing</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
