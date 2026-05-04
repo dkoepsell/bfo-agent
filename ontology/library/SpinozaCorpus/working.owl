@@ -22382,6 +22382,25 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DesireFromTrueKnowledgeDependenceQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#TrueUnderstanding">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000055 rdf:resource="#DesireArisingFromTrueUnderstanding"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TrueUnderstanding</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DesireArisingFromTrueUnderstanding">
+  <rdfs:subClassOf rdf:resource="#Desire"/>
+  <work:subClassOf rdf:resource="#Desire"/>
+  <obo:BFO_0000054 rdf:resource="#TrueUnderstanding"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DesireArisingFromTrueUnderstanding</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#TrueUnderstandingRealizesDesireRelation">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TrueUnderstandingRealizesDesireRelation</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
