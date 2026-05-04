@@ -18416,6 +18416,19 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WillExtendsMoreWidelyThanClearDistinctIdeasQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#FacultyOfConceiving">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FacultyOfConceiving</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#WillScopeNonExceedenceQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <RO_0000052 rdf:resource="#Will"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WillScopeNonExceedenceQuality</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
@@ -19076,6 +19089,7 @@
   <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#FictionStatusQuality"/>
   <obo:RO_0000052 rdf:resource="#IdeaAsIdea"/>
+  <obo:BFO_0000050 rdf:resource="#WillScopeNonExceedenceQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WillIsNotRealBeingQuality</rdfs:label>
 </owl:NamedIndividual>
 
