@@ -24455,6 +24455,11 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FearQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#FearfulMind">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FearfulMind</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#GuidedByReason">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
@@ -28202,6 +28207,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Apparition</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#SuperstitiousWorship">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#SuperstitiousWorshipObject"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SuperstitiousWorship</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#Delusion">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
@@ -28210,15 +28221,38 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Delusion</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#FearfulMind">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FearfulMind</rdfs:label>
+<owl:Class rdf:about="#ChurchMinistry">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <work:subClassOf rdf:resource="#StatusPosition"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ChurchMinistry</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#SuperstitiousWorship">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <obo:RO_0000057 rdf:resource="#SuperstitiousWorshipObject"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SuperstitiousWorship</rdfs:label>
+<owl:Class rdf:about="#StatusPosition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">StatusPosition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#Office">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <work:subClassOf rdf:resource="#IncomeSource"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Office</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#IncomeSource">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IncomeSource</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#RegardingMinistriesAsStatusPositionsQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RegardingMinistriesAsStatusPositionsQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#RegardingOfficesAsIncomeSourcesQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RegardingOfficesAsIncomeSourcesQuality</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
