@@ -31405,6 +31405,7 @@
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <obo:RO_0000057 rdf:resource="#Prophet"/>
   <obo:BFO_0000051 rdf:resource="#RevelationContent"/>
+  <obo:RO_0000057 rdf:resource="#TheLaw"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RevelationProcess</rdfs:label>
 </owl:NamedIndividual>
 
@@ -43732,6 +43733,12 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <obo:RO_0000052 rdf:resource="#AllNations"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PropheticCapacityDistributionQuality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#UniversalRevelationQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#RevelationProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UniversalRevelationQuality</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
