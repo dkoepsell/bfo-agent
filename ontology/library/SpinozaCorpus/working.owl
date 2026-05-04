@@ -725,6 +725,7 @@
   <work:subClassOf rdf:resource="#_:hasAffirmationRestriction"/>
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000020"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Idea</rdfs:label>
 </owl:Class>
 
@@ -16468,6 +16469,12 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ModeOfThinkingExistenceDependenceOnIdea</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#IdeaExistenceIndependenceOfOtherThinkingModesDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IdeaExistenceIndependenceOfOtherThinkingModesDisposition</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
