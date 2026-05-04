@@ -21823,6 +21823,11 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">InadequateOrConfusedIdeaQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#MindEssenceConsistsInBodyExistenceAffirmation">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindEssenceConsistsInBodyExistenceAffirmation</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
@@ -31785,6 +31790,20 @@
   <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <obo:RO_0000052 rdf:resource="#FormalBeingOfHumanMind"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindPassivityConditionalOnInadequateIdeasDisposition</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#MindEssence">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work3:type rdf:resource="#MindEssenceConsistsInBodyExistenceAffirmation"/>
+  <obo:RO_0000052 rdf:resource="#FormalBeingOfHumanMind"/>
+  <obo:BFO_0000051 rdf:resource="#ActualExistenceAffirmationOfBody"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindEssence</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ActualExistenceAffirmationOfBody">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:RO_0000052 rdf:resource="#FormalBeingOfHumanMind"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ActualExistenceAffirmationOfBody</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
