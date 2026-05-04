@@ -121,6 +121,7 @@
   <work:subClassOf rdf:resource="#ContingentExistenceQuality"/>
   <obo:RO_0000053 rdf:resource="#SubstanceGenerationIncapacity"/>
   <work:subClassOf rdf:resource="#SubstanceIndestructibilityDisposition"/>
+  <work:subClassOf rdf:resource="#NecessityOfExistence"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Substance</rdfs:label>
 </owl:Class>
 
@@ -282,6 +283,7 @@
   <work:subClassOf rdf:resource="#EssentialExistenceQuality"/>
   <work:subClassOf rdf:resource="#GodDecree"/>
   <work:subClassOf rdf:resource="#NecessityOfThingsSubjectMatter"/>
+  <obo:RO_0000052 rdf:resource="#Substance"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NecessityOfExistence</rdfs:label>
 </owl:Class>
 
