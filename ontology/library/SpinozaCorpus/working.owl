@@ -22425,6 +22425,19 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">VirtueIdentityWithActingFromNatureQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#VirtueFoundationQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">VirtueFoundationQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#StrivingToPreserveOwnBeing">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="#VirtueFoundationQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">StrivingToPreserveOwnBeing</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
@@ -22892,6 +22905,7 @@
   <obo:BFO_0000051 rdf:resource="#MindImaginesOnlyActingPowerPositingThingsDisposition"/>
   <work3:type rdf:resource="#PowerToPersevereInBeing"/>
   <work3:type rdf:resource="#Desire"/>
+  <work3:type rdf:resource="#StrivingToPreserveOwnBeing"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConatusMentalDispositionInstance</rdfs:label>
 </owl:NamedIndividual>
 
@@ -32509,6 +32523,13 @@
   <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <obo:BFO_0000050 rdf:resource="#TheEthics"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DesireIsEssenceOfManAxiom</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#VirtueFoundationIsConatus">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <obo:BFO_0000050 rdf:resource="#TheEthics"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">VirtueFoundationIsConatus</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
