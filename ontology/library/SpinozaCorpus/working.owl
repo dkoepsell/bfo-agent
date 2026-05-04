@@ -21855,6 +21855,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ImperfectionAsModeOfThinking</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#ActingFromSameNecessityAsExistingDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ActingFromSameNecessityAsExistingDisposition</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
@@ -22148,6 +22154,8 @@
   <obo:RO_0000056 rdf:resource="#GodCausesSingularIdeaProcess"/>
   <obo:RO_0000053 rdf:resource="#NecessaryIdeaExistenceInGodDispositionInstance"/>
   <obo:RO_0000053 rdf:resource="#EternalAndInfiniteEssenceOfGod"/>
+  <obo:RO_0000053 rdf:resource="#ActingFromSameNecessityAsExistingDispositionInstance"/>
+  <obo:RO_0000056 rdf:resource="#ActingFromNecessityOfNatureProcess"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">God</rdfs:label>
 </owl:NamedIndividual>
 
@@ -31838,6 +31846,19 @@
   <work3:type rdf:resource="#EssentialExistenceQuality"/>
   <obo:RO_0000052 rdf:resource="#WholeOfNature"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NatureTeleologyAbsenceQuality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ActingFromNecessityOfNatureProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000055 rdf:resource="#ActingFromSameNecessityAsExistingDispositionInstance"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ActingFromNecessityOfNatureProcess</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ActingFromSameNecessityAsExistingDispositionInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:RO_0000052 rdf:resource="#God"/>
+  <obo:BFO_0000054 rdf:resource="#ActingFromNecessityOfNatureProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ActingFromSameNecessityAsExistingDispositionInstance</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
