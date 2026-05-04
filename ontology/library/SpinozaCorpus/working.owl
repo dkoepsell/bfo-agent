@@ -19902,6 +19902,7 @@
   <rdfs:subClassOf rdf:resource="#Fear"/>
   <work:subClassOf rdf:resource="#Fear"/>
   <obo:BFO_0000054 rdf:resource="#AvoidanceOfFutureEvilProcess"/>
+  <work:subClassOf rdf:resource="#FutureEvilAvoidanceDisposition"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Timidity</rdfs:label>
 </owl:Class>
 
@@ -19910,6 +19911,11 @@
   <obo:BFO_0000055 rdf:resource="#Timidity"/>
   <obo:BFO_0000050 rdf:resource="#LesserEvil"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AvoidanceOfFutureEvilProcess</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#LesserEvil">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LesserEvil</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#FutureEvilJudgment">
@@ -19921,11 +19927,6 @@
 <owl:Class rdf:about="#FutureEvil">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FutureEvil</rdfs:label>
-</owl:Class>
-
-<owl:Class rdf:about="#LesserEvil">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LesserEvil</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#GoodBadJudgement">
@@ -19945,6 +19946,22 @@
 <owl:Class rdf:about="#EvaluativeJudgementProcess">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EvaluativeJudgementProcess</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#FutureEvilAvoidanceDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:BFO_0000054 rdf:resource="#AvoidanceBehaviorProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FutureEvilAvoidanceDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#JudgedFutureEvil">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">JudgedFutureEvil</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#AvoidanceBehaviorProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AvoidanceBehaviorProcess</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
