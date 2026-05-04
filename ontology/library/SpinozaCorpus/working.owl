@@ -3552,6 +3552,7 @@
   <work:subClassOf rdf:resource="#Particular"/>
   <work:subClassOf rdf:resource="#_:bearerOfInstrumentRole"/>
   <work:subClassOf rdf:resource="#WholeOfNature"/>
+  <work:subClassOf rdf:resource="#_:participatesInThinking"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Man</rdfs:label>
 </owl:Class>
 
@@ -20436,6 +20437,7 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#DivineAttribute"/>
   <obo:RO_0000052 rdf:resource="#God"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Thinking</rdfs:label>
 </owl:NamedIndividual>
 
