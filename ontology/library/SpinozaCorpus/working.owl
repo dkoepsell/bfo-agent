@@ -1710,6 +1710,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PerseveranceProcess</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#PassionCausationProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="#DeterminingRelation"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PassionCausationProcess</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#EarliestWorksTemporalRole">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EarliestWorksTemporalRole</rdfs:label>
@@ -1873,12 +1879,6 @@
   <obo:RO_0000052 rdf:resource="#Soul"/>
   <work:subClassOf rdf:resource="#Joy"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Sadness</rdfs:label>
-</owl:Class>
-
-<owl:Class rdf:about="#PassionCausationProcess">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <work:subClassOf rdf:resource="#DeterminingRelation"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PassionCausationProcess</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#SadnessExemptionQuality">
@@ -19167,6 +19167,24 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TotalAffectionQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#BodyPowerDiminishingQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BodyPowerDiminishingQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#MindStrivingToRecollectDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindStrivingToRecollectDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ExistenceExclusionQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExistenceExclusionQuality</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
@@ -28917,6 +28935,26 @@
   <obo:RO_0000057 rdf:resource="#Mind"/>
   <obo:BFO_0000050 rdf:resource="#TransitionToGreaterPerfection"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ImaginingBodyPowerIncreasingThingsProcess</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ImaginationOfBodyDiminishingThing">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#FormalBeingOfHumanMind"/>
+  <obo:BFO_0000050 rdf:resource="#CommonOrderOfNaturePerception"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ImaginationOfBodyDiminishingThing</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#RecollectionOfExistenceExcludingThings">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#FormalBeingOfHumanMind"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RecollectionOfExistenceExcludingThings</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#MindStrivingToRecollectDispositionInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:RO_0000052 rdf:resource="#FormalBeingOfHumanMind"/>
+  <obo:BFO_0000054 rdf:resource="#RecollectionOfExistenceExcludingThings"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindStrivingToRecollectDispositionInstance</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
