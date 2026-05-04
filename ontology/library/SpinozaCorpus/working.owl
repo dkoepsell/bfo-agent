@@ -16714,6 +16714,26 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodConceptualDependencyQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#ConstitutiveEssenceQuality">
+  <rdfs:subClassOf rdf:resource="#EssentialExistenceQuality"/>
+  <work:subClassOf rdf:resource="#EssentialExistenceQuality"/>
+  <work:subClassOf rdf:resource="#NecessityForBeingDisposition"/>
+  <work:subClassOf rdf:resource="#NecessityForConceptionDisposition"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConstitutiveEssenceQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#NecessityForBeingDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NecessityForBeingDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#NecessityForConceptionDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NecessityForConceptionDisposition</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
@@ -25374,6 +25394,12 @@
   <work3:type rdf:resource="#ConceptualDependenceOnGod"/>
   <obo:RO_0000052 rdf:resource="#SingularThing"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SingularThingConceptualDependenceInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#EssenceConstitutionDefinition">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EssenceConstitutionDefinition</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
