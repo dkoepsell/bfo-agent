@@ -29547,6 +29547,13 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CorporealSubstanceNecessaryExistenceDisposition</rdfs:label>
 </owl:NamedIndividual>
 
+<owl:NamedIndividual rdf:about="#PartOfMindThatPerishesWithBody">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
+  <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
+  <obo:BFO_0000050 rdf:resource="#InfiniteIntellectOfGod"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PartOfMindThatPerishesWithBody</rdfs:label>
+</owl:NamedIndividual>
+
 <owl:NamedIndividual rdf:about="#NecessaryExistenceContainedInConceptOfGod">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
@@ -37257,13 +37264,6 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindEssenceConsistsInKnowledgeQuality</rdfs:label>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#PartOfMindThatPerishesWithBody">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
-  <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
-  <obo:BFO_0000050 rdf:resource="#InfiniteIntellectOfGod"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PartOfMindThatPerishesWithBody</rdfs:label>
-</owl:NamedIndividual>
-
 <owl:NamedIndividual rdf:about="#MindPartCorruptibilityQualityInstance">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#MindPartCorruptibilityQuality"/>
@@ -37276,6 +37276,18 @@
   <work3:type rdf:resource="#IntellectQuality"/>
   <obo:RO_0000052 rdf:resource="#EternalPartOfMind"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IntellectQualityInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ImaginationPerishableQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#ImaginationPartOfMind"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ImaginationPerishableQuality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ImaginationPartOfMind">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <obo:BFO_0000050 rdf:resource="#InfiniteIntellectOfGod"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ImaginationPartOfMind</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
