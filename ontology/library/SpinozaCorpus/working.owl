@@ -1758,6 +1758,16 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExternalCausationConstraint</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#PerfectionQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#RelationalQuality"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#EssenceQuality"/>
+  <rdfs:subClassOf rdf:resource="#SubstanceInfinityOrPerfectionQuality"/>
+  <work:subClassOf rdf:resource="#SubstanceInfinityOrPerfectionQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PerfectionQuality</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#PerseveranceProcess">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PerseveranceProcess</rdfs:label>
@@ -2030,16 +2040,6 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RelativeOrRespectalGoodness</rdfs:label>
-</owl:Class>
-
-<owl:Class rdf:about="#PerfectionQuality">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <work:subClassOf rdf:resource="#RelationalQuality"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <work:subClassOf rdf:resource="#EssenceQuality"/>
-  <rdfs:subClassOf rdf:resource="#SubstanceInfinityOrPerfectionQuality"/>
-  <work:subClassOf rdf:resource="#SubstanceInfinityOrPerfectionQuality"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PerfectionQuality</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#EssenceQuality">
@@ -20843,6 +20843,18 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GreaterPerfectionQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#LesserPerfection">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LesserPerfection</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#TransitionToLesserPerfectionProcess">
+  <rdfs:subClassOf rdf:resource="#Sadness"/>
+  <work:subClassOf rdf:resource="#Sadness"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TransitionToLesserPerfectionProcess</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
@@ -21469,6 +21481,7 @@
   <work3:type rdf:resource="#Sadness"/>
   <obo:BFO_0000055 rdf:resource="#Sadness"/>
   <work3:type rdf:resource="#PassageToLesserPerfection"/>
+  <work3:type rdf:resource="#TransitionToLesserPerfectionProcess"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TransitionToLesserPerfection</rdfs:label>
 </owl:NamedIndividual>
 
