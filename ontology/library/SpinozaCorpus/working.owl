@@ -2189,6 +2189,13 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Money</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#InstrumentRole">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <obo:BFO_0000054 rdf:resource="#AcquisitionProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">InstrumentRole</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#Esteem">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
   <work:subClassOf rdf:resource="#Honor"/>
@@ -8807,11 +8814,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TransgressibilityDisposition</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#InstrumentRole">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
-  <obo:BFO_0000054 rdf:resource="#AcquisitionProcess"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">InstrumentRole</rdfs:label>
+<owl:Class rdf:about="#AcquisitionProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#Money"/>
+  <obo:RO_0000057 rdf:resource="#AidToLife"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AcquisitionProcess</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#NaturalParthood">
@@ -25082,12 +25090,32 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AidToLife</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#AcquisitionProcess">
+<owl:Class rdf:about="#ConvenienceQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#Money"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConvenienceQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#Aid">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Aid</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#AcquisitionOfAids">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#Aid"/>
   <obo:RO_0000057 rdf:resource="#Money"/>
-  <obo:RO_0000057 rdf:resource="#AidToLife"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AcquisitionProcess</rdfs:label>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AcquisitionOfAids</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#MoneyInstrumentRoleDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:BFO_0000054 rdf:resource="#AcquisitionOfAids"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MoneyInstrumentRoleDisposition</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
