@@ -4471,6 +4471,8 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work:subClassOf rdf:resource="#EternalTruth"/>
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#EternalNecessityAndTruth"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EternalTruth</rdfs:label>
 </owl:Class>
 
@@ -31967,6 +31969,19 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MiracleEpistemicInadequacyForGodEssence</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#DivineWillingOrDetermining">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="#DecreeNecessitationProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivineWillingOrDetermining</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#EternalNecessityAndTruth">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#NecessityOfExistence"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EternalNecessityAndTruth</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -32312,6 +32327,7 @@
   <obo:RO_0000053 rdf:resource="#DivineProvidenceInstance"/>
   <obo:RO_0000056 rdf:resource="#DivineTeachingProcess"/>
   <RO_0000056 rdf:resource="#DecreeNecessitationProcess"/>
+  <obo:RO_0000056 rdf:resource="#DivineWillingOrDetermining"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">God</rdfs:label>
 </owl:NamedIndividual>
 
@@ -35461,6 +35477,14 @@
   <work3:type rdf:resource="#SubstanceExistenceEternalityQuality"/>
   <obo:RO_0000052 rdf:resource="#Universe"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UniverseEternalityQuality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#NecessaryFollowingOfOrderProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000055 rdf:resource="#OrderOfNatureNecessitationDisposition"/>
+  <obo:RO_0000057 rdf:resource="#EternalLawsOfGod"/>
+  <obo:BFO_0000050 rdf:resource="#GodCausesAllThingsProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NecessaryFollowingOfOrderProcess</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#MindEssenceIdea">
@@ -46096,14 +46120,6 @@
 <owl:NamedIndividual rdf:about="#EternalLawsOfGod">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EternalLawsOfGod</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#NecessaryFollowingOfOrderProcess">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <obo:BFO_0000055 rdf:resource="#OrderOfNatureNecessitationDisposition"/>
-  <obo:RO_0000057 rdf:resource="#EternalLawsOfGod"/>
-  <obo:BFO_0000050 rdf:resource="#GodCausesAllThingsProcess"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NecessaryFollowingOfOrderProcess</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
