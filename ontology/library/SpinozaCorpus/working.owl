@@ -270,6 +270,7 @@
   <work:subClassOf rdf:resource="#NecessityOfThingsSubjectMatter"/>
   <obo:RO_0000052 rdf:resource="#Substance"/>
   <work:subClassOf rdf:resource="#EternalExistenceQuality"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NecessityOfExistence</rdfs:label>
 </owl:Class>
 
@@ -388,6 +389,14 @@
   <obo:BFO_0000054 rdf:resource="#GodCausesAllThingsProcess"/>
   <obo:BFO_0000054 rdf:resource="#FormalExistenceNecessitationProcess"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodDecree</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#EternalExistenceQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#EssentialExistenceQuality"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:subClassOf rdf:resource="#EssentialExistenceQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EternalExistenceQuality</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#FormalReality">
@@ -3065,6 +3074,7 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <obo:RO_0000052 rdf:resource="#SimpleIdea"/>
+  <work:subClassOf rdf:resource="#EssentialExistenceQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SimplicityQuality</rdfs:label>
 </owl:Class>
 
@@ -5167,14 +5177,6 @@
   <obo:RO_0000057 rdf:resource="#TrueIntellect"/>
   <obo:RO_0000057 rdf:resource="#God"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IntellectUnionProcess</rdfs:label>
-</owl:Class>
-
-<owl:Class rdf:about="#EternalExistenceQuality">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <work:subClassOf rdf:resource="#EssentialExistenceQuality"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <rdfs:subClassOf rdf:resource="#EssentialExistenceQuality"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EternalExistenceQuality</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#HumanFreedom">
@@ -27326,6 +27328,12 @@
   <rdfs:subClassOf rdf:resource="#DivineAttribute"/>
   <work:subClassOf rdf:resource="#DivineAttribute"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivineSingularityQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#LackOfCompositePartsQuality">
+  <rdfs:subClassOf rdf:resource="#SimplicityQuality"/>
+  <work:subClassOf rdf:resource="#SimplicityQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LackOfCompositePartsQuality</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
