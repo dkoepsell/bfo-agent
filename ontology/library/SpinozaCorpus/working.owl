@@ -34003,6 +34003,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MatterAsExtendedSubstance</rdfs:label>
 </owl:NamedIndividual>
 
+<owl:NamedIndividual rdf:about="#MosesLegislatorRole">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <obo:RO_0000052 rdf:resource="#Moses"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MosesLegislatorRole</rdfs:label>
+</owl:NamedIndividual>
+
 <owl:NamedIndividual rdf:about="#FatherSoul">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000020"/>
   <obo:RO_0000052 rdf:resource="#Father"/>
@@ -42141,6 +42147,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">VoiceOfGodProcess</rdfs:label>
 </owl:NamedIndividual>
 
+<owl:NamedIndividual rdf:about="#IsraelitesUneducatedQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#Israelites"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IsraelitesUneducatedQuality</rdfs:label>
+</owl:NamedIndividual>
+
 <owl:NamedIndividual rdf:about="#DecalogueText">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DecalogueText</rdfs:label>
@@ -42818,12 +42830,6 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CareOfNationsRoleInstance</rdfs:label>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#MosesLegislatorRole">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
-  <obo:RO_0000052 rdf:resource="#Moses"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MosesLegislatorRole</rdfs:label>
-</owl:NamedIndividual>
-
 <owl:NamedIndividual rdf:about="#MosaicWayOfLiving">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MosaicWayOfLiving</rdfs:label>
@@ -42838,10 +42844,31 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MosesTeachingProcess</rdfs:label>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#IsraelitesUneducatedQuality">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+<owl:NamedIndividual rdf:about="#DivineCommandProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#God"/>
+  <obo:RO_0000057 rdf:resource="#Israelites"/>
+  <obo:BFO_0000055 rdf:resource="#LoveOfGodObligation"/>
+  <obo:BFO_0000055 rdf:resource="#LawObservanceObligation"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivineCommandProcess</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#LoveOfGodObligation">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
   <obo:RO_0000052 rdf:resource="#Israelites"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IsraelitesUneducatedQuality</rdfs:label>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LoveOfGodObligation</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#LawObservanceObligation">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <obo:RO_0000052 rdf:resource="#Israelites"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LawObservanceObligation</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#DivineCommandContent">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <obo:BFO_0000051 rdf:resource="#DivineLaw"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivineCommandContent</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
