@@ -16189,6 +16189,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EffectFollowsFromNatureDisposition</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#OntologicalDependenceOnGodDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OntologicalDependenceOnGodDisposition</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
@@ -18508,6 +18514,13 @@
   <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <obo:RO_0000052 rdf:resource="#God"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodEssenceQuality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#GodFreeCauseRoleInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <obo:RO_0000052 rdf:resource="#God"/>
+  <obo:BFO_0000054 rdf:resource="#GodCausesAllThingsFreelyProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodFreeCauseRoleInstance</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#ThinkingThingRole">
@@ -24337,19 +24350,26 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExistenceNecessitationFromPowerProcess</rdfs:label>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#GodFreeCauseRoleInstance">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
-  <obo:RO_0000052 rdf:resource="#God"/>
-  <obo:BFO_0000054 rdf:resource="#GodCausesAllThingsFreelyProcess"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodFreeCauseRoleInstance</rdfs:label>
-</owl:NamedIndividual>
-
 <owl:NamedIndividual rdf:about="#GodCausesAllThingsFreelyProcess">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <obo:BFO_0000055 rdf:resource="#GodFreeCauseRoleInstance"/>
   <obo:RO_0000057 rdf:resource="#God"/>
   <obo:BFO_0000050 rdf:resource="#GodCausesAllThingsProcess"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodCausesAllThingsFreelyProcess</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#AllThingsInGodDependenceQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work3:type rdf:resource="#OntologicalDependenceOnGodDisposition"/>
+  <obo:RO_0000052 rdf:resource="#WholeOfNature"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AllThingsInGodDependenceQuality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#AllThingsInGodContainmentQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work3:type rdf:resource="#ImmanenceInGodQuality"/>
+  <obo:RO_0000052 rdf:resource="#WholeOfNature"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AllThingsInGodContainmentQuality</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
