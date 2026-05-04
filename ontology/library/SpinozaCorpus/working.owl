@@ -16126,6 +16126,9 @@
 <owl:Class rdf:about="#ExistingThing">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
+  <obo:RO_0000053 rdf:resource="#HighestRightOfNature"/>
+  <obo:RO_0000053 rdf:resource="#NecessityOfOwnNature"/>
+  <obo:RO_0000056 rdf:resource="#ActingFromOwnNatureProcess"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExistingThing</rdfs:label>
 </owl:Class>
 
@@ -19228,6 +19231,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HumanAffect</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#NatureDifferenceQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NatureDifferenceQuality</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#HumanActionFollowsFromNaturalNecessityQuality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
@@ -21053,12 +21062,6 @@
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <obo:RO_0000052 rdf:resource="#LowerAnimal"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AnimalNature</rdfs:label>
-</owl:Class>
-
-<owl:Class rdf:about="#NatureDifferenceQuality">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NatureDifferenceQuality</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#AffectDifferenceQuality">
@@ -23162,6 +23165,26 @@
 <owl:Class rdf:about="#NatureAgreement">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NatureAgreement</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#HighestRightOfNature">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000020"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HighestRightOfNature</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#NecessityOfOwnNature">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:BFO_0000054 rdf:resource="#ActingFromOwnNatureProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NecessityOfOwnNature</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ActingFromOwnNatureProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ActingFromOwnNatureProcess</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
