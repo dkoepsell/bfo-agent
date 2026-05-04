@@ -17679,6 +17679,7 @@
   <work:subClassOf rdf:resource="#CreatedSubstance"/>
   <work:subClassOf rdf:resource="#_:ExtensionBearer"/>
   <obo:RO_0000053 rdf:resource="#OnlySubstancesExistQuality"/>
+  <obo:RO_0000053 rdf:resource="#ExtensionAttribute"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExtendedSubstance</rdfs:label>
 </owl:NamedIndividual>
 
@@ -20128,6 +20129,8 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#ChiefAttributeOfSubstance"/>
   <obo:RO_0000052 rdf:resource="#God"/>
+  <work3:type rdf:resource="#DivineAttribute"/>
+  <work3:type rdf:resource="#InfiniteInItsKind"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExtensionAttribute</rdfs:label>
 </owl:NamedIndividual>
 
