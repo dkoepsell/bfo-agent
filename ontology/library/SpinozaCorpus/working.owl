@@ -11056,6 +11056,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Action</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#AdequateCausation">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:BFO_0000054 rdf:resource="#Action"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AdequateCausation</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#AssentingToConfusedThings">
   <rdfs:subClassOf rdf:resource="#Assenting"/>
   <work:subClassOf rdf:resource="#Assenting"/>
@@ -18614,12 +18620,6 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NaturePowerOfActingConstancyQuality</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#AdequateCausation">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <obo:BFO_0000054 rdf:resource="#Action"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AdequateCausation</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#AgentActivityRole">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
   <obo:BFO_0000054 rdf:resource="#Action"/>
@@ -18635,6 +18635,38 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="#EssentialExistenceQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ActiveState</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PassiveAffect">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PassiveAffect</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PartialCausality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:BFO_0000054 rdf:resource="#PassiveAffect"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PartialCausality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PartialCausalityQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PartialCausalityQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ExternalCauseDetermination">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:BFO_0000054 rdf:resource="#PassiveAffect"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExternalCauseDetermination</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#EffectFollowingFromPartialNature">
+  <rdfs:subClassOf rdf:resource="#PassiveAffect"/>
+  <work:subClassOf rdf:resource="#PassiveAffect"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EffectFollowingFromPartialNature</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
