@@ -19985,6 +19985,8 @@
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="#JoyAccompaniedBySelfCausalIdeaQuality"/>
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="#JoyAffect"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SelfEsteem</rdfs:label>
 </owl:Class>
 
@@ -20494,6 +20496,8 @@
 
 <owl:Class rdf:about="#SelfEsteemInstance">
   <rdfs:subClassOf rdf:resource="#Joy"/>
+  <work3:type rdf:resource="#SelfEsteem"/>
+  <obo:BFO_0000054 rdf:resource="#SelfReflectionProcess"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SelfEsteem</rdfs:label>
 </owl:Class>
 
@@ -21134,6 +21138,17 @@
 <owl:Class rdf:about="#AnotherPersonsIllFortune">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AnotherPersonsIllFortune</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#JoyAffect">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">JoyAffect</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SelfReflectionProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#PowerOfActingQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SelfReflectionProcess</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
@@ -22111,6 +22126,14 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <obo:BFO_0000055 rdf:resource="#TruthFalsehoodDiscernmentDisposition"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TruthFalsehoodDistinctionTeachingProcess</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Compassion">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000020"/>
+  <work3:type rdf:resource="#ModeOfThinkingThing"/>
+  <obo:RO_0000052 rdf:resource="#TrueIntellect"/>
+  <work:subClassOf rdf:resource="#Love"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Compassion</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#NaturaNaturans">
@@ -25764,14 +25787,6 @@
   <work3:type rdf:resource="#NaturalPerfection"/>
   <obo:RO_0000052 rdf:resource="#WholeOfNature"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PerfectionOfNature</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#Compassion">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000020"/>
-  <work3:type rdf:resource="#ModeOfThinkingThing"/>
-  <obo:RO_0000052 rdf:resource="#TrueIntellect"/>
-  <work:subClassOf rdf:resource="#Love"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Compassion</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#Wisdom">
