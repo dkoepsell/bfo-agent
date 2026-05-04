@@ -734,6 +734,7 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000020"/>
+  <obo:RO_0000052 rdf:resource="#ExternalThingNature"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Idea</rdfs:label>
 </owl:Class>
 
@@ -2683,6 +2684,8 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <obo:BFO_0000054 rdf:resource="#SensationOfBrainImpression"/>
+  <obo:BFO_0000054 rdf:resource="#IdeaConnection"/>
+  <obo:RO_0000052 rdf:resource="#HumanMind"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Memory</rdfs:label>
 </owl:Class>
 
@@ -17464,6 +17467,31 @@
 <owl:Class rdf:about="#AbsenceOfExternalBody">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AbsenceOfExternalBody</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#IdeaConnection">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000055 rdf:resource="#Memory"/>
+  <obo:RO_0000057 rdf:resource="#Idea"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IdeaConnection</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ExternalThingNature">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExternalThingNature</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#BodilyAffection">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#HumanBody"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BodilyAffection</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#MemoryOrderingByAffection">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#IdeaConnection"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MemoryOrderingByAffection</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
