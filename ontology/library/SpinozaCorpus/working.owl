@@ -29642,6 +29642,24 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ImageOfGod</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#ClarityObscurityQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <RO_0000052 rdf:resource="#PropheticRepresentation"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ClarityObscurityQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PropheticRepresentationClarityQuality">
+  <rdfs:subClassOf rdf:resource="#ClarityObscurityQuality"/>
+  <work:subClassOf rdf:resource="#ClarityObscurityQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PropheticRepresentationClarityQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PropheticRepresentationObscurityQuality">
+  <rdfs:subClassOf rdf:resource="#ClarityObscurityQuality"/>
+  <work:subClassOf rdf:resource="#ClarityObscurityQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PropheticRepresentationObscurityQuality</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
