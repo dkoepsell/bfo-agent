@@ -28699,6 +28699,11 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WordImageMediationAbsenceQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#MindToMindCommunicationDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindToMindCommunicationDisposition</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -29024,6 +29029,7 @@
   <obo:RO_0000053 rdf:resource="#VisibleFormQuality"/>
   <obo:RO_0000056 rdf:resource="#DivineRevelationProcess"/>
   <obo:RO_0000053 rdf:resource="#EssenceCommunicationToMindDispositionInstance"/>
+  <obo:RO_0000056 rdf:resource="#MindToMindCommunicationProcess"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">God</rdfs:label>
 </owl:NamedIndividual>
 
@@ -40903,6 +40909,8 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
   <obo:RO_0000053 rdf:resource="#ChristDirectRevelationDisposition"/>
   <obo:RO_0000056 rdf:resource="#GodCausesAllThingsProcess"/>
+  <obo:RO_0000053 rdf:resource="#ChristMindToMindCommunicationDispositionInstance"/>
+  <obo:RO_0000056 rdf:resource="#MindToMindCommunicationProcess"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Christ</rdfs:label>
 </owl:NamedIndividual>
 
@@ -40911,6 +40919,22 @@
   <work3:type rdf:resource="#DirectDivineRevelationReception"/>
   <obo:RO_0000052 rdf:resource="#Christ"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ChristDirectRevelationDisposition</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ChristMindToMindCommunicationDispositionInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:RO_0000052 rdf:resource="#Christ"/>
+  <obo:BFO_0000054 rdf:resource="#MindToMindCommunicationProcess"/>
+  <work3:type rdf:resource="#MindToMindCommunicationDisposition"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ChristMindToMindCommunicationDispositionInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#MindToMindCommunicationProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000055 rdf:resource="#ChristMindToMindCommunicationDispositionInstance"/>
+  <obo:RO_0000057 rdf:resource="#Christ"/>
+  <obo:RO_0000057 rdf:resource="#God"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindToMindCommunicationProcess</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
