@@ -30326,6 +30326,11 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TrueProphetQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#GiftOfProphecy">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GiftOfProphecy</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -43659,6 +43664,7 @@
 <owl:NamedIndividual rdf:about="#JewishNation">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
   <work3:type rdf:resource="#Nation"/>
+  <obo:BFO_0000050 rdf:resource="#AllNations"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">JewishNation</rdfs:label>
 </owl:NamedIndividual>
 
@@ -43688,6 +43694,17 @@
   <obo:RO_0000052 rdf:resource="#Balaam"/>
   <work3:type rdf:resource="#TrueProphetQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BalaamTrueProphetQuality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#PropheticCapacityDistributionQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#AllNations"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PropheticCapacityDistributionQuality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#AllNations">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AllNations</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
