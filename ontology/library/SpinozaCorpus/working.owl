@@ -25706,6 +25706,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AffectivePurityOfLoveTowardGod</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#ConstancyOfAffect">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConstancyOfAffect</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
@@ -36328,6 +36334,13 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work:subClassOf rdf:resource="#DictateOfReason"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DictateOfReasonInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#LoveTowardGodConstancyQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work3:type rdf:resource="#ConstancyOfAffect"/>
+  <obo:RO_0000052 rdf:resource="#LoveTowardGod"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LoveTowardGodConstancyQuality</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
