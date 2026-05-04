@@ -15370,6 +15370,7 @@
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
   <work:subClassOf rdf:resource="#CreatedNature"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HumanIntellect</rdfs:label>
 </owl:Class>
 
@@ -42779,6 +42780,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SensualPleasureIndulgenceProcess</rdfs:label>
 </owl:NamedIndividual>
 
+<owl:NamedIndividual rdf:about="#SolomonTeachingProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#Solomon"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SolomonTeachingProcess</rdfs:label>
+</owl:NamedIndividual>
+
 <owl:NamedIndividual rdf:about="#ThreeToOneRatioBelief">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <obo:BFO_0000050 rdf:resource="#RatioOfCircumferenceToDiameter"/>
@@ -43085,10 +43092,11 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LawImpartmentProcess</rdfs:label>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#SolomonTeachingProcess">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <obo:RO_0000057 rdf:resource="#Solomon"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SolomonTeachingProcess</rdfs:label>
+<owl:NamedIndividual rdf:about="#IntellectExcellenceQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work3:type rdf:resource="#IntellectSupremacyOverOtherGoodsQuality"/>
+  <obo:RO_0000052 rdf:resource="#HumanIntellect"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IntellectExcellenceQuality</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
