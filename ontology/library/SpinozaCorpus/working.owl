@@ -29792,6 +29792,11 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NationPatronGodRole</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#MakerOfAllThingsRole">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MakerOfAllThingsRole</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -30122,6 +30127,7 @@
   <obo:RO_0000053 rdf:resource="#GodDivinePowerInstance"/>
   <obo:RO_0000056 rdf:resource="#DivineCausationOfNaturalThings"/>
   <obo:RO_0000056 rdf:resource="#RevelationToCain"/>
+  <obo:RO_0000053 rdf:resource="#MakerOfAllThingsRoleInstance"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">God</rdfs:label>
 </owl:NamedIndividual>
 
@@ -33738,6 +33744,21 @@
   <obo:RO_0000053 rdf:resource="#ChristMindToMindCommunicationDispositionInstance"/>
   <obo:RO_0000056 rdf:resource="#MindToMindCommunicationProcess"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Christ</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Cain">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <obo:RO_0000053 rdf:resource="#CainPowerOfUnderstandingDisposition"/>
+  <obo:RO_0000056 rdf:resource="#RevelationToCain"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Cain</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#CainPowerOfUnderstandingDisposition">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work3:type rdf:resource="#PowerOfUnderstanding"/>
+  <obo:RO_0000052 rdf:resource="#Cain"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CainPowerOfUnderstandingDisposition</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#EternalDecreeOfGod">
@@ -42564,21 +42585,6 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AdamLimitedDivineAttributeKnowledge</rdfs:label>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#Cain">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
-  <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
-  <obo:RO_0000053 rdf:resource="#CainPowerOfUnderstandingDisposition"/>
-  <obo:RO_0000056 rdf:resource="#RevelationToCain"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Cain</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#CainPowerOfUnderstandingDisposition">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <work3:type rdf:resource="#PowerOfUnderstanding"/>
-  <obo:RO_0000052 rdf:resource="#Cain"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CainPowerOfUnderstandingDisposition</rdfs:label>
-</owl:NamedIndividual>
-
 <owl:NamedIndividual rdf:about="#RevealedAsUnawareOfHumanAffairsQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
@@ -42602,6 +42608,14 @@
   <work3:type rdf:resource="#BeliefDisposition"/>
   <obo:RO_0000052 rdf:resource="#Laban"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LabanBeliefDispositionInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#MakerOfAllThingsRoleInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <work3:type rdf:resource="#MakerOfAllThingsRole"/>
+  <obo:RO_0000052 rdf:resource="#God"/>
+  <obo:BFO_0000054 rdf:resource="#GodCausesAllThingsProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MakerOfAllThingsRoleInstance</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
