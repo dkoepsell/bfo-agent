@@ -27608,6 +27608,29 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AccidentImmunityQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#FictitiousPerceptionQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#PerceptionEpistemicCharacterQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FictitiousPerceptionQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#FalsePerceptionQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#PerceptionEpistemicCharacterQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FalsePerceptionQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DoubtfulPerceptionQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#PerceptionEpistemicCharacterQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DoubtfulPerceptionQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PerceptionEpistemicCharacterQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PerceptionEpistemicCharacterQuality</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -28306,6 +28329,7 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <RO_0000052 rdf:resource="#HumanMind"/>
   <obo:RO_0000052 rdf:resource="#FormalBeingOfHumanMind"/>
+  <work:subClassOf rdf:resource="#PerceptionEpistemicCharacterQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TruePerceptionQuality</rdfs:label>
 </owl:NamedIndividual>
 
@@ -39282,16 +39306,16 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NatureOfPureIntellect</rdfs:label>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#LawsOfPureIntellect">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
-  <obo:BFO_0000050 rdf:resource="#TrueMethodKnowledgeContent"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LawsOfPureIntellect</rdfs:label>
-</owl:NamedIndividual>
-
 <owl:NamedIndividual rdf:about="#TrueMethodKnowledgeContent">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <obo:BFO_0000050 rdf:resource="#TrueMethod"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TrueMethodKnowledgeContent</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#LawsOfPureIntellect">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <obo:BFO_0000050 rdf:resource="#TrueMethodKnowledgeContent"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LawsOfPureIntellect</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
