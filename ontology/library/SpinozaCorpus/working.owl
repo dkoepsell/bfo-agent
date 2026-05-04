@@ -9196,6 +9196,7 @@
   <work3:type rdf:resource="#DivineLawClass"/>
   <obo:BFO_0000051 rdf:resource="#ReverenceOfGodObligation"/>
   <obo:BFO_0000051 rdf:resource="#AbstainFromEvilObligation"/>
+  <obo:BFO_0000050 rdf:resource="#HumanMind"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivineLaw</rdfs:label>
 </owl:Class>
 
@@ -31091,6 +31092,26 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TrueBlessednessQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#InnatenessInMindQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <RO_0000052 rdf:resource="#HumanMind"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">InnatenessInMindQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#WrittenInMindQuality">
+  <rdfs:subClassOf rdf:resource="#InnatenessInMindQuality"/>
+  <work:subClassOf rdf:resource="#InnatenessInMindQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WrittenInMindQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DivineLawInscriptionDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <RO_0000052 rdf:resource="#HumanMind"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivineLawInscriptionDisposition</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
