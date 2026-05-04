@@ -22261,18 +22261,23 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">KnowledgeOfGoodAndEvil</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#SadnessAffect">
-  <rdfs:subClassOf rdf:resource="#Affect"/>
-  <work:subClassOf rdf:resource="#Affect"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SadnessAffect</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#ConsciousnessOfAffect">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="#Affect"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConsciousnessOfAffect</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#GoodAndEvilDistinction">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GoodAndEvilDistinction</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SadnessAffect">
+  <rdfs:subClassOf rdf:resource="#Affect"/>
+  <work:subClassOf rdf:resource="#Affect"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SadnessAffect</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#ImaginingCauseAsPresentDisposition">
@@ -22293,9 +22298,16 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AffectIntensificationByPresentCauseImagining</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#GoodAndEvilDistinction">
+<owl:Class rdf:about="#PresentnessConsideration">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GoodAndEvilDistinction</rdfs:label>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PresentnessConsideration</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ConsideringAsPresent">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConsideringAsPresent</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
