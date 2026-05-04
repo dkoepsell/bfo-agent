@@ -30830,16 +30830,16 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PureMindPerception</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#WordAndImageAbsenceQuality">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <work:subClassOf rdf:resource="#ImaginationInaccessibility"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WordAndImageAbsenceQuality</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#PureMindPerceptionLeadsToUnderstandingDisposition">
   <rdfs:subClassOf rdf:resource="#IntellectualGraspability"/>
   <work:subClassOf rdf:resource="#IntellectualGraspability"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PureMindPerceptionLeadsToUnderstandingDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#WordAndImageAbsenceQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#ImaginationInaccessibility"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WordAndImageAbsenceQuality</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
@@ -34574,6 +34574,27 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CorporealSubstanceNecessaryExistenceDisposition</rdfs:label>
 </owl:NamedIndividual>
 
+<owl:NamedIndividual rdf:about="#ChristDirectRevelationDisposition">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work3:type rdf:resource="#DirectDivineRevelationReception"/>
+  <obo:RO_0000052 rdf:resource="#Christ"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ChristDirectRevelationDisposition</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ChristMindToMindCommunicationDispositionInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:RO_0000052 rdf:resource="#Christ"/>
+  <obo:BFO_0000054 rdf:resource="#MindToMindCommunicationProcess"/>
+  <work3:type rdf:resource="#MindToMindCommunicationDisposition"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ChristMindToMindCommunicationDispositionInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ChristAdequatePerceptionProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000055 rdf:resource="#AdequatePerceptionDisposition"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ChristAdequatePerceptionProcess</rdfs:label>
+</owl:NamedIndividual>
+
 <owl:NamedIndividual rdf:about="#PartOfMindThatPerishesWithBody">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
   <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
@@ -34883,14 +34904,6 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CreatedVoice</rdfs:label>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#ChristMindToMindCommunicationDispositionInstance">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <obo:RO_0000052 rdf:resource="#Christ"/>
-  <obo:BFO_0000054 rdf:resource="#MindToMindCommunicationProcess"/>
-  <work3:type rdf:resource="#MindToMindCommunicationDisposition"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ChristMindToMindCommunicationDispositionInstance</rdfs:label>
-</owl:NamedIndividual>
-
 <owl:NamedIndividual rdf:about="#Cain">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
   <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
@@ -35041,19 +35054,6 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
   <obo:RO_0000057 rdf:resource="#SonConsequences"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Son</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#ChristDirectRevelationDisposition">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <work3:type rdf:resource="#DirectDivineRevelationReception"/>
-  <obo:RO_0000052 rdf:resource="#Christ"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ChristDirectRevelationDisposition</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#ChristAdequatePerceptionProcess">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <obo:BFO_0000055 rdf:resource="#AdequatePerceptionDisposition"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ChristAdequatePerceptionProcess</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#GodIntellectEternalityQuality">
@@ -44405,7 +44405,28 @@
 <owl:NamedIndividual rdf:about="#AdequatePerceptionQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <obo:RO_0000052 rdf:resource="#Christ"/>
+  <work:subClassOf rdf:resource="#TruePerceptionQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AdequatePerceptionQuality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ChristAdequatePerceptionQualityInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work3:type rdf:resource="#AdequatePerceptionQuality"/>
+  <obo:RO_0000052 rdf:resource="#Christ"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ChristAdequatePerceptionQualityInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ChristPerceptionOfRevealedThingsProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#Christ"/>
+  <obo:RO_0000057 rdf:resource="#RevealedThings"/>
+  <obo:BFO_0000055 rdf:resource="#ChristAdequatePerceptionQualityInstance"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ChristPerceptionOfRevealedThingsProcess</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#RevealedThings">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RevealedThings</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
