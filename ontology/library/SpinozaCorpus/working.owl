@@ -28021,6 +28021,8 @@
 <owl:Class rdf:about="#Subject">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Subject</rdfs:label>
 </owl:Class>
 
@@ -28365,6 +28367,7 @@
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000052"/>
   <work:subClassOf rdf:resource="#NaturalDesire"/>
   <work:subClassOf rdf:resource="#NaturalPower"/>
+  <obo:RO_0000052 rdf:resource="#Subject"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NaturalRight</rdfs:label>
 </owl:Class>
 
@@ -28396,21 +28399,51 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SelfDefensePower</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#HumanNatureQuality">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HumanNatureQuality</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#SelfDefensePowerInnalienabilityQuality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="#EssentialExistenceQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SelfDefensePowerInnalienabilityQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#HumanNatureQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HumanNatureQuality</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#SelfDeprivationOfDefensePowerProcess">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SelfDeprivationOfDefensePowerProcess</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#InnateNaturalRight">
+  <rdfs:subClassOf rdf:resource="#NaturalRight"/>
+  <work:subClassOf rdf:resource="#NaturalRight"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">InnateNaturalRight</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PoliticalSubjectRole">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PoliticalSubjectRole</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#StateStabilityQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#State"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">StateStabilityQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#RightDeprivationProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RightDeprivationProcess</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#InnateRightInnatenessQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">InnateRightInnatenessQuality</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
