@@ -27213,6 +27213,13 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MutualDeterminationProcess</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#FormalGroundOfOrder">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="#FormalGroundOfOrder"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FormalGroundOfOrder</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#SurroundedByOthersQuality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
@@ -27234,13 +27241,6 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TrueOrder</rdfs:label>
-</owl:Class>
-
-<owl:Class rdf:about="#FormalGroundOfOrder">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <work:subClassOf rdf:resource="#FormalGroundOfOrder"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FormalGroundOfOrder</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
@@ -29833,6 +29833,8 @@
 <owl:NamedIndividual rdf:about="#NecessityOfExistenceQualityOfGod">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <RO_0000052 rdf:resource="#God"/>
+  <obo:RO_0000052 rdf:resource="#God"/>
+  <work3:type rdf:resource="#NecessityOfExistence"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NecessityOfExistenceQualityOfGod</rdfs:label>
 </owl:NamedIndividual>
 
