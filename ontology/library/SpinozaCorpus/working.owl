@@ -21786,16 +21786,29 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PassionOfTheMind</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#MindAffirmsBodyForceProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000055 rdf:resource="#PassionOfTheMind"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindAffirmsBodyForceProcess</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#ForceOfExistingQuality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ForceOfExistingQuality</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#MindAffirmsBodyForceProcess">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <obo:BFO_0000055 rdf:resource="#PassionOfTheMind"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindAffirmsBodyForceProcess</rdfs:label>
+<owl:Class rdf:about="#PassionOfMind">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PassionOfMind</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PassionAffect">
+  <rdfs:subClassOf rdf:resource="#Affect"/>
+  <work:subClassOf rdf:resource="#PassionOfMind"/>
+  <work:subClassOf rdf:resource="#Affect"/>
+  <work:subClassOf rdf:resource="#ConfusedIdea"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PassionAffect</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
