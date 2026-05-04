@@ -21192,6 +21192,7 @@
 
 <owl:Class rdf:about="#ReasonDictate">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ReasonDictate</rdfs:label>
 </owl:Class>
 
@@ -22897,6 +22898,29 @@
 <owl:Class rdf:about="#ConflictProcess">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConflictProcess</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#JudgmentFollowingReason">
+  <rdfs:subClassOf rdf:resource="#ReasonDictate"/>
+  <work:subClassOf rdf:resource="#ReasonDictate"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">JudgmentFollowingReason</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#GoodAsJudgedByReason">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:BFO_0000054 rdf:resource="#JudgmentFollowingReason"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GoodAsJudgedByReason</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#EvilAsJudgedByReason">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:BFO_0000054 rdf:resource="#JudgmentFollowingReason"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EvilAsJudgedByReason</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ReasonJudgmentVeracityDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ReasonJudgmentVeracityDisposition</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
@@ -33093,6 +33117,14 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <obo:BFO_0000050 rdf:resource="#TheEthics"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NegationOnlyAgreementAbsenceOfTrueAgreementAxiom</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ReasonJudgmentVeracityDispositionInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work3:type rdf:resource="#ReasonJudgmentVeracityDisposition"/>
+  <obo:RO_0000052 rdf:resource="#JudgmentFollowingReason"/>
+  <obo:BFO_0000050 rdf:resource="#TheEthics"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ReasonJudgmentVeracityDispositionInstance</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
