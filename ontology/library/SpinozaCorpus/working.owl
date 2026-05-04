@@ -7501,6 +7501,8 @@
 <owl:Class rdf:about="#Reason">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <obo:BFO_0000054 rdf:resource="#ReasonDestroyingOpinionProcess"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:BFO_0000054 rdf:resource="#ReasonNecessityApprehensionProcess"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Reason</rdfs:label>
 </owl:Class>
 
@@ -18116,6 +18118,25 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="#SelfConceivability"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TruthSelfEvidence</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ReasonNecessityApprehension">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#Reason"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ReasonNecessityApprehension</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ReasonContingencyNonApprehension">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ReasonContingencyNon-Apprehension</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ReasonNecessityApprehensionProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ReasonNecessityApprehensionProcess</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
