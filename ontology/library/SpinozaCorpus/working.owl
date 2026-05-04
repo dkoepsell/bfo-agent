@@ -32017,6 +32017,7 @@
   <obo:RO_0000056 rdf:resource="#GuidingAllThingsProcess"/>
   <obo:RO_0000056 rdf:resource="#DeductionFromGodKnowledgeProcess"/>
   <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
+  <obo:RO_0000056 rdf:resource="#DivineSustainmentAndDirectionProcess"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">God</rdfs:label>
 </owl:NamedIndividual>
 
@@ -32167,6 +32168,7 @@
   <work3:type rdf:resource="#CausalNetwork"/>
   <obo:RO_0000053 rdf:resource="#MotionToRestRatio"/>
   <obo:RO_0000056 rdf:resource="#MotionToRestRatioPreservationProcess"/>
+  <obo:RO_0000056 rdf:resource="#DivineSustainmentAndDirectionProcess"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WholeOfNature</rdfs:label>
 </owl:NamedIndividual>
 
@@ -36089,6 +36091,12 @@
 <owl:NamedIndividual rdf:about="#EvidenceContent">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EvidenceContent</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#HebrewsElectionRoleInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <obo:RO_0000052 rdf:resource="#Hebrews"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HebrewsElectionRoleInstance</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#Spinoza">
@@ -45213,12 +45221,6 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UniversalRevelationQuality</rdfs:label>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#HebrewsElectionRoleInstance">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
-  <obo:RO_0000052 rdf:resource="#Hebrews"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HebrewsElectionRoleInstance</rdfs:label>
-</owl:NamedIndividual>
-
 <owl:NamedIndividual rdf:about="#HebrewsElectionTemporalBoundednessQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <obo:RO_0000052 rdf:resource="#HebrewsElectionRoleInstance"/>
@@ -45602,6 +45604,17 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <obo:RO_0000052 rdf:resource="#ThePeople"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ThreatOfWar</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#DivineSustainmentAndDirectionProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivineSustainmentAndDirectionProcess</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#SupremeWisdomQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#God"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SupremeWisdomQuality</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
