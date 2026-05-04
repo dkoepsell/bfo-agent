@@ -28914,6 +28914,8 @@
   <obo:RO_0000053 rdf:resource="#GodSelfSufficiencyQualityInstance"/>
   <obo:RO_0000053 rdf:resource="#ImmutabilityQualityInstance"/>
   <obo:RO_0000053 rdf:resource="#ImmutableFirstCauseRoleInstance"/>
+  <obo:RO_0000056 rdf:resource="#VoiceCreationProcess"/>
+  <obo:RO_0000056 rdf:resource="#RevelationOfDecalogueProcess"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">God</rdfs:label>
 </owl:NamedIndividual>
 
@@ -40651,6 +40653,13 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TrueVoiceQuality</rdfs:label>
 </owl:NamedIndividual>
 
+<owl:NamedIndividual rdf:about="#HearingOfDecalogueProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#Israelites"/>
+  <obo:BFO_0000050 rdf:resource="#VoiceOfGodProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HearingOfDecalogueProcess</rdfs:label>
+</owl:NamedIndividual>
+
 <owl:NamedIndividual rdf:about="#Samuel">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
   <obo:RO_0000056 rdf:resource="#VoiceHearingProcess"/>
@@ -40703,11 +40712,34 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">VoiceOfGodProcess</rdfs:label>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#HearingOfDecalogueProcess">
+<owl:NamedIndividual rdf:about="#VoiceCreationProcess">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <obo:RO_0000057 rdf:resource="#Israelites"/>
-  <obo:BFO_0000050 rdf:resource="#VoiceOfGodProcess"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HearingOfDecalogueProcess</rdfs:label>
+  <obo:RO_0000057 rdf:resource="#CreatedVoice"/>
+  <obo:BFO_0000050 rdf:resource="#RevelationOfDecalogueProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">VoiceCreationProcess</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#CreatedVoice">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <obo:RO_0000056 rdf:resource="#RevelationOfDecalogueProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CreatedVoice</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#RevelationOfDecalogueProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RevelationOfDecalogueProcess</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Decalogue">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <obo:RO_0000056 rdf:resource="#RevelationOfDecalogueProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Decalogue</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#RevealedByVoiceQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#Decalogue"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RevealedByVoiceQuality</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
