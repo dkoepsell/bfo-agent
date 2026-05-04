@@ -14934,6 +14934,13 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IdeaObjectAgreement</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#ConceivableAsNonExisting">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="#EssenceDoesNotInvolveExistence"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConceivableAsNonExisting</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#God">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
   <obo:BFO_0000051 rdf:resource="#DivineAttribute"/>
