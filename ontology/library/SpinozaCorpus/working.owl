@@ -13878,6 +13878,18 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ActOfKilling</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#EvilNonNegationOfGodQuality">
+  <rdfs:subClassOf rdf:resource="#ExistenceNonEvilQuality"/>
+  <work:subClassOf rdf:resource="#ExistenceNonEvilQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EvilNonNegationOfGodQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#EvilAccompaniesPositiveActQuality">
+  <rdfs:subClassOf rdf:resource="#ImperfectionQuality"/>
+  <work:subClassOf rdf:resource="#ImperfectionQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EvilAccompaniesPositiveActQuality</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#God">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
   <obo:BFO_0000051 rdf:resource="#DivineAttribute"/>
@@ -15741,6 +15753,20 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivineConcurrenceProcess</rdfs:label>
 </owl:NamedIndividual>
 
+<owl:NamedIndividual rdf:about="#DivineConcurrenceInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:RO_0000052 rdf:resource="#God"/>
+  <obo:BFO_0000054 rdf:resource="#GodConcursWithAllPositiveActsProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivineConcurrenceInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#GodConcursWithAllPositiveActsProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000055 rdf:resource="#DivineConcurrenceInstance"/>
+  <obo:BFO_0000051 rdf:resource="#ActOfKilling"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodConcursWithAllPositiveActsProcess</rdfs:label>
+</owl:NamedIndividual>
+
 <owl:NamedIndividual rdf:about="#ThinkingThingRole">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
   <obo:RO_0000052 rdf:resource="#Speaker"/>
@@ -16333,6 +16359,12 @@
   <work2:sameAs rdf:resource="#GodPower"/>
   <work2:sameAs rdf:resource="#GodEssence"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodIntellect</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ProcreationProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#Spouses"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ProcreationProcess</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#AttributeUnityConstraint">
@@ -20772,30 +20804,10 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ImpressingOfIntellectWillOrderProcess</rdfs:label>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#ProcreationProcess">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <obo:RO_0000057 rdf:resource="#Spouses"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ProcreationProcess</rdfs:label>
-</owl:NamedIndividual>
-
 <owl:NamedIndividual rdf:about="#Spouses">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
   <obo:RO_0000056 rdf:resource="#ProcreationProcess"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Spouses</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#DivineConcurrenceInstance">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <obo:RO_0000052 rdf:resource="#God"/>
-  <obo:BFO_0000054 rdf:resource="#GodConcursWithAllPositiveActsProcess"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivineConcurrenceInstance</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#GodConcursWithAllPositiveActsProcess">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <obo:BFO_0000055 rdf:resource="#DivineConcurrenceInstance"/>
-  <obo:BFO_0000051 rdf:resource="#ActOfKilling"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodConcursWithAllPositiveActsProcess</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
