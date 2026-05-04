@@ -27559,6 +27559,7 @@
   <obo:BFO_0000051 rdf:resource="#IdeaOfHumanBodyInGod"/>
   <obo:BFO_0000051 rdf:resource="#IdeaOfHumanBodyEssence"/>
   <obo:BFO_0000051 rdf:resource="#CollectionOfEternalModesOfThinking"/>
+  <obo:BFO_0000051 rdf:resource="#WholeOfNature"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">InfiniteIntellectOfGod</rdfs:label>
 </owl:NamedIndividual>
 
@@ -27708,6 +27709,7 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <RO_0000052 rdf:resource="#HumanMind"/>
   <obo:RO_0000052 rdf:resource="#FormalBeingOfHumanMind"/>
+  <obo:RO_0000052 rdf:resource="#InfiniteIntellectOfGod"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindPartOfInfiniteIntellectQuality</rdfs:label>
 </owl:NamedIndividual>
 
@@ -38499,6 +38501,12 @@
 <owl:NamedIndividual rdf:about="#TreatiseOnCalculationOfChances">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TreatiseOnCalculationOfChances</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ReflectsAllOfNatureDisposition">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:RO_0000052 rdf:resource="#InfiniteIntellectOfGod"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ReflectsAllOfNatureDisposition</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
