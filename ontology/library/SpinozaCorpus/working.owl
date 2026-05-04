@@ -17354,6 +17354,7 @@
   <obo:RO_0000052 rdf:resource="#God"/>
   <work:subClassOf rdf:resource="#EssentialExistenceQuality"/>
   <work:subClassOf rdf:resource="#NecessityOfExistence"/>
+  <work3:type rdf:resource="#ExistenceIsEssenceIdentityQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodExistenceEssenceIdentityQuality</rdfs:label>
 </owl:NamedIndividual>
 
