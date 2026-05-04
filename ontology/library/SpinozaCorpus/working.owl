@@ -19617,6 +19617,8 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <work:subClassOf rdf:resource="#StrivingToPlease"/>
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:BFO_0000054 rdf:resource="#ActionOfAnother"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">StrivingToPlease</rdfs:label>
 </owl:Class>
 
@@ -19624,6 +19626,24 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PleaseOthersMotivation</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#Praise">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#Joy"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Praise</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ActionOfAnother">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ActionOfAnother</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#RegardingOfAction">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#ActionOfAnother"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RegardingOfAction</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
