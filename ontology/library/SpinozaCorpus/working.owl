@@ -2568,6 +2568,8 @@
   <work:subClassOf rdf:resource="#Idea"/>
   <rdfs:subClassOf rdf:resource="#InadequateIdea"/>
   <work:subClassOf rdf:resource="#InadequateIdea"/>
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConfusedIdea</rdfs:label>
 </owl:Class>
 
@@ -3067,6 +3069,8 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work:subClassOf rdf:resource="#BeingOfReason"/>
   <work:subClassOf rdf:resource="#ModeOfThinking"/>
+  <work:subClassOf rdf:resource="#Falsity"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Privation</rdfs:label>
 </owl:Class>
 
@@ -18327,6 +18331,18 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">VolitionIdeaIdentityQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#MutilatedIdea">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MutilatedIdea</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#FalsityConsistsInPrivationQuality">
+  <rdfs:subClassOf rdf:resource="#Falsity"/>
+  <work:subClassOf rdf:resource="#Falsity"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FalsityConsistsInPrivationQuality</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
