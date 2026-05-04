@@ -28304,6 +28304,31 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DomainDistinctnessQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#ScriptureAloneEpistemicConstraintDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:BFO_0000054 rdf:resource="#SpiritualKnowledgeAcquisitionProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ScriptureAloneEpistemicConstraintDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SpiritualKnowledge">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SpiritualKnowledge</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ScriptureEpistemicAuthorityQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ScriptureEpistemicAuthorityQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SpiritualKnowledgeAcquisitionProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SpiritualKnowledgeAcquisitionProcess</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -36860,6 +36885,9 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <obo:RO_0000053 rdf:resource="#ScriptureRevelationQualityInstance"/>
   <obo:RO_0000053 rdf:resource="#ScriptureWordOfGodRoleInstance"/>
+  <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work3:type rdf:resource="#ScriptureEpistemicAuthorityQuality"/>
+  <obo:RO_0000053 rdf:resource="#ScriptureEpistemicAuthorityQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Scripture</rdfs:label>
 </owl:NamedIndividual>
 
@@ -40280,6 +40308,12 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <obo:RO_0000052 rdf:resource="#Scripture"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ScriptureReasonSeparationQuality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#NaturalLight">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NaturalLight</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
