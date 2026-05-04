@@ -25611,6 +25611,7 @@
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <obo:BFO_0000054 rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <obo:RO_0000052 rdf:resource="#God"/>
+  <work:subClassOf rdf:resource="#LoveTowardGod"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LoveTowardGod</rdfs:label>
 </owl:Class>
 
@@ -25689,6 +25690,12 @@
 <owl:Class rdf:about="#HighestGoodQuality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HighestGoodQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#UniversalityAmongMenQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UniversalityAmongMenQuality</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
