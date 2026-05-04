@@ -1012,6 +1012,8 @@
   <obo:RO_0000052 rdf:resource="#HumanMind"/>
   <rdfs:subClassOf rdf:resource="#PrimitiveAffect"/>
   <work:subClassOf rdf:resource="#PrimitiveAffect"/>
+  <rdfs:subClassOf rdf:resource="#Affect"/>
+  <work:subClassOf rdf:resource="#PrimaryAffect"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Desire</rdfs:label>
 </owl:Class>
 
@@ -1743,6 +1745,7 @@
   <rdfs:subClassOf rdf:resource="#PrimitiveAffect"/>
   <work:subClassOf rdf:resource="#PrimitiveAffect"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="#PrimaryAffect"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Joy</rdfs:label>
 </owl:Class>
 
@@ -1967,6 +1970,7 @@
   <obo:BFO_0000055 rdf:resource="#PowerDiminishingDisposition"/>
   <rdfs:subClassOf rdf:resource="#PrimitiveAffect"/>
   <work:subClassOf rdf:resource="#PrimitiveAffect"/>
+  <work:subClassOf rdf:resource="#PrimaryAffect"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Sadness</rdfs:label>
 </owl:Class>
 
@@ -21755,6 +21759,23 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Chastity</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#PrimaryAffect">
+  <rdfs:subClassOf rdf:resource="#Affect"/>
+  <work:subClassOf rdf:resource="#Affect"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PrimaryAffect</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#AffectVariation">
+  <rdfs:subClassOf rdf:resource="#Affect"/>
+  <work:subClassOf rdf:resource="#Affect"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AffectVariation</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#AffectAriseFromPrimaryAffectsConstraint">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AffectAriseFromPrimaryAffectsConstraint</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
@@ -22219,6 +22240,7 @@
   <work3:type rdf:resource="#Appetite"/>
   <obo:BFO_0000051 rdf:resource="#MindImaginesOnlyActingPowerPositingThingsDisposition"/>
   <work3:type rdf:resource="#PowerToPersevereInBeing"/>
+  <work3:type rdf:resource="#Desire"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConatusMentalDispositionInstance</rdfs:label>
 </owl:NamedIndividual>
 
