@@ -38429,6 +38429,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TPTTemporalPriorityInDemocracyDefenseQuality</rdfs:label>
 </owl:NamedIndividual>
 
+<owl:NamedIndividual rdf:about="#ContributionToEnlightenment">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000050 rdf:resource="#TheEnlightenment"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ContributionToEnlightenment</rdfs:label>
+</owl:NamedIndividual>
+
 <owl:NamedIndividual rdf:about="#FoundationalContributionDispositionInstance">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <obo:RO_0000052 rdf:resource="#TheologicalPoliticalTreatise"/>
@@ -38447,10 +38453,15 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TheEnlightenment</rdfs:label>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#ContributionToEnlightenment">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <obo:BFO_0000050 rdf:resource="#TheEnlightenment"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ContributionToEnlightenment</rdfs:label>
+<owl:NamedIndividual rdf:about="#PoliticalTreatise">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PoliticalTreatise</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#UnfinishedStatusQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#PoliticalTreatise"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UnfinishedStatusQuality</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
