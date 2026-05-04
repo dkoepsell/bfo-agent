@@ -2736,6 +2736,14 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FormalBeingQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#Perfection">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#SubstanceInfinityOrPerfectionQuality"/>
+  <work:subClassOf rdf:resource="#EssentialExistenceQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Perfection</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#IdeaObjectCorrespondenceConstraint">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
@@ -4242,14 +4250,6 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <obo:RO_0000057 rdf:resource="#TrueIntellect"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IntellectualGoodJudgment</rdfs:label>
-</owl:Class>
-
-<owl:Class rdf:about="#Perfection">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <work:subClassOf rdf:resource="#SubstanceInfinityOrPerfectionQuality"/>
-  <work:subClassOf rdf:resource="#EssentialExistenceQuality"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Perfection</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#ExternalObject">
@@ -27374,6 +27374,7 @@
 <owl:Class rdf:about="#AbsenceOfImperfectionQuality">
   <rdfs:subClassOf rdf:resource="#EssentialExistenceQuality"/>
   <work:subClassOf rdf:resource="#EssentialExistenceQuality"/>
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AbsenceOfImperfectionQuality</rdfs:label>
 </owl:Class>
 
@@ -28089,6 +28090,7 @@
   <obo:RO_0000053 rdf:resource="#ExtensionLacksSelfExistenceDisposition"/>
   <obo:RO_0000053 rdf:resource="#CreatedByGodQuality"/>
   <obo:RO_0000052 rdf:resource="#Body"/>
+  <obo:RO_0000053 rdf:resource="#ExtensionDenialOfThought"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Extension</rdfs:label>
 </owl:NamedIndividual>
 
@@ -39060,6 +39062,14 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <obo:RO_0000052 rdf:resource="#Extension"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LimitedExtensionConceivabilityAbsence</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ExtensionDenialOfThought">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#Extension"/>
+  <work3:type rdf:resource="#AbsenceOfImperfectionQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExtensionDenialOfThought</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
