@@ -29765,6 +29765,7 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <obo:RO_0000057 rdf:resource="#Revelation"/>
   <obo:RO_0000057 rdf:resource="#OrdinaryOpinionAboutGod"/>
+  <obo:BFO_0000055 rdf:resource="#AccommodationOfReasoningInstance"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AccommodationProcess</rdfs:label>
 </owl:Class>
 
@@ -30013,6 +30014,16 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PropheticMoralAuthorityDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#AccommodationOfReasoning">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AccommodationOfReasoning</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#OpinionsAndPrinciplesOfPerson">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OpinionsAndPrinciplesOfPerson</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
@@ -34000,6 +34011,7 @@
   <obo:RO_0000056 rdf:resource="#GodCausesAllThingsProcess"/>
   <obo:RO_0000053 rdf:resource="#ChristMindToMindCommunicationDispositionInstance"/>
   <obo:RO_0000056 rdf:resource="#MindToMindCommunicationProcess"/>
+  <obo:RO_0000056 rdf:resource="#AccommodationProcess"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Christ</rdfs:label>
 </owl:NamedIndividual>
 
@@ -43168,15 +43180,22 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PropheticIgnoranceOfSpeculativeMattersQuality</rdfs:label>
 </owl:NamedIndividual>
 
+<owl:NamedIndividual rdf:about="#Prophets">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Prophets</rdfs:label>
+</owl:NamedIndividual>
+
 <owl:NamedIndividual rdf:about="#PropheticContraryOpinionsQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <obo:RO_0000052 rdf:resource="#Prophets"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PropheticContraryOpinionsQuality</rdfs:label>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#Prophets">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Prophets</rdfs:label>
+<owl:NamedIndividual rdf:about="#AccommodationOfReasoningInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:RO_0000052 rdf:resource="#Christ"/>
+  <work3:type rdf:resource="#AccommodationOfReasoning"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AccommodationOfReasoningInstance</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
