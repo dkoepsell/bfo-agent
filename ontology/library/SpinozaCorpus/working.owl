@@ -25984,17 +25984,17 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SecondKindOfKnowledge</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#DesireForThirdKindKnowledge">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <obo:BFO_0000054 rdf:resource="#SecondKindKnowledgeArisingProcess"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DesireForThirdKindKnowledge</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#SecondKindKnowledgeArisingProcess">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <obo:RO_0000057 rdf:resource="#SecondKindOfKnowledge"/>
   <obo:RO_0000057 rdf:resource="#DesireForThirdKindKnowledge"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SecondKindKnowledgeArisingProcess</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DesireForThirdKindKnowledge">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:BFO_0000054 rdf:resource="#SecondKindKnowledgeArisingProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DesireForThirdKindKnowledge</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
@@ -26681,6 +26681,7 @@
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <obo:BFO_0000050 rdf:resource="#MindEternalityUnderSpeciesOfEternityQuality"/>
   <obo:BFO_0000050 rdf:resource="#ThirdKindOfKnowledgeInstance"/>
+  <obo:BFO_0000050 rdf:resource="#SubSpecieAeternitatisUnderstanding"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EternalIdeaOfBodyPertainsToMindEssenceQuality</rdfs:label>
 </owl:NamedIndividual>
 
@@ -29712,6 +29713,13 @@
   <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <obo:RO_0000057 rdf:resource="#God"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HavingIdeaOfGodProcess</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#GreatestSatisfactionQualityInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work3:type rdf:resource="#GreatestSatisfactionQuality"/>
+  <obo:RO_0000052 rdf:resource="#FormalBeingOfHumanMind"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GreatestSatisfactionQualityInstance</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#IdealParticipationRelation">
@@ -36780,11 +36788,29 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GreatestVirtueOfMindQualityInstance</rdfs:label>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#GreatestSatisfactionQualityInstance">
+<owl:NamedIndividual rdf:about="#SubSpecieAeternitatisUnderstanding">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:BFO_0000054 rdf:resource="#SubSpecieAeternitatisConceptionProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SubSpecieAeternitatisUnderstanding</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#SubSpecieAeternitatisConceptionProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000055 rdf:resource="#SubSpecieAeternitatisUnderstanding"/>
+  <obo:RO_0000057 rdf:resource="#EssenceOfBodyUnderEternityQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SubSpecieAeternitatisConceptionProcess</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#SubSpecieAeternitatisQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <work3:type rdf:resource="#GreatestSatisfactionQuality"/>
-  <obo:RO_0000052 rdf:resource="#FormalBeingOfHumanMind"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GreatestSatisfactionQualityInstance</rdfs:label>
+  <obo:RO_0000052 rdf:resource="#SubSpecieAeternitatisConceptionProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SubSpecieAeternitatisQuality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#EssenceOfBodyUnderEternityQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#PartOfExtendedSubstance"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EssenceOfBodyUnderEternityQuality</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
