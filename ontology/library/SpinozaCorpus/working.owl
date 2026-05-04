@@ -26302,6 +26302,24 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IntellectGroundednessQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#WiseMan">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WiseMan</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#IgnorantMan">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IgnorantMan</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#HigherPowerQuality">
+  <rdfs:subClassOf rdf:resource="#PowerQuality"/>
+  <work:subClassOf rdf:resource="#PowerQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HigherPowerQuality</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
