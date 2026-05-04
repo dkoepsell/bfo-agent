@@ -22114,6 +22114,30 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConceivabilityThroughOthers</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#HumanPerseveranceForce">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HumanPerseveranceForce</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#LimitednessQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LimitednessQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PowerOfExternalCauses">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PowerOfExternalCauses</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#InfiniteSuperiority">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">InfiniteSuperiority</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
@@ -32148,6 +32172,29 @@
   <work3:type rdf:resource="#ConceivabilityThroughOthers"/>
   <obo:RO_0000052 rdf:resource="#PartOfNature"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConceivabilityThroughOthersQualityInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#HumanPerseveranceForceInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:RO_0000052 rdf:resource="#Man"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HumanPerseveranceForceInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#PowerOfExternalCausesInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PowerOfExternalCausesInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#LimitednessOfHumanPerseveranceForce">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#HumanPerseveranceForceInstance"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LimitednessOfHumanPerseveranceForce</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#InfiniteSuperiorityOfExternalPower">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#PowerOfExternalCausesInstance"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">InfiniteSuperiorityOfExternalPower</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
