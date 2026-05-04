@@ -20140,6 +20140,41 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CauseReattachmentProcess</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#LoveTowardThing">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LoveTowardThing</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#LoveTowardFreelyImagined">
+  <rdfs:subClassOf rdf:resource="#LoveTowardThing"/>
+  <work:subClassOf rdf:resource="#LoveTowardThing"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LoveTowardFreelyImagined</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#LoveTowardNecessarilyImagined">
+  <rdfs:subClassOf rdf:resource="#LoveTowardThing"/>
+  <work:subClassOf rdf:resource="#LoveTowardThing"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LoveTowardNecessarilyImagined</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ImaginingThingAsFree">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ImaginingThingAsFree</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ImaginingThingAsNecessary">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ImaginingThingAsNecessary</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#LoveMagnitudeQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#LoveTowardThing"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LoveMagnitudeQuality</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
