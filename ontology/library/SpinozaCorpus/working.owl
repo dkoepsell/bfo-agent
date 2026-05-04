@@ -20666,6 +20666,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">JoyFromComparisonArisingProcess</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#ComparisonWithOthers">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ComparisonWithOthers</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#Overestimation">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="#Joy"/>
@@ -28102,6 +28108,7 @@
 <owl:Class rdf:about="#SecurityQuality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#SocialOrder"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SecurityQuality</rdfs:label>
 </owl:Class>
 
@@ -30112,12 +30119,6 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BadHeart</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#ComparisonWithOthers">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ComparisonWithOthers</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#HumanGovernance">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
@@ -30166,6 +30167,45 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SocialOrderFormationProcess</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PrudenceQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PrudenceQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PrudentFounderRole">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PrudentFounderRole</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PrudentDirectorRole">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PrudentDirectorRole</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#StabilityQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#SocialOrder"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">StabilityQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SocialOrderFoundingProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000055 rdf:resource="#PrudentFounderRole"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SocialOrderFoundingProcess</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SocialOrderDirectingProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000055 rdf:resource="#PrudentDirectorRole"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SocialOrderDirectingProcess</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
