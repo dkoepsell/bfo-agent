@@ -14353,15 +14353,27 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">KnaveryAbstentionDisposition</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#KnaveryAbstentionProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">KnaveryAbstentionProcess</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#KnaveryContraryToNatureQuality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="#ImperfectionQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">KnaveryContraryToNatureQuality</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#KnaveryAbstentionProcess">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">KnaveryAbstentionProcess</rdfs:label>
+<owl:Class rdf:about="#ParabolicExpression">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ParabolicExpression</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#AnthropomorphicLanguagePattern">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AnthropomorphicLanguagePattern</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#God">
@@ -21584,6 +21596,25 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <obo:BFO_0000050 rdf:resource="#TheEthics"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EvilOnlyRelationalToFreedomAxiom</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#SacredScripture">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <obo:RO_0000053 rdf:resource="#ScriptureExpressesParabolically"/>
+  <obo:RO_0000053 rdf:resource="#ScriptureAnthropomorphismDisposition"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SacredScripture</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ScriptureExpressesParabolically">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:RO_0000052 rdf:resource="#SacredScripture"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ScriptureExpressesParabolically</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ScriptureAnthropomorphismDisposition">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:RO_0000052 rdf:resource="#SacredScripture"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ScriptureAnthropomorphismDisposition</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
