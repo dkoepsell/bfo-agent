@@ -311,6 +311,13 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExistenceIsEssenceIdentityQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#EssentialExistenceQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#DivineAttribute"/>
+  <obo:RO_0000052 rdf:resource="#God"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EssentialExistenceQuality</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#ExistenceNecessitation">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="#CausaSui"/>
@@ -335,13 +342,6 @@
   <rdfs:subClassOf rdf:resource="#ImperfectionQuality"/>
   <work:subClassOf rdf:resource="#ImperfectionQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExistenceNonImperfectionQuality</rdfs:label>
-</owl:Class>
-
-<owl:Class rdf:about="#EssentialExistenceQuality">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <work:subClassOf rdf:resource="#DivineAttribute"/>
-  <obo:RO_0000052 rdf:resource="#God"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EssentialExistenceQuality</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#ExistenceModalityQuality">
@@ -26748,6 +26748,18 @@
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="#Attribute"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RealDistinctionBetweenAttributes</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#AttributeMutualDependenceDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="#Attribute"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AttributeMutualDependenceDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#AttributeCoExistenceNecessityQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#Attribute"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AttributeCoExistenceNecessityQuality</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
