@@ -29761,6 +29761,16 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OmnipresenceQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#PowerOfUnderstanding">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PowerOfUnderstanding</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#AdaptedToUnderstandingQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AdaptedToUnderstandingQuality</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -42482,6 +42492,27 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <obo:RO_0000052 rdf:resource="#Adam"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AdamLackOfKnowledgeOfGodOmniscience</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#AdamPowerOfUnderstandingInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:RO_0000052 rdf:resource="#Adam"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AdamPowerOfUnderstandingInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#RevelationToAdam">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work3:type rdf:resource="#Revelation"/>
+  <obo:RO_0000057 rdf:resource="#God"/>
+  <obo:RO_0000057 rdf:resource="#Adam"/>
+  <obo:BFO_0000055 rdf:resource="#AdamPowerOfUnderstandingInstance"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RevelationToAdam</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#RevelationAdaptedToAdamUnderstandingQualityInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#RevelationToAdam"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RevelationAdaptedToAdamUnderstandingQualityInstance</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
