@@ -1793,6 +1793,13 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Joy</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#ServingGodRole">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <work:subClassOf rdf:resource="#FiniteThingRole"/>
+  <obo:BFO_0000054 rdf:resource="#ServingGodProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ServingGodRole</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#Life">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <obo:BFO_0000054 rdf:resource="#PerseveranceProcess"/>
@@ -4042,13 +4049,6 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">StrainAgainstHumilityAndDespondencyDisposition</rdfs:label>
-</owl:Class>
-
-<owl:Class rdf:about="#ServingGodRole">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
-  <work:subClassOf rdf:resource="#FiniteThingRole"/>
-  <obo:BFO_0000054 rdf:resource="#ServingGodProcess"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ServingGodRole</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#ServingGodProcess">
@@ -23226,6 +23226,35 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">StateMaintainedByLawsQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#StateOfNature">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000029"/>
+  <obo:RO_0000053 rdf:resource="#AbsenceOfCommonAgreementQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">StateOfNature</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#GoodByCommonAgreement">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GoodByCommonAgreement</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#EvilByCommonAgreement">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EvilByCommonAgreement</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#CommonAgreement">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CommonAgreement</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#AbsenceOfCommonAgreementQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#EssentialExistenceQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AbsenceOfCommonAgreementQuality</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
