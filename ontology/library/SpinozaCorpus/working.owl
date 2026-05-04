@@ -14152,6 +14152,10 @@
 
 <owl:Class rdf:about="#Prophet">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <work:subClassOf rdf:resource="#_:bearerOfCounselorRole"/>
+  <work:subClassOf rdf:resource="#_:bearerOfMessengerRole"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Prophet</rdfs:label>
 </owl:Class>
 
@@ -14394,6 +14398,25 @@
 <owl:Class rdf:about="#WordOfGodRole">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WordOfGodRole</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ConfidentialCounselorRole">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <obo:RO_0000052 rdf:resource="#Prophet"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConfidentialCounselorRole</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#TrustyMessengerRole">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <obo:RO_0000052 rdf:resource="#Prophet"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TrustyMessengerRole</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PropheticMessengerRole">
+  <rdfs:subClassOf rdf:resource="#TrustyMessengerRole"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PropheticMessengerRole</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#God">
@@ -21644,6 +21667,18 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Scripture</rdfs:label>
 </owl:NamedIndividual>
 
+<owl:NamedIndividual rdf:about="#ScriptureRevelationQualityInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#Scripture"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ScriptureRevelationQualityInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ScriptureWordOfGodRoleInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <obo:RO_0000052 rdf:resource="#Scripture"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ScriptureWordOfGodRoleInstance</rdfs:label>
+</owl:NamedIndividual>
+
 <owl:NamedIndividual rdf:about="#ScripturePrimaryGoal">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <obo:BFO_0000050 rdf:resource="#Scripture"/>
@@ -21658,18 +21693,6 @@
 <owl:NamedIndividual rdf:about="#LoveOfNeighbor">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LoveOfNeighbor</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#ScriptureRevelationQualityInstance">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <obo:RO_0000052 rdf:resource="#Scripture"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ScriptureRevelationQualityInstance</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#ScriptureWordOfGodRoleInstance">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
-  <obo:RO_0000052 rdf:resource="#Scripture"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ScriptureWordOfGodRoleInstance</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
