@@ -16630,6 +16630,24 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">VirtualExistenceInAttribute</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#IdeaOfSingularActuallyExistingThing">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#SingularModeOfThinking"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IdeaOfSingularActuallyExistingThing</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SingularModeOfThinking">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SingularModeOfThinking</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SingularActuallyExistingThing">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SingularActuallyExistingThing</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
