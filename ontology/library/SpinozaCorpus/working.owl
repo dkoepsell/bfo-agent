@@ -22863,6 +22863,11 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LivingAccordingToReason</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#ReasonsGuidance">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ReasonsGuidance</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#NecessaryAgreementInNatureQuality">
   <rdfs:subClassOf rdf:resource="#AgreementInNature"/>
   <obo:RO_0000052 rdf:resource="#RationalAgent"/>
@@ -23099,9 +23104,31 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MoralityGenerationProcess</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#ReasonsGuidance">
+<owl:Class rdf:about="#BeingHonorable">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ReasonsGuidance</rdfs:label>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000020"/>
+  <obo:BFO_0000054 rdf:resource="#JoiningOthersInFriendship"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BeingHonorable</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ReasonableMan">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <obo:RO_0000053 rdf:resource="#BeingHonorable"/>
+  <obo:RO_0000053 rdf:resource="#FriendshipObligation"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ReasonableMan</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#JoiningOthersInFriendship">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#ReasonableMan"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">JoiningOthersInFriendship</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#FriendshipObligation">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FriendshipObligation</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
