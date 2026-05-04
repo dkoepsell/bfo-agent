@@ -15410,6 +15410,25 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AffectionOfAttribute</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#ThingsInGodQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#WholeOfNature"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ThingsInGodQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ConceptionDependenceOnGodDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:RO_0000052 rdf:resource="#WholeOfNature"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConceptionDependenceOnGodDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ExistenceInGodQuality">
+  <rdfs:subClassOf rdf:resource="#ThingsInGodQuality"/>
+  <work:subClassOf rdf:resource="#ThingsInGodQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExistenceInGodQuality</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
