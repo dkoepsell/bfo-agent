@@ -15501,6 +15501,13 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CorporealSubstanceConceivabilityConstraint</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#IndivisibilityAsSubstanceQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#CorporealSubstance"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IndivisibilityAsSubstanceQuality</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
