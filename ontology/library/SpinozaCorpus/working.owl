@@ -19090,6 +19090,7 @@
   <work3:type rdf:resource="#FictionStatusQuality"/>
   <obo:RO_0000052 rdf:resource="#IdeaAsIdea"/>
   <obo:BFO_0000050 rdf:resource="#WillScopeNonExceedenceQuality"/>
+  <work:seeAlso rdf:resource="#WillIsUniversalBeingQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WillIsNotRealBeingQuality</rdfs:label>
 </owl:NamedIndividual>
 
@@ -27819,6 +27820,17 @@
   <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <obo:RO_0000052 rdf:resource="#God"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WillIntellectIdentityQuality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#WillIsUniversalBeingQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WillIsUniversalBeingQuality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#WillAsUniversalIdea">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work:seeAlso rdf:resource="#WillIsUniversalBeingQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WillAsUniversalIdea</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
