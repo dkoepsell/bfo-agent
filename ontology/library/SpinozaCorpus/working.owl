@@ -27178,6 +27178,25 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BodyIsPartOfUniverseQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#CorporealSubstanceDependenceQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#EssentialExistenceQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CorporealSubstanceDependenceQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#CorporealPart">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <work:subClassOf rdf:resource="#ModificationBearer"/>
+  <obo:BFO_0000050 rdf:resource="#CorporealSubstance"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CorporealPart</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ConceivabilityThroughCorporealSubstanceDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="#SubstanceGenerationIncapacity"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConceivabilityThroughCorporealSubstanceDisposition</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
@@ -27764,6 +27783,12 @@
   <obo:BFO_0000050 rdf:resource="#Extension"/>
   <obo:BFO_0000050 rdf:resource="#WholeOfNature"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PartOfExtendedSubstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Universe">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Universe</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#CommonOrderOfNature">
@@ -38664,12 +38689,6 @@
 <owl:NamedIndividual rdf:about="#OrderNeutralityOfNatureQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OrderNeutralityOfNatureQuality</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#Universe">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
-  <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Universe</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
