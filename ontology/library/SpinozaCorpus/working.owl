@@ -4534,6 +4534,11 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ActingFromVirtue</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#SuperiorPrudenceOrDiligenceOrVirtueQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SuperiorPrudenceOrDiligenceOrVirtueQuality</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#PreservingOnesBeingProcess">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
@@ -26965,11 +26970,6 @@
   <rdfs:subClassOf rdf:resource="#Animositas"/>
   <work:subClassOf rdf:resource="#Animositas"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PresenceOfMindInDanger</rdfs:label>
-</owl:Class>
-
-<owl:Class rdf:about="#SuperiorPrudenceOrDiligenceOrVirtueQuality">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SuperiorPrudenceOrDiligenceOrVirtueQuality</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#VenerationOccasioningProcess">
