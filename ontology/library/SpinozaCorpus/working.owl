@@ -6679,6 +6679,7 @@
   <work:subClassOf rdf:resource="#AffectArisingFromIncorrectOpinion"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="#ConstantJoyQuality"/>
+  <work:subClassOf rdf:resource="#ConfidenceArisesFromIdeaRelation"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Confidence</rdfs:label>
 </owl:Class>
 
@@ -20997,6 +20998,12 @@
 <owl:Class rdf:about="#UncertaintyQuality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UncertaintyQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ConfidenceArisesFromIdeaRelation">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConfidenceArisesFromIdeaRelation</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
