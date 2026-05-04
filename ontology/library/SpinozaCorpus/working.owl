@@ -16771,6 +16771,7 @@
   <obo:RO_0000053 rdf:resource="#GodFreeCauseRoleInstance"/>
   <obo:RO_0000056 rdf:resource="#ProductionFromGodNatureProcess"/>
   <obo:RO_0000053 rdf:resource="#ThinkingAttribute"/>
+  <obo:RO_0000053 rdf:resource="#Extension"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">God</rdfs:label>
 </owl:NamedIndividual>
 
