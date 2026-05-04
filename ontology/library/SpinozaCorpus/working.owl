@@ -28255,6 +28255,36 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RegardingOfficesAsIncomeSourcesQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#FreeUseOfJudgment">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FreeUseOfJudgment</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#RationalBeingQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RationalBeingQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#BeastLikeQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BeastLikeQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PrejudiceBlocksFreeJudgmentDisposition">
+  <rdfs:subClassOf rdf:resource="#Prejudice"/>
+  <work:subClassOf rdf:resource="#Prejudice"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PrejudiceBlocksFreeJudgmentDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#RationalityDegradationProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000055 rdf:resource="#PrejudiceBlocksFreeJudgmentDisposition"/>
+  <obo:RO_0000057 rdf:resource="#FreeUseOfJudgment"/>
+  <obo:RO_0000057 rdf:resource="#RationalBeingQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RationalityDegradationProcess</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
