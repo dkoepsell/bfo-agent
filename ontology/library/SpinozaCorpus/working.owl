@@ -25308,6 +25308,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AppetiteArousedByAdequateIdea</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#AdequateIdeaArousingProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#AdequateIdea"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AdequateIdeaArousingProcess</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#DesireArousedByAdequateIdea">
   <rdfs:subClassOf rdf:resource="#Desire"/>
   <work:subClassOf rdf:resource="#Desire"/>
@@ -25319,12 +25325,6 @@
   <rdfs:subClassOf rdf:resource="#Virtue"/>
   <work:subClassOf rdf:resource="#Virtue"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">VirtueFromAdequateIdea</rdfs:label>
-</owl:Class>
-
-<owl:Class rdf:about="#AdequateIdeaArousingProcess">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <obo:RO_0000057 rdf:resource="#AdequateIdea"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AdequateIdeaArousingProcess</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
@@ -35765,6 +35765,25 @@
   <work3:type rdf:resource="#ClearAndDistinctConceptFormability"/>
   <obo:RO_0000052 rdf:resource="#God"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UniversalConceptFormabilityOfBodyAffectionsQuality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#MindThinkingOnlyDisposition">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:RO_0000052 rdf:resource="#HumanMind"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindThinkingOnlyDisposition</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#AdequateIdeaFormationDisposition">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:RO_0000052 rdf:resource="#HumanMind"/>
+  <obo:BFO_0000050 rdf:resource="#MindThinkingOnlyDisposition"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AdequateIdeaFormationDisposition</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#MindThinkingExclusivityQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#HumanMind"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindThinkingExclusivityQuality</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
