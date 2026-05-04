@@ -3720,6 +3720,7 @@
   <obo:BFO_0000054 rdf:resource="#LoveOfGodArisesFromKnowledgeProcess"/>
   <obo:RO_0000052 rdf:resource="#God"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:BFO_0000054 rdf:resource="#DesireForOwnPossessionArisingProcess"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">KnowledgeOfGod</rdfs:label>
 </owl:Class>
 
@@ -14236,6 +14237,10 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
   <work:subClassOf rdf:resource="#EssenceReceptionFromGodQuality"/>
+  <obo:RO_0000053 rdf:resource="#PietyRole"/>
+  <obo:RO_0000053 rdf:resource="#ClearSelfKnowledge"/>
+  <obo:RO_0000053 rdf:resource="#KnowledgeOfGod"/>
+  <obo:RO_0000053 rdf:resource="#DesireForOwnPossession"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PiousAgent</rdfs:label>
 </owl:Class>
 
@@ -14655,6 +14660,30 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RightfulPossessionQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DesireForOwnPossession">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:BFO_0000054 rdf:resource="#DesireForOwnPossessionArisingProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DesireForOwnPossession</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ClearSelfKnowledge">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:BFO_0000054 rdf:resource="#DesireForOwnPossessionArisingProcess"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ClearSelfKnowledge</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DesireForOwnPossessionArisingProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#PiousAgent"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DesireForOwnPossessionArisingProcess</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PietyRole">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PietyRole</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#God">
