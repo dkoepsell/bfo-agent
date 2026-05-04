@@ -262,6 +262,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ModificationBearer</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#SubstanceExistenceEternalityQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#EssentialExistenceQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SubstanceExistenceEternalityQuality</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#ExistenceNecessitation">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="#CausaSui"/>
@@ -15066,10 +15072,15 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ModificationConceptionDependence</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#SubstanceExistenceEternalityQuality">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+<owl:Class rdf:about="#SubstanceUniquenessInNatureQuality">
+  <rdfs:subClassOf rdf:resource="#EssentialExistenceQuality"/>
   <work:subClassOf rdf:resource="#EssentialExistenceQuality"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SubstanceExistenceEternalityQuality</rdfs:label>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SubstanceUniquenessInNatureQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SubstanceNatureSingularityDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SubstanceNatureSingularityDisposition</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
@@ -15304,6 +15315,7 @@
   <obo:RO_0000056 rdf:resource="#EssenceAllotmentProcessInstance"/>
   <obo:RO_0000053 rdf:resource="#GodAbsoluteCauseOfEssenceRole"/>
   <obo:RO_0000053 rdf:resource="#AbsoluteInfinityQualityInstance"/>
+  <RO_0000053 rdf:resource="#SubstanceUniquenessInNatureQualityInstance"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">God</rdfs:label>
 </owl:NamedIndividual>
 
@@ -22550,6 +22562,13 @@
   <work3:type rdf:resource="#EternalTruth"/>
   <obo:BFO_0000050 rdf:resource="#TheEthics"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SubstanceExistenceEternalTruth</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#SubstanceUniquenessInNatureQualityInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work3:type rdf:resource="#SubstanceUniquenessInNatureQuality"/>
+  <RO_0000052 rdf:resource="#God"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SubstanceUniquenessInNatureQualityInstance</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
