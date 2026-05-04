@@ -1572,6 +1572,17 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TemporalInvarianceQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#Individual">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
+  <work:subClassOf rdf:resource="#_:universalAnimacyRestriction"/>
+  <rdfs:subClassOf rdf:resource="#Body"/>
+  <work:subClassOf rdf:resource="#Body"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/RO_0000053"/>
+  <obo:BFO_0000051 rdf:resource="#Individual"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Individual</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#ConatusRealizationProcess">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConatusRealizationProcess</rdfs:label>
@@ -8878,6 +8889,7 @@
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <obo:BFO_0000054 rdf:resource="#FeelingArisingFromMotionRestProcess"/>
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000020"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000020"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Feeling</rdfs:label>
 </owl:Class>
 
@@ -17347,17 +17359,6 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NecessaryIdeaExistenceInGodDisposition</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#Individual">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
-  <work:subClassOf rdf:resource="#_:universalAnimacyRestriction"/>
-  <rdfs:subClassOf rdf:resource="#Body"/>
-  <work:subClassOf rdf:resource="#Body"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/RO_0000053"/>
-  <obo:BFO_0000051 rdf:resource="#Individual"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Individual</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#AnimacyQuality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
@@ -20551,6 +20552,12 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AffectDifferenceRelation</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#LowerAnimal">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LowerAnimal</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
