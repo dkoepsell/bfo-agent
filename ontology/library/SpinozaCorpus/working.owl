@@ -1834,6 +1834,7 @@
 <owl:Class rdf:about="#Wealth">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work:subClassOf rdf:resource="#OrdinaryPursuit"/>
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Wealth</rdfs:label>
 </owl:Class>
 
@@ -21674,11 +21675,6 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Drunkenness</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#ImmoderateDesire">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ImmoderateDesire</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#ImmoderateDesireForDrinking">
   <rdfs:subClassOf rdf:resource="#ImmoderateDesire"/>
   <work:subClassOf rdf:resource="#Drunkenness"/>
@@ -21688,6 +21684,28 @@
 <owl:Class rdf:about="#ImmoderateDesireForDrinkingLove">
   <rdfs:subClassOf rdf:resource="#ImmoderateDesire"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ImmoderateDesireForDrinkingLove</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ImmoderateDesire">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ImmoderateDesire</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#Greed">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="#ImmoderateWealthDesire"/>
+  <work:subClassOf rdf:resource="#ImmoderateWealthLove"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Greed</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ImmoderateWealthDesire">
+  <rdfs:subClassOf rdf:resource="#ImmoderateDesire"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ImmoderateWealthDesire</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ImmoderateWealthLove">
+  <rdfs:subClassOf rdf:resource="#ImmoderateDesire"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ImmoderateWealthLove</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
