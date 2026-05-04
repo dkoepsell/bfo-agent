@@ -389,6 +389,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodDecree</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#FormalReality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FormalReality</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#CausaSui">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
@@ -11770,12 +11776,6 @@
   <rdfs:subClassOf rdf:resource="#AdequateCause"/>
   <work:subClassOf rdf:resource="#AdequateCause"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FirstAdequateCause</rdfs:label>
-</owl:Class>
-
-<owl:Class rdf:about="#FormalReality">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FormalReality</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#EminentReality">
@@ -26915,6 +26915,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FormalRealityComparativeRelation</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#NonEvaluativePerfectionQuality">
+  <rdfs:subClassOf rdf:resource="#SubstanceInfinityOrPerfectionQuality"/>
+  <work:subClassOf rdf:resource="#SubstanceInfinityOrPerfectionQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NonEvaluativePerfectionQuality</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
@@ -29787,6 +29793,14 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindAndBodyEpistemicPrimacyQuality</rdfs:label>
 </owl:NamedIndividual>
 
+<owl:NamedIndividual rdf:about="#SubstanceUniquenessQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work3:type rdf:resource="#UniquenessInNatureQuality"/>
+  <obo:RO_0000052 rdf:resource="#ExtendedSubstance"/>
+  <work:subClassOf rdf:resource="#EssentialExistenceQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SubstanceUniquenessQuality</rdfs:label>
+</owl:NamedIndividual>
+
 <owl:NamedIndividual rdf:about="#ConatusOfNature">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work3:type rdf:resource="#Conatus"/>
@@ -29922,14 +29936,6 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IdeaOfHumanBodyEssence</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#SubstanceUniquenessQuality">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <work3:type rdf:resource="#UniquenessInNatureQuality"/>
-  <obo:RO_0000052 rdf:resource="#ExtendedSubstance"/>
-  <work:subClassOf rdf:resource="#EssentialExistenceQuality"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SubstanceUniquenessQuality</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#AttributePriorToModesQuality">
@@ -38299,6 +38305,11 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#TermPolysemyQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NaturaTermPolysemyQualityInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#MetaphysicalPerfectionSense">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MetaphysicalPerfectionSense</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
