@@ -8870,6 +8870,13 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivineLoveClass</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#VirtueQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/RO_0000052"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">VirtueQuality</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#ImmanenceInGodQuality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
@@ -23013,13 +23020,6 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GoodEvilJudgmentQuality</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#VirtueQuality">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/RO_0000052"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">VirtueQuality</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#PowerToPreserveBeing">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="#SubstanceNecessaryInfinityDisposition"/>
@@ -26254,15 +26254,39 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivineLoveEnjoymentProcess</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#DivineLoveEnhancesUnderstandingDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivineLoveEnhancesUnderstandingDisposition</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#UnderstandingQuality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UnderstandingQuality</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#DivineLoveEnhancesUnderstandingDisposition">
+<owl:Class rdf:about="#UnderstandingDegreeQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UnderstandingDegreeQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#AffectOverpoweringPower">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivineLoveEnhancesUnderstandingDisposition</rdfs:label>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AffectOverpoweringPower</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#IncreasedUnderstandingProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000055 rdf:resource="#GreaterUnderstandingEnhancesAffectControlDisposition"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IncreasedUnderstandingProcess</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#GreaterUnderstandingEnhancesAffectControlDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="#AffectOverpoweringPower"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GreaterUnderstandingEnhancesAffectControlDisposition</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
