@@ -387,6 +387,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExistenceOrNonexistenceCausalReason</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#MoralValenceQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#Action"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MoralValenceQuality</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#RelationalQuality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
@@ -12706,6 +12712,7 @@
 <owl:Class rdf:about="#ExternalForce">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <obo:BFO_0000054 rdf:resource="#ExternalForceMoveBodyProcess"/>
+  <obo:BFO_0000054 rdf:resource="#StrengtheningByExternalForceProcess"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExternalForce</rdfs:label>
 </owl:Class>
 
@@ -23969,16 +23976,28 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">JoyIncreasesOrAidsPowerOfActing</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#MoralValenceQuality">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <obo:RO_0000052 rdf:resource="#Action"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MoralValenceQuality</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#IntrinsicMoralValenceQuality">
   <rdfs:subClassOf rdf:resource="#MoralValenceQuality"/>
   <work:subClassOf rdf:resource="#MoralValenceQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IntrinsicMoralValenceQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#StrengtheningByExternalForceProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#BodyPart"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">StrengtheningByExternalForceProcess</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#StrengthState">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#BodyPart"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">StrengthState</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#StrengthStatePreservationProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#BodyPart"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">StrengthStatePreservationProcess</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
@@ -34510,6 +34529,12 @@
 
 <rdf:Description rdf:about="#IntellectualGraspabilityDisposition">
   <obo:BFO_0000054 rdf:resource="#IntellectualGraspOfQuantityProcess"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#StrengthStatePreservationDisposition">
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:RO_0000052 rdf:resource="#BodyPart"/>
+  <obo:BFO_0000054 rdf:resource="#StrengthStatePreservationProcess"/>
 </rdf:Description>
 
 
