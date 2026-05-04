@@ -24233,6 +24233,8 @@
 <owl:Class rdf:about="#PowerOfNature">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:RO_0000052 rdf:resource="#WholeOfNature"/>
+  <work2:sameAs rdf:resource="#PowerOfGod"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PowerOfNature</rdfs:label>
 </owl:Class>
 
@@ -28863,6 +28865,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PropheticallyImpartedContent</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#PropheticWord">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PropheticWord</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#NaturalLightRevelation">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NaturalLightRevelation</rdfs:label>
@@ -29039,12 +29047,6 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <obo:RO_0000052 rdf:resource="#PropheticPerceptionProcess"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WordOrImageMediationQuality</rdfs:label>
-</owl:Class>
-
-<owl:Class rdf:about="#PropheticWord">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PropheticWord</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#TruthStatusQuality">
@@ -41497,6 +41499,12 @@
   <obo:RO_0000057 rdf:resource="#EternalJudgmentsOfGod"/>
   <obo:BFO_0000055 rdf:resource="#InscriptionOfDivineJudgmentsQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">InscribingDivineJudgmentsProcess</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#PowerOfGod">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:RO_0000052 rdf:resource="#God"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PowerOfGod</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
