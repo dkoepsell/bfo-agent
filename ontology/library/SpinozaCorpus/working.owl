@@ -26938,6 +26938,17 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AbsenceOfExternallySourcedIdeasQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#PhysicalInertia">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PhysicalInertia</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#MetaphysicalGeneralizationRelation">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MetaphysicalGeneralizationRelation</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
@@ -27437,6 +27448,7 @@
   <work3:type rdf:resource="#GuidanceByOwnNature"/>
   <work3:type rdf:resource="#AppetiteByWhichOneActs"/>
   <work3:type rdf:resource="#AppetiteByWhichOneIsActedOn"/>
+  <work3:type rdf:resource="#Conatus"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConatusMentalDispositionInstance</rdfs:label>
 </owl:NamedIndividual>
 
