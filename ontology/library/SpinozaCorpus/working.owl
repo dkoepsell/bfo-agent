@@ -269,6 +269,7 @@
   <work:subClassOf rdf:resource="#GodDecree"/>
   <work:subClassOf rdf:resource="#NecessityOfThingsSubjectMatter"/>
   <obo:RO_0000052 rdf:resource="#Substance"/>
+  <work:subClassOf rdf:resource="#EternalExistenceQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NecessityOfExistence</rdfs:label>
 </owl:Class>
 
@@ -5172,6 +5173,7 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="#EssentialExistenceQuality"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:subClassOf rdf:resource="#EssentialExistenceQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EternalExistenceQuality</rdfs:label>
 </owl:Class>
 
