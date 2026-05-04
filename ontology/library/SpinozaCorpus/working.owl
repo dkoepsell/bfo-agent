@@ -31514,6 +31514,45 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CoercedActProcess</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#Sovereignty">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Sovereignty</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#CollectiveSovereigntyRole">
+  <rdfs:subClassOf rdf:resource="#Sovereignty"/>
+  <work:subClassOf rdf:resource="#Sovereignty"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CollectiveSovereigntyRole</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#RulerSovereigntyRole">
+  <rdfs:subClassOf rdf:resource="#Sovereignty"/>
+  <work:subClassOf rdf:resource="#Sovereignty"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RulerSovereigntyRole</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#OrdinaryHumanNature">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OrdinaryHumanNature</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SuperhumanNatureQuality">
+  <rdfs:subClassOf rdf:resource="#OrdinaryHumanNature"/>
+  <work:subClassOf rdf:resource="#OrdinaryHumanNature"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SuperhumanNatureQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SubjectionToSovereigntyRole">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SubjectionToSovereigntyRole</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SovereigntyDichotomyConstraint">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SovereigntyDichotomyConstraint</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
