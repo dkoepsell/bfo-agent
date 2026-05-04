@@ -282,12 +282,14 @@
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:subClassOf rdf:resource="#SubstanceInfinityOrPerfectionQuality"/>
   <work:subClassOf rdf:resource="#InfiniteInItsKind"/>
+  <work:subClassOf rdf:resource="#Attribute"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SubstanceInfinityQuality</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#SubstanceNecessaryInfinityDisposition">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="#ExistenceNecessitation"/>
+  <work:subClassOf rdf:resource="#SubstanceInfinityQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SubstanceNecessaryInfinityDisposition</rdfs:label>
 </owl:Class>
 
