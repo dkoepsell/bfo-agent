@@ -14790,6 +14790,26 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AxiomSuitabilityQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#IntellectualPerceptionOfSubstanceEssence">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#TrueIntellect"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IntellectualPerceptionOfSubstanceEssence</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#AttributeEssenceConstitutionQuality">
+  <rdfs:subClassOf rdf:resource="#Attribute"/>
+  <work:subClassOf rdf:resource="#Attribute"/>
+  <work:subClassOf rdf:resource="#AttributeOfSubstance"/>
+  <work:subClassOf rdf:resource="#DivineAttribute"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AttributeEssenceConstitutionQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#IntellectPerceivingSubstance">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IntellectPerceivingSubstance</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#God">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
   <obo:BFO_0000051 rdf:resource="#DivineAttribute"/>
@@ -15258,6 +15278,7 @@
   <obo:RO_0000053 rdf:resource="#EternalityOfCauseDisposition"/>
   <obo:RO_0000056 rdf:resource="#IntellectProducesEffectsProcess"/>
   <obo:BFO_0000050 rdf:resource="#NaturaNaturata"/>
+  <obo:RO_0000053 rdf:resource="#IntellectPerceivingSubstance"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TrueIntellect</rdfs:label>
 </owl:NamedIndividual>
 
