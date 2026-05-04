@@ -29851,6 +29851,18 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Nation</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#SupremeRightAndPower">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SupremeRightAndPower</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DominionOverAllThingsQuality">
+  <rdfs:subClassOf rdf:resource="#SupremeRightAndPower"/>
+  <work:subClassOf rdf:resource="#SupremeRightAndPower"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DominionOverAllThingsQuality</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -42748,6 +42760,13 @@
   <obo:RO_0000057 rdf:resource="#VisibleWorld"/>
   <obo:RO_0000057 rdf:resource="#Chaos"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BringingWorldFromChaosToOrderProcess</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#SupremeRightAndPowerQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work3:type rdf:resource="#SupremeRightAndPower"/>
+  <obo:RO_0000052 rdf:resource="#God"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SupremeRightAndPowerQuality</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
