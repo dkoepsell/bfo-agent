@@ -21022,6 +21022,7 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <obo:RO_0000057 rdf:resource="#InitialHumanPerfection"/>
   <obo:RO_0000057 rdf:resource="#HumanImprudenceRealization"/>
+  <obo:RO_0000057 rdf:resource="#HumanImprudence"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FallFromInitialPerfection</rdfs:label>
 </owl:NamedIndividual>
 
@@ -21030,16 +21031,17 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">InitialHumanPerfection</rdfs:label>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#HumanImprudence">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <obo:BFO_0000054 rdf:resource="#HumanImprudenceRealization"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HumanImprudence</rdfs:label>
-</owl:NamedIndividual>
-
 <owl:NamedIndividual rdf:about="#HumanImprudenceRealization">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <obo:BFO_0000055 rdf:resource="#HumanImprudence"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HumanImprudenceRealization</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#HumanImprudence">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:BFO_0000054 rdf:resource="#HumanImprudenceRealization"/>
+  <obo:BFO_0000054 rdf:resource="#FallFromInitialPerfection"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HumanImprudence</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
