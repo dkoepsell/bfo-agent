@@ -19966,6 +19966,7 @@
   <obo:BFO_0000054 rdf:resource="#StrivingToPlease"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="#DesireForEsteem"/>
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Ambition</rdfs:label>
 </owl:Class>
 
@@ -20931,6 +20932,11 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DesireForBodyUnion</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#BodyJoiningProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BodyJoiningProcess</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#EquineLust">
   <rdfs:subClassOf rdf:resource="#Lust"/>
   <work:subClassOf rdf:resource="#Lust"/>
@@ -21081,6 +21087,8 @@
 <owl:Class rdf:about="#Courtesy">
   <rdfs:subClassOf rdf:resource="#Nobility"/>
   <work:subClassOf rdf:resource="#Nobility"/>
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <work:subClassOf rdf:resource="#Ambition"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Courtesy</rdfs:label>
 </owl:Class>
 
@@ -21714,11 +21722,6 @@
 <owl:Class rdf:about="#ImmoderateWealthLove">
   <rdfs:subClassOf rdf:resource="#ImmoderateDesire"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ImmoderateWealthLove</rdfs:label>
-</owl:Class>
-
-<owl:Class rdf:about="#BodyJoiningProcess">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BodyJoiningProcess</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#LoveOfBodyUnion">
