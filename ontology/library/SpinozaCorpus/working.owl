@@ -6345,6 +6345,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NegativeAffectiveQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#DoingEvilToHatedObject">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#HatedObject"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DoingEvilToHatedObject</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#HateProducesAngerProcess">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <work:subClassOf rdf:resource="#DeterminingRelation"/>
@@ -20319,12 +20325,6 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">StrivingToDoEvilToHatedObject</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#DoingEvilToHatedObject">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <obo:RO_0000057 rdf:resource="#HatedObject"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DoingEvilToHatedObject</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#HatedObject">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HatedObject</rdfs:label>
@@ -20333,6 +20333,8 @@
 <owl:Class rdf:about="#Vengeance">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="#Desire"/>
+  <obo:BFO_0000054 rdf:resource="#EvilAction"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Vengeance</rdfs:label>
 </owl:Class>
 
@@ -21444,6 +21446,18 @@
 <owl:Class rdf:about="#BenevolenceObject">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BenevolenceObject</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ReciprocalHate">
+  <rdfs:subClassOf rdf:resource="#Hate"/>
+  <work:subClassOf rdf:resource="#Hate"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ReciprocaHate</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#Injury">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="#EvilAction"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Injury</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
