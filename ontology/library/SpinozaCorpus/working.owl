@@ -23344,6 +23344,8 @@
 
 <owl:Class rdf:about="#Religion">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Religion</rdfs:label>
 </owl:Class>
 
@@ -23373,6 +23375,8 @@
 
 <owl:Class rdf:about="#Morality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Morality</rdfs:label>
 </owl:Class>
 
@@ -24729,6 +24733,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Justice</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#HarmonyProductionDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HarmonyProductionDisposition</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#Fairness">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
@@ -24749,10 +24759,16 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SocialHarmony</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#HarmonyProductionDisposition">
+<owl:Class rdf:about="#SocialCohesionDisposition">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HarmonyProductionDisposition</rdfs:label>
+  <obo:BFO_0000054 rdf:resource="#SocialUnionInLoveProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SocialCohesionDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SocialUnionInLoveProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000055 rdf:resource="#SocialCohesionDisposition"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SocialUnionInLoveProcess</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
