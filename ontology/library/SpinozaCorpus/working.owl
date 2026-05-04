@@ -1947,6 +1947,18 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PassionCausationProcess</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#InadequateIdea">
+  <rdfs:subClassOf rdf:resource="#Idea"/>
+  <work:subClassOf rdf:resource="#Idea"/>
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work:subClassOf rdf:resource="#EpistemicNecessityOfIdeas"/>
+  <obo:RO_0000053 rdf:resource="#NecessityOfFollowingDisposition"/>
+  <obo:RO_0000053 rdf:resource="#FalsityQuality"/>
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">InadequateIdea</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#EssenceQuality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="#PerfectionQuality"/>
@@ -3017,18 +3029,6 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConfusedIdea</rdfs:label>
-</owl:Class>
-
-<owl:Class rdf:about="#InadequateIdea">
-  <rdfs:subClassOf rdf:resource="#Idea"/>
-  <work:subClassOf rdf:resource="#Idea"/>
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
-  <work:subClassOf rdf:resource="#EpistemicNecessityOfIdeas"/>
-  <obo:RO_0000053 rdf:resource="#NecessityOfFollowingDisposition"/>
-  <obo:RO_0000053 rdf:resource="#FalsityQuality"/>
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">InadequateIdea</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#FalsityQuality">
@@ -25779,6 +25779,24 @@
   <rdfs:subClassOf rdf:resource="#InadequateIdeaProportionQuality"/>
   <work:subClassOf rdf:resource="#InadequateIdeaProportionQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindMaximallyActedOnQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#MindActingPowerQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindActingPowerQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#AdequateIdeaConstitutionDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:BFO_0000054 rdf:resource="#MindActingMostProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AdequateIdeaConstitutionDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#MindActingMostProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000055 rdf:resource="#AdequateIdeaConstitutionDisposition"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindActingMostProcess</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
