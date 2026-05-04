@@ -22496,6 +22496,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AppetitiveConatus</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#AppetitiveConatusNecessitation">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AppetitiveConatusNecessitation</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#AversiveConatus">
   <rdfs:subClassOf rdf:resource="#AppetitiveConatus"/>
   <work:subClassOf rdf:resource="#AppetitiveConatus"/>
@@ -22508,10 +22514,22 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GoodEvilJudgmentQuality</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#AppetitiveConatusNecessitation">
+<owl:Class rdf:about="#VirtueQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">VirtueQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PowerToPreserveBeing">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AppetitiveConatusNecessitation</rdfs:label>
+  <work:subClassOf rdf:resource="#SubstanceNecessaryInfinityDisposition"/>
+  <obo:BFO_0000054 rdf:resource="#PerseveranceInBeingProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PowerToPreserveBeing</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#VirtuePowerProportionalityQuality">
+  <rdfs:subClassOf rdf:resource="#VirtueQuality"/>
+  <work:subClassOf rdf:resource="#VirtueQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">VirtuePowerProportionalityQuality</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
