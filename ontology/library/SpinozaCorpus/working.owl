@@ -29922,6 +29922,16 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LackOfReason</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#KingRole">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">KingRole</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ViolationOfLawProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ViolationOfLawProcess</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -42661,6 +42671,8 @@
   <obo:RO_0000056 rdf:resource="#SolomonBeliefProcess"/>
   <obo:RO_0000053 rdf:resource="#SolomonNaturalLightQuality"/>
   <obo:RO_0000053 rdf:resource="#SolomonNaturalLightSuperiorityQualityInstance"/>
+  <obo:RO_0000053 rdf:resource="#SolomonKingRole"/>
+  <obo:RO_0000056 rdf:resource="#SolomonViolationOfThreeKinglyLaws"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Solomon</rdfs:label>
 </owl:NamedIndividual>
 
@@ -42983,6 +42995,24 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <obo:RO_0000057 rdf:resource="#TheLaw"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LawImpartmentProcess</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ThreeChiefLawsConcerningTheKing">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ThreeChiefLawsConcerningTheKing</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#SolomonKingRole">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <obo:RO_0000052 rdf:resource="#Solomon"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SolomonKingRole</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#SolomonViolationOfThreeKinglyLaws">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#Solomon"/>
+  <obo:RO_0000057 rdf:resource="#ThreeChiefLawsConcerningTheKing"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SolomonViolationOfThreeKinglyLaws</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
