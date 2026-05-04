@@ -1552,6 +1552,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TransitionToGreaterPerfection</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#MindBodyComplex">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindBodyComplex</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#ConatusRealizationProcess">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConatusRealizationProcess</rdfs:label>
@@ -1691,6 +1697,12 @@
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <obo:BFO_0000054 rdf:resource="#ReflexiveKnowledgeProcess"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TrueIdeaReflexiveKnowledgeDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ExternalCausationConstraint">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:BFO_0000054 rdf:resource="#PassionCausationProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExternalCausationConstraint</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#PerseveranceProcess">
@@ -1861,12 +1873,6 @@
   <obo:RO_0000052 rdf:resource="#Soul"/>
   <work:subClassOf rdf:resource="#Joy"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Sadness</rdfs:label>
-</owl:Class>
-
-<owl:Class rdf:about="#ExternalCausationConstraint">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <obo:BFO_0000054 rdf:resource="#PassionCausationProcess"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExternalCausationConstraint</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#PassionCausationProcess">
@@ -19142,23 +19148,17 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PleasureAffect</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#PartialAffectionQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PartialAffectionQuality</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#CheerfulnessAffect">
   <rdfs:subClassOf rdf:resource="#Affect"/>
   <work:subClassOf rdf:resource="#Affect"/>
   <obo:RO_0000053 rdf:resource="#TotalAffectionQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CheerfulnessAffect</rdfs:label>
-</owl:Class>
-
-<owl:Class rdf:about="#MindBodyComplex">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindBodyComplex</rdfs:label>
-</owl:Class>
-
-<owl:Class rdf:about="#PartialAffectionQuality">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PartialAffectionQuality</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#TotalAffectionQuality">
@@ -21984,6 +21984,19 @@
   <obo:BFO_0000051 rdf:resource="#AdequateIdea"/>
   <obo:BFO_0000051 rdf:resource="#InadequateIdea"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindEssenceIdea</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#PassionOfSadness">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work3:type rdf:resource="#Sadness"/>
+  <obo:RO_0000052 rdf:resource="#HumanMind"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PassionOfSadness</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#LesserPerfectionQualityInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#HumanMind"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LesserPerfectionQualityInstance</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#SelfPreservationPowerInstance">
@@ -28891,17 +28904,19 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IdeaIncreasingMindPowerProcess</rdfs:label>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#PassionOfSadness">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <work3:type rdf:resource="#Sadness"/>
-  <obo:RO_0000052 rdf:resource="#HumanMind"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PassionOfSadness</rdfs:label>
+<owl:NamedIndividual rdf:about="#MindStrivesToImagineBodyPowerIncreasingDisposition">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:RO_0000052 rdf:resource="#Mind"/>
+  <obo:BFO_0000054 rdf:resource="#ImaginingBodyPowerIncreasingThingsProcess"/>
+  <obo:BFO_0000050 rdf:resource="#ConatusMentalDispositionInstance"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindStrivesToImagineBodyPowerIncreasingDisposition</rdfs:label>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#LesserPerfectionQualityInstance">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <obo:RO_0000052 rdf:resource="#HumanMind"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LesserPerfectionQualityInstance</rdfs:label>
+<owl:NamedIndividual rdf:about="#ImaginingBodyPowerIncreasingThingsProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#Mind"/>
+  <obo:BFO_0000050 rdf:resource="#TransitionToGreaterPerfection"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ImaginingBodyPowerIncreasingThingsProcess</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
