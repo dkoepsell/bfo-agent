@@ -22966,6 +22966,29 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EssencePertainsToGreatestGoodQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#VirtueSeeker">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">VirtueSeeker</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#CommonGoodQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CommonGoodQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#EqualEnjoyabilityQuality">
+  <rdfs:subClassOf rdf:resource="#CommonGoodQuality"/>
+  <work:subClassOf rdf:resource="#CommonGoodQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EqualEnjoyabilityQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#VirtueSeekingProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">VirtueSeekingProcess</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
@@ -33169,6 +33192,14 @@
   <obo:RO_0000052 rdf:resource="#JudgmentFollowingReason"/>
   <obo:BFO_0000050 rdf:resource="#TheEthics"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ReasonJudgmentVeracityDispositionInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#GreatestGoodOfVirtueSeekers">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work3:type rdf:resource="#CommonGoodQuality"/>
+  <work3:type rdf:resource="#EqualEnjoyabilityQuality"/>
+  <RO_0000052 rdf:resource="#VirtueSeeker"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GreatestGoodOfVirtueSeekers</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
