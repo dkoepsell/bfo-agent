@@ -3423,6 +3423,9 @@
 <owl:Class rdf:about="#SpeciesOfEternity">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="#Method"/>
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#SubstanceExistenceEternalityQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SpeciesOfEternity</rdfs:label>
 </owl:Class>
 
@@ -7503,6 +7506,8 @@
   <obo:BFO_0000054 rdf:resource="#ReasonDestroyingOpinionProcess"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <obo:BFO_0000054 rdf:resource="#ReasonNecessityApprehensionProcess"/>
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Reason</rdfs:label>
 </owl:Class>
 
@@ -7510,6 +7515,12 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <obo:RO_0000057 rdf:resource="#OpinionAcquiredThroughReport"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ReasonDestroyingOpinionProcess</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ReasonNecessityApprehensionProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ReasonNecessityApprehensionProcess</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#OpinionAcquiredThroughReport">
@@ -18133,10 +18144,17 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ReasonContingencyNon-Apprehension</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#ReasonNecessityApprehensionProcess">
+<owl:Class rdf:about="#PerceptionUnderSpeciesOfEternity">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:RO_0000052 rdf:resource="#Reason"/>
+  <obo:BFO_0000054 rdf:resource="#ReasonPerceptionProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PerceptionUnderSpeciesOfEternity</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ReasonPerceptionProcess">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ReasonNecessityApprehensionProcess</rdfs:label>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ReasonPerceptionProcess</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
