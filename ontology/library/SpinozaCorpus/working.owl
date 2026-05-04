@@ -24505,6 +24505,35 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SatisfactionOfMindQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#IntellectPerfection">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IntellectPerfection</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#UnderstandingOfGodDisposition">
+  <rdfs:subClassOf rdf:resource="#IntellectPerfection"/>
+  <work:subClassOf rdf:resource="#IntellectPerfection"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UnderstandingOfGodDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#UnderstandingOfGodAttributesDisposition">
+  <rdfs:subClassOf rdf:resource="#IntellectPerfection"/>
+  <work:subClassOf rdf:resource="#IntellectPerfection"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UnderstandingOfGodAttributesDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#UnderstandingOfActionsFromGodNatureDisposition">
+  <rdfs:subClassOf rdf:resource="#IntellectPerfection"/>
+  <work:subClassOf rdf:resource="#IntellectPerfection"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UnderstandingOfActionsFromGodNatureDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ActionsFromGodNature">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ActionsFromGodNature</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
@@ -34849,6 +34878,19 @@
   <obo:RO_0000057 rdf:resource="#Blessedness"/>
   <obo:RO_0000057 rdf:resource="#God"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IntuitiveKnowledgeProcess</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#IntellectPerfectionProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000055 rdf:resource="#UnderstandingOfGodDisposition"/>
+  <obo:RO_0000057 rdf:resource="#God"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IntellectPerfectionProcess</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#UnderstandingOfGodProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000055 rdf:resource="#UnderstandingOfGodDisposition"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UnderstandingOfGodProcess</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
