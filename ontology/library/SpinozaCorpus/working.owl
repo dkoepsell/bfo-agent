@@ -20484,6 +20484,7 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="#Love"/>
   <work:subClassOf rdf:resource="#Wonder"/>
+  <work:subClassOf rdf:resource="#WonderAt"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Devotion</rdfs:label>
 </owl:Class>
 
@@ -20954,6 +20955,11 @@
 <owl:Class rdf:about="#AccidentalCauseOfSadness">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AccidentalCauseOfSadness</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#WonderAt">
+  <rdfs:subClassOf rdf:resource="#Wonder"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WonderAt</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
