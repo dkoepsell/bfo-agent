@@ -30413,6 +30413,16 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LoveOfGodQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#IntellectualDistinctionQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IntellectualDistinctionQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#TrueVirtueQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TrueVirtueQuality</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -43845,6 +43855,20 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <obo:RO_0000052 rdf:resource="#EternalCovenant"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EternalCovenantEternalityQualityInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#NationalIntellectualEquality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work3:type rdf:resource="#IntellectualDistinctionQuality"/>
+  <obo:RO_0000052 rdf:resource="#Nation"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NationalIntellectualEquality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#NationalTrueVirtueEquality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work3:type rdf:resource="#TrueVirtueQuality"/>
+  <obo:RO_0000052 rdf:resource="#Nation"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NationalTrueVirtueEquality</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
