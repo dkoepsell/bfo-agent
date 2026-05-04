@@ -1138,6 +1138,33 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ThinkingThingQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#Man">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <work:subClassOf rdf:resource="#FiniteSingularThing"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <rdfs:subClassOf rdf:resource="#FiniteSingularThing"/>
+  <rdfs:subClassOf rdf:resource="#Mode"/>
+  <work:subClassOf rdf:resource="#Mode"/>
+  <work:subClassOf rdf:resource="#FiniteSingularThingModeInstance"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000050 some working:WholeOfNature"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/RO_0000053 some working:DependenceOnNature"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/RO_0000053 some working:GovernanceByNature"/>
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
+  <obo:BFO_0000050 rdf:resource="#God"/>
+  <obo:BFO_0000050 rdf:resource="#WholeOfNature"/>
+  <rdfs:subClassOf rdf:resource="#Particular"/>
+  <work:subClassOf rdf:resource="#Particular"/>
+  <work:subClassOf rdf:resource="#_:bearerOfInstrumentRole"/>
+  <work:subClassOf rdf:resource="#WholeOfNature"/>
+  <work:subClassOf rdf:resource="#_:participatesInThinking"/>
+  <work:subClassOf rdf:resource="#_:bearerOfThinkingDisposition"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
+  <obo:RO_0000053 rdf:resource="#HumanEssence"/>
+  <obo:BFO_0000051 rdf:resource="#Mind"/>
+  <obo:BFO_0000051 rdf:resource="#Body"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Man</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#Imagination">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
@@ -1342,6 +1369,34 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IntellectTracingProcess</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#ModeOfThought">
+  <rdfs:subClassOf rdf:resource="#Mode"/>
+  <work:subClassOf rdf:resource="#Mode"/>
+  <obo:RO_0000052 rdf:resource="#ThinkingAttribute"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ModeOfThought</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ThinkingSubstance">
+  <rdfs:subClassOf rdf:resource="#Substance"/>
+  <work:subClassOf rdf:resource="#Substance"/>
+  <work3:type rdf:resource="#Substance"/>
+  <obo:RO_0000053 rdf:resource="#ThinkingSubstanceThinkingAttributeQuality"/>
+  <obo:BFO_0000050 rdf:resource="#WholeOfNature"/>
+  <rdfs:subClassOf rdf:resource="#CreatedSubstance"/>
+  <work:subClassOf rdf:resource="#CreatedSubstance"/>
+  <work:subClassOf rdf:resource="#_:ThoughtBearer"/>
+  <obo:RO_0000053 rdf:resource="#ThinkingAttribute"/>
+  <obo:RO_0000053 rdf:resource="#OnlySubstancesExistQuality"/>
+  <work2:sameAs rdf:resource="#God"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ThinkingSubstance</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#MindCreatedNotTransmittedQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindCreatedNotTransmittedQuality</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#ConatusRealizationProcess">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConatusRealizationProcess</rdfs:label>
@@ -1392,34 +1447,6 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SoulBodyAffectionProcess</rdfs:label>
-</owl:Class>
-
-<owl:Class rdf:about="#ModeOfThought">
-  <rdfs:subClassOf rdf:resource="#Mode"/>
-  <work:subClassOf rdf:resource="#Mode"/>
-  <obo:RO_0000052 rdf:resource="#ThinkingAttribute"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ModeOfThought</rdfs:label>
-</owl:Class>
-
-<owl:Class rdf:about="#ThinkingSubstance">
-  <rdfs:subClassOf rdf:resource="#Substance"/>
-  <work:subClassOf rdf:resource="#Substance"/>
-  <work3:type rdf:resource="#Substance"/>
-  <obo:RO_0000053 rdf:resource="#ThinkingSubstanceThinkingAttributeQuality"/>
-  <obo:BFO_0000050 rdf:resource="#WholeOfNature"/>
-  <rdfs:subClassOf rdf:resource="#CreatedSubstance"/>
-  <work:subClassOf rdf:resource="#CreatedSubstance"/>
-  <work:subClassOf rdf:resource="#_:ThoughtBearer"/>
-  <obo:RO_0000053 rdf:resource="#ThinkingAttribute"/>
-  <obo:RO_0000053 rdf:resource="#OnlySubstancesExistQuality"/>
-  <work2:sameAs rdf:resource="#God"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ThinkingSubstance</rdfs:label>
-</owl:Class>
-
-<owl:Class rdf:about="#MindCreatedNotTransmittedQuality">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindCreatedNotTransmittedQuality</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#ImaginativeImage">
@@ -3555,33 +3582,6 @@
   <obo:RO_0000057 rdf:resource="#Man"/>
   <obo:RO_0000057 rdf:resource="#StrongerNature"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConceptionOfStrongerNature</rdfs:label>
-</owl:Class>
-
-<owl:Class rdf:about="#Man">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
-  <work:subClassOf rdf:resource="#FiniteSingularThing"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
-  <rdfs:subClassOf rdf:resource="#FiniteSingularThing"/>
-  <rdfs:subClassOf rdf:resource="#Mode"/>
-  <work:subClassOf rdf:resource="#Mode"/>
-  <work:subClassOf rdf:resource="#FiniteSingularThingModeInstance"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000050 some working:WholeOfNature"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/RO_0000053 some working:DependenceOnNature"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/RO_0000053 some working:GovernanceByNature"/>
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
-  <obo:BFO_0000050 rdf:resource="#God"/>
-  <obo:BFO_0000050 rdf:resource="#WholeOfNature"/>
-  <rdfs:subClassOf rdf:resource="#Particular"/>
-  <work:subClassOf rdf:resource="#Particular"/>
-  <work:subClassOf rdf:resource="#_:bearerOfInstrumentRole"/>
-  <work:subClassOf rdf:resource="#WholeOfNature"/>
-  <work:subClassOf rdf:resource="#_:participatesInThinking"/>
-  <work:subClassOf rdf:resource="#_:bearerOfThinkingDisposition"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
-  <obo:RO_0000053 rdf:resource="#HumanEssence"/>
-  <obo:BFO_0000051 rdf:resource="#Mind"/>
-  <obo:BFO_0000051 rdf:resource="#Body"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Man</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#HumanEssence">
@@ -17277,16 +17277,16 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PartOfExtendedSubstance</rdfs:label>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#AnotherBeing">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
-  <obo:RO_0000053 rdf:resource="#SelfPreservationPowerInstance"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AnotherBeing</rdfs:label>
-</owl:NamedIndividual>
-
 <owl:NamedIndividual rdf:about="#InfiniteIntellectOfGod">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
   <obo:RO_0000052 rdf:resource="#God"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">InfiniteIntellectOfGod</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#AnotherBeing">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
+  <obo:RO_0000053 rdf:resource="#SelfPreservationPowerInstance"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AnotherBeing</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#ThinkingSubstanceThinkingAttributeQuality">
