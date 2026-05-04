@@ -6194,6 +6194,7 @@
   <rdfs:subClassOf rdf:resource="#Affect"/>
   <rdfs:subClassOf rdf:resource="#Sadness"/>
   <work:subClassOf rdf:resource="#HateAccompaniedByIdeaOfExternalCauseQuality"/>
+  <obo:BFO_0000054 rdf:resource="#BeingMovedByEnvyOrHateProcess"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Hate</rdfs:label>
 </owl:Class>
 
@@ -20271,6 +20272,7 @@
   <work:subClassOf rdf:resource="#GladnessAtAnotherIllFortuneQuality"/>
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="#EvilAffect"/>
+  <obo:BFO_0000054 rdf:resource="#BeingMovedByEnvyOrHateProcess"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Envy</rdfs:label>
 </owl:Class>
 
@@ -24619,6 +24621,30 @@
   <rdfs:subClassOf rdf:resource="#UtilityToManQuality"/>
   <work:subClassOf rdf:resource="#UtilityToManQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MaximalUtilityToManQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#MovedByEnvy">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MovedByEnvy</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#MovedByHate">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MovedByHate</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ContrarietyRelation">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ContrarietyRelation</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#BeingMovedByEnvyOrHateProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BeingMovedByEnvyOrHateProcess</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
