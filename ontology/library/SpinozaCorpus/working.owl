@@ -1580,6 +1580,7 @@
   <work:subClassOf rdf:resource="#Body"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/RO_0000053"/>
   <obo:BFO_0000051 rdf:resource="#Individual"/>
+  <work:subClassOf rdf:resource="#ModificationBearer"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Individual</rdfs:label>
 </owl:Class>
 
@@ -3916,6 +3917,13 @@
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
   <work:subClassOf rdf:resource="#_:HumanLustRestriction"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HumanBeing</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ServingGodRole">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <work:subClassOf rdf:resource="#FiniteThingRole"/>
+  <obo:BFO_0000054 rdf:resource="#ServingGodProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ServingGodRole</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#StrongerNature">
@@ -7575,13 +7583,6 @@
   <work:subClassOf rdf:resource="#Hell"/>
   <obo:RO_0000052 rdf:resource="#EvilPassion"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EvilPassionIsHellQuality</rdfs:label>
-</owl:Class>
-
-<owl:Class rdf:about="#ServingGodRole">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
-  <work:subClassOf rdf:resource="#FiniteThingRole"/>
-  <obo:BFO_0000054 rdf:resource="#ServingGodProcess"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ServingGodRole</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#ServingGodProcess">
@@ -20625,6 +20626,36 @@
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
   <work:subClassOf rdf:resource="#_:EquineLustRestriction"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Horse</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#LifeOfIndividual">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#Individual"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LifeOfIndividual</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ContentmentWithLifeQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#Individual"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ContentmentWithLifeQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#IdeaOfIndividual">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#Individual"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IdeaOfIndividual</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SoulOfIndividual">
+  <rdfs:subClassOf rdf:resource="#IdeaOfIndividual"/>
+  <work:subClassOf rdf:resource="#IdeaOfIndividual"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SoulOfIndividual</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#LifeIdeaIdentityQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#Individual"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LifeIdeaIdentityQuality</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
