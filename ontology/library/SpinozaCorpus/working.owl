@@ -5798,6 +5798,43 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HumanBody</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#BodyComponentIndividual">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <work:subClassOf rdf:resource="#HumanBody"/>
+  <obo:BFO_0000050 rdf:resource="#HumanBody"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BodyComponentIndividual</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#BodyAffection">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#AssociationOfParticles"/>
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="#Affect"/>
+  <obo:RO_0000052 rdf:resource="#Body"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BodyAffection</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ImageFormationProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000055 rdf:resource="#DistinctImageFormationCapacity"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ImageFormationProcess</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#BodyAffectionProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#ExternalBody"/>
+  <obo:RO_0000057 rdf:resource="#HumanBody"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BodyAffectionProcess</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#BodyConstituent">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <obo:BFO_0000050 rdf:resource="#HumanBody"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BodyConstituent</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#ChangeInProportionOfMotionAndRest">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <obo:RO_0000057 rdf:resource="#Body"/>
@@ -9145,43 +9182,6 @@
   <work:subClassOf rdf:resource="#FiniteSingularThing"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000053"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ParticularCorporealThing</rdfs:label>
-</owl:Class>
-
-<owl:Class rdf:about="#BodyComponentIndividual">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
-  <work:subClassOf rdf:resource="#HumanBody"/>
-  <obo:BFO_0000050 rdf:resource="#HumanBody"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BodyComponentIndividual</rdfs:label>
-</owl:Class>
-
-<owl:Class rdf:about="#BodyAffection">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <obo:RO_0000052 rdf:resource="#AssociationOfParticles"/>
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <work:subClassOf rdf:resource="#Affect"/>
-  <obo:RO_0000052 rdf:resource="#Body"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BodyAffection</rdfs:label>
-</owl:Class>
-
-<owl:Class rdf:about="#ImageFormationProcess">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <obo:BFO_0000055 rdf:resource="#DistinctImageFormationCapacity"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ImageFormationProcess</rdfs:label>
-</owl:Class>
-
-<owl:Class rdf:about="#BodyAffectionProcess">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <obo:RO_0000057 rdf:resource="#ExternalBody"/>
-  <obo:RO_0000057 rdf:resource="#HumanBody"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BodyAffectionProcess</rdfs:label>
-</owl:Class>
-
-<owl:Class rdf:about="#BodyConstituent">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
-  <obo:BFO_0000050 rdf:resource="#HumanBody"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BodyConstituent</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#AssociationOfParticles">
@@ -23458,6 +23458,19 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HarmonyAmongMen</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DiscordInState">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DiscordInState</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#BringingDiscordToStateDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:BFO_0000054 rdf:resource="#DiscordInState"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BringingDiscordToStateDisposition</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
