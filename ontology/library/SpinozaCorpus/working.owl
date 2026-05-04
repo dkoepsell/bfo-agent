@@ -41291,6 +41291,29 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AttributedBreath</rdfs:label>
 </owl:NamedIndividual>
 
+<owl:NamedIndividual rdf:about="#LawOfMoses">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <obo:BFO_0000054 rdf:resource="#GodMindContent"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LawOfMoses</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#GodMindContent">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodMindContent</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#SpiritOfGodIdentityWithLawOfMosesQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#SpiritOfGod"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SpiritOfGodIdentityWithLawOfMosesQuality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ExplanatoryRelationToGodMindDisposition">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:RO_0000052 rdf:resource="#LawOfMoses"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExplanatoryRelationToGodMindDisposition</rdfs:label>
+</owl:NamedIndividual>
+
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
   <rdfs:label xml:lang="en">realized in</rdfs:label>
   <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A realizable entity (e.g., role, disposition, function) is realized in some process. r realized_in p if r is borne by some independent continuant during the process p.</rdfs:comment>
