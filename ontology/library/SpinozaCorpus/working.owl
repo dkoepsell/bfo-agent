@@ -13609,6 +13609,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PiousPerfectionQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#PerfectionDegreeQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PerfectionDegreeQuality</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#GodlessEntity">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
@@ -13629,15 +13635,25 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PietyQuality</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#PerfectionDegreeQuality">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PerfectionDegreeQuality</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#SinPositiveOntologicalContentQuality">
   <rdfs:subClassOf rdf:resource="#ImperfectionQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SinPositiveOntologicalContentQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PerfectionLossQuality">
+  <rdfs:subClassOf rdf:resource="#Privation"/>
+  <work:subClassOf rdf:resource="#Privation"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PerfectionLossQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#AbsoluteEvilQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AbsoluteEvilQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#MorePerfectState">
+  <rdfs:subClassOf rdf:resource="#ImperfectionQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MorePerfectState</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#God">
@@ -17273,6 +17289,9 @@
   <work:subClassOf rdf:resource="#HindersHumanPerfectionDisposition"/>
   <work:subClassOf rdf:resource="#ModeOfThinking"/>
   <work:subClassOf rdf:resource="#PrivationQuality"/>
+  <work:subClassOf rdf:resource="#Privation"/>
+  <work:subClassOf rdf:resource="#PerfectionLossQuality"/>
+  <work2:disjointWith rdf:resource="#AbsoluteEvilQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Evil</rdfs:label>
 </owl:NamedIndividual>
 
