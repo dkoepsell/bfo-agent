@@ -4251,6 +4251,7 @@
   <work:subClassOf rdf:resource="#VirtuePowerIdentityQuality"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="#EssentialExistenceQuality"/>
+  <work:subClassOf rdf:resource="#HumanPower"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Virtue</rdfs:label>
 </owl:Class>
 
@@ -22530,6 +22531,12 @@
   <rdfs:subClassOf rdf:resource="#VirtueQuality"/>
   <work:subClassOf rdf:resource="#VirtueQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">VirtuePowerProportionalityQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#VirtueDefinedByEssenceQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#HumanEssence"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">VirtueDefinedByEssenceQuality</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
