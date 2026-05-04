@@ -22081,6 +22081,8 @@
   <work:subClassOf rdf:resource="#Desire"/>
   <rdfs:subClassOf rdf:resource="#SemanticContent"/>
   <work:subClassOf rdf:resource="#SemanticContent"/>
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Impulse</rdfs:label>
 </owl:Class>
 
@@ -23982,6 +23984,8 @@
 
 <owl:Class rdf:about="#Society">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Society</rdfs:label>
 </owl:Class>
 
@@ -31455,6 +31459,30 @@
 <owl:Class rdf:about="#UtilityJudgmentQuality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UtilityJudgmentQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#Authority">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Authority</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SocialForce">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Force</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SocialContinuanceNecessitation">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SocialContinuanceNecessitation</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ModerationOfDesiresAndImpulses">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ModerationOfDesiresAndImpulses</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
