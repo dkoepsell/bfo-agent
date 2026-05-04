@@ -26289,6 +26289,19 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GreaterUnderstandingEnhancesAffectControlDisposition</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#HumanPowerToRestrainAffects">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:BFO_0000054 rdf:resource="#AffectRestraintProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HumanPowerToRestrainAffects</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#IntellectGroundednessQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IntellectGroundednessQuality</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
@@ -26811,6 +26824,7 @@
 <owl:NamedIndividual rdf:about="#IntellectPerfectionQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <obo:RO_0000052 rdf:resource="#Intellect"/>
+  <work:subClassOf rdf:resource="#IntellectGroundednessQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IntellectPerfectionQuality</rdfs:label>
 </owl:NamedIndividual>
 
@@ -37435,6 +37449,13 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <rdfs:comment rdf:resource="#Divine Love, when related to the Mind insofar as it acts, is virtue itself. (Spinoza, Ethics V, P36C)"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivineLoveIsVirtueWhenMindActsAxiom</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#HumanPowerToRestrainAffectsInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work3:type rdf:resource="#HumanPowerToRestrainAffects"/>
+  <work3:type rdf:resource="#IntellectGroundednessQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HumanPowerToRestrainAffectsInstance</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
