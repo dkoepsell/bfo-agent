@@ -29623,6 +29623,25 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RepresentationalVariationQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#PropheticVisionProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000055 rdf:resource="#ImaginativeHabit"/>
+  <obo:RO_0000057 rdf:resource="#God"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PropheticVisionProcess</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ImaginativeHabit">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="#ImaginationInaccessibility"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ImaginativeHabit</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ImageOfGod">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000020"/>
+  <work:subClassOf rdf:resource="#Thought"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ImageOfGod</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
