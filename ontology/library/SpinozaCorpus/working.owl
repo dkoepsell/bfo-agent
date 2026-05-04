@@ -9742,6 +9742,8 @@
 <owl:Class rdf:about="#Willing">
   <rdfs:subClassOf rdf:resource="#ModeOfThinking"/>
   <work:subClassOf rdf:resource="#ModeOfThinking"/>
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Willing</rdfs:label>
 </owl:Class>
 
@@ -13797,6 +13799,18 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FiniteMind</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ClearUnderstanding">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ClearUnderstanding</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#CognitiveOrderConstraint">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CognitiveOrderConstraint</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#God">
@@ -20641,6 +20655,14 @@
   <obo:RO_0000052 rdf:resource="#God"/>
   <work3:type rdf:resource="#SubstanceInfinityOrPerfectionQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodPerfectionExceedenceQuality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#CognitiveOrderConstraintInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work3:type rdf:resource="#CognitiveOrderConstraint"/>
+  <obo:RO_0000052 rdf:resource="#Speaker"/>
+  <obo:BFO_0000054 rdf:resource="#Willing"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CognitiveOrderConstraintInstance</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
