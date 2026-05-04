@@ -277,6 +277,7 @@
 <owl:Class rdf:about="#ModificationBearer">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
+  <work:subClassOf rdf:resource="#Substance"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ModificationBearer</rdfs:label>
 </owl:Class>
 
@@ -434,6 +435,7 @@
   <work:subClassOf rdf:resource="#PossibleExistenceEssenceQuality"/>
   <work:subClassOf rdf:resource="#Substance"/>
   <work:subClassOf rdf:resource="#ModificationBearer"/>
+  <obo:RO_0000052 rdf:resource="#Substance"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Mode</rdfs:label>
 </owl:Class>
 
@@ -15926,6 +15928,12 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConsequentOfAbsoluteAttributeNature</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#OnlySubstanceAndModesExistQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#WholeOfNature"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OnlySubstanceAndModesExistQuality</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
