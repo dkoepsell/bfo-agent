@@ -24832,6 +24832,43 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TransitionFromPurelySensualLoveToHateTendency</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#Marriage">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Marriage</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#AgreementWithReason">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AgreementWithReason</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#LoveOfChildren">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LoveOfChildren</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#FreedomOfMind">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FreedomOfMind</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DesireGroundedInReason">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="#LoveOfChildren"/>
+  <work:subClassOf rdf:resource="#FreedomOfMind"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DesireGroundedInReason</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#RationalGrounding">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RationalGrounding</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
