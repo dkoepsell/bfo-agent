@@ -1231,6 +1231,7 @@
   <obo:RO_0000056 rdf:resource="#ImaginationOfExternalBody"/>
   <obo:RO_0000053 rdf:resource="#InadequateKnowledgeOfExternalBodyQuality"/>
   <obo:RO_0000056 rdf:resource="#CommonOrderOfNaturePerception"/>
+  <obo:RO_0000053 rdf:resource="#AdequateIdeaInMindDisposition"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HumanMind</rdfs:label>
 </owl:Class>
 
@@ -17834,6 +17835,21 @@
 <owl:Class rdf:about="#UniversallySharedQuality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UniversallySharedQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#CommonAndPeculiarProperty">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#HumanBody"/>
+  <obo:RO_0000052 rdf:resource="#ExternalBody"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CommonAndPeculiarProperty</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#AdequateIdeaInMindDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:BFO_0000054 rdf:resource="#AdequateIdea"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AdequateIdeaInMindDisposition</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
