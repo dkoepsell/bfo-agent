@@ -28792,6 +28792,31 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OfGodParthood</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#ThingOfGod">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ThingOfGod</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#BeingInGodsPower">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="#SubstanceProductionConstraint"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BeingInGodsPower</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ActingFromGodsCommand">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="#CausalReasonForExistence"/>
+  <obo:BFO_0000054 rdf:resource="#GodsCausalCommandProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ActingFromGodsCommand</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#GodsCausalCommandProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="#DecreeNecessitationProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodsCausalCommandProcess</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
