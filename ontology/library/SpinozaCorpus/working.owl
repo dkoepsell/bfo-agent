@@ -19453,6 +19453,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PityArisingFromInjuryDisposition</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#ImitationOfAffect">
+  <rdfs:subClassOf rdf:resource="#Affect"/>
+  <work:subClassOf rdf:resource="#Affect"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ImitationOfAffect</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#InjuryToAnother">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">InjuryToAnother</rdfs:label>
@@ -19550,16 +19556,39 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UnjustUndervaluationOfAnother</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#ImitationOfAffect">
-  <rdfs:subClassOf rdf:resource="#Affect"/>
-  <work:subClassOf rdf:resource="#Affect"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ImitationOfAffect</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#PityRelatedToSadnessQuality">
   <rdfs:subClassOf rdf:resource="#Pity"/>
   <work:subClassOf rdf:resource="#Pity"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PityRelatedToSadnessQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#Emulation">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="#DesireForThing"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Emulation</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DesireForThing">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DesireForThing</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ImaginingOthersSameSimilarDesire">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ImaginingOthersSameSimilarDesire</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SimilarOther">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SimilarOther</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#EmulationGenerationProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000051 rdf:resource="#ImaginingOthersSameSimilarDesire"/>
+  <obo:BFO_0000055 rdf:resource="#Emulation"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EmulationGenerationProcess</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
