@@ -29767,14 +29767,29 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PowerOfUnderstanding</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#RevelationAdaptedToRecipientCapacityDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RevelationAdaptedToRecipientCapacityDisposition</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#AdaptedToUnderstandingQuality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AdaptedToUnderstandingQuality</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#RevelationAdaptedToRecipientCapacityDisposition">
+<owl:Class rdf:about="#BeliefDisposition">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RevelationAdaptedToRecipientCapacityDisposition</rdfs:label>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BeliefDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#NationSpecialGodDoctrine">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NationSpecialGodDoctrine</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#NationPatronGodRole">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NationPatronGodRole</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
@@ -32744,6 +32759,14 @@
   <obo:BFO_0000055 rdf:resource="#GodDivinePowerInstance"/>
   <obo:BFO_0000051 rdf:resource="#NaturalThingExistenceAndActionProcess"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivineCausationOfNaturalThings</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#RevelationToCain">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#Cain"/>
+  <obo:RO_0000057 rdf:resource="#God"/>
+  <obo:BFO_0000055 rdf:resource="#CainPowerOfUnderstandingDisposition"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RevelationToCain</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#ThinkingThingRole">
@@ -42563,12 +42586,22 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RevealedAsUnawareOfHumanAffairsQuality</rdfs:label>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#RevelationToCain">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <obo:RO_0000057 rdf:resource="#Cain"/>
-  <obo:RO_0000057 rdf:resource="#God"/>
-  <obo:BFO_0000055 rdf:resource="#CainPowerOfUnderstandingDisposition"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RevelationToCain</rdfs:label>
+<owl:NamedIndividual rdf:about="#Laban">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Laban</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#BeliefThatNationsHaveSpecialGods">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work3:type rdf:resource="#NationSpecialGodDoctrine"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BeliefThatNationsHaveSpecialGods</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#LabanBeliefDispositionInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work3:type rdf:resource="#BeliefDisposition"/>
+  <obo:RO_0000052 rdf:resource="#Laban"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LabanBeliefDispositionInstance</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
