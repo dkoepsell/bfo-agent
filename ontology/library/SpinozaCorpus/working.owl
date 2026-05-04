@@ -16488,6 +16488,11 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HumanPerceptionProcess</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#NecessaryIdeaPossessionDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NecessaryIdeaPossessionDisposition</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
@@ -24835,6 +24840,33 @@
 <owl:NamedIndividual rdf:about="#ExtensionQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExtensionQuality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#IdeaOfGodEssence">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <obo:BFO_0000050 rdf:resource="#God"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IdeaOfGodEssence</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#IdeaOfEssenceConsequents">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <obo:BFO_0000050 rdf:resource="#God"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IdeaOfEssenceConsequents</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#GodNecessaryIdeaPossessionDispositionInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:RO_0000052 rdf:resource="#God"/>
+  <obo:BFO_0000054 rdf:resource="#IdeaInGodExistenceProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodNecessaryIdeaPossessionDispositionInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#IdeaInGodExistenceProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#God"/>
+  <obo:RO_0000057 rdf:resource="#IdeaOfGodEssence"/>
+  <obo:RO_0000057 rdf:resource="#IdeaOfEssenceConsequents"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IdeaInGodExistenceProcess</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
