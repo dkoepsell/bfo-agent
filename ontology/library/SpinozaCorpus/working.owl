@@ -18801,6 +18801,25 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BodyMindOrderParallelismQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#BodyAutonomyFromMindQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BodyAutonomyFromMindQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#BodyActionFromNatureLawsAloneDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="#MindDeterminationIndependenceQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BodyActionFromNatureLawsAloneDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#MindDeterminationIndependenceQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindDeterminationIndependenceQuality</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
@@ -28384,6 +28403,20 @@
   <obo:RO_0000052 rdf:resource="#BodyActionsAndPassionsOrder"/>
   <obo:RO_0000052 rdf:resource="#MindActionsAndPassionsOrder"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindBodyOrderParallelismInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#BodyAutonomyFromMindQualityInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work3:type rdf:resource="#BodyAutonomyFromMindQuality"/>
+  <obo:RO_0000052 rdf:resource="#Body"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BodyAutonomyFromMindQualityInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#BodyActionFromNatureLawsAloneDispositionInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work3:type rdf:resource="#BodyActionFromNatureLawsAloneDisposition"/>
+  <obo:RO_0000052 rdf:resource="#Body"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BodyActionFromNatureLawsAloneDispositionInstance</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
