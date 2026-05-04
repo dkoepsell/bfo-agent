@@ -23947,6 +23947,7 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work:subClassOf rdf:resource="#PrincipleOfLiving"/>
+  <work:subClassOf rdf:resource="#Institution"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Law</rdfs:label>
 </owl:Class>
 
@@ -30760,6 +30761,39 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <obo:RO_0000052 rdf:resource="#God"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivinePropositionalActInvolvesEternalNecessityDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#Institution">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Institution</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#Prince">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Prince</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PrincelyCommand">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PrincelyCommand</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#LegalProfitOrLossQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LegalProfitOrLossQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ActionNature">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ActionNature</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#CommandGroundedNormativeValenceDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:BFO_0000054 rdf:resource="#PrincelyCommand"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CommandGroundedNormativeValenceDisposition</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
