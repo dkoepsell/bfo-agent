@@ -3712,6 +3712,8 @@
   <work:subClassOf rdf:resource="#ModeOfThinking"/>
   <rdfs:subClassOf rdf:resource="#EssentialExistenceQuality"/>
   <work:subClassOf rdf:resource="#Joy"/>
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Love</rdfs:label>
 </owl:Class>
 
@@ -19434,15 +19436,47 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Pity</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#PityArisingFromInjuryDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PityArisingFromInjuryDisposition</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#InjuryToAnother">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">InjuryToAnother</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#PityArisingFromInjuryDisposition">
+<owl:Class rdf:about="#Favor">
+  <rdfs:subClassOf rdf:resource="#Attribute"/>
+  <work:subClassOf rdf:resource="#Love"/>
+  <work:subClassOf rdf:resource="#FavorDirectednessTowardBenefactor"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Favor</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#Benefactor">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <obo:BFO_0000054 rdf:resource="#BeneficialAct"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Benefactor</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#Beneficiary">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Beneficiary</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#BeneficialAct">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BeneficialAct</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#FavorDirectednessTowardBenefactor">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PityArisingFromInjuryDisposition</rdfs:label>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FavorDirectednessTowardBenefactor</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
