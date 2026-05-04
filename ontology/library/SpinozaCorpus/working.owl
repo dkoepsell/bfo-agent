@@ -26022,6 +26022,24 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EternityIsEssenceOfGodQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#ConceivableUnderSpeciesOfEternity">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:BFO_0000054 rdf:resource="#ConceptionUnderEternityProcess"/>
+  <work:subClassOf rdf:resource="#ConceivableThroughItself"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConceivableUnderSpeciesOfEternity</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#InvolvesEternalInfiniteEssenceOfGodQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#EssentialExistenceQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">InvolvesEternalInfiniteEssenceOfGodQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ConceptionUnderEternityProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConceptionUnderEternityProcess</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
