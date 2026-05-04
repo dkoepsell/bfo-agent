@@ -15558,6 +15558,11 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NonAccidentalCauseQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#AbsolutelyFirstCauseRole">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AbsolutelyFirstCauseRole</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
@@ -15801,6 +15806,7 @@
   <obo:RO_0000056 rdf:resource="#GodEfficientCausationProcess"/>
   <obo:RO_0000053 rdf:resource="#GodCauseThroughHimselfDispositionInstance"/>
   <obo:RO_0000053 rdf:resource="#GodNonAccidentalCauseQualityInstance"/>
+  <obo:RO_0000053 rdf:resource="#GodAbsolutelyFirstCauseRoleInstance"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">God</rdfs:label>
 </owl:NamedIndividual>
 
@@ -17616,6 +17622,21 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodEfficientCausationProcess</rdfs:label>
 </owl:NamedIndividual>
 
+<owl:NamedIndividual rdf:about="#GodCauseThroughHimselfDispositionInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work3:type rdf:resource="#CauseThroughHimselfDisposition"/>
+  <obo:RO_0000052 rdf:resource="#God"/>
+  <obo:BFO_0000054 rdf:resource="#GodCausesAllThingsProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodCauseThroughHimselfDispositionInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#GodNonAccidentalCauseQualityInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work3:type rdf:resource="#NonAccidentalCauseQuality"/>
+  <obo:RO_0000052 rdf:resource="#God"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodNonAccidentalCauseQualityInstance</rdfs:label>
+</owl:NamedIndividual>
+
 <owl:NamedIndividual rdf:about="#ThinkingThingRole">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
   <obo:RO_0000052 rdf:resource="#Speaker"/>
@@ -18276,6 +18297,14 @@
   <obo:BFO_0000055 rdf:resource="#DivineNecessityInstance"/>
   <obo:RO_0000057 rdf:resource="#God"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FollowingFromDivineNecessityProcess</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#InfiniteIntellect">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
+  <work3:type rdf:resource="#Substance"/>
+  <obo:RO_0000053 rdf:resource="#EternalExistenceInNatureQuality"/>
+  <obo:BFO_0000050 rdf:resource="#WholeOfNature"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">InfiniteIntellect</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#IdeaOfGod">
@@ -20392,14 +20421,6 @@
   <obo:RO_0000052 rdf:resource="#Body"/>
   <work3:type rdf:resource="#BodySoulCoexistenceQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BodySoulCoexistenceInstance</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#InfiniteIntellect">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
-  <work3:type rdf:resource="#Substance"/>
-  <obo:RO_0000053 rdf:resource="#EternalExistenceInNatureQuality"/>
-  <obo:BFO_0000050 rdf:resource="#WholeOfNature"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">InfiniteIntellect</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#EternalExistenceInNatureQuality">
@@ -23235,19 +23256,10 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EfficientCausationScopeQuality</rdfs:label>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#GodCauseThroughHimselfDispositionInstance">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <work3:type rdf:resource="#CauseThroughHimselfDisposition"/>
+<owl:NamedIndividual rdf:about="#GodAbsolutelyFirstCauseRoleInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
   <obo:RO_0000052 rdf:resource="#God"/>
-  <obo:BFO_0000054 rdf:resource="#GodCausesAllThingsProcess"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodCauseThroughHimselfDispositionInstance</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#GodNonAccidentalCauseQualityInstance">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <work3:type rdf:resource="#NonAccidentalCauseQuality"/>
-  <obo:RO_0000052 rdf:resource="#God"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodNonAccidentalCauseQualityInstance</rdfs:label>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodAbsolutelyFirstCauseRoleInstance</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
