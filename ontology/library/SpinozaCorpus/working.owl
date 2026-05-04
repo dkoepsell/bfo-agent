@@ -6248,6 +6248,8 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <work:subClassOf rdf:resource="#DeterminingRelation"/>
   <obo:BFO_0000051 rdf:resource="#Volition"/>
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="#DivineAttribute"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivineDetermination</rdfs:label>
 </owl:Class>
 
@@ -13501,6 +13503,17 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LacksPositiveOntologicalContent</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#DivineWillConformityQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#DivineAttribute"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivineWillConformityQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DivineWillConformityDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivineWillConformityDisposition</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#God">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
   <obo:BFO_0000051 rdf:resource="#DivineAttribute"/>
@@ -13737,6 +13750,7 @@
   <work3:type rdf:resource="#ContinuousCreationProcess"/>
   <work3:type rdf:resource="#ContinualCreationProcess"/>
   <obo:BFO_0000057 rdf:resource="#OurDetermination"/>
+  <obo:BFO_0000055 rdf:resource="#DivineDetermination"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodCausesAllThingsProcess</rdfs:label>
 </owl:NamedIndividual>
 
@@ -20272,6 +20286,13 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <obo:RO_0000052 rdf:resource="#GodWill"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AbsoluteCausalityQualityInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#GodWillOmnipotencyQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work3:type rdf:resource="#DivineWillConformityQuality"/>
+  <obo:RO_0000052 rdf:resource="#God"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodWillOmnipotencyQuality</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
