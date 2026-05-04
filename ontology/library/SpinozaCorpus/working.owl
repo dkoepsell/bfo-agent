@@ -16393,6 +16393,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IdeaFormationDisposition</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#IndefiniteContinuationQuality">
+  <rdfs:subClassOf rdf:resource="#Duration"/>
+  <work:subClassOf rdf:resource="#Duration"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IndefiniteContinuationQuality</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
