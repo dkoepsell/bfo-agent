@@ -14314,6 +14314,19 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WillFreedomDisposition</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#RelationalEvilQuality">
+  <rdfs:subClassOf rdf:resource="#EvilQuality"/>
+  <work:subClassOf rdf:resource="#RelationalQuality"/>
+  <work:subClassOf rdf:resource="#EvilQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RelationalEvilQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#Act">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Act</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#God">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
   <obo:BFO_0000051 rdf:resource="#DivineAttribute"/>
@@ -16885,6 +16898,15 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IntellectWillOrderQuality</rdfs:label>
 </owl:NamedIndividual>
 
+<owl:NamedIndividual rdf:about="#IdeaOfGod">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work3:type rdf:resource="#Idea"/>
+  <obo:RO_0000056 rdf:resource="#FormalExistenceNecessitationProcess"/>
+  <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <obo:BFO_0000050 rdf:resource="#HavingIdeaOfGodProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IdeaOfGod</rdfs:label>
+</owl:NamedIndividual>
+
 <owl:NamedIndividual rdf:about="#AttributeUnityConstraint">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <obo:RO_0000052 rdf:resource="#WholeOfNature"/>
@@ -16967,15 +16989,6 @@
 <owl:NamedIndividual rdf:about="#MatterAsExtendedSubstance">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MatterAsExtendedSubstance</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#IdeaOfGod">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
-  <work3:type rdf:resource="#Idea"/>
-  <obo:RO_0000056 rdf:resource="#FormalExistenceNecessitationProcess"/>
-  <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
-  <obo:BFO_0000050 rdf:resource="#HavingIdeaOfGodProcess"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IdeaOfGod</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#FatherSoul">
@@ -21528,6 +21541,12 @@
 <owl:NamedIndividual rdf:about="#WillNecessarilyFreeAxiom">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WillNecessarilyFreeAxiom</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#EvilOnlyRelationalToFreedomAxiom">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <obo:BFO_0000050 rdf:resource="#TheEthics"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EvilOnlyRelationalToFreedomAxiom</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
