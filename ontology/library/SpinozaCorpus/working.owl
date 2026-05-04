@@ -13890,6 +13890,30 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EvilAccompaniesPositiveActQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#MoralCharacterQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MoralCharacterQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#HumanAction">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HumanAction</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ActionCircumstance">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ActionCircumstance</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#OmniscienceDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OmniscienceDisposition</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#God">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
   <obo:BFO_0000051 rdf:resource="#DivineAttribute"/>
@@ -14104,6 +14128,7 @@
   <obo:RO_0000056 rdf:resource="#DivineConcurrenceProcess"/>
   <obo:RO_0000053 rdf:resource="#DivineConcurrenceInstance"/>
   <obo:RO_0000056 rdf:resource="#GodConcursWithAllPositiveActsProcess"/>
+  <obo:RO_0000053 rdf:resource="#GodKnowledgeOfHumanActionsQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">God</rdfs:label>
 </owl:NamedIndividual>
 
@@ -16486,6 +16511,12 @@
   <obo:BFO_0000050 rdf:resource="#God"/>
   <work3:type rdf:resource="#EternalInfiniteEssence"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodEssence</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Spouses">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <obo:RO_0000056 rdf:resource="#ProcreationProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Spouses</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#HavingIdeaOfGodProcess">
@@ -20804,10 +20835,11 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ImpressingOfIntellectWillOrderProcess</rdfs:label>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#Spouses">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
-  <obo:RO_0000056 rdf:resource="#ProcreationProcess"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Spouses</rdfs:label>
+<owl:NamedIndividual rdf:about="#GodKnowledgeOfHumanActionsQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#God"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodKnowledgeOfHumanActionsQuality</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
