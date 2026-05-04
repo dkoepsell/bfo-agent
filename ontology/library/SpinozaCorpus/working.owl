@@ -26988,6 +26988,26 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FoundationalContributionRelation</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#MajorWesternPhilosopherRole">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MajorWesternPhilosopherRole</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DemocracyDefenseContent">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DemocracyDefenseContent</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#AuthorshipProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AuthorshipProcess</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#TemporalPriorityQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TemporalPriorityQuality</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
@@ -30894,6 +30914,8 @@
   <obo:RO_0000053 rdf:resource="#SpinozaAnnotatorRole"/>
   <RO_0000053 rdf:resource="#SpinozaPhilosopherRole"/>
   <obo:RO_0000056 rdf:resource="#SpinozaAssessmentOfDescartesArguments"/>
+  <obo:RO_0000053 rdf:resource="#SpinozaMajorPhilosopherRoleInstance"/>
+  <obo:RO_0000056 rdf:resource="#SpinozaAuthorshipOfTPT"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Spinoza</rdfs:label>
 </owl:NamedIndividual>
 
@@ -38383,6 +38405,8 @@
 <owl:NamedIndividual rdf:about="#TheologicalPoliticalTreatise">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <obo:BFO_0000051 rdf:resource="#DemocracyDefenseContent"/>
+  <obo:RO_0000053 rdf:resource="#TPTTemporalPriorityInDemocracyDefenseQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TheologicalPoliticalTreatise</rdfs:label>
 </owl:NamedIndividual>
 
@@ -38391,6 +38415,24 @@
   <obo:RO_0000052 rdf:resource="#TheologicalPoliticalTreatise"/>
   <work3:type rdf:resource="#FoundationalContributionRelation"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FoundationalContributionDispositionInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#SpinozaMajorPhilosopherRoleInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <obo:RO_0000052 rdf:resource="#Spinoza"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SpinozaMajorPhilosopherRoleInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#SpinozaAuthorshipOfTPT">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#Spinoza"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SpinozaAuthorshipOfTPT</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#TPTTemporalPriorityInDemocracyDefenseQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#TheologicalPoliticalTreatise"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TPTTemporalPriorityInDemocracyDefenseQuality</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
