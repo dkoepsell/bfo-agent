@@ -23853,6 +23853,19 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AffectIndicatesPowerAndSkillRelation</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#LoveOfEsteemArisingFromReasonProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000055 rdf:resource="#LoveOfEsteemArisesFromReasonDisposition"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LoveOfEsteemArisingFromReasonProcess</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#LoveOfEsteemArisesFromReasonDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:BFO_0000054 rdf:resource="#LoveOfEsteemArisingFromReasonProcess"/>
+  <work:subClassOf rdf:resource="#LoveOfEsteem"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LoveOfEsteemArisesFromReasonDisposition</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
