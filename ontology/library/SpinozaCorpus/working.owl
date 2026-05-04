@@ -19767,6 +19767,30 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HateAffect</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#PityDisposition">
+  <rdfs:subClassOf rdf:resource="#HumanNature"/>
+  <work:subClassOf rdf:resource="#HumanNature"/>
+  <obo:RO_0000052 rdf:resource="#Human"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PityDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#EnvyDisposition">
+  <rdfs:subClassOf rdf:resource="#HumanNature"/>
+  <work:subClassOf rdf:resource="#HumanNature"/>
+  <obo:RO_0000052 rdf:resource="#Human"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EnvyDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#UnfortunateCondition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UnfortunateCondition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#FortunateCondition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FortunatCondition</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
