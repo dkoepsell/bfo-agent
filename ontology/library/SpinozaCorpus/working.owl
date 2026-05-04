@@ -1529,6 +1529,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PerfectionQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#EssenceQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#PerfectionQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EssenceQuality</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#EternalOrder">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EternalOrder</rdfs:label>
@@ -13533,12 +13539,6 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EssenceExtentQuality</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#EssenceQuality">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <work:subClassOf rdf:resource="#PerfectionQuality"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EssenceQuality</rdfs:label>
-</owl:Class>
-
 <owl:NamedIndividual rdf:about="#God">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
   <obo:BFO_0000051 rdf:resource="#DivineAttribute"/>
@@ -15336,6 +15336,7 @@
   <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work2:sameAs rdf:resource="#GodPower"/>
   <obo:BFO_0000054 rdf:resource="#GodWillCausesAllProcess"/>
+  <work2:sameAs rdf:resource="#GodIntellect"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodWill</rdfs:label>
 </owl:NamedIndividual>
 
@@ -20325,6 +20326,12 @@
   <work3:type rdf:resource="#EssenceQuality"/>
   <work3:type rdf:resource="#PerfectionQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EssenceIsPerfectionQuality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#WillIntellectNonDifferenceQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#God"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WillIntellectNonDifferenceQuality</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
