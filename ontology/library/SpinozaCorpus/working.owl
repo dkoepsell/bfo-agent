@@ -4784,6 +4784,7 @@
   <obo:BFO_0000054 rdf:resource="#GodCausesAllThingsProcess"/>
   <RO_0000052 rdf:resource="#God"/>
   <obo:BFO_0000050 rdf:resource="#InfiniteIntellectOfGod"/>
+  <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">KnowledgeOfGod</rdfs:label>
 </owl:Class>
 
@@ -30607,6 +30608,17 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExpressesConceptOfGodDisposition</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#SupremeGoodQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SupremeGoodQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#KnowledgeOfGodConstitutesSupremeGoodDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">KnowledgeOfGodConstitutesSupremeGoodDisposition</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -44108,6 +44120,13 @@
   <obo:BFO_0000055 rdf:resource="#InvolvesConceptOfGodDisposition"/>
   <obo:BFO_0000055 rdf:resource="#ExpressesConceptOfGodDisposition"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AllThingsInvolveAndExpressGodProcess</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#KnowledgeOfGodIsSupremeGoodQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work3:type rdf:resource="#SupremeGoodQuality"/>
+  <obo:RO_0000052 rdf:resource="#KnowledgeOfGod"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">KnowledgeOfGodIsSupremeGoodQuality</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
