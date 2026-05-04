@@ -24797,6 +24797,17 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WeaknessOfMind</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#ReasonExercise">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ReasonExercise</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PertainsToReasonExerciseQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PertainsToReasonExerciseQuality</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
@@ -35168,6 +35179,12 @@
   <obo:RO_0000057 rdf:resource="#WeaknessOfMind"/>
   <obo:RO_0000057 rdf:resource="#Fear"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FearArisingFromWeaknessProcess</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#PityNonPertinenceToReasonQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work3:type rdf:resource="#PertainsToReasonExerciseQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PityNonPertinenceToReasonQuality</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
