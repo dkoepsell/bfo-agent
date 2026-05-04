@@ -6207,6 +6207,11 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Anger</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#NegativeAffectiveQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NegativeAffectiveQuality</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#HateProducesAngerProcess">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <work:subClassOf rdf:resource="#DeterminingRelation"/>
@@ -20328,6 +20333,8 @@
 <owl:Class rdf:about="#Veneration">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="#Wonder"/>
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Veneration</rdfs:label>
 </owl:Class>
 
@@ -20355,15 +20362,22 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Dread</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#NegativeAffectiveQuality">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NegativeAffectiveQuality</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#DreadWonderRelation">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="#Wonder"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DreadWonderRelation</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#Devotion">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="#Love"/>
+  <work:subClassOf rdf:resource="#Wonder"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Devotion</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DevotionHasLoveComponent">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DevotionHasLoveComponent</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
