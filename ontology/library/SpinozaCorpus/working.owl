@@ -27262,6 +27262,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DefinitionContainsOnlySimpleNatureConstraint</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#DefinitionIndividualMultiplicityExclusionQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:comment rdf:resource="#Every instance of Definition bears this quality: it neither involves nor expresses any multiplicity or definite number of individuals."/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DefinitionIndividualMultiplicityExclusionQuality</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
