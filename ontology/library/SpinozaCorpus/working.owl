@@ -18939,6 +18939,7 @@
 <owl:Class rdf:about="#ConfusionQuality">
   <rdfs:subClassOf rdf:resource="#InadequacyQuality"/>
   <work:subClassOf rdf:resource="#InadequacyQuality"/>
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConfusionQuality</rdfs:label>
 </owl:Class>
 
@@ -27061,6 +27062,21 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CoherenceRelation</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#BeautyQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BeautyQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#UglinessQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UglinessQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#OrderQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OrderQuality</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
@@ -38538,6 +38554,17 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <obo:RO_0000052 rdf:resource="#InfiniteIntellectOfGod"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ReflectsAllOfNatureDisposition</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#AestheticNeutralityOfNatureQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work3:type rdf:resource="#BeautyQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AestheticNeutralityOfNatureQuality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#OrderNeutralityOfNatureQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OrderNeutralityOfNatureQuality</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
