@@ -6935,6 +6935,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IdeaOfInternalCause</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#LoveOfEsteemJoy">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000055 rdf:resource="#LoveOfEsteem"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LoveOfEsteemJoy</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#Shame">
   <rdfs:subClassOf rdf:resource="#Sadness"/>
   <work:subClassOf rdf:resource="#Sadness"/>
@@ -6944,6 +6950,10 @@
   <obo:RO_0000053 rdf:resource="#ObjectionableAffectQuality"/>
   <work:subClassOf rdf:resource="#ShameAccompanimentRelation"/>
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:subClassOf rdf:resource="#SadnessQuality"/>
+  <work:subClassOf rdf:resource="#SadnessQuality"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000020"/>
+  <work:subClassOf rdf:resource="#IdeaOfAction"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Shame</rdfs:label>
 </owl:Class>
 
@@ -21260,12 +21270,6 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PrideBornOfSelfEsteemDisposition</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#LoveOfEsteemJoy">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <obo:BFO_0000055 rdf:resource="#LoveOfEsteem"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LoveOfEsteemJoy</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#IdeaOfOwnPraisedAction">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="#LoveOfEsteem"/>
@@ -21276,6 +21280,18 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="#IdeaOfOwnPraisedAction"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ImaginedPraiseOfOthers</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#IdeaOfAction">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IdeaOfAction</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ImaginedBlameQuality">
+  <rdfs:subClassOf rdf:resource="#IdeaOfAction"/>
+  <work:subClassOf rdf:resource="#IdeaOfAction"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ImaginedBlameQuality</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
@@ -31212,6 +31228,12 @@
   <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <obo:BFO_0000050 rdf:resource="#ImaginationToRealInabilityRealizationProcess"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ImaginingInabilityProcess</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ShameDefinition">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <obo:BFO_0000050 rdf:resource="#TheEthics"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ShameDefinition</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
