@@ -27205,6 +27205,13 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MutualDetermination</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#MutualDeterminationProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#Body"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MutualDeterminationProcess</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#SurroundedByOthersQuality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
@@ -27217,11 +27224,9 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DefiniteAndConstantManner</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#MutualDeterminationProcess">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <obo:RO_0000057 rdf:resource="#Body"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MutualDeterminationProcess</rdfs:label>
+<owl:Class rdf:about="#MotionToRestRatioPreservationQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MotionToRestRatioPreservationQuality</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
@@ -27671,6 +27676,8 @@
   <obo:RO_0000053 rdf:resource="#AllThingsInGodQualityInstance"/>
   <obo:RO_0000053 rdf:resource="#ConceivableThroughGodDispositionInstance"/>
   <work3:type rdf:resource="#CausalNetwork"/>
+  <obo:RO_0000053 rdf:resource="#MotionToRestRatio"/>
+  <obo:RO_0000056 rdf:resource="#MotionToRestRatioPreservationProcess"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WholeOfNature</rdfs:label>
 </owl:NamedIndividual>
 
@@ -38725,6 +38732,20 @@
   <work3:type rdf:resource="#InfiniteInItsKind"/>
   <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">InfinitePowerOfThinking</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#MotionToRestRatio">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work3:type rdf:resource="#MotionToRestRatioPreservationQuality"/>
+  <obo:RO_0000052 rdf:resource="#WholeOfNature"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MotionToRestRatio</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#MotionToRestRatioPreservationProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#WholeOfNature"/>
+  <obo:BFO_0000055 rdf:resource="#MotionToRestRatio"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MotionToRestRatioPreservationProcess</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
