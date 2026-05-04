@@ -20667,6 +20667,11 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ActiveAffect</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#ActiveAffectRealizationProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ActiveAffectRealizationProcess</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#ActiveJoy">
   <rdfs:subClassOf rdf:resource="#ActiveAffect"/>
   <work:subClassOf rdf:resource="#ActiveAffect"/>
@@ -20684,9 +20689,27 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ActiveCausationQuality</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#ActiveAffectRealizationProcess">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ActiveAffectRealizationProcess</rdfs:label>
+<owl:Class rdf:about="#AffectOfSadness">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AffectOfSadness</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#AffectOfJoy">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="#ActiveAffect"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AffectOfJoy</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#AffectOfDesire">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="#ActiveAffect"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AffectOfDesire</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ActiveAffectSadnessExclusionQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ActiveAffectSadnessExclusionQuality</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
@@ -30557,6 +30580,13 @@
   <obo:RO_0000052 rdf:resource="#FormalBeingOfHumanMind"/>
   <obo:BFO_0000050 rdf:resource="#ConatusMentalDispositionInstance"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindPowerIsEssenceDisposition</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ActiveAffectSadnessExclusionQualityInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work3:type rdf:resource="#ActiveAffectSadnessExclusionQuality"/>
+  <obo:RO_0000052 rdf:resource="#FormalBeingOfHumanMind"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ActiveAffectSadnessExclusionQualityInstance</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
