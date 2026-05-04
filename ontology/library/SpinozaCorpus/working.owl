@@ -19977,6 +19977,11 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">StrivingToPlease</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#DesireForEsteem">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DesireForEsteem</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#ActionOfAnother">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
@@ -21626,14 +21631,40 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DispleasingAction</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#DesireForEsteem">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DesireForEsteem</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#ExcessivenessQuality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExcessivenessQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#Gluttony">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="#Immoderateness"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Gluttony</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#Immoderateness">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Immoderateness</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DesireForEating">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="#Gluttony"/>
+  <obo:BFO_0000054 rdf:resource="#EatingProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DesireForEating</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#LoveOfEating">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="#Gluttony"/>
+  <obo:BFO_0000054 rdf:resource="#EatingProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LoveOfEating</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#EatingProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EatingProcess</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
