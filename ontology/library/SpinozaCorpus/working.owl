@@ -16843,6 +16843,7 @@
   <rdfs:subClassOf rdf:resource="#Body"/>
   <work:subClassOf rdf:resource="#Body"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/RO_0000053"/>
+  <obo:BFO_0000051 rdf:resource="#Individual"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Individual</rdfs:label>
 </owl:Class>
 
@@ -17091,6 +17092,7 @@
 <owl:Class rdf:about="#MotionCommunicationProcess">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000055 rdf:resource="#PartNatureRetentionCondition"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MotionCommunicationProcess</rdfs:label>
 </owl:Class>
 
@@ -17106,6 +17108,27 @@
   <obo:BFO_0000054 rdf:resource="#MotionCommunicationProcess"/>
   <obo:RO_0000052 rdf:resource="#Individual"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FormPreservingRatioDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#IndividualNatureRetentionDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:RO_0000052 rdf:resource="#Individual"/>
+  <obo:BFO_0000054 rdf:resource="#MotionCommunicationProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IndividualNatureRetentionDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PartNatureRetentionCondition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:BFO_0000054 rdf:resource="#MotionCommunicationProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PartNatureRetentionCondition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PartMotionRetentionQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#Individual"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PartMotionRetentionQuality</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
