@@ -9143,6 +9143,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivineLaw</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#DivineLawClass">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivineLawClass</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#Inviolability">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
@@ -30303,12 +30309,6 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UniformIntellectDistributionQuality</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#DivineLawClass">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivineLawClass</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#NormativeObligation">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
@@ -31363,6 +31363,18 @@
   <obo:RO_0000057 rdf:resource="#Prophet"/>
   <obo:BFO_0000051 rdf:resource="#RevelationContent"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RevelationProcess</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ReverenceOfGodObligation">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work3:type rdf:resource="#NormativeObligation"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ReverenceOfGodObligation</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#AbstainFromEvilObligation">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work3:type rdf:resource="#NormativeObligation"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AbstainFromEvilObligation</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#GreatestGood">
@@ -43618,18 +43630,6 @@
   <obo:RO_0000057 rdf:resource="#God"/>
   <obo:BFO_0000055 rdf:resource="#GodCausesAllThingsProcess"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivineIntellectGrantingProcess</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#ReverenceOfGodObligation">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <work3:type rdf:resource="#NormativeObligation"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ReverenceOfGodObligation</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#AbstainFromEvilObligation">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <work3:type rdf:resource="#NormativeObligation"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AbstainFromEvilObligation</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#WholeHumanRace">
