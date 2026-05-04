@@ -18031,6 +18031,24 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SoleCauseOfFalsityQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#KnowledgeOfSecondKind">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">KnowledgeOfSecondKind</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#KnowledgeOfThirdKind">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">KnowledgeOfThirdKind</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#NecessaryTruthQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NecessaryTruthQuality</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
@@ -27242,6 +27260,20 @@
   <obo:RO_0000057 rdf:resource="#KnowledgeOfFirstKindInstance"/>
   <obo:RO_0000057 rdf:resource="#FalsityInstance"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FalsityProductionProcess</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#SecondKindKnowledgeNecessaryTruthQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work3:type rdf:resource="#NecessaryTruthQuality"/>
+  <obo:RO_0000052 rdf:resource="#KnowledgeOfSecondKind"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SecondKindKnowledgeNecessaryTruthQuality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ThirdKindKnowledgeNecessaryTruthQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work3:type rdf:resource="#NecessaryTruthQuality"/>
+  <obo:RO_0000052 rdf:resource="#KnowledgeOfThirdKind"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ThirdKindKnowledgeNecessaryTruthQuality</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
