@@ -25043,6 +25043,35 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BodyPartCompositionQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#IndividualPower">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IndividualPower</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#IndividualInsufficiencyForSustenance">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#IndividualPower"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IndividualInsufficiencyForSustenance</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#MutualAid">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MutualAid</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SustenanceProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SustenanceProcess</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SufficiencyForSustenanceDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="#IndividualPower"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SufficiencyForSustenanceDisposition</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
