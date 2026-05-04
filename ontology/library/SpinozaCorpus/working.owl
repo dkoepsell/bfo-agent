@@ -1896,6 +1896,11 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Sadness</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#AccompanimentRelation">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AccompanimentRelation</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#SadnessExemptionQuality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <obo:RO_0000052 rdf:resource="#Joy"/>
@@ -19793,11 +19798,13 @@
 
 <owl:Class rdf:about="#LoveAffect">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LoveAffect</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#HateAffect">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HateAffect</rdfs:label>
 </owl:Class>
 
@@ -20116,9 +20123,21 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">JoyFromImaginingDestructionOfHatedThing</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#AccompanimentRelation">
+<owl:Class rdf:about="#AffectCauseAttribution">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AccompanimentRelation</rdfs:label>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AffectCauseAttribution</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#AffectDiminishmentProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000050 rdf:resource="#CauseReattachmentProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AffectDiminishmentProcess</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#CauseReattachmentProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CauseReattachmentProcess</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
