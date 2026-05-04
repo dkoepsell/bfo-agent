@@ -6507,6 +6507,7 @@
 <owl:Class rdf:about="#TranscendentalTerm">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <signifies rdf:resource="#TranscendentalTermIdea"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TranscendentalTerm</rdfs:label>
 </owl:Class>
 
@@ -8447,6 +8448,12 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AssociationOfParticles</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DistinctImageFormationCapacity">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:RO_0000052 rdf:resource="#HumanBody"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DistinctImageFormationCapacity</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#BodyStateChange">
@@ -17913,12 +17920,6 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BodyLimitednessQuality</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#DistinctImageFormationCapacity">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <obo:RO_0000052 rdf:resource="#HumanBody"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DistinctImageFormationCapacity</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#FiniteDistinctImageCapacityQuality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <obo:RO_0000052 rdf:resource="#HumanBody"/>
@@ -17939,6 +17940,17 @@
 <owl:Class rdf:about="#TranscendentalTermOriginDisposition">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TranscendentalTermOriginDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ConfusedInHighestDegreeQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConfusedInHighestDegreeQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#TranscendentalTermIdea">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TranscendentalTermIdea</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
