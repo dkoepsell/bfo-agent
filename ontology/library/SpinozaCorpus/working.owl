@@ -18754,6 +18754,36 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindPassivityDisposition</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#MindPassibilityQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindPassibilityQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#MindActivityQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindActivityQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#AdequateIdeaQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AdequateIdeaQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PassionDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PassionDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ActivenessDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ActivenessDisposition</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
@@ -19300,6 +19330,7 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#InadequateKnowledgeOfBodyPartsQuality"/>
   <obo:RO_0000052 rdf:resource="#HumanMind"/>
+  <work3:type rdf:resource="#InadequateIdeaQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">InadequateKnowledgeOfBodyPartsQuality</rdfs:label>
 </owl:NamedIndividual>
 
@@ -19321,6 +19352,7 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <obo:RO_0000052 rdf:resource="#HumanMind"/>
   <work3:type rdf:resource="#InadequateKnowledgeOfExternalBodyQualityClass"/>
+  <work3:type rdf:resource="#InadequateIdeaQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">InadequateKnowledgeOfExternalBodyQuality</rdfs:label>
 </owl:NamedIndividual>
 
@@ -19348,6 +19380,7 @@
 <owl:NamedIndividual rdf:about="#AdequateKnowledgeOfGodQualityInstance">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <obo:RO_0000052 rdf:resource="#HumanMind"/>
+  <work3:type rdf:resource="#AdequateIdeaQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AdequateKnowledgeOfGodQualityInstance</rdfs:label>
 </owl:NamedIndividual>
 
@@ -28267,6 +28300,18 @@
   <obo:RO_0000052 rdf:resource="#FormalBeingOfHumanMind"/>
   <obo:BFO_0000054 rdf:resource="#MindUndergoingProcess"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindPassivityDispositionInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#MindPassibilityQualityInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work3:type rdf:resource="#MindPassibilityQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindPassibilityQualityInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#MindActivityQualityInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work3:type rdf:resource="#MindActivityQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindActivityQualityInstance</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
