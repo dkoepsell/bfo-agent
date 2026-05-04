@@ -31721,6 +31721,41 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SignOfRelation</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#ForbiddenChristianReligionJurisdiction">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000029"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ForbiddenChristianReligionJurisdiction</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ReligiousProhibitionQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#ForbiddenChristianReligionJurisdiction"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ReligiousProhibitionQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#BlessedLife">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#Person"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BlessedLife</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ReligiousCeremony">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ReligiousCeremony</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#BlessedLifeDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:BFO_0000054 rdf:resource="#BlessedLife"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BlessedLifeDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#CeremonyIndependenceOfBlessedLife">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CeremonyIndependenceOfBlessedLife</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
