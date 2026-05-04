@@ -30337,15 +30337,15 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Soothsayer</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#TrueProphet">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TrueProphet</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#Diviner">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
   <work:subClassOf rdf:resource="#TrueProphet"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Diviner</rdfs:label>
-</owl:Class>
-
-<owl:Class rdf:about="#TrueProphet">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TrueProphet</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#GentileCulturalContext">
