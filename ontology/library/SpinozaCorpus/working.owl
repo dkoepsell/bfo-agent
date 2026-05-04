@@ -1606,6 +1606,8 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <obo:BFO_0000055 rdf:resource="#PassionOfJoy"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000055 rdf:resource="#Joy"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TransitionToGreaterPerfection</rdfs:label>
 </owl:Class>
 
@@ -7189,6 +7191,18 @@
   <obo:RO_0000053 rdf:resource="#IntrinsicGoodness"/>
   <obo:RO_0000053 rdf:resource="#NonExcessivenessCondition"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Laughter</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#IntrinsicGoodness">
+  <rdfs:subClassOf rdf:resource="#Goodness"/>
+  <work:subClassOf rdf:resource="#Goodness"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IntrinsicGoodness</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#NonExcessivenessCondition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NonExcessivenessCondition</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#LoveOfEsteem">
@@ -23592,16 +23606,10 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">JokingAssociatedJoy</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#IntrinsicGoodness">
-  <rdfs:subClassOf rdf:resource="#Goodness"/>
-  <work:subClassOf rdf:resource="#Goodness"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IntrinsicGoodness</rdfs:label>
-</owl:Class>
-
-<owl:Class rdf:about="#NonExcessivenessCondition">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NonExcessivenessCondition</rdfs:label>
+<owl:Class rdf:about="#JoyMagnitudeProportionalityToPerfectionQuality">
+  <rdfs:subClassOf rdf:resource="#Joy"/>
+  <work:subClassOf rdf:resource="#Joy"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">JoyMagnitudeProportionalityToPerfectionQuality</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
