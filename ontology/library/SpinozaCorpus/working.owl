@@ -17096,6 +17096,13 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MotionCommunicationProcess</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#PartNatureRetentionCondition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:BFO_0000054 rdf:resource="#MotionCommunicationProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PartNatureRetentionCondition</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#MotionDirectionAlterationProcess">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
@@ -17118,17 +17125,17 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IndividualNatureRetentionDisposition</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#PartNatureRetentionCondition">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <obo:BFO_0000054 rdf:resource="#MotionCommunicationProcess"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PartNatureRetentionCondition</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#PartMotionRetentionQuality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <obo:RO_0000052 rdf:resource="#Individual"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PartMotionRetentionQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#NaturePart">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000050"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NaturePart</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
@@ -17544,6 +17551,7 @@
   <obo:RO_0000056 rdf:resource="#DivineNecessityDeterminationProcess"/>
   <obo:RO_0000053 rdf:resource="#OrderAndConnectionOfCausesUnderExtension"/>
   <obo:RO_0000053 rdf:resource="#OrderAndConnectionOfCausesUnderThought"/>
+  <obo:BFO_0000051 rdf:resource="#NaturePart"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WholeOfNature</rdfs:label>
 </owl:NamedIndividual>
 
@@ -25879,6 +25887,24 @@
   <work3:type rdf:resource="#MotionOrRestDetermination"/>
   <obo:RO_0000057 rdf:resource="#Body"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">InfiniteMotionRestCausalChain</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#UnityOfWholeQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#WholeOfNature"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UnityOfWholeQuality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#InfinitePartVariationQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#WholeOfNature"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">InfinitePartVariationQuality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#WholeInvarianceUnderPartChangeQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#WholeOfNature"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WholeInvarianceUnderPartChangeQuality</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
