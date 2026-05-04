@@ -1960,6 +1960,7 @@
 
 <owl:Class rdf:about="#PassageToLesserPerfection">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PassageToLesserPerfection</rdfs:label>
 </owl:Class>
 
@@ -21466,6 +21467,7 @@
   <obo:BFO_0000055 rdf:resource="#DiminishingPowerOfActingDisposition"/>
   <work3:type rdf:resource="#Sadness"/>
   <obo:BFO_0000055 rdf:resource="#Sadness"/>
+  <work3:type rdf:resource="#PassageToLesserPerfection"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TransitionToLesserPerfection</rdfs:label>
 </owl:NamedIndividual>
 
