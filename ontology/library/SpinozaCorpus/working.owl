@@ -14774,6 +14774,7 @@
   <obo:RO_0000053 rdf:resource="#SupremePerfectionQualityInstance"/>
   <obo:RO_0000053 rdf:resource="#SupremelyPerfectBeingPower"/>
   <obo:RO_0000056 rdf:resource="#EssenceAllotmentProcessInstance"/>
+  <obo:RO_0000053 rdf:resource="#GodAbsoluteCauseOfEssenceRole"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">God</rdfs:label>
 </owl:NamedIndividual>
 
@@ -21842,6 +21843,19 @@
 <owl:NamedIndividual rdf:about="#LoveOfNeighbor">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LoveOfNeighbor</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#GodAbsoluteCauseOfEssenceRole">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <obo:RO_0000052 rdf:resource="#God"/>
+  <obo:BFO_0000054 rdf:resource="#EssenceCausationProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodAbsoluteCauseOfEssenceRole</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#EssenceCausationAbsoluteQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#GodAbsoluteCauseOfEssenceRole"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EssenceCausationAbsoluteQuality</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
