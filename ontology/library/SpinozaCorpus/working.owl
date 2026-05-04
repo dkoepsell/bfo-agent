@@ -3581,6 +3581,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HumanEssence</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#AttributeModification">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#Attribute"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AttributeModification</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#AbstractConception">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="#IdeaFormationCapacity"/>
@@ -16690,10 +16696,22 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodHasIdeaOfObjectDisposition</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#AttributeModification">
+<owl:Class rdf:about="#GodOntologicalDependencyQuality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <work:subClassOf rdf:resource="#Attribute"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AttributeModification</rdfs:label>
+  <work:subClassOf rdf:resource="#OntologicalPriority"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodOntologicalDependencyQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#GodOntologicalGroundDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:RO_0000052 rdf:resource="#God"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodOntologicalGroundDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#GodConceptualDependencyQuality">
+  <rdfs:subClassOf rdf:resource="#GodOntologicalDependencyQuality"/>
+  <work:subClassOf rdf:resource="#GodOntologicalDependencyQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodConceptualDependencyQuality</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
