@@ -20209,6 +20209,7 @@
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="#DesireForEsteem"/>
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <work:subClassOf rdf:resource="#Madness"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Ambition</rdfs:label>
 </owl:Class>
 
@@ -21162,6 +21163,7 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="#DesireForBodyUnion"/>
+  <work:subClassOf rdf:resource="#Madness"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Lust</rdfs:label>
 </owl:Class>
 
@@ -21973,6 +21975,7 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="#ImmoderateWealthDesire"/>
   <work:subClassOf rdf:resource="#ImmoderateWealthLove"/>
+  <work:subClassOf rdf:resource="#Madness"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Greed</rdfs:label>
 </owl:Class>
 
