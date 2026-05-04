@@ -16873,6 +16873,11 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindBodyUnionQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#UnionRelation">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UnionRelation</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#Thing">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
@@ -17515,9 +17520,32 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IdeaDerivationFromGodRole</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#UnionRelation">
+<owl:Class rdf:about="#ImaginationOfMind">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ImaginationOfMind</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ImaginationIntrinsicErrorAbsenceQuality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UnionRelation</rdfs:label>
+  <work:subClassOf rdf:resource="#ExistenceNonImperfectionQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ImaginationIntrinsicErrorAbsenceQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ExcludingExistenceIdea">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExcludingExistenceIdea</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#LackOfExcludingExistenceIdea">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:BFO_0000054 rdf:resource="#ErrorArisingFromLackOfExcludingIdea"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LackOfExcludingExistenceIdea</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ErrorArisingFromLackOfExcludingIdea">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000055 rdf:resource="#LackOfExcludingExistenceIdea"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ErrorArisingFromLackOfExcludingIdea</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
