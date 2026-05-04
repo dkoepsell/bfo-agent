@@ -9,7 +9,8 @@
          xmlns:obo="http://purl.obolibrary.org/obo/"
          xmlns:work2="http://davidkoepsell.com/bfo-agent/working#owl:"
          xmlns:work3="http://davidkoepsell.com/bfo-agent/working#rdf:"
-         xmlns:rdfs2="http://purl.obolibrary.org/obo/rdfs:">
+         xmlns:rdfs2="http://purl.obolibrary.org/obo/rdfs:"
+         xmlns:core="http://www.w3.org/2004/02/skos/core#">
 
 <owl:Ontology rdf:about="http://davidkoepsell.com/bfo-agent/working">
   <owl:imports rdf:resource="http://purl.obolibrary.org/obo/bfo.owl"/>
@@ -1802,6 +1803,12 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindBodyStrivingQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SemanticContent">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SemanticContent</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#AttributeModification">
@@ -28757,12 +28764,6 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SentimentOfHeart</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#SemanticContent">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SemanticContent</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#Decision">
   <rdfs:subClassOf rdf:resource="#SemanticContent"/>
   <work:subClassOf rdf:resource="#SemanticContent"/>
@@ -41010,6 +41011,9 @@
   <hasSemanticContent rdf:resource="#Decision"/>
   <hasSemanticContent rdf:resource="#Appetite"/>
   <hasSemanticContent rdf:resource="#Impulse"/>
+  <rdfs:label rdf:resource="#ruagh"/>
+  <core:definition rdf:resource="#A term (ruagh) denoting the mind itself or soul."/>
+  <core:closeMatch rdf:resource="#Thought"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Ruagh</rdfs:label>
 </owl:NamedIndividual>
 
