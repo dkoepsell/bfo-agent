@@ -16453,6 +16453,8 @@
   <obo:RO_0000053 rdf:resource="#ActualIntellectOfGod"/>
   <obo:RO_0000053 rdf:resource="#ActualWillOfGod"/>
   <obo:RO_0000053 rdf:resource="#GodEssenceIntellectWillDependenceQuality"/>
+  <obo:RO_0000053 rdf:resource="#GodPowerQuality"/>
+  <obo:RO_0000053 rdf:resource="#GodEssenceQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">God</rdfs:label>
 </owl:NamedIndividual>
 
@@ -18453,6 +18455,24 @@
   <work3:type rdf:resource="#ActualIntellect"/>
   <obo:RO_0000052 rdf:resource="#God"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodActualIntellectDisposition</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ActualIntellectOfGod">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:RO_0000052 rdf:resource="#God"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ActualIntellectOfGod</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ActualWillOfGod">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:RO_0000052 rdf:resource="#God"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ActualWillOfGod</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#GodEssenceIntellectWillDependenceQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#God"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodEssenceIntellectWillDependenceQuality</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#ThinkingThingRole">
@@ -23067,6 +23087,7 @@
   <obo:RO_0000052 rdf:resource="#God"/>
   <work:subClassOf rdf:resource="#InfiniteEssenceQuality"/>
   <work3:type rdf:resource="#InfiniteEssenceQuality"/>
+  <work:subClassOf rdf:resource="#EssentialExistenceQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PowerEssenceIdentityQuality</rdfs:label>
 </owl:NamedIndividual>
 
@@ -23652,6 +23673,9 @@
   <work3:type rdf:resource="#GodPowerClass"/>
   <obo:RO_0000052 rdf:resource="#God"/>
   <obo:BFO_0000054 rdf:resource="#GodCausesAllThingsProcess"/>
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work3:type rdf:resource="#PowerEssenceIdentityQuality"/>
+  <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodPowerQuality</rdfs:label>
 </owl:NamedIndividual>
 
@@ -24268,28 +24292,18 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodLacksActualIntellectOnlyQuality</rdfs:label>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#ActualIntellectOfGod">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <obo:RO_0000052 rdf:resource="#God"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ActualIntellectOfGod</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#ActualWillOfGod">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <obo:RO_0000052 rdf:resource="#God"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ActualWillOfGod</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#GodEssenceIntellectWillDependenceQuality">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <obo:RO_0000052 rdf:resource="#God"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodEssenceIntellectWillDependenceQuality</rdfs:label>
-</owl:NamedIndividual>
-
 <owl:NamedIndividual rdf:about="#CounterfactualEssenceAlterationProcess">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <obo:RO_0000057 rdf:resource="#God"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CounterfactualEssenceAlterationProcess</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#GodEssenceQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work3:type rdf:resource="#PowerEssenceIdentityQuality"/>
+  <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#God"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodEssenceQuality</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
