@@ -31783,6 +31783,51 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ClearAndDistinctConceptionOfGod</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#ScriptureKnowledge">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ScriptureKnowledge</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#NaturalLightKnowledge">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NaturalLightKnowledge</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ScriptureAcquaintanceDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ScriptureAcquaintanceDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#NaturalLightCognitionDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NaturalLightCognitionDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#HumanFeelingQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HumanFeelingQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#AbsenceOfScriptureAcquaintanceQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#ScriptureAcquaintanceDisposition"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AbsenceOfScriptureAcquaintanceQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#AbsenceOfNaturalLightKnowledgeQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#NaturalLightCognitionDisposition"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AbsenceOfNaturalLightKnowledgeQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#LackOfHumanFeelingQuality">
+  <rdfs:subClassOf rdf:resource="#HumanFeelingQuality"/>
+  <work:subClassOf rdf:resource="#HumanFeelingQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LackOfHumanFeelingQuality</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
