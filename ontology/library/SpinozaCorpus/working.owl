@@ -14444,15 +14444,33 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SensualPleasureAppetite</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#SensualPleasureEngagementProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SensualPleasureEngagementProcess</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#EssentialAppetiteQuality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="#EssentialExistenceQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EssentialAppetiteQuality</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#SensualPleasureEngagementProcess">
+<owl:Class rdf:about="#EssenceAllotmentDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="#ExistenceNecessitation"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EssenceAllotmentDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#EssenceExerciseQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#EssentialExistenceQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EssenceExerciseQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#EssenceAllotmentProcess">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SensualPleasureEngagementProcess</rdfs:label>
+  <work:subClassOf rdf:resource="#GodDecree"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EssenceAllotmentProcess</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#God">
@@ -14677,6 +14695,7 @@
   <obo:RO_0000053 rdf:resource="#SupremePerfectionEntailsCreatureConsistencyDisposition"/>
   <obo:RO_0000053 rdf:resource="#SupremePerfectionQualityInstance"/>
   <obo:RO_0000053 rdf:resource="#SupremelyPerfectBeingPower"/>
+  <obo:RO_0000056 rdf:resource="#EssenceAllotmentProcessInstance"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">God</rdfs:label>
 </owl:NamedIndividual>
 
@@ -21729,6 +21748,18 @@
 <owl:NamedIndividual rdf:about="#LoveOfNeighbor">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LoveOfNeighbor</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#EssenceAllotmentDispositionInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:RO_0000052 rdf:resource="#God"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EssenceAllotmentDispositionInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#EssenceAllotmentProcessInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000055 rdf:resource="#EssenceAllotmentDispositionInstance"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EssenceAllotmentProcessInstance</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
