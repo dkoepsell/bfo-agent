@@ -1172,6 +1172,7 @@
   <obo:RO_0000052 rdf:resource="#God"/>
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
   <obo:RO_0000053 rdf:resource="#IntellectPerfectionQuality"/>
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Intellect</rdfs:label>
 </owl:Class>
 
@@ -43509,17 +43510,18 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Abraham</rdfs:label>
 </owl:NamedIndividual>
 
+<owl:NamedIndividual rdf:about="#AbrahamObservancePrescribedLawsProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#Abraham"/>
+  <obo:RO_0000057 rdf:resource="#LawsAndInstitutionsPrescribedByGodViaMelchizedek"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AbrahamObservancePrescribedLawsProcess</rdfs:label>
+</owl:NamedIndividual>
+
 <owl:NamedIndividual rdf:about="#Melchizedek">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
   <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
   <obo:RO_0000053 rdf:resource="#MelchizedekMediationRoleInstance"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Melchizedek</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#LawsAndInstitutionsPrescribedByGodViaMelchizedek">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
-  <work3:type rdf:resource="#DivineLaw"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LawsAndInstitutionsPrescribedByGodViaMelchizedek</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#MelchizedekMediationRoleInstance">
@@ -43529,11 +43531,10 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MelchizedekMediationRoleInstance</rdfs:label>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#AbrahamObservancePrescribedLawsProcess">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <obo:RO_0000057 rdf:resource="#Abraham"/>
-  <obo:RO_0000057 rdf:resource="#LawsAndInstitutionsPrescribedByGodViaMelchizedek"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AbrahamObservancePrescribedLawsProcess</rdfs:label>
+<owl:NamedIndividual rdf:about="#LawsAndInstitutionsPrescribedByGodViaMelchizedek">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work3:type rdf:resource="#DivineLaw"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LawsAndInstitutionsPrescribedByGodViaMelchizedek</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#GodPrescribingLawsViaMelchizedekProcess">
@@ -43541,6 +43542,34 @@
   <obo:RO_0000057 rdf:resource="#God"/>
   <obo:RO_0000057 rdf:resource="#Melchizedek"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodPrescribingLawsViaMelchizedekProcess</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#EqualDispositionTowardNationsQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#God"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EqualDispositionTowardNationsQuality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#IntellectEqualityAmongNationsQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:BFO_0000050 rdf:resource="#EqualDispositionTowardNationsQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IntellectEqualityAmongNationsQuality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#VirtueEqualityAmongNationsQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:BFO_0000050 rdf:resource="#EqualDispositionTowardNationsQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">VirtueEqualityAmongNationsQuality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#BlessednessEqualityAmongNationsQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:BFO_0000050 rdf:resource="#EqualDispositionTowardNationsQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BlessednessEqualityAmongNationsQuality</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
