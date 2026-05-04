@@ -30066,6 +30066,23 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DefendingAdHominemAsDoctrineProcess</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#TrueHappiness">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:BFO_0000054 rdf:resource="#EnjoymentOfTheGood"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TrueHappiness</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#EnjoymentOfTheGood">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#TheGood"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EnjoymentOfTheGood</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#HappinessConstitutedByGoodEnjoymentQuality">
+  <rdfs:subClassOf rdf:resource="#TrueHappiness"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HappinessConstitutedByGoodEnjoymentQuality</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -34212,6 +34229,13 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Son</rdfs:label>
 </owl:NamedIndividual>
 
+<owl:NamedIndividual rdf:about="#ChristDirectRevelationDisposition">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work3:type rdf:resource="#DirectDivineRevelationReception"/>
+  <obo:RO_0000052 rdf:resource="#Christ"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ChristDirectRevelationDisposition</rdfs:label>
+</owl:NamedIndividual>
+
 <owl:NamedIndividual rdf:about="#GodIntellectEternalityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <obo:RO_0000052 rdf:resource="#God"/>
@@ -34239,13 +34263,6 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <obo:RO_0000052 rdf:resource="#InfiniteIntellect"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EternalExistenceInNatureQuality</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#ChristDirectRevelationDisposition">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <work3:type rdf:resource="#DirectDivineRevelationReception"/>
-  <obo:RO_0000052 rdf:resource="#Christ"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ChristDirectRevelationDisposition</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#HavingIdeaOfGodProcess">
@@ -41093,6 +41110,7 @@
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="#LoveOfGod"/>
   <work2:equivalentClass rdf:resource="#Virtue"/>
+  <work:subClassOf rdf:resource="#TrueHappiness"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Blessedness</rdfs:label>
 </owl:NamedIndividual>
 
@@ -43268,6 +43286,11 @@
   <obo:RO_0000056 rdf:resource="#ApostolicReasoning"/>
   <obo:RO_0000056 rdf:resource="#ApostolicSigns"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ApostolicAudience</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#TheGood">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TheGood</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
