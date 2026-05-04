@@ -26700,6 +26700,19 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IndependentExistenceQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#TrueIdeaConformityToReality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#TruePerceptionQuality"/>
+  <work:subClassOf rdf:resource="#EsseInSe"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TrueIdeaConformityToReality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#EpistemologicalEsseInSeRole">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <work:subClassOf rdf:resource="#EsseInSe"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EpistemologicalEsseInSeRole</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
