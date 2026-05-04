@@ -27614,6 +27614,11 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FictitiousPerceptionQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#PerceptionEpistemicCharacterQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PerceptionEpistemicCharacterQuality</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#FalsePerceptionQuality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="#PerceptionEpistemicCharacterQuality"/>
@@ -27626,9 +27631,32 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DoubtfulPerceptionQuality</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#PerceptionEpistemicCharacterQuality">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PerceptionEpistemicCharacterQuality</rdfs:label>
+<owl:Class rdf:about="#Circle">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Circle</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#OpticalAxis">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000141"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OpticalAxis</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#FocalPoint">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000141"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FocalPoint</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ParallelRayConvergenceDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:BFO_0000054 rdf:resource="#LightRefractionProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ParallelRayConvergenceDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#LightRefractionProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LightRefractionProcess</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
