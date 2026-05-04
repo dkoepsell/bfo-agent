@@ -19791,6 +19791,34 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FortunatCondition</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#ImageOfThing">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#ModeOfHumanBody"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ImageOfThing</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ModeOfHumanBody">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#HumanBody"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ModeOfHumanBody</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#BodyAffectionByExternalCauseProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#HumanBody"/>
+  <obo:RO_0000057 rdf:resource="#ExternalCause"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BodyAffectionByExternalCauseProcess</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ImageProductionDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:RO_0000052 rdf:resource="#HumanBody"/>
+  <obo:BFO_0000054 rdf:resource="#BodyAffectionByExternalCauseProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ImageProductionDisposition</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
