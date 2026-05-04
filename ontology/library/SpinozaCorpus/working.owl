@@ -281,6 +281,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SubstanceExistenceEternalityQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#SubstanceExistenceFromNatureAloneQuality">
+  <rdfs:subClassOf rdf:resource="#EssentialExistenceQuality"/>
+  <work:subClassOf rdf:resource="#EssentialExistenceQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SubstanceExistenceFromNatureAloneQuality</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#ExistenceNecessitation">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="#CausaSui"/>
@@ -15216,17 +15222,23 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExistenceImpossibilityQuality</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#SubstanceExistenceFromNatureAloneQuality">
-  <rdfs:subClassOf rdf:resource="#EssentialExistenceQuality"/>
-  <work:subClassOf rdf:resource="#EssentialExistenceQuality"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SubstanceExistenceFromNatureAloneQuality</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#NatureInvolvesExistenceDisposition">
   <rdfs:subClassOf rdf:resource="#EssenceContainsExistenceDisposition"/>
   <work:subClassOf rdf:resource="#EssenceContainsExistenceDisposition"/>
   <work:subClassOf rdf:resource="#CausalReasonForExistence"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NatureInvolvesExistenceDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#OtherNatureSubstance">
+  <rdfs:subClassOf rdf:resource="#Substance"/>
+  <work:subClassOf rdf:resource="#Substance"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OtherNatureSubstance</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#AbsenceOfCommonNatureWithGodQuality">
+  <rdfs:subClassOf rdf:resource="#CommonNatureQuality"/>
+  <work:subClassOf rdf:resource="#CommonNatureQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AbsenceOfCommonNatureWithGodQuality</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
