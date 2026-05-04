@@ -6806,6 +6806,7 @@
   <rdfs:subClassOf rdf:resource="#Sadness"/>
   <work:subClassOf rdf:resource="#Sadness"/>
   <work:subClassOf rdf:resource="#AcCompaniedByAccidentalCauseIdeaConstraint"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Aversion</rdfs:label>
 </owl:Class>
 
