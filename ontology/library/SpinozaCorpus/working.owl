@@ -1037,6 +1037,7 @@
   <work:subClassOf rdf:resource="#HumanEssenceQuality"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="#StrivingToAct"/>
+  <work:subClassOf rdf:resource="#EssenceOfMan"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Desire</rdfs:label>
 </owl:Class>
 
@@ -24032,6 +24033,18 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LackOfRegardForWholePersonAdvantage</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#EssenceOfMan">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EssenceOfMan</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DesireIsEssenceOfManQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#EssentialExistenceQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DesireIsEssenceOfManQuality</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
