@@ -19926,6 +19926,11 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LesserEvil</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#AvoidanceBehaviorProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AvoidanceBehaviorProcess</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#FutureEvilJudgment">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
@@ -19956,11 +19961,6 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EvaluativeJudgementProcess</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#AvoidanceBehaviorProcess">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AvoidanceBehaviorProcess</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#JudgedFutureEvil">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">JudgedFutureEvil</rdfs:label>
@@ -19977,6 +19977,24 @@
   <rdfs:subClassOf rdf:resource="#Shame"/>
   <work:subClassOf rdf:resource="#Shame"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ShameAsEvilQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#Consternation">
+  <rdfs:subClassOf rdf:resource="#Fear"/>
+  <work:subClassOf rdf:resource="#FearRestrainedByTimidityDisposition"/>
+  <work:subClassOf rdf:resource="#Fear"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Consternation</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#AnotherEvil">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AnotherEvil</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#FearRestrainedByTimidityDisposition">
+  <rdfs:subClassOf rdf:resource="#Fear"/>
+  <work:subClassOf rdf:resource="#Fear"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FearRestrainedByTimidityDisposition</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
