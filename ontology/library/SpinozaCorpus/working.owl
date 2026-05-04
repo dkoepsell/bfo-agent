@@ -20447,6 +20447,35 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NaturalInclinationToHateAndEnvy</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#NaturalInclinationTowardHate">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NaturalInclinationTowardHate</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#NaturalInclinationTowardEnvy">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NaturalInclinationTowardEnvy</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#Education">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000055 rdf:resource="#AugmentationOfHateDisposition"/>
+  <obo:BFO_0000055 rdf:resource="#AugmentationOfEnvyDisposition"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Education</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#AugmentationOfHateDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="#NaturalInclinationTowardHate"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AugmentationOfHateDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#AugmentationOfEnvyDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="#NaturalInclinationTowardEnvy"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AugmentationOfEnvyDisposition</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
