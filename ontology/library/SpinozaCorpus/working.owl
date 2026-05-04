@@ -5819,6 +5819,11 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WonderOccurrence</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#AffectionOfMind">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AffectionOfMind</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#ParticularCase">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ParticularCase</rdfs:label>
@@ -20018,6 +20023,9 @@
   <rdfs:subClassOf rdf:resource="#Fear"/>
   <work:subClassOf rdf:resource="#FearRestrainedByTimidityDisposition"/>
   <work:subClassOf rdf:resource="#Fear"/>
+  <rdfs:subClassOf rdf:resource="#Wonder"/>
+  <work:subClassOf rdf:resource="#Wonder"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Consternation</rdfs:label>
 </owl:Class>
 
@@ -20295,15 +20303,22 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SelfEsteem</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#AffectionOfMind">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AffectionOfMind</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#SingularThingAloneInMindQuality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <obo:RO_0000052 rdf:resource="#ImaginingProcess"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SingularThingAloneInMindQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#FearInducingObject">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FearInducingObject</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ConsternationArousingProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000055 rdf:resource="#Consternation"/>
+  <obo:RO_0000057 rdf:resource="#FearInducingObject"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConsternationArousingProcess</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
