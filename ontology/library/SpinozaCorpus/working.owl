@@ -15444,6 +15444,20 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ModeConceivabilityDependence</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#SubstanceProductionByAnotherSubstanceIncapacity">
+  <rdfs:subClassOf rdf:resource="#SubstanceProductionConstraint"/>
+  <work:subClassOf rdf:resource="#SubstanceProductionConstraint"/>
+  <work:subClassOf rdf:resource="#Substance"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SubstanceProductionByAnotherSubstanceIncapacity</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SubstanceCreationByAnotherSubstanceIncapacity">
+  <rdfs:subClassOf rdf:resource="#SubstanceProductionConstraint"/>
+  <work:subClassOf rdf:resource="#SubstanceProductionConstraint"/>
+  <work:subClassOf rdf:resource="#Substance"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SubstanceCreationByAnotherSubstanceIncapacity</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
