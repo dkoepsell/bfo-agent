@@ -28704,6 +28704,29 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindToMindCommunicationDisposition</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#ProphecyDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ProphecyDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PropheticImaginationDisposition">
+  <rdfs:subClassOf rdf:resource="#ProphecyDisposition"/>
+  <work:subClassOf rdf:resource="#ProphecyDisposition"/>
+  <obo:BFO_0000054 rdf:resource="#ImaginationOfExternalBody"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PropheticImaginationDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PropheticImaginationVividnessQuality">
+  <rdfs:subClassOf rdf:resource="#VividnessQuality"/>
+  <work:subClassOf rdf:resource="#VividnessQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PropheticImaginationVividnessQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#MindPerfectionRequirementAbsenceQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindPerfectionRequirementAbsenceQuality</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -31620,6 +31643,14 @@
   <obo:RO_0000052 rdf:resource="#God"/>
   <obo:BFO_0000054 rdf:resource="#IncorporealEssenceCommunicationProcess"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EssenceCommunicationToMindDispositionInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#MindToMindCommunicationProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000055 rdf:resource="#ChristMindToMindCommunicationDispositionInstance"/>
+  <obo:RO_0000057 rdf:resource="#Christ"/>
+  <obo:RO_0000057 rdf:resource="#God"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindToMindCommunicationProcess</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#ThinkingThingRole">
@@ -40927,14 +40958,6 @@
   <obo:BFO_0000054 rdf:resource="#MindToMindCommunicationProcess"/>
   <work3:type rdf:resource="#MindToMindCommunicationDisposition"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ChristMindToMindCommunicationDispositionInstance</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#MindToMindCommunicationProcess">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <obo:BFO_0000055 rdf:resource="#ChristMindToMindCommunicationDispositionInstance"/>
-  <obo:RO_0000057 rdf:resource="#Christ"/>
-  <obo:RO_0000057 rdf:resource="#God"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindToMindCommunicationProcess</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
