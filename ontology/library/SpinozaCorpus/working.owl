@@ -1197,6 +1197,7 @@
   <obo:BFO_0000051 rdf:resource="#Mind"/>
   <obo:BFO_0000051 rdf:resource="#Body"/>
   <work:subClassOf rdf:resource="#ModificationBearer"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/RO_0000053"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Man</rdfs:label>
 </owl:Class>
 
@@ -20436,6 +20437,14 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NaturalEnviousnessQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#NaturalInclinationToHateAndEnvy">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:BFO_0000051 rdf:resource="#Hate"/>
+  <obo:BFO_0000051 rdf:resource="#Envy"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NaturalInclinationToHateAndEnvy</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
