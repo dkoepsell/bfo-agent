@@ -22101,6 +22101,19 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ImaginationDisappearanceDisposition</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#PartOfNature">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
+  <obo:BFO_0000050 rdf:resource="#WholeOfNature"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PartOfNature</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ConceivabilityThroughOthers">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConceivabilityThroughOthers</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
@@ -32121,6 +32134,20 @@
   <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <obo:BFO_0000050 rdf:resource="#TheEthics"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PowerSurpassabilityAxiom</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#BeingActedOnDispositionInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work3:type rdf:resource="#BeingActedOn"/>
+  <obo:RO_0000052 rdf:resource="#PartOfNature"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BeingActedOnDispositionInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ConceivabilityThroughOthersQualityInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work3:type rdf:resource="#ConceivabilityThroughOthers"/>
+  <obo:RO_0000052 rdf:resource="#PartOfNature"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConceivabilityThroughOthersQualityInstance</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
