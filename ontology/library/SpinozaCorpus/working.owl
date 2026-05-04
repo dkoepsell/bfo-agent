@@ -29917,6 +29917,11 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TransgressionOfCommandProcess</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#LackOfReason">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LackOfReason</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -42665,6 +42670,20 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SolomonBeliefProcess</rdfs:label>
 </owl:NamedIndividual>
 
+<owl:NamedIndividual rdf:about="#SolomonNaturalLightQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work3:type rdf:resource="#NaturalLight"/>
+  <obo:RO_0000052 rdf:resource="#Solomon"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SolomonNaturalLightQuality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#SolomonNaturalLightSuperiorityQualityInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work3:type rdf:resource="#NaturalLightSuperiorityQuality"/>
+  <obo:RO_0000052 rdf:resource="#Solomon"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SolomonNaturalLightSuperiorityQualityInstance</rdfs:label>
+</owl:NamedIndividual>
+
 <owl:NamedIndividual rdf:about="#ThreeToOneRatioBelief">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <obo:BFO_0000050 rdf:resource="#RatioOfCircumferenceToDiameter"/>
@@ -42949,18 +42968,21 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LackOfKnowledgeOfVirtueAndBlessednessQuality</rdfs:label>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#SolomonNaturalLightQuality">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <work3:type rdf:resource="#NaturalLight"/>
-  <obo:RO_0000052 rdf:resource="#Solomon"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SolomonNaturalLightQuality</rdfs:label>
+<owl:NamedIndividual rdf:about="#TheLaw">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TheLaw</rdfs:label>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#SolomonNaturalLightSuperiorityQualityInstance">
+<owl:NamedIndividual rdf:about="#BelievedExemptionFromLawQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <work3:type rdf:resource="#NaturalLightSuperiorityQuality"/>
   <obo:RO_0000052 rdf:resource="#Solomon"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SolomonNaturalLightSuperiorityQualityInstance</rdfs:label>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BelievedExemptionFromLawQuality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#LawImpartmentProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#TheLaw"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LawImpartmentProcess</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
@@ -43228,6 +43250,10 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ImmutabilityQualityInstance</rdfs:label>
 </obo:BFO_0000019>
 
+<rdf:Description rdf:about="#NaturalLightSuperiorityQuality">
+  <work:subClassOf rdf:resource="#NaturalLight"/>
+</rdf:Description>
+
 <rdf:Description rdf:about="#FoundationalDependenceOnMetaphysics">
   <work:subClassOf rdf:resource="#FoundationalDependence"/>
 </rdf:Description>
@@ -43260,10 +43286,6 @@
 
 <rdf:Description rdf:about="#ImaginativePowerQuality">
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-</rdf:Description>
-
-<rdf:Description rdf:about="#NaturalLightSuperiorityQuality">
-  <work:subClassOf rdf:resource="#NaturalLight"/>
 </rdf:Description>
 
 
