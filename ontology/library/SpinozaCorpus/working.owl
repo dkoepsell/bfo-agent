@@ -28488,6 +28488,21 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PropheticRecipient</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#VisionMedium">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">VisionMedium</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DreamMedium">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DreamMedium</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#WordMedium">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WordMedium</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#DivineCertaintyQuality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="#DivineAttribute"/>
@@ -28642,24 +28657,30 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AbsenceOfTrueVoiceFromGodQuality</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#VisionMedium">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">VisionMedium</rdfs:label>
-</owl:Class>
-
-<owl:Class rdf:about="#DreamMedium">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DreamMedium</rdfs:label>
-</owl:Class>
-
-<owl:Class rdf:about="#WordMedium">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WordMedium</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#HumanRecipientRole">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HumanRecipientRole</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#EssenceCommunicationToMindDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EssenceCommunicationToMindDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#IncorporealEssenceCommunicationProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#God"/>
+  <obo:RO_0000057 rdf:resource="#HumanMind"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IncorporealEssenceCommunicationProcess</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#IncorporealMediationQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#IncorporealEssenceCommunicationProcess"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IncorporealMediationQuality</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
@@ -28986,6 +29007,7 @@
   <obo:RO_0000056 rdf:resource="#RevelationOfDecalogueProcess"/>
   <obo:RO_0000053 rdf:resource="#VisibleFormQuality"/>
   <obo:RO_0000056 rdf:resource="#DivineRevelationProcess"/>
+  <obo:RO_0000053 rdf:resource="#EssenceCommunicationToMindDispositionInstance"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">God</rdfs:label>
 </owl:NamedIndividual>
 
@@ -40852,6 +40874,13 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <obo:RO_0000052 rdf:resource="#DivineRevelationProcess"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivineExclusiveCommunicationQuality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#EssenceCommunicationToMindDispositionInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:RO_0000052 rdf:resource="#God"/>
+  <obo:BFO_0000054 rdf:resource="#IncorporealEssenceCommunicationProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EssenceCommunicationToMindDispositionInstance</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
