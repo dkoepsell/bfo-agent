@@ -25424,6 +25424,29 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AffectCausalMultiplicityQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#HarmfulAffect">
+  <rdfs:subClassOf rdf:resource="#Affect"/>
+  <work:subClassOf rdf:resource="#Affect"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HarmfulAffect</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PreventionOfThinking">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000050 rdf:resource="#HarmfulAffect"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PreventionOfThinking</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PowerOfThinking">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PowerOfThinking</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#HarmQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HarmQuality</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
