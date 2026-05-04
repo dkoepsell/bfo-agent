@@ -20137,6 +20137,8 @@
 <owl:Class rdf:about="#Longing">
   <rdfs:subClassOf rdf:resource="#Sadness"/>
   <work:subClassOf rdf:resource="#Sadness"/>
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="#Desire"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Longing</rdfs:label>
 </owl:Class>
 
@@ -21355,6 +21357,35 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work2:disjointWith rdf:resource="#Affect"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Shamelessness</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PossessionDesireObject">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PossessionDesireObject</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#MemoryOfDesiredThing">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MemoryOfDesiredThing</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#MemoryOfExcludingThings">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MemoryOfExcludingThings</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#LongingEncouragementRelation">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LongingEncouragementRelation</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#LongingRestraintRelation">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LongingRestraintRelation</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
