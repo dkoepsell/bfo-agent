@@ -1802,6 +1802,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExternalCausationConstraint</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#HumanPerson">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HumanPerson</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#PerfectionQuality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="#RelationalQuality"/>
@@ -22797,10 +22803,24 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DifferentPassionAffectionQuality</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#HumanPerson">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HumanPerson</rdfs:label>
+<owl:Class rdf:about="#TornByPassionsQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#PassionDominatedBeing"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TornByPassionsQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PassionDominatedBeing">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PassionDominatedBeing</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ContrariousRelationQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#PassionDominatedBeing"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ContrariousRelationQuality</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
