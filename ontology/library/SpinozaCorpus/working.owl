@@ -28596,6 +28596,7 @@
 
 <owl:Class rdf:about="#Revelation">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Revelation</rdfs:label>
 </owl:Class>
 
@@ -28615,6 +28616,14 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ImageBasedRevelationQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#RevelationViaImagesAndWords">
+  <rdfs:subClassOf rdf:resource="#Revelation"/>
+  <work:subClassOf rdf:resource="#Revelation"/>
+  <obo:RO_0000057 rdf:resource="#Image"/>
+  <obo:RO_0000057 rdf:resource="#Word"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RevelationViaImagesAndWords</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
