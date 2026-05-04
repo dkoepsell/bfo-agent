@@ -10872,6 +10872,8 @@
   <obo:RO_0000052 rdf:resource="#God"/>
   <work:subPropertyOf rdf:resource="#GodActiveEssenceQuality"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Understanding</rdfs:label>
 </owl:Class>
 
@@ -22634,6 +22636,19 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ReasonStriving</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#CertainGood">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#LeadsToUnderstanding"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CertainGood</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#LeadsToUnderstanding">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LeadsToUnderstanding</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
@@ -32773,6 +32788,12 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <obo:BFO_0000050 rdf:resource="#TheEthics"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ReasonStrivingIsUnderstandingAxiom</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#CertainGoodOnlyIfLeadsToUnderstandingQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work3:type rdf:resource="#CertainGood"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CertainGoodOnlyIfLeadsToUnderstandingQuality</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
