@@ -27917,6 +27917,46 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">JustificationRelation</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#Government">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <obo:RO_0000056 rdf:resource="#SecurityProvisionProcess"/>
+  <obo:RO_0000056 rdf:resource="#CooperationEnablingProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Government</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SecurityProvisionDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:RO_0000052 rdf:resource="#Government"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SecurityProvisionDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SecurityQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SecurityQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#CooperationBenefitDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:RO_0000052 rdf:resource="#Government"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CooperationBenefitDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SecurityProvisionProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000055 rdf:resource="#SecurityProvisionDisposition"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SecurityProvisionProcess</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#CooperationEnablingProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000055 rdf:resource="#CooperationBenefitDisposition"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CooperationEnablingProcess</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
