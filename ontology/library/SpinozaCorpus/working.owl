@@ -2740,6 +2740,7 @@
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="#IdeaFormationCapacity"/>
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Negation</rdfs:label>
 </owl:Class>
 
@@ -13295,6 +13296,7 @@
 <owl:Class rdf:about="#NegationProcess">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <obo:RO_0000057 rdf:resource="#Mind"/>
+  <obo:BFO_0000055 rdf:resource="#NegationDenialContent"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NegationProcess</rdfs:label>
 </owl:Class>
 
@@ -14236,6 +14238,18 @@
   <rdfs:subClassOf rdf:resource="#Privation"/>
   <work:subClassOf rdf:resource="#Privation"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PureAndSimpleLackQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#NegationDenialContent">
+  <rdfs:subClassOf rdf:resource="#Negation"/>
+  <work:subClassOf rdf:resource="#Negation"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NegationDenialContent</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#NonPertinenceToNature">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NonPertinenceToNature</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#God">
