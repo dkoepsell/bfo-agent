@@ -31114,6 +31114,31 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivineLawInscriptionDisposition</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#Ceremony">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work2:disjointWith rdf:resource="#CeremonyPertainsToDivineLawQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Ceremony</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#CeremonyPertainsToDivineLawQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CeremonyPertainsToDivineLawQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ContributionToBlessednessDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ContributionToBlessednessDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ContributionToVirtueDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ContributionToVirtueDisposition</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
