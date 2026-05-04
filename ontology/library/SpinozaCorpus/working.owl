@@ -27523,6 +27523,24 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SufficiencyForExistenceDisposition</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#SelfSufficiencyQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#EssentialExistenceQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SelfSufficiencyQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#NonDivineThing">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NonDivineThing</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#AbsenceOfSelfSufficiencyQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AbsenceOfSelfSufficiencyQuality</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -27840,6 +27858,7 @@
   <obo:RO_0000053 rdf:resource="#AbsolutePerfectionQuality"/>
   <obo:RO_0000053 rdf:resource="#AbsoluteUnlimitednessInBeingQuality"/>
   <obo:RO_0000053 rdf:resource="#OmnipotenceDisposition"/>
+  <obo:RO_0000053 rdf:resource="#GodSelfSufficiencyQualityInstance"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">God</rdfs:label>
 </owl:NamedIndividual>
 
@@ -30373,6 +30392,12 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#NecessityOfExistence"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NecessaryExistenceExclusivityQuality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#AbsoluteUnlimitednessInBeingQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#God"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AbsoluteUnlimitednessInBeingQuality</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#ThinkingThingRole">
@@ -39121,10 +39146,11 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AbsolutePerfectionQualityInstance</rdfs:label>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#AbsoluteUnlimitednessInBeingQuality">
+<owl:NamedIndividual rdf:about="#GodSelfSufficiencyQualityInstance">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work3:type rdf:resource="#SelfSufficiencyQuality"/>
   <obo:RO_0000052 rdf:resource="#God"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AbsoluteUnlimitednessInBeingQuality</rdfs:label>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodSelfSufficiencyQualityInstance</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
