@@ -28694,6 +28694,7 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <obo:RO_0000057 rdf:resource="#Prophet"/>
+  <obo:BFO_0000051 rdf:resource="#VictoryAndPeaceContent"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Revelation</rdfs:label>
 </owl:Class>
 
@@ -29485,6 +29486,23 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <obo:RO_0000052 rdf:resource="#Revelation"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RevelationVariabilityQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#CheerfulTemperament">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CheerfulTemperament</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#VictoryAndPeaceContent">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">VictoryAndPeaceContent</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#CheerfulTemperamentProphecyReceptionDisposition">
+  <rdfs:subClassOf rdf:resource="#CheerfulTemperament"/>
+  <work:subClassOf rdf:resource="#CheerfulTemperament"/>
+  <obo:BFO_0000054 rdf:resource="#Revelation"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CheerfulTemperamentProphecyReceptionDisposition</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
