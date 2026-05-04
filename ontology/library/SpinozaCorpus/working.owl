@@ -5802,6 +5802,7 @@
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="#AffectionOfMind"/>
   <obo:BFO_0000054 rdf:resource="#ImaginingProcess"/>
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Wonder</rdfs:label>
 </owl:Class>
 
@@ -20319,6 +20320,29 @@
   <obo:BFO_0000055 rdf:resource="#Consternation"/>
   <obo:RO_0000057 rdf:resource="#FearInducingObject"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConsternationArousingProcess</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#Veneration">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#Wonder"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Veneration</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#Prudence">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Prudence</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#Diligence">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Diligence</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#VenerationObject">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">VenerationObject</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
