@@ -1310,6 +1310,7 @@
   <obo:BFO_0000054 rdf:resource="#AffirmationOfBodyForceProcess"/>
   <work:subClassOf rdf:resource="#Thought"/>
   <obo:RO_0000052 rdf:resource="#HumanBeing"/>
+  <work:subClassOf rdf:resource="#PrimaryAffect"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Affect</rdfs:label>
 </owl:Class>
 
