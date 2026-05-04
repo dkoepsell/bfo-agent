@@ -27846,6 +27846,17 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ImmutableFirstCauseRole</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#MiracleOrdinarySenseQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MiracleOrdinarySenseQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#MiracleAsOrdinarilyConceived">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MiracleAsOrdinarilyConceived</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -31658,6 +31669,11 @@
 <owl:NamedIndividual rdf:about="#EternalDecreeOfGod">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EternalDecreeOfGod</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#UniversalLawsOfNature">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UniversalLawsOfNature</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#IdeaOfGod">
@@ -39661,15 +39677,17 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ShortTubeWaterFlowProcess</rdfs:label>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#UniversalLawsOfNature">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UniversalLawsOfNature</rdfs:label>
-</owl:NamedIndividual>
-
 <owl:NamedIndividual rdf:about="#ImmutabilityOfOrderOfNature">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <obo:RO_0000052 rdf:resource="#CommonOrderOfNature"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ImmutabilityOfOrderOfNature</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#MiracleNonOccurrenceQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#WholeOfNature"/>
+  <work3:type rdf:resource="#MiracleOrdinarySenseQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MiracleNonOccurrenceQuality</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
