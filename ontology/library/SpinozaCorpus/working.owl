@@ -631,6 +631,8 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000020"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000020"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/RO_0000052 some working:FiniteMind"/>
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ModeOfThinking</rdfs:label>
 </owl:Class>
 
@@ -2754,6 +2756,9 @@
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000020"/>
   <work:subClassOf rdf:resource="#ImperfectionQuality"/>
   <work:subClassOf rdf:resource="#NullOntologicalContent"/>
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work:subClassOf rdf:resource="#BeingOfReason"/>
+  <work:subClassOf rdf:resource="#ModeOfThinking"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Privation</rdfs:label>
 </owl:Class>
 
@@ -2762,6 +2767,11 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MorePerfectState</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#NullOntologicalContent">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NullOntologicalContent</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#WordCausedErrorProcess">
@@ -14226,11 +14236,6 @@
   <rdfs:subClassOf rdf:resource="#Privation"/>
   <work:subClassOf rdf:resource="#Privation"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PureAndSimpleLackQuality</rdfs:label>
-</owl:Class>
-
-<owl:Class rdf:about="#NullOntologicalContent">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NullOntologicalContent</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#God">
