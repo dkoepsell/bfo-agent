@@ -10558,6 +10558,7 @@
 <owl:Class rdf:about="#DegreeOfPerfection">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="#SubstanceInfinityOrPerfectionQuality"/>
+  <rdfs:subClassOf rdf:resource="#SubstanceInfinityOrPerfectionQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DegreeOfPerfection</rdfs:label>
 </owl:Class>
 
@@ -16655,6 +16656,7 @@
   <obo:RO_0000053 rdf:resource="#GodPowerQuality"/>
   <obo:RO_0000053 rdf:resource="#GodEssenceQuality"/>
   <obo:RO_0000053 rdf:resource="#GodFreeCauseRoleInstance"/>
+  <obo:RO_0000056 rdf:resource="#ProductionFromGodNatureProcess"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">God</rdfs:label>
 </owl:NamedIndividual>
 
@@ -24661,6 +24663,32 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OrderInNatureIsRelationalQuality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#NecessaryProductionFromNature">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:RO_0000052 rdf:resource="#God"/>
+  <obo:BFO_0000054 rdf:resource="#ProductionFromGodNatureProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NecessaryProductionFromNature</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ProductionFromGodNatureProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000055 rdf:resource="#NecessaryProductionFromNature"/>
+  <obo:BFO_0000050 rdf:resource="#GodCausesAllThingsProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ProductionFromGodNatureProcess</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#HighestDegreeOfPerfection">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work3:type rdf:resource="#DegreeOfPerfection"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HighestDegreeOfPerfection</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#LowestDegreeOfPerfection">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work3:type rdf:resource="#DegreeOfPerfection"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LowestDegreeOfPerfection</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
