@@ -25626,6 +25626,16 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AffectUnaffectednessDisposition</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#AbsenceOfLoveQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AbsenceOfLoveQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#AbsenceOfHateQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AbsenceOfHateQuality</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
@@ -25923,6 +25933,8 @@
   <obo:RO_0000056 rdf:resource="#ActingFromNecessityOfNatureProcess"/>
   <obo:RO_0000053 rdf:resource="#GodPassionlessnessQuality"/>
   <obo:RO_0000053 rdf:resource="#GodAffectUnaffectednessDispositionInstance"/>
+  <obo:RO_0000053 rdf:resource="#GodLovesNoOneQuality"/>
+  <obo:RO_0000053 rdf:resource="#GodHatesNoOneQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">God</rdfs:label>
 </owl:NamedIndividual>
 
@@ -28273,6 +28285,18 @@
   <obo:RO_0000052 rdf:resource="#God"/>
   <obo:BFO_0000054 rdf:resource="#ActingFromNecessityOfNatureProcess"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ActingFromSameNecessityAsExistingDispositionInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#GodPassionlessnessQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#God"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodPassionlessnessQuality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#GodAffectUnaffectednessDispositionInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:RO_0000052 rdf:resource="#God"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodAffectUnaffectednessDispositionInstance</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#ThinkingThingRole">
@@ -36165,16 +36189,18 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AbsenceOfContraryAffects</rdfs:label>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#GodPassionlessnessQuality">
+<owl:NamedIndividual rdf:about="#GodLovesNoOneQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work3:type rdf:resource="#AbsenceOfLoveQuality"/>
   <obo:RO_0000052 rdf:resource="#God"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodPassionlessnessQuality</rdfs:label>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodLovesNoOneQuality</rdfs:label>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#GodAffectUnaffectednessDispositionInstance">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+<owl:NamedIndividual rdf:about="#GodHatesNoOneQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work3:type rdf:resource="#AbsenceOfHateQuality"/>
   <obo:RO_0000052 rdf:resource="#God"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodAffectUnaffectednessDispositionInstance</rdfs:label>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodHatesNoOneQuality</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
