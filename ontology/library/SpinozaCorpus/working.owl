@@ -26762,6 +26762,11 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AttributeCoExistenceNecessityQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#ConceptualDistinction">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConceptualDistinction</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
@@ -38045,6 +38050,24 @@
   <work3:type rdf:resource="#RealDistinctionBetweenAttributes"/>
   <obo:RO_0000052 rdf:resource="#Attribute"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AttributeRealDistinctnessQualityInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Achting_KV">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <obo:RO_0000053 rdf:resource="#AchtingExistimatioDivergenceQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Achting_KV</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Existimatio_E">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Existimatio_E</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#AchtingExistimatioDivergenceQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work3:type rdf:resource="#ConceptualDistinction"/>
+  <obo:RO_0000052 rdf:resource="#Achting_KV"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AchtingExistimatioDivergenceQuality</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
