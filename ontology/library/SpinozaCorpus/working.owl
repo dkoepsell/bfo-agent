@@ -15939,6 +15939,17 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OnlySubstanceAndModesExistQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#AbsoluteProximateCauseRole">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AbsoluteProximateCauseRole</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#AbsoluteProximateCauseQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AbsoluteProximateCauseQuality</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
@@ -16200,6 +16211,8 @@
   <obo:RO_0000057 rdf:resource="#EffectProductionProcess"/>
   <obo:RO_0000053 rdf:resource="#GodDeterminingCauseRole"/>
   <obo:RO_0000056 rdf:resource="#GodDeterminesExistenceAndEffectProcess"/>
+  <obo:RO_0000053 rdf:resource="#GodAbsoluteProximateCauseRoleInstance"/>
+  <obo:RO_0000056 rdf:resource="#ImmediateProduction"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">God</rdfs:label>
 </owl:NamedIndividual>
 
@@ -23791,6 +23804,19 @@
 <owl:NamedIndividual rdf:about="#GodCausesExistenceProcess">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodCausesExistenceProcess</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ImmediateProduction">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000055 rdf:resource="#GodAbsoluteProximateCauseRoleInstance"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ImmediateProduction</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#GodAbsoluteProximateCauseRoleInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <obo:RO_0000052 rdf:resource="#God"/>
+  <obo:BFO_0000054 rdf:resource="#ImmediateProduction"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodAbsoluteProximateCauseRoleInstance</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
