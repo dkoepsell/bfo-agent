@@ -9198,7 +9198,7 @@
   <obo:BFO_0000051 rdf:resource="#AbstainFromEvilObligation"/>
   <obo:BFO_0000050 rdf:resource="#HumanMind"/>
   <work:subClassOf rdf:resource="#TrueMannerOfLiving"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivineLaw</rdfs:label>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Divinelaw</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#DivineLawClass">
@@ -31826,6 +31826,24 @@
   <rdfs:subClassOf rdf:resource="#HumanFeelingQuality"/>
   <work:subClassOf rdf:resource="#HumanFeelingQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LackOfHumanFeelingQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#HistoricalNarrative">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HistoricalNarrative</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#FaithInHistoricalNarrative">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="#PertainsToRelation"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FaithInHistoricalNarrative</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PertainsToRelation">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PertainsToRelation</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
