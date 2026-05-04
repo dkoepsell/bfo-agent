@@ -30386,6 +30386,28 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConditionalityQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#Canaanite">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Canaanite</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#CanaaniteWorship">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#Canaanite"/>
+  <obo:RO_0000057 rdf:resource="#God"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CanaaniteWorship</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PriestRole">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <obo:RO_0000052 rdf:resource="#Canaanite"/>
+  <obo:BFO_0000054 rdf:resource="#CanaaniteWorship"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PriestRole</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
