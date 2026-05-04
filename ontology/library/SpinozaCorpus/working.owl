@@ -1283,6 +1283,7 @@
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000020"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000020"/>
+  <obo:RO_0000057 rdf:resource="#MindBodyComplex"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Affect</rdfs:label>
 </owl:Class>
 
@@ -1652,6 +1653,32 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OnlySubstancesExistQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#Passion">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000020"/>
+  <work:subClassOf rdf:resource="#Mode"/>
+  <work:subClassOf rdf:resource="#FiniteSingularThingModeInstance"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000020"/>
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="#ExternalCausationConstraint"/>
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Passion</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#Joy">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:subClassOf rdf:resource="#Affect"/>
+  <work:subClassOf rdf:resource="#Affect"/>
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work3:type rdf:resource="#Mode"/>
+  <obo:BFO_0000050 rdf:resource="#Thought"/>
+  <rdfs:subClassOf rdf:resource="#ModeOfThinking"/>
+  <work:subClassOf rdf:resource="#ModeOfThinking"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Joy</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#Life">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <obo:BFO_0000054 rdf:resource="#PerseveranceProcess"/>
@@ -1820,20 +1847,6 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LoveProducesJoyProcess</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#Joy">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <rdfs:subClassOf rdf:resource="#Affect"/>
-  <work:subClassOf rdf:resource="#Affect"/>
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <work3:type rdf:resource="#Mode"/>
-  <obo:BFO_0000050 rdf:resource="#Thought"/>
-  <rdfs:subClassOf rdf:resource="#ModeOfThinking"/>
-  <work:subClassOf rdf:resource="#ModeOfThinking"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Joy</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#Sadness">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
@@ -1848,18 +1861,6 @@
   <obo:RO_0000052 rdf:resource="#Soul"/>
   <work:subClassOf rdf:resource="#Joy"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Sadness</rdfs:label>
-</owl:Class>
-
-<owl:Class rdf:about="#Passion">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000020"/>
-  <work:subClassOf rdf:resource="#Mode"/>
-  <work:subClassOf rdf:resource="#FiniteSingularThingModeInstance"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000020"/>
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <work:subClassOf rdf:resource="#ExternalCausationConstraint"/>
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Passion</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#ExternalCausationConstraint">
@@ -19124,6 +19125,48 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LesserPerfectionQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#Pleasure">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Pleasure</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#Cheerfulness">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Cheerfulness</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PleasureAffect">
+  <rdfs:subClassOf rdf:resource="#Affect"/>
+  <work:subClassOf rdf:resource="#Affect"/>
+  <obo:RO_0000053 rdf:resource="#PartialAffectionQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PleasureAffect</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#CheerfulnessAffect">
+  <rdfs:subClassOf rdf:resource="#Affect"/>
+  <work:subClassOf rdf:resource="#Affect"/>
+  <obo:RO_0000053 rdf:resource="#TotalAffectionQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CheerfulnessAffect</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#MindBodyComplex">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindBodyComplex</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PartialAffectionQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PartialAffectionQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#TotalAffectionQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TotalAffectionQuality</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
@@ -19737,6 +19780,13 @@
   <obo:RO_0000052 rdf:resource="#HumanMind"/>
   <work3:type rdf:resource="#AdequateIdeaQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AdequateKnowledgeOfGodQualityInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#TransitionToLesserPerfection">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000055 rdf:resource="#PassionOfSadness"/>
+  <obo:RO_0000057 rdf:resource="#LesserPerfectionQualityInstance"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TransitionToLesserPerfection</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#AnotherBeing">
@@ -28852,13 +28902,6 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <obo:RO_0000052 rdf:resource="#HumanMind"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LesserPerfectionQualityInstance</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#TransitionToLesserPerfection">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <obo:BFO_0000055 rdf:resource="#PassionOfSadness"/>
-  <obo:RO_0000057 rdf:resource="#LesserPerfectionQualityInstance"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TransitionToLesserPerfection</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
