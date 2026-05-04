@@ -2534,6 +2534,9 @@
   <obo:BFO_0000054 rdf:resource="#WillAffirmationProcess"/>
   <obo:BFO_0000054 rdf:resource="#WillDenialProcess"/>
   <obo:BFO_0000054 rdf:resource="#VolitionProcess"/>
+  <work3:type rdf:resource="#Mode"/>
+  <obo:RO_0000052 rdf:resource="#Soul"/>
+  <obo:BFO_0000050 rdf:resource="#Soul"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Will</rdfs:label>
 </owl:Class>
 
@@ -15899,6 +15902,17 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HavingIdeaOfGodProcess</rdfs:label>
 </owl:NamedIndividual>
 
+<owl:NamedIndividual rdf:about="#IdealParticipationRelation">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:RO_0000052 rdf:resource="#FatherSoul"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IdealParticipationRelation</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#SonConsequences">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SonConsequences</rdfs:label>
+</owl:NamedIndividual>
+
 <owl:NamedIndividual rdf:about="#Spinoza">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
   <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
@@ -20105,17 +20119,6 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodIntellectWillPowerIdentity</rdfs:label>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#IdealParticipationRelation">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <obo:RO_0000052 rdf:resource="#FatherSoul"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IdealParticipationRelation</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#SonConsequences">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SonConsequences</rdfs:label>
-</owl:NamedIndividual>
-
 <owl:NamedIndividual rdf:about="#SonEssenceQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <obo:RO_0000052 rdf:resource="#Son"/>
@@ -20149,6 +20152,18 @@
   <obo:RO_0000052 rdf:resource="#God"/>
   <work3:type rdf:resource="#ImmediateWillingDisposition"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodImmediateWillingDispositionInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#WillAsStrivingDisposition">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:RO_0000052 rdf:resource="#Soul"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WillAsStrivingDisposition</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#WillNonDifferenceFromSoulQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#Soul"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WillNonDifferenceFromSoulQuality</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
