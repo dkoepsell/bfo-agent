@@ -28745,6 +28745,8 @@
 <owl:Class rdf:about="#Wind">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Wind</rdfs:label>
 </owl:Class>
 
@@ -28882,6 +28884,32 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NaturalThingExistenceAndActionProcess</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SpiritOfGod">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SpiritOfGod</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ViolentWindQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#Wind"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ViolentWindQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DryWindQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#Wind"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DryWindQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DestructiveWindQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#Wind"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DestructiveWindQuality</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
@@ -31811,6 +31839,21 @@
   <obo:RO_0000057 rdf:resource="#Christ"/>
   <obo:RO_0000057 rdf:resource="#God"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindToMindCommunicationProcess</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#GodDivinePowerInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work3:type rdf:resource="#DivinePower"/>
+  <obo:RO_0000052 rdf:resource="#God"/>
+  <obo:BFO_0000054 rdf:resource="#DivineCausationOfNaturalThings"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodDivinePowerInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#DivineCausationOfNaturalThings">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000055 rdf:resource="#GodDivinePowerInstance"/>
+  <obo:BFO_0000051 rdf:resource="#NaturalThingExistenceAndActionProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivineCausationOfNaturalThings</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#ThinkingThingRole">
@@ -41141,19 +41184,11 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ProperMeaningOfRuagh</rdfs:label>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#GodDivinePowerInstance">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <work3:type rdf:resource="#DivinePower"/>
-  <obo:RO_0000052 rdf:resource="#God"/>
-  <obo:BFO_0000054 rdf:resource="#DivineCausationOfNaturalThings"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodDivinePowerInstance</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#DivineCausationOfNaturalThings">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <obo:BFO_0000055 rdf:resource="#GodDivinePowerInstance"/>
-  <obo:BFO_0000051 rdf:resource="#NaturalThingExistenceAndActionProcess"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivineCausationOfNaturalThings</rdfs:label>
+<owl:NamedIndividual rdf:about="#SpiritOfGodMeansWindInterpretation">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work3:type rdf:resource="#SpiritOfGod"/>
+  <obo:BFO_0000050 rdf:resource="#Wind"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SpiritOfGodMeansWindInterpretation</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
