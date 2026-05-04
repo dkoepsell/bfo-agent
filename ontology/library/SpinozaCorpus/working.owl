@@ -28426,6 +28426,7 @@
   <work:subClassOf rdf:resource="#PropheticSubjectMatter"/>
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000051 rdf:resource="#PropheticContent"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Prophecy</rdfs:label>
 </owl:Class>
 
@@ -29383,6 +29384,7 @@
 
 <owl:Class rdf:about="#PropheticSign">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PropheticSign</rdfs:label>
 </owl:Class>
 
@@ -29399,6 +29401,17 @@
   <obo:BFO_0000051 rdf:resource="#HeartInclinedToRightAndGood"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PropheticCertaintyGrounding</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PropheticContent">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PropheticContent</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#NovelPropheticContent">
+  <rdfs:subClassOf rdf:resource="#PropheticContent"/>
+  <work:subClassOf rdf:resource="#PropheticContent"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NovelPropheticContent</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
@@ -41928,6 +41941,11 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <obo:RO_0000052 rdf:resource="#God"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivineAngerQualityInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#MosaicLaw">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MosaicLaw</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
