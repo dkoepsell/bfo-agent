@@ -24960,6 +24960,8 @@
 <owl:Class rdf:about="#IntellectPerfection">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IntellectPerfection</rdfs:label>
 </owl:Class>
 
@@ -30569,6 +30571,20 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BetterPartOfUsQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#SupremeGood">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#IntellectPerfection"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SupremeGood</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SupremeGoodConsistsInIntellectPerfectionRelation">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="#SupremeGood"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SupremeGoodConsistsInIntellectPerfectionRelation</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -31150,6 +31166,7 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <obo:RO_0000052 rdf:resource="#Intellect"/>
   <work:subClassOf rdf:resource="#IntellectGroundednessQuality"/>
+  <work3:type rdf:resource="#IntellectPerfection"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IntellectPerfectionQuality</rdfs:label>
 </owl:NamedIndividual>
 
