@@ -6438,6 +6438,7 @@
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="#SaluataryQualityValuation"/>
   <work:subClassOf rdf:resource="#Sadness"/>
+  <work:subClassOf rdf:resource="#Humility"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Humility</rdfs:label>
 </owl:Class>
 
@@ -16079,6 +16080,8 @@
 <owl:Class rdf:about="#LackOfPowerQuality">
   <rdfs:subClassOf rdf:resource="#PowerQuality"/>
   <work:subClassOf rdf:resource="#PowerQuality"/>
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LackOfPowerQuality</rdfs:label>
 </owl:Class>
 
@@ -19995,6 +19998,11 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">JoyAccompaniedBySelfCausalIdea</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#JoyAffect">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">JoyAffect</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#InternalCauseQuality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
@@ -20499,6 +20507,12 @@
   <work3:type rdf:resource="#SelfEsteem"/>
   <obo:BFO_0000054 rdf:resource="#SelfReflectionProcess"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SelfEsteem</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SelfReflectionProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#PowerOfActingQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SelfReflectionProcess</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#SingularThingAloneInMindQuality">
@@ -21140,15 +21154,10 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AnotherPersonsIllFortune</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#JoyAffect">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">JoyAffect</rdfs:label>
-</owl:Class>
-
-<owl:Class rdf:about="#SelfReflectionProcess">
+<owl:Class rdf:about="#SelfConsiderationOfWeaknessProcess">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <obo:RO_0000057 rdf:resource="#PowerOfActingQuality"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SelfReflectionProcess</rdfs:label>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SelfConsiderationOfWeaknessProcess</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
