@@ -954,6 +954,7 @@
   <rdfs:subClassOf rdf:resource="#Idea"/>
   <rdfs:subClassOf rdf:resource="#AdequateIdea"/>
   <work:subClassOf rdf:resource="#AdequateIdea"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ClearAndDistinctIdea</rdfs:label>
 </owl:Class>
 
@@ -18375,6 +18376,19 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WordOrImage</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#EssenceOfWordOrImage">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EssenceOfWordOrImage</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#EssenceConstitutedByCorporealMotionDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:BFO_0000054 rdf:resource="#CorporealMotion"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EssenceConstitutedByCorporealMotionDisposition</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#CorporealMotion">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
@@ -18395,17 +18409,11 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ThoughtExclusionFromWordImageEssence</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#EssenceOfWordOrImage">
+<owl:Class rdf:about="#WillExtendsMoreWidelyThanClearDistinctIdeasQuality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EssenceOfWordOrImage</rdfs:label>
-</owl:Class>
-
-<owl:Class rdf:about="#EssenceConstitutedByCorporealMotionDisposition">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <obo:BFO_0000054 rdf:resource="#CorporealMotion"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EssenceConstitutedByCorporealMotionDisposition</rdfs:label>
+  <work:subClassOf rdf:resource="#WillProductionIncapacity"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WillExtendsMoreWidelyThanClearDistinctIdeasQuality</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
