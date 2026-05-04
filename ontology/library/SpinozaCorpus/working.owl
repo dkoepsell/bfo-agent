@@ -23956,6 +23956,11 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PrincipleOfLiving</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#Institution">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Institution</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#StateMaintainedByLawsQuality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
@@ -30043,6 +30048,8 @@
 
 <owl:Class rdf:about="#KingRole">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <rdfs:subClassOf rdf:resource="#HumanNatureRole"/>
+  <work:subClassOf rdf:resource="#HumanNatureRole"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">KingRole</rdfs:label>
 </owl:Class>
 
@@ -30763,11 +30770,6 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivinePropositionalActInvolvesEternalNecessityDisposition</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#Institution">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Institution</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#Prince">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Prince</rdfs:label>
@@ -30794,6 +30796,31 @@
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <obo:BFO_0000054 rdf:resource="#PrincelyCommand"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CommandGroundedNormativeValenceDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#HumanNatureRole">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <work:subClassOf rdf:resource="#HumanNatureExclusivityQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HumanNatureRole</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#RulerRole">
+  <rdfs:subClassOf rdf:resource="#HumanNatureRole"/>
+  <work:subClassOf rdf:resource="#HumanNatureRole"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RulerRole</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#LawgiverRole">
+  <rdfs:subClassOf rdf:resource="#HumanNatureRole"/>
+  <work:subClassOf rdf:resource="#HumanNatureRole"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LawgiverRole</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#HumanNatureExclusivityQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HumanNatureExclusivityQuality</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
