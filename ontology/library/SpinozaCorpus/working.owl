@@ -80,6 +80,7 @@
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <obo:RO_0000052 rdf:resource="#Substance"/>
   <work:subClassOf rdf:resource="#ConceivableThroughItself"/>
+  <work:subClassOf rdf:resource="#EternalAndInfiniteEssenceExpression"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Attribute</rdfs:label>
 </owl:Class>
 
@@ -15166,6 +15167,19 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">InfinityExpressingAttribute</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#InfiniteAttributeComposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:RO_0000052 rdf:resource="#AbsolutelyInfiniteBeing"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">InfiniteAttributeComposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#EternalAndInfiniteEssenceExpression">
+  <rdfs:subClassOf rdf:resource="#AttributeExpressesEternalInfiniteEssenceRelation"/>
+  <work:subClassOf rdf:resource="#AttributeExpressesEternalInfiniteEssenceRelation"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EternalAndInfiniteEssenceExpression</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
@@ -15824,6 +15838,7 @@
   <obo:RO_0000052 rdf:resource="#God"/>
   <obo:BFO_0000050 rdf:resource="#InfinitePerfectionQuality"/>
   <obo:BFO_0000050 rdf:resource="#EternityNonCommunicabilityToCreatures"/>
+  <work:subClassOf rdf:resource="#SubstanceInfinityOrPerfectionQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AbsoluteInfinity</rdfs:label>
 </owl:NamedIndividual>
 
