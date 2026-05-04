@@ -1374,6 +1374,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DeterminationToAct</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#PrimaryAffect">
+  <rdfs:subClassOf rdf:resource="#Affect"/>
+  <work:subClassOf rdf:resource="#Affect"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PrimaryAffect</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#SoulDirectionProcess">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <obo:RO_0000057 rdf:resource="#Soul"/>
@@ -2809,6 +2815,8 @@
   <work:subClassOf rdf:resource="#InadequateIdea"/>
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConfusedIdea</rdfs:label>
 </owl:Class>
 
@@ -21759,12 +21767,6 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Chastity</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#PrimaryAffect">
-  <rdfs:subClassOf rdf:resource="#Affect"/>
-  <work:subClassOf rdf:resource="#Affect"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PrimaryAffect</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#AffectVariation">
   <rdfs:subClassOf rdf:resource="#Affect"/>
   <work:subClassOf rdf:resource="#Affect"/>
@@ -21774,6 +21776,26 @@
 <owl:Class rdf:about="#AffectAriseFromPrimaryAffectsConstraint">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AffectAriseFromPrimaryAffectsConstraint</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PassionOfTheMind">
+  <rdfs:subClassOf rdf:resource="#Affect"/>
+  <work:subClassOf rdf:resource="#Affect"/>
+  <work:subClassOf rdf:resource="#ConfusedIdea"/>
+  <obo:BFO_0000054 rdf:resource="#MindAffirmsBodyForceProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PassionOfTheMind</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ForceOfExistingQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ForceOfExistingQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#MindAffirmsBodyForceProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000055 rdf:resource="#PassionOfTheMind"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindAffirmsBodyForceProcess</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
