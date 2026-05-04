@@ -1007,6 +1007,9 @@
   <obo:BFO_0000051 rdf:resource="#ConsciousnessOfAppetite"/>
   <work:subClassOf rdf:resource="#ConatusMentalDispositionInstance"/>
   <work3:type rdf:resource="#PrimitiveAffect"/>
+  <work:subClassOf rdf:resource="#HumanEssence"/>
+  <work:subClassOf rdf:resource="#DeterminationToAct"/>
+  <obo:RO_0000052 rdf:resource="#HumanMind"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Desire</rdfs:label>
 </owl:Class>
 
@@ -1268,6 +1271,7 @@
   <obo:RO_0000053 rdf:resource="#PassionOfJoy"/>
   <obo:RO_0000056 rdf:resource="#TransitionToGreaterPerfection"/>
   <obo:RO_0000056 rdf:resource="#TransitionToLesserPerfection"/>
+  <obo:RO_0000053 rdf:resource="#Desire"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HumanMind</rdfs:label>
 </owl:Class>
 
@@ -1338,6 +1342,11 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConsciousnessOfAppetite</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PrimitiveAffect">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PrimitiveAffect</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#SoulDirectionProcess">
@@ -1472,6 +1481,8 @@
   <work:subClassOf rdf:resource="#AttributeModification"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <obo:RO_0000052 rdf:resource="#God"/>
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HumanEssence</rdfs:label>
 </owl:Class>
 
@@ -20776,11 +20787,6 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Mercy</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#PrimitiveAffect">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PrimitiveAffect</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#DerivedAffect">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
@@ -20791,6 +20797,12 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AffectCompositionRelation</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DeterminationToAct">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DeterminationToAct</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
