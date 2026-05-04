@@ -2229,6 +2229,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SadnessAffect</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#DiminutionOfPowerOfActing">
+  <rdfs:subClassOf rdf:resource="#PowerOfActing"/>
+  <work:subClassOf rdf:resource="#PowerOfActing"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DiminutionOfPowerOfActing</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#RepentanceAccompaniedByInternalCauseIdea">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
@@ -4043,6 +4049,7 @@
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:subClassOf rdf:resource="#Joy"/>
   <work:subClassOf rdf:resource="#IdeaOfExternalCause"/>
+  <obo:BFO_0000051 rdf:resource="#ExternalObjectCausalIdeaQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Love</rdfs:label>
 </owl:Class>
 
@@ -6289,6 +6296,7 @@
   <rdfs:subClassOf rdf:resource="#Sadness"/>
   <work:subClassOf rdf:resource="#HateAccompaniedByIdeaOfExternalCauseQuality"/>
   <obo:BFO_0000054 rdf:resource="#BeingMovedByEnvyOrHateProcess"/>
+  <obo:BFO_0000051 rdf:resource="#ExternalObjectCausalIdeaQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Hate</rdfs:label>
 </owl:Class>
 
@@ -13551,6 +13559,7 @@
 <owl:Class rdf:about="#ExternalObject">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExternalObject</rdfs:label>
 </owl:Class>
 
@@ -26472,10 +26481,11 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">StrictnessQuality</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#DiminutionOfPowerOfActing">
-  <rdfs:subClassOf rdf:resource="#PowerOfActing"/>
-  <work:subClassOf rdf:resource="#PowerOfActing"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DiminutionOfPowerOfActing</rdfs:label>
+<owl:Class rdf:about="#ExternalObjectCausalIdeaQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#ExternalObject"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExternalObjectCausalIdeaQuality</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
