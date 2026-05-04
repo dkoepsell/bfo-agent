@@ -26430,6 +26430,7 @@
 <owl:NamedIndividual rdf:about="#IdeaOfMind">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
   <obo:BFO_0000050 rdf:resource="#InfiniteIntellectOfGod"/>
+  <work3:type rdf:resource="#IdeaOfMind"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IdeaOfMind</rdfs:label>
 </owl:NamedIndividual>
 
@@ -26438,6 +26439,20 @@
   <work3:type rdf:resource="#UnionRelation"/>
   <obo:RO_0000052 rdf:resource="#IdeaOfMind"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindIdeaUnionQuality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#IdeaOfMindMindUnionQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#IdeaOfMind"/>
+  <work3:type rdf:resource="#MindBodyUnionQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IdeaOfMindMindUnionQuality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#MindBodyUnionQualityInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#FormalBeingOfHumanMind"/>
+  <work3:type rdf:resource="#MindBodyUnionQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindBodyUnionQualityInstance</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
