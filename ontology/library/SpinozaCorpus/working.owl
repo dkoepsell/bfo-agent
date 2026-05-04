@@ -26694,6 +26694,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EpistemologicalUse</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#IndependentExistenceQuality">
+  <rdfs:subClassOf rdf:resource="#EssentialExistenceQuality"/>
+  <work:subClassOf rdf:resource="#EssentialExistenceQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IndependentExistenceQuality</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
@@ -37951,6 +37957,8 @@
 
 <owl:NamedIndividual rdf:about="#EsseInSe">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work:subClassOf rdf:resource="#InItself"/>
+  <obo:BFO_0000054 rdf:resource="#FormalExistenceNecessitationProcess"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EsseInSe</rdfs:label>
 </owl:NamedIndividual>
 
