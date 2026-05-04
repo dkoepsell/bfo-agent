@@ -15633,6 +15633,7 @@
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
   <work:subClassOf rdf:resource="#_:x1"/>
   <work:subClassOf rdf:resource="#_:x2"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/RO_0000053"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FreeMan</rdfs:label>
 </owl:Class>
 
@@ -24324,6 +24325,30 @@
   <obo:BFO_0000055 rdf:resource="#Virtue"/>
   <obo:RO_0000057 rdf:resource="#FreeMan"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Fighting</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ReasonGuidedFriendshipDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:BFO_0000054 rdf:resource="#FriendshipFormationByReasonProcess"/>
+  <work:subClassOf rdf:resource="#ReasonGuidance"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ReasonGuidedFriendshipDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#FriendshipFormationByReasonProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000055 rdf:resource="#ReasonGuidedFriendshipDisposition"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FriendshipFormationByReasonProcess</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#Friendship">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Friendship</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#BenefitConferral">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BenefitConferral</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
