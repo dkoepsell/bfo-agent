@@ -16006,6 +16006,8 @@
 <owl:Class rdf:about="#ActualIntellect">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000053"/>
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ActualIntellect</rdfs:label>
 </owl:Class>
 
@@ -16159,6 +16161,12 @@
   <rdfs:subClassOf rdf:resource="#SubstanceInfinityOrPerfectionQuality"/>
   <work:subClassOf rdf:resource="#SubstanceInfinityOrPerfectionQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HighestPerfectionQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PotentialIntellect">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PotentialIntellect</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
@@ -16435,6 +16443,7 @@
   <obo:RO_0000053 rdf:resource="#NecessaryFollowingFromNatureDispositionInstance"/>
   <obo:RO_0000056 rdf:resource="#NecessaryFollowingFromNatureProcessInstance"/>
   <obo:RO_0000053 rdf:resource="#NonDistinctionOfIntellectWillFromEssence"/>
+  <obo:RO_0000053 rdf:resource="#GodActualIntellectDisposition"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">God</rdfs:label>
 </owl:NamedIndividual>
 
@@ -18422,6 +18431,12 @@
   <work3:type rdf:resource="#NecessaryFollowingFromNatureProcess"/>
   <obo:BFO_0000055 rdf:resource="#NecessaryFollowingFromNatureDispositionInstance"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NecessaryFollowingFromNatureProcessInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#NonDistinctionOfIntellectWillFromEssence">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#God"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NonDistinctionOfIntellectWillFromEssence</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#ThinkingThingRole">
@@ -24230,10 +24245,18 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HighestPerfectionQualityInstance</rdfs:label>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#NonDistinctionOfIntellectWillFromEssence">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+<owl:NamedIndividual rdf:about="#GodActualIntellectDisposition">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work3:type rdf:resource="#ActualIntellect"/>
   <obo:RO_0000052 rdf:resource="#God"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NonDistinctionOfIntellectWillFromEssence</rdfs:label>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodActualIntellectDisposition</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#GodOnlyActualIntellectQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#God"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodLacksActualIntellectOnlyQuality</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
