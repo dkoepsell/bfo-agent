@@ -312,6 +312,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExistenceIsEssenceIdentityQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#SubstanceFormalRealityQuality">
+  <rdfs:subClassOf rdf:resource="#FormalReality"/>
+  <work:subClassOf rdf:resource="#FormalReality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SubstanceFormalRealityQuality</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#EssentialExistenceQuality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="#DivineAttribute"/>
@@ -546,6 +552,12 @@
   <obo:RO_0000053 rdf:resource="#DeterminateExpressionQuality"/>
   <obo:RO_0000053 rdf:resource="#DeterminateAttributeExpression"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SingularThing</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ModeFormalRealityQuality">
+  <rdfs:subClassOf rdf:resource="#FormalReality"/>
+  <work:subClassOf rdf:resource="#FormalReality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ModeFormalRealityQuality</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#ModeOfThinkingQuality">
@@ -921,6 +933,18 @@
   <obo:RO_0000057 rdf:resource="#Soul"/>
   <obo:RO_0000057 rdf:resource="#IdeaOfThing"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UnionWithThing</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#IdeaOfBodyMode">
+  <rdfs:subClassOf rdf:resource="#NecessaryIdea"/>
+  <work:subClassOf rdf:resource="#NecessaryIdea"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IdeaOfBodyMode</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#CognitiveModeDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="#Mode"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CognitiveModeDisposition</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#Soul">
@@ -1544,18 +1568,6 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Person</rdfs:label>
-</owl:Class>
-
-<owl:Class rdf:about="#IdeaOfBodyMode">
-  <rdfs:subClassOf rdf:resource="#NecessaryIdea"/>
-  <work:subClassOf rdf:resource="#NecessaryIdea"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IdeaOfBodyMode</rdfs:label>
-</owl:Class>
-
-<owl:Class rdf:about="#CognitiveModeDisposition">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <work:subClassOf rdf:resource="#Mode"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CognitiveModeDisposition</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#ExtendedSubstanceQuality">
@@ -26897,18 +26909,6 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ObjectiveRealityCorrespondenceDisposition</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#SubstanceFormalRealityQuality">
-  <rdfs:subClassOf rdf:resource="#FormalReality"/>
-  <work:subClassOf rdf:resource="#FormalReality"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SubstanceFormalRealityQuality</rdfs:label>
-</owl:Class>
-
-<owl:Class rdf:about="#ModeFormalRealityQuality">
-  <rdfs:subClassOf rdf:resource="#FormalReality"/>
-  <work:subClassOf rdf:resource="#FormalReality"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ModeFormalRealityQuality</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#FormalRealityComparativeRelation">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
@@ -27307,6 +27307,21 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Thought</rdfs:label>
 </owl:NamedIndividual>
 
+<owl:NamedIndividual rdf:about="#UniquenessInNatureQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#ThinkingThing"/>
+  <obo:RO_0000052 rdf:resource="#God"/>
+  <work:subClassOf rdf:resource="#SubstanceInfinityOrPerfectionQuality"/>
+  <work3:type rdf:resource="#SubstanceUniquenessQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UniquenessInNatureQuality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ExpressionInInfiniteIdeasDisposition">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:RO_0000052 rdf:resource="#ThinkingThing"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExpressionInInfiniteIdeasDisposition</rdfs:label>
+</owl:NamedIndividual>
+
 <owl:NamedIndividual rdf:about="#SoulModeOfThoughtQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
@@ -27439,21 +27454,6 @@
   <obo:RO_0000052 rdf:resource="#Intellect"/>
   <work:subClassOf rdf:resource="#IntellectGroundednessQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IntellectPerfectionQuality</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#UniquenessInNatureQuality">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <obo:RO_0000052 rdf:resource="#ThinkingThing"/>
-  <obo:RO_0000052 rdf:resource="#God"/>
-  <work:subClassOf rdf:resource="#SubstanceInfinityOrPerfectionQuality"/>
-  <work3:type rdf:resource="#SubstanceUniquenessQuality"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UniquenessInNatureQuality</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#ExpressionInInfiniteIdeasDisposition">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <obo:RO_0000052 rdf:resource="#ThinkingThing"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExpressionInInfiniteIdeasDisposition</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#Extension">
