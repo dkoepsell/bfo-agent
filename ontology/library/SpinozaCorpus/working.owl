@@ -20254,6 +20254,18 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GoodAndBadEvaluativeQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#HopeRequiresFearDependence">
+  <rdfs:subClassOf rdf:resource="#Hope"/>
+  <work:subClassOf rdf:resource="#Hope"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HopeRequiresFearDependence</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#FearRequiresHopeDependence">
+  <rdfs:subClassOf rdf:resource="#Fear"/>
+  <work:subClassOf rdf:resource="#Fear"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FearRequiresHopeDependence</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
