@@ -155,6 +155,14 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EternalAndInfiniteEssenceExpression</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#AttributeSatisfiesSubstanceDefinitionQuality">
+  <rdfs:subClassOf rdf:resource="#EssentialExistenceQuality"/>
+  <work:subClassOf rdf:resource="#EssentialExistenceQuality"/>
+  <work:subClassOf rdf:resource="#AttributeSatisfiesSubstanceDefinitionQuality"/>
+  <obo:RO_0000052 rdf:resource="#Attribute"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AttributeSatisfiesSubstanceDefinitionQuality</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#SubstanceProductionConstraint">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
@@ -26721,14 +26729,6 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UniversalKnownness</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#AttributeSatisfiesSubstanceDefinitionQuality">
-  <rdfs:subClassOf rdf:resource="#EssentialExistenceQuality"/>
-  <work:subClassOf rdf:resource="#EssentialExistenceQuality"/>
-  <work:subClassOf rdf:resource="#AttributeSatisfiesSubstanceDefinitionQuality"/>
-  <obo:RO_0000052 rdf:resource="#Attribute"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AttributeSatisfiesSubstanceDefinitionQuality</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#AttributeIsConceivableThroughItselfQuality">
   <rdfs:subClassOf rdf:resource="#ConceptualIndependence"/>
   <work:subClassOf rdf:resource="#ConceptualIndependence"/>
@@ -26741,6 +26741,13 @@
   <work:subClassOf rdf:resource="#EssentialExistenceQuality"/>
   <obo:RO_0000052 rdf:resource="#Attribute"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AttributeIsInItselfQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#RealDistinctionBetweenAttributes">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#Attribute"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RealDistinctionBetweenAttributes</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
@@ -38019,6 +38026,13 @@
   <work3:type rdf:resource="#EpistemologicalUse"/>
   <obo:BFO_0000050 rdf:resource="#EsseInSe"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EpistemologicalUseOfEsseInSe</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#AttributeRealDistinctnessQualityInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work3:type rdf:resource="#RealDistinctionBetweenAttributes"/>
+  <obo:RO_0000052 rdf:resource="#Attribute"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AttributeRealDistinctnessQualityInstance</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
