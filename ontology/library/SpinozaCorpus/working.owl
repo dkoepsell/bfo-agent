@@ -28898,6 +28898,8 @@
   <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <obo:RO_0000052 rdf:resource="#HumanMind"/>
   <obo:RO_0000052 rdf:resource="#God"/>
+  <work3:type rdf:resource="#SpiritOfGodPowerIdentityQuality"/>
+  <work3:type rdf:resource="#DivinePower"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SpiritOfGod</rdfs:label>
 </owl:Class>
 
@@ -28943,6 +28945,17 @@
 <owl:Class rdf:about="#AnthropomorphicRepresentationQuality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AnthropomorphicRepresentationQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DivineVirtue">
+  <rdfs:subClassOf rdf:resource="#DivinePower"/>
+  <work:subClassOf rdf:resource="#DivinePower"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivineVirtue</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SpiritOfGodPowerIdentityQuality">
+  <rdfs:subClassOf rdf:resource="#DivineAttribute"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SpiritOfGodPowerIdentityQuality</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
