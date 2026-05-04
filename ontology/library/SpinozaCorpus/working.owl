@@ -18291,6 +18291,23 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConceptOfMindQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#VolitionOrAffirmationInMindQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#AffirmationInvolvedByIdea"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">VolitionOrAffirmationInMindQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#IdeaAsIdea">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IdeaAsIdea</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#AffirmationInvolvedByIdea">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AffirmationInvolvedByIdea</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
@@ -18950,6 +18967,7 @@
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#FictionStatusQuality"/>
+  <obo:RO_0000052 rdf:resource="#IdeaAsIdea"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WillIsNotRealBeingQuality</rdfs:label>
 </owl:NamedIndividual>
 
@@ -27666,6 +27684,12 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WillIsNotDesireQuality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#VolitionIsInternalToIdeaQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work3:type rdf:resource="#VolitionOrAffirmationInMindQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">VolitionIsInternalToIdeaQuality</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
