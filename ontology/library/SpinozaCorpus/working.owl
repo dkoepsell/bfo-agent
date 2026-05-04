@@ -935,6 +935,8 @@
   <obo:BFO_0000050 rdf:resource="#Man"/>
   <obo:RO_0000053 rdf:resource="#MindPerceptualCapacity"/>
   <obo:RO_0000053 rdf:resource="#DeterminateModeOfThinkingQualityInstance"/>
+  <obo:RO_0000053 rdf:resource="#ConatusMentalDispositionInstance"/>
+  <obo:RO_0000056 rdf:resource="#PerseveranceInBeingProcess"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Mind</rdfs:label>
 </owl:Class>
 
@@ -18980,6 +18982,18 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConatusTemporalScope</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#ConatusMentalDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConatusMentalDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#IndefiniteDurationQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IndefiniteDurationQuality</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
@@ -28648,6 +28662,25 @@
   <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <obo:BFO_0000050 rdf:resource="#TheEthics"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConatusIdentityWithActualEssence</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ConatusMentalDispositionInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:RO_0000052 rdf:resource="#Mind"/>
+  <obo:BFO_0000054 rdf:resource="#PerseveranceInBeingProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConatusMentalDispositionInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#IndefiniteDurationQualityInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#ConatusMentalDispositionInstance"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IndefiniteDurationQualityInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#PerseveranceInBeingProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000055 rdf:resource="#ConatusMentalDispositionInstance"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PerseveranceInBeingProcess</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
