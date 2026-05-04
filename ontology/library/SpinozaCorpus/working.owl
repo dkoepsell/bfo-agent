@@ -28050,6 +28050,24 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SovereignCommandProcess</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#QuestForConformity">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">QuestForConformity</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ViolenceDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ViolenceDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#NecessaryViolenceDisposition">
+  <rdfs:subClassOf rdf:resource="#ViolenceDisposition"/>
+  <work:subClassOf rdf:resource="#ViolenceDisposition"/>
+  <obo:RO_0000052 rdf:resource="#QuestForConformity"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NecessaryViolenceDisposition</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
