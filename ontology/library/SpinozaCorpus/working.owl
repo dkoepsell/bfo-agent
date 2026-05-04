@@ -27397,21 +27397,45 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CompositeOfDifferingParts</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#Composite">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Composite</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#CompositeOfAgreeingParts">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="#Composite"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CompositeOfAgreeingParts</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#Composite">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Composite</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#NonCompositeQuality">
   <rdfs:subClassOf rdf:resource="#Simple"/>
   <work:subClassOf rdf:resource="#Simple"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NonCompositeQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#BeingIsThoughtConditionalQuality">
+  <rdfs:subClassOf rdf:resource="#EssentialExistenceQuality"/>
+  <work:subClassOf rdf:resource="#AttributeOfSubstance"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BeingIsThoughtConditionalQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#UnlimitednessInThoughtQuality">
+  <rdfs:subClassOf rdf:resource="#SubstanceInfinityQuality"/>
+  <work:subClassOf rdf:resource="#InfiniteInItsKind"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UnlimitednessInThoughtQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#LimitednessInThoughtQuality">
+  <rdfs:subClassOf rdf:resource="#ContingentExistenceQuality"/>
+  <work:subClassOf rdf:resource="#ContingentExistenceQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LimitednessInThoughtQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#InconceivabilityOfLimitedThoughtDisposition">
+  <rdfs:subClassOf rdf:resource="#SubstanceNecessaryInfinityDisposition"/>
+  <work:subClassOf rdf:resource="#ImaginationInaccessibility"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">InconceivabilityOfLimitedThoughtDisposition</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
