@@ -17596,6 +17596,13 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IdeaOfBodyAffection</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#ConfusedIdeaQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#InadequateIdeaQuality"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConfusedIdeaQuality</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#InvolvesAdequateKnowledgeDisposition">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
@@ -17625,13 +17632,6 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">InadequateKnowledgeOfHumanBodyQuality</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#ConfusedIdeaQuality">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <work:subClassOf rdf:resource="#InadequateIdeaQuality"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConfusedIdeaQuality</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#InadequateIdeaQuality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
@@ -17654,6 +17654,22 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RelatedOnlyToMindCondition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ClarityAndDistinctnessQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ClarityAndDistinctnessQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#LackOfClarityAndDistinctnessQuality">
+  <rdfs:subClassOf rdf:resource="#ClarityAndDistinctnessQuality"/>
+  <work:subClassOf rdf:resource="#ClarityAndDistinctnessQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LackOfClarityAndDistinctnessQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ConsideredInItselfAloneCondition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConsideredInItselfAloneCondition</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
@@ -26701,6 +26717,21 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <obo:BFO_0000050 rdf:resource="#TheEthics"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BodyAffectionIdeaConfusionPrinciple</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#IdeaConstitutingHumanMindNature">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <obo:RO_0000053 rdf:resource="#IdeaConstitutingHumanMindLackOfClarityDistinctnessInItselfQuality"/>
+  <obo:BFO_0000050 rdf:resource="#FormalBeingOfHumanMind"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IdeaConstitutingHumanMindNature</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#IdeaConstitutingHumanMindLackOfClarityDistinctnessInItselfQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work3:type rdf:resource="#LackOfClarityAndDistinctnessQuality"/>
+  <obo:RO_0000052 rdf:resource="#IdeaConstitutingHumanMindNature"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IdeaConstitutingHumanMindLackOfClarityDistinctnessInItselfQuality</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
