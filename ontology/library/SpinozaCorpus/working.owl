@@ -18091,6 +18091,27 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExplainedThroughHumanMindNatureDisposition</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#ThirdKindOfKnowledge">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <obo:BFO_0000054 rdf:resource="#ThirdKindKnowledgeProduction"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ThirdKindOfKnowledge</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#AdequateIdeaOfGodAttribute">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AdequateIdeaOfGodAttribute</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ThirdKindKnowledgeProduction">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#AdequateIdeaOfGodAttribute"/>
+  <obo:RO_0000057 rdf:resource="#God"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ThirdKindKnowledgeProduction</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
@@ -18653,6 +18674,18 @@
   <obo:RO_0000057 rdf:resource="#HumanMind"/>
   <obo:BFO_0000055 rdf:resource="#MindBodyKnowledgeThroughAffectionsDisposition"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CommonOrderOfNaturePerception</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#TruePerceptionQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <RO_0000052 rdf:resource="#HumanMind"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TruePerceptionQuality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#MindPartOfInfiniteIntellectQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <RO_0000052 rdf:resource="#HumanMind"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindPartOfInfiniteIntellectQuality</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#AnotherBeing">
@@ -27353,18 +27386,6 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <obo:RO_0000052 rdf:resource="#God"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodExplainedThroughHumanMindDispositionInstance</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#TruePerceptionQuality">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <RO_0000052 rdf:resource="#HumanMind"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TruePerceptionQuality</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#MindPartOfInfiniteIntellectQuality">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <RO_0000052 rdf:resource="#HumanMind"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindPartOfInfiniteIntellectQuality</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
