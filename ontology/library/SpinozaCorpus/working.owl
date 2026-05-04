@@ -7036,6 +7036,8 @@
   <work:subClassOf rdf:resource="#DoubtQuality"/>
   <work:subClassOf rdf:resource="#IdeaOfFutureOrPastThing"/>
   <rdfs:subClassOf rdf:resource="#Sadness"/>
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Fear</rdfs:label>
 </owl:Class>
 
@@ -24789,6 +24791,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AbsenceOfTrustQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#WeaknessOfMind">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WeaknessOfMind</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
@@ -35152,6 +35160,14 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#HarmonyBornOfFear"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FearBasedHarmonyInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#FearArisingFromWeaknessProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#WeaknessOfMind"/>
+  <obo:RO_0000057 rdf:resource="#Fear"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FearArisingFromWeaknessProcess</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
