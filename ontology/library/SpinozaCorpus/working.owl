@@ -20718,6 +20718,8 @@
   <work:subClassOf rdf:resource="#Desire"/>
   <obo:BFO_0000054 rdf:resource="#SelfPreservationStriving"/>
   <work:subClassOf rdf:resource="#ConatusMentalDispositionInstance"/>
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Tenacity</rdfs:label>
 </owl:Class>
 
@@ -20742,6 +20744,18 @@
 <owl:Class rdf:about="#ReasonDictateQuality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ReasonDictateQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#Moderation">
+  <rdfs:subClassOf rdf:resource="#Tenacity"/>
+  <work:subClassOf rdf:resource="#Tenacity"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Moderation</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#Sobriety">
+  <rdfs:subClassOf rdf:resource="#Tenacity"/>
+  <work:subClassOf rdf:resource="#Tenacity"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Sobriety</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
