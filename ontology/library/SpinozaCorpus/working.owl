@@ -16218,6 +16218,11 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GreatestPerfectionQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#CausalOrderInversion">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CausalOrderInversion</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
@@ -24449,6 +24454,29 @@
   <work3:type rdf:resource="#GreatestPerfectionQuality"/>
   <obo:RO_0000052 rdf:resource="#EternalNecessityProcessionOfAllThings"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GreatestPerfectionQualityInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#DoctrineOfFinalCauses">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DoctrineOfFinalCauses</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#CausalOrderOfNature">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <RO_0000052 rdf:resource="#WholeOfNature"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CausalOrderOfNature</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#PerfectionOrderOfNature">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <RO_0000052 rdf:resource="#WholeOfNature"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PerfectionOrderOfNature</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#CausalOrderInversionInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <RO_0000052 rdf:resource="#DoctrineOfFinalCauses"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CausalOrderInversionInstance</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
