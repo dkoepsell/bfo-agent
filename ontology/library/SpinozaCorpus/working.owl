@@ -28594,6 +28594,29 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ImaginedVoiceQualityClass</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#Revelation">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Revelation</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#RevelationByImagesAlone">
+  <rdfs:subClassOf rdf:resource="#Revelation"/>
+  <work:subClassOf rdf:resource="#Revelation"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RevelationByImagesAlone</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PropheticImage">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PropheticImage</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ImageBasedRevelationQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ImageBasedRevelationQuality</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -31494,6 +31517,12 @@
 <owl:NamedIndividual rdf:about="#RevelationOfDecalogueProcess">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RevelationOfDecalogueProcess</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#VisibleFormQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#God"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">VisibleFormQuality</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#ThinkingThingRole">
@@ -40771,12 +40800,6 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <obo:RO_0000057 rdf:resource="#VisibleFormQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ScriptureVisibleFormClaim</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#VisibleFormQuality">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <obo:RO_0000052 rdf:resource="#God"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">VisibleFormQuality</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
