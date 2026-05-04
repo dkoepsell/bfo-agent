@@ -17357,6 +17357,40 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CompositionOfManyIdeasQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#IdeaOfAffection">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <obo:BFO_0000051 rdf:resource="#IdeaInvolvesNatureRelation"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IdeaOfAffection</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#AffectionMode">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000020"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000020"/>
+  <obo:RO_0000052 rdf:resource="#HumanBody"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AffectionMode</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#NatureOfHumanBodyQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NatureOfHumanBodyQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#NatureOfExternalBodyQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NatureOfExternalBodyQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#IdeaInvolvesNatureRelation">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:RO_0000052 rdf:resource="#NatureOfHumanBodyQuality"/>
+  <obo:RO_0000052 rdf:resource="#NatureOfExternalBodyQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IdeaInvolvesNatureRelation</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
@@ -17864,6 +17898,12 @@
   <obo:RO_0000052 rdf:resource="#God"/>
   <obo:RO_0000057 rdf:resource="#IdeaCorrespondenceProcess"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">InfiniteIntellectOfGod</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#FormalBeingOfHumanMind">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#HumanMind"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FormalBeingOfHumanMind</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#AnotherBeing">
@@ -26125,12 +26165,6 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <obo:RO_0000052 rdf:resource="#WholeOfNature"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WholeInvarianceUnderPartChangeQuality</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#FormalBeingOfHumanMind">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <obo:RO_0000052 rdf:resource="#HumanMind"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FormalBeingOfHumanMind</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#IdeaConstitutingFormalBeingOfHumanMind">
