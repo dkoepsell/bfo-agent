@@ -5042,6 +5042,8 @@
 <owl:Class rdf:about="#ExternalCausation">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <obo:BFO_0000054 rdf:resource="#PassionProducingProcess"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="#CausalReasonForExistence"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExternalCausation</rdfs:label>
 </owl:Class>
 
@@ -27297,6 +27299,25 @@
 <owl:Class rdf:about="#CausalGroundDichotomyQuality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CausalGroundDichotomyQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#NumericalMultiplicity">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NumericalMultiplicity</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#NumericallyMultipleEntity">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000017"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NumericallyMultipleEntity</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ExternalCausationNecessitation">
+  <rdfs:subClassOf rdf:resource="#ExternalCausation"/>
+  <work:subClassOf rdf:resource="#ExternalCausation"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExternalCausationNecessitation</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
