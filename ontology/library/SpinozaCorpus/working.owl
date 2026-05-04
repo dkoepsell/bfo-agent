@@ -15647,6 +15647,11 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ActualFromEternityQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#EssenceAndExistenceGrounding">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EssenceAndExistenceGrounding</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
@@ -15896,6 +15901,7 @@
   <obo:RO_0000053 rdf:resource="#GodFreedomFromExternalConstraintQuality"/>
   <obo:RO_0000053 rdf:resource="#NecessaryEmanationFromGodDisposition"/>
   <obo:RO_0000056 rdf:resource="#EmanationFromGodProcess"/>
+  <obo:RO_0000056 rdf:resource="#GodIntellectCausesEssenceAndExistenceProcess"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">God</rdfs:label>
 </owl:NamedIndividual>
 
@@ -16214,6 +16220,7 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <obo:BFO_0000055 rdf:resource="#EssenceCausation"/>
   <obo:RO_0000057 rdf:resource="#God"/>
+  <obo:BFO_0000050 rdf:resource="#GodIntellectCausesEssenceAndExistenceProcess"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EssenceCausationProcess</rdfs:label>
 </owl:NamedIndividual>
 
@@ -18376,6 +18383,7 @@
   <work2:sameAs rdf:resource="#GodWill"/>
   <work2:sameAs rdf:resource="#GodPower"/>
   <work2:sameAs rdf:resource="#GodEssence"/>
+  <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodIntellect</rdfs:label>
 </owl:NamedIndividual>
 
@@ -23393,6 +23401,13 @@
   <work3:type rdf:resource="#ActualFromEternityQuality"/>
   <obo:RO_0000052 rdf:resource="#GodOmnipotenceQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodOmnipotenceActualityQuality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#GodIntellectCausesEssenceAndExistenceProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000055 rdf:resource="#GodIntellect"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodIntellectCausesEssenceAndExistenceProcess</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
