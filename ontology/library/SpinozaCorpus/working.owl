@@ -15983,6 +15983,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ContingentFollowingAbsenceQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#NaturaNaturansRole">
+  <rdfs:subClassOf rdf:resource="#FreeCauseRole"/>
+  <work:subClassOf rdf:resource="#FreeCauseRole"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NaturaNaturansRole</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
@@ -16249,6 +16255,7 @@
   <obo:RO_0000056 rdf:resource="#DivineNecessityDeterminationProcess"/>
   <RO_0000053 rdf:resource="#NecessityOfExistenceQualityOfGod"/>
   <obo:RO_0000053 rdf:resource="#NecessaryFollowingDisposition"/>
+  <obo:RO_0000053 rdf:resource="#NaturaNaturans"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">God</rdfs:label>
 </owl:NamedIndividual>
 
@@ -16769,10 +16776,19 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CorporealSubstance</rdfs:label>
 </owl:NamedIndividual>
 
+<owl:NamedIndividual rdf:about="#ModeFollowingFromDivineNatureProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#God"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ModeFollowingFromDivineNatureProcess</rdfs:label>
+</owl:NamedIndividual>
+
 <owl:NamedIndividual rdf:about="#NaturaNaturans">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
   <work3:type rdf:resource="#Substance"/>
   <work3:type rdf:resource="#InfiniteBeing"/>
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <work3:type rdf:resource="#NaturaNaturansRole"/>
+  <obo:RO_0000052 rdf:resource="#God"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NaturaNaturans</rdfs:label>
 </owl:NamedIndividual>
 
@@ -23896,12 +23912,6 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <RO_0000052 rdf:resource="#God"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ContingencyAbsenceQualityOfGod</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#ModeFollowingFromDivineNatureProcess">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <obo:RO_0000057 rdf:resource="#God"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ModeFollowingFromDivineNatureProcess</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
