@@ -20188,6 +20188,8 @@
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <obo:RO_0000057 rdf:resource="#ExternalObject"/>
   <obo:RO_0000057 rdf:resource="#HumanMind"/>
+  <obo:RO_0000057 rdf:resource="#Man"/>
+  <obo:RO_0000057 rdf:resource="#AffectingObject"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AffectionByObject</rdfs:label>
 </owl:Class>
 
@@ -20202,6 +20204,24 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000008"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000008"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SimultaneityTemporalRegion</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#AffectingObject">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AffectingObject</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#AffectionQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#Man"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AffectionQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#VariabilityOfAffectionDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:RO_0000052 rdf:resource="#Man"/>
+  <obo:BFO_0000054 rdf:resource="#AffectionByObject"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">VariabilityOfAffectionDisposition</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
