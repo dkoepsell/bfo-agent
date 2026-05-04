@@ -27457,6 +27457,24 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LimitationDenotesOnlyPrivationQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#DefinitionAffirmsExistenceQuality">
+  <rdfs:subClassOf rdf:resource="#EssentialExistenceQuality"/>
+  <work:subClassOf rdf:resource="#EssentialExistenceQuality"/>
+  <work:subClassOf rdf:resource="#InconceivabilityAsLimited"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DefinitionAffirmsExistenceQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ConceptionAsLimited">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConceptionAsLimited</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#InconceivabilityAsLimited">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">InconceivabilityAsLimited</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
