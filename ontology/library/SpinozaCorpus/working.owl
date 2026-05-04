@@ -6676,6 +6676,14 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ObjectionableAffectQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#IdeaOfInternalCause">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IdeaOfInternalCause</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#Shame">
   <rdfs:subClassOf rdf:resource="#Sadness"/>
   <work:subClassOf rdf:resource="#Sadness"/>
@@ -6683,6 +6691,7 @@
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <obo:RO_0000053 rdf:resource="#InjuriousAffectQuality"/>
   <obo:RO_0000053 rdf:resource="#ObjectionableAffectQuality"/>
+  <work:subClassOf rdf:resource="#ShameAccompanimentRelation"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Shame</rdfs:label>
 </owl:Class>
 
@@ -19683,12 +19692,6 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LoveConstitutionRelation</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#IdeaOfInternalCause">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IdeaOfInternalCause</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#BeliefInPraise">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="#IdeaOfInternalCause"/>
@@ -19698,6 +19701,18 @@
 <owl:Class rdf:about="#InternalCauseAttributionQuality">
   <rdfs:subClassOf rdf:resource="#IdeaOfInternalCause"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">InternalCauseAttributionQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#BeliefInBlame">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work:subClassOf rdf:resource="#IdeaOfInternalCause"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BeliefInBlame</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ShameAccompanimentRelation">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ShameAccompanimentRelation</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
