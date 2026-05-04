@@ -959,6 +959,7 @@
   <obo:RO_0000053 rdf:resource="#ConatusMentalDispositionInstance"/>
   <obo:RO_0000056 rdf:resource="#PerseveranceInBeingProcess"/>
   <obo:RO_0000053 rdf:resource="#RelatingBodyAffectionsToIdeaOfGodDispositionInstance"/>
+  <obo:BFO_0000050 rdf:resource="#InfiniteIntellectOfGod"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Mind</rdfs:label>
 </owl:Class>
 
@@ -25863,6 +25864,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LoveTowardImmutableEternalThing</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#IntellectualLoveOfGodQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IntellectualLoveOfGodQuality</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#ImmutableAndEternalThing">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
@@ -25877,10 +25884,22 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ClearAndDistinctKnowledgeBearsLoveProcess</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#IntellectualLoveOfGodQuality">
+<owl:Class rdf:about="#ImaginationDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ImaginationDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#RecollectionDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RecollectionDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#BodyEnduranceConditionQuality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IntellectualLoveOfGodQuality</rdfs:label>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BodyEnduranceConditionQuality</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
@@ -36530,6 +36549,26 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#PassionAsPartOfMind"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PassionProportionMinimizedQuality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ImaginationDispositionInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work3:type rdf:resource="#ImaginationDisposition"/>
+  <obo:RO_0000052 rdf:resource="#Mind"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ImaginationDispositionInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#RecollectionDispositionInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work3:type rdf:resource="#RecollectionDisposition"/>
+  <obo:RO_0000052 rdf:resource="#Mind"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RecollectionDispositionInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#BodyEnduranceConditionQualityInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#Mind"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BodyEnduranceConditionQualityInstance</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
