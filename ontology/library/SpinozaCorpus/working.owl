@@ -19395,6 +19395,7 @@
   <work:subClassOf rdf:resource="#Affect"/>
   <obo:RO_0000052 rdf:resource="#HumanBeing"/>
   <work:subClassOf rdf:resource="#NatureDifferenceQuality"/>
+  <work:subClassOf rdf:resource="#NaturalThing"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HumanAffect</rdfs:label>
 </owl:Class>
 
@@ -23812,6 +23813,19 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PartOfCommonOrderOfNatureQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#HumanProperty">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#NaturalThing"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HumanProperty</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#HumanNaturalnessQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HumanNaturalnessQuality</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
@@ -24348,6 +24362,11 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
   <obo:BFO_0000050 rdf:resource="#Extension"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PartOfExtendedSubstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#CommonOrderOfNature">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CommonOrderOfNature</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#InfiniteIntellectOfGod">
@@ -33066,11 +33085,6 @@
   <work3:type rdf:resource="#LackOfClarityAndDistinctnessQuality"/>
   <obo:RO_0000052 rdf:resource="#IdeaConstitutingHumanMindNature"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IdeaConstitutingHumanMindLackOfClarityDistinctnessInItselfQuality</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#CommonOrderOfNature">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CommonOrderOfNature</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#ConfusedAndMutilatedKnowledgeOfSelfQuality">
