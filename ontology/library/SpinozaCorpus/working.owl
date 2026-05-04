@@ -17027,6 +17027,8 @@
 <owl:Class rdf:about="#BodyAffectionMode">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000020"/>
   <work:subClassOf rdf:resource="#AffectionOfBodyByBody"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000020"/>
+  <obo:RO_0000052 rdf:resource="#HumanBody"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BodyAffectionMode</rdfs:label>
 </owl:Class>
 
@@ -17417,6 +17419,32 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="#IdeaOfExternalBody"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExternalBodyNatureIndicationQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ExternalBodyNatureImplication">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#BodyAffectionMode"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExternalBodyNatureImplication</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#MindRegardExternalBodyAsPresent">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:RO_0000052 rdf:resource="#HumanMind"/>
+  <obo:BFO_0000054 rdf:resource="#ExclusionOfExternalBodyPresence"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindRegardExternalBodyAsPresent</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ExclusionOfExternalBodyPresence">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExclusionOfExternalBodyPresence</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ExternalBodyPresentnessQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#HumanMind"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExternalBodyPresentnessQuality</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
