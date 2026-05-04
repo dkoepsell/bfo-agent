@@ -1691,6 +1691,7 @@
   <obo:BFO_0000050 rdf:resource="#Thought"/>
   <rdfs:subClassOf rdf:resource="#ModeOfThinking"/>
   <work:subClassOf rdf:resource="#ModeOfThinking"/>
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Joy</rdfs:label>
 </owl:Class>
 
@@ -6375,6 +6376,7 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="#InconstantJoy"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#Joy"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Hope</rdfs:label>
 </owl:Class>
 
@@ -6425,6 +6427,23 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FutureThingEvaluation</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#InconstantSadness">
+  <rdfs:subClassOf rdf:resource="#Sadness"/>
+  <work:subClassOf rdf:resource="#Sadness"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">InconstantSadness</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#InconstancyQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">InconstancyQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ImaginationOfDoubtfulThing">
+  <rdfs:subClassOf rdf:resource="#Imagination"/>
+  <work:subClassOf rdf:resource="#Imagination"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ImaginationOfDoubtfulThing</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#PossibilityJudgment">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PossibilityJudgment</rdfs:label>
@@ -6441,6 +6460,7 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="#AffectArisingFromIncorrectOpinion"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="#ConstantJoyQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Confidence</rdfs:label>
 </owl:Class>
 
@@ -19331,27 +19351,21 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DoubtfulOutcomeQuality</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#InconstantSadness">
-  <rdfs:subClassOf rdf:resource="#Sadness"/>
-  <work:subClassOf rdf:resource="#Sadness"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">InconstantSadness</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#DoubtfulThing">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DoubtfulThing</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#InconstancyQuality">
+<owl:Class rdf:about="#ConstantJoyQuality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">InconstancyQuality</rdfs:label>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConstantJoyQuality</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#ImaginationOfDoubtfulThing">
-  <rdfs:subClassOf rdf:resource="#Imagination"/>
-  <work:subClassOf rdf:resource="#Imagination"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ImaginationOfDoubtfulThing</rdfs:label>
+<owl:Class rdf:about="#DoubtRemovalProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000055 rdf:resource="#Confidence"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DoubtRemovalProcess</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
