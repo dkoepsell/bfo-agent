@@ -21429,6 +21429,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Pain</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#PainRestrainsExcessivePleasureDisposition">
+  <rdfs:subClassOf rdf:resource="#Pain"/>
+  <obo:BFO_0000054 rdf:resource="#RestrainingOfExcessivePleasure"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PainRestrainsExcessivePleasureDisposition</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#PrimitivenessQuality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PrimitivenessQuality</rdfs:label>
@@ -23526,10 +23532,10 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PainAsGoodQuality</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#PainRestrainsExcessivePleasureDisposition">
-  <rdfs:subClassOf rdf:resource="#Pain"/>
-  <obo:BFO_0000054 rdf:resource="#RestrainingOfExcessivePleasure"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PainRestrainsExcessivePleasureDisposition</rdfs:label>
+<owl:Class rdf:about="#ExcessQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExcessQuality</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
