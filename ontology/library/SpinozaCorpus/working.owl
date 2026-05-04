@@ -1696,6 +1696,9 @@
   <work:subClassOf rdf:resource="#Substance"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
   <work:subClassOf rdf:resource="#_:HumanLustRestriction"/>
+  <rdfs:subClassOf rdf:resource="#SingularThingInNature"/>
+  <work:subClassOf rdf:resource="#SingularThingInNature"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000053"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HumanBeing</rdfs:label>
 </owl:Class>
 
@@ -20415,6 +20418,11 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DesireForEsteem</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#CourtesyArisingFromAffect">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CourtesyArisingFromAffect</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#ActionOfAnother">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
@@ -24923,11 +24931,6 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CourtesyMoralityRelation</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#CourtesyArisingFromAffect">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CourtesyArisingFromAffect</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#Discord">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Discord</rdfs:label>
@@ -24944,6 +24947,23 @@
   <obo:BFO_0000054 rdf:resource="#Discord"/>
   <obo:BFO_0000054 rdf:resource="#Sedition"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AmbitionArousalOfDiscordDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#HumanMindFriendshipCapacityQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HumanMindFriendshipCapacityQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#NonHumanSingularThing">
+  <rdfs:subClassOf rdf:resource="#SingularThingInNature"/>
+  <work:subClassOf rdf:resource="#SingularThingInNature"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NonHumanSingularThing</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#MindFriendshipEnjoyabilityQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#HumanMindFriendshipCapacityQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindFriendshipEnjoyabilityQuality</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
