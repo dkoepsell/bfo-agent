@@ -25486,6 +25486,28 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HateConquestIncapacityOfHateRepayment</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#HighestMindSatisfaction">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HighestMindSatisfaction</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#RightPrincipleOfLiving">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RightPrincipleOfLiving</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#MindSatisfactionFromPrincipleDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:BFO_0000054 rdf:resource="#LivingAccordingToRightPrinciple"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindSatisfactionFromPrincipleDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#LivingAccordingToRightPrinciple">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#RightPrincipleOfLiving"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LivingAccordingToRightPrinciple</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
