@@ -28111,6 +28111,33 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">QuotationViaLatinTranslationProcess</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#SuperstitionOriginProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SuperstitionOriginProcess</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SuperstitionPersistenceProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SuperstitionPersistenceProcess</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SuperstitionGrowthProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SuperstitionGrowthProcess</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#FearCausesSuperstitionDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="#Fear"/>
+  <obo:BFO_0000054 rdf:resource="#SuperstitionOriginProcess"/>
+  <obo:BFO_0000054 rdf:resource="#SuperstitionPersistenceProcess"/>
+  <obo:BFO_0000054 rdf:resource="#SuperstitionGrowthProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FearCausesSuperstitionDisposition</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
