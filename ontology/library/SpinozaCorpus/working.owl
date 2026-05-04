@@ -2731,6 +2731,8 @@
 <owl:Class rdf:about="#FormalBeingQuality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#Perfection"/>
+  <work:subClassOf rdf:resource="#FormalExistence"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FormalBeingQuality</rdfs:label>
 </owl:Class>
 
@@ -4246,6 +4248,7 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="#SubstanceInfinityOrPerfectionQuality"/>
+  <work:subClassOf rdf:resource="#EssentialExistenceQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Perfection</rdfs:label>
 </owl:Class>
 
@@ -6733,6 +6736,7 @@
 <owl:Class rdf:about="#Imperfection">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#EssentialExistenceQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Imperfection</rdfs:label>
 </owl:Class>
 
@@ -27490,6 +27494,12 @@
 <owl:Class rdf:about="#DivisibilityIntoDifferentNaturePartsQuality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivisibilityIntoDifferentNaturePartsQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PrivationOfBeing">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#Imperfection"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PrivationOfBeing</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
