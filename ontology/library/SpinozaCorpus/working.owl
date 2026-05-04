@@ -1490,6 +1490,7 @@
   <work:subClassOf rdf:resource="#Affect"/>
   <work:subClassOf rdf:resource="#Passion"/>
   <obo:RO_0000052 rdf:resource="#Soul"/>
+  <work:subClassOf rdf:resource="#Joy"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Sadness</rdfs:label>
 </owl:Class>
 
@@ -14618,6 +14619,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Mouse</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#DependenceOnGodDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DependenceOnGodDisposition</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#Angel">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
@@ -14625,10 +14632,10 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Angel</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#DependenceOnGodDisposition">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DependenceOnGodDisposition</rdfs:label>
+<owl:Class rdf:about="#DependenceOnGodQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DependenceOnGodQuality</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#God">
