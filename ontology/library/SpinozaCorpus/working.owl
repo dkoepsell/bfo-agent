@@ -1236,6 +1236,9 @@
   <work:subClassOf rdf:resource="#_:x"/>
   <obo:BFO_0000050 rdf:resource="#CommonOrderOfNature"/>
   <obo:RO_0000056 rdf:resource="#RationalLife"/>
+  <work:subClassOf rdf:resource="#_:restriction_bearer_of_PartOfNatureQuality"/>
+  <work:subClassOf rdf:resource="#_:restriction_bearer_of_NecessarilyPartOfNatureDisposition"/>
+  <work:subClassOf rdf:resource="#_:restriction_bearer_of_FollowsCommonOrderOfNatureDisposition"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Man</rdfs:label>
 </owl:Class>
 
@@ -1559,6 +1562,12 @@
   <obo:RO_0000057 rdf:resource="#Body"/>
   <work:subClassOf rdf:resource="#SoulBodyAffectionProcess"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PerceptionProcess</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#RationalLife">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RationalLife</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#ImaginativeRepresentation">
@@ -24535,12 +24544,6 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ActionsFromGodNature</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#RationalLife">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RationalLife</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#UnderstandingNecessityForRationalLifeQuality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
@@ -24554,6 +24557,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GuidedByUnderstanding</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#AidingRationalLifeDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:BFO_0000054 rdf:resource="#RationalLife"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AidingRationalLifeDisposition</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#GoodForManQuality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="#ExistenceNonEvilQuality"/>
@@ -24561,10 +24570,17 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GoodForManQuality</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#AidingRationalLifeDisposition">
+<owl:Class rdf:about="#NecessarilyPartOfNatureDisposition">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <obo:BFO_0000054 rdf:resource="#RationalLife"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AidingRationalLifeDisposition</rdfs:label>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NecessarilyPartOfNatureDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#FollowsCommonOrderOfNatureDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:BFO_0000054 rdf:resource="#CommonOrderOfNaturePerception"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FollowsCommonOrderOfNatureDisposition</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
