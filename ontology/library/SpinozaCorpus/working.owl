@@ -22840,6 +22840,7 @@
 <owl:Class rdf:about="#PartOfNatureQuality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#Man"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PartOfNatureQuality</rdfs:label>
 </owl:Class>
 
@@ -30492,6 +30493,14 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="#EssentialExistenceQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CausalDeterminismQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PartOfPowerOfNatureDisposition">
+  <rdfs:subClassOf rdf:resource="#PowerOfNature"/>
+  <work:subClassOf rdf:resource="#PowerOfNature"/>
+  <obo:RO_0000052 rdf:resource="#Man"/>
+  <obo:BFO_0000050 rdf:resource="#PowerOfNature"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PartOfPowerOfNatureDisposition</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
