@@ -12451,6 +12451,8 @@
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000020"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <obo:RO_0000052 rdf:resource="#Substance"/>
+  <rdfs:subClassOf rdf:resource="#Mode"/>
+  <work:subClassOf rdf:resource="#Mode"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Affection</rdfs:label>
 </owl:Class>
 
@@ -15799,6 +15801,19 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EssenceDoesNotInvolveExistenceQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#ParticularThing">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
+  <work:subClassOf rdf:resource="#Mode"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ParticularThing</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DeterminateModeExpression">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="#AttributeExpressesEternalInfiniteEssenceRelation"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DeterminateModeExpression</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
@@ -17929,6 +17944,20 @@
   <work3:type rdf:resource="#SubstanceExistenceEternalityQuality"/>
   <obo:RO_0000052 rdf:resource="#God"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodEternalExistenceQuality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#EfficientCauseOfExistenceRole">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <RO_0000052 rdf:resource="#God"/>
+  <obo:BFO_0000054 rdf:resource="#GodCausesAllThingsProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EfficientCauseOfExistenceRole</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#EfficientCauseOfEssenceRole">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <RO_0000052 rdf:resource="#God"/>
+  <obo:BFO_0000054 rdf:resource="#EssenceCausationProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EfficientCauseOfEssenceRole</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#ThinkingThingRole">
@@ -23605,20 +23634,6 @@
   <obo:RO_0000052 rdf:resource="#ThinkingAttribute"/>
   <obo:RO_0000052 rdf:resource="#Extension"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AttributeImmutabilityQuality</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#EfficientCauseOfExistenceRole">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
-  <RO_0000052 rdf:resource="#God"/>
-  <obo:BFO_0000054 rdf:resource="#GodCausesAllThingsProcess"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EfficientCauseOfExistenceRole</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#EfficientCauseOfEssenceRole">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
-  <RO_0000052 rdf:resource="#God"/>
-  <obo:BFO_0000054 rdf:resource="#EssenceCausationProcess"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EfficientCauseOfEssenceRole</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#GodCausesExistenceProcess">
