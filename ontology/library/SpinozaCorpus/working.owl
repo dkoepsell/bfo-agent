@@ -19896,6 +19896,36 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ImaginingAsExternalCause</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#Timidity">
+  <rdfs:subClassOf rdf:resource="#Fear"/>
+  <work:subClassOf rdf:resource="#Fear"/>
+  <obo:BFO_0000054 rdf:resource="#AvoidanceOfFutureEvilProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Timidity</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#FutureEvilJudgment">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FutureEvilJudgment</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#FutureEvil">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FutureEvil</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#LesserEvil">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LesserEvil</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#AvoidanceOfFutureEvilProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000055 rdf:resource="#Timidity"/>
+  <obo:BFO_0000050 rdf:resource="#LesserEvil"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AvoidanceOfFutureEvilProcess</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
