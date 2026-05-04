@@ -24804,7 +24804,14 @@
 <owl:NamedIndividual rdf:about="#CertainBody">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
   <obo:RO_0000053 rdf:resource="#AffectionOfBody"/>
+  <obo:RO_0000053 rdf:resource="#BodyAffection1"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CertainBody</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#BodyAffection1">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#CertainBody"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BodyAffection1</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
