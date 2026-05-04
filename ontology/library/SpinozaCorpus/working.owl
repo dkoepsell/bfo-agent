@@ -28900,6 +28900,8 @@
   <obo:RO_0000052 rdf:resource="#God"/>
   <work3:type rdf:resource="#SpiritOfGodPowerIdentityQuality"/>
   <work3:type rdf:resource="#DivinePower"/>
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
+  <obo:BFO_0000050 rdf:resource="#God"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SpiritOfGod</rdfs:label>
 </owl:Class>
 
@@ -28919,6 +28921,11 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExtraordinaryForceQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SpiritOfGodPowerIdentityQuality">
+  <rdfs:subClassOf rdf:resource="#DivineAttribute"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SpiritOfGodPowerIdentityQuality</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#ViolentWindQuality">
@@ -28953,9 +28960,15 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivineVirtue</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#SpiritOfGodPowerIdentityQuality">
+<owl:Class rdf:about="#DivineAffect">
   <rdfs:subClassOf rdf:resource="#DivineAttribute"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SpiritOfGodPowerIdentityQuality</rdfs:label>
+  <work:subClassOf rdf:resource="#DivineAttribute"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivineAffect</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ExpressDivineAffectDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExpressDivineAffectDisposition</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
@@ -41325,6 +41338,26 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <obo:RO_0000052 rdf:resource="#LawOfMoses"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExplanatoryRelationToGodMindDisposition</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#DivineKindness">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work3:type rdf:resource="#DivineAffect"/>
+  <obo:RO_0000052 rdf:resource="#God"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivineKindness</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#DivineCompassion">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work3:type rdf:resource="#DivineAffect"/>
+  <obo:RO_0000052 rdf:resource="#God"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivineCompassion</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ExpressDivineAffectDispositionInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:RO_0000052 rdf:resource="#SpiritOfGod"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExpressDivineAffectDispositionInstance</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
