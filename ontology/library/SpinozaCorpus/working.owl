@@ -147,6 +147,7 @@
   <work:subClassOf rdf:resource="#_:restriction_bearer_of_SubstanceIndivisibilityDisposition"/>
   <work:subClassOf rdf:resource="#Substance"/>
   <obo:RO_0000053 rdf:resource="#SubstanceFormalRealityQuality"/>
+  <work:subClassOf rdf:resource="#IndivisibilityQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Substance</rdfs:label>
 </owl:Class>
 
@@ -271,6 +272,7 @@
   <obo:RO_0000052 rdf:resource="#Substance"/>
   <work:subClassOf rdf:resource="#EternalExistenceQuality"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#IndivisibilityQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NecessityOfExistence</rdfs:label>
 </owl:Class>
 
