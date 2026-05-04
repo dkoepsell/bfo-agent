@@ -25825,6 +25825,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LovingGodProcess</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#MoralTeachingOfJesus">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MoralTeachingOfJesus</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#ClearAndDistinctSelfAndAffectKnowledgeQuality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="#SelfKnowledgeQuality"/>
@@ -29145,12 +29151,6 @@
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <obo:BFO_0000050 rdf:resource="#SalvationAchievementProcess"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LivingAccordingToMoralTeachings</rdfs:label>
-</owl:Class>
-
-<owl:Class rdf:about="#MoralTeachingOfJesus">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MoralTeachingOfJesus</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#LoveOfNeighborDisposition">
