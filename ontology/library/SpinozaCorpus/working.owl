@@ -20380,6 +20380,13 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DevotionHasLoveComponent</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#SelfKnowledgeThroughBodyAffectionsQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#InadequateKnowledgeOfBodyPartsQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SelfKnowledgeThroughBodyAffectionsQuality</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
@@ -30212,6 +30219,14 @@
   <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <obo:BFO_0000050 rdf:resource="#TheEthics"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HateDefinitionContent</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#SelfKnowledgeOnlyViaBodyAffectionsQualityInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work3:type rdf:resource="#SelfKnowledgeThroughBodyAffectionsQuality"/>
+  <obo:RO_0000052 rdf:resource="#Man"/>
+  <obo:RO_0000052 rdf:resource="#PerceptionOfExternalBodyViaBodyAffectionDispositionInstance"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SelfKnowledgeOnlyViaBodyAffectionsQualityInstance</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
