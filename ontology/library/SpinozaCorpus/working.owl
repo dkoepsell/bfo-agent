@@ -20733,6 +20733,7 @@
   <work:subClassOf rdf:resource="#Desire"/>
   <obo:BFO_0000054 rdf:resource="#AidingOtherMenProcess"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Nobility</rdfs:label>
 </owl:Class>
 
@@ -20756,6 +20757,18 @@
   <rdfs:subClassOf rdf:resource="#Tenacity"/>
   <work:subClassOf rdf:resource="#Tenacity"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Sobriety</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#Courtesy">
+  <rdfs:subClassOf rdf:resource="#Nobility"/>
+  <work:subClassOf rdf:resource="#Nobility"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Courtesy</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#Mercy">
+  <rdfs:subClassOf rdf:resource="#Nobility"/>
+  <work:subClassOf rdf:resource="#Nobility"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Mercy</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
