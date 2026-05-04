@@ -27725,6 +27725,37 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SufficientTimeInterval</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#LengthQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LengthQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#FlowSpeedQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FlowSpeedQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#WaterFlowProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WaterFlowProcess</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#EquilibrationProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EquilibrationProcess</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SufficientTimeTemporalRegion">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000008"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SufficientTimeTemporalRegion</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#FlowSpeedEqualityQuality">
+  <rdfs:subClassOf rdf:resource="#FlowSpeedQuality"/>
+  <work:subClassOf rdf:resource="#FlowSpeedQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FlowSpeedEqualityQuality</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -39478,6 +39509,42 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <obo:RO_0000052 rdf:resource="#WaterBody"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ContinuousForceRetentionDisposition</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#LongTube">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LongTube</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ShortTube">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ShortTube</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#LongTubeLengthQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#LongTube"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LongTubeLengthQuality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ShortTubeLengthQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#ShortTube"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ShortTubeLengthQuality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#LongTubeWaterFlowProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#LongTube"/>
+  <obo:BFO_0000050 rdf:resource="#EquilibrationProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LongTubeWaterFlowProcess</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ShortTubeWaterFlowProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#ShortTube"/>
+  <obo:BFO_0000050 rdf:resource="#EquilibrationProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ShortTubeWaterFlowProcess</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
