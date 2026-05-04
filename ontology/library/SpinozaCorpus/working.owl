@@ -27391,6 +27391,29 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UniqueNecessaryExistentDisposition</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#CompositeOfDifferingParts">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#Composite"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CompositeOfDifferingParts</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#CompositeOfAgreeingParts">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#Composite"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CompositeOfAgreeingParts</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#Composite">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Composite</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#NonCompositeQuality">
+  <rdfs:subClassOf rdf:resource="#Simple"/>
+  <work:subClassOf rdf:resource="#Simple"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NonCompositeQuality</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -30230,6 +30253,12 @@
   <work3:type rdf:resource="#UniquenessInNatureQuality"/>
   <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UniquenessOfGodQuality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#NecessaryExistenceExclusivityQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work3:type rdf:resource="#NecessityOfExistence"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NecessaryExistenceExclusivityQuality</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#ThinkingThingRole">
@@ -38923,12 +38952,6 @@
 <owl:NamedIndividual rdf:about="#PositiveCausalityPrinciple">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PositiveCausalityPrinciple</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#NecessaryExistenceExclusivityQuality">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <work3:type rdf:resource="#NecessityOfExistence"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NecessaryExistenceExclusivityQuality</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#NonDivineContingentExistenceQuality">
