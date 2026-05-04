@@ -1965,6 +1965,15 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EssenceQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#FalsityQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:subClassOf rdf:resource="#Falsity"/>
+  <work:subClassOf rdf:resource="#PrivationOfKnowledge"/>
+  <work:subClassOf rdf:resource="#Falsity"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FalsityQuality</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#EarliestWorksTemporalRole">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EarliestWorksTemporalRole</rdfs:label>
@@ -3029,15 +3038,6 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConfusedIdea</rdfs:label>
-</owl:Class>
-
-<owl:Class rdf:about="#FalsityQuality">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <rdfs:subClassOf rdf:resource="#Falsity"/>
-  <work:subClassOf rdf:resource="#PrivationOfKnowledge"/>
-  <work:subClassOf rdf:resource="#Falsity"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FalsityQuality</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#Falsity">
@@ -25797,6 +25797,52 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <obo:BFO_0000055 rdf:resource="#AdequateIdeaConstitutionDisposition"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindActingMostProcess</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#MentalSickness">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="#ContingentExistenceQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MentalSickness</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#Misfortune">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Misfortune</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ExcessiveLoveDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:BFO_0000054 rdf:resource="#ExcessiveLoveOriginationProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExcessiveLoveDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#MutableThing">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
+  <obo:RO_0000053 rdf:resource="#MutabilityQuality"/>
+  <obo:RO_0000053 rdf:resource="#ImperfectPossessibilityQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MutableThing</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#MutabilityQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MutabilityQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ImperfectPossessibilityQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ImperfectPossessibilityQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ExcessiveLoveOriginationProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#MutableThing"/>
+  <obo:BFO_0000051 rdf:resource="#Misfortune"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExcessiveLoveOriginationProcess</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
