@@ -27621,6 +27621,7 @@
   <obo:RO_0000053 rdf:resource="#GodHatesNoOneQuality"/>
   <obo:RO_0000056 rdf:resource="#UnderstandingGodAsCauseOfSadnessProcess"/>
   <obo:RO_0000053 rdf:resource="#GodSelfLoveQualityInstance"/>
+  <obo:RO_0000053 rdf:resource="#GodNecessityOfExistenceInstance"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">God</rdfs:label>
 </owl:NamedIndividual>
 
