@@ -19454,17 +19454,17 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Favor</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#FavorDirectednessTowardBenefactor">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FavorDirectednessTowardBenefactor</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#Benefactor">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
   <obo:BFO_0000054 rdf:resource="#BeneficialAct"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Benefactor</rdfs:label>
-</owl:Class>
-
-<owl:Class rdf:about="#Beneficiary">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Beneficiary</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#BeneficialAct">
@@ -19473,10 +19473,40 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BeneficialAct</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#FavorDirectednessTowardBenefactor">
+<owl:Class rdf:about="#Beneficiary">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Beneficiary</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#Indignation">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="#Hatred"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Indignation</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#Hatred">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FavorDirectednessTowardBenefactor</rdfs:label>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Hatred</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#EvilAction">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#Evildoer"/>
+  <obo:RO_0000057 rdf:resource="#HarmRecipient"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EvilAction</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#Evildoer">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Evildoer</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#HarmRecipient">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HarmRecipient</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
