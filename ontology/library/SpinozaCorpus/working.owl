@@ -26640,6 +26640,17 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConsciousnessBearer</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#FirstPrincipleRole">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <obo:BFO_0000054 rdf:resource="#DemonstrationProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FirstPrincipleRole</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DemonstrationProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DemonstrationProcess</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
