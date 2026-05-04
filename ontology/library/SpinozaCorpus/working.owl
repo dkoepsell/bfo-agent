@@ -16180,6 +16180,15 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WithinGodsPower</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#EffectFollowsFromNatureDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:RO_0000052 rdf:resource="#ExistingThing"/>
+  <obo:BFO_0000054 rdf:resource="#EffectProduction"/>
+  <work:subClassOf rdf:resource="#CausalReasonForExistence"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EffectFollowsFromNatureDisposition</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
@@ -19175,6 +19184,15 @@
   <work3:type rdf:resource="#DivineNecessityDetermination"/>
   <obo:RO_0000052 rdf:resource="#God"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivineNecessityDeterminationInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#PowerEssenceIdentityQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#God"/>
+  <work:subClassOf rdf:resource="#InfiniteEssenceQuality"/>
+  <work3:type rdf:resource="#InfiniteEssenceQuality"/>
+  <work:subClassOf rdf:resource="#EssentialExistenceQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PowerEssenceIdentityQuality</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#IdeaOfGod">
@@ -23104,15 +23122,6 @@
   <obo:RO_0000052 rdf:resource="#God"/>
   <obo:BFO_0000050 rdf:resource="#AbsoluteInfinity"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodInfinityPositivenessQuality</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#PowerEssenceIdentityQuality">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <obo:RO_0000052 rdf:resource="#God"/>
-  <work:subClassOf rdf:resource="#InfiniteEssenceQuality"/>
-  <work3:type rdf:resource="#InfiniteEssenceQuality"/>
-  <work:subClassOf rdf:resource="#EssentialExistenceQuality"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PowerEssenceIdentityQuality</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#GodNonTransformabilityDisposition">
