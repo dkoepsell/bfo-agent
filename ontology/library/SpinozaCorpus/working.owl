@@ -8863,6 +8863,13 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivineLove</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#DivineLoveQuality">
+  <rdfs:subClassOf rdf:resource="#DivineAttribute"/>
+  <work:subClassOf rdf:resource="#DivineAttribute"/>
+  <work:subClassOf rdf:resource="#VirtueQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivineLoveClass</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#ImmanenceInGodQuality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
@@ -26233,17 +26240,29 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BlessednessConsistsInLoveOfGodRelation</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#DivineLoveQuality">
-  <rdfs:subClassOf rdf:resource="#DivineAttribute"/>
-  <work:subClassOf rdf:resource="#DivineAttribute"/>
-  <work:subClassOf rdf:resource="#VirtueQuality"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivineLoveClass</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#MindActingQuality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindActingQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DivineLoveEnjoymentProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000055 rdf:resource="#DivineLove"/>
+  <obo:BFO_0000055 rdf:resource="#DivineLoveEnhancesUnderstandingDisposition"/>
+  <obo:BFO_0000051 rdf:resource="#UnderstandingProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivineLoveEnjoymentProcess</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#UnderstandingQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UnderstandingQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DivineLoveEnhancesUnderstandingDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivineLoveEnhancesUnderstandingDisposition</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
@@ -27202,6 +27221,12 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IncorporealUnionEffectMagnitude"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IncorporealGreaterEffectQuality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#VirtueItself">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work3:type rdf:resource="#VirtueQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">VirtueItself</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#GreatestGood">
@@ -37380,12 +37405,6 @@
   <work3:type rdf:resource="#Blessedness"/>
   <consistsIn rdf:resource="#LoveOfGodInstance"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BlessednessConsistsInLoveOfGodQuality</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#VirtueItself">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <work3:type rdf:resource="#VirtueQuality"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">VirtueItself</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#DivineLoveIsVirtueWhenMindActsAxiom">
