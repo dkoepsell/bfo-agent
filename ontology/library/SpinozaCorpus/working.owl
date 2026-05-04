@@ -3857,6 +3857,14 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LoveRealizationProcess</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#IdeaOfExternalCause">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IdeaOfExternalCause</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#Perception">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <work:subClassOf rdf:resource="#IdeaFormationProcess"/>
@@ -5826,6 +5834,8 @@
   <work:subClassOf rdf:resource="#Affect"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:subClassOf rdf:resource="#Affect"/>
+  <rdfs:subClassOf rdf:resource="#Sadness"/>
+  <work:subClassOf rdf:resource="#HateAccompaniedByIdeaOfExternalCauseQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Hate</rdfs:label>
 </owl:Class>
 
@@ -19466,14 +19476,6 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AccompanyingIdeaOfExternalCause</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#IdeaOfExternalCause">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IdeaOfExternalCause</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#AccompanyingIdeaOfExternalCauseRelation">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
@@ -20920,6 +20922,12 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <obo:RO_0000052 rdf:resource="#DisdainImagination"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MinimalMindEngagementQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#HateAccompaniedByIdeaOfExternalCauseQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HateAccompaniedByIdeaOfExternalCauseQuality</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
