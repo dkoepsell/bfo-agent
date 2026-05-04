@@ -6516,6 +6516,11 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TranscendentalAffectionOfBeing</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#TranscendentalTermIdea">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TranscendentalTermIdea</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#TruthManifestsItselfDisposition">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
@@ -17948,9 +17953,33 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConfusedInHighestDegreeQuality</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#TranscendentalTermIdea">
+<owl:Class rdf:about="#UniversalNotion">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TranscendentalTermIdea</rdfs:label>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UniversalNotion</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#OverwhelmingOfBodyBySimilarImages">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000055 rdf:resource="#UniversalNotionFormationDisposition"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OverwhelmingOfBodyBySimilarImages</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SimilarBodyAffection">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000050 rdf:resource="#OverwhelmingOfBodyBySimilarImages"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SimilarBodyAffection</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#UniversalNotionFormationDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:BFO_0000054 rdf:resource="#OverwhelmingOfBodyBySimilarImages"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UniversalNotionFormationDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ConfusedImageQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConfusedImageQuality</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
@@ -27095,6 +27124,18 @@
   <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <obo:BFO_0000050 rdf:resource="#TheEthics"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CommonNotionAxiom</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ManUniversalNotion">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work3:type rdf:resource="#UniversalNotion"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Man</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#HorseUniversalNotion">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work3:type rdf:resource="#UniversalNotion"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Horse</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
