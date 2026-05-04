@@ -26015,6 +26015,13 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FormalCausation</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#EternityIsEssenceOfGodQuality">
+  <rdfs:subClassOf rdf:resource="#EssentialExistenceQuality"/>
+  <work:subClassOf rdf:resource="#EssentialExistenceQuality"/>
+  <work:subClassOf rdf:resource="#SubstanceExistenceEternalityQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EternityIsEssenceOfGodQuality</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
@@ -28067,6 +28074,8 @@
   <work3:type rdf:resource="#EssentialExistenceQuality"/>
   <work3:type rdf:resource="#MannerOfExistingQuality"/>
   <work:subClassOf rdf:resource="#EssentialExistenceQuality"/>
+  <work3:type rdf:resource="#EternityIsEssenceOfGodQuality"/>
+  <obo:BFO_0000050 rdf:resource="#NecessityOfExistence"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Eternity</rdfs:label>
 </owl:NamedIndividual>
 
@@ -29649,6 +29658,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExtensionAttribute</rdfs:label>
 </owl:NamedIndividual>
 
+<owl:NamedIndividual rdf:about="#KnowledgeOfGodNecessitatedByEternalKnowledgeDispositionInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:RO_0000052 rdf:resource="#FormalBeingOfHumanMind"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">KnowledgeOfGodNecessitatedByEternalKnowledgeDispositionInstance</rdfs:label>
+</owl:NamedIndividual>
+
 <owl:NamedIndividual rdf:about="#UnderstandingByThirdKindProcess">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <obo:BFO_0000055 rdf:resource="#ThirdKindOfKnowledgeInstance"/>
@@ -29759,6 +29774,12 @@
   <work3:type rdf:resource="#GreatestSatisfactionQuality"/>
   <obo:RO_0000052 rdf:resource="#FormalBeingOfHumanMind"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GreatestSatisfactionQualityInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#EssenceOfBodyUnderEternityQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#PartOfExtendedSubstance"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EssenceOfBodyUnderEternityQuality</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#IdealParticipationRelation">
@@ -36827,12 +36848,6 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GreatestVirtueOfMindQualityInstance</rdfs:label>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#EssenceOfBodyUnderEternityQuality">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <obo:RO_0000052 rdf:resource="#PartOfExtendedSubstance"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EssenceOfBodyUnderEternityQuality</rdfs:label>
-</owl:NamedIndividual>
-
 <owl:NamedIndividual rdf:about="#SubSpecieAeternitatisQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <obo:RO_0000052 rdf:resource="#SubSpecieAeternitatisConceptionProcess"/>
@@ -36845,12 +36860,6 @@
   <obo:RO_0000052 rdf:resource="#FormalBeingOfHumanMind"/>
   <work:subClassOf rdf:resource="#EternalIdeaOfBodyPertainsToMindEssenceQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">KnowledgeOfSelfAndBodyUnderEternityQuality</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#KnowledgeOfGodNecessitatedByEternalKnowledgeDispositionInstance">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <obo:RO_0000052 rdf:resource="#FormalBeingOfHumanMind"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">KnowledgeOfGodNecessitatedByEternalKnowledgeDispositionInstance</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#MindEternalityQuality">
