@@ -16897,6 +16897,32 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Slowness</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#MotionOrRestDetermination">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MotionOrRestDetermination</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DeterminingBody">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <obo:BFO_0000054 rdf:resource="#MotionOrRestDetermination"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DeterminingBody</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DeterminedBody">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <obo:BFO_0000054 rdf:resource="#MotionOrRestDetermination"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DeterminedBody</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#InfiniteCausalDependenceQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">InfiniteCausalDependenceQuality</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
@@ -25638,6 +25664,13 @@
   <work3:type rdf:resource="#AttributeOfSubstance"/>
   <obo:RO_0000052 rdf:resource="#Body"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BodiesShareExtensionAttributeQuality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#InfiniteMotionRestCausalChain">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work3:type rdf:resource="#MotionOrRestDetermination"/>
+  <obo:RO_0000057 rdf:resource="#Body"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">InfiniteMotionRestCausalChain</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
