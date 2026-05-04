@@ -17309,6 +17309,14 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BodyMotionDisposition</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#BodyMovingExternalBodiesProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#HumanBody"/>
+  <obo:RO_0000057 rdf:resource="#ExternalBody"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BodyMovingExternalBodiesProcess</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#ExternalBodyDispositionCapacity">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
@@ -17317,12 +17325,25 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExternalBodyDispositionCapacity</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#BodyMovingExternalBodiesProcess">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <obo:RO_0000057 rdf:resource="#HumanBody"/>
-  <obo:RO_0000057 rdf:resource="#ExternalBody"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BodyMovingExternalBodiesProcess</rdfs:label>
+<owl:Class rdf:about="#PerceptiveCapacity">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:RO_0000052 rdf:resource="#HumanMind"/>
+  <obo:BFO_0000054 rdf:resource="#PerceptionProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PerceptiveCapacity</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#BodyDisposability">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:RO_0000052 rdf:resource="#HumanBody"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BodyDisposability</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#MindPerceptiveCapacityCovaresWithBodyDispositionQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#HumanMind"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindPerceptiveCapacityCovaresWithBodyDispositionQuality</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
