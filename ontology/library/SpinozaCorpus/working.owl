@@ -2849,6 +2849,21 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FalsityQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#Falsity">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#PropositionalAct"/>
+  <work:subClassOf rdf:resource="#PrivationOfKnowledge"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Falsity</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PrivationOfKnowledge">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#InadequateIdea"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PrivationOfKnowledge</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#EternalEssenceNature">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="#EternalInfiniteEssence"/>
@@ -2869,19 +2884,9 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FalseIdea</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#Falsity">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <obo:RO_0000052 rdf:resource="#PropositionalAct"/>
-  <work:subClassOf rdf:resource="#PrivationOfKnowledge"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Falsity</rdfs:label>
-</owl:Class>
-
-<owl:Class rdf:about="#PrivationOfKnowledge">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <obo:RO_0000052 rdf:resource="#InadequateIdea"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PrivationOfKnowledge</rdfs:label>
+<owl:Class rdf:about="#PropositionalAct">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PropositionalAct</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#FictitiousIdea">
@@ -2923,11 +2928,6 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IdeaEmendationProcess</rdfs:label>
-</owl:Class>
-
-<owl:Class rdf:about="#PropositionalAct">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PropositionalAct</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#TrueThought">
@@ -22040,6 +22040,37 @@
 <owl:Class rdf:about="#PresentConstitutionOfHumanBody">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PresentConstitutionOfHumanBody</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#BeingActedOn">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:BFO_0000054 rdf:resource="#PassiveProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BeingActedOn</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PartOfNatureQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PartOfNatureQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ConceivableThroughOthers">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConceivableThroughOthers</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PassiveProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PassiveProcess</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#FinitePartOfNature">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
+  <obo:BFO_0000050 rdf:resource="#WholeOfNature"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FinitePartOfNature</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
