@@ -11509,6 +11509,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Understanding</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#PrescribingLawProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#WisePerson"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PrescribingLawProcess</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#Affirming">
   <rdfs:subClassOf rdf:resource="#ModeOfThinking"/>
   <work:subClassOf rdf:resource="#ModeOfThinking"/>
@@ -30888,6 +30894,8 @@
 
 <owl:Class rdf:about="#WisePerson">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WisePerson</rdfs:label>
 </owl:Class>
 
@@ -30897,10 +30905,17 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PrescribedLaw</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#PrescribingLawProcess">
+<owl:Class rdf:about="#PeacefulHeartQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PeacefulHeartQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#WiseLiving">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <obo:RO_0000057 rdf:resource="#WisePerson"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PrescribingLawProcess</rdfs:label>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000055 rdf:resource="#WisePerson"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WiseLiving</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
