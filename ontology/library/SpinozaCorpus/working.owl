@@ -20018,6 +20018,30 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HatedObject</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#Vengeance">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Vengeance</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#EvilDoneToBearer">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EvilDoneToBearer</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ReturnOfEvilProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000050 rdf:resource="#EvilDoneToBearer"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ReturnOfEvilProcess</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#VengeanceDisposition">
+  <rdfs:subClassOf rdf:resource="#Vengeance"/>
+  <work:subClassOf rdf:resource="#Vengeance"/>
+  <obo:BFO_0000054 rdf:resource="#ReturnOfEvilProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">VengeanceDisposition</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
