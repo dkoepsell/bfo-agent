@@ -15525,6 +15525,24 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ModalDistinctionOnlyQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#DivineNecessity">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivineNecessity</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#InfinitelyManyThings">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">InfinitelyManyThings</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#InfinitelyManyModes">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">InfinitelyManyModes</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
@@ -15763,6 +15781,7 @@
   <work3:type rdf:resource="#NonContradictionInNatureQuality"/>
   <work3:type rdf:resource="#ContradictionExclusionDisposition"/>
   <obo:RO_0000053 rdf:resource="#GodUniquenessOfSubstanceQuality"/>
+  <obo:RO_0000053 rdf:resource="#DivineNecessityInstance"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">God</rdfs:label>
 </owl:NamedIndividual>
 
@@ -18281,6 +18300,12 @@
   <work3:type rdf:resource="#DivineAttribute"/>
   <work3:type rdf:resource="#InfiniteInItsKind"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExtensionAttribute</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#QuantityAsUnderstoodByIntellect">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work3:type rdf:resource="#Quantity"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">QuantityAsUnderstoodByIntellect</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#MidYear1665">
@@ -23138,12 +23163,6 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExtendedThingIsAttributeOrAffectionDisjunction</rdfs:label>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#QuantityAsUnderstoodByIntellect">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <work3:type rdf:resource="#Quantity"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">QuantityAsUnderstoodByIntellect</rdfs:label>
-</owl:NamedIndividual>
-
 <owl:NamedIndividual rdf:about="#InfinityOfQuantityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <obo:RO_0000052 rdf:resource="#QuantityAsUnderstoodByIntellect"/>
@@ -23160,6 +23179,20 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <obo:RO_0000052 rdf:resource="#QuantityAsUnderstoodByIntellect"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IndivisibilityOfQuantityQuality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#DivineNecessityInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:RO_0000052 rdf:resource="#God"/>
+  <obo:BFO_0000054 rdf:resource="#FollowingFromDivineNecessityProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivineNecessityInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#FollowingFromDivineNecessityProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000055 rdf:resource="#DivineNecessityInstance"/>
+  <obo:RO_0000057 rdf:resource="#God"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FollowingFromDivineNecessityProcess</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
