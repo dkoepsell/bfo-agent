@@ -28770,6 +28770,16 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Decision</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#RegionOfWorld">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000029"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RegionOfWorld</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SideOfThing">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000141"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SideOfThing</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -41014,6 +41024,7 @@
   <rdfs:label rdf:resource="#ruagh"/>
   <core:definition rdf:resource="#A term (ruagh) denoting the mind itself or soul."/>
   <core:closeMatch rdf:resource="#Thought"/>
+  <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Ruagh</rdfs:label>
 </owl:NamedIndividual>
 
