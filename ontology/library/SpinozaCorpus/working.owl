@@ -14822,6 +14822,7 @@
 <owl:Class rdf:about="#ConceivableThroughAnother">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="#Mode"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConceivableThroughAnother</rdfs:label>
 </owl:Class>
 
@@ -14872,6 +14873,19 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">InAnother</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#NotConceivableThroughAnother">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="#ConceptionNecessityConstraint"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NotConceivableThroughAnother</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ConceptionNecessityConstraint">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConceptionNecessityConstraint</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#God">
