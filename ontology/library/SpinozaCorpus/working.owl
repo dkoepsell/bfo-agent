@@ -32122,6 +32122,21 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MiracleContraryToNatureImpliesDoubtDisposition</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#NaturalCausation">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NaturalCausation</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DivinePowerAndWill">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivinePowerAndWill</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#NaturalCausationGroundedInDivinePowerQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NaturalCausationGroundedInDivinePowerQuality</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -32523,6 +32538,8 @@
   <obo:BFO_0000051 rdf:resource="#EssenceCausationProcess"/>
   <obo:BFO_0000051 rdf:resource="#FormalExistenceNecessitationProcess"/>
   <obo:BFO_0000055 rdf:resource="#GodActivityIdentityWithNatureLawsQuality"/>
+  <work:subClassOf rdf:resource="#NaturalCausation"/>
+  <work3:type rdf:resource="#NaturalCausation"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodCausesAllThingsProcess</rdfs:label>
 </owl:NamedIndividual>
 
@@ -46375,6 +46392,19 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MiracleContraryToNatureConception</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#GodDivinePowerAndWillInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:RO_0000052 rdf:resource="#God"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodDivinePowerAndWillInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#NaturalCausationRealizesGodsPowerProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000055 rdf:resource="#GodDivinePowerAndWillInstance"/>
+  <work3:type rdf:resource="#NaturalCausation"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NaturalCausationRealizesGodsPowerProcess</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
