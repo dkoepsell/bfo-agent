@@ -140,6 +140,7 @@
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000051"/>
   <obo:BFO_0000051 rdf:resource="#Attribute"/>
   <work:subClassOf rdf:resource="#SubstanceExistenceFromNatureAloneQuality"/>
+  <work:subClassOf rdf:resource="#ExistenceIsEssenceIdentityQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Substance</rdfs:label>
 </owl:Class>
 
@@ -15322,6 +15323,13 @@
   <work:subClassOf rdf:resource="#SubstanceProductionConstraint"/>
   <work:subClassOf rdf:resource="#Substance"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SubstanceExternalCausalProductionIncapacity</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ExistenceIsEssenceIdentityQuality">
+  <rdfs:subClassOf rdf:resource="#EssentialExistenceQuality"/>
+  <work:subClassOf rdf:resource="#EssentialExistenceQuality"/>
+  <work:subClassOf rdf:resource="#SubstanceExistenceFromNatureAloneQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExistenceIsEssenceIdentityQuality</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
