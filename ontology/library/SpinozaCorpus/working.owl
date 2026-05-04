@@ -283,6 +283,7 @@
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="#SelfLimitationIncapacity"/>
   <work:subClassOf rdf:resource="#CausalReasonForExistence"/>
+  <work:subClassOf rdf:resource="#EssenceContainsExistenceDisposition"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CausaSui</rdfs:label>
 </owl:Class>
 
