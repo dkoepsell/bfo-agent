@@ -1232,6 +1232,9 @@
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <obo:BFO_0000051 rdf:resource="#ImaginationObjectExistenceDisposition"/>
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work:subClassOf rdf:resource="#Idea"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Imagination</rdfs:label>
 </owl:Class>
 
@@ -2837,6 +2840,15 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">InadequateIdea</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#FalsityQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:subClassOf rdf:resource="#Falsity"/>
+  <work:subClassOf rdf:resource="#PrivationOfKnowledge"/>
+  <work:subClassOf rdf:resource="#Falsity"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FalsityQuality</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#EternalEssenceNature">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="#EternalInfiniteEssence"/>
@@ -2857,13 +2869,19 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FalseIdea</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#FalsityQuality">
+<owl:Class rdf:about="#Falsity">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <rdfs:subClassOf rdf:resource="#Falsity"/>
+  <obo:RO_0000052 rdf:resource="#PropositionalAct"/>
   <work:subClassOf rdf:resource="#PrivationOfKnowledge"/>
-  <work:subClassOf rdf:resource="#Falsity"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FalsityQuality</rdfs:label>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Falsity</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PrivationOfKnowledge">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#InadequateIdea"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PrivationOfKnowledge</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#FictitiousIdea">
@@ -2907,24 +2925,9 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IdeaEmendationProcess</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#Falsity">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <obo:RO_0000052 rdf:resource="#PropositionalAct"/>
-  <work:subClassOf rdf:resource="#PrivationOfKnowledge"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Falsity</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#PropositionalAct">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PropositionalAct</rdfs:label>
-</owl:Class>
-
-<owl:Class rdf:about="#PrivationOfKnowledge">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <obo:RO_0000052 rdf:resource="#InadequateIdea"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PrivationOfKnowledge</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#TrueThought">
@@ -22020,6 +22023,23 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SurpassingPowerRelation</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#IndicationOfHumanBodyConstitution">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#Imagination"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IndicationOfHumanBodyConstitution</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#IndicationOfExternalBodyNature">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#Imagination"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IndicationOfExternalBodyNature</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PresentConstitutionOfHumanBody">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PresentConstitutionOfHumanBody</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
