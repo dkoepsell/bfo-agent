@@ -23866,6 +23866,36 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LoveOfEsteemArisesFromReasonDisposition</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#DesireToLiveHonorably">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DesireToLiveHonorably</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#HonorableLifeQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HonorableLifeQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ShameIndicatesDesireRelation">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="#Shame"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ShameIndicatesDesireRelation</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ConditionalGoodness">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConditionalGoodness</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#NotAVirtueQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NotAVirtueQuality</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
