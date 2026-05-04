@@ -5811,6 +5811,7 @@
   <obo:RO_0000057 rdf:resource="#BodyAffectionProcess"/>
   <obo:BFO_0000051 rdf:resource="#BodyConstituent"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000050 some working:Human"/>
+  <obo:BFO_0000051 rdf:resource="#BodyPart"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HumanBody</rdfs:label>
 </owl:Class>
 
@@ -7205,6 +7206,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NonExcessivenessCondition</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#Goodness">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Goodness</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#LoveOfEsteem">
   <rdfs:subClassOf rdf:resource="#Joy"/>
   <work:subClassOf rdf:resource="#Joy"/>
@@ -7344,12 +7351,6 @@
   <obo:RO_0000057 rdf:resource="#Hate"/>
   <obo:RO_0000057 rdf:resource="#Sadness"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PassionFormationProcess</rdfs:label>
-</owl:Class>
-
-<owl:Class rdf:about="#Goodness">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Goodness</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#Truth">
@@ -9292,6 +9293,7 @@
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
   <work:subClassOf rdf:resource="#PartOfExtendedSubstance"/>
   <obo:BFO_0000050 rdf:resource="#HumanBody"/>
+  <work:subClassOf rdf:resource="#HumanBody"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BodyPart</rdfs:label>
 </owl:Class>
 
@@ -23610,6 +23612,12 @@
   <rdfs:subClassOf rdf:resource="#Joy"/>
   <work:subClassOf rdf:resource="#Joy"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">JoyMagnitudeProportionalityToPerfectionQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DifferentNaturesQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#BodyPart"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DifferentNaturesQuality</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
