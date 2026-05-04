@@ -2905,6 +2905,8 @@
   <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <obo:RO_0000052 rdf:resource="#ThinkingAttribute"/>
   <work2:equivalentClass rdf:resource="#Intellect"/>
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Will</rdfs:label>
 </owl:Class>
 
@@ -18467,6 +18469,12 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConsideredInItselfQualification</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#WillPredicatedOfIdeasQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <RO_0000052 rdf:resource="#Will"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WillPredicatedOfIdeasQuality</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
