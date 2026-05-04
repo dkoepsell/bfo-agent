@@ -29776,6 +29776,7 @@
 <owl:Class rdf:about="#PowerOfUnderstanding">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="#RevelationAdaptedToRecipientCapacityDisposition"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PowerOfUnderstanding</rdfs:label>
 </owl:Class>
 
@@ -29964,6 +29965,18 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Mortal</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#AccommodationToUnderstanding">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AccommodationToUnderstanding</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#OpinionsQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OpinionsQuality</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
@@ -30301,6 +30314,7 @@
   <obo:RO_0000053 rdf:resource="#GodForeknowledgeDispositionInstance"/>
   <obo:RO_0000053 rdf:resource="#EternalExistenceQuality"/>
   <obo:RO_0000053 rdf:resource="#UniquenessInPowerQuality"/>
+  <obo:RO_0000056 rdf:resource="#GodRevelationAccommodationProcess"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">God</rdfs:label>
 </owl:NamedIndividual>
 
@@ -43097,6 +43111,18 @@
   <work3:type rdf:resource="#IntellectSupremacyOverOtherGoodsQuality"/>
   <obo:RO_0000052 rdf:resource="#HumanIntellect"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IntellectExcellenceQuality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ProphetRoleInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ProphetRole</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#GodRevelationAccommodationProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#ProphetRoleInstance"/>
+  <obo:BFO_0000055 rdf:resource="#AccommodationToUnderstanding"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodRevelationAccommodationProcess</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
