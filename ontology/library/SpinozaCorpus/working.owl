@@ -6607,6 +6607,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Repentance</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#RepentanceAccompaniedByInternalCauseIdea">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RepentanceAccompaniedByInternalCauseIdea</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#InjuriousEvil">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
@@ -19737,10 +19743,28 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SelfEsteemAccompanimentRelation</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#RepentanceAccompaniedByInternalCauseIdea">
+<owl:Class rdf:about="#UniversalApprovalStriving">
+  <rdfs:subClassOf rdf:resource="#Ambition"/>
+  <work:subClassOf rdf:resource="#Ambition"/>
+  <obo:BFO_0000054 rdf:resource="#ApprovalOfAffects"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UniversalApprovalStriving</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ApprovalOfAffects">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#LoveAffect"/>
+  <obo:RO_0000057 rdf:resource="#HateAffect"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ApprovalOfAffects</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#LoveAffect">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RepentanceAccompaniedByInternalCauseIdea</rdfs:label>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LoveAffect</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#HateAffect">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HateAffect</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
