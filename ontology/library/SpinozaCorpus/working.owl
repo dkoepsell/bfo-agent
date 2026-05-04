@@ -1286,6 +1286,7 @@
   <obo:RO_0000057 rdf:resource="#MindBodyComplex"/>
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#TemporalInvarianceQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Affect</rdfs:label>
 </owl:Class>
 
@@ -14092,6 +14093,7 @@
 <owl:Class rdf:about="#BodyConstitution">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#TemporalInvarianceQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BodyConstitution</rdfs:label>
 </owl:Class>
 
@@ -19280,6 +19282,12 @@
   <rdfs:subClassOf rdf:resource="#Affect"/>
   <work:subClassOf rdf:resource="#Affect"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AffectEqualityAcrossTemporalImagesDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#TemporalInvarianceQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TemporalInvarianceQuality</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
