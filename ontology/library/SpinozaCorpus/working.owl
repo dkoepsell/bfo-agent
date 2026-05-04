@@ -6836,6 +6836,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OppositeAffectRelation</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#RemorseAccompanimentRelation">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RemorseAccompanimentRelation</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#InjuriousEvil">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
@@ -19689,6 +19695,9 @@
   <work:subClassOf rdf:resource="#ImitationOfAffect"/>
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:subClassOf rdf:resource="#Sadness"/>
+  <work:subClassOf rdf:resource="#Sadness"/>
+  <work:subClassOf rdf:resource="#PityAccompaniedByIdeaRelation"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Pity</rdfs:label>
 </owl:Class>
 
@@ -21028,10 +21037,16 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IdeaOfPastThingWorseOutcome</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#RemorseAccompanimentRelation">
+<owl:Class rdf:about="#EvilHappenedToAnotherLikeUs">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EvilHappenedToAnotherLikeUs</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PityAccompaniedByIdeaRelation">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RemorseAccompanimentRelation</rdfs:label>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PityAccompaniedByIdeaRelation</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
