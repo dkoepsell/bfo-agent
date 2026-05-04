@@ -4526,6 +4526,11 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ComparativeNotion</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#ModeOfThinkingNotion">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ModeOfThinkingNotion</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#KnowledgeOrPerception">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
@@ -21937,11 +21942,6 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CausalNecessitationOfNatureConstraintQuality</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#ModeOfThinkingNotion">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ModeOfThinkingNotion</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#GoodNotion">
   <rdfs:subClassOf rdf:resource="#GoodAndEvil"/>
   <work:subClassOf rdf:resource="#GoodAndEvil"/>
@@ -21969,6 +21969,18 @@
   <rdfs:subClassOf rdf:resource="#RealityOrEssenceQuality"/>
   <work:subClassOf rdf:resource="#EssentialExistenceQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PerfectionRealityEssenceIdentityQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DurationIndeterminacyFromEssenceQuality">
+  <rdfs:subClassOf rdf:resource="#Duration"/>
+  <work:subClassOf rdf:resource="#Duration"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DurationIndeterminacyFromEssenceQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#EssenceCannotDetermineDurationDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EssenceCannotDetermineDurationDisposition</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
