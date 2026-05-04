@@ -26748,6 +26748,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">StrivingAndDesireNecessitationProcess</rdfs:label>
 </owl:NamedIndividual>
 
+<owl:NamedIndividual rdf:about="#IntellectPerfectionQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#Intellect"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IntellectPerfectionQuality</rdfs:label>
+</owl:NamedIndividual>
+
 <owl:NamedIndividual rdf:about="#UniquenessInNatureQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <obo:RO_0000052 rdf:resource="#ThinkingThing"/>
@@ -26808,6 +26814,12 @@
 <owl:NamedIndividual rdf:about="#CommonOrderOfNature">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CommonOrderOfNature</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ImaginationPerfectionQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#Imagination"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ImaginationPerfectionQuality</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#FormalBeingOfHumanMind">
@@ -37330,22 +37342,24 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindUnderstandingQuality</rdfs:label>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#IntellectPerfectionQuality">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <obo:RO_0000052 rdf:resource="#Intellect"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IntellectPerfectionQuality</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#ImaginationPerfectionQuality">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <obo:RO_0000052 rdf:resource="#Imagination"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ImaginationPerfectionQuality</rdfs:label>
-</owl:NamedIndividual>
-
 <owl:NamedIndividual rdf:about="#GreaterPerfectionRelation">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <obo:RO_0000052 rdf:resource="#Intellect"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GreaterPerfectionRelation</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#BlessednessConsistsInLoveOfGodQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work3:type rdf:resource="#Blessedness"/>
+  <consistsIn rdf:resource="#LoveOfGodInstance"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BlessednessConsistsInLoveOfGodQuality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#LoveOfGodInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work3:type rdf:resource="#LoveOfGod"/>
+  <RO_0000052 rdf:resource="#God"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LoveOfGodInstance</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
