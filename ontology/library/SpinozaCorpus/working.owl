@@ -31695,6 +31695,32 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConcernedWithCorporealAdvantageRelation</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#ChristianCeremony">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ChristianCeremony</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ExternalSign">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExternalSign</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ExternalSignQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExternalSignQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SignOfRelation">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="#ChristianCeremony"/>
+  <obo:RO_0000052 rdf:resource="#ChristianCeremony"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SignOfRelation</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -45641,6 +45667,12 @@
   <obo:RO_0000052 rdf:resource="#LawOfMoses"/>
   <work3:type rdf:resource="#ConcernedWithCorporealAdvantageRelation"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LawOfMosesCorporealFocusDisposition</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#UniversalChurch">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
+  <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UniversalChurch</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
