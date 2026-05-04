@@ -21655,6 +21655,11 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DesireForEating</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#EatingProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EatingProcess</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#LoveOfEating">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="#Gluttony"/>
@@ -21662,9 +21667,27 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LoveOfEating</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#EatingProcess">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EatingProcess</rdfs:label>
+<owl:Class rdf:about="#Drunkenness">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:BFO_0000051 rdf:resource="#ImmoderateDesireForDrinking"/>
+  <obo:BFO_0000051 rdf:resource="#ImmoderateDesireForDrinkingLove"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Drunkenness</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ImmoderateDesire">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ImmoderateDesire</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ImmoderateDesireForDrinking">
+  <rdfs:subClassOf rdf:resource="#ImmoderateDesire"/>
+  <work:subClassOf rdf:resource="#Drunkenness"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ImmoderateDesireForDrinking</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ImmoderateDesireForDrinkingLove">
+  <rdfs:subClassOf rdf:resource="#ImmoderateDesire"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ImmoderateDesireForDrinkingLove</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
