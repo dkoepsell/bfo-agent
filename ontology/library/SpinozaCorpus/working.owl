@@ -38,6 +38,7 @@
   <work:subClassOf rdf:resource="#AttributeSelfConceptionQuality"/>
   <work:subClassOf rdf:resource="#Attribute"/>
   <work:subClassOf rdf:resource="#AttributeExpressesEternalInfiniteEssenceRelation"/>
+  <work:subClassOf rdf:resource="#_:restriction_bearer_of_DivineAttributeEternalityQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivinAttribute</rdfs:label>
 </owl:Class>
 
@@ -4326,6 +4327,7 @@
   <rdfs:subClassOf rdf:resource="#EternalImmutabilityQuality"/>
   <work:subClassOf rdf:resource="#EternalImmutabilityQuality"/>
   <obo:RO_0000052 rdf:resource="#God"/>
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EternalityQuality</rdfs:label>
 </owl:Class>
 
@@ -15664,6 +15666,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExistenceDifferenceQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#DivineAttributeEternalityQuality">
+  <rdfs:subClassOf rdf:resource="#EternalityQuality"/>
+  <work:subClassOf rdf:resource="#EternalityQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivineAttributeEternalityQuality</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
@@ -18123,6 +18131,24 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IncompatibilityOfOmniscienceWithFeigning</rdfs:label>
 </owl:NamedIndividual>
 
+<owl:NamedIndividual rdf:about="#GodImmanentCauseRoleRealization">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#God"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodImmanentCauseRoleRealization</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ImmanentCauseFreestQualityInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#GodImmanentCauseRole"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ImmanentCauseFreestQualityInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ImmanentCauseSuitabilityQualityInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#GodImmanentCauseRole"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ImmanentCauseSuitabilityQualityInstance</rdfs:label>
+</owl:NamedIndividual>
+
 <owl:NamedIndividual rdf:about="#MotionUniversalModeRole">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
   <obo:RO_0000052 rdf:resource="#Motion"/>
@@ -18237,24 +18263,6 @@
   <work3:type rdf:resource="#EternalTruth"/>
   <obo:RO_0000052 rdf:resource="#God"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EternalTruthOfGodExistence</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#GodImmanentCauseRoleRealization">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <obo:RO_0000057 rdf:resource="#God"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodImmanentCauseRoleRealization</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#ImmanentCauseFreestQualityInstance">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <obo:RO_0000052 rdf:resource="#GodImmanentCauseRole"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ImmanentCauseFreestQualityInstance</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#ImmanentCauseSuitabilityQualityInstance">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <obo:RO_0000052 rdf:resource="#GodImmanentCauseRole"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ImmanentCauseSuitabilityQualityInstance</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#Nature">
