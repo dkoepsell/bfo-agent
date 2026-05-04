@@ -15458,6 +15458,24 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SubstanceCreationByAnotherSubstanceIncapacity</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#InfiniteQuantity">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#SubstanceInfinityQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">InfiniteQuantity</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#NonMeasurabilityQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#InfiniteQuantity"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NonMeasurabilityQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#NonComposedOfFinitePartsQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#InfiniteQuantity"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NonComposedOfFinitePartsQuality</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
@@ -18185,6 +18203,15 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExtendedSubstanceCausalRoleInSensation</rdfs:label>
 </owl:NamedIndividual>
 
+<owl:NamedIndividual rdf:about="#ExtensionAttribute">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work3:type rdf:resource="#ChiefAttributeOfSubstance"/>
+  <obo:RO_0000052 rdf:resource="#God"/>
+  <work3:type rdf:resource="#DivineAttribute"/>
+  <work3:type rdf:resource="#InfiniteInItsKind"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExtensionAttribute</rdfs:label>
+</owl:NamedIndividual>
+
 <owl:NamedIndividual rdf:about="#MidYear1665">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000008"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MidYear1665</rdfs:label>
@@ -20123,15 +20150,6 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#NecessaryIdea"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExistenceBelongsToEssenceOfSubstance</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#ExtensionAttribute">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <work3:type rdf:resource="#ChiefAttributeOfSubstance"/>
-  <obo:RO_0000052 rdf:resource="#God"/>
-  <work3:type rdf:resource="#DivineAttribute"/>
-  <work3:type rdf:resource="#InfiniteInItsKind"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExtensionAttribute</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#NatureOrGodIdentityQuality">
