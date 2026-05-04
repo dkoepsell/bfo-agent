@@ -32085,6 +32085,25 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MiracleConceptualDependenceOnHumanOpinion</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#NaturalCause">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NaturalCause</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#CausalInexplicabilityByFamiliarExamples">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <RO_0000052 rdf:resource="#Miracle"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CausalInexplicabilityByFamiliarExamples</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#FamiliarExample">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FamiliarExample</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
