@@ -27541,6 +27541,20 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AbsenceOfSelfSufficiencyQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#PerceptualCausation">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#ClearAndDistinctPerception"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PerceptualCausation</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#CausalPotencyOfClearDistinctPerception">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="#CausalReasonForExistence"/>
+  <obo:RO_0000052 rdf:resource="#ClearAndDistinctPerception"/>
+  <obo:BFO_0000054 rdf:resource="#PerceptualCausation"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CausalPotencyOfClearDistinctPerception</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -30708,6 +30722,13 @@
   <obo:RO_0000052 rdf:resource="#Extension"/>
   <work3:type rdf:resource="#AbsenceOfImperfectionQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExtensionDenialOfThought</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ExtensionExpressesGodNatureDisposition">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:RO_0000052 rdf:resource="#Extension"/>
+  <work3:type rdf:resource="#AttributeExpressesEternalInfiniteEssenceRelation"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExtensionExpressesGodNatureDisposition</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#MindEssenceIdea">
@@ -39194,13 +39215,6 @@
   <obo:RO_0000052 rdf:resource="#Extension"/>
   <work3:type rdf:resource="#EssenceContainsExistenceDisposition"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExtensionInvolvesExistenceDisposition</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#ExtensionExpressesGodNatureDisposition">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <obo:RO_0000052 rdf:resource="#Extension"/>
-  <work3:type rdf:resource="#AttributeExpressesEternalInfiniteEssenceRelation"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExtensionExpressesGodNatureDisposition</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
