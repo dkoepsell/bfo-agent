@@ -15770,6 +15770,20 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PietyConstancy</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#PropheticImagination">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:BFO_0000054 rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PropheticImagination</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PropheticImaginationVividnessQuality">
+  <rdfs:subClassOf rdf:resource="#VividnessQuality"/>
+  <work:subClassOf rdf:resource="#VividnessQuality"/>
+  <work:subClassOf rdf:resource="#ImaginationPerfectionQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PropheticImaginationVividnessQuality</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#Piety">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Piety</rdfs:label>
@@ -28763,13 +28777,6 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PropheticImaginationDisposition</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#PropheticImaginationVividnessQuality">
-  <rdfs:subClassOf rdf:resource="#VividnessQuality"/>
-  <work:subClassOf rdf:resource="#VividnessQuality"/>
-  <work:subClassOf rdf:resource="#ImaginationPerfectionQuality"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PropheticImaginationVividnessQuality</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#MindPerfectionRequirementAbsenceQuality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindPerfectionRequirementAbsenceQuality</rdfs:label>
@@ -29176,11 +29183,16 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MortalityQuality</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#PropheticImagination">
+<owl:Class rdf:about="#PureIntellectGraspabilityQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PureIntellectGraspabilityQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ImaginationIntellectInverseRelationDisposition">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <obo:BFO_0000054 rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PropheticImagination</rdfs:label>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ImaginationIntellectInverseRelationDisposition</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
@@ -41947,6 +41959,10 @@
 
 <rdf:Description rdf:about="#IntellectPerfectionQualityOfProphet">
   <work:subClassOf rdf:resource="#IntellectPerfectionQuality"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#ImaginativePowerQuality">
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
 </rdf:Description>
 
 
