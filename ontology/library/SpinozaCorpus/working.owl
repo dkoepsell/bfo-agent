@@ -31483,6 +31483,18 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ImmutableFirstCauseRoleInstance</rdfs:label>
 </owl:NamedIndividual>
 
+<owl:NamedIndividual rdf:about="#VoiceCreationProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#CreatedVoice"/>
+  <obo:BFO_0000050 rdf:resource="#RevelationOfDecalogueProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">VoiceCreationProcess</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#RevelationOfDecalogueProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RevelationOfDecalogueProcess</rdfs:label>
+</owl:NamedIndividual>
+
 <owl:NamedIndividual rdf:about="#ThinkingThingRole">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
   <obo:RO_0000052 rdf:resource="#Speaker"/>
@@ -40660,6 +40672,18 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HearingOfDecalogueProcess</rdfs:label>
 </owl:NamedIndividual>
 
+<owl:NamedIndividual rdf:about="#Israelites">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Israelites</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#VoiceOfGodProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#God"/>
+  <obo:RO_0000057 rdf:resource="#DecalogueText"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">VoiceOfGodProcess</rdfs:label>
+</owl:NamedIndividual>
+
 <owl:NamedIndividual rdf:about="#Samuel">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
   <obo:RO_0000056 rdf:resource="#VoiceHearingProcess"/>
@@ -40695,39 +40719,15 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AbimelechVoiceImaginaryQuality</rdfs:label>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#Israelites">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Israelites</rdfs:label>
-</owl:NamedIndividual>
-
 <owl:NamedIndividual rdf:about="#DecalogueText">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DecalogueText</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#VoiceOfGodProcess">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <obo:RO_0000057 rdf:resource="#God"/>
-  <obo:RO_0000057 rdf:resource="#DecalogueText"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">VoiceOfGodProcess</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#VoiceCreationProcess">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <obo:RO_0000057 rdf:resource="#CreatedVoice"/>
-  <obo:BFO_0000050 rdf:resource="#RevelationOfDecalogueProcess"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">VoiceCreationProcess</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#CreatedVoice">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
   <obo:RO_0000056 rdf:resource="#RevelationOfDecalogueProcess"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CreatedVoice</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#RevelationOfDecalogueProcess">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RevelationOfDecalogueProcess</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#Decalogue">
@@ -40740,6 +40740,30 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <obo:RO_0000052 rdf:resource="#Decalogue"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RevealedByVoiceQuality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#GodSpeakingProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#God"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodSpeakingProcess</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#GodDescentToMtSinaiProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#God"/>
+  <obo:BFO_0000050 rdf:resource="#MtSinai"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodDescentToMtSinaiProcess</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#MtSinai">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000029"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MtSinai</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ScriptureAssertsGodSpeakingQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#Scripture"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ScriptureAssertsGodSpeakingQuality</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
