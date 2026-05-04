@@ -26405,6 +26405,16 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConceivingEternalAsTemporal</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#PhilosophicalThesis">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PhilosophicalThesis</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PhilosopherRole">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PhilosopherRole</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
@@ -30293,6 +30303,7 @@
   <obo:RO_0000056 rdf:resource="#SubstantialManuscriptOfEthics1665"/>
   <obo:RO_0000056 rdf:resource="#CompositionOfShortTreatise"/>
   <obo:RO_0000053 rdf:resource="#SpinozaAnnotatorRole"/>
+  <RO_0000053 rdf:resource="#SpinozaPhilosopherRole"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Spinoza</rdfs:label>
 </owl:NamedIndividual>
 
@@ -37560,6 +37571,30 @@
   <work3:type rdf:resource="#HumanPowerToRestrainAffects"/>
   <work3:type rdf:resource="#IntellectGroundednessQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HumanPowerToRestrainAffectsInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Descartes">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <RO_0000053 rdf:resource="#DescartesPhilosopherRole"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Descartes</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#AttributeSubstanceIdentityThesis">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work3:type rdf:resource="#PhilosophicalThesis"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AttributeSubstanceIdentityThesis</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#DescartesPhilosopherRole">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <RO_0000052 rdf:resource="#Descartes"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DescartesPhilosopherRole</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#SpinozaPhilosopherRole">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <RO_0000052 rdf:resource="#Spinoza"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SpinozaPhilosopherRole</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
