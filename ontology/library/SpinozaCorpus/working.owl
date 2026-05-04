@@ -1577,6 +1577,7 @@
 <owl:Class rdf:about="#TransitionToGreaterPerfection">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <obo:BFO_0000055 rdf:resource="#PassionOfJoy"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TransitionToGreaterPerfection</rdfs:label>
 </owl:Class>
 
@@ -1629,6 +1630,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindBodyStrivingQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#AttributeModification">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#Attribute"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AttributeModification</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#AnimalSpirits">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AnimalSpirits</rdfs:label>
@@ -1675,12 +1682,6 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SoulBodyAffectionProcess</rdfs:label>
-</owl:Class>
-
-<owl:Class rdf:about="#AttributeModification">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <work:subClassOf rdf:resource="#Attribute"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AttributeModification</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#ImaginativeImage">
@@ -19359,6 +19360,7 @@
 
 <owl:Class rdf:about="#LesserPerfectionQuality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LesserPerfectionQuality</rdfs:label>
 </owl:Class>
 
@@ -20824,6 +20826,12 @@
 <owl:Class rdf:about="#ConstitutionalVariationQuality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConstitutionalVariationQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#GreaterPerfectionQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GreaterPerfectionQuality</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
