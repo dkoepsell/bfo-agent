@@ -18555,6 +18555,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GreatestHappiness</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#NecessaryFollowingFromDecree">
+  <rdfs:subClassOf rdf:resource="#SubstanceProductionConstraint"/>
+  <work:subClassOf rdf:resource="#SubstanceProductionConstraint"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NecessaryFollowingFromDecree</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
@@ -18871,6 +18877,7 @@
   <obo:RO_0000057 rdf:resource="#NecessityInThings"/>
   <obo:RO_0000057 rdf:resource="#PiousPersonActProcess"/>
   <obo:RO_0000057 rdf:resource="#GodlessPersonActProcess"/>
+  <obo:BFO_0000050 rdf:resource="#AllThingsFollowFromDecreeProcess"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DecreeNecessitationProcess</rdfs:label>
 </owl:NamedIndividual>
 
@@ -27975,6 +27982,25 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <obo:BFO_0000050 rdf:resource="#TheEthics"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GreatestHappinessConstitutedByKnowledgeOfGodAxiom</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#EternalDecreeOfGod">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EternalDecreeOfGod</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#AllThingsFollowFromDecreeProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#God"/>
+  <obo:RO_0000057 rdf:resource="#EternalDecreeOfGod"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AllThingsFollowFromDecreeProcess</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#NecessaryFollowingFromDecreeInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:RO_0000052 rdf:resource="#God"/>
+  <obo:BFO_0000054 rdf:resource="#AllThingsFollowFromDecreeProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NecessaryFollowingFromDecreeInstance</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
