@@ -38042,6 +38042,15 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DescartesPhilosopherRole</rdfs:label>
 </owl:NamedIndividual>
 
+<owl:NamedIndividual rdf:about="#DescartesTermIdentificationProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <RO_0000057 rdf:resource="#Mens"/>
+  <RO_0000057 rdf:resource="#Animus"/>
+  <RO_0000057 rdf:resource="#Intellectus"/>
+  <RO_0000057 rdf:resource="#Ratio"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DescartesTermIdentificationProcess</rdfs:label>
+</owl:NamedIndividual>
+
 <owl:NamedIndividual rdf:about="#AttributeSubstanceIdentityThesis">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#PhilosophicalThesis"/>
@@ -38160,6 +38169,8 @@
 
 <owl:NamedIndividual rdf:about="#Mens">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <owl:sameAs rdf:resource="#AnimaRationalis"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Mens</rdfs:label>
 </owl:NamedIndividual>
 
@@ -38178,13 +38189,16 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Ratio</rdfs:label>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#DescartesTermIdentificationProcess">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <RO_0000057 rdf:resource="#Mens"/>
-  <RO_0000057 rdf:resource="#Animus"/>
-  <RO_0000057 rdf:resource="#Intellectus"/>
-  <RO_0000057 rdf:resource="#Ratio"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DescartesTermIdentificationProcess</rdfs:label>
+<owl:NamedIndividual rdf:about="#AnimaRationalis">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AnimaRationalis</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#DescartesIdentificationClaim">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <obo:IAO_0000136 rdf:resource="#Mens"/>
+  <obo:IAO_0000136 rdf:resource="#AnimaRationalis"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DescartesIdentificationClaim</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
