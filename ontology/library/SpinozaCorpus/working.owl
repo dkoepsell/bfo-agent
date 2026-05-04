@@ -1005,6 +1005,7 @@
   <work:subClassOf rdf:resource="#ModeOfThinking"/>
   <work:subClassOf rdf:resource="#Appetite"/>
   <obo:BFO_0000051 rdf:resource="#ConsciousnessOfAppetite"/>
+  <work:subClassOf rdf:resource="#ConatusMentalDispositionInstance"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Desire</rdfs:label>
 </owl:Class>
 
@@ -20531,6 +20532,12 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="#PowerToPersevereInBeing"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DecreaseOfPowerToPersevere</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DesireIsEssenceQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#EssentialExistenceQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DesireIsEssenceQuality</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
