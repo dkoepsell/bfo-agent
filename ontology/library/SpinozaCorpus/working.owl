@@ -14558,6 +14558,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EvilNonEssenceExpressingQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#NonEssenceExpressionQuality">
+  <rdfs:subClassOf rdf:resource="#ImperfectionQuality"/>
+  <work:subClassOf rdf:resource="#ImperfectionQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NonEssenceExpressionQuality</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#ErrorNonEssenceExpressingQuality">
   <rdfs:subClassOf rdf:resource="#ImperfectionQuality"/>
   <work:subClassOf rdf:resource="#NonEssenceExpressionQuality"/>
@@ -14575,10 +14581,9 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EssenceExpression</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#NonEssenceExpressionQuality">
-  <rdfs:subClassOf rdf:resource="#ImperfectionQuality"/>
-  <work:subClassOf rdf:resource="#ImperfectionQuality"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NonEssenceExpressionQuality</rdfs:label>
+<owl:Class rdf:about="#NecessitationByEternalLawDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NecessitationByEternalLawDisposition</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#God">
@@ -14826,6 +14831,8 @@
   <obo:BFO_0000055 rdf:resource="#GodDecree"/>
   <obo:BFO_0000055 rdf:resource="#NecessityFromDecreeRelation"/>
   <obo:RO_0000057 rdf:resource="#NecessityInThings"/>
+  <obo:RO_0000057 rdf:resource="#PiousPersonActProcess"/>
+  <obo:RO_0000057 rdf:resource="#GodlessPersonActProcess"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DecreeNecessitationProcess</rdfs:label>
 </owl:NamedIndividual>
 
@@ -21886,6 +21893,38 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <obo:RO_0000052 rdf:resource="#GodAbsoluteCauseOfEssenceRole"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EssenceCausationAbsoluteQuality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#PiousPersonActProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PiousPersonActProcess</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#GodlessPersonActProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodlessPersonActProcess</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#GodEternalLaw">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work3:type rdf:resource="#EternalLaw"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodEternalLaw</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#PiousPersonActNecessitation">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work3:type rdf:resource="#NecessitationByEternalLawDisposition"/>
+  <obo:BFO_0000054 rdf:resource="#PiousPersonActProcess"/>
+  <obo:BFO_0000050 rdf:resource="#GodEternalLaw"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PiousPersonActNecessitation</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#GodlessPersonActNecessitation">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work3:type rdf:resource="#NecessitationByEternalLawDisposition"/>
+  <obo:BFO_0000054 rdf:resource="#GodlessPersonActProcess"/>
+  <obo:BFO_0000050 rdf:resource="#GodEternalLaw"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodlessPersonActNecessitation</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
