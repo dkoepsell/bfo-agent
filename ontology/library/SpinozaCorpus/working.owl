@@ -28916,6 +28916,7 @@
   <obo:RO_0000053 rdf:resource="#ImmutableFirstCauseRoleInstance"/>
   <obo:RO_0000056 rdf:resource="#VoiceCreationProcess"/>
   <obo:RO_0000056 rdf:resource="#RevelationOfDecalogueProcess"/>
+  <obo:RO_0000053 rdf:resource="#VisibleFormQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">God</rdfs:label>
 </owl:NamedIndividual>
 
