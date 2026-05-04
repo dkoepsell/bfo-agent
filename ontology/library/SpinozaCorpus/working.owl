@@ -27008,6 +27008,11 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TemporalPriorityQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#Authorship">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Authorship</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
@@ -38435,6 +38440,11 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ContributionToEnlightenment</rdfs:label>
 </owl:NamedIndividual>
 
+<owl:NamedIndividual rdf:about="#TheEnlightenment">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TheEnlightenment</rdfs:label>
+</owl:NamedIndividual>
+
 <owl:NamedIndividual rdf:about="#FoundationalContributionDispositionInstance">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <obo:RO_0000052 rdf:resource="#TheologicalPoliticalTreatise"/>
@@ -38448,11 +38458,6 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CritiqueOfRevealedReligion</rdfs:label>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#TheEnlightenment">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TheEnlightenment</rdfs:label>
-</owl:NamedIndividual>
-
 <owl:NamedIndividual rdf:about="#PoliticalTreatise">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PoliticalTreatise</rdfs:label>
@@ -38462,6 +38467,16 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <obo:RO_0000052 rdf:resource="#PoliticalTreatise"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UnfinishedStatusQuality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#TreatiseOnRainbow">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TreatiseOnRainbow</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#TreatiseOnCalculationOfChances">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TreatiseOnCalculationOfChances</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
