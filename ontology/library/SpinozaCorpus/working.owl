@@ -27857,6 +27857,35 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MiracleAsOrdinarilyConceived</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#TrueReligion">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TrueReligion</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#RightAction">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RightAction</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#RightActionRequirement">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:BFO_0000054 rdf:resource="#RightAction"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RightActionRequirement</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#CredalBelief">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CredalBelief</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#CredalBeliefNonRequirement">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#TrueReligion"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CredalBeliefNonRequirement</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
