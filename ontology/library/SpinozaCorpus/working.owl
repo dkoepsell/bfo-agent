@@ -25712,6 +25712,41 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConstancyOfAffect</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#MindPowerOverAffects">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindPowerOverAffects</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#KnowledgeOfAffects">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#MindPowerOverAffects"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">KnowledgeOfAffects</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SeparationOfAffectsFromExternalCauses">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="#MindPowerOverAffects"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SeparationOfAffectsFromExternalCauses</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#TemporalityOfUnderstanding">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#MindPowerOverAffects"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TemporalityOfUnderstanding</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#MultiplicityOfCauses">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#MindPowerOverAffects"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MultiplicityOfCauses</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#OrderingOfAffects">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="#MindPowerOverAffects"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OrderingOfAffects</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
@@ -36341,6 +36376,11 @@
   <work3:type rdf:resource="#ConstancyOfAffect"/>
   <obo:RO_0000052 rdf:resource="#LoveTowardGod"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LoveTowardGodConstancyQuality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#MindPowerOverAffectsConstitution">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindPowerOverAffectsConstitution</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
