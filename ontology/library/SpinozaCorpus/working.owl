@@ -22661,6 +22661,8 @@
 <owl:Class rdf:about="#SadnessAffect">
   <rdfs:subClassOf rdf:resource="#Affect"/>
   <work:subClassOf rdf:resource="#Affect"/>
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SadnessAffect</rdfs:label>
 </owl:Class>
 
@@ -24867,6 +24869,43 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RationalGrounding</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#OtherSadnessAffect">
+  <rdfs:subClassOf rdf:resource="#SadnessAffect"/>
+  <work:subClassOf rdf:resource="#SadnessAffect"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OtherSadnessAffect</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#JusticeQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">JusticeQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#FairnessQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FairnessQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#HonorQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HonorQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#MoralityQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MoralityQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ReligiousObservanceQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ReligiousObservanceQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#OppositionToNormativeQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OppositionToNormativeQuality</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
