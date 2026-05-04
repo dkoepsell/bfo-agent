@@ -14227,6 +14227,8 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="#DivineAttribute"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:subClassOf rdf:resource="#DivineAttribute"/>
+  <work:subClassOf rdf:resource="#ExistenceIsEssenceIdentityQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivinePower</rdfs:label>
 </owl:Class>
 
@@ -32006,19 +32008,18 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UniversalLawOfNature</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#DivinePowerIsEssenceIdentityQuality">
+  <rdfs:subClassOf rdf:resource="#EssentialExistenceQuality"/>
+  <work:subClassOf rdf:resource="#EssentialExistenceQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivinePowerIsEssenceIdentityQuality</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
   <obo:RO_0000052 rdf:resource="#ExtendedSubstance"/>
   <work3:type rdf:resource="#IndivisibilityOfNecessaryBeingQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IndivisibilityQuality</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
-  <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
-  <obo:BFO_0000050 rdf:resource="#MetaphysicalSubjectMatter"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NecessityOfThingsSubjectMatter</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#God">
@@ -32353,6 +32354,13 @@
   <RO_0000056 rdf:resource="#DecreeNecessitationProcess"/>
   <obo:RO_0000056 rdf:resource="#DivineWillingOrDetermining"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">God</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
+  <obo:BFO_0000050 rdf:resource="#MetaphysicalSubjectMatter"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NecessityOfThingsSubjectMatter</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#Speaker">
@@ -33247,6 +33255,13 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <obo:RO_0000052 rdf:resource="#God"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PowerOfGod</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#DivinePowerAndVirtue">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:RO_0000052 rdf:resource="#God"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivinePowerAndVirtue</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#Good">
@@ -46151,13 +46166,6 @@
   <obo:RO_0000052 rdf:resource="#God"/>
   <obo:BFO_0000050 rdf:resource="#Thought"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodIntellectWillNonDistinctionQuality</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#DivinePowerAndVirtue">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <obo:RO_0000052 rdf:resource="#God"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivinePowerAndVirtue</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#PowerIdentityQuality">
