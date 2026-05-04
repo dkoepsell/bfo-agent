@@ -19240,6 +19240,7 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <obo:BFO_0000054 rdf:resource="#AdequatePerceptionProcess"/>
+  <obo:RO_0000052 rdf:resource="#Christ"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AdequatePerceptionDisposition</rdfs:label>
 </owl:Class>
 
@@ -30053,6 +30054,13 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">KingRole</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#HumanNatureRole">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <work:subClassOf rdf:resource="#HumanNatureExclusivityQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HumanNatureRole</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#ViolationOfLawProcess">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ViolationOfLawProcess</rdfs:label>
@@ -30798,11 +30806,10 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CommandGroundedNormativeValenceDisposition</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#HumanNatureRole">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
-  <work:subClassOf rdf:resource="#HumanNatureExclusivityQuality"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HumanNatureRole</rdfs:label>
+<owl:Class rdf:about="#HumanNatureExclusivityQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HumanNatureExclusivityQuality</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#RulerRole">
@@ -30815,12 +30822,6 @@
   <rdfs:subClassOf rdf:resource="#HumanNatureRole"/>
   <work:subClassOf rdf:resource="#HumanNatureRole"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LawgiverRole</rdfs:label>
-</owl:Class>
-
-<owl:Class rdf:about="#HumanNatureExclusivityQuality">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HumanNatureExclusivityQuality</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
@@ -34558,6 +34559,7 @@
   <obo:RO_0000053 rdf:resource="#ChristMindToMindCommunicationDispositionInstance"/>
   <obo:RO_0000056 rdf:resource="#MindToMindCommunicationProcess"/>
   <obo:RO_0000056 rdf:resource="#AccommodationProcess"/>
+  <obo:RO_0000056 rdf:resource="#ChristAdequatePerceptionProcess"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Christ</rdfs:label>
 </owl:NamedIndividual>
 
@@ -44374,6 +44376,18 @@
   <work3:type rdf:resource="#WillIntellectNumericalIdentityQuality"/>
   <obo:RO_0000052 rdf:resource="#God"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodWillIntellectIdentityQuality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#AdequatePerceptionQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#Christ"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AdequatePerceptionQuality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ChristAdequatePerceptionProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000055 rdf:resource="#AdequatePerceptionDisposition"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ChristAdequatePerceptionProcess</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
