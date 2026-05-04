@@ -28589,6 +28589,11 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ImaginaryProductionProcess</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#ImaginedPerceptionQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ImaginedVoiceQualityClass</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -40643,6 +40648,24 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <obo:RO_0000052 rdf:resource="#TrueVoice"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TrueVoiceQuality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Samuel">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <obo:RO_0000056 rdf:resource="#VoiceHearingProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Samuel</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#VoiceHearingProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">VoiceHearingProcess</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ImaginedVoiceQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work3:type rdf:resource="#ImaginedPerceptionQuality"/>
+  <obo:RO_0000052 rdf:resource="#VoiceHearingProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ImaginedVoiceQuality</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
