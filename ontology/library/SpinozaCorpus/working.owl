@@ -6527,6 +6527,11 @@
 <owl:Class rdf:about="#Jealousy">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="#AffectArisingFromIncorrectOpinion"/>
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#MindVacillation"/>
+  <work:subClassOf rdf:resource="#Love"/>
+  <work:subClassOf rdf:resource="#Hatred"/>
+  <work:subClassOf rdf:resource="#IdeaOfEnviedOther"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Jealousy</rdfs:label>
 </owl:Class>
 
@@ -19537,6 +19542,8 @@
 <owl:Class rdf:about="#Hatred">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Hatred</rdfs:label>
 </owl:Class>
 
@@ -19817,6 +19824,23 @@
   <obo:RO_0000052 rdf:resource="#HumanBody"/>
   <obo:BFO_0000054 rdf:resource="#BodyAffectionByExternalCauseProcess"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ImageProductionDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#MindVacillation">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindVacillation</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#IdeaOfEnviedOther">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#EnviedOther"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IdeaOfEnviedOther</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#EnviedOther">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EnviedOther</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
