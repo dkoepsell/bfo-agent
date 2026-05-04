@@ -14025,6 +14025,7 @@
 <owl:Class rdf:about="#EfficientCause">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EfficientCause</rdfs:label>
 </owl:Class>
 
@@ -17037,6 +17038,12 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <obo:BFO_0000054 rdf:resource="#AppetiteAsPrincipleRole"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HumanAppetite</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#AppetiteAsPrincipleRole">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AppetiteAsPrincipleRole</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#EternalNecessityOfNature">
@@ -21869,12 +21876,6 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ActingFromSameNecessityAsExistingDisposition</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#AppetiteAsPrincipleRole">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AppetiteAsPrincipleRole</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#FinalCauseIsHumanAppetiteQuality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
@@ -21892,6 +21893,25 @@
   <rdfs:subClassOf rdf:resource="#EssentialExistenceQuality"/>
   <work:subClassOf rdf:resource="#EssentialExistenceQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BelongingToNature</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#EfficientCauseNature">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#NatureOfThing"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EfficientCauseNature</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#NecessaryFollowingFromEfficientCauseNatureDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="#CausalReasonForExistence"/>
+  <obo:BFO_0000054 rdf:resource="#FormalExistenceNecessitationProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NecessaryFollowingFromEfficientCauseNatureDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#CausalNecessitationOfNatureConstraintQuality">
+  <rdfs:subClassOf rdf:resource="#EssentialExistenceQuality"/>
+  <work:subClassOf rdf:resource="#EssentialExistenceQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CausalNecessitationOfNatureConstraintQuality</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
