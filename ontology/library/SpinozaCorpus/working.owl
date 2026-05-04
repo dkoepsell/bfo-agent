@@ -6820,6 +6820,7 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="#SadnessQuality"/>
   <work:subClassOf rdf:resource="#OppositeAffectRelation"/>
+  <work:subClassOf rdf:resource="#RemorseAccompanimentRelation"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Remorse</rdfs:label>
 </owl:Class>
 
@@ -19656,6 +19657,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Gladness</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#GladnessAccompanimentRelation">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GladnessAccompanimentRelation</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#PastThingImagination">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
@@ -21015,10 +21022,16 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IdeaOfPastThingTurnedOutBetterThanHoped</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#GladnessAccompanimentRelation">
+<owl:Class rdf:about="#IdeaOfPastThingWorseOutcome">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IdeaOfPastThingWorseOutcome</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#RemorseAccompanimentRelation">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GladnessAccompanimentRelation</rdfs:label>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RemorseAccompanimentRelation</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
