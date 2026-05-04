@@ -14888,6 +14888,25 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConceptionNecessityConstraint</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#DeterminateCause">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DeterminateCause</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#NecessaryEffect">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NecessaryEffect</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#NecessaryEffectuation">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="#DeterminateCause"/>
+  <obo:BFO_0000054 rdf:resource="#NecessaryEffect"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NecessaryEffectuation</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#God">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
   <obo:BFO_0000051 rdf:resource="#DivineAttribute"/>
