@@ -14381,6 +14381,11 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PrimaryGoalOf</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#ScripturaryGoalDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ScripturePrimaryGoalClass</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#God">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
   <obo:BFO_0000051 rdf:resource="#DivineAttribute"/>
@@ -21632,6 +21637,9 @@
   <obo:BFO_0000050 rdf:resource="#Scripture"/>
   <obo:BFO_0000051 rdf:resource="#LoveOfGod"/>
   <obo:BFO_0000051 rdf:resource="#LoveOfNeighbor"/>
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work3:type rdf:resource="#ScripturaryGoalDisposition"/>
+  <obo:RO_0000052 rdf:resource="#Scripture"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ScripturePrimaryGoal</rdfs:label>
 </owl:NamedIndividual>
 
