@@ -22169,6 +22169,41 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NecessaryPassibilityQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#PassionForce">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#PassionForce"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#Passion"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PassionForce</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PassionGrowth">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#Passion"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PassionGrowth</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ExternalCausePower">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExternalCausePower</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#OwnPower">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="#ConatusMentalDispositionInstance"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OwnPower</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PassionForceDefinitionRelation">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="#PassionForce"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PassionForceDefinitionRelation</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
