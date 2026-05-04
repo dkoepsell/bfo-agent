@@ -30423,6 +30423,11 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TrueVirtueQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#GroupPreservationDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GroupPreservationDisposition</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -43887,6 +43892,24 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <obo:RO_0000057 rdf:resource="#JewishNation"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NationalPreservationProcess</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#JewishPeople">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">JewishPeople</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#HatredOfJewishPeople">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work3:type rdf:resource="#GroupPreservationDisposition"/>
+  <obo:BFO_0000054 rdf:resource="#PreservationOfJewishPeople"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HatredOfJewishPeople</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#PreservationOfJewishPeople">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#JewishPeople"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PreservationOfJewishPeople</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
