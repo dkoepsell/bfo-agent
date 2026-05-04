@@ -1976,6 +1976,13 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EssenceQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#ComplexAffect">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ComplexAffect</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#FalsityQuality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
@@ -4172,6 +4179,13 @@
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="#SubstanceInfinityOrPerfectionQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Perfection</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ExternalObject">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExternalObject</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#KnowledgeToLoveRealizationProcess">
@@ -13572,13 +13586,6 @@
   <obo:RO_0000057 rdf:resource="#ExternalObject"/>
   <obo:RO_0000057 rdf:resource="#Brain"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SpiritualMotion</rdfs:label>
-</owl:Class>
-
-<owl:Class rdf:about="#ExternalObject">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExternalObject</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#Brain">
@@ -26492,13 +26499,6 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">StrictnessQuality</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#ComplexAffect">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ComplexAffect</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#IdeaOfExternalObject">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
@@ -26515,6 +26515,30 @@
   <rdfs:subClassOf rdf:resource="#IdeaOfSelfAsCause"/>
   <work:subClassOf rdf:resource="#IdeaOfSelfAsCause"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SelfAsCausalAgentQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#AffectDefinition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AffectDefinition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ExplanatoryForce">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExplanatoryForce</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#CausalEtiology">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CausalEtiology</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#EtiologicalInsightDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="#ExplanatoryForce"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EtiologicalInsightDisposition</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
