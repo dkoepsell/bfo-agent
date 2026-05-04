@@ -26060,6 +26060,7 @@
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work3:type rdf:resource="#IntellectualLoveOfGodClass"/>
   <obo:BFO_0000050 rdf:resource="#InfiniteLoveOfGodForHimself"/>
+  <obo:RO_0000052 rdf:resource="#InfiniteIntellectOfGod"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IntellectualLoveOfGod</rdfs:label>
 </owl:Class>
 
@@ -26068,6 +26069,12 @@
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="#InfiniteLoveOfGodClass"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IntellectualLoveOfGodClass</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#InfiniteLoveOfGodClass">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">InfiniteLoveOfGodClass</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#NecessaryArisingDisposition">
@@ -26111,12 +26118,6 @@
 <owl:Class rdf:about="#IntelligibilityOfSelf">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IntelligibilityOfSelf</rdfs:label>
-</owl:Class>
-
-<owl:Class rdf:about="#InfiniteLoveOfGodClass">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">InfiniteLoveOfGodClass</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#DivineIntellectualLoveDisposition">
@@ -37089,6 +37090,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodSelfLoveProcess</rdfs:label>
 </owl:NamedIndividual>
 
+<owl:NamedIndividual rdf:about="#GodDivineIntellectualLoveDispositionInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:RO_0000052 rdf:resource="#God"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodDivineIntellectualLoveDispositionInstance</rdfs:label>
+</owl:NamedIndividual>
+
 <owl:NamedIndividual rdf:about="#GodLoveOfMenProcess">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <obo:BFO_0000055 rdf:resource="#GodDivineIntellectualLoveDispositionInstance"/>
@@ -37103,10 +37110,18 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LoveOfMen</rdfs:label>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#GodDivineIntellectualLoveDispositionInstance">
+<owl:NamedIndividual rdf:about="#GodsLoveOfMen">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <obo:RO_0000052 rdf:resource="#God"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodDivineIntellectualLoveDispositionInstance</rdfs:label>
+  <work2:sameAs rdf:resource="#IntellectualLoveOfGod"/>
+  <obo:BFO_0000054 rdf:resource="#PerseveranceInBeingProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodsLoveOfMen</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#IntellectualLoveIdentityQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#GodsLoveOfMen"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IntellectualLoveIdentityQuality</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
