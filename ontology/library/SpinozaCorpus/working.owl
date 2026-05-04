@@ -31878,7 +31878,15 @@
   <work:subClassOf rdf:resource="#BlessednessQuality"/>
   <work:subClassOf rdf:resource="#Blessedness"/>
   <obo:RO_0000052 rdf:resource="#VirtuousPerson"/>
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CompleteBlessednessQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#VirtuousPerson">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">VirtuousPerson</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#BlessedPerson">
@@ -31911,10 +31919,19 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RichInVirtuesQuality</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#VirtuousPerson">
+<owl:Class rdf:about="#TaughtByGodThroughScripture">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <obo:BFO_0000054 rdf:resource="#DivineTeachingProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TaughtByGodThroughScripture</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DivinelyTaughtPerson">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">VirtuousPerson</rdfs:label>
+  <obo:RO_0000053 rdf:resource="#TaughtByGodThroughScripture"/>
+  <obo:RO_0000053 rdf:resource="#CompleteBlessednessQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivinlyTaughtPerson</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
@@ -33254,6 +33271,19 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <obo:RO_0000052 rdf:resource="#ThePeople"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ThePeopleStubbornnessQualityInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Blessedness">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work3:type rdf:resource="#SatisfactionOfMindQuality"/>
+  <obo:RO_0000052 rdf:resource="#InfiniteIntellectOfGod"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#LoveOfGod"/>
+  <work2:equivalentClass rdf:resource="#Virtue"/>
+  <work:subClassOf rdf:resource="#TrueHappiness"/>
+  <work:subClassOf rdf:resource="#SupremeGood"/>
+  <obo:RO_0000052 rdf:resource="#HumanMind"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Blessedness</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#ExtendedSubstance">
@@ -35070,6 +35100,8 @@
 
 <owl:NamedIndividual rdf:about="#DivineTeachingProcess">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#God"/>
+  <obo:RO_0000057 rdf:resource="#Scripture"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivineTeachingProcess</rdfs:label>
 </owl:NamedIndividual>
 
@@ -43158,19 +43190,6 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ReasonDefinedActionGoodnessAxiom</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#Blessedness">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <work3:type rdf:resource="#SatisfactionOfMindQuality"/>
-  <obo:RO_0000052 rdf:resource="#InfiniteIntellectOfGod"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <work:subClassOf rdf:resource="#LoveOfGod"/>
-  <work2:equivalentClass rdf:resource="#Virtue"/>
-  <work:subClassOf rdf:resource="#TrueHappiness"/>
-  <work:subClassOf rdf:resource="#SupremeGood"/>
-  <obo:RO_0000052 rdf:resource="#HumanMind"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Blessedness</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#IntuitiveKnowledgeOfGod">
