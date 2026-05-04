@@ -28835,6 +28835,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PropheticRevelation</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#PropheticallyImpartedContent">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PropheticallyImpartedContent</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#NaturalLightRevelation">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NaturalLightRevelation</rdfs:label>
@@ -28852,10 +28858,16 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NaturalLightInaccessibilityQuality</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#PropheticallyImpartedContent">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PropheticallyImpartedContent</rdfs:label>
+<owl:Class rdf:about="#SuperlativeDegreeExpression">
+  <rdfs:subClassOf rdf:resource="#Attribute"/>
+  <work:subClassOf rdf:resource="#DivineAttribute"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SuperlativeDegreeExpression</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ExpressesGodSuperlativelyDisposition">
+  <rdfs:subClassOf rdf:resource="#AttributeExpressesEternalInfiniteEssenceRelation"/>
+  <work:subClassOf rdf:resource="#InfiniteInItsKind"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExpressesGodSuperlativelyDisposition</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
