@@ -122,6 +122,8 @@
   <obo:RO_0000053 rdf:resource="#SubstanceGenerationIncapacity"/>
   <work:subClassOf rdf:resource="#SubstanceIndestructibilityDisposition"/>
   <work:subClassOf rdf:resource="#NecessityOfExistence"/>
+  <work:subClassOf rdf:resource="#SubstanceInfinityQuality"/>
+  <work:subClassOf rdf:resource="#SubstanceNecessaryInfinityDisposition"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Substance</rdfs:label>
 </owl:Class>
 
@@ -228,6 +230,16 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SubstanceIndestructibilityDisposition</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#NecessityOfExistence">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:subClassOf rdf:resource="#EssentialExistenceQuality"/>
+  <work:subClassOf rdf:resource="#EssentialExistenceQuality"/>
+  <work:subClassOf rdf:resource="#GodDecree"/>
+  <work:subClassOf rdf:resource="#NecessityOfThingsSubjectMatter"/>
+  <obo:RO_0000052 rdf:resource="#Substance"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NecessityOfExistence</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#ExistenceNecessitation">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="#CausaSui"/>
@@ -275,16 +287,6 @@
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="#PerfectionLossDisposition"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ImperfectionQuality</rdfs:label>
-</owl:Class>
-
-<owl:Class rdf:about="#NecessityOfExistence">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <rdfs:subClassOf rdf:resource="#EssentialExistenceQuality"/>
-  <work:subClassOf rdf:resource="#EssentialExistenceQuality"/>
-  <work:subClassOf rdf:resource="#GodDecree"/>
-  <work:subClassOf rdf:resource="#NecessityOfThingsSubjectMatter"/>
-  <obo:RO_0000052 rdf:resource="#Substance"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NecessityOfExistence</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#CausaSui">
@@ -9276,6 +9278,8 @@
 <owl:Class rdf:about="#SubstanceInfinityQuality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:subClassOf rdf:resource="#SubstanceInfinityOrPerfectionQuality"/>
+  <work:subClassOf rdf:resource="#InfiniteInItsKind"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SubstanceInfinityQuality</rdfs:label>
 </owl:Class>
 
@@ -15013,6 +15017,12 @@
   <rdfs:subClassOf rdf:resource="#UniqueAttributePerSubstanceConstraint"/>
   <work:subClassOf rdf:resource="#UniqueAttributePerSubstanceConstraint"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AttributeCoinstantiationIncapacity</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SubstanceNecessaryInfinityDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="#ExistenceNecessitation"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SubstanceNecessaryInfinityDisposition</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#God">
