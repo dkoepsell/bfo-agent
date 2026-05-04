@@ -2702,6 +2702,11 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Will</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#InfiniteSeriesOfFiniteCauses">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">InfiniteSeriesOfFiniteCauses</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#IdeaOfVolition">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work:subClassOf rdf:resource="#BeingOfReason"/>
@@ -15898,9 +15903,9 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FiniteDeterminateCause</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#InfiniteSeriesOfFiniteCauses">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">InfiniteSeriesOfFiniteCauses</rdfs:label>
+<owl:Class rdf:about="#DeterminedToExistAndProduceEffect">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DeterminedToExistAndProduceEffect</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
@@ -16162,6 +16167,8 @@
   <obo:RO_0000056 rdf:resource="#GodDeterminesAllEffectsProcess"/>
   <obo:RO_0000053 rdf:resource="#GodDeterminesDeterminationDisposition"/>
   <obo:RO_0000057 rdf:resource="#EffectProductionProcess"/>
+  <obo:RO_0000053 rdf:resource="#GodDeterminingCauseRole"/>
+  <obo:RO_0000056 rdf:resource="#GodDeterminesExistenceAndEffectProcess"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">God</rdfs:label>
 </owl:NamedIndividual>
 
@@ -23739,6 +23746,20 @@
 <owl:NamedIndividual rdf:about="#GodCausesExistenceProcess">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodCausesExistenceProcess</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#GodDeterminesExistenceAndEffectProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000055 rdf:resource="#GodDeterminingCauseRole"/>
+  <obo:RO_0000057 rdf:resource="#God"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodDeterminesExistenceAndEffectProcess</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#GodDeterminingCauseRole">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <obo:RO_0000052 rdf:resource="#God"/>
+  <obo:BFO_0000054 rdf:resource="#GodDeterminesExistenceAndEffectProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodDeterminingCauseRole</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
