@@ -17042,6 +17042,7 @@
   <obo:RO_0000052 rdf:resource="#God"/>
   <work3:type rdf:resource="#SupremePerfectionQuality"/>
   <work3:type rdf:resource="#NecessaryExistenceQuality"/>
+  <work3:type rdf:resource="#NecessityOfExistence"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodNecessaryExistenceQuality</rdfs:label>
 </owl:NamedIndividual>
 
