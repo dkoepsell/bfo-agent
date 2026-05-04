@@ -6161,6 +6161,9 @@
 <owl:Class rdf:about="#Anger">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="#ConatusMentalDispositionInstance"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Anger</rdfs:label>
 </owl:Class>
 
@@ -19986,15 +19989,33 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Consternation</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#FearRestrainedByTimidityDisposition">
+  <rdfs:subClassOf rdf:resource="#Fear"/>
+  <work:subClassOf rdf:resource="#Fear"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FearRestrainedByTimidityDisposition</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#AnotherEvil">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AnotherEvil</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#FearRestrainedByTimidityDisposition">
-  <rdfs:subClassOf rdf:resource="#Fear"/>
-  <work:subClassOf rdf:resource="#Fear"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FearRestrainedByTimidityDisposition</rdfs:label>
+<owl:Class rdf:about="#StrivingToDoEvilToHatedObject">
+  <rdfs:subClassOf rdf:resource="#Anger"/>
+  <work:subClassOf rdf:resource="#Anger"/>
+  <obo:BFO_0000054 rdf:resource="#DoingEvilToHatedObject"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">StrivingToDoEvilToHatedObject</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DoingEvilToHatedObject">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#HatedObject"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DoingEvilToHatedObject</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#HatedObject">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HatedObject</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
