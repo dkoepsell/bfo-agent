@@ -3908,6 +3908,16 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HumanNature</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#HumanBeing">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <work:subClassOf rdf:resource="#FiniteSingularThing"/>
+  <obo:RO_0000053 rdf:resource="#ServingGodRole"/>
+  <work:subClassOf rdf:resource="#Substance"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <work:subClassOf rdf:resource="#_:HumanLustRestriction"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HumanBeing</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#StrongerNature">
   <rdfs:subClassOf rdf:resource="#HumanNature"/>
   <work:subClassOf rdf:resource="#HumanNature"/>
@@ -7565,14 +7575,6 @@
   <work:subClassOf rdf:resource="#Hell"/>
   <obo:RO_0000052 rdf:resource="#EvilPassion"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EvilPassionIsHellQuality</rdfs:label>
-</owl:Class>
-
-<owl:Class rdf:about="#HumanBeing">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
-  <work:subClassOf rdf:resource="#FiniteSingularThing"/>
-  <obo:RO_0000053 rdf:resource="#ServingGodRole"/>
-  <work:subClassOf rdf:resource="#Substance"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HumanBeing</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#ServingGodRole">
@@ -20598,6 +20600,31 @@
   <work:subClassOf rdf:resource="#Affect"/>
   <obo:RO_0000052 rdf:resource="#LowerAnimal"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LowerAnimalAffect</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#Lust">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Lust</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#EquineLust">
+  <rdfs:subClassOf rdf:resource="#Lust"/>
+  <work:subClassOf rdf:resource="#Lust"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EquineLust</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#HumanLust">
+  <rdfs:subClassOf rdf:resource="#Lust"/>
+  <work:subClassOf rdf:resource="#Lust"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HumanLust</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#Horse">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <work:subClassOf rdf:resource="#_:EquineLustRestriction"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Horse</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
