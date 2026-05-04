@@ -20248,6 +20248,13 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DesireToAvoidEvil</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#DesireRestraintProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#Danger"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DesireRestraintProcess</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#LesserEvil">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
@@ -21546,14 +21553,10 @@
 <owl:Class rdf:about="#Cowardice">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:subClassOf rdf:resource="#Fear"/>
+  <work:subClassOf rdf:resource="#Fear"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Cowardice</rdfs:label>
-</owl:Class>
-
-<owl:Class rdf:about="#DesireRestraintProcess">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <obo:RO_0000057 rdf:resource="#Danger"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DesireRestraintProcess</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#Danger">
@@ -21568,6 +21571,11 @@
   <obo:RO_0000053 rdf:resource="#Cowardice"/>
   <obo:RO_0000053 rdf:resource="#Timidity"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CowardPerson</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#MostPeople">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MostPeople</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
@@ -31516,6 +31524,12 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <obo:BFO_0000050 rdf:resource="#TheEthics"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AngerDefinition</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#CowardiceDefinitionContent">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <obo:BFO_0000050 rdf:resource="#TheEthics"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CowardiceDefinitionContent</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
