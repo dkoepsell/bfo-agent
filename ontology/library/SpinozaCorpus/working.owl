@@ -951,6 +951,8 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work:subClassOf rdf:resource="#Idea"/>
   <rdfs:subClassOf rdf:resource="#Idea"/>
+  <rdfs:subClassOf rdf:resource="#AdequateIdea"/>
+  <work:subClassOf rdf:resource="#AdequateIdea"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ClearAndDistinctIdea</rdfs:label>
 </owl:Class>
 
@@ -2529,6 +2531,15 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConfusedIdea</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#InadequateIdea">
+  <rdfs:subClassOf rdf:resource="#Idea"/>
+  <work:subClassOf rdf:resource="#Idea"/>
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work:subClassOf rdf:resource="#EpistemicNecessityOfIdeas"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">InadequateIdea</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#EternalEssenceNature">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="#EternalInfiniteEssence"/>
@@ -2609,6 +2620,13 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PropositionalAct</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#PrivationOfKnowledge">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#InadequateIdea"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PrivationOfKnowledge</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#TrueThought">
   <rdfs:subClassOf rdf:resource="#Idea"/>
   <rdfs:subClassOf rdf:resource="#ClearAndDistinctIdea"/>
@@ -2640,14 +2658,6 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <obo:RO_0000052 rdf:resource="#TrueIdea"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IdeaTruthMarker</rdfs:label>
-</owl:Class>
-
-<owl:Class rdf:about="#InadequateIdea">
-  <rdfs:subClassOf rdf:resource="#Idea"/>
-  <work:subClassOf rdf:resource="#Idea"/>
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">InadequateIdea</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#PartialMindRole">
@@ -16160,6 +16170,7 @@
 <owl:Class rdf:about="#NecessaryFollowingDisposition">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <obo:BFO_0000054 rdf:resource="#ModeFollowingFromDivineNatureProcess"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NecessaryFollowingDisposition</rdfs:label>
 </owl:Class>
 
@@ -17737,13 +17748,6 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TruthQualityOfIdea</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#PrivationOfKnowledge">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <obo:RO_0000052 rdf:resource="#InadequateIdea"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PrivationOfKnowledge</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#InadequacyQuality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
@@ -17755,6 +17759,19 @@
   <rdfs:subClassOf rdf:resource="#InadequacyQuality"/>
   <work:subClassOf rdf:resource="#InadequacyQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConfusionQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#AdequateIdea">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work:subClassOf rdf:resource="#EpistemicNecessityOfIdeas"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AdequateIdea</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#EpistemicNecessityOfIdeas">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EpistemicNecessityOfIdeas</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
