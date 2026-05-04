@@ -23050,6 +23050,35 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AgentActingFromReason</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#Religion">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Religion</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ReligiousDesire">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="#Religion"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ReligiousDesire</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ReligiousAction">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ReligiousAction</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#IdeaOfGodQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#Religion"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IdeaOfGodQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ReligionCausalGroundingRelation">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:BFO_0000054 rdf:resource="#ReligiousAction"/>
+  <work:subClassOf rdf:resource="#Religion"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ReligionCausalGroundingRelation</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
