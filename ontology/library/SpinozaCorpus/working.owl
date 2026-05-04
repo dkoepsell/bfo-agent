@@ -6973,6 +6973,17 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IdeaOfAction</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#FearOrTimidity">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FearOrTimidity</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#BehavioralRestraintFromShame">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BehavioralRestraintFromShame</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#EvilPassion">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
@@ -21334,21 +21345,16 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DishonorablenessQuality</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#FearOrTimidity">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FearOrTimidity</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#DishonorableAction">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <obo:RO_0000053 rdf:resource="#DishonorablenessQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DishonorableAction</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#BehavioralRestraintFromShame">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BehavioralRestraintFromShame</rdfs:label>
+<owl:Class rdf:about="#Shamelessness">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work2:disjointWith rdf:resource="#Affect"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Shamelessness</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
