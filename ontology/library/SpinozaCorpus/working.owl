@@ -5235,6 +5235,7 @@
 <owl:Class rdf:about="#SelfPreservationStriving">
   <rdfs:subClassOf rdf:resource="#Conatus"/>
   <work:subClassOf rdf:resource="#Conatus"/>
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SelfPreservationStriving</rdfs:label>
 </owl:Class>
 
@@ -20710,6 +20711,19 @@
 <owl:Class rdf:about="#ActiveAffectSadnessExclusionQuality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ActiveAffectSadnessExclusionQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#Tenacity">
+  <rdfs:subClassOf rdf:resource="#Desire"/>
+  <work:subClassOf rdf:resource="#Desire"/>
+  <obo:BFO_0000054 rdf:resource="#SelfPreservationStriving"/>
+  <work:subClassOf rdf:resource="#ConatusMentalDispositionInstance"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Tenacity</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ReasonDictate">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ReasonDictate</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
