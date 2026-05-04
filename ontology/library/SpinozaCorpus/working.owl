@@ -1557,6 +1557,13 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OnlySubstancesExistQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#TrueIdeaReflexiveKnowledgeDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:BFO_0000054 rdf:resource="#ReflexiveKnowledgeProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TrueIdeaReflexiveKnowledgeDisposition</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#EarliestWorksTemporalRole">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EarliestWorksTemporalRole</rdfs:label>
@@ -18071,17 +18078,15 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TruthFalsehoodDiscernmentDisposition</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#TrueIdeaReflexiveKnowledgeDisposition">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <obo:BFO_0000054 rdf:resource="#ReflexiveKnowledgeProcess"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TrueIdeaReflexiveKnowledgeDisposition</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#ReflexiveKnowledgeOfTrueIdeaQuality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ReflexiveKnowledgeOfTrueIdeaQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ExplainedThroughHumanMindNatureDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExplainedThroughHumanMindNatureDisposition</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
@@ -27315,6 +27320,37 @@
   <work3:type rdf:resource="#NecessaryTruthQuality"/>
   <obo:RO_0000052 rdf:resource="#KnowledgeOfThirdKind"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ThirdKindKnowledgeNecessaryTruthQuality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#TrueIdeaInUs">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <obo:BFO_0000050 rdf:resource="#HumanMind"/>
+  <work2:sameAs rdf:resource="#AdequateIdeaInGod"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TrueIdeaInUs</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#AdequateIdeaInGod">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <obo:BFO_0000050 rdf:resource="#InfiniteIntellectOfGod"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AdequateIdeaInGod</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#TrueIdeaTruthQualityInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#TrueIdeaInUs"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TrueIdeaTruthQualityInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#AdequateIdeaAdequacyQualityInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#AdequateIdeaInGod"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AdequateIdeaAdequacyQualityInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#GodExplainedThroughHumanMindDispositionInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:RO_0000052 rdf:resource="#God"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodExplainedThroughHumanMindDispositionInstance</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
