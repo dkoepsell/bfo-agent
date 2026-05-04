@@ -3083,6 +3083,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Privation</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#AffirmationOrNegationInvolvementDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AffirmationOrNegationInvolvementDisposition</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#MorePerfectState">
   <rdfs:subClassOf rdf:resource="#ImperfectionQuality"/>
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
@@ -18361,10 +18367,30 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PositivenessOfCertaintyQuality</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#AffirmationOrNegationInvolvementDisposition">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AffirmationOrNegationInvolvementDisposition</rdfs:label>
+<owl:Class rdf:about="#WordOrImage">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WordOrImage</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#CorporealMotion">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CorporealMotion</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#EssenceConstitutedByCorporealMotionOnly">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#WordOrImage"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EssenceConstitutedByCorporealMotionOnly</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ThoughtExclusionFromWordImageEssence">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#WordOrImage"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ThoughtExclusionFromWordImageEssence</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
