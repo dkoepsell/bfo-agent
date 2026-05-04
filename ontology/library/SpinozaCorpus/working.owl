@@ -1321,6 +1321,7 @@
   <work:subClassOf rdf:resource="#_:restriction_bearer_of_PartOfNatureQuality"/>
   <work:subClassOf rdf:resource="#_:restriction_bearer_of_NecessarilyPartOfNatureDisposition"/>
   <work:subClassOf rdf:resource="#_:restriction_bearer_of_FollowsCommonOrderOfNatureDisposition"/>
+  <obo:RO_0000057 rdf:resource="#Mind"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Man</rdfs:label>
 </owl:Class>
 
@@ -41222,6 +41223,26 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <obo:RO_0000052 rdf:resource="#HumanMind"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SpiritOfGodIdentityWithMindQuality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#GoodDiscernmentDisposition">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:RO_0000052 rdf:resource="#Mind"/>
+  <obo:BFO_0000054 rdf:resource="#GoodDiscernmentProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GoodDiscernmentDisposition</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#GoodDiscernmentProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GoodDiscernmentProcess</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#MindGrantingProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#God"/>
+  <obo:RO_0000057 rdf:resource="#Man"/>
+  <obo:RO_0000057 rdf:resource="#Mind"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindGrantingProcess</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
