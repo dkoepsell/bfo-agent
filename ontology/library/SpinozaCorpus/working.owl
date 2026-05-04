@@ -28780,6 +28780,18 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SideOfThing</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#PertainsToGodNatureQuality">
+  <rdfs:subClassOf rdf:resource="#AttributeOfSubstance"/>
+  <work:subClassOf rdf:resource="#OfGodParthood"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PertainsToGodNatureQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#OfGodParthood">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#PertainsToGodNatureQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OfGodParthood</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -29106,6 +29118,7 @@
   <obo:RO_0000056 rdf:resource="#DivineRevelationProcess"/>
   <obo:RO_0000053 rdf:resource="#EssenceCommunicationToMindDispositionInstance"/>
   <obo:RO_0000056 rdf:resource="#MindToMindCommunicationProcess"/>
+  <obo:BFO_0000051 rdf:resource="#OfGodParthood"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">God</rdfs:label>
 </owl:NamedIndividual>
 
