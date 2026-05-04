@@ -30061,6 +30061,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HumanNatureRole</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#HumanNatureExclusivityQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HumanNatureExclusivityQuality</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#ViolationOfLawProcess">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ViolationOfLawProcess</rdfs:label>
@@ -30806,12 +30812,6 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CommandGroundedNormativeValenceDisposition</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#HumanNatureExclusivityQuality">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HumanNatureExclusivityQuality</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#RulerRole">
   <rdfs:subClassOf rdf:resource="#HumanNatureRole"/>
   <work:subClassOf rdf:resource="#HumanNatureRole"/>
@@ -30822,6 +30822,24 @@
   <rdfs:subClassOf rdf:resource="#HumanNatureRole"/>
   <work:subClassOf rdf:resource="#HumanNatureRole"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LawgiverRole</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PureMindPerception">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000055 rdf:resource="#PureMindPerceptionLeadsToUnderstandingDisposition"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PureMindPerception</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#WordAndImageAbsenceQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#ImaginationInaccessibility"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WordAndImageAbsenceQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PureMindPerceptionLeadsToUnderstandingDisposition">
+  <rdfs:subClassOf rdf:resource="#IntellectualGraspability"/>
+  <work:subClassOf rdf:resource="#IntellectualGraspability"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PureMindPerceptionLeadsToUnderstandingDisposition</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
@@ -32004,6 +32022,17 @@
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
   <work:subClassOf rdf:resource="#NaturaNaturata"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NaturaNaturata</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Christ">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <obo:RO_0000053 rdf:resource="#ChristDirectRevelationDisposition"/>
+  <obo:RO_0000056 rdf:resource="#GodCausesAllThingsProcess"/>
+  <obo:RO_0000053 rdf:resource="#ChristMindToMindCommunicationDispositionInstance"/>
+  <obo:RO_0000056 rdf:resource="#MindToMindCommunicationProcess"/>
+  <obo:RO_0000056 rdf:resource="#AccommodationProcess"/>
+  <obo:RO_0000056 rdf:resource="#ChristAdequatePerceptionProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Christ</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#TruthFalsehoodDistinctionTeachingProcess">
@@ -34552,17 +34581,6 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PartOfMindThatPerishesWithBody</rdfs:label>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#Christ">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
-  <obo:RO_0000053 rdf:resource="#ChristDirectRevelationDisposition"/>
-  <obo:RO_0000056 rdf:resource="#GodCausesAllThingsProcess"/>
-  <obo:RO_0000053 rdf:resource="#ChristMindToMindCommunicationDispositionInstance"/>
-  <obo:RO_0000056 rdf:resource="#MindToMindCommunicationProcess"/>
-  <obo:RO_0000056 rdf:resource="#AccommodationProcess"/>
-  <obo:RO_0000056 rdf:resource="#ChristAdequatePerceptionProcess"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Christ</rdfs:label>
-</owl:NamedIndividual>
-
 <owl:NamedIndividual rdf:about="#ExtendedSubstanceInfinityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#SubstanceInfinityOrPerfectionQuality"/>
@@ -35030,6 +35048,12 @@
   <work3:type rdf:resource="#DirectDivineRevelationReception"/>
   <obo:RO_0000052 rdf:resource="#Christ"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ChristDirectRevelationDisposition</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ChristAdequatePerceptionProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000055 rdf:resource="#AdequatePerceptionDisposition"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ChristAdequatePerceptionProcess</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#GodIntellectEternalityQuality">
@@ -44384,12 +44408,6 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AdequatePerceptionQuality</rdfs:label>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#ChristAdequatePerceptionProcess">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <obo:BFO_0000055 rdf:resource="#AdequatePerceptionDisposition"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ChristAdequatePerceptionProcess</rdfs:label>
-</owl:NamedIndividual>
-
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
   <rdfs:label xml:lang="en">realized in</rdfs:label>
   <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A realizable entity (e.g., role, disposition, function) is realized in some process. r realized_in p if r is borne by some independent continuant during the process p.</rdfs:comment>
@@ -44691,6 +44709,10 @@
 
 <rdf:Description rdf:about="#ImaginativePowerQuality">
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#PureMindUnderstanding">
+  <work:subClassOf rdf:resource="#TruePerceptionQuality"/>
 </rdf:Description>
 
 
