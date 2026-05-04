@@ -30031,6 +30031,41 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AccommodationDisposition</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#ScripturePassage">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ScripturePassage</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#AdHominemPassage">
+  <rdfs:subClassOf rdf:resource="#ScripturePassage"/>
+  <work:subClassOf rdf:resource="#ScripturePassage"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AdHominemPassage</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DivineTeachingInterpretation">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivineTachingInterpretation</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PhilosophicalPrejudice">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#PhilosophicalInquiry"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PhilosophicalPrejudice</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PhilosophicalInquiry">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PhilosophicalInquiry</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DefendingAdHominemAsDoctrineProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000055 rdf:resource="#DivineTeachingInterpretation"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DefendingAdHominemAsDoctrineProcess</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -33708,6 +33743,16 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PartOfMindThatPerishesWithBody</rdfs:label>
 </owl:NamedIndividual>
 
+<owl:NamedIndividual rdf:about="#Christ">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <obo:RO_0000053 rdf:resource="#ChristDirectRevelationDisposition"/>
+  <obo:RO_0000056 rdf:resource="#GodCausesAllThingsProcess"/>
+  <obo:RO_0000053 rdf:resource="#ChristMindToMindCommunicationDispositionInstance"/>
+  <obo:RO_0000056 rdf:resource="#MindToMindCommunicationProcess"/>
+  <obo:RO_0000056 rdf:resource="#AccommodationProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Christ</rdfs:label>
+</owl:NamedIndividual>
+
 <owl:NamedIndividual rdf:about="#ExtendedSubstanceInfinityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#SubstanceInfinityOrPerfectionQuality"/>
@@ -34015,16 +34060,6 @@
   <obo:BFO_0000054 rdf:resource="#MindToMindCommunicationProcess"/>
   <work3:type rdf:resource="#MindToMindCommunicationDisposition"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ChristMindToMindCommunicationDispositionInstance</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#Christ">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
-  <obo:RO_0000053 rdf:resource="#ChristDirectRevelationDisposition"/>
-  <obo:RO_0000056 rdf:resource="#GodCausesAllThingsProcess"/>
-  <obo:RO_0000053 rdf:resource="#ChristMindToMindCommunicationDispositionInstance"/>
-  <obo:RO_0000056 rdf:resource="#MindToMindCommunicationProcess"/>
-  <obo:RO_0000056 rdf:resource="#AccommodationProcess"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Christ</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#Cain">
@@ -43222,17 +43257,17 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ApostolicSigns</rdfs:label>
 </owl:NamedIndividual>
 
+<owl:NamedIndividual rdf:about="#ApostolicAccommodationDispositionInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:RO_0000052 rdf:resource="#Apostles"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ApostolicAccommodationDispositionInstance</rdfs:label>
+</owl:NamedIndividual>
+
 <owl:NamedIndividual rdf:about="#ApostolicAudience">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
   <obo:RO_0000056 rdf:resource="#ApostolicReasoning"/>
   <obo:RO_0000056 rdf:resource="#ApostolicSigns"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ApostolicAudience</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#ApostolicAccommodationDispositionInstance">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <obo:RO_0000052 rdf:resource="#Apostles"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ApostolicAccommodationDispositionInstance</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
