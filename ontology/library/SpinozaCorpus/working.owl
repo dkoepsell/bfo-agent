@@ -32616,6 +32616,7 @@
 
 <owl:NamedIndividual rdf:about="#CommonOrderOfNature">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <obo:RO_0000056 rdf:resource="#NecessaryFollowingOfOrderProcess"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CommonOrderOfNature</rdfs:label>
 </owl:NamedIndividual>
 
@@ -46084,6 +46085,25 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <obo:RO_0000052 rdf:resource="#PerceptionOfGodViaOrderOfNatureProcess"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BetterPerceivedViaFixedOrderQuality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#OrderOfNatureNecessitationDisposition">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:RO_0000052 rdf:resource="#God"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OrderOfNatureNecessitationDisposition</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#EternalLawsOfGod">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EternalLawsOfGod</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#NecessaryFollowingOfOrderProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000055 rdf:resource="#OrderOfNatureNecessitationDisposition"/>
+  <obo:RO_0000057 rdf:resource="#EternalLawsOfGod"/>
+  <obo:BFO_0000050 rdf:resource="#GodCausesAllThingsProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NecessaryFollowingOfOrderProcess</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
