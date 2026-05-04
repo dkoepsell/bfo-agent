@@ -22858,6 +22858,8 @@
 <owl:Class rdf:about="#LivingAccordingToReason">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000055 rdf:resource="#ReasonsGuidance"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LivingAccordingToReason</rdfs:label>
 </owl:Class>
 
@@ -23077,6 +23079,29 @@
   <obo:BFO_0000054 rdf:resource="#ReligiousAction"/>
   <work:subClassOf rdf:resource="#Religion"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ReligionCausalGroundingRelation</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#Morality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Morality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DesireToDoGood">
+  <rdfs:subClassOf rdf:resource="#Morality"/>
+  <work:subClassOf rdf:resource="#Morality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DesireToDoGood</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#MoralityGenerationProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="#LivingAccordingToReason"/>
+  <obo:RO_0000057 rdf:resource="#DesireToDoGood"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MoralityGenerationProcess</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ReasonsGuidance">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ReasonsGuidance</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
