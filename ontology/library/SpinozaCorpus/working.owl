@@ -31353,6 +31353,26 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CeremonialObligationBindingQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#StateDissolution">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">StateDissolution</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PoliticalState">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PoliticalState</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#NaturalLaw">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NaturalLaw</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#LegalObligationRole">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LegalObligationRole</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -44901,6 +44921,7 @@
 
 <owl:NamedIndividual rdf:about="#JewishPeople">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <obo:RO_0000056 rdf:resource="#PostDissolutionStateDissolutionProcess"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">JewishPeople</rdfs:label>
 </owl:NamedIndividual>
 
@@ -45065,6 +45086,24 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#UniversalMoralTeachingContent"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ChristTeaching</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#NaturalLawObligationRole">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <obo:RO_0000052 rdf:resource="#JewishPeople"/>
+  <work3:type rdf:resource="#LegalObligationRole"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NaturalLawObligationRole</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#MosaicLawObligationAbsenceQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#JewishPeople"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MosaicLawObligationAbsenceQuality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#PostDissolutionStateDissolutionProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PostDissolutionStateDissolutionProcess</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
