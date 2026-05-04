@@ -28658,6 +28658,7 @@
 
 <owl:Class rdf:about="#PropheticImage">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PropheticImage</rdfs:label>
 </owl:Class>
 
@@ -28851,6 +28852,8 @@
 <owl:Class rdf:about="#PropheticRevelation">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <obo:RO_0000057 rdf:resource="#PropheticallyImpartedContent"/>
+  <obo:RO_0000057 rdf:resource="#PropheticWord"/>
+  <obo:RO_0000057 rdf:resource="#PropheticImage"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PropheticRevelation</rdfs:label>
 </owl:Class>
 
@@ -29020,22 +29023,48 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PropheticPerceptionProcess</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#InscriptionOfDivineJudgmentsQuality">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">InscriptionOfDivineJudgmentsQuality</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#ImaginativeMediationDisposition">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="#ImaginationInaccessibility"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ImaginativeMediationDisposition</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#InscriptionOfDivineJudgmentsQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">InscriptionOfDivineJudgmentsQuality</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#WordOrImageMediationQuality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <obo:RO_0000052 rdf:resource="#PropheticPerceptionProcess"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WordOrImageMediationQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PropheticWord">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PropheticWord</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#TruthStatusQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TruthStatusQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#TrueContentQuality">
+  <rdfs:subClassOf rdf:resource="#TruthStatusQuality"/>
+  <work:subClassOf rdf:resource="#TruthStatusQuality"/>
+  <work:subClassOf rdf:resource="#TruePerceptionQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TrueContentQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ImaginaryContentQuality">
+  <rdfs:subClassOf rdf:resource="#TruthStatusQuality"/>
+  <work:subClassOf rdf:resource="#TruthStatusQuality"/>
+  <work:subClassOf rdf:resource="#ImaginationPerfectionQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ImaginaryContentQuality</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
