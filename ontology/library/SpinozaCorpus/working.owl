@@ -20921,6 +20921,7 @@
 <owl:Class rdf:about="#Lust">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="#DesireForBodyUnion"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Lust</rdfs:label>
 </owl:Class>
 
@@ -21706,6 +21707,23 @@
 <owl:Class rdf:about="#ImmoderateWealthLove">
   <rdfs:subClassOf rdf:resource="#ImmoderateDesire"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ImmoderateWealthLove</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DesireForBodyUnion">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:BFO_0000054 rdf:resource="#BodyJoiningProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DesireForBodyUnion</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#LoveOfBodyUnion">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LoveOfBodyUnion</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#BodyJoiningProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BodyJoiningProcess</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
