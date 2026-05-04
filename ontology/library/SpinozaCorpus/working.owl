@@ -24389,16 +24389,22 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AllThingsPredeterminedProcess</rdfs:label>
 </owl:NamedIndividual>
 
+<owl:NamedIndividual rdf:about="#InfinitePower">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:RO_0000052 rdf:resource="#God"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">InfinitePower</rdfs:label>
+</owl:NamedIndividual>
+
 <owl:NamedIndividual rdf:about="#AbsoluteNatureOfGod">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <obo:RO_0000052 rdf:resource="#God"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AbsoluteNatureOfGod</rdfs:label>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#InfinitePower">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <obo:RO_0000052 rdf:resource="#God"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">InfinitePower</rdfs:label>
+<owl:NamedIndividual rdf:about="#NatureHasNoEndQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#WholeOfNature"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NatureHasNoEndQuality</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
