@@ -16842,6 +16842,7 @@
   <work:subClassOf rdf:resource="#_:universalAnimacyRestriction"/>
   <rdfs:subClassOf rdf:resource="#Body"/>
   <work:subClassOf rdf:resource="#Body"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/RO_0000053"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Individual</rdfs:label>
 </owl:Class>
 
@@ -17026,6 +17027,34 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FixedMotionConstraintQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#FormRetentionQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#Individual"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FormRetentionQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#UnionQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#Individual"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UnionQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PartReplacementProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PartReplacementProcess</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#FormPreservationDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:RO_0000052 rdf:resource="#Individual"/>
+  <obo:BFO_0000054 rdf:resource="#PartReplacementProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FormPreservationDisposition</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
