@@ -437,6 +437,7 @@
   <work:subClassOf rdf:resource="#Substance"/>
   <work:subClassOf rdf:resource="#ModificationBearer"/>
   <obo:RO_0000052 rdf:resource="#Substance"/>
+  <work:subClassOf rdf:resource="#SingularThing"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Mode</rdfs:label>
 </owl:Class>
 
@@ -16590,6 +16591,30 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CausalOrderIdentityAcrossAttributesQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#NonExistentSingularThing">
+  <rdfs:subClassOf rdf:resource="#SingularThing"/>
+  <work:subClassOf rdf:resource="#SingularThing"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NonExistentSingularThing</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#IdeaOfSingularNonExistentThing">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IdeaOfSingularNonExistentThing</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#FormalEssenceContainmentInAttribute">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="#AttributeExpressesEternalInfiniteEssenceRelation"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FormalEssenceContainmentInAttribute</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#IdeaComprehensionInInfiniteIdea">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IdeaComprehensionInInfiniteIdea</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
@@ -18955,6 +18980,13 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PowerOfThinkingEqualsActingQuality</rdfs:label>
 </owl:NamedIndividual>
 
+<owl:NamedIndividual rdf:about="#AttributeParallelismDispositionInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work3:type rdf:resource="#AttributeParallelismDisposition"/>
+  <obo:RO_0000052 rdf:resource="#God"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AttributeParallelismDispositionInstance</rdfs:label>
+</owl:NamedIndividual>
+
 <owl:NamedIndividual rdf:about="#ThinkingThingRole">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
   <obo:RO_0000052 rdf:resource="#Speaker"/>
@@ -19105,6 +19137,20 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <obo:RO_0000052 rdf:resource="#WholeOfNature"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">QuantityOfMotionQualityInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#OrderAndConnectionOfCausesUnderExtension">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work3:type rdf:resource="#OrderAndConnectionOfCauses"/>
+  <obo:RO_0000052 rdf:resource="#WholeOfNature"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OrderAndConnectionOfCausesUnderExtension</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#OrderAndConnectionOfCausesUnderThought">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work3:type rdf:resource="#OrderAndConnectionOfCauses"/>
+  <obo:RO_0000052 rdf:resource="#WholeOfNature"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OrderAndConnectionOfCausesUnderThought</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#SoulEssence">
@@ -23307,6 +23353,7 @@
 <owl:NamedIndividual rdf:about="#FormalEssence">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <obo:BFO_0000050 rdf:resource="#DivineEssence"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FormalEssence</rdfs:label>
 </owl:NamedIndividual>
 
@@ -25150,25 +25197,11 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IdeaOfExistingCircle</rdfs:label>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#OrderAndConnectionOfCausesUnderExtension">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <work3:type rdf:resource="#OrderAndConnectionOfCauses"/>
-  <obo:RO_0000052 rdf:resource="#WholeOfNature"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OrderAndConnectionOfCausesUnderExtension</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#OrderAndConnectionOfCausesUnderThought">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <work3:type rdf:resource="#OrderAndConnectionOfCauses"/>
-  <obo:RO_0000052 rdf:resource="#WholeOfNature"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OrderAndConnectionOfCausesUnderThought</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#AttributeParallelismDispositionInstance">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <work3:type rdf:resource="#AttributeParallelismDisposition"/>
-  <obo:RO_0000052 rdf:resource="#God"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AttributeParallelismDispositionInstance</rdfs:label>
+<owl:NamedIndividual rdf:about="#GodInfiniteIdea">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work3:type rdf:resource="#IdeaOfSingularNonExistentThing"/>
+  <obo:BFO_0000050 rdf:resource="#ThinkingAttribute"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodInfiniteIdea</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
