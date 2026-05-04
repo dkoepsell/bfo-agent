@@ -14012,6 +14012,32 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SinAgainstGodQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#HumanWillingConstraint">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HumanWillingConstraint</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#IntellectBoundedWillingDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="#WillErrorRestraintDisposition"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IntellectBoundedWillingDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#WillExceedsIntellectProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000055 rdf:resource="#HumanWillingConstraint"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WillExceedsIntellectProcess</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#HumanIntellectBoundQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HumanIntellectBoundQuality</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#God">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
   <obo:BFO_0000051 rdf:resource="#DivineAttribute"/>
