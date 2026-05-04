@@ -20068,6 +20068,30 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BenefitingProcess</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#Cruelty">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="#Hatred"/>
+  <work:subClassOf rdf:resource="#HatredPrevailsOverLoveQuality"/>
+  <work:subClassOf rdf:resource="#StrivingToDoEvilDisposition"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Cruelty</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#HatredPrevailsOverLoveQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HatredPrevailsOverLoveQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#StrivingToDoEvilDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:BFO_0000054 rdf:resource="#EvilDoingProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">StrivingToDoEvilDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#EvilDoingProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EvilDoingProcess</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
