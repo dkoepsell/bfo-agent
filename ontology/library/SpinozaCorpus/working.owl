@@ -29375,6 +29375,32 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivineAngerQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#VividImagination">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">VividImagination</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PropheticSign">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PropheticSign</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#HeartInclinedToRightAndGood">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HeartInclinedToRightAndGood</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PropheticCertaintyGrounding">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:BFO_0000051 rdf:resource="#VividImagination"/>
+  <obo:BFO_0000051 rdf:resource="#PropheticSign"/>
+  <obo:BFO_0000051 rdf:resource="#HeartInclinedToRightAndGood"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PropheticCertaintyGrounding</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
