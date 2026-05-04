@@ -25471,6 +25471,7 @@
   <obo:RO_0000053 rdf:resource="#SelfPreservationIncapacity"/>
   <obo:RO_0000053 rdf:resource="#SpeakerPreservationByAnotherRoleInstance"/>
   <obo:RO_0000053 rdf:resource="#SpeakerUnionWithBodyRoleInstance"/>
+  <obo:BFO_0000050 rdf:resource="#WholeOfNature"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Speaker</rdfs:label>
 </owl:NamedIndividual>
 
