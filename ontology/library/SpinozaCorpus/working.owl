@@ -7003,6 +7003,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConfidenceArisesFromIdeaRelation</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#AffectSignOfMindLackingPower">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AffectSignOfMindLackingPower</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#ConfidenceArisingProcess">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <work:subClassOf rdf:resource="#IdeaFormationProcess"/>
@@ -20166,6 +20172,8 @@
   <work:subClassOf rdf:resource="#Joy"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="#Love"/>
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="#Affect"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Overestimation</rdfs:label>
 </owl:Class>
 
@@ -20179,6 +20187,7 @@
   <work:subClassOf rdf:resource="#Joy"/>
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="#Affect"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Scorn</rdfs:label>
 </owl:Class>
 
@@ -23679,10 +23688,18 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindLackingInPower</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#AffectSignOfMindLackingPower">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AffectSignOfMindLackingPower</rdfs:label>
+<owl:Class rdf:about="#OverestimationEvilQuality">
+  <rdfs:subClassOf rdf:resource="#EvilQuality"/>
+  <work:subClassOf rdf:resource="#EvilQuality"/>
+  <obo:RO_0000052 rdf:resource="#Overestimation"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OverestimationEvilQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ScornEvilQuality">
+  <rdfs:subClassOf rdf:resource="#EvilQuality"/>
+  <work:subClassOf rdf:resource="#EvilQuality"/>
+  <obo:RO_0000052 rdf:resource="#Scorn"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ScornEvilQuality</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
