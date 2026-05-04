@@ -19924,6 +19924,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EmulationGenerationProcess</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#ImaginationOfOthersDesire">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ImaginationOfOthersDesire</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#Benevolence">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="#Desire"/>
@@ -21414,10 +21420,23 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">JoyFromAbsenceOfHatedThing</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#ImaginationOfOthersDesire">
+<owl:Class rdf:about="#Thankfulness">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="#Desire"/>
+  <work:subClassOf rdf:resource="#Love"/>
+  <obo:BFO_0000054 rdf:resource="#Benefiting"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Thankfulness</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#Benefiting">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ImaginationOfOthersDesire</rdfs:label>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Benefiting</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ThankfulnessDesireQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ThankfulnessDesireQuality</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
