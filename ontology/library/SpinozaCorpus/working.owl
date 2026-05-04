@@ -6230,6 +6230,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HateAccompaniedByIdeaOfExternalCauseQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#BeingMovedByEnvyOrHateProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BeingMovedByEnvyOrHateProcess</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#MereReport">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MereReport</rdfs:label>
@@ -24639,12 +24645,6 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ContrarietyRelation</rdfs:label>
-</owl:Class>
-
-<owl:Class rdf:about="#BeingMovedByEnvyOrHateProcess">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BeingMovedByEnvyOrHateProcess</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
