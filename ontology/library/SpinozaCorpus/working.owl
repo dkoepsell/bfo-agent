@@ -18477,6 +18477,19 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WillPredicatedOfIdeasQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#IdeaAffirmationQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#Idea"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IdeaAffirmationQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#IdeasDifferByAffirmationQuality">
+  <rdfs:subClassOf rdf:resource="#IdeaAffirmationQuality"/>
+  <work:subClassOf rdf:resource="#IdeaAffirmationQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IdeasDifferByAffirmationQuality</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
