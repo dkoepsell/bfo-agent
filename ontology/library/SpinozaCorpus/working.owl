@@ -8417,6 +8417,18 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">VividnessQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#DivineRevelationProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#God"/>
+  <obo:RO_0000057 rdf:resource="#PropheticRecipient"/>
+  <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000051 rdf:resource="#VisionMedium"/>
+  <obo:BFO_0000051 rdf:resource="#DreamMedium"/>
+  <obo:BFO_0000051 rdf:resource="#WordMedium"/>
+  <obo:RO_0000057 rdf:resource="#Prophet"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivineRevelationProcess</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#InfallibilityAbsenceQuality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
@@ -28559,18 +28571,6 @@
 <owl:Class rdf:about="#InnateRightInnatenessQuality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">InnateRightInnatenessQuality</rdfs:label>
-</owl:Class>
-
-<owl:Class rdf:about="#DivineRevelationProcess">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <obo:RO_0000057 rdf:resource="#God"/>
-  <obo:RO_0000057 rdf:resource="#PropheticRecipient"/>
-  <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <obo:BFO_0000051 rdf:resource="#VisionMedium"/>
-  <obo:BFO_0000051 rdf:resource="#DreamMedium"/>
-  <obo:BFO_0000051 rdf:resource="#WordMedium"/>
-  <obo:RO_0000057 rdf:resource="#Prophet"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivineRevelationProcess</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#PropheticRecipient">
