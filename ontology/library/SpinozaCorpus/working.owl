@@ -6815,6 +6815,8 @@
   <work:subClassOf rdf:resource="#MockeryGroundingRelation"/>
   <obo:BFO_0000054 rdf:resource="#MockeryRealizationProcess"/>
   <work:subClassOf rdf:resource="#Imperfection"/>
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#Joy"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Mockery</rdfs:label>
 </owl:Class>
 
@@ -20488,6 +20490,11 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Devotion</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#WonderAt">
+  <rdfs:subClassOf rdf:resource="#Wonder"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WonderAt</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#DevotionHasLoveComponent">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DevotionHasLoveComponent</rdfs:label>
@@ -20955,11 +20962,6 @@
 <owl:Class rdf:about="#AccidentalCauseOfSadness">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AccidentalCauseOfSadness</rdfs:label>
-</owl:Class>
-
-<owl:Class rdf:about="#WonderAt">
-  <rdfs:subClassOf rdf:resource="#Wonder"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WonderAt</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
@@ -30857,6 +30859,13 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <obo:BFO_0000050 rdf:resource="#TheEthics"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LoveDefinition</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#MockeryDefinitionContent">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <obo:BFO_0000050 rdf:resource="#TheEthics"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MockeryDefinitionContent</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
