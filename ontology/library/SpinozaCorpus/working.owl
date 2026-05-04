@@ -2705,6 +2705,9 @@
   <obo:RO_0000053 rdf:resource="#WillSelfDeterminationDisposition"/>
   <obo:RO_0000053 rdf:resource="#WillErrorRestraintDisposition"/>
   <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#ThinkingAttribute"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Will</rdfs:label>
 </owl:Class>
 
