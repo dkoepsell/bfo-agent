@@ -14437,6 +14437,24 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NecessaryGroundsForAssent</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#SensualPleasureAppetite">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:BFO_0000054 rdf:resource="#SensualPleasureEngagementProcess"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SensualPleasureAppetite</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#EssentialAppetiteQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#EssentialExistenceQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EssentialAppetiteQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SensualPleasureEngagementProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SensualPleasureEngagementProcess</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#God">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
   <obo:BFO_0000051 rdf:resource="#DivineAttribute"/>
