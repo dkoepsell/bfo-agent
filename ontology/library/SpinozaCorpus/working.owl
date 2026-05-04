@@ -7550,6 +7550,8 @@
 <owl:Class rdf:about="#Disdain">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:subClassOf rdf:resource="#ImaginationInaccessibility"/>
+  <work:subClassOf rdf:resource="#ImaginationInaccessibility"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Disdain</rdfs:label>
 </owl:Class>
 
@@ -20903,6 +20905,18 @@
 <owl:Class rdf:about="#PrimitivenessQuality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PrimitivenessQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DisdainImagination">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000055 rdf:resource="#Disdain"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DisdainImagination</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#MinimalMindEngagementQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#DisdainImagination"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MinimalMindEngagementQuality</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
