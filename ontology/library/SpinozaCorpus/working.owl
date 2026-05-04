@@ -4514,6 +4514,8 @@
   <rdfs:subClassOf rdf:resource="#Idea"/>
   <work:subClassOf rdf:resource="#BeingOfReason"/>
   <work:subClassOf rdf:resource="#ModeOfThinking"/>
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work:subClassOf rdf:resource="#ComparativeNotion"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GoodAndEvil</rdfs:label>
 </owl:Class>
 
@@ -6043,6 +6045,12 @@
 <owl:Class rdf:about="#RelativeGoodEvilQuality">
   <rdfs:subClassOf rdf:resource="#RelationalQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RelativeGoodEvilQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#RelationalEvaluativeDesignation">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#NullIntrinsicPositiveContent"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RelationalEvaluativeDesignation</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#EvilQuality">
@@ -21917,15 +21925,32 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CausalNecessitationOfNatureConstraintQuality</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#RelationalEvaluativeDesignation">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <work:subClassOf rdf:resource="#NullIntrinsicPositiveContent"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RelationalEvaluativeDesignation</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#NullIntrinsicPositiveContent">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NullIntrinsicPositiveContent</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ModeOfThinkingNotion">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ModeOfThinkingNotion</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ComparativeNotion">
+  <rdfs:subClassOf rdf:resource="#ModeOfThinkingNotion"/>
+  <work:subClassOf rdf:resource="#ModeOfThinkingNotion"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ComparativeNotion</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#GoodNotion">
+  <rdfs:subClassOf rdf:resource="#GoodAndEvil"/>
+  <work:subClassOf rdf:resource="#GoodAndEvil"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GoodNotion</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#EvilNotion">
+  <rdfs:subClassOf rdf:resource="#GoodAndEvil"/>
+  <work:subClassOf rdf:resource="#GoodAndEvil"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EvilNotion</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
