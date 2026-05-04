@@ -1980,6 +1980,11 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TrueIdeaReflexiveKnowledgeDisposition</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#ProportionalPerfectionDependence">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ProportionalPerfectionDependence</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#ExternalCausationConstraint">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <obo:BFO_0000054 rdf:resource="#PassionCausationProcess"/>
@@ -4314,6 +4319,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PerceptionKind</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#ObjectOfLovePerfectionQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ObjectOfLovePerfectionQuality</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#TrueAndGenuineLove">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
@@ -4816,6 +4827,12 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="#EssentialExistenceQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HumanEssentialQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#KnowledgeAndLoveOfGodConstitutesSupremeGoodRelation">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:BFO_0000054 rdf:resource="#PerseveranceInBeingProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">KnowledgeAndLoveOfGodConstitutesSupremeGoodRelation</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#PiousAgent">
@@ -16375,6 +16392,8 @@
 <owl:Class rdf:about="#KnowledgeOfGodQuality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:subClassOf rdf:resource="#SupremeGood"/>
+  <work:subClassOf rdf:resource="#SupremeGood"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">KnowledgeOfGodQuality</rdfs:label>
 </owl:Class>
 
@@ -30442,6 +30461,8 @@
 
 <owl:Class rdf:about="#LoveOfGodQuality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:subClassOf rdf:resource="#SupremeGood"/>
+  <work:subClassOf rdf:resource="#SupremeGood"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LoveOfGodQuality</rdfs:label>
 </owl:Class>
 
@@ -30638,21 +30659,10 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">KnowledgeOfGodConstitutesSupremeGoodDisposition</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#ProportionalPerfectionDependence">
+<owl:Class rdf:about="#PrincipleOfLivingDisposition">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ProportionalPerfectionDependence</rdfs:label>
-</owl:Class>
-
-<owl:Class rdf:about="#ObjectOfLovePerfectionQuality">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ObjectOfLovePerfectionQuality</rdfs:label>
-</owl:Class>
-
-<owl:Class rdf:about="#KnowledgeAndLoveOfGodConstitutesSupremeGoodRelation">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <obo:BFO_0000054 rdf:resource="#PerseveranceInBeingProcess"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">KnowledgeAndLoveOfGodConstitutesSupremeGoodRelation</rdfs:label>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PrincipleOfLivingDisposition</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
