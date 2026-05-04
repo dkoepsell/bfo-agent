@@ -1892,6 +1892,7 @@
   <obo:RO_0000052 rdf:resource="#Soul"/>
   <work:subClassOf rdf:resource="#Joy"/>
   <work:subClassOf rdf:resource="#Sadness"/>
+  <work:subClassOf rdf:resource="#AccompanimentRelation"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Sadness</rdfs:label>
 </owl:Class>
 
@@ -20090,6 +20091,34 @@
 <owl:Class rdf:about="#EvilDoingProcess">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EvilDoingProcess</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#HatedThing">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HatedThing</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DestructionOfHatedThing">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DestructionOfHatedThing</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ImaginingDestructionOfHatedThing">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000051 rdf:resource="#DestructionOfHatedThing"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ImaginingDestructionOfHatedThing</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#JoyFromImaginingDestructionOfHatedThing">
+  <rdfs:subClassOf rdf:resource="#Joy"/>
+  <work:subClassOf rdf:resource="#Joy"/>
+  <work:subClassOf rdf:resource="#AccompanimentRelation"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">JoyFromImaginingDestructionOfHatedThing</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#AccompanimentRelation">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AccompanimentRelation</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
