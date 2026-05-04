@@ -1779,6 +1779,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PassionCausationProcess</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#EssenceQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#PerfectionQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EssenceQuality</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#EarliestWorksTemporalRole">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EarliestWorksTemporalRole</rdfs:label>
@@ -1948,6 +1954,8 @@
   <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="#PassageToLesserPerfection"/>
   <obo:RO_0000057 rdf:resource="#Man"/>
+  <work:subClassOf rdf:resource="#TransitionToLesserPerfection"/>
+  <obo:BFO_0000055 rdf:resource="#PowerDiminishingDisposition"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Sadness</rdfs:label>
 </owl:Class>
 
@@ -2040,12 +2048,6 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RelativeOrRespectalGoodness</rdfs:label>
-</owl:Class>
-
-<owl:Class rdf:about="#EssenceQuality">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <work:subClassOf rdf:resource="#PerfectionQuality"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EssenceQuality</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#EternalOrder">
@@ -20853,6 +20855,17 @@
   <rdfs:subClassOf rdf:resource="#Sadness"/>
   <work:subClassOf rdf:resource="#Sadness"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TransitionToLesserPerfectionProcess</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DiminishedPowerOfActingQuality">
+  <rdfs:subClassOf rdf:resource="#PowerOfActingQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DiminishedPowerOfActingQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PowerDiminishingDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:BFO_0000054 rdf:resource="#Sadness"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PowerDiminishingDisposition</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
