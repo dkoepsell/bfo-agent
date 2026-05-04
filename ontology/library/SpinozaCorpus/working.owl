@@ -22483,6 +22483,37 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SameNatureQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#JudgmentOfGoodOrEvil">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">JudgmentOfGoodOrEvil</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#AppetitiveConatus">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="#AppetitiveConatusNecessitation"/>
+  <obo:BFO_0000054 rdf:resource="#PerseveranceInBeingProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AppetitiveConatus</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#AversiveConatus">
+  <rdfs:subClassOf rdf:resource="#AppetitiveConatus"/>
+  <work:subClassOf rdf:resource="#AppetitiveConatus"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AversiveConatus</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#GoodEvilJudgmentQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GoodEvilJudgmentQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#AppetitiveConatusNecessitation">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AppetitiveConatusNecessitation</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
