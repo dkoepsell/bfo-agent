@@ -1203,6 +1203,7 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work:subClassOf rdf:resource="#EpistemicNecessityOfIdeas"/>
+  <obo:RO_0000053 rdf:resource="#NecessityOfFollowingDisposition"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AdequateIdea</rdfs:label>
 </owl:Class>
 
@@ -1419,6 +1420,12 @@
   <obo:RO_0000057 rdf:resource="#ImaginativeImage"/>
   <obo:RO_0000057 rdf:resource="#Word"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IntellectTracingProcess</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#EpistemicNecessityOfIdeas">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EpistemicNecessityOfIdeas</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#ModeOfThought">
@@ -2544,13 +2551,8 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work:subClassOf rdf:resource="#EpistemicNecessityOfIdeas"/>
+  <obo:RO_0000053 rdf:resource="#NecessityOfFollowingDisposition"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">InadequateIdea</rdfs:label>
-</owl:Class>
-
-<owl:Class rdf:about="#EpistemicNecessityOfIdeas">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EpistemicNecessityOfIdeas</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#EternalEssenceNature">
@@ -17778,6 +17780,18 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BodyAffectionInvolvesSunEssenceQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#NecessityOfFollowingDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="#ExistenceNecessitation"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NecessityOfFollowingDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#EqualNecessityOfIdeaFollowingQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#NecessityOfExistence"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EqualNecessityOfIdeaFollowingQuality</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
