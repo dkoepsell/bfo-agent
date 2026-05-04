@@ -16100,6 +16100,29 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NecessityOfDivineProductionDisposition</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#ContingencyAsEpistemicDefectQuality">
+  <rdfs:subClassOf rdf:resource="#ContingentExistenceQuality"/>
+  <work:subClassOf rdf:resource="#EpistemicDefectQuality"/>
+  <work:subClassOf rdf:resource="#ContingentExistenceQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ContingencyAsEpistemicDefectQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#EpistemicDefectQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EpistemicDefectQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#KnowledgeState">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">KnowledgeState</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#OntologicalContingency">
+  <rdfs:subClassOf rdf:resource="#ContingentExistenceQuality"/>
+  <work:subClassOf rdf:resource="#ContingentExistenceQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OntologicalContingency</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
@@ -24136,6 +24159,13 @@
   <obo:RO_0000052 rdf:resource="#God"/>
   <obo:BFO_0000054 rdf:resource="#GodCausesAllThingsProcess"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NecessityOfDivineProductionDispositionInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ContingencyEpistemicOnlyThesis">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <obo:BFO_0000050 rdf:resource="#TheEthics"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ContingencyEpistemicOnlyThesis</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
