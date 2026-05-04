@@ -4842,6 +4842,7 @@
 <owl:Class rdf:about="#HumanKnowledge">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="#DependenceOnIdeaOfGodDisposition"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HumanKnowledge</rdfs:label>
 </owl:Class>
 
@@ -4856,6 +4857,11 @@
   <obo:RO_0000053 rdf:resource="#KnowledgeOfGod"/>
   <obo:RO_0000053 rdf:resource="#DesireForOwnPossession"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PiousAgent</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DependenceOnIdeaOfGodDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DependenceOnIdeaOfGodDisposition</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#HonoringGodProcess">
@@ -30942,12 +30948,8 @@
 <owl:Class rdf:about="#HumanUnderstanding">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="#DependenceOnIdeaOfGodDisposition"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HumanUnderstanding</rdfs:label>
-</owl:Class>
-
-<owl:Class rdf:about="#DependenceOnIdeaOfGodDisposition">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DependenceOnIdeaOfGodDisposition</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#TrueEthics">
@@ -30976,6 +30978,12 @@
   <obo:RO_0000057 rdf:resource="#TrueEthics"/>
   <obo:RO_0000057 rdf:resource="#TruePolitics"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DeductionFromGodKnowledgeProcess</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#UnderstandingDependenceOnIdeaOfGodQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UnderstandingDependenceOnIdeaOfGodQuality</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
