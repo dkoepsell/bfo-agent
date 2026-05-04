@@ -5405,6 +5405,7 @@
   <rdfs:subClassOf rdf:resource="#Conatus"/>
   <work:subClassOf rdf:resource="#Conatus"/>
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SelfPreservationStriving</rdfs:label>
 </owl:Class>
 
@@ -22551,6 +22552,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConatusStriving</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#VirtueFoundation">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">VirtueFoundation</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
@@ -23020,6 +23027,7 @@
   <work3:type rdf:resource="#Desire"/>
   <work3:type rdf:resource="#StrivingToPreserveOwnBeing"/>
   <work3:type rdf:resource="#ConatusStriving"/>
+  <work3:type rdf:resource="#SelfPreservationStriving"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConatusMentalDispositionInstance</rdfs:label>
 </owl:NamedIndividual>
 
@@ -32663,6 +32671,13 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#StrivingToPreserveBeingEssenceQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConatusEssenceIdentityQuality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#FirstAndOnlyFoundationOfVirtueQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work3:type rdf:resource="#VirtueFoundation"/>
+  <obo:RO_0000052 rdf:resource="#SelfPreservationStriving"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FirstAndOnlyFoundationOfVirtueQuality</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
