@@ -26568,16 +26568,34 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Infant</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#SpeechIncapacity">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SpeechIncapacity</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#SpeechCapacity">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SpeechCapacity</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#SpeechIncapacity">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SpeechIncapacity</rdfs:label>
+<owl:Class rdf:about="#Affectus">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000020"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Affectus</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ActiveAffectus">
+  <rdfs:subClassOf rdf:resource="#Affectus"/>
+  <work:subClassOf rdf:resource="#Affectus"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000020"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ActiveAffectus</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ActiveAffectusDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ActiveAffectusDisposition</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
