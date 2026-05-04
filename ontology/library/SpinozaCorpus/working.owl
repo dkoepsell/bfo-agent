@@ -11840,6 +11840,7 @@
   <obo:RO_0000052 rdf:resource="#Body"/>
   <obo:RO_0000052 rdf:resource="#MovingBody"/>
   <work:subClassOf rdf:resource="#MotionOrSpeedQuality"/>
+  <work:subClassOf rdf:resource="#BodyIndividuationByMotionRestQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Speed</rdfs:label>
 </owl:Class>
 
@@ -16871,6 +16872,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindDistinctUnderstandingCapacity</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#BodyActionSelfSufficiencyProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BodyActionSelfSufficiencyProcess</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#BodySelfDependenceQuality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
@@ -16878,10 +16885,16 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BodySelfDependenceQuality</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#BodyActionSelfSufficiencyProcess">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BodyActionSelfSufficiencyProcess</rdfs:label>
+<owl:Class rdf:about="#Slowness">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#BodyIndividuationByMotionRestQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Slowness</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#BodyIndividuationByMotionRestQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BodyIndividuationByMotionRestQuality</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
@@ -17591,6 +17604,7 @@
   <work3:type rdf:resource="#ConceptionDependenceOnExtension"/>
   <work3:type rdf:resource="#ExtensionConceptualNecessityConstraint"/>
   <obo:BFO_0000050 rdf:resource="#QuantityOfMotionAndRest"/>
+  <work3:type rdf:resource="#BodyIndividuationByMotionRestQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MotionAndRest</rdfs:label>
 </owl:NamedIndividual>
 
@@ -25610,6 +25624,12 @@
   <work3:type rdf:resource="#ProportionalityQuality"/>
   <obo:RO_0000052 rdf:resource="#MindPerceptualCapacity"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindBodyCapacityProportionality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#BodyDistinctionCriterion">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BodyDistinctionCriterion</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
