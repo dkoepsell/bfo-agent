@@ -28626,6 +28626,18 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RevelationViaImagesAndWords</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#PropheticRevelationPerception">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PropheticRevelationPerception</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#AbsenceOfTrueVoiceFromGodQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AbsenceOfTrueVoiceFromGodQuality</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -41096,6 +41108,10 @@
 
 <rdf:Description rdf:about="#ConstancyOfMotionToRestRatio">
   <work:subClassOf rdf:resource="#FormalGroundOfOrder"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#TrueVoiceFromGodQuality">
+  <work:subClassOf rdf:resource="#TruePerceptionQuality"/>
 </rdf:Description>
 
 
