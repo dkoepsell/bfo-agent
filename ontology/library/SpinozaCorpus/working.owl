@@ -18157,6 +18157,32 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ReasonPerceptionProcess</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#IdeaOfActuallyExistingThing">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IdeaOfActuallyExistingThing</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ActuallyExistingBody">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <work:subClassOf rdf:resource="#SingularThing"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ActuallyExistingBody</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#IdeaInvolvesEternalInfiniteEssenceOfGodQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#EternalAndInfiniteEssenceExpression"/>
+  <obo:RO_0000052 rdf:resource="#IdeaOfActuallyExistingThing"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IdeaInvolvesEternalInfiniteEssenceOfGodQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#InvolvesEternalInfiniteEssenceDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="#AttributeExpressesEternalInfiniteEssenceRelation"/>
+  <obo:RO_0000052 rdf:resource="#IdeaOfActuallyExistingThing"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">InvolvesEternalInfiniteEssenceDisposition</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
