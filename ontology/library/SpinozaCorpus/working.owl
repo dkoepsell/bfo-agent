@@ -8349,6 +8349,22 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CertaintyQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#Prophet">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <work:subClassOf rdf:resource="#_:bearerOfCounselorRole"/>
+  <work:subClassOf rdf:resource="#_:bearerOfMessengerRole"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <work:subClassOf rdf:resource="#DivineAttribute"/>
+  <work:subClassOf rdf:resource="#BearerOfProphetRoleRestriction"/>
+  <work:subClassOf rdf:resource="#BearerOfSingularVirtueRestriction"/>
+  <obo:RO_0000053 rdf:resource="#PietyConstancy"/>
+  <obo:RO_0000053 rdf:resource="#PropheticImagination"/>
+  <obo:RO_0000053 rdf:resource="#PropheticImaginationVividnessQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Prophet</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#InfallibilityAbsenceQuality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
@@ -15749,22 +15765,6 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Godliness</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#Prophet">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
-  <work:subClassOf rdf:resource="#_:bearerOfCounselorRole"/>
-  <work:subClassOf rdf:resource="#_:bearerOfMessengerRole"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
-  <work:subClassOf rdf:resource="#DivineAttribute"/>
-  <work:subClassOf rdf:resource="#BearerOfProphetRoleRestriction"/>
-  <work:subClassOf rdf:resource="#BearerOfSingularVirtueRestriction"/>
-  <obo:RO_0000053 rdf:resource="#PietyConstancy"/>
-  <obo:RO_0000053 rdf:resource="#PropheticImagination"/>
-  <obo:RO_0000053 rdf:resource="#PropheticImaginationVividnessQuality"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Prophet</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#PietyConstancy">
   <rdfs:subClassOf rdf:resource="#Piety"/>
   <work:subClassOf rdf:resource="#Piety"/>
@@ -15791,6 +15791,11 @@
 <owl:Class rdf:about="#Piety">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Piety</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PropheticImaginingContent">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PropheticImaginingContent</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#DivineRevelation">
@@ -29254,11 +29259,6 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PropheticRole</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#PropheticImaginingContent">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PropheticImaginingContent</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#SignRequirementDisposition">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
@@ -29267,15 +29267,27 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SignRequirementDisposition</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#SignPerceptionProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#Prophet"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SignPerceptionProcess</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#Sign">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Sign</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#SignPerceptionProcess">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <obo:RO_0000057 rdf:resource="#Prophet"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SignPerceptionProcess</rdfs:label>
+<owl:Class rdf:about="#IntrinsicCertainty">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#TruePerceptionQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IntrinsicCertainty</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SignIndependence">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SignIndependence</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
