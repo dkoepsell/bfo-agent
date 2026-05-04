@@ -29666,6 +29666,27 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ImaginativeNatureQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#GraceForProphesying">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#Prophet"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GraceForProphesying</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#GraceEndowmentProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#God"/>
+  <obo:RO_0000057 rdf:resource="#Prophet"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GraceEndowmentProcess</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#GraceForProphesyingVariabilityQuality">
+  <rdfs:subClassOf rdf:resource="#GraceForProphesying"/>
+  <work:subClassOf rdf:resource="#GraceForProphesying"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GraceForProphesyingVariabilityQuality</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
