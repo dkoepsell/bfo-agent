@@ -3080,6 +3080,11 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ClearAndDistinctPerceptionProcess</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#DependenceOnIntellectNatureRelation">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DependenceOnIntellectNatureRelation</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#Feigning">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Feigning</rdfs:label>
@@ -27590,9 +27595,16 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IntellectNatureQuality</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#DependenceOnIntellectNatureRelation">
+<owl:Class rdf:about="#AccidentSusceptibility">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DependenceOnIntellectNatureRelation</rdfs:label>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AccidentSusceptibility</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#AccidentImmunityQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AccidentImmunityQuality</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
