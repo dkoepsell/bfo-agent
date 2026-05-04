@@ -2933,6 +2933,7 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <work:subClassOf rdf:resource="#EssenceCausationProcess"/>
   <obo:RO_0000057 rdf:resource="#CreatedThing"/>
+  <work:subClassOf rdf:resource="#PreservationProcess"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CreationProcess</rdfs:label>
 </owl:Class>
 
@@ -10167,6 +10168,7 @@
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <obo:RO_0000057 rdf:resource="#AnotherBeing"/>
   <obo:RO_0000057 rdf:resource="#Speaker"/>
+  <work:subClassOf rdf:resource="#CreationProcess"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PreservationProcess</rdfs:label>
 </owl:Class>
 
@@ -14057,6 +14059,13 @@
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <obo:BFO_0000055 rdf:resource="#MomentaryCreationDisposition"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ContinuousCreationProcess</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#FatherImaginesSonEssenceProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#Father"/>
+  <obo:RO_0000057 rdf:resource="#SonEssence"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FatherImaginesSonEssenceProcess</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#NaturaNaturans">
@@ -20042,6 +20051,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FatherSoul</rdfs:label>
 </owl:NamedIndividual>
 
+<owl:NamedIndividual rdf:about="#IdealParticipationRelation">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:RO_0000052 rdf:resource="#FatherSoul"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IdealParticipationRelation</rdfs:label>
+</owl:NamedIndividual>
+
 <owl:NamedIndividual rdf:about="#Son">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
   <obo:RO_0000057 rdf:resource="#SonConsequences"/>
@@ -20051,12 +20066,6 @@
 <owl:NamedIndividual rdf:about="#SonConsequences">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SonConsequences</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#IdealParticipationRelation">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <obo:RO_0000052 rdf:resource="#FatherSoul"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IdealParticipationRelation</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#SonEssenceQuality">
@@ -20076,13 +20085,6 @@
   <obo:RO_0000052 rdf:resource="#Father"/>
   <obo:BFO_0000054 rdf:resource="#FatherImaginesSonEssenceProcess"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FatherImaginationCapacity</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#FatherImaginesSonEssenceProcess">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <obo:RO_0000057 rdf:resource="#Father"/>
-  <obo:RO_0000057 rdf:resource="#SonEssence"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FatherImaginesSonEssenceProcess</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#SonEssence">
