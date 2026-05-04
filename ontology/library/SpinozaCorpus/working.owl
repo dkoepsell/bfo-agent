@@ -19765,6 +19765,7 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <rdfs:subClassOf rdf:resource="#Joy"/>
   <work:subClassOf rdf:resource="#Joy"/>
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Pleasure</rdfs:label>
 </owl:Class>
 
@@ -23496,6 +23497,13 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DirectGoodQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ExcessivePleasureQuality">
+  <rdfs:subClassOf rdf:resource="#Pleasure"/>
+  <work:subClassOf rdf:resource="#Pleasure"/>
+  <work:subClassOf rdf:resource="#EvilQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExcessivePleasureQuality</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
