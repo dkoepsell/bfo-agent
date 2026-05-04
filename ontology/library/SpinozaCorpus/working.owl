@@ -129,6 +129,7 @@
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <RO_0000052 rdf:resource="#Substance"/>
   <obo:RO_0000052 rdf:resource="#Substance"/>
+  <work:subClassOf rdf:resource="#SubstanceGenerationIncapacity"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SubstanceProductionConstraint</rdfs:label>
 </owl:Class>
 
