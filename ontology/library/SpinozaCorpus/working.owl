@@ -42654,6 +42654,8 @@
 <owl:NamedIndividual rdf:about="#Solomon">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
   <obo:RO_0000056 rdf:resource="#SolomonBeliefProcess"/>
+  <obo:RO_0000053 rdf:resource="#SolomonNaturalLightQuality"/>
+  <obo:RO_0000053 rdf:resource="#SolomonNaturalLightSuperiorityQualityInstance"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Solomon</rdfs:label>
 </owl:NamedIndividual>
 
@@ -42945,6 +42947,20 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <obo:RO_0000052 rdf:resource="#Israelites"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LackOfKnowledgeOfVirtueAndBlessednessQuality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#SolomonNaturalLightQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work3:type rdf:resource="#NaturalLight"/>
+  <obo:RO_0000052 rdf:resource="#Solomon"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SolomonNaturalLightQuality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#SolomonNaturalLightSuperiorityQualityInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work3:type rdf:resource="#NaturalLightSuperiorityQuality"/>
+  <obo:RO_0000052 rdf:resource="#Solomon"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SolomonNaturalLightSuperiorityQualityInstance</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
@@ -43244,6 +43260,10 @@
 
 <rdf:Description rdf:about="#ImaginativePowerQuality">
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#NaturalLightSuperiorityQuality">
+  <work:subClassOf rdf:resource="#NaturalLight"/>
 </rdf:Description>
 
 
