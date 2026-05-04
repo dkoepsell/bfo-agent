@@ -16123,6 +16123,38 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OntologicalContingency</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#NecessityByEssence">
+  <rdfs:subClassOf rdf:resource="#NecessityOfExistence"/>
+  <work:subClassOf rdf:resource="#NecessityOfExistence"/>
+  <work:subClassOf rdf:resource="#EssenceContainsExistenceDisposition"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NecessityByEssence</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#NecessityByCause">
+  <rdfs:subClassOf rdf:resource="#NecessityOfExistence"/>
+  <work:subClassOf rdf:resource="#NecessityOfExistence"/>
+  <work:subClassOf rdf:resource="#CausalReasonForExistence"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NecessityByCause</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#NecessityGroundingQuality">
+  <rdfs:subClassOf rdf:resource="#EssentialExistenceQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NecessityGroundingQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#NecessityGroundingByEssenceQuality">
+  <rdfs:subClassOf rdf:resource="#NecessityGroundingQuality"/>
+  <work:subClassOf rdf:resource="#NecessityGroundingQuality"/>
+  <work:subClassOf rdf:resource="#ExistenceIsEssenceIdentityQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NecessityGroundingByEssenceQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#NecessityGroundingByCauseQuality">
+  <rdfs:subClassOf rdf:resource="#NecessityGroundingQuality"/>
+  <work:subClassOf rdf:resource="#NecessityGroundingQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NecessityGroundingByCauseQuality</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
