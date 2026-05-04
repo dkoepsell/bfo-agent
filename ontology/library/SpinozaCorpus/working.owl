@@ -31365,12 +31365,19 @@
 
 <owl:Class rdf:about="#NaturalLaw">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NaturalLaw</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#LegalObligationRole">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LegalObligationRole</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PeculiarLaw">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PeculiarLaw</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
@@ -44925,6 +44932,11 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">JewishPeople</rdfs:label>
 </owl:NamedIndividual>
 
+<owl:NamedIndividual rdf:about="#PostDissolutionStateDissolutionProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PostDissolutionStateDissolutionProcess</rdfs:label>
+</owl:NamedIndividual>
+
 <owl:NamedIndividual rdf:about="#HatredOfJewishPeople">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work3:type rdf:resource="#GroupPreservationDisposition"/>
@@ -45101,9 +45113,27 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MosaicLawObligationAbsenceQuality</rdfs:label>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#PostDissolutionStateDissolutionProcess">
+<owl:NamedIndividual rdf:about="#EgyptianExodus">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PostDissolutionStateDissolutionProcess</rdfs:label>
+  <RO_0000057 rdf:resource="#Hebrews"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EgyptianExodus</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#PreExodusHebrewPeriod">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000008"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PreExodusHebrewPeriod</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#AbsenceOfPeculiarLawQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <RO_0000052 rdf:resource="#Hebrews"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AbsenceOfPeculiarLawQuality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#NaturalLawGovernanceDisposition">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <RO_0000052 rdf:resource="#Hebrews"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NaturalLawGovernanceDisposition</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
