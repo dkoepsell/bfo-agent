@@ -1741,6 +1741,7 @@
   <work3:type rdf:resource="#PerfectionQuality"/>
   <rdfs:subClassOf rdf:resource="#PrimitiveAffect"/>
   <work:subClassOf rdf:resource="#PrimitiveAffect"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Joy</rdfs:label>
 </owl:Class>
 
@@ -3815,6 +3816,8 @@
   <work:subClassOf rdf:resource="#Joy"/>
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:subClassOf rdf:resource="#Joy"/>
+  <work:subClassOf rdf:resource="#IdeaOfExternalCause"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Love</rdfs:label>
 </owl:Class>
 
@@ -30808,6 +30811,12 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <obo:RO_0000052 rdf:resource="#Joy"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">JoyNonIdentityWithPerfectionQuality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#LoveDefinition">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <obo:BFO_0000050 rdf:resource="#TheEthics"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LoveDefinition</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
