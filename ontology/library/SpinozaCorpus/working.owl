@@ -27281,6 +27281,24 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NecessaryPositiveCausationQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#InternalCauseOfExistence">
+  <rdfs:subClassOf rdf:resource="#CausalReasonForExistence"/>
+  <work:subClassOf rdf:resource="#CausalReasonForExistence"/>
+  <work:subClassOf rdf:resource="#EssenceContainsExistenceDisposition"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">InternalCauseOfExistence</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ExternalCauseOfExistence">
+  <rdfs:subClassOf rdf:resource="#CausalReasonForExistence"/>
+  <work:subClassOf rdf:resource="#CausalReasonForExistence"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExternalCauseOfExistence</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#CausalGroundDichotomyQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CausalGroundDichotomyQuality</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
