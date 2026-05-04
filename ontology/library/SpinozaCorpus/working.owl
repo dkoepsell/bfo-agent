@@ -23868,6 +23868,7 @@
 
 <owl:Class rdf:about="#Law">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Law</rdfs:label>
 </owl:Class>
 
@@ -28112,6 +28113,14 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SecurityQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#SocialOrder">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
+  <obo:BFO_0000051 rdf:resource="#Law"/>
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SocialOrder</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#CivilSociety">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CivilSociety</rdfs:label>
@@ -29883,6 +29892,10 @@
 <owl:Class rdf:about="#Nation">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <obo:BFO_0000051 rdf:resource="#SocialOrder"/>
+  <obo:BFO_0000051 rdf:resource="#Law"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Nation</rdfs:label>
 </owl:Class>
 
@@ -30151,12 +30164,6 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GovernanceAndVigilanceProcess</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#SocialOrder">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
-  <obo:BFO_0000051 rdf:resource="#Law"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SocialOrder</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#SocialOrderFormationDisposition">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <obo:BFO_0000054 rdf:resource="#SocialOrderFormationProcess"/>
@@ -30206,6 +30213,13 @@
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <obo:BFO_0000055 rdf:resource="#PrudentDirectorRole"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SocialOrderDirectingProcess</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#NationDistinctionQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#Nation"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NationDistinctionQuality</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
