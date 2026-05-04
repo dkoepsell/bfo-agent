@@ -5852,6 +5852,15 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BodyConstituent</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#BodyPart">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <work:subClassOf rdf:resource="#PartOfExtendedSubstance"/>
+  <obo:BFO_0000050 rdf:resource="#HumanBody"/>
+  <work:subClassOf rdf:resource="#HumanBody"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BodyPart</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#AssociationOfParticles">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
@@ -9286,15 +9295,6 @@
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <obo:RO_0000057 rdf:resource="#BodyPart"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FeelingArisingFromMotionRestProcess</rdfs:label>
-</owl:Class>
-
-<owl:Class rdf:about="#BodyPart">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
-  <work:subClassOf rdf:resource="#PartOfExtendedSubstance"/>
-  <obo:BFO_0000050 rdf:resource="#HumanBody"/>
-  <work:subClassOf rdf:resource="#HumanBody"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BodyPart</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#UnequalMotionRestDistribution">
@@ -23618,6 +23618,14 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <obo:RO_0000052 rdf:resource="#BodyPart"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DifferentNaturesQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#AffectOfHate">
+  <rdfs:subClassOf rdf:resource="#Hate"/>
+  <work:subClassOf rdf:resource="#Affect"/>
+  <work:subClassOf rdf:resource="#Hate"/>
+  <work:subClassOf rdf:resource="#EvilQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AffectOfHate</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
