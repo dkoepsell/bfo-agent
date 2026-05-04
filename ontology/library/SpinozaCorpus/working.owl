@@ -6565,6 +6565,18 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Remorse</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#SadnessQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SadnessQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#OppositeAffectRelation">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OppositeAffectRelation</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#Repentance">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
@@ -19409,22 +19421,28 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DoubtedOutcomeQuality</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#SadnessQuality">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SadnessQuality</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#GladnessQuality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GladnessQuality</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#OppositeAffectRelation">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OppositeAffectRelation</rdfs:label>
+<owl:Class rdf:about="#Pity">
+  <rdfs:subClassOf rdf:resource="#SadnessQuality"/>
+  <work:subClassOf rdf:resource="#SadnessQuality"/>
+  <work:subClassOf rdf:resource="#PityArisingFromInjuryDisposition"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Pity</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#InjuryToAnother">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">InjuryToAnother</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PityArisingFromInjuryDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PityArisingFromInjuryDisposition</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
