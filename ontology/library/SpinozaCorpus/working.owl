@@ -14164,6 +14164,35 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TruthCoherence</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#NaturalIntellect">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <obo:BFO_0000051 rdf:resource="#DemonstrationAttainmentDisposition"/>
+  <obo:BFO_0000051 rdf:resource="#SolidKnowledgeAttainmentDisposition"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NaturalIntellect</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DemonstrationAttainmentDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:BFO_0000054 rdf:resource="#Demonstration"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DemonstrationAttainmentDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SolidKnowledgeAttainmentDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:BFO_0000054 rdf:resource="#SolidKnowledge"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SolidKnowledgeAttainmentDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#Demonstration">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Demonstration</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SolidKnowledge">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SolidKnowledge</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#God">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
   <obo:BFO_0000051 rdf:resource="#DivineAttribute"/>
