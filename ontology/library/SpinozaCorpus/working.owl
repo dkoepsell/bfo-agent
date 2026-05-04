@@ -4814,6 +4814,7 @@
   <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="#KnowledgeAndLoveOfGodConstitutesSupremeGoodRelation"/>
   <obo:RO_0000052 rdf:resource="#HumanMind"/>
+  <obo:BFO_0000054 rdf:resource="#LoveArisingFromKnowledgeProcess"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">KnowledgeOfGod</rdfs:label>
 </owl:Class>
 
@@ -31709,6 +31710,7 @@
   <obo:RO_0000052 rdf:resource="#HumanMind"/>
   <RO_0000052 rdf:resource="#Speaker"/>
   <RO_0000053 rdf:resource="#HighestHappiness"/>
+  <obo:RO_0000052 rdf:resource="#God"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LoveOfGod</rdfs:label>
 </owl:NamedIndividual>
 
@@ -44230,6 +44232,12 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <obo:RO_0000052 rdf:resource="#God"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UltimateEndOfActionsQuality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#LoveArisingFromKnowledgeProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000055 rdf:resource="#LoveOfGod"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LoveArisingFromKnowledgeProcess</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
