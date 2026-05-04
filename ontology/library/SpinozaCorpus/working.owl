@@ -13300,6 +13300,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NegationProcess</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#NegationDenialContent">
+  <rdfs:subClassOf rdf:resource="#Negation"/>
+  <work:subClassOf rdf:resource="#Negation"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NegationDenialContent</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#MindNatureGrounding">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <obo:RO_0000052 rdf:resource="#Mind"/>
@@ -14240,16 +14246,22 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PureAndSimpleLackQuality</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#NegationDenialContent">
-  <rdfs:subClassOf rdf:resource="#Negation"/>
-  <work:subClassOf rdf:resource="#Negation"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NegationDenialContent</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#NonPertinenceToNature">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NonPertinenceToNature</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DeterminateIntellect">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DeterminateIntellect</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#IndeterminateWill">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IndeterminateWill</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#God">
@@ -16805,11 +16817,13 @@
 
 <owl:NamedIndividual rdf:about="#HumanIntellectInstance">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:RO_0000052 rdf:resource="#Speaker"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HumanIntellectInstance</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#HumanWillInstance">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:RO_0000052 rdf:resource="#Speaker"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HumanWillInstance</rdfs:label>
 </owl:NamedIndividual>
 
@@ -21416,6 +21430,15 @@
   <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <obo:BFO_0000050 rdf:resource="#TheEthics"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BlessednessConstitutionRelation</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#GodGivingIntellectAndWillProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#God"/>
+  <obo:RO_0000057 rdf:resource="#Speaker"/>
+  <obo:RO_0000057 rdf:resource="#HumanIntellectInstance"/>
+  <obo:RO_0000057 rdf:resource="#HumanWillInstance"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodGivingIntellectAndWillProcess</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
