@@ -16315,6 +16315,7 @@
   <obo:RO_0000053 rdf:resource="#NaturaNaturans"/>
   <obo:RO_0000057 rdf:resource="#NaturaNaturataDefinitionContent"/>
   <work3:type rdf:resource="#UniquenessInNatureQuality"/>
+  <obo:BFO_0000050 rdf:resource="#NaturaNaturans"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">God</rdfs:label>
 </owl:NamedIndividual>
 
@@ -23980,6 +23981,12 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <RO_0000052 rdf:resource="#God"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ContingencyAbsenceQualityOfGod</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ActualIntellectBelongsToNaturaNaturataQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#TrueIntellect"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ActualIntellectBelongsToNaturaNaturataQuality</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
