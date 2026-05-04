@@ -31485,6 +31485,35 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ModerationOfDesiresAndImpulses</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#ViolentRule">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ViolentRule</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#UnwillingCompliance">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#TruePerceptionQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UnwillingCompliance</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PunishmentAvoidanceMotivation">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PunishmentAvoidanceMotivation</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#InabilityToRecogniseNecessity">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#InadequateKnowledgeOfBodyPartsQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">InabilityToRecogniseNecessity</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#CoercedActProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000055 rdf:resource="#ViolentRule"/>
+  <obo:BFO_0000055 rdf:resource="#PunishmentAvoidanceMotivation"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CoercedActProcess</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
