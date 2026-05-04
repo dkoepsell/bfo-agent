@@ -6987,6 +6987,8 @@
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="#ConstantJoyQuality"/>
   <work:subClassOf rdf:resource="#ConfidenceArisesFromIdeaRelation"/>
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#AffectSignOfMindLackingPower"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Confidence</rdfs:label>
 </owl:Class>
 
@@ -7018,6 +7020,8 @@
   <work:subClassOf rdf:resource="#Fear"/>
   <work:subClassOf rdf:resource="#IdeaOfFutureOrPastThing"/>
   <work:subClassOf rdf:resource="#AbsenceOfDoubt"/>
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#AffectSignOfMindLackingPower"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Despair</rdfs:label>
 </owl:Class>
 
@@ -7128,6 +7132,7 @@
   <work:subClassOf rdf:resource="#SadnessQuality"/>
   <work:subClassOf rdf:resource="#OppositeAffectRelation"/>
   <work:subClassOf rdf:resource="#RemorseAccompanimentRelation"/>
+  <work:subClassOf rdf:resource="#AffectSignOfMindLackingPower"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Remorse</rdfs:label>
 </owl:Class>
 
@@ -19997,6 +20002,8 @@
   <work:subClassOf rdf:resource="#Joy"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="#GladnessAccompanimentRelation"/>
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#AffectSignOfMindLackingPower"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Gladness</rdfs:label>
 </owl:Class>
 
@@ -23649,6 +23656,11 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HopeAffect</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#DoubtfulnessQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Doubtfulness</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#FearAffect">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
@@ -23662,9 +23674,15 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LackOfIntrinsicGoodnessQuality</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#DoubtfulnessQuality">
+<owl:Class rdf:about="#MindLackingInPower">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Doubtfulness</rdfs:label>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindLackingInPower</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#AffectSignOfMindLackingPower">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AffectSignOfMindLackingPower</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
