@@ -19369,6 +19369,7 @@
 
 <owl:Class rdf:about="#AccidentalCause">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <obo:BFO_0000054 rdf:resource="#AccidentalCausingOfHopeOrFear"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AccidentalCause</rdfs:label>
 </owl:Class>
 
@@ -20173,6 +20174,12 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <obo:RO_0000052 rdf:resource="#LoveTowardThing"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LoveMagnitudeQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#AccidentalCausingOfHopeOrFear">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000055 rdf:resource="#AccidentalCause"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AccidentalCausingOfHopeOrFear</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
