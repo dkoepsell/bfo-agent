@@ -9071,6 +9071,13 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FluidBody</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#FluidBodyPart">
+  <rdfs:subClassOf rdf:resource="#HumanBody"/>
+  <work:subClassOf rdf:resource="#HumanBody"/>
+  <obo:BFO_0000050 rdf:resource="#HumanBody"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FluidBodyPart</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#AssociationOfParticles">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
@@ -11125,6 +11132,13 @@
   <work:subClassOf rdf:resource="#SensibleQuality"/>
   <obo:RO_0000052 rdf:resource="#HardBodyPart"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Hardness</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#HardBodyPart">
+  <rdfs:subClassOf rdf:resource="#HumanBody"/>
+  <work:subClassOf rdf:resource="#HumanBody"/>
+  <obo:BFO_0000050 rdf:resource="#HumanBody"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HardBodyPart</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#ResistanceToMotion">
@@ -17155,13 +17169,6 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CompositeNatureQuality</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#FluidBodyPart">
-  <rdfs:subClassOf rdf:resource="#HumanBody"/>
-  <work:subClassOf rdf:resource="#HumanBody"/>
-  <obo:BFO_0000050 rdf:resource="#HumanBody"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FluidBodyPart</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#SoftBodyPart">
   <rdfs:subClassOf rdf:resource="#HumanBody"/>
   <work:subClassOf rdf:resource="#HumanBody"/>
@@ -17169,18 +17176,32 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SoftBodyPart</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#HardBodyPart">
-  <rdfs:subClassOf rdf:resource="#HumanBody"/>
-  <work:subClassOf rdf:resource="#HumanBody"/>
-  <obo:BFO_0000050 rdf:resource="#HumanBody"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HardBodyPart</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#Softness">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <obo:RO_0000052 rdf:resource="#SoftBodyPart"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Softness</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ExternalBody">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExternalBody</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#AffectionByExternalBodyDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:RO_0000052 rdf:resource="#HumanBody"/>
+  <obo:BFO_0000054 rdf:resource="#BodyAffectionProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AffectionByExternalBodyDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#BodyAffectionProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#ExternalBody"/>
+  <obo:RO_0000057 rdf:resource="#HumanBody"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BodyAffectionProcess</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
