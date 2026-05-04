@@ -32167,6 +32167,17 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NaturesOperations</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#EternalDecree">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="#LawFollowsFromNecessityAndPerfectionRelation"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EternalDecree</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#EternalVolition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EternalVolition</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -46469,6 +46480,19 @@
   <obo:RO_0000052 rdf:resource="#God"/>
   <obo:BFO_0000054 rdf:resource="#GodOrdinainsAllThingsProcess"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivineOrdinationDisposition</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#GodEternalDecreeInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:RO_0000052 rdf:resource="#God"/>
+  <obo:BFO_0000054 rdf:resource="#DecreeNecessitationProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodEternalDecreeInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#GodEternalVolitionInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:RO_0000052 rdf:resource="#God"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodEternalVolitionInstance</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
