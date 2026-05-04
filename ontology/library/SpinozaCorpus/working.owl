@@ -763,6 +763,11 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ModeOfThinking</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#ExternalThingNature">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExternalThingNature</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#BeingOfReason">
   <rdfs:subClassOf rdf:resource="#Idea"/>
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
@@ -1205,6 +1210,8 @@
   <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
   <obo:BFO_0000050 rdf:resource="#God"/>
   <obo:RO_0000053 rdf:resource="#FormalBeingOfHumanMind"/>
+  <obo:RO_0000053 rdf:resource="#MindBodyKnowledgeThroughAffectionsDisposition"/>
+  <obo:RO_0000053 rdf:resource="#MindKnowsBodyOnlyViaAffectionIdeasQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HumanMind</rdfs:label>
 </owl:Class>
 
@@ -2694,6 +2701,13 @@
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <obo:BFO_0000051 rdf:resource="#BrainImpression"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SensationOfBrainImpression</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#IdeaConnection">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000055 rdf:resource="#Memory"/>
+  <obo:RO_0000057 rdf:resource="#Idea"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IdeaConnection</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#BrainImpression">
@@ -8337,6 +8351,7 @@
   <work3:type rdf:resource="#ModificationBearer"/>
   <obo:BFO_0000050 rdf:resource="#PartOfExtendedSubstance"/>
   <obo:BFO_0000051 rdf:resource="#BodyComponentIndividual"/>
+  <obo:RO_0000057 rdf:resource="#BodyAffection"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HumanBody</rdfs:label>
 </owl:Class>
 
@@ -9067,6 +9082,8 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <obo:RO_0000052 rdf:resource="#AssociationOfParticles"/>
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BodyAffection</rdfs:label>
 </owl:Class>
 
@@ -17469,18 +17486,6 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AbsenceOfExternalBody</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#IdeaConnection">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <obo:BFO_0000055 rdf:resource="#Memory"/>
-  <obo:RO_0000057 rdf:resource="#Idea"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IdeaConnection</rdfs:label>
-</owl:Class>
-
-<owl:Class rdf:about="#ExternalThingNature">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExternalThingNature</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#BodilyAffection">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
@@ -17492,6 +17497,12 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <obo:RO_0000052 rdf:resource="#IdeaConnection"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MemoryOrderingByAffection</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#BodyAffectionIdea">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BodyAffectionIdea</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
@@ -26327,6 +26338,18 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <obo:BFO_0000050 rdf:resource="#TheEthics"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IdeaIndicatesOwnBodyMoreThanExternalBodyAssertion</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#MindBodyKnowledgeThroughAffectionsDisposition">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:RO_0000052 rdf:resource="#HumanMind"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindBodyKnowledgeThroughAffectionsDisposition</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#MindKnowsBodyOnlyViaAffectionIdeasQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#HumanMind"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindKnowsBodyOnlyViaAffectionIdeasQuality</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
