@@ -22846,6 +22846,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RationalAgent</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#LivingAccordingToReason">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LivingAccordingToReason</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#NecessaryAgreementInNatureQuality">
   <rdfs:subClassOf rdf:resource="#AgreementInNature"/>
   <obo:RO_0000052 rdf:resource="#RationalAgent"/>
@@ -22853,17 +22859,44 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NecessaryAgreementInNatureQuality</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#LivingAccordingToReason">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LivingAccordingToReason</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#AgreementInNatureNecessitation">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="#LivingAccordingToReason"/>
   <obo:BFO_0000054 rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AgreementInNatureNecessitation</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PassionTornHuman">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PassionTornHuman</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PassionDrivenness">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:RO_0000052 rdf:resource="#PassionTornHuman"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PassionDrivenness</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#NaturalDifferenceQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#PassionTornHuman"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NaturalDifferenceQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ContrarietyDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:RO_0000052 rdf:resource="#PassionTornHuman"/>
+  <obo:BFO_0000054 rdf:resource="#ConflictProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ContrarietyDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ConflictProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConflictProcess</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
