@@ -18789,6 +18789,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindBodyCausalIndependenceQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#ConceivabilityUnderDifferentAttributesDisposition">
+  <rdfs:subClassOf rdf:resource="#SelfConceivability"/>
+  <work:subClassOf rdf:resource="#SelfConceivability"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConceivabilityUnderDifferentAttributesDisposition</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
@@ -27662,6 +27668,9 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#MindBodyUnionQuality"/>
   <obo:RO_0000052 rdf:resource="#HumanMind"/>
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
+  <obo:RO_0000053 rdf:resource="#ThinkingAttribute"/>
+  <obo:RO_0000053 rdf:resource="#Extension"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindBodyUnion</rdfs:label>
 </owl:NamedIndividual>
 
@@ -28331,6 +28340,24 @@
   <obo:RO_0000052 rdf:resource="#Mind"/>
   <work3:type rdf:resource="#MindBodyCausalIndependenceQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindDeterminesBodyToMotionOrRestIncapacity</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#MindBodyIdentityQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#MindBodyUnion"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindBodyIdentityQuality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ConceivabilityUnderThoughtDispositionInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:RO_0000052 rdf:resource="#MindBodyUnion"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConceivabilityUnderThoughtDispositionInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ConceivabilityUnderExtensionDispositionInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:RO_0000052 rdf:resource="#MindBodyUnion"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConceivabilityUnderExtensionDispositionInstance</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
