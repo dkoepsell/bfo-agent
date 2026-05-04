@@ -22685,6 +22685,24 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PowerDeterminationProcess</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#IncreasePowerOfActingProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="#TransitionToLesserPerfection"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IncreasePowerOfActingProcess</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DiminishPowerOfActingProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DiminishPowerOfActingProcess</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#GoodEvilRelationalBasis">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GoodEvilRelationalBasis</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
@@ -27320,6 +27338,7 @@
   <obo:RO_0000052 rdf:resource="#TrueIntellect"/>
   <work:subClassOf rdf:resource="#HumanPerfection"/>
   <work:subClassOf rdf:resource="#ModeOfThinking"/>
+  <work:subClassOf rdf:resource="#GoodEvilRelationalBasis"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Good</rdfs:label>
 </owl:NamedIndividual>
 
@@ -27335,6 +27354,7 @@
   <work:subClassOf rdf:resource="#PerfectionLossQuality"/>
   <work2:disjointWith rdf:resource="#AbsoluteEvilQuality"/>
   <work:subClassOf rdf:resource="#PrivationOfPerfection"/>
+  <work:subClassOf rdf:resource="#GoodEvilRelationalBasis"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Evil</rdfs:label>
 </owl:NamedIndividual>
 
