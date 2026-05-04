@@ -13514,6 +13514,24 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivineWillConformityDisposition</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#PerfectionExtentQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#SubstanceInfinityOrPerfectionQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PerfectionExtentQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#EssentialPerfectionCorrespondenceDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="#EssenceContainsExistenceDisposition"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EssentialPerfectionCorrespondenceDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#EssenceExtentQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#EssentialExistenceQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EssenceExtentQuality</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#God">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
   <obo:BFO_0000051 rdf:resource="#DivineAttribute"/>
