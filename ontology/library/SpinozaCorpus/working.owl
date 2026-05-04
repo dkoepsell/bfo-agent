@@ -1335,6 +1335,8 @@
   <work:subClassOf rdf:resource="#ConatusMentalDispositionInstance"/>
   <work:subClassOf rdf:resource="#MindBodyStrivingQuality"/>
   <work:subClassOf rdf:resource="#ConceivableThroughItself"/>
+  <rdfs:subClassOf rdf:resource="#Desire"/>
+  <work:subClassOf rdf:resource="#Desire"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Appetite</rdfs:label>
 </owl:Class>
 
@@ -1347,6 +1349,23 @@
 <owl:Class rdf:about="#PrimitiveAffect">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PrimitiveAffect</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#HumanEssence">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#EssentialExistenceQuality"/>
+  <work:subClassOf rdf:resource="#AttributeModification"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#God"/>
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HumanEssence</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DeterminationToAct">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DeterminationToAct</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#SoulDirectionProcess">
@@ -1473,17 +1492,6 @@
   <obo:RO_0000057 rdf:resource="#Body"/>
   <work:subClassOf rdf:resource="#SoulBodyAffectionProcess"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PerceptionProcess</rdfs:label>
-</owl:Class>
-
-<owl:Class rdf:about="#HumanEssence">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <work:subClassOf rdf:resource="#EssentialExistenceQuality"/>
-  <work:subClassOf rdf:resource="#AttributeModification"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <obo:RO_0000052 rdf:resource="#God"/>
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HumanEssence</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#ImaginativeRepresentation">
@@ -7092,6 +7100,8 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <work:subClassOf rdf:resource="#Mode"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:subClassOf rdf:resource="#Desire"/>
+  <work:subClassOf rdf:resource="#Desire"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Volition</rdfs:label>
 </owl:Class>
 
@@ -20799,10 +20809,21 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AffectCompositionRelation</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#DeterminationToAct">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DeterminationToAct</rdfs:label>
+<owl:Class rdf:about="#HumanStriving">
+  <rdfs:subClassOf rdf:resource="#Desire"/>
+  <work:subClassOf rdf:resource="#Desire"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HumanStriving</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#Impulse">
+  <rdfs:subClassOf rdf:resource="#Desire"/>
+  <work:subClassOf rdf:resource="#Desire"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Impulse</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ConstitutionalVariationQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConstitutionalVariationQuality</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
