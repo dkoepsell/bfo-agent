@@ -6649,6 +6649,19 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ImaginationOfDoubtfulThing</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#DoubtQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DoubtQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#IdeaOfFutureOrPastThing">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IdeaOfFutureOrPastThing</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#PossibilityJudgment">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PossibilityJudgment</rdfs:label>
@@ -19626,12 +19639,6 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConstantSadnessQuality</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#DoubtQuality">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DoubtQuality</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#Gladness">
   <rdfs:subClassOf rdf:resource="#Joy"/>
   <work:subClassOf rdf:resource="#Joy"/>
@@ -20975,11 +20982,21 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AccidentalCauseOfSadness</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#IdeaOfFutureOrPastThing">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+<owl:Class rdf:about="#HopeRequiresFearConstraint">
+  <rdfs:subClassOf rdf:resource="#Hope"/>
+  <work:subClassOf rdf:resource="#Hope"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HopeRequiresFearConstraint</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#FearRequiresHopeConstraint">
+  <rdfs:subClassOf rdf:resource="#Fear"/>
+  <work:subClassOf rdf:resource="#Fear"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FearRequiresHopeConstraint</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#UncertaintyQuality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IdeaOfFutureOrPastThing</rdfs:label>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UncertaintyQuality</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
