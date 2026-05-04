@@ -15563,6 +15563,18 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AbsolutelyFirstCauseRole</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#ActingFromNatureAloneDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ActingFromNatureAloneDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#CompulsionImmunityDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CompulsionImmunityDisposition</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
@@ -15807,6 +15819,8 @@
   <obo:RO_0000053 rdf:resource="#GodCauseThroughHimselfDispositionInstance"/>
   <obo:RO_0000053 rdf:resource="#GodNonAccidentalCauseQualityInstance"/>
   <obo:RO_0000053 rdf:resource="#GodAbsolutelyFirstCauseRoleInstance"/>
+  <obo:RO_0000053 rdf:resource="#GodActingFromNatureAloneDispositionInstance"/>
+  <obo:RO_0000053 rdf:resource="#GodCompulsionImmunityDispositionInstance"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">God</rdfs:label>
 </owl:NamedIndividual>
 
@@ -17637,6 +17651,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodNonAccidentalCauseQualityInstance</rdfs:label>
 </owl:NamedIndividual>
 
+<owl:NamedIndividual rdf:about="#GodAbsolutelyFirstCauseRoleInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <obo:RO_0000052 rdf:resource="#God"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodAbsolutelyFirstCauseRoleInstance</rdfs:label>
+</owl:NamedIndividual>
+
 <owl:NamedIndividual rdf:about="#ThinkingThingRole">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
   <obo:RO_0000052 rdf:resource="#Speaker"/>
@@ -18447,6 +18467,12 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
   <obo:RO_0000056 rdf:resource="#ProcreationProcess"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Spouses</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#EternalExistenceInNatureQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#InfiniteIntellect"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EternalExistenceInNatureQuality</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#HavingIdeaOfGodProcess">
@@ -20421,12 +20447,6 @@
   <obo:RO_0000052 rdf:resource="#Body"/>
   <work3:type rdf:resource="#BodySoulCoexistenceQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BodySoulCoexistenceInstance</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#EternalExistenceInNatureQuality">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <obo:RO_0000052 rdf:resource="#InfiniteIntellect"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EternalExistenceInNatureQuality</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#EternalTemporalRegion">
@@ -23256,10 +23276,18 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EfficientCausationScopeQuality</rdfs:label>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#GodAbsolutelyFirstCauseRoleInstance">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+<owl:NamedIndividual rdf:about="#GodActingFromNatureAloneDispositionInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work3:type rdf:resource="#ActingFromNatureAloneDisposition"/>
   <obo:RO_0000052 rdf:resource="#God"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodAbsolutelyFirstCauseRoleInstance</rdfs:label>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodActingFromNatureAloneDispositionInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#GodCompulsionImmunityDispositionInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work3:type rdf:resource="#CompulsionImmunityDisposition"/>
+  <obo:RO_0000052 rdf:resource="#God"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodCompulsionImmunityDispositionInstance</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
