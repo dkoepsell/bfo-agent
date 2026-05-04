@@ -4551,6 +4551,13 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Power</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#Animal">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <obo:RO_0000053 rdf:resource="#AnimalExistenceQuality"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Animal</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#GovernanceByIntellect">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
@@ -4650,13 +4657,6 @@
 <owl:Class rdf:about="#ReasonsGuidance">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ReasonsGuidance</rdfs:label>
-</owl:Class>
-
-<owl:Class rdf:about="#Animal">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
-  <obo:RO_0000053 rdf:resource="#AnimalExistenceQuality"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Animal</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#InanimateObject">
@@ -15759,6 +15759,8 @@
   <work:subClassOf rdf:resource="#BearerOfProphetRoleRestriction"/>
   <work:subClassOf rdf:resource="#BearerOfSingularVirtueRestriction"/>
   <obo:RO_0000053 rdf:resource="#PietyConstancy"/>
+  <obo:RO_0000053 rdf:resource="#PropheticImagination"/>
+  <obo:RO_0000053 rdf:resource="#PropheticImaginationVividnessQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Prophet</rdfs:label>
 </owl:Class>
 
@@ -28764,6 +28766,7 @@
 <owl:Class rdf:about="#PropheticImaginationVividnessQuality">
   <rdfs:subClassOf rdf:resource="#VividnessQuality"/>
   <work:subClassOf rdf:resource="#VividnessQuality"/>
+  <work:subClassOf rdf:resource="#ImaginationPerfectionQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PropheticImaginationVividnessQuality</rdfs:label>
 </owl:Class>
 
@@ -29171,6 +29174,13 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MortalityQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PropheticImagination">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:BFO_0000054 rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PropheticImagination</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
@@ -41933,6 +41943,10 @@
 
 <rdf:Description rdf:about="#TrueVoiceFromGodQuality">
   <work:subClassOf rdf:resource="#TruePerceptionQuality"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#IntellectPerfectionQualityOfProphet">
+  <work:subClassOf rdf:resource="#IntellectPerfectionQuality"/>
 </rdf:Description>
 
 
