@@ -4000,6 +4000,8 @@
   <RO_0000057 rdf:resource="#God"/>
   <RO_0000057 rdf:resource="#WholeOfNature"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000055 rdf:resource="#GodImmanentCauseRole"/>
+  <obo:RO_0000057 rdf:resource="#WholeOfNature"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ImmanentCausationProcess</rdfs:label>
 </owl:Class>
 
@@ -15912,6 +15914,7 @@
   <obo:RO_0000053 rdf:resource="#NecessaryEmanationFromGodDisposition"/>
   <obo:RO_0000056 rdf:resource="#EmanationFromGodProcess"/>
   <obo:RO_0000056 rdf:resource="#GodIntellectCausesEssenceAndExistenceProcess"/>
+  <obo:RO_0000056 rdf:resource="#ImmanentCausationProcess"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">God</rdfs:label>
 </owl:NamedIndividual>
 
@@ -16470,6 +16473,7 @@
   <obo:RO_0000053 rdf:resource="#ImmanentCauseSuitabilityQualityInstance"/>
   <work:subClassOf rdf:resource="#ImmanentCauseRole"/>
   <work3:type rdf:resource="#ImmanentCauseRole"/>
+  <obo:RO_0000052 rdf:resource="#God"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodImmanentCauseRole</rdfs:label>
 </owl:NamedIndividual>
 
