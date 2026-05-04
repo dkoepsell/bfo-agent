@@ -18632,6 +18632,7 @@
 <owl:NamedIndividual rdf:about="#FormalBeingOfHumanMind">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <obo:RO_0000052 rdf:resource="#HumanMind"/>
+  <obo:BFO_0000050 rdf:resource="#InfiniteIntellectOfGod"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FormalBeingOfHumanMind</rdfs:label>
 </owl:NamedIndividual>
 
@@ -18685,12 +18686,14 @@
 <owl:NamedIndividual rdf:about="#TruePerceptionQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <RO_0000052 rdf:resource="#HumanMind"/>
+  <obo:RO_0000052 rdf:resource="#FormalBeingOfHumanMind"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TruePerceptionQuality</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#MindPartOfInfiniteIntellectQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <RO_0000052 rdf:resource="#HumanMind"/>
+  <obo:RO_0000052 rdf:resource="#FormalBeingOfHumanMind"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindPartOfInfiniteIntellectQuality</rdfs:label>
 </owl:NamedIndividual>
 
@@ -27404,6 +27407,13 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <obo:BFO_0000050 rdf:resource="#TheEthics"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TruthNormativeAutonomy</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#MindTruePerceptionPartOfGodIntellectDisposition">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:RO_0000052 rdf:resource="#FormalBeingOfHumanMind"/>
+  <obo:BFO_0000054 rdf:resource="#CommonOrderOfNaturePerception"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindTruePerceptionPartOfGodIntellectDisposition</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
