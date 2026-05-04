@@ -146,6 +146,7 @@
   <work:subClassOf rdf:resource="#_:bearerOfIndivisibility"/>
   <work:subClassOf rdf:resource="#_:restriction_bearer_of_SubstanceIndivisibilityDisposition"/>
   <work:subClassOf rdf:resource="#Substance"/>
+  <obo:RO_0000053 rdf:resource="#SubstanceFormalRealityQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Substance</rdfs:label>
 </owl:Class>
 
@@ -470,6 +471,7 @@
   <obo:RO_0000052 rdf:resource="#Substance"/>
   <work:subClassOf rdf:resource="#SingularThing"/>
   <obo:RO_0000052 rdf:resource="#Attribute"/>
+  <obo:RO_0000053 rdf:resource="#ModeFormalRealityQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Mode</rdfs:label>
 </owl:Class>
 
@@ -889,6 +891,25 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RealBeingQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#ThinkingThing">
+  <rdfs:subClassOf rdf:resource="#FiniteSingularThing"/>
+  <work:subClassOf rdf:resource="#FiniteSingularThing"/>
+  <work3:type rdf:resource="#Substance"/>
+  <obo:RO_0000053 rdf:resource="#UniquenessInNatureQuality"/>
+  <obo:RO_0000053 rdf:resource="#ExpressionInInfiniteIdeasDisposition"/>
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
+  <obo:BFO_0000051 rdf:resource="#IdeaOfBodyMode"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
+  <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
+  <obo:RO_0000053 rdf:resource="#CognitiveModeDisposition"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000053"/>
+  <rdfs:subClassOf rdf:resource="#Substance"/>
+  <work:subClassOf rdf:resource="#Substance"/>
+  <work:subClassOf rdf:resource="#ModificationBearer"/>
+  <work:subClassOf rdf:resource="#Attribute"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ThinkingThing</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#ClearAndDistinctUnderstandingProcess">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
@@ -1104,25 +1125,6 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="#InnateCapacity"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FirstAwarenessOfBody</rdfs:label>
-</owl:Class>
-
-<owl:Class rdf:about="#ThinkingThing">
-  <rdfs:subClassOf rdf:resource="#FiniteSingularThing"/>
-  <work:subClassOf rdf:resource="#FiniteSingularThing"/>
-  <work3:type rdf:resource="#Substance"/>
-  <obo:RO_0000053 rdf:resource="#UniquenessInNatureQuality"/>
-  <obo:RO_0000053 rdf:resource="#ExpressionInInfiniteIdeasDisposition"/>
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
-  <obo:BFO_0000051 rdf:resource="#IdeaOfBodyMode"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
-  <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
-  <obo:RO_0000053 rdf:resource="#CognitiveModeDisposition"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000053"/>
-  <rdfs:subClassOf rdf:resource="#Substance"/>
-  <work:subClassOf rdf:resource="#Substance"/>
-  <work:subClassOf rdf:resource="#ModificationBearer"/>
-  <work:subClassOf rdf:resource="#Attribute"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ThinkingThing</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#IdeaOf">
@@ -26893,6 +26895,24 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ObjectiveRealityCorrespondenceDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SubstanceFormalRealityQuality">
+  <rdfs:subClassOf rdf:resource="#FormalReality"/>
+  <work:subClassOf rdf:resource="#FormalReality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SubstanceFormalRealityQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ModeFormalRealityQuality">
+  <rdfs:subClassOf rdf:resource="#FormalReality"/>
+  <work:subClassOf rdf:resource="#FormalReality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ModeFormalRealityQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#FormalRealityComparativeRelation">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FormalRealityComparativeRelation</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
