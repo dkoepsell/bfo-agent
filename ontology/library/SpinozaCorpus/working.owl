@@ -25364,6 +25364,25 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LesserRelativePowerQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#AffectStrengthQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#Affect"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AffectStrengthQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ConcurrentCausalContributionCount">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConcurrentCausalContributionCount</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#MultiCausalAffectNecessitation">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="#Affect"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MultiCausalAffectNecessitation</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
@@ -35848,6 +35867,12 @@
   <obo:BFO_0000050 rdf:resource="#GodCausesAllThingsProcess"/>
   <obo:BFO_0000055 rdf:resource="#DeterminingToCauseEffectsDisposition"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FiniteThingDeterminedToExistAndActProcess</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#AffectStrengthProportionality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AffectStrengthProportionality</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
