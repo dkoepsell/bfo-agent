@@ -20990,6 +20990,8 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <obo:BFO_0000054 rdf:resource="#ActiveAffectRealizationProcess"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:subClassOf rdf:resource="#PowerOfMind"/>
+  <work:subClassOf rdf:resource="#PowerOfMind"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ActiveAffect</rdfs:label>
 </owl:Class>
 
@@ -21075,12 +21077,16 @@
 <owl:Class rdf:about="#Moderation">
   <rdfs:subClassOf rdf:resource="#Tenacity"/>
   <work:subClassOf rdf:resource="#Tenacity"/>
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="#ActiveAffect"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Moderation</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#Sobriety">
   <rdfs:subClassOf rdf:resource="#Tenacity"/>
   <work:subClassOf rdf:resource="#Tenacity"/>
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="#ActiveAffect"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Sobriety</rdfs:label>
 </owl:Class>
 
@@ -21741,6 +21747,12 @@
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="#Gluttony"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NoOppositeAffectQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#Chastity">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="#ActiveAffect"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Chastity</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
