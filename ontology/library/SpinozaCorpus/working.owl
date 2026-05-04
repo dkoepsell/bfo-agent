@@ -28888,6 +28888,10 @@
 
 <owl:Class rdf:about="#SpiritOfGod">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work:subClassOf rdf:resource="#CourageousHeartQuality"/>
+  <work:subClassOf rdf:resource="#ExtraordinaryVirtueQuality"/>
+  <work:subClassOf rdf:resource="#ExtraordinaryForceQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SpiritOfGod</rdfs:label>
 </owl:Class>
 
@@ -28910,6 +28914,24 @@
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <obo:RO_0000052 rdf:resource="#Wind"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DestructiveWindQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#CourageousHeartQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CourageousHeartQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ExtraordinaryVirtueQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExtraordinaryVirtueQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ExtraordinaryForceQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExtraordinaryForceQuality</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
