@@ -16800,6 +16800,25 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NecessaryIdeaExistenceInGodDisposition</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#Individual">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
+  <work:subClassOf rdf:resource="#_:universalAnimacyRestriction"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Individual</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#AnimacyQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AnimacyQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DegreeOfAnimacyQuality">
+  <rdfs:subClassOf rdf:resource="#AnimacyQuality"/>
+  <work:subClassOf rdf:resource="#AnimacyQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DegreeOfAnimacyQuality</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
@@ -19205,6 +19224,13 @@
   <obo:RO_0000057 rdf:resource="#SingularExistingIdea"/>
   <obo:RO_0000057 rdf:resource="#SingularModeOfThinking"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodCausesSingularIdeaProcess</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#NecessaryIdeaExistenceInGodDispositionInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:RO_0000052 rdf:resource="#God"/>
+  <obo:BFO_0000054 rdf:resource="#IdeaCorrespondenceProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NecessaryIdeaExistenceInGodDispositionInstance</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#ThinkingThingRole">
@@ -25505,13 +25531,6 @@
   <work3:type rdf:resource="#MindBodyUnionQuality"/>
   <obo:RO_0000052 rdf:resource="#HumanMind"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindBodyUnion</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#NecessaryIdeaExistenceInGodDispositionInstance">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <obo:RO_0000052 rdf:resource="#God"/>
-  <obo:BFO_0000054 rdf:resource="#IdeaCorrespondenceProcess"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NecessaryIdeaExistenceInGodDispositionInstance</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
