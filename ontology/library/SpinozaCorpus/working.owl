@@ -20245,6 +20245,7 @@
 
 <owl:Class rdf:about="#DesireToAvoidEvil">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DesireToAvoidEvil</rdfs:label>
 </owl:Class>
 
@@ -20265,6 +20266,12 @@
 <owl:Class rdf:about="#AvoidanceBehaviorProcess">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AvoidanceBehaviorProcess</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#Danger">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Danger</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#FutureEvilJudgment">
@@ -20329,6 +20336,8 @@
   <rdfs:subClassOf rdf:resource="#Wonder"/>
   <work:subClassOf rdf:resource="#Wonder"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="#RestraintOfDesireByWonderQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Consternation</rdfs:label>
 </owl:Class>
 
@@ -21559,12 +21568,6 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Cowardice</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#Danger">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Danger</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#CowardPerson">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
@@ -21576,6 +21579,18 @@
 <owl:Class rdf:about="#MostPeople">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MostPeople</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#WonderAtEvil">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WonderAtEvil</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#RestraintOfDesireByWonderQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RestraintOfDesireByWonderQuality</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
