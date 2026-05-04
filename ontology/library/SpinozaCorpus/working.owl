@@ -29106,6 +29106,7 @@
   <obo:RO_0000052 rdf:resource="#FormalBeingOfHumanMind"/>
   <obo:BFO_0000054 rdf:resource="#ThirdKindKnowledgeRealizationProcess"/>
   <obo:BFO_0000054 rdf:resource="#AriseFromThirdKindOfKnowledgeProcess"/>
+  <obo:BFO_0000054 rdf:resource="#ArisingFromThirdKindOfKnowledgeProcess"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ThirdKindOfKnowledgeInstance</rdfs:label>
 </owl:NamedIndividual>
 
@@ -29719,6 +29720,12 @@
   <obo:BFO_0000055 rdf:resource="#ThirdKindOfKnowledgeInstance"/>
   <obo:RO_0000057 rdf:resource="#GreatestSatisfactionQualityInstance"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ThirdKindKnowledgeRealizationProcess</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#AriseFromThirdKindOfKnowledgeProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000055 rdf:resource="#IntellectualLoveOfGodInstance"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AriseFromThirdKindOfKnowledgeProcess</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#SubSpecieAeternitatisConceptionProcess">
@@ -36965,13 +36972,21 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <obo:RO_0000052 rdf:resource="#God"/>
   <work3:type rdf:resource="#IntellectualLoveOfGod"/>
+  <obo:RO_0000052 rdf:resource="#IntellectualLoveEternalityQualityInstance"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IntellectualLoveOfGodInstance</rdfs:label>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#AriseFromThirdKindOfKnowledgeProcess">
+<owl:NamedIndividual rdf:about="#IntellectualLoveEternalityQualityInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#IntellectualLoveOfGodInstance"/>
+  <work3:type rdf:resource="#EternalityQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IntellectualLoveEternalityQualityInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ArisingFromThirdKindOfKnowledgeProcess">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <obo:BFO_0000055 rdf:resource="#IntellectualLoveOfGodInstance"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AriseFromThirdKindOfKnowledgeProcess</rdfs:label>
+  <obo:RO_0000057 rdf:resource="#IntellectualLoveOfGodInstance"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ArisingFromThirdKindOfKnowledgeProcess</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
