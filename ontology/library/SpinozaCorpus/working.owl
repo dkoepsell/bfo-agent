@@ -20193,6 +20193,11 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AffectionByObject</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#AffectingObject">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AffectingObject</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#DifferentialAffectionQuality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
@@ -20206,11 +20211,6 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SimultaneityTemporalRegion</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#AffectingObject">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AffectingObject</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#AffectionQuality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <obo:RO_0000052 rdf:resource="#Man"/>
@@ -20222,6 +20222,36 @@
   <obo:RO_0000052 rdf:resource="#Man"/>
   <obo:BFO_0000054 rdf:resource="#AffectionByObject"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">VariabilityOfAffectionDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#JudgmentOfGoodAndBad">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">JudgmentOfGoodAndBad</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#AffectiveState">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AffectiveState</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#VarianceInJudgment">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">VarianceInJudgment</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#VarianceInAffect">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">VarianceInAffect</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#GoodAndBadEvaluativeQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GoodAndBadEvaluativeQuality</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
