@@ -124,6 +124,7 @@
   <work:subClassOf rdf:resource="#NecessityOfExistence"/>
   <work:subClassOf rdf:resource="#SubstanceInfinityQuality"/>
   <work:subClassOf rdf:resource="#SubstanceNecessaryInfinityDisposition"/>
+  <work:subClassOf rdf:resource="#ModificationBearer"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Substance</rdfs:label>
 </owl:Class>
 
@@ -519,6 +520,12 @@
   <work:subClassOf rdf:resource="#Particular"/>
   <work:subClassOf rdf:resource="#AffectEssentiality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FiniteSingularThing</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#NegationQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#ImperfectionQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NegationQuality</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#PerseveranceInActuality">
@@ -15026,12 +15033,6 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AttributeCoinstantiationIncapacity</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#NegationQuality">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <work:subClassOf rdf:resource="#ImperfectionQuality"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NegationQuality</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#Infinitude">
   <rdfs:subClassOf rdf:resource="#InfiniteInItsKind"/>
   <work:subClassOf rdf:resource="#AbsoluteAffirmationOfExistence"/>
@@ -15042,6 +15043,26 @@
   <rdfs:subClassOf rdf:resource="#FormalExistence"/>
   <work:subClassOf rdf:resource="#FormalExistence"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AbsoluteAffirmationOfExistence</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#Modification">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000020"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000020"/>
+  <work:subClassOf rdf:resource="#ModificationBearer"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Modification</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ModificationConceptionDependence">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:RO_0000052 rdf:resource="#Modification"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ModificationConceptionDependence</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ModificationBearer">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ModificationBearer</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
