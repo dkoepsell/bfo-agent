@@ -135,6 +135,8 @@
 
 <owl:Class rdf:about="#FormalExistence">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000053 rdf:resource="#ExistenceNonEvilQuality"/>
+  <obo:RO_0000053 rdf:resource="#ExistenceNonImperfectionQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FormalExistence</rdfs:label>
 </owl:Class>
 
@@ -2703,6 +2705,13 @@
   <work:subClassOf rdf:resource="#IdeaFormationCapacity"/>
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Negation</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PrivationOfPerfection">
+  <rdfs:subClassOf rdf:resource="#ImperfectionQuality"/>
+  <work:subClassOf rdf:resource="#ImperfectionQuality"/>
+  <work:subClassOf rdf:resource="#MorePerfectState"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PrivationOfPerfection</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#Privation">
@@ -13669,11 +13678,16 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConceptualCapacityLimitDisposition</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#PrivationOfPerfection">
+<owl:Class rdf:about="#ExistenceNonEvilQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExistenceNonEvilQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ExistenceNonImperfectionQuality">
   <rdfs:subClassOf rdf:resource="#ImperfectionQuality"/>
   <work:subClassOf rdf:resource="#ImperfectionQuality"/>
-  <work:subClassOf rdf:resource="#MorePerfectState"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PrivationOfPerfection</rdfs:label>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExistenceNonImperfectionQuality</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#God">
