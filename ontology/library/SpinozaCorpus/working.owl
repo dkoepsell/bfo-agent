@@ -907,6 +907,8 @@
   <obo:RO_0000053 rdf:resource="#MindImmortalityQuality"/>
   <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
   <work:subClassOf rdf:resource="#ThinkingThingQuality"/>
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <obo:BFO_0000050 rdf:resource="#Man"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Mind</rdfs:label>
 </owl:Class>
 
@@ -1092,6 +1094,7 @@
   <work:subClassOf rdf:resource="#Body"/>
   <rdfs:subClassOf rdf:resource="#ModificationBearer"/>
   <work:subClassOf rdf:resource="#ModificationBearer"/>
+  <obo:BFO_0000050 rdf:resource="#Man"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body</rdfs:label>
 </owl:Class>
 
@@ -1148,6 +1151,22 @@
   <work:subClassOf rdf:resource="#ModeAttributeDependence"/>
   <obo:BFO_0000054 rdf:resource="#IntellectTracingProcess"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Imagination</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#HumanMind">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
+  <work:subClassOf rdf:resource="#ModeOfThought"/>
+  <work:subClassOf rdf:resource="#Mode"/>
+  <rdfs:subClassOf rdf:resource="#ThinkingSubstance"/>
+  <work:subClassOf rdf:resource="#ThinkingSubstance"/>
+  <work:subClassOf rdf:resource="#MindCreatedNotTransmittedQuality"/>
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <obo:BFO_0000050 rdf:resource="#InfiniteIntellectOfGod"/>
+  <obo:RO_0000052 rdf:resource="#God"/>
+  <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HumanMind</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#DesireArisingProcess">
@@ -1308,22 +1327,6 @@
   <obo:RO_0000057 rdf:resource="#Body"/>
   <work:subClassOf rdf:resource="#SoulBodyAffectionProcess"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PerceptionProcess</rdfs:label>
-</owl:Class>
-
-<owl:Class rdf:about="#HumanMind">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
-  <work:subClassOf rdf:resource="#ModeOfThought"/>
-  <work:subClassOf rdf:resource="#Mode"/>
-  <rdfs:subClassOf rdf:resource="#ThinkingSubstance"/>
-  <work:subClassOf rdf:resource="#ThinkingSubstance"/>
-  <work:subClassOf rdf:resource="#MindCreatedNotTransmittedQuality"/>
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
-  <obo:BFO_0000050 rdf:resource="#InfiniteIntellectOfGod"/>
-  <obo:RO_0000052 rdf:resource="#God"/>
-  <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HumanMind</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#ImaginativeRepresentation">
@@ -3576,6 +3579,8 @@
   <work:subClassOf rdf:resource="#_:bearerOfThinkingDisposition"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
   <obo:RO_0000053 rdf:resource="#HumanEssence"/>
+  <obo:BFO_0000051 rdf:resource="#Mind"/>
+  <obo:BFO_0000051 rdf:resource="#Body"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Man</rdfs:label>
 </owl:Class>
 
