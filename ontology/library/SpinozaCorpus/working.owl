@@ -8405,6 +8405,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PropheticImaginingContent</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#RevealedAccordingToImaginationDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:BFO_0000054 rdf:resource="#DivineRevelationProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RevealedAccordingToImaginationDisposition</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#VividnessQuality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
@@ -29866,10 +29872,9 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DominionOverAllThingsQuality</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#RevealedAccordingToImaginationDisposition">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <obo:BFO_0000054 rdf:resource="#DivineRevelationProcess"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RevealedAccordingToImaginationDisposition</rdfs:label>
+<owl:Class rdf:about="#CareOfNations">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CareOfNations</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
@@ -42776,6 +42781,19 @@
   <work3:type rdf:resource="#SupremeRightAndPower"/>
   <obo:RO_0000052 rdf:resource="#God"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SupremeRightAndPowerQuality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#EntrustmentOfNations">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#God"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EntrustmentOfNations</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#CareOfNationsRoleInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <work3:type rdf:resource="#CareOfNations"/>
+  <obo:BFO_0000054 rdf:resource="#EntrustmentOfNations"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CareOfNationsRoleInstance</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
