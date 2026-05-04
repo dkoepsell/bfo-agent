@@ -26169,6 +26169,24 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ReductionOfEvilAffectsByKnowledgeQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#UnderstandingBySecondOrThirdKindProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000055 rdf:resource="#SecondKindOfKnowledge"/>
+  <obo:BFO_0000055 rdf:resource="#ThirdKindOfKnowledge"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UnderstandingBySecondOrThirdKindProcess</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#FearOfDeathQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FearOfDeathQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DecreasedFearOfDeathQuality">
+  <rdfs:subClassOf rdf:resource="#FearOfDeathQuality"/>
+  <work:subClassOf rdf:resource="#FearOfDeathQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DecreasedFearOfDeathQuality</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
@@ -26856,6 +26874,7 @@
   <obo:BFO_0000050 rdf:resource="#MindEternalityUnderSpeciesOfEternityQuality"/>
   <obo:BFO_0000050 rdf:resource="#ThirdKindOfKnowledgeInstance"/>
   <obo:BFO_0000050 rdf:resource="#SubSpecieAeternitatisUnderstanding"/>
+  <work3:type rdf:resource="#ThirdKindOfKnowledge"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EternalIdeaOfBodyPertainsToMindEssenceQuality</rdfs:label>
 </owl:NamedIndividual>
 
