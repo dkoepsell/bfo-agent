@@ -21182,6 +21182,7 @@
 <owl:Class rdf:about="#SelfLove">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="#SoulModeOfThoughtQuality"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SelfLove</rdfs:label>
 </owl:Class>
 
@@ -21189,6 +21190,13 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="#SelfLove"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SelfLoveCausesPrideDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PrideAsSelfLoveEffectRelation">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="#Pride"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PrideAsSelfLoveEffectRelation</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
