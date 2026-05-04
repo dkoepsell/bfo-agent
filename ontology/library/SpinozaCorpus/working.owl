@@ -11031,6 +11031,13 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ContinuationOfMotionDisposition</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#DeterminationToRestProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#BodyInMotion"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DeterminationToRestProcess</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#SourceBody">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
@@ -16937,13 +16944,6 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DeterminationToRestDisposition</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#DeterminationToRestProcess">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <obo:RO_0000057 rdf:resource="#BodyInMotion"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DeterminationToRestProcess</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#PersistenceInRestDisposition">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
@@ -16952,17 +16952,58 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PersistenceInRestDisposition</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#DeterminationToMotionProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#BodyAtRest"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DeterminationToMotionProcess</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#DeterminingExternalBodyRole">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DeterminingExternalBodyRole</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#DeterminationToMotionProcess">
+<owl:Class rdf:about="#AffectionOfBodyByBody">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <obo:RO_0000057 rdf:resource="#BodyAtRest"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DeterminationToMotionProcess</rdfs:label>
+  <obo:RO_0000057 rdf:resource="#AffectedBody"/>
+  <obo:RO_0000057 rdf:resource="#AffectingBody"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AffectionOfBodyByBody</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#AffectedBody">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AffectedBody</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#AffectingBody">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AffectingBody</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#NatureOfAffectedBody">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NatureOfAffectedBody</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#NatureOfAffectingBody">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NatureOfAffectingBody</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#BodyAffectionMode">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000020"/>
+  <work:subClassOf rdf:resource="#AffectionOfBodyByBody"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BodyAffectionMode</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#JointNatureDeterminesAffectionDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:BFO_0000054 rdf:resource="#AffectionOfBodyByBody"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">JointNatureDeterminesAffectionDisposition</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
