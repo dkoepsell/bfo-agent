@@ -12355,6 +12355,7 @@
   <work:subClassOf rdf:resource="#Attribute"/>
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000020"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000020"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Affection</rdfs:label>
 </owl:Class>
 
@@ -14970,6 +14971,26 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="#RelationalQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SharedNatureQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DistinctThing">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DistinctThing</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DistinctionByAttribute">
+  <rdfs:subClassOf rdf:resource="#RelationalQuality"/>
+  <work:subClassOf rdf:resource="#RelationalQuality"/>
+  <work:subClassOf rdf:resource="#Attribute"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DistinctionByAttribute</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DistinctionByAffection">
+  <rdfs:subClassOf rdf:resource="#RelationalQuality"/>
+  <work:subClassOf rdf:resource="#RelationalQuality"/>
+  <work:subClassOf rdf:resource="#Affection"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DistinctionByAffection</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#God">
