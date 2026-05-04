@@ -6616,6 +6616,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DoingEvilToHatedObject</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#EvilAffect">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EvilAffect</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#HatedObject">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HatedObject</rdfs:label>
@@ -7178,6 +7184,8 @@
 <owl:Class rdf:about="#Laughter">
   <rdfs:subClassOf rdf:resource="#Joy"/>
   <work:subClassOf rdf:resource="#Joy"/>
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Laughter</rdfs:label>
 </owl:Class>
 
@@ -23554,10 +23562,28 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HateCannotBeGoodQuality</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#EvilAffect">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EvilAffect</rdfs:label>
+<owl:Class rdf:about="#Joking">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Joking</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PureJoy">
+  <rdfs:subClassOf rdf:resource="#Joy"/>
+  <work:subClassOf rdf:resource="#Joy"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PureJoy</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#LaughterAssociatedJoy">
+  <rdfs:subClassOf rdf:resource="#PureJoy"/>
+  <work:subClassOf rdf:resource="#PureJoy"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LaughterAssociatedJoy</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#JokingAssociatedJoy">
+  <rdfs:subClassOf rdf:resource="#PureJoy"/>
+  <work:subClassOf rdf:resource="#PureJoy"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">JokingAssociatedJoy</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
