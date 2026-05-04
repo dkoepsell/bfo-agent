@@ -6029,6 +6029,8 @@
   <rdfs:subClassOf rdf:resource="#GoodEvilRelationalQuality"/>
   <work:subClassOf rdf:resource="#GoodEvilRelationalQuality"/>
   <work:subClassOf rdf:resource="#RelativeGoodEvilQuality"/>
+  <work:subClassOf rdf:resource="#RelationalEvaluativeDesignation"/>
+  <work:subClassOf rdf:resource="#ExistenceNonEvilQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GoodQuality</rdfs:label>
 </owl:Class>
 
@@ -6050,6 +6052,7 @@
   <rdfs:subClassOf rdf:resource="#GoodEvilRelationalQuality"/>
   <work:subClassOf rdf:resource="#GoodEvilRelationalQuality"/>
   <work:subClassOf rdf:resource="#RelativeGoodEvilQuality"/>
+  <work:subClassOf rdf:resource="#RelationalEvaluativeDesignation"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EvilQuality</rdfs:label>
 </owl:Class>
 
@@ -21912,6 +21915,17 @@
   <rdfs:subClassOf rdf:resource="#EssentialExistenceQuality"/>
   <work:subClassOf rdf:resource="#EssentialExistenceQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CausalNecessitationOfNatureConstraintQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#RelationalEvaluativeDesignation">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#NullIntrinsicPositiveContent"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RelationalEvaluativeDesignation</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#NullIntrinsicPositiveContent">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NullIntrinsicPositiveContent</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
