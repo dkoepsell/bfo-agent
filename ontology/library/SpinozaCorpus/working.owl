@@ -38065,6 +38065,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DescartesTermIdentificationProcess</rdfs:label>
 </owl:NamedIndividual>
 
+<owl:NamedIndividual rdf:about="#CartesianIdentificationOfMensAndAnima">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CartesianIdentificationOfMensAndAnima</rdfs:label>
+</owl:NamedIndividual>
+
 <owl:NamedIndividual rdf:about="#Mens">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
@@ -38086,6 +38092,11 @@
 <owl:NamedIndividual rdf:about="#Ratio">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Ratio</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#AnimaRationalis">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AnimaRationalis</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#AttributeSubstanceIdentityThesis">
@@ -38204,22 +38215,11 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CognitioImpliesTruthQuality</rdfs:label>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#AnimaRationalis">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AnimaRationalis</rdfs:label>
-</owl:NamedIndividual>
-
 <owl:NamedIndividual rdf:about="#DescartesIdentificationClaim">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <obo:IAO_0000136 rdf:resource="#Mens"/>
   <obo:IAO_0000136 rdf:resource="#AnimaRationalis"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DescartesIdentificationClaim</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#CartesianIdentificationOfMensAndAnima">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
-  <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CartesianIdentificationOfMensAndAnima</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
