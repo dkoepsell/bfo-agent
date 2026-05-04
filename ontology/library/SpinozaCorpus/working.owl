@@ -29032,6 +29032,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PropheticPerceptionProcess</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#PropheticImaginativePerception">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="#ImaginationOfExternalBody"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PropheticImaginativePerception</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#ImaginativeMediationDisposition">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="#ImaginationInaccessibility"/>
@@ -29070,16 +29076,40 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ImaginaryContentQuality</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#PropheticImaginativePerception">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <work:subClassOf rdf:resource="#ImaginationOfExternalBody"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PropheticImaginativePerception</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#BeyondIntellectPerceptionQuality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="#ImaginationPerfectionQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BeyondIntellectPerceptionQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PropheticExpression">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PropheticExpression</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#CorporealExpression">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#CorporealExpression"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CorporealExpression</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#MetaphoricalExpression">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MetaphoricalExpression</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SpiritualContent">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SpiritualContent</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ImaginationNatureCongruenceDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:BFO_0000054 rdf:resource="#PropheticExpression"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ImaginationNatureCongruenceDisposition</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
