@@ -17364,6 +17364,14 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IdeaOfAffection</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#IdeaInvolvesNatureRelation">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:RO_0000052 rdf:resource="#NatureOfHumanBodyQuality"/>
+  <obo:RO_0000052 rdf:resource="#NatureOfExternalBodyQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IdeaInvolvesNatureRelation</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#AffectionMode">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000020"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000020"/>
@@ -17383,12 +17391,14 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NatureOfExternalBodyQuality</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#IdeaInvolvesNatureRelation">
+<owl:Class rdf:about="#BodyNaturePerceptionDisposition">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <obo:RO_0000052 rdf:resource="#NatureOfHumanBodyQuality"/>
-  <obo:RO_0000052 rdf:resource="#NatureOfExternalBodyQuality"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IdeaInvolvesNatureRelation</rdfs:label>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BodyNaturePerceptionDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#BodyNatureQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BodyNatureQuality</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
@@ -26179,6 +26189,40 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <obo:RO_0000052 rdf:resource="#IdeaConstitutingFormalBeingOfHumanMind"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CompositionOfManyIdeasQualityInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#OwnBody">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OwnBody</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ExternalBodies">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExternalBodies</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#OwnBodyNaturePerceptionDisposition">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work3:type rdf:resource="#BodyNaturePerceptionDisposition"/>
+  <obo:RO_0000052 rdf:resource="#HumanMind"/>
+  <obo:BFO_0000054 rdf:resource="#BodyNaturePerceptionProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OwnBodyNaturePerceptionDisposition</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ExternalBodiesNaturePerceptionDisposition">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work3:type rdf:resource="#BodyNaturePerceptionDisposition"/>
+  <obo:RO_0000052 rdf:resource="#HumanMind"/>
+  <obo:BFO_0000054 rdf:resource="#BodyNaturePerceptionProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExternalBodiesNaturePerceptionDisposition</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#BodyNaturePerceptionProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#HumanMind"/>
+  <obo:RO_0000057 rdf:resource="#OwnBody"/>
+  <obo:RO_0000057 rdf:resource="#ExternalBodies"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BodyNaturePerceptionProcess</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
