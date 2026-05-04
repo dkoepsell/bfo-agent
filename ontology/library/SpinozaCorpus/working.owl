@@ -15757,6 +15757,35 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">InfiniteModeExistenceProcess</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#InfiniteNecessaryMode">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">InfiniteNecessaryMode</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#AbsoluteNatureOfAttributeDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="#Attribute"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AbsoluteNatureOfAttributeDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#NecessarilyInfiniteModification">
+  <rdfs:subClassOf rdf:resource="#InfiniteNecessaryMode"/>
+  <work:subClassOf rdf:resource="#InfiniteNecessaryMode"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NecessarilyInfiniteModification</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#InfiniteModeFollowingFromAbsoluteNatureProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="#FormalExistenceNecessitationProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">InfiniteModeFollowingFromAbsoluteNatureProcess</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#InfiniteModeFollowingFromNecessarilyInfiniteModificationProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="#FormalExistenceNecessitationProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">InfiniteModeFollowingFromNecessarilyInfiniteModificationProcess</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
