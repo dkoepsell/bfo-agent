@@ -17982,6 +17982,30 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConfusedImageQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#BodyAffectionHistory">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BodyAffectionHistory</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#CommonNotionVarianceQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CommonNotionVarianceQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#CommonNotionFormationDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:BFO_0000054 rdf:resource="#CommonNotionFormationProcess"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CommonNotionFormationDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#CommonNotionFormationProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CommonNotionFormationProcess</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
@@ -27145,14 +27169,14 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UniversalTermFormation</rdfs:label>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#CommonalityAmongSingularThings">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CommonalityAmongSingularThings</rdfs:label>
-</owl:NamedIndividual>
-
 <owl:NamedIndividual rdf:about="#WordMan">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WordMan</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#CommonalityAmongSingularThings">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CommonalityAmongSingularThings</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#MindAbstractionCapacity">
