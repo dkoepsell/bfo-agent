@@ -1880,6 +1880,9 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <obo:BFO_0000054 rdf:resource="#PerseveranceProcess"/>
   <obo:RO_0000052 rdf:resource="#God"/>
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/RO_0000052"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Life</rdfs:label>
 </owl:Class>
 
@@ -26588,6 +26591,11 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Affectus</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#Affectio">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Affectio</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#ActiveAffectus">
   <rdfs:subClassOf rdf:resource="#Affectus"/>
   <work:subClassOf rdf:resource="#Affectus"/>
@@ -26613,9 +26621,10 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BodilyAffectusQuality</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#Affectio">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Affectio</rdfs:label>
+<owl:Class rdf:about="#DegreeOfLife">
+  <rdfs:subClassOf rdf:resource="#Life"/>
+  <work:subClassOf rdf:resource="#Life"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DegreeOfLife</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
