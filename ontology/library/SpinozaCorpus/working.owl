@@ -27891,6 +27891,32 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BeliefAboutOwnFreedom</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#PoliticalInstitution">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PoliticalInstitution</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SocialAgreement">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <obo:BFO_0000054 rdf:resource="#GovernmentEstablishmentProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SocialAgreement</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#GovernmentEstablishmentProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#Person"/>
+  <obo:RO_0000057 rdf:resource="#SocialAgreement"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GovernmentEstablishmentProcess</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#JustificationRelation">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">JustificationRelation</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
