@@ -1317,6 +1317,7 @@
   <obo:RO_0000053 rdf:resource="#Desire"/>
   <obo:RO_0000053 rdf:resource="#EternalIdeaOfBodyPertainsToMindEssenceQuality"/>
   <obo:RO_0000053 rdf:resource="#MindEssenceKnowledgeConstitutionQuality"/>
+  <work3:type rdf:resource="#ModificationBearer"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HumanMind</rdfs:label>
 </owl:Class>
 
@@ -26132,6 +26133,16 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindEssenceConsistsInKnowledgeOnlyQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#MindEssenceDependenceOnGodQualityClass">
+  <rdfs:subClassOf rdf:resource="#EssentialExistenceQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindEssenceDependenceOnGodQualityClass</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#MindExistenceDependenceOnGodQualityClass">
+  <rdfs:subClassOf rdf:resource="#EssentialExistenceQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindExistenceDependenceOnGodQualityClass</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
@@ -26820,6 +26831,13 @@
   <obo:BFO_0000050 rdf:resource="#ThirdKindOfKnowledgeInstance"/>
   <obo:BFO_0000050 rdf:resource="#SubSpecieAeternitatisUnderstanding"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EternalIdeaOfBodyPertainsToMindEssenceQuality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#MindEssenceKnowledgeConstitutionQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work3:type rdf:resource="#MindEssenceConsistsInKnowledgeOnlyQuality"/>
+  <obo:RO_0000052 rdf:resource="#HumanMind"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindEssenceKnowledgeConstitutionQuality</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#AnotherBeing">
@@ -37131,11 +37149,28 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IntellectualLoveIdentityQuality</rdfs:label>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#MindEssenceKnowledgeConstitutionQuality">
+<owl:NamedIndividual rdf:about="#MindEssenceDependenceOnGodQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <work3:type rdf:resource="#MindEssenceConsistsInKnowledgeOnlyQuality"/>
-  <obo:RO_0000052 rdf:resource="#HumanMind"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindEssenceKnowledgeConstitutionQuality</rdfs:label>
+  <work3:type rdf:resource="#MindEssenceDependenceOnGodQualityClass"/>
+  <RO_0000052 rdf:resource="#HumanMind"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindEssenceDependenceOnGodQuality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#MindExistenceDependenceOnGodQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work3:type rdf:resource="#MindExistenceDependenceOnGodQualityClass"/>
+  <RO_0000052 rdf:resource="#HumanMind"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindExistenceDependenceOnGodQuality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#MindFollowsFromGodProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <RO_0000057 rdf:resource="#HumanMind"/>
+  <RO_0000057 rdf:resource="#God"/>
+  <obo:BFO_0000055 rdf:resource="#MindEssenceDependenceOnGodQuality"/>
+  <obo:BFO_0000055 rdf:resource="#MindExistenceDependenceOnGodQuality"/>
+  <obo:BFO_0000050 rdf:resource="#GodCausesAllThingsProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindFollowsFromGodProcess</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
