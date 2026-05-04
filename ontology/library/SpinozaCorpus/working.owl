@@ -20925,6 +20925,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Lust</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#DesireForBodyUnion">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:BFO_0000054 rdf:resource="#BodyJoiningProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DesireForBodyUnion</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#EquineLust">
   <rdfs:subClassOf rdf:resource="#Lust"/>
   <work:subClassOf rdf:resource="#Lust"/>
@@ -21673,6 +21679,7 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <obo:BFO_0000051 rdf:resource="#ImmoderateDesireForDrinking"/>
   <obo:BFO_0000051 rdf:resource="#ImmoderateDesireForDrinkingLove"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Drunkenness</rdfs:label>
 </owl:Class>
 
@@ -21709,10 +21716,9 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ImmoderateWealthLove</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#DesireForBodyUnion">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <obo:BFO_0000054 rdf:resource="#BodyJoiningProcess"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DesireForBodyUnion</rdfs:label>
+<owl:Class rdf:about="#BodyJoiningProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BodyJoiningProcess</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#LoveOfBodyUnion">
@@ -21721,9 +21727,17 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LoveOfBodyUnion</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#BodyJoiningProcess">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BodyJoiningProcess</rdfs:label>
+<owl:Class rdf:about="#OppositeAffect">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OppositeAffect</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#NoOppositeAffectQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#Gluttony"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NoOppositeAffectQuality</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
