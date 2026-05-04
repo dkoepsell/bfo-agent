@@ -3982,6 +3982,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HumanBeing</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#StrainAgainstHumilityAndDespondencyDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">StrainAgainstHumilityAndDespondencyDisposition</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#ServingGodRole">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
   <work:subClassOf rdf:resource="#FiniteThingRole"/>
@@ -6905,6 +6911,7 @@
   <obo:RO_0000053 rdf:resource="#ObjectionableAffectQuality"/>
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="#IdeaOfInternalCause"/>
+  <obo:BFO_0000054 rdf:resource="#LoveOfEsteemJoy"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LoveOfEsteem</rdfs:label>
 </owl:Class>
 
@@ -21253,10 +21260,22 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PrideBornOfSelfEsteemDisposition</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#StrainAgainstHumilityAndDespondencyDisposition">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">StrainAgainstHumilityAndDespondencyDisposition</rdfs:label>
+<owl:Class rdf:about="#LoveOfEsteemJoy">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000055 rdf:resource="#LoveOfEsteem"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LoveOfEsteemJoy</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#IdeaOfOwnPraisedAction">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#LoveOfEsteem"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IdeaOfOwnPraisedAction</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ImaginedPraiseOfOthers">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#IdeaOfOwnPraisedAction"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ImaginedPraiseOfOthers</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
