@@ -782,6 +782,8 @@
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000020"/>
   <obo:RO_0000052 rdf:resource="#ExternalThingNature"/>
+  <work:subClassOf rdf:resource="#ModeOfThinkingThing"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/RO_0000053"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Idea</rdfs:label>
 </owl:Class>
 
@@ -2844,6 +2846,8 @@
   <rdfs:subClassOf rdf:resource="#ModeInstance"/>
   <work:subClassOf rdf:resource="#ModeInstance"/>
   <obo:RO_0000052 rdf:resource="#ThinkingThing"/>
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000020"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000020"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ModeOfThinkingThing</rdfs:label>
 </owl:Class>
 
@@ -26865,6 +26869,12 @@
 <owl:Class rdf:about="#TermPolysemyQuality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TermPolysemyQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#EqualFormalRealityQuality">
+  <rdfs:subClassOf rdf:resource="#FormalReality"/>
+  <work:subClassOf rdf:resource="#FormalReality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EqualFormalRealityQuality</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
