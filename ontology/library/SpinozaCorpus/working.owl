@@ -4308,6 +4308,13 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ActingFromGuidanceOfReason</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#GuidanceOfReason">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:BFO_0000054 rdf:resource="#ActingFromVirtue"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GuidanceOfReason</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#Animal">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
   <obo:RO_0000053 rdf:resource="#AnimalExistenceQuality"/>
@@ -22623,13 +22630,6 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DeterminationToActByUnderstandingQuality</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#GuidanceOfReason">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <obo:BFO_0000054 rdf:resource="#ActingFromVirtue"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GuidanceOfReason</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#RationalGuidanceRealization">
   <rdfs:subClassOf rdf:resource="#ActingFromVirtue"/>
   <work:subClassOf rdf:resource="#ActingFromVirtue"/>
@@ -23016,6 +23016,38 @@
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <obo:RO_0000052 rdf:resource="#StrivingFromReason"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">StrivingEndIsUnderstandingQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ReasonGuidedAction">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ReasonGuidedAction</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#KindnessDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:BFO_0000054 rdf:resource="#ReasonGuidedAction"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">KindnessDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#GenerosityDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:BFO_0000054 rdf:resource="#ReasonGuidedAction"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GenerosityDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SteadfastMindQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SteadfastMindQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#AgentActingFromReason">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AgentActingFromReason</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
