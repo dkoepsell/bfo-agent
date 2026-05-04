@@ -16826,6 +16826,24 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IdeaObjectCorrespondenceQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#IdeaExcellenceQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IdeaExcellenceQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ObjectRealityDegreeQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ObjectRealityDegreeQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ObjectiveRealityDegreeQuality">
+  <rdfs:subClassOf rdf:resource="#IdeaExcellenceQuality"/>
+  <work:subClassOf rdf:resource="#IdeaExcellenceQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ObjectiveRealityDegreeQuality</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
@@ -25538,6 +25556,13 @@
   <work3:type rdf:resource="#MindBodyUnionQuality"/>
   <obo:RO_0000052 rdf:resource="#HumanMind"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindBodyUnion</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#IdeaDifferentiationByObjectProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#Idea"/>
+  <obo:RO_0000057 rdf:resource="#IdeaObject"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IdeaDifferentiationByObjectProcess</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
