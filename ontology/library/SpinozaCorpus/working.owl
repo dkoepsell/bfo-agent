@@ -20396,6 +20396,8 @@
   <work:subClassOf rdf:resource="#DesireForEsteem"/>
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
   <work:subClassOf rdf:resource="#Madness"/>
+  <rdfs:subClassOf rdf:resource="#CourtesyArisingFromAffect"/>
+  <work:subClassOf rdf:resource="#CourtesyArisingFromAffect"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Ambition</rdfs:label>
 </owl:Class>
 
@@ -24919,6 +24921,29 @@
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="#CourtesyDeterminedByReason"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CourtesyMoralityRelation</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#CourtesyArisingFromAffect">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CourtesyArisingFromAffect</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#Discord">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Discord</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#Sedition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Sedition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#AmbitionArousalOfDiscordDisposition">
+  <rdfs:subClassOf rdf:resource="#Ambition"/>
+  <work:subClassOf rdf:resource="#Ambition"/>
+  <obo:BFO_0000054 rdf:resource="#Discord"/>
+  <obo:BFO_0000054 rdf:resource="#Sedition"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AmbitionArousalOfDiscordDisposition</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
