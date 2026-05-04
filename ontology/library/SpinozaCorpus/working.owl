@@ -26435,6 +26435,17 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConsideredInItselfCondition</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#ArgumentOfDescartessPrinciples">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <obo:BFO_0000050 rdf:resource="#DescartessPrinciples"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ArgumentOfDescartessPrinciples</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SoundnessQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SoundnessQuality</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
@@ -30324,6 +30335,7 @@
   <obo:RO_0000056 rdf:resource="#CompositionOfShortTreatise"/>
   <obo:RO_0000053 rdf:resource="#SpinozaAnnotatorRole"/>
   <RO_0000053 rdf:resource="#SpinozaPhilosopherRole"/>
+  <obo:RO_0000056 rdf:resource="#SpinozaAssessmentOfDescartesArguments"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Spinoza</rdfs:label>
 </owl:NamedIndividual>
 
@@ -37615,6 +37627,18 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#PhilosophicalThesis"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AttributeSubstanceIdentityThesis</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#DescartessPrinciples">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DescartessPrinciples</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#SpinozaAssessmentOfDescartesArguments">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#Spinoza"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SpinozaAssessmentOfDescartesArguments</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
