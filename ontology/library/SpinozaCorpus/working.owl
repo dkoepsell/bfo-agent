@@ -4494,6 +4494,7 @@
   <work:subClassOf rdf:resource="#EssentialExistenceQuality"/>
   <work:subClassOf rdf:resource="#HumanPower"/>
   <obo:BFO_0000054 rdf:resource="#ActingFromVirtue"/>
+  <work:subClassOf rdf:resource="#SuperiorPrudenceOrDiligenceOrVirtueQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Virtue</rdfs:label>
 </owl:Class>
 
@@ -21304,12 +21305,14 @@
 <owl:Class rdf:about="#Prudence">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#SuperiorPrudenceOrDiligenceOrVirtueQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Prudence</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#Diligence">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#SuperiorPrudenceOrDiligenceOrVirtueQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Diligence</rdfs:label>
 </owl:Class>
 
@@ -21710,6 +21713,11 @@
   <rdfs:subClassOf rdf:resource="#Animositas"/>
   <work:subClassOf rdf:resource="#Animositas"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Moderation</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#Animositas">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Animositas</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#Sobriety">
@@ -26953,15 +26961,21 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MetaphysicalGeneralizationRelation</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#Animositas">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Animositas</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#PresenceOfMindInDanger">
   <rdfs:subClassOf rdf:resource="#Animositas"/>
   <work:subClassOf rdf:resource="#Animositas"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PresenceOfMindInDanger</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SuperiorPrudenceOrDiligenceOrVirtueQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SuperiorPrudenceOrDiligenceOrVirtueQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#VenerationOccasioningProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000055 rdf:resource="#Veneration"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">VenerationOccasioningProcess</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
