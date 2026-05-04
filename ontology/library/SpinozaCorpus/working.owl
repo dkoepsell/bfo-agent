@@ -16499,6 +16499,24 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IdeaCausalAdmissibilityConstraint</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#AttributeMode">
+  <rdfs:subClassOf rdf:resource="#Mode"/>
+  <work:subClassOf rdf:resource="#Mode"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AttributeMode</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#AttributeRestrictedCausationDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AttributeRestrictedCausationDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#GodUnderAttributeRole">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodUnderAttributeRole</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
@@ -24945,6 +24963,25 @@
   <work3:type rdf:resource="#ModeOfThinking"/>
   <obo:RO_0000052 rdf:resource="#ThinkingAttribute"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FormalBeingOfIdeas</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#GodUnderAttributeRoleInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <obo:RO_0000052 rdf:resource="#God"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodUnderAttributeRoleInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#AttributeRestrictedCausationDispositionInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:RO_0000052 rdf:resource="#God"/>
+  <obo:BFO_0000054 rdf:resource="#ModeCausationByAttributeProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AttributeRestrictedCausationDispositionInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ModeCausationByAttributeProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#God"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ModeCausationByAttributeProcess</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
