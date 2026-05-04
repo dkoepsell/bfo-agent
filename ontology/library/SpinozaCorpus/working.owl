@@ -20139,6 +20139,8 @@
   <work:subClassOf rdf:resource="#Sadness"/>
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="#Desire"/>
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#OppositionRelation"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Longing</rdfs:label>
 </owl:Class>
 
@@ -21386,6 +21388,27 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LongingRestraintRelation</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#HatredAffect">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HatredAffect</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#AbsenceOfHatedThing">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AbsenceOfHatedThing</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#JoyFromAbsenceOfHatedThing">
+  <rdfs:subClassOf rdf:resource="#Joy"/>
+  <work:subClassOf rdf:resource="#Joy"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">JoyFromAbsenceOfHatedThing</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#OppositionRelation">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OppositionRelation</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
