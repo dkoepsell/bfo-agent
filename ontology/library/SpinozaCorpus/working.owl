@@ -15363,6 +15363,30 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SubstanceIndivisibilityQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#SubstancePartRetainsSubstanceNature">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SubstancePartRetainsSubstanceNature</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SubstancePartInfinityRequirement">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="#SubstancePartRetainsSubstanceNature"/>
+  <work:subClassOf rdf:resource="#SubstanceNecessaryInfinityDisposition"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SubstancePartInfinityRequirement</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SubstancePartDistinctAttributeRequirement">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="#SubstancePartRetainsSubstanceNature"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SubstancePartDistinctAttributeRequirement</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SubstancePartAsSubstance">
+  <rdfs:subClassOf rdf:resource="#Substance"/>
+  <work:subClassOf rdf:resource="#Substance"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SubstancePartAsSubstance</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
