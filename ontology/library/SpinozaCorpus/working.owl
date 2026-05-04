@@ -25559,6 +25559,40 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RelatingBodyAffectionsToIdeaOfGodDisposition</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#SelfKnowledgeQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SelfKnowledgeQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#AffectKnowledgeQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AffectKnowledgeQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#LoveOfGodDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:BFO_0000054 rdf:resource="#LovingGodProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LoveOfGodDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#LovingGodProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#God"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LovingGodProcess</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ClearAndDistinctSelfAndAffectKnowledgeQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#SelfKnowledgeQuality"/>
+  <work:subClassOf rdf:resource="#AffectKnowledgeQuality"/>
+  <work:subClassOf rdf:resource="#AdequateKnowledgeOfGodQualityInstance"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ClearAndDistinctSelfAndAffectKnowledgeQuality</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
@@ -26042,6 +26076,14 @@
   <obo:BFO_0000055 rdf:resource="#ConatusMentalDispositionInstance"/>
   <obo:BFO_0000055 rdf:resource="#PowerToPersevereInBeing"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PerseveranceInBeingProcess</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#RelatingBodyAffectionsToIdeaOfGodDispositionInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:RO_0000052 rdf:resource="#Mind"/>
+  <obo:BFO_0000054 rdf:resource="#RelatingAffectionsToGodProcess"/>
+  <work3:type rdf:resource="#RelatingBodyAffectionsToIdeaOfGodDisposition"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RelatingBodyAffectionsToIdeaOfGodDispositionInstance</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#StrivingAndDesireNecessitationProcess">
@@ -36077,14 +36119,6 @@
 <owl:NamedIndividual rdf:about="#AbsenceOfContraryAffects">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AbsenceOfContraryAffects</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#RelatingBodyAffectionsToIdeaOfGodDispositionInstance">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <obo:RO_0000052 rdf:resource="#Mind"/>
-  <obo:BFO_0000054 rdf:resource="#RelatingAffectionsToGodProcess"/>
-  <work3:type rdf:resource="#RelatingBodyAffectionsToIdeaOfGodDisposition"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RelatingBodyAffectionsToIdeaOfGodDispositionInstance</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#RelatingAffectionsToGodProcess">
