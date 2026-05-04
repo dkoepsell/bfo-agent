@@ -303,6 +303,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SelfLimitationIncapacity</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#PerfectionLossProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PerfectionLossProcess</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#EternalInfiniteEssence">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
@@ -13719,12 +13725,6 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ImperfectAct</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#PerfectionLossProcess">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PerfectionLossProcess</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#CreatureEssenceQuality">
   <rdfs:subClassOf rdf:resource="#EssentialExistenceQuality"/>
   <work:subClassOf rdf:resource="#EssentialExistenceQuality"/>
@@ -13749,6 +13749,24 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DerivedFromGodDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#MisdeedProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MisdeedProcess</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PerfectionDecrease">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="#PerfectionLossDisposition"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PerfectionDecrease</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#WorseBetterRelationalQuality">
+  <rdfs:subClassOf rdf:resource="#RelationalQuality"/>
+  <work:subClassOf rdf:resource="#RelationalQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WorseBetter</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#God">
