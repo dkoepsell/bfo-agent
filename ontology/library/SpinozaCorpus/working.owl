@@ -6695,6 +6695,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Shame</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#ShameAccompanimentRelation">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ShameAccompanimentRelation</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#EvilPassion">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
@@ -19709,10 +19715,23 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BeliefInBlame</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#ShameAccompanimentRelation">
+<owl:Class rdf:about="#SelfEsteem">
+  <rdfs:subClassOf rdf:resource="#Joy"/>
+  <work:subClassOf rdf:resource="#Joy"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SelfEsteem</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#InternalCauseQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">InternalCauseQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SelfEsteemAccompanimentRelation">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ShameAccompanimentRelation</rdfs:label>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SelfEsteemAccompanimentRelation</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
