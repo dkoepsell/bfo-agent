@@ -1426,6 +1426,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">StrivingToAct</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#EssenceOfMan">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EssenceOfMan</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#SoulDirectionProcess">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <obo:RO_0000057 rdf:resource="#Soul"/>
@@ -24035,16 +24041,41 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LackOfRegardForWholePersonAdvantage</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#EssenceOfMan">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EssenceOfMan</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#DesireIsEssenceOfManQuality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="#EssentialExistenceQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DesireIsEssenceOfManQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DesireArisingFromReason">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="#HumanEssenceDetermination"/>
+  <obo:BFO_0000054 rdf:resource="#ReasonDeterminesDesireProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DesireArisingFromReason</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#AdequateCognitionThroughEssenceQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#ConceptualIndependence"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AdequateCognitionThroughEssenceQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#HumanEssenceDetermination">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HumanEssenceDetermination</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#HumanNatureInsofar">
+  <rdfs:subClassOf rdf:resource="#Substance"/>
+  <obo:RO_0000053 rdf:resource="#DesireArisingFromReason"/>
+  <obo:RO_0000053 rdf:resource="#HumanEssenceDetermination"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HumanNatureInsofar</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ReasonDeterminesDesireProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#HumanNatureInsofar"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ReasonDeterminesDesireProcess</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
