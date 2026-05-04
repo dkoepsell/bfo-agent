@@ -32051,6 +32051,26 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FixedAndImmutableOrderQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#NatureLaw">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work:subClassOf rdf:resource="#DivineDegree"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NatureLaw</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DivineDegree">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work:subClassOf rdf:resource="#NatureLaw"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivineDegree</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#NatureLawIdentityWithDivineDecreeQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#LawFollowsFromNecessityAndPerfectionRelation"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NatureLawIdentityWithDivineDecreeQuality</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
