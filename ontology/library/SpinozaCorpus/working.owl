@@ -7204,6 +7204,7 @@
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="#Joy"/>
   <work:subClassOf rdf:resource="#InconstantQuality"/>
+  <work:subClassOf rdf:resource="#Passion"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Hope</rdfs:label>
 </owl:Class>
 
@@ -7255,6 +7256,7 @@
   <rdfs:subClassOf rdf:resource="#Sadness"/>
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#Passion"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Fear</rdfs:label>
 </owl:Class>
 
@@ -27790,6 +27792,18 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="#ContingentExistenceQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SubjectionToFortuneQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#Superstition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Superstition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SuperstitionArisalProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000055 rdf:resource="#Passion"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SuperstitionArisalProcess</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
