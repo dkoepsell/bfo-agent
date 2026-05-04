@@ -25170,6 +25170,18 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DefinedByUnderstanding</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#NonAbsoluteDominionQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NonAbsoluteDominionQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#MindDominionOverAffectsDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindDominionOverAffectsDisposition</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
@@ -25734,6 +25746,7 @@
   <obo:RO_0000052 rdf:resource="#HumanMind"/>
   <obo:BFO_0000050 rdf:resource="#InfiniteIntellectOfGod"/>
   <obo:RO_0000053 rdf:resource="#MindEssenceIdea"/>
+  <RO_0000053 rdf:resource="#MindDominionOverAffectsQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FormalBeingOfHumanMind</rdfs:label>
 </owl:NamedIndividual>
 
@@ -35574,6 +35587,12 @@
   <work3:type rdf:resource="#DefinedByUnderstanding"/>
   <obo:RO_0000052 rdf:resource="#BetterPartOfUs"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DefinedByUnderstandingQuality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#MindDominionOverAffectsQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work3:type rdf:resource="#NonAbsoluteDominionQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindDominionOverAffectsQuality</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
