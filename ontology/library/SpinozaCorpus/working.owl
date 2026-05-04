@@ -21006,16 +21006,40 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ErrorAvoidanceCapacityInstance</rdfs:label>
 </owl:NamedIndividual>
 
+<owl:NamedIndividual rdf:about="#FirstHumanCapacityLossProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work3:type rdf:resource="#CapacityLossProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FirstHumanCapacityLossProcess</rdfs:label>
+</owl:NamedIndividual>
+
 <owl:NamedIndividual rdf:about="#MisuseOfCapacityProcess">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <obo:BFO_0000050 rdf:resource="#FirstHumanCapacityLossProcess"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MisuseOfCapacityProcess</rdfs:label>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#FirstHumanCapacityLossProcess">
+<owl:NamedIndividual rdf:about="#FallFromInitialPerfection">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <work3:type rdf:resource="#CapacityLossProcess"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FirstHumanCapacityLossProcess</rdfs:label>
+  <obo:RO_0000057 rdf:resource="#InitialHumanPerfection"/>
+  <obo:RO_0000057 rdf:resource="#HumanImprudenceRealization"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FallFromInitialPerfection</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#InitialHumanPerfection">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">InitialHumanPerfection</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#HumanImprudence">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:BFO_0000054 rdf:resource="#HumanImprudenceRealization"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HumanImprudence</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#HumanImprudenceRealization">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000055 rdf:resource="#HumanImprudence"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HumanImprudenceRealization</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
