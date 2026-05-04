@@ -14780,6 +14780,17 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PrivationQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#Disobedience">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Disobedience</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DisobedienceToState">
+  <rdfs:subClassOf rdf:resource="#Disobedience"/>
+  <work:subClassOf rdf:resource="#Sin"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DisobedienceToState</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#LacksPositiveOntologicalContent">
   <rdfs:subClassOf rdf:resource="#PrivationQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LacksPositiveOntologicalContent</rdfs:label>
@@ -23259,25 +23270,55 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CommonAgreement</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#Disobedience">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Disobedience</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#CivilState">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CivilState</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#DisobedienceToState">
-  <rdfs:subClassOf rdf:resource="#Disobedience"/>
-  <work:subClassOf rdf:resource="#Sin"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DisobedienceToState</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#SinEquivalenceToStateDisobedienceQuality">
   <rdfs:subClassOf rdf:resource="#Sin"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SinEquivalenceToStateDisobedienceQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ExtrinsicNotion">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExtrinsicNotion</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#JustNotion">
+  <rdfs:subClassOf rdf:resource="#ExtrinsicNotion"/>
+  <work:subClassOf rdf:resource="#ExtrinsicNotion"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">JustNotion</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#UnjustNotion">
+  <rdfs:subClassOf rdf:resource="#ExtrinsicNotion"/>
+  <work:subClassOf rdf:resource="#ExtrinsicNotion"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UnjustNotion</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SinNotion">
+  <rdfs:subClassOf rdf:resource="#ExtrinsicNotion"/>
+  <work:subClassOf rdf:resource="#ExtrinsicNotion"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SinNotion</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#MeritNotion">
+  <rdfs:subClassOf rdf:resource="#ExtrinsicNotion"/>
+  <work:subClassOf rdf:resource="#ExtrinsicNotion"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MeritNotion</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ExtrinsicityOfMoralNotion">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExtrinsicityOfMoralNotion</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#MindNatureExplanatoryInaptitudeQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindNatureExplanatoryInaptitudeQuality</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
