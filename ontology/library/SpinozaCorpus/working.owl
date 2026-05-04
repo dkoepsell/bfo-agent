@@ -15585,6 +15585,26 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FreedomFromExternalConstraintQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#AllThingsInGodQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#God"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AllThingsInGodQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ConceivabilityRequiresGodDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConceivabilityRequiresGodDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ExistenceRequiresGodDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="#CausalReasonForExistence"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExistenceRequiresGodDisposition</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
@@ -15946,6 +15966,7 @@
   <obo:BFO_0000051 rdf:resource="#Substance"/>
   <obo:BFO_0000051 rdf:resource="#Mode"/>
   <obo:RO_0000053 rdf:resource="#QuantityOfMotionQualityInstance"/>
+  <obo:RO_0000053 rdf:resource="#AllThingsInGodQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WholeOfNature</rdfs:label>
 </owl:NamedIndividual>
 
@@ -17681,6 +17702,12 @@
   <work3:type rdf:resource="#CompulsionImmunityDisposition"/>
   <obo:RO_0000052 rdf:resource="#God"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodCompulsionImmunityDispositionInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#GodFreedomFromExternalConstraintQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#God"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodFreedomFromExternalConstraintQuality</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#ThinkingThingRole">
@@ -23300,12 +23327,6 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <obo:RO_0000052 rdf:resource="#God"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EfficientCausationScopeQuality</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#GodFreedomFromExternalConstraintQuality">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <obo:RO_0000052 rdf:resource="#God"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodFreedomFromExternalConstraintQuality</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
