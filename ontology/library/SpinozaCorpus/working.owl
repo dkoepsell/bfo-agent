@@ -27882,6 +27882,7 @@
   <RO_0000052 rdf:resource="#HumanMind"/>
   <obo:RO_0000052 rdf:resource="#FormalBeingOfHumanMind"/>
   <obo:RO_0000052 rdf:resource="#InfiniteIntellectOfGod"/>
+  <obo:RO_0000052 rdf:resource="#HumanMind"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindPartOfInfiniteIntellectQuality</rdfs:label>
 </owl:NamedIndividual>
 
