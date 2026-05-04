@@ -25189,6 +25189,24 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindPowerDefinedByUnderstandingQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#OrderAndConnectionOfIdeasClass">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OrderAndConnectionOfIdeasClass</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#OrderAndConnectionOfBodilyAffectionsClass">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OrderAndConnectionOfBodilyAffectionsClass</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#MindBodyParallelismIsomorphyQualityClass">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindBodyParallelismIsomorphyQualityClass</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
@@ -34032,6 +34050,8 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#StructuralIsomorphyQuality"/>
   <obo:RO_0000052 rdf:resource="#IdeationalDomain"/>
+  <work3:type rdf:resource="#OrderAndConnectionOfIdeasClass"/>
+  <obo:RO_0000052 rdf:resource="#FormalBeingOfHumanMind"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OrderAndConnectionOfIdeas</rdfs:label>
 </owl:NamedIndividual>
 
@@ -35600,6 +35620,20 @@
   <work3:type rdf:resource="#DefinedByUnderstanding"/>
   <obo:RO_0000052 rdf:resource="#BetterPartOfUs"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DefinedByUnderstandingQuality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#OrderAndConnectionOfBodilyAffections">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work3:type rdf:resource="#OrderAndConnectionOfBodilyAffectionsClass"/>
+  <obo:RO_0000052 rdf:resource="#PartOfExtendedSubstance"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OrderAndConnectionOfBodilyAffections</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#IdeaOrderBodyAffectionOrderIsomorphyQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work3:type rdf:resource="#MindBodyParallelismIsomorphyQualityClass"/>
+  <obo:RO_0000052 rdf:resource="#FormalBeingOfHumanMind"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IdeaOrderBodyAffectionOrderIsomorphyQuality</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
