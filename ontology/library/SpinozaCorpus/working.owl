@@ -28440,6 +28440,11 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PropheticSubjectMatter</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#PropheticContent">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PropheticContent</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#ObjectOfKnowledge">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
@@ -29277,6 +29282,7 @@
 
 <owl:Class rdf:about="#Sign">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Sign</rdfs:label>
 </owl:Class>
 
@@ -29403,15 +29409,35 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PropheticCertaintyGrounding</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#PropheticContent">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PropheticContent</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#NovelPropheticContent">
   <rdfs:subClassOf rdf:resource="#PropheticContent"/>
   <work:subClassOf rdf:resource="#PropheticContent"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NovelPropheticContent</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#OpinionQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#Prophet"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OpinionQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#CognitiveCapacityQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#Prophet"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CognitiveCap acityQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SignGivingProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#Prophet"/>
+  <obo:RO_0000057 rdf:resource="#Sign"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SignGivingProcess</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ProphetAdaptedSignQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#Sign"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ProphetAdaptedSignQuality</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
