@@ -3724,6 +3724,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">KnowledgeOfGod</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#DesireForOwnPossessionArisingProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#PiousAgent"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DesireForOwnPossessionArisingProcess</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#FirstCauseRole">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FirstCauseRole</rdfs:label>
@@ -14257,6 +14263,24 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EssenceReceptionFromGodQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#PietyRole">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PietyRole</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ClearSelfKnowledge">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:BFO_0000054 rdf:resource="#DesireForOwnPossessionArisingProcess"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ClearSelfKnowledge</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DesireForOwnPossession">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:BFO_0000054 rdf:resource="#DesireForOwnPossessionArisingProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DesireForOwnPossession</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#KnowingGodProcess">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <obo:BFO_0000050 rdf:resource="#HonoringGodProcess"/>
@@ -14662,28 +14686,16 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RightfulPossessionQuality</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#DesireForOwnPossession">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <obo:BFO_0000054 rdf:resource="#DesireForOwnPossessionArisingProcess"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DesireForOwnPossession</rdfs:label>
+<owl:Class rdf:about="#KnowledgeOfGodQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">KnowledgeOfGodQuality</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#ClearSelfKnowledge">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <obo:BFO_0000054 rdf:resource="#DesireForOwnPossessionArisingProcess"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ClearSelfKnowledge</rdfs:label>
-</owl:Class>
-
-<owl:Class rdf:about="#DesireForOwnPossessionArisingProcess">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <obo:RO_0000057 rdf:resource="#PiousAgent"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DesireForOwnPossessionArisingProcess</rdfs:label>
-</owl:Class>
-
-<owl:Class rdf:about="#PietyRole">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PietyRole</rdfs:label>
+<owl:Class rdf:about="#KnowledgeOfSelfQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">KnowledgeOfSelfQuality</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#God">
@@ -22035,6 +22047,26 @@
   <obo:BFO_0000054 rdf:resource="#GodlessPersonActProcess"/>
   <obo:BFO_0000050 rdf:resource="#GodEternalLaw"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodlessPersonActNecessitation</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Thief">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Thief</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ThiefLackOfKnowledgeOfGod">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#Thief"/>
+  <work3:type rdf:resource="#KnowledgeOfGodQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ThiefLackOfKnowledgeOfGod</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ThiefLackOfKnowledgeOfSelf">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#Thief"/>
+  <work3:type rdf:resource="#KnowledgeOfSelfQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ThiefLackOfKnowledgeOfSelf</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
