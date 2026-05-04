@@ -354,6 +354,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CausaSui</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#ExistenceOrNonexistenceCausalReason">
+  <rdfs:subClassOf rdf:resource="#CausalReasonForExistence"/>
+  <work:subClassOf rdf:resource="#CausalReasonForExistence"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExistenceOrNonexistenceCausalReason</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#RelationalQuality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
@@ -15187,12 +15193,6 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">InfiniteAttributesQuality</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#ExistenceOrNonexistenceCausalReason">
-  <rdfs:subClassOf rdf:resource="#CausalReasonForExistence"/>
-  <work:subClassOf rdf:resource="#CausalReasonForExistence"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExistenceOrNonexistenceCausalReason</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#NonexistenceCausalReason">
   <rdfs:subClassOf rdf:resource="#ExistenceOrNonexistenceCausalReason"/>
   <work:subClassOf rdf:resource="#ExistenceOrNonexistenceCausalReason"/>
@@ -15202,6 +15202,17 @@
 <owl:Class rdf:about="#ExistenceCausalReasonSubclass">
   <rdfs:subClassOf rdf:resource="#ExistenceOrNonexistenceCausalReason"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExistenceCausalReasonSubclass</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#InternalContradictionQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">InternalContradictionQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ExistenceImpossibilityQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#EssentialExistenceQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExistenceImpossibilityQuality</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
@@ -22736,6 +22747,23 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CausalReasonAssignmentPrinciple</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#SquareCircle">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SquareCircle</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#SquareCircleInternalContradiction">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#SquareCircle"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SquareCircleInternalContradiction</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#SquareCircleExistenceImpossibility">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#SquareCircle"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SquareCircleExistenceImpossibility</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
