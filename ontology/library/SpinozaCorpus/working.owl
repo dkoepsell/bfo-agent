@@ -1673,6 +1673,7 @@
 
 <owl:Class rdf:about="#DestructionProcess">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DestructionProcess</rdfs:label>
 </owl:Class>
 
@@ -18864,17 +18865,31 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DestructibilityByExternalCauseOnly</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#DestructionByExternalCauseProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#ExternalCause"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DestructionByExternalCauseProcess</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#ExternalCauseRequirementForDestruction">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExternalCauseRequirementForDestruction</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#DestructionByExternalCauseProcess">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <obo:RO_0000057 rdf:resource="#ExternalCause"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DestructionByExternalCauseProcess</rdfs:label>
+<owl:Class rdf:about="#ContraryNature">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#ContraryNature"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ContraryNature</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DestructionCapacity">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:BFO_0000054 rdf:resource="#DestructionProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DestructionCapacity</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
