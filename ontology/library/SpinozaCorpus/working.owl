@@ -15617,6 +15617,25 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WillNonPertinenceToGodNatureClass</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#NecessaryEmanationFromGodDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="#SubstanceProductionConstraint"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NecessaryEmanationFromGodDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#EmanationFromGodProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000055 rdf:resource="#NecessaryEmanationFromGodDisposition"/>
+  <work:subClassOf rdf:resource="#GodCausesAllThingsProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EmanationFromGodProcess</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#InfiniteModesQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#InfiniteInItsKind"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">InfiniteModesQuality</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
@@ -15864,6 +15883,8 @@
   <obo:RO_0000053 rdf:resource="#GodActingFromNatureAloneDispositionInstance"/>
   <obo:RO_0000053 rdf:resource="#GodCompulsionImmunityDispositionInstance"/>
   <obo:RO_0000053 rdf:resource="#GodFreedomFromExternalConstraintQuality"/>
+  <obo:RO_0000053 rdf:resource="#NecessaryEmanationFromGodDisposition"/>
+  <obo:RO_0000056 rdf:resource="#EmanationFromGodProcess"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">God</rdfs:label>
 </owl:NamedIndividual>
 
