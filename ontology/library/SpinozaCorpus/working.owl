@@ -11081,6 +11081,7 @@
   <obo:RO_0000052 rdf:resource="#Body"/>
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000020"/>
   <work:subClassOf rdf:resource="#Mode"/>
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AffectionOfBody</rdfs:label>
 </owl:Class>
 
@@ -24771,6 +24772,12 @@
   <obo:RO_0000052 rdf:resource="#God"/>
   <work3:type rdf:resource="#DivineAttribute"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodAsExtendedQuality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#CertainBody">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <obo:RO_0000053 rdf:resource="#AffectionOfBody"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CertainBody</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
