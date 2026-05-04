@@ -45,6 +45,7 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="#AttributeSelfConceptionQuality"/>
   <work:subClassOf rdf:resource="#Attribute"/>
+  <work:subClassOf rdf:resource="#ConceivableThroughItself"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AttributeOfSubstance</rdfs:label>
 </owl:Class>
 
@@ -77,6 +78,7 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <obo:RO_0000052 rdf:resource="#Substance"/>
+  <work:subClassOf rdf:resource="#ConceivableThroughItself"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Attribute</rdfs:label>
 </owl:Class>
 
