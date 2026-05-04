@@ -4494,6 +4494,11 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EternalNecessityAndTruth</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#EternalNecessity">
+  <rdfs:subClassOf rdf:resource="#NecessityOfExistence"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EternalNecessity</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#AffirmativeEternalTruth">
   <rdfs:subClassOf rdf:resource="#EternalTruth"/>
   <work:subClassOf rdf:resource="#EternalTruth"/>
@@ -32041,9 +32046,9 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EternalLawsDisposition</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#EternalNecessity">
-  <rdfs:subClassOf rdf:resource="#NecessityOfExistence"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EternalNecessity</rdfs:label>
+<owl:Class rdf:about="#FixedAndImmutableOrderQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FixedAndImmutableOrderQuality</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
@@ -32964,6 +32969,12 @@
   <obo:BFO_0000050 rdf:resource="#InfiniteIntellectOfGod"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IdeaOfBodyUnderSpeciesOfEternity</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#NatureLawsAndRules">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <obo:BFO_0000050 rdf:resource="#NecessityOfThingsSubjectMatter"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NatureLawsAndRules</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#LoveOfGodArisesFromKnowledgeProcess">
@@ -46228,17 +46239,18 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AllThingsGovernedByEternalLawsProcess</rdfs:label>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#NatureLawsAndRules">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
-  <obo:BFO_0000050 rdf:resource="#NecessityOfThingsSubjectMatter"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NatureLawsAndRules</rdfs:label>
-</owl:NamedIndividual>
-
 <owl:NamedIndividual rdf:about="#NatureObservesLawsProcess">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <obo:RO_0000057 rdf:resource="#WholeOfNature"/>
   <obo:RO_0000057 rdf:resource="#NatureLawsAndRules"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NatureObservesLawsProcess</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#NaturalOrderFixednessQualityInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work3:type rdf:resource="#FixedAndImmutableOrderQuality"/>
+  <obo:RO_0000052 rdf:resource="#WholeOfNature"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NaturalOrderFixednessQualityInstance</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
