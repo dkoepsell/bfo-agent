@@ -26446,6 +26446,26 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SoundnessQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#WillAsEssentialQuality">
+  <rdfs:subClassOf rdf:resource="#EssentialExistenceQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WillAsEssentialQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DesireAsEssentialQuality">
+  <rdfs:subClassOf rdf:resource="#EssentialExistenceQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DesireAsEssentialQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#LoveAsEssentialQuality">
+  <rdfs:subClassOf rdf:resource="#EssentialExistenceQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LoveAsEssentialQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#IntellectAsEssentialQuality">
+  <rdfs:subClassOf rdf:resource="#EssentialExistenceQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IntellectAsEssentialQuality</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
@@ -27580,6 +27600,12 @@
   <work3:type rdf:resource="#InfiniteLoveOfGodClass"/>
   <obo:RO_0000052 rdf:resource="#God"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">InfiniteLoveOfGodForHimself</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#DescartessPrinciples">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DescartessPrinciples</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#NaturaNaturans">
@@ -30369,6 +30395,12 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
   <RO_0000052 rdf:resource="#Spinoza"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SpinozaPhilosopherRole</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#SpinozaAssessmentOfDescartesArguments">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#Spinoza"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SpinozaAssessmentOfDescartesArguments</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#ShortTreatiseManuscript1662">
@@ -37629,16 +37661,11 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AttributeSubstanceIdentityThesis</rdfs:label>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#DescartessPrinciples">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
-  <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DescartessPrinciples</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#SpinozaAssessmentOfDescartesArguments">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <obo:RO_0000057 rdf:resource="#Spinoza"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SpinozaAssessmentOfDescartesArguments</rdfs:label>
+<owl:NamedIndividual rdf:about="#GodNotThinkingThingQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work3:type rdf:resource="#EssentialExistenceQuality"/>
+  <obo:RO_0000052 rdf:resource="#God"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodNotThinkingThingQuality</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
