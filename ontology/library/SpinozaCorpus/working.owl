@@ -29418,6 +29418,7 @@
 <owl:Class rdf:about="#OpinionQuality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <obo:RO_0000052 rdf:resource="#Prophet"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OpinionQuality</rdfs:label>
 </owl:Class>
 
@@ -29438,6 +29439,26 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <obo:RO_0000052 rdf:resource="#Sign"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ProphetAdaptedSignQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#CognitiveCapacityDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CognitiveCapacityDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PropheticSignVariationQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#OpinionQuality"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PropheticSignVariationQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PropheticSignReceptionProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#Prophet"/>
+  <obo:RO_0000057 rdf:resource="#PropheticSign"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PropheticSignReceptionProcess</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
