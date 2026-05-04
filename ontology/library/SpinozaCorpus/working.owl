@@ -24179,6 +24179,11 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GreaterGoodSelectionDisposition</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#RationalDecisionProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RationalDecisionProcess</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#LesserEvilSelectionDisposition">
   <rdfs:subClassOf rdf:resource="#RationalGuidance"/>
   <work:subClassOf rdf:resource="#RationalGuidance"/>
@@ -24186,9 +24191,38 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LesserEvilSelectionDisposition</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#RationalDecisionProcess">
+<owl:Class rdf:about="#FutureGood">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FutureGood</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PresentGood">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PresentGood</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#GreaterFutureGood">
+  <rdfs:subClassOf rdf:resource="#FutureGood"/>
+  <work:subClassOf rdf:resource="#FutureGood"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GreaterFutureGood</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#LesserPresentGood">
+  <rdfs:subClassOf rdf:resource="#PresentGood"/>
+  <work:subClassOf rdf:resource="#PresentGood"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LesserPresentGood</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#RationalPreferenceDisposition">
+  <rdfs:subClassOf rdf:resource="#ReasonGuidance"/>
+  <obo:BFO_0000054 rdf:resource="#RationalPreferenceProcess"/>
+  <work:subClassOf rdf:resource="#ReasonGuidance"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RationalPreferenceDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#RationalPreferenceProcess">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RationalDecisionProcess</rdfs:label>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RationalPreferenceProcess</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
