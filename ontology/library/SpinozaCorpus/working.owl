@@ -18273,6 +18273,24 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FacultyOfAffirmingAndDenying</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#IdeaAsConceptOfThought">
+  <rdfs:subClassOf rdf:resource="#Idea"/>
+  <work:subClassOf rdf:resource="#Idea"/>
+  <work:subClassOf rdf:resource="#Thought"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IdeaAsConceptOfThought</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#BodyImage">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BodyImage</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ConceptOfMindQuality">
+  <rdfs:subClassOf rdf:resource="#IdeaAsConceptOfThought"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConceptOfMindQuality</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
