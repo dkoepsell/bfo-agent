@@ -15241,6 +15241,18 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AbsenceOfCommonNatureWithGodQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#NonContradictionInNatureQuality">
+  <rdfs:subClassOf rdf:resource="#EssentialExistenceQuality"/>
+  <work:subClassOf rdf:resource="#EssentialExistenceQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NonContradictionInNatureQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ContradictionExclusionDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ContradictionExclusionDisposition</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
@@ -15474,6 +15486,10 @@
   <obo:RO_0000053 rdf:resource="#GodAbsoluteCauseOfEssenceRole"/>
   <obo:RO_0000053 rdf:resource="#AbsoluteInfinityQualityInstance"/>
   <RO_0000053 rdf:resource="#SubstanceUniquenessInNatureQualityInstance"/>
+  <work3:type rdf:resource="#AbsoluteInfinityQuality"/>
+  <work3:type rdf:resource="#SupremePerfectionQuality"/>
+  <work3:type rdf:resource="#NonContradictionInNatureQuality"/>
+  <work3:type rdf:resource="#ContradictionExclusionDisposition"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">God</rdfs:label>
 </owl:NamedIndividual>
 
@@ -21815,6 +21831,7 @@
 
 <owl:NamedIndividual rdf:about="#AbsoluteInfinityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#SubstanceInfinityOrPerfectionQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AbsoluteInfinityQuality</rdfs:label>
 </owl:NamedIndividual>
 
