@@ -1561,6 +1561,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindBodyComplex</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#TemporalInvarianceQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TemporalInvarianceQuality</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#ConatusRealizationProcess">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConatusRealizationProcess</rdfs:label>
@@ -19284,10 +19290,15 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AffectEqualityAcrossTemporalImagesDisposition</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#TemporalInvarianceQuality">
+<owl:Class rdf:about="#AffectIntensityQuality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TemporalInvarianceQuality</rdfs:label>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AffectIntensityQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#TemporalObjectIndifferenceQuality">
+  <rdfs:subClassOf rdf:resource="#AffectIntensityQuality"/>
+  <work:subClassOf rdf:resource="#AffectIntensityQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TemporalObjectIndifferenceQuality</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
@@ -29073,6 +29084,20 @@
   <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <obo:BFO_0000050 rdf:resource="#TheEthics"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">VacillationIsToAffectAsDoubtIsToImagination</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#JoyTemporalObjectIndifference">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work3:type rdf:resource="#TemporalObjectIndifferenceQuality"/>
+  <obo:RO_0000052 rdf:resource="#Joy"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">JoyTemporalObjectIndifference</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#SadnessTemporalObjectIndifference">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work3:type rdf:resource="#TemporalObjectIndifferenceQuality"/>
+  <obo:RO_0000052 rdf:resource="#Sadness"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SadnessTemporalObjectIndifference</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
