@@ -2673,6 +2673,8 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="#ErrorAsPrivationQuality"/>
   <work:subClassOf rdf:resource="#Negation"/>
+  <rdfs:subClassOf rdf:resource="#ImperfectionQuality"/>
+  <work:subClassOf rdf:resource="#PrivationOfPerfection"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Error</rdfs:label>
 </owl:Class>
 
@@ -13503,6 +13505,7 @@
   <rdfs:subClassOf rdf:resource="#ImperfectionQuality"/>
   <work:subClassOf rdf:resource="#ImperfectionQuality"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000020"/>
+  <work:subClassOf rdf:resource="#PrivationOfPerfection"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Sin</rdfs:label>
 </owl:Class>
 
@@ -13655,6 +13658,7 @@
 
 <owl:Class rdf:about="#MorePerfectState">
   <rdfs:subClassOf rdf:resource="#ImperfectionQuality"/>
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MorePerfectState</rdfs:label>
 </owl:Class>
 
@@ -13663,6 +13667,13 @@
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000020"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConceptualCapacityLimitDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PrivationOfPerfection">
+  <rdfs:subClassOf rdf:resource="#ImperfectionQuality"/>
+  <work:subClassOf rdf:resource="#ImperfectionQuality"/>
+  <work:subClassOf rdf:resource="#MorePerfectState"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PrivationOfPerfection</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#God">
@@ -17301,6 +17312,7 @@
   <work:subClassOf rdf:resource="#Privation"/>
   <work:subClassOf rdf:resource="#PerfectionLossQuality"/>
   <work2:disjointWith rdf:resource="#AbsoluteEvilQuality"/>
+  <work:subClassOf rdf:resource="#PrivationOfPerfection"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Evil</rdfs:label>
 </owl:NamedIndividual>
 
