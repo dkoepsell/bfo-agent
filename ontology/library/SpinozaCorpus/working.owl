@@ -865,6 +865,7 @@
   <obo:RO_0000052 rdf:resource="#Person"/>
   <rdfs:subClassOf rdf:resource="#ModeOfThinking"/>
   <work:subClassOf rdf:resource="#ModeOfThinking"/>
+  <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Intellect</rdfs:label>
 </owl:Class>
 
@@ -2579,6 +2580,7 @@
   <obo:RO_0000053 rdf:resource="#WillFreedomQuality"/>
   <obo:RO_0000053 rdf:resource="#WillSelfDeterminationDisposition"/>
   <obo:RO_0000053 rdf:resource="#WillErrorRestraintDisposition"/>
+  <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Will</rdfs:label>
 </owl:Class>
 
@@ -13813,6 +13815,21 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CognitiveOrderConstraint</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#ErrorAbsenceQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ErrorAbsenceQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ErrorProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ErrorProcess</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#WillIntellectAlignmentDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WillIntellectAlignmentDisposition</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#God">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
   <obo:BFO_0000051 rdf:resource="#DivineAttribute"/>
@@ -14297,6 +14314,7 @@
 <owl:NamedIndividual rdf:about="#WillErrorRestraintDisposition">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <obo:RO_0000052 rdf:resource="#Will"/>
+  <work:subClassOf rdf:resource="#WillIntellectAlignmentDisposition"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WillErrorRestraintDisposition</rdfs:label>
 </owl:NamedIndividual>
 
@@ -20663,6 +20681,14 @@
   <obo:RO_0000052 rdf:resource="#Speaker"/>
   <obo:BFO_0000054 rdf:resource="#Willing"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CognitiveOrderConstraintInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#WillWithinIntellectConstraint">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work3:type rdf:resource="#WillIntellectAlignmentDisposition"/>
+  <obo:BFO_0000054 rdf:resource="#ErrorAbsenceQuality"/>
+  <obo:BFO_0000050 rdf:resource="#Will"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WillWithinIntellectConstraint</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
