@@ -31934,6 +31934,17 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivinlyTaughtPerson</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#EternalFixedImmutableOrderQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#SubstanceExistenceEternalityQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EternalFixedImmutableOrderQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#NatureInviolabilityDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NatureInviolabilityDisposition</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -33284,6 +33295,13 @@
   <work:subClassOf rdf:resource="#SupremeGood"/>
   <obo:RO_0000052 rdf:resource="#HumanMind"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Blessedness</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#DivineTeachingProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#God"/>
+  <obo:RO_0000057 rdf:resource="#Scripture"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivineTeachingProcess</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#ExtendedSubstance">
@@ -35098,13 +35116,6 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivineProvidenceInstance</rdfs:label>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#DivineTeachingProcess">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <obo:RO_0000057 rdf:resource="#God"/>
-  <obo:RO_0000057 rdf:resource="#Scripture"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivineTeachingProcess</rdfs:label>
-</owl:NamedIndividual>
-
 <owl:NamedIndividual rdf:about="#ThinkingThingRole">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
   <obo:RO_0000052 rdf:resource="#Speaker"/>
@@ -36148,6 +36159,16 @@
   <obo:BFO_0000055 rdf:resource="#DivineProvidenceInstance"/>
   <obo:RO_0000057 rdf:resource="#God"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ProvidingForThingsProcess</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Scripture">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <obo:RO_0000053 rdf:resource="#ScriptureRevelationQualityInstance"/>
+  <obo:RO_0000053 rdf:resource="#ScriptureWordOfGodRoleInstance"/>
+  <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work3:type rdf:resource="#ScriptureEpistemicAuthorityQuality"/>
+  <obo:RO_0000053 rdf:resource="#ScriptureEpistemicAuthorityQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Scripture</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#EternalDecreeOfGod">
@@ -40933,16 +40954,6 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <obo:RO_0000052 rdf:resource="#SacredScripture"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ScriptureAnthropomorphismDisposition</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#Scripture">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
-  <obo:RO_0000053 rdf:resource="#ScriptureRevelationQualityInstance"/>
-  <obo:RO_0000053 rdf:resource="#ScriptureWordOfGodRoleInstance"/>
-  <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
-  <work3:type rdf:resource="#ScriptureEpistemicAuthorityQuality"/>
-  <obo:RO_0000053 rdf:resource="#ScriptureEpistemicAuthorityQuality"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Scripture</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#ScriptureRevelationQualityInstance">
@@ -45969,6 +45980,20 @@
   <obo:RO_0000052 rdf:resource="#God"/>
   <obo:BFO_0000054 rdf:resource="#DivineTeachingProcess"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodTeachingRole</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#NaturePreservesEternalFixedImmutableOrder">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work3:type rdf:resource="#EternalFixedImmutableOrderQuality"/>
+  <obo:RO_0000052 rdf:resource="#WholeOfNature"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NaturePreservesEternalFixedImmutableOrder</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#NothingContraryToNatureDisposition">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work3:type rdf:resource="#NatureInviolabilityDisposition"/>
+  <obo:RO_0000052 rdf:resource="#WholeOfNature"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NothingContraryToNatureDisposition</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
