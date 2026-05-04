@@ -29797,6 +29797,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MakerOfAllThingsRole</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#ForeknowledgeDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ForeknowledgeDisposition</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -30128,6 +30134,8 @@
   <obo:RO_0000056 rdf:resource="#DivineCausationOfNaturalThings"/>
   <obo:RO_0000056 rdf:resource="#RevelationToCain"/>
   <obo:RO_0000053 rdf:resource="#MakerOfAllThingsRoleInstance"/>
+  <obo:RO_0000053 rdf:resource="#GodOmniscienceQualityInstance"/>
+  <obo:RO_0000053 rdf:resource="#GodForeknowledgeDispositionInstance"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">God</rdfs:label>
 </owl:NamedIndividual>
 
@@ -32773,6 +32781,14 @@
   <obo:RO_0000057 rdf:resource="#God"/>
   <obo:BFO_0000055 rdf:resource="#CainPowerOfUnderstandingDisposition"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RevelationToCain</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#MakerOfAllThingsRoleInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <work3:type rdf:resource="#MakerOfAllThingsRole"/>
+  <obo:RO_0000052 rdf:resource="#God"/>
+  <obo:BFO_0000054 rdf:resource="#GodCausesAllThingsProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MakerOfAllThingsRoleInstance</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#ThinkingThingRole">
@@ -42610,12 +42626,16 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LabanBeliefDispositionInstance</rdfs:label>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#MakerOfAllThingsRoleInstance">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
-  <work3:type rdf:resource="#MakerOfAllThingsRole"/>
+<owl:NamedIndividual rdf:about="#GodOmniscienceQualityInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <obo:RO_0000052 rdf:resource="#God"/>
-  <obo:BFO_0000054 rdf:resource="#GodCausesAllThingsProcess"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MakerOfAllThingsRoleInstance</rdfs:label>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodOmniscienceQualityInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#GodForeknowledgeDispositionInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:RO_0000052 rdf:resource="#God"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodForeknowledgeDispositionInstance</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
