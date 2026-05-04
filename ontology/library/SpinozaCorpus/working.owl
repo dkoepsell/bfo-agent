@@ -29600,6 +29600,8 @@
 <owl:Class rdf:about="#PropheticRepresentation">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:subClassOf rdf:resource="#Prophecy"/>
+  <work:subClassOf rdf:resource="#Prophecy"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PropheticRepresentation</rdfs:label>
 </owl:Class>
 
@@ -29685,6 +29687,18 @@
   <rdfs:subClassOf rdf:resource="#GraceForProphesying"/>
   <work:subClassOf rdf:resource="#GraceForProphesying"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GraceForProphesyingVariabilityQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PropheticOpinion">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PropheticOpinion</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PropheticVariationDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PropheticVariationDisposition</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
