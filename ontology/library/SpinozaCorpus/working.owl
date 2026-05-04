@@ -27925,6 +27925,18 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Government</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#SecurityProvisionProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000055 rdf:resource="#SecurityProvisionDisposition"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SecurityProvisionProcess</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#CooperationEnablingProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000055 rdf:resource="#CooperationBenefitDisposition"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CooperationEnablingProcess</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#SecurityProvisionDisposition">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
@@ -27945,16 +27957,28 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CooperationBenefitDisposition</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#SecurityProvisionProcess">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <obo:BFO_0000055 rdf:resource="#SecurityProvisionDisposition"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SecurityProvisionProcess</rdfs:label>
+<owl:Class rdf:about="#CivilSociety">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CivilSociety</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#CooperationEnablingProcess">
+<owl:Class rdf:about="#ArtsAndSciences">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ArtsAndSciences</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#CultivationOfArtsAndSciences">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <obo:BFO_0000055 rdf:resource="#CooperationBenefitDisposition"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CooperationEnablingProcess</rdfs:label>
+  <obo:RO_0000057 rdf:resource="#ArtsAndSciences"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CultivationOfArtsAndSciences</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#CivilSocietyCultivationEnablement">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:RO_0000052 rdf:resource="#CivilSociety"/>
+  <obo:BFO_0000054 rdf:resource="#CultivationOfArtsAndSciences"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CivilSocietyCultivationEnablement</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
