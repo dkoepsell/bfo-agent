@@ -16811,6 +16811,9 @@
   <obo:RO_0000056 rdf:resource="#ProductionFromGodNatureProcess"/>
   <obo:RO_0000053 rdf:resource="#ThinkingAttribute"/>
   <obo:RO_0000053 rdf:resource="#Extension"/>
+  <obo:RO_0000053 rdf:resource="#ActualPowerOfThinking"/>
+  <obo:RO_0000053 rdf:resource="#ActualPowerOfActing"/>
+  <obo:RO_0000053 rdf:resource="#PowerOfThinkingEqualsActingQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">God</rdfs:label>
 </owl:NamedIndividual>
 
@@ -25001,18 +25004,18 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OrderAndConnectionOfIdeas</rdfs:label>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#OrderAndConnectionOfThings">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <work3:type rdf:resource="#StructuralIsomorphyQuality"/>
-  <obo:RO_0000052 rdf:resource="#ExtendedDomain"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OrderAndConnectionOfThings</rdfs:label>
-</owl:NamedIndividual>
-
 <owl:NamedIndividual rdf:about="#IdeationalDomain">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
   <obo:BFO_0000050 rdf:resource="#God"/>
   <obo:RO_0000053 rdf:resource="#Thought"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IdeationalDomain</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#OrderAndConnectionOfThings">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work3:type rdf:resource="#StructuralIsomorphyQuality"/>
+  <obo:RO_0000052 rdf:resource="#ExtendedDomain"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OrderAndConnectionOfThings</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#ExtendedDomain">
@@ -25027,6 +25030,24 @@
   <work3:type rdf:resource="#AttributeParallelismQuality"/>
   <obo:RO_0000052 rdf:resource="#God"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IdeaThingStructuralIdentityQuality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ActualPowerOfThinking">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:RO_0000052 rdf:resource="#God"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ActualPowerOfThinking</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ActualPowerOfActing">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:RO_0000052 rdf:resource="#God"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ActualPowerOfActing</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#PowerOfThinkingEqualsActingQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#God"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PowerOfThinkingEqualsActingQuality</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
