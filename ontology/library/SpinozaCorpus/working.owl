@@ -23138,6 +23138,25 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TrueVirtue</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#LackOfPower">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#GuidanceByExternalThings"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LackOfPower</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#GuidanceByExternalThings">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GuidanceByExternalThings</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#GuidanceByOwnNature">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GuidanceByOwnNature</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
@@ -23608,6 +23627,7 @@
   <work3:type rdf:resource="#StrivingToPreserveOwnBeing"/>
   <work3:type rdf:resource="#ConatusStriving"/>
   <work3:type rdf:resource="#SelfPreservationStriving"/>
+  <work3:type rdf:resource="#GuidanceByOwnNature"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConatusMentalDispositionInstance</rdfs:label>
 </owl:NamedIndividual>
 
