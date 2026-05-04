@@ -27780,6 +27780,18 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConceivabilityOnlyWithWholeQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#LimitedPowerQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#EssentialExistenceQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LimitedPowerQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SubjectionToFortuneQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#ContingentExistenceQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SubjectionToFortuneQuality</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -39826,6 +39838,10 @@
   <obo:RO_0000053 rdf:resource="#PurityQuality"/>
 </rdf:Description>
 
+<rdf:Description rdf:about="#PartOfCorporealSubstance">
+  <obo:BFO_0000050 rdf:resource="#CorporealSubstance"/>
+</rdf:Description>
+
 <rdf:Description rdf:about="#ImmutabilityQualityInstance">
   <obo:RO_0000052 rdf:resource="#ImmutableDecree"/>
 </rdf:Description>
@@ -39850,10 +39866,6 @@
 
 <rdf:Description rdf:about="#ConstancyOfMotionToRestRatio">
   <work:subClassOf rdf:resource="#FormalGroundOfOrder"/>
-</rdf:Description>
-
-<rdf:Description rdf:about="#PartOfCorporealSubstance">
-  <obo:BFO_0000050 rdf:resource="#CorporealSubstance"/>
 </rdf:Description>
 
 
