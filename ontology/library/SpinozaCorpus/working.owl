@@ -25335,6 +25335,35 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DeterminingToCauseEffectsDisposition</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#AffectArisingFromReason">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AffectArisingFromReason</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#AffectRelatedToAbsentSingularThing">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AffectRelatedToAbsentSingularThing</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#RelativePowerOfAffect">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RelativePowerOfAffect</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#GreaterRelativePowerQuality">
+  <rdfs:subClassOf rdf:resource="#RelativePowerOfAffect"/>
+  <work:subClassOf rdf:resource="#RelativePowerOfAffect"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GreaterRelativePowerQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#LesserRelativePowerQuality">
+  <rdfs:subClassOf rdf:resource="#RelativePowerOfAffect"/>
+  <work:subClassOf rdf:resource="#RelativePowerOfAffect"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LesserRelativePowerQuality</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
