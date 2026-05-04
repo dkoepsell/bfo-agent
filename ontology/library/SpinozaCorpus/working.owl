@@ -87,6 +87,13 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AttributeExpressesEternalInfiniteEssenceRelation</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#ConceivableThroughItself">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="#SelfConceivability"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConceivableThroughItself</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#SubstanceInfinityOrPerfectionQuality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
@@ -128,6 +135,7 @@
   <work:subClassOf rdf:resource="#SubstanceNecessaryInfinityDisposition"/>
   <work:subClassOf rdf:resource="#ModificationBearer"/>
   <work:subClassOf rdf:resource="#SubstanceExistenceEternalityQuality"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000051"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Substance</rdfs:label>
 </owl:Class>
 
@@ -175,13 +183,6 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">InItself</rdfs:label>
-</owl:Class>
-
-<owl:Class rdf:about="#ConceivableThroughItself">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <work:subClassOf rdf:resource="#SelfConceivability"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConceivableThroughItself</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#SubstanceExistsByEternity">
@@ -15114,6 +15115,19 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="#Attribute"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AttributeMultiplicityQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#AttributesCoeternityQuality">
+  <rdfs:subClassOf rdf:resource="#Attribute"/>
+  <work:subClassOf rdf:resource="#Attribute"/>
+  <work:subClassOf rdf:resource="#SubstanceExistenceEternalityQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AttributesCoeternityQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#AttributesCoexistenceDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AttributesCoexistenceDisposition</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
