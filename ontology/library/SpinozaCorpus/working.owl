@@ -14750,6 +14750,26 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MetaphysicalSubjectMatter</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#EthicsDiscipline">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Ethics</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#MetaphysicsDiscipline">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Metaphysics</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PhysicsDiscipline">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Physics</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#FoundationalDependence">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FoundationalDependence</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#God">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
   <obo:BFO_0000051 rdf:resource="#DivineAttribute"/>
@@ -14988,6 +15008,13 @@
   <obo:RO_0000053 rdf:resource="#SpeakerPreservationByAnotherRoleInstance"/>
   <obo:RO_0000053 rdf:resource="#SpeakerUnionWithBodyRoleInstance"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Speaker</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
+  <obo:BFO_0000050 rdf:resource="#MetaphysicalSubjectMatter"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NecessityOfThingsSubjectMatter</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#DecreeNecessitationProcess">
@@ -22127,13 +22154,6 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EvilVirtuousIncompatibilityConstraint</rdfs:label>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
-  <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
-  <obo:BFO_0000050 rdf:resource="#MetaphysicalSubjectMatter"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NecessityOfThingsSubjectMatter</rdfs:label>
-</owl:NamedIndividual>
-
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
   <rdfs:label xml:lang="en">realized in</rdfs:label>
   <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A realizable entity (e.g., role, disposition, function) is realized in some process. r realized_in p if r is borne by some independent continuant during the process p.</rdfs:comment>
@@ -22391,6 +22411,14 @@
 
 <rdf:Description rdf:about="#ImmutabilityQualityInstance">
   <obo:RO_0000052 rdf:resource="#ImmutableDecree"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#FoundationalDependenceOnMetaphysics">
+  <work:subClassOf rdf:resource="#FoundationalDependence"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#FoundationalDependenceOnPhysics">
+  <work:subClassOf rdf:resource="#FoundationalDependence"/>
 </rdf:Description>
 
 
