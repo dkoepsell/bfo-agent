@@ -24987,6 +24987,38 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExternalThings</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#BodyAffectCapacity">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:RO_0000052 rdf:resource="#PartOfExtendedSubstance"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BodyAffectCapacity</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#MindThinkingCapacity">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:RO_0000052 rdf:resource="#FormalBeingOfHumanMind"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindThinkingCapacity</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#BodyAffectCapacityDegreeQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BodyAffectCapacityDegreeQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#MindThinkingCapacityDegreeQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindThinkingCapacityDegreeQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#BodyMindCapacityCoVariationQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BodyMindCapacityCoVariationQuality</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
