@@ -13650,6 +13650,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HumanIntellect</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#CreatedNature">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CreatedNature</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#PrivationRelativeToHumanIntellectQuality">
   <rdfs:subClassOf rdf:resource="#Privation"/>
   <work:subClassOf rdf:resource="#RelationalQuality"/>
@@ -14065,16 +14071,22 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HumanWill</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#CreatedNature">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CreatedNature</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#KnowledgeExclusivelyInHumanIntellectQuality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">KnowledgeExclusivelyInHumanIntellectQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ProceedingFromGodProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ProceedingFromGodProcess</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#NonContradictionQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NonContradictionQuality</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#God">
@@ -14295,6 +14307,8 @@
   <obo:RO_0000056 rdf:resource="#DivineWillingProcess"/>
   <obo:RO_0000056 rdf:resource="#EssenceGrantingProcess"/>
   <obo:RO_0000056 rdf:resource="#GodEstablishesIntellectWillOrderProcess"/>
+  <obo:RO_0000053 rdf:resource="#SupremePerfection"/>
+  <obo:RO_0000053 rdf:resource="#SupremePerfectionEntailsCreatureConsistencyDisposition"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">God</rdfs:label>
 </owl:NamedIndividual>
 
@@ -16585,6 +16599,23 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <obo:RO_0000057 rdf:resource="#Spouses"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ProcreationProcess</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#HumanIntellectInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HumanIntellectInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#HumanWillInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HumanWillInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#IntellectWillOrderQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#Speaker"/>
+  <work3:type rdf:resource="#RelationalQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IntellectWillOrderQuality</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#AttributeUnityConstraint">
@@ -21016,13 +21047,6 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WillWithinIntellectConstraint</rdfs:label>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#IntellectWillOrderQuality">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <obo:RO_0000052 rdf:resource="#Speaker"/>
-  <work3:type rdf:resource="#RelationalQuality"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IntellectWillOrderQuality</rdfs:label>
-</owl:NamedIndividual>
-
 <owl:NamedIndividual rdf:about="#ImpressingOfIntellectWillOrderProcess">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <obo:RO_0000057 rdf:resource="#God"/>
@@ -21092,14 +21116,18 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodCreatesHumansProcess</rdfs:label>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#HumanIntellectInstance">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HumanIntellectInstance</rdfs:label>
+<owl:NamedIndividual rdf:about="#SupremePerfection">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#God"/>
+  <work:subClassOf rdf:resource="#SubstanceInfinityOrPerfectionQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SupremePerfection</rdfs:label>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#HumanWillInstance">
+<owl:NamedIndividual rdf:about="#SupremePerfectionEntailsCreatureConsistencyDisposition">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HumanWillInstance</rdfs:label>
+  <obo:RO_0000052 rdf:resource="#God"/>
+  <obo:BFO_0000054 rdf:resource="#GodCausesAllThingsProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SupremePerfectionEntailsCreatureConsistencyDisposition</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
