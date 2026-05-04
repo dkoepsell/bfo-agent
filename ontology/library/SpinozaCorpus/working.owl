@@ -1468,6 +1468,8 @@
   <work:subClassOf rdf:resource="#ConceivableThroughItself"/>
   <rdfs:subClassOf rdf:resource="#Desire"/>
   <work:subClassOf rdf:resource="#Desire"/>
+  <rdfs:subClassOf rdf:resource="#SemanticContent"/>
+  <work:subClassOf rdf:resource="#SemanticContent"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Appetite</rdfs:label>
 </owl:Class>
 
@@ -3460,6 +3462,8 @@
   <rdfs:subClassOf rdf:resource="#Striving"/>
   <work:subClassOf rdf:resource="#Striving"/>
   <work:subClassOf rdf:resource="#StrivingRelationToMindQuality"/>
+  <rdfs:subClassOf rdf:resource="#SemanticContent"/>
+  <work:subClassOf rdf:resource="#SemanticContent"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Will</rdfs:label>
 </owl:Class>
 
@@ -21840,6 +21844,8 @@
 <owl:Class rdf:about="#Impulse">
   <rdfs:subClassOf rdf:resource="#Desire"/>
   <work:subClassOf rdf:resource="#Desire"/>
+  <rdfs:subClassOf rdf:resource="#SemanticContent"/>
+  <work:subClassOf rdf:resource="#SemanticContent"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Impulse</rdfs:label>
 </owl:Class>
 
@@ -28739,6 +28745,30 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ProperMeaning</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#LinguisticTerm">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LinguisticTerm</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SentimentOfHeart">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work:subClassOf rdf:resource="#SemanticContent"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SentimentOfHeart</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SemanticContent">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SemanticContent</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#Decision">
+  <rdfs:subClassOf rdf:resource="#SemanticContent"/>
+  <work:subClassOf rdf:resource="#SemanticContent"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Decision</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -32787,6 +32817,13 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <obo:RO_0000052 rdf:resource="#InfiniteIntellect"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EternalExistenceInNatureQuality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ChristDirectRevelationDisposition">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work3:type rdf:resource="#DirectDivineRevelationReception"/>
+  <obo:RO_0000052 rdf:resource="#Christ"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ChristDirectRevelationDisposition</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#HavingIdeaOfGodProcess">
@@ -40965,16 +41002,15 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivineExclusiveCommunicationQuality</rdfs:label>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#ChristDirectRevelationDisposition">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <work3:type rdf:resource="#DirectDivineRevelationReception"/>
-  <obo:RO_0000052 rdf:resource="#Christ"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ChristDirectRevelationDisposition</rdfs:label>
-</owl:NamedIndividual>
-
 <owl:NamedIndividual rdf:about="#Ruagh">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ruagh</rdfs:label>
+  <work3:type rdf:resource="#LinguisticTerm"/>
+  <hasSemanticContent rdf:resource="#SentimentOfHeart"/>
+  <hasSemanticContent rdf:resource="#Will"/>
+  <hasSemanticContent rdf:resource="#Decision"/>
+  <hasSemanticContent rdf:resource="#Appetite"/>
+  <hasSemanticContent rdf:resource="#Impulse"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Ruagh</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#ProperMeaningOfRuagh">
