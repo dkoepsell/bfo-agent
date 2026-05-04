@@ -42378,12 +42378,6 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Isaiah</rdfs:label>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#BelieveSunMovesEarthAtRestBelief">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
-  <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BelieveSunMovesEarthAtRestBelief</rdfs:label>
-</owl:NamedIndividual>
-
 <owl:NamedIndividual rdf:about="#IsaiahBelievingProcess">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
@@ -42391,11 +42385,33 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IsaiahBelievingProcess</rdfs:label>
 </owl:NamedIndividual>
 
+<owl:NamedIndividual rdf:about="#BelieveSunMovesEarthAtRestBelief">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BelieveSunMovesEarthAtRestBelief</rdfs:label>
+</owl:NamedIndividual>
+
 <owl:NamedIndividual rdf:about="#InadequateCosmologicalBeliefQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <obo:RO_0000052 rdf:resource="#Isaiah"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">InadequateCosmologicalBeliefQuality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Solomon">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Solomon</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#RatioOfCircumferenceToDiameter">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RatioOfCircumferenceToDiameter</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#LackOfKnowledgeOfRatioQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#Solomon"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LackOfKnowledgeOfRatioQuality</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
