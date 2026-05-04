@@ -15508,6 +15508,11 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IndivisibilityAsSubstanceQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#Quantity">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Quantity</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
@@ -15984,6 +15989,7 @@
   <obo:RO_0000056 rdf:resource="#IntellectProducesEffectsProcess"/>
   <obo:BFO_0000050 rdf:resource="#NaturaNaturata"/>
   <obo:RO_0000053 rdf:resource="#IntellectPerceivingSubstance"/>
+  <obo:RO_0000056 rdf:resource="#IntellectualGraspOfQuantityProcess"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TrueIntellect</rdfs:label>
 </owl:NamedIndividual>
 
@@ -16233,6 +16239,15 @@
   <obo:RO_0000057 rdf:resource="#Father"/>
   <obo:RO_0000057 rdf:resource="#SonEssence"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FatherImaginesSonEssenceProcess</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#CorporealSubstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
+  <work3:type rdf:resource="#Substance"/>
+  <obo:RO_0000053 rdf:resource="#CorporealSubstanceNecessaryExistenceDisposition"/>
+  <obo:RO_0000053 rdf:resource="#Extension"/>
+  <work:subClassOf rdf:resource="#Substance"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CorporealSubstance</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#NaturaNaturans">
@@ -20696,15 +20711,6 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Time</rdfs:label>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#CorporealSubstance">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
-  <work3:type rdf:resource="#Substance"/>
-  <obo:RO_0000053 rdf:resource="#CorporealSubstanceNecessaryExistenceDisposition"/>
-  <obo:RO_0000053 rdf:resource="#Extension"/>
-  <work:subClassOf rdf:resource="#Substance"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CorporealSubstance</rdfs:label>
-</owl:NamedIndividual>
-
 <owl:NamedIndividual rdf:about="#CorporealSubstanceNecessaryExistenceDisposition">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <obo:RO_0000052 rdf:resource="#CorporealSubstance"/>
@@ -23114,6 +23120,36 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExtendedThingIsAttributeOrAffectionDisjunction</rdfs:label>
 </owl:NamedIndividual>
 
+<owl:NamedIndividual rdf:about="#QuantityAsUnderstoodByIntellect">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work3:type rdf:resource="#Quantity"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">QuantityAsUnderstoodByIntellect</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#InfinityOfQuantityQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#QuantityAsUnderstoodByIntellect"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">InfinityOfQuantityQuality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#UniquenessOfQuantityQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#QuantityAsUnderstoodByIntellect"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UniquenessOfQuantityQuality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#IndivisibilityOfQuantityQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#QuantityAsUnderstoodByIntellect"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IndivisibilityOfQuantityQuality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#IntellectualGraspOfQuantityProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#QuantityAsUnderstoodByIntellect"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IntellectualGraspOfQuantityProcess</rdfs:label>
+</owl:NamedIndividual>
+
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
   <rdfs:label xml:lang="en">realized in</rdfs:label>
   <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A realizable entity (e.g., role, disposition, function) is realized in some process. r realized_in p if r is borne by some independent continuant during the process p.</rdfs:comment>
@@ -23379,6 +23415,10 @@
 
 <rdf:Description rdf:about="#FoundationalDependenceOnPhysics">
   <work:subClassOf rdf:resource="#FoundationalDependence"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#IntellectualGraspabilityDisposition">
+  <obo:BFO_0000054 rdf:resource="#IntellectualGraspOfQuantityProcess"/>
 </rdf:Description>
 
 
