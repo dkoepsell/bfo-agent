@@ -19639,6 +19639,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Envy</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#RestrainmentOfPowerOfActing">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RestrainmentOfPowerOfActing</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#Overestimation">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="#Joy"/>
@@ -20480,10 +20486,33 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AugmentationOfEnvyDisposition</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#RestrainmentOfPowerOfActing">
+<owl:Class rdf:about="#ObjectOfAffect">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ObjectOfAffect</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SpeciesOfJoy">
+  <rdfs:subClassOf rdf:resource="#Joy"/>
+  <work:subClassOf rdf:resource="#Joy"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SpeciesOfJoy</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SpeciesOfSadness">
+  <rdfs:subClassOf rdf:resource="#Sadness"/>
+  <work:subClassOf rdf:resource="#Sadness"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SpeciesOfSadness</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SpeciesOfDesire">
+  <rdfs:subClassOf rdf:resource="#Desire"/>
+  <work:subClassOf rdf:resource="#Desire"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SpeciesOfDesire</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#AffectSpeciesIndividuationQuality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RestrainmentOfPowerOfActing</rdfs:label>
+  <obo:RO_0000052 rdf:resource="#ObjectOfAffect"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AffectSpeciesIndividuationQuality</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
@@ -21108,6 +21137,7 @@
   <obo:RO_0000057 rdf:resource="#LesserPerfectionQualityInstance"/>
   <obo:BFO_0000055 rdf:resource="#DiminishingPowerOfActingDisposition"/>
   <work3:type rdf:resource="#Sadness"/>
+  <obo:BFO_0000055 rdf:resource="#Sadness"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TransitionToLesserPerfection</rdfs:label>
 </owl:NamedIndividual>
 
