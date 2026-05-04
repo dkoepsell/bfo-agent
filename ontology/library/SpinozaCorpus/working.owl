@@ -7245,6 +7245,7 @@
   <work:subClassOf rdf:resource="#Love"/>
   <work:subClassOf rdf:resource="#Hatred"/>
   <work:subClassOf rdf:resource="#IdeaOfEnviedOther"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Jealousy</rdfs:label>
 </owl:Class>
 
@@ -20362,6 +20363,7 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="#EvilAffect"/>
   <obo:BFO_0000054 rdf:resource="#BeingMovedByEnvyOrHateProcess"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Envy</rdfs:label>
 </owl:Class>
 
@@ -25696,6 +25698,12 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UniversalityAmongMenQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#AffectivePurityOfLoveTowardGod">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AffectivePurityOfLoveTowardGod</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
