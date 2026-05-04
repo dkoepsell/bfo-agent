@@ -5777,6 +5777,27 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ProportionOfMotionAndRest</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#HumanBody">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <work:subClassOf rdf:resource="#FiniteSingularThing"/>
+  <work:subClassOf rdf:resource="#FiniteSingularThingModeInstance"/>
+  <rdfs:subClassOf rdf:resource="#FiniteSingularThing"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <obo:BFO_0000050 rdf:resource="#Human"/>
+  <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <work3:type rdf:resource="#ModificationBearer"/>
+  <obo:BFO_0000050 rdf:resource="#PartOfExtendedSubstance"/>
+  <obo:BFO_0000051 rdf:resource="#BodyComponentIndividual"/>
+  <obo:RO_0000057 rdf:resource="#BodyAffection"/>
+  <obo:BFO_0000050 rdf:resource="#WholeOfNature"/>
+  <work:subClassOf rdf:resource="#ModificationBearer"/>
+  <obo:RO_0000056 rdf:resource="#ImageFormationProcess"/>
+  <obo:RO_0000057 rdf:resource="#BodyAffectionProcess"/>
+  <obo:BFO_0000051 rdf:resource="#BodyConstituent"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000050 some working:Human"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HumanBody</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#ChangeInProportionOfMotionAndRest">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <obo:RO_0000057 rdf:resource="#Body"/>
@@ -9124,27 +9145,6 @@
   <work:subClassOf rdf:resource="#FiniteSingularThing"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000053"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ParticularCorporealThing</rdfs:label>
-</owl:Class>
-
-<owl:Class rdf:about="#HumanBody">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
-  <work:subClassOf rdf:resource="#FiniteSingularThing"/>
-  <work:subClassOf rdf:resource="#FiniteSingularThingModeInstance"/>
-  <rdfs:subClassOf rdf:resource="#FiniteSingularThing"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
-  <obo:BFO_0000050 rdf:resource="#Human"/>
-  <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
-  <work3:type rdf:resource="#ModificationBearer"/>
-  <obo:BFO_0000050 rdf:resource="#PartOfExtendedSubstance"/>
-  <obo:BFO_0000051 rdf:resource="#BodyComponentIndividual"/>
-  <obo:RO_0000057 rdf:resource="#BodyAffection"/>
-  <obo:BFO_0000050 rdf:resource="#WholeOfNature"/>
-  <work:subClassOf rdf:resource="#ModificationBearer"/>
-  <obo:RO_0000056 rdf:resource="#ImageFormationProcess"/>
-  <obo:RO_0000057 rdf:resource="#BodyAffectionProcess"/>
-  <obo:BFO_0000051 rdf:resource="#BodyConstituent"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000050 some working:Human"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HumanBody</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#BodyComponentIndividual">
@@ -22818,6 +22818,7 @@
 
 <owl:Class rdf:about="#Usefulness">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Usefulness</rdfs:label>
 </owl:Class>
 
@@ -23432,6 +23433,31 @@
 <owl:Class rdf:about="#ConstitutiveProportionOfMotionAndRest">
   <rdfs:subClassOf rdf:resource="#ProportionOfMotionAndRest"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConstitutiveProportionOfMotionAndRest</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#AssistCommonSocietyOfMen">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="#Usefulness"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AssistCommonSocietyOfMen</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PromoteHarmonyAmongMen">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="#Usefulness"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PromoteHarmonyAmongMen</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#CommonSocietyOfMen">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CommonSocietyOfMen</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#HarmonyAmongMen">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HarmonyAmongMen</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
