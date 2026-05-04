@@ -23665,6 +23665,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NatureAgreement</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#NatureAdaptation">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NatureAdaptation</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#AffectSurpassingHumanPowerQuality">
   <rdfs:subClassOf rdf:resource="#HumanPower"/>
   <work:subClassOf rdf:resource="#HumanPower"/>
@@ -27101,12 +27107,6 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MutualAdaptationOfLaws</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#NatureAdaptation">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NatureAdaptation</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#WholePartRelationCondition">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
@@ -27119,6 +27119,39 @@
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <obo:BFO_0000055 rdf:resource="#WholePartRelationCondition"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NatureAdaptationProcess</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DisagreementAmongThings">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#DisagreingThings"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DisagreementAmongThings</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DistinctIdeaFormation">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#DistinctIdea"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DistinctIdeaFormation</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DistinctIdea">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DistinctIdea</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ConsideredAsWholeNotPartQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#DisagreingThings"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConsideredAsWholeNotPartQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DisagreingThings">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
+  <obo:RO_0000056 rdf:resource="#DistinctIdeaFormation"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DisagreingThings</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
