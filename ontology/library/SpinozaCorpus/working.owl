@@ -2591,6 +2591,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TruthQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#Proposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Proposition</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#TrueIdeaExistence">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
@@ -8647,6 +8653,7 @@
 
 <owl:Class rdf:about="#Experience">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Experience</rdfs:label>
 </owl:Class>
 
@@ -16236,12 +16243,6 @@
 <owl:Class rdf:about="#EpistemicPrecedence">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EpistemicPrecedence</rdfs:label>
-</owl:Class>
-
-<owl:Class rdf:about="#Proposition">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Proposition</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#AxiomSuitabilityQuality">
@@ -26816,6 +26817,24 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Cognitio</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#NaturalLightOfReason">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NaturalLightOfReason</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SupernaturalLightOfRevelation">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SupernaturalLightOfRevelation</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#NaturalVsSupernaturalContrastQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NaturalVsSupernaturalContrastQuality</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
