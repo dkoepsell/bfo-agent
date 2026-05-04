@@ -24482,6 +24482,24 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PassionIndicatesLackOfPowerRelation</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#ActionDefinedByReason">
+  <rdfs:subClassOf rdf:resource="#HumanAction"/>
+  <work:subClassOf rdf:resource="#HumanAction"/>
+  <work:subClassOf rdf:resource="#MoralGoodnessQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ActionDefinedByReason</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#HumanPowerOrReason">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HumanPowerOrReason</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#MoralGoodnessQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MoralGoodnessQuality</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
@@ -34800,6 +34818,12 @@
   <work3:type rdf:resource="#ConsciousnessOfSadness"/>
   <obo:RO_0000052 rdf:resource="#Speaker"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConsciousnessOfSadnessInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ReasonDefinedActionGoodnessAxiom">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ReasonDefinedActionGoodnessAxiom</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
