@@ -17204,6 +17204,47 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BodyAffectionProcess</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#BodyPreservationDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:RO_0000052 rdf:resource="#HumanBody"/>
+  <obo:BFO_0000054 rdf:resource="#BodyPreservationProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BodyPreservationDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#BodyRegenerationDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:RO_0000052 rdf:resource="#HumanBody"/>
+  <obo:BFO_0000054 rdf:resource="#BodyRegenerationProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BodyRegenerationDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#BodyPreservationProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#HumanBody"/>
+  <obo:RO_0000057 rdf:resource="#OtherBody"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BodyPreservationProcess</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#BodyRegenerationProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#HumanBody"/>
+  <obo:RO_0000057 rdf:resource="#OtherBody"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BodyRegenerationProcess</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#OtherBody">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OtherBody</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#RequirementForOtherBodiesQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#HumanBody"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RequirementForOtherBodiesQuality</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
