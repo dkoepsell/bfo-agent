@@ -20224,6 +20224,7 @@
   <obo:BFO_0000054 rdf:resource="#AvoidanceOfFutureEvilProcess"/>
   <work:subClassOf rdf:resource="#FutureEvilAvoidanceDisposition"/>
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="#DesireToAvoidEvil"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Timidity</rdfs:label>
 </owl:Class>
 
@@ -20242,6 +20243,8 @@
 
 <owl:Class rdf:about="#LesserEvil">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#EvilQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LesserEvil</rdfs:label>
 </owl:Class>
 
@@ -21036,6 +21039,18 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Mercy</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#MindPower">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindPower</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#GoverningOfAngerAndVengeance">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000055 rdf:resource="#Mercy"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GoverningOfAngerAndVengeance</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#DerivedAffect">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
@@ -21492,16 +21507,15 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PityQuality</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#MindPower">
+<owl:Class rdf:about="#DesireToAvoidEvil">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindPower</rdfs:label>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DesireToAvoidEvil</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#GoverningOfAngerAndVengeance">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <obo:BFO_0000055 rdf:resource="#Mercy"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GoverningOfAngerAndVengeance</rdfs:label>
+<owl:Class rdf:about="#GreaterEvil">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#EvilQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GreaterEvil</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
