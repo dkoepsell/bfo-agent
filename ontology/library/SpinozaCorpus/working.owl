@@ -1820,6 +1820,7 @@
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <obo:RO_0000052 rdf:resource="#HumanPerson"/>
+  <work:subClassOf rdf:resource="#AppetiteOrDesire"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Passion</rdfs:label>
 </owl:Class>
 
@@ -2986,6 +2987,7 @@
   <work:subClassOf rdf:resource="#EpistemicNecessityOfIdeas"/>
   <obo:RO_0000053 rdf:resource="#NecessityOfFollowingDisposition"/>
   <obo:RO_0000053 rdf:resource="#FalsityQuality"/>
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">InadequateIdea</rdfs:label>
 </owl:Class>
 
@@ -25287,6 +25289,18 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AppetiteIdentityQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#AppetiteOrDesire">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AppetiteOrDesire</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PassionAppetiteOrDesire">
+  <rdfs:subClassOf rdf:resource="#AppetiteOrDesire"/>
+  <work:subClassOf rdf:resource="#Passion"/>
+  <work:subClassOf rdf:resource="#AppetiteOrDesire"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PassionAppetiteOrDesire</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
@@ -25877,6 +25891,7 @@
   <work:subClassOf rdf:resource="#InadequateOrConfusedIdeaQuality"/>
   <work:subClassOf rdf:resource="#PrivationOfKnowledge"/>
   <work:subClassOf rdf:resource="#InadequateKnowledge"/>
+  <work3:type rdf:resource="#InadequateIdea"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">InadequateKnowledgeOfBodyPartsQuality</rdfs:label>
 </owl:NamedIndividual>
 
@@ -25902,6 +25917,7 @@
   <work:subClassOf rdf:resource="#InadequateOrConfusedIdeaQuality"/>
   <work:subClassOf rdf:resource="#PrivationOfKnowledge"/>
   <work:subClassOf rdf:resource="#InadequateKnowledge"/>
+  <work3:type rdf:resource="#InadequateIdea"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">InadequateKnowledgeOfExternalBodyQuality</rdfs:label>
 </owl:NamedIndividual>
 
