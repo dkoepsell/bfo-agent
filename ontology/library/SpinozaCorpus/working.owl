@@ -27855,6 +27855,13 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DescartessPrinciples</rdfs:label>
 </owl:NamedIndividual>
 
+<owl:NamedIndividual rdf:about="#EsseInSe">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work:subClassOf rdf:resource="#InItself"/>
+  <obo:BFO_0000054 rdf:resource="#FormalExistenceNecessitationProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EsseInSe</rdfs:label>
+</owl:NamedIndividual>
+
 <owl:NamedIndividual rdf:about="#NaturaNaturans">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
   <work3:type rdf:resource="#Substance"/>
@@ -37966,13 +37973,6 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EssenceDefinitionRole</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#EsseInSe">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
-  <work:subClassOf rdf:resource="#InItself"/>
-  <obo:BFO_0000054 rdf:resource="#FormalExistenceNecessitationProcess"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EsseInSe</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#MetaphysicalUseOfEsseInSe">
