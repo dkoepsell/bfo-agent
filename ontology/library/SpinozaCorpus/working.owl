@@ -19370,6 +19370,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DoubtRemovalProcess</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#FearToDespairTransition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000055 rdf:resource="#Despair"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FearToDespairTransition</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#ConstantSadnessQuality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
@@ -19381,10 +19387,23 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DoubtQuality</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#FearToDespairTransition">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <obo:BFO_0000055 rdf:resource="#Despair"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FearToDespairTransition</rdfs:label>
+<owl:Class rdf:about="#Gladness">
+  <rdfs:subClassOf rdf:resource="#Joy"/>
+  <work:subClassOf rdf:resource="#Joy"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Gladness</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PastThingImagination">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PastThingImagination</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DoubtedOutcomeQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DoubtedOutcomeQuality</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
