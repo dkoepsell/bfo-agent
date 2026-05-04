@@ -24445,6 +24445,30 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NatureNecessityQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#DesireFromNatureAlone">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DesireFromNatureAlone</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#AdequateIdeaBearing">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AdequateIdeaBearing</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#MindAsAdequateIdeaBearer">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindAsAdequateIdeaBearer</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DesireFromNatureAloneGroundedInAdequateIdeas">
+  <rdfs:subClassOf rdf:resource="#DesireFromNatureAlone"/>
+  <work:subClassOf rdf:resource="#DesireFromNatureAlone"/>
+  <obo:RO_0000052 rdf:resource="#MindAsAdequateIdeaBearer"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DesireFromNatureAloneGroundedInAdequateIdeas</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
@@ -24924,6 +24948,12 @@
   <obo:BFO_0000055 rdf:resource="#ConatusMentalDispositionInstance"/>
   <obo:BFO_0000055 rdf:resource="#PowerToPersevereInBeing"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PerseveranceInBeingProcess</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#StrivingAndDesireNecessitationProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">StrivingAndDesireNecessitationProcess</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#UniquenessInNatureQuality">
@@ -34757,12 +34787,6 @@
   <work3:type rdf:resource="#ConsciousnessOfSadness"/>
   <obo:RO_0000052 rdf:resource="#Speaker"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConsciousnessOfSadnessInstance</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#StrivingAndDesireNecessitationProcess">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">StrivingAndDesireNecessitationProcess</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
