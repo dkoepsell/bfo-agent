@@ -144,6 +144,7 @@
   <work:subClassOf rdf:resource="#ExistenceIsEssenceIdentityQuality"/>
   <work:subClassOf rdf:resource="#_:bearerOfIndivisibility"/>
   <work:subClassOf rdf:resource="#_:restriction_bearer_of_SubstanceIndivisibilityDisposition"/>
+  <work:subClassOf rdf:resource="#Substance"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Substance</rdfs:label>
 </owl:Class>
 
@@ -27250,6 +27251,7 @@
   <obo:RO_0000052 rdf:resource="#ThinkingThing"/>
   <obo:RO_0000052 rdf:resource="#God"/>
   <work:subClassOf rdf:resource="#SubstanceInfinityOrPerfectionQuality"/>
+  <work3:type rdf:resource="#SubstanceUniquenessQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UniquenessInNatureQuality</rdfs:label>
 </owl:NamedIndividual>
 
@@ -30408,6 +30410,7 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#UniquenessInNatureQuality"/>
   <obo:RO_0000052 rdf:resource="#ExtendedSubstance"/>
+  <work:subClassOf rdf:resource="#EssentialExistenceQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SubstanceUniquenessQuality</rdfs:label>
 </owl:NamedIndividual>
 
