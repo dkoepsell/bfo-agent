@@ -1303,6 +1303,8 @@
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="#TemporalInvarianceQuality"/>
   <work:subClassOf rdf:resource="#Individual"/>
+  <obo:BFO_0000054 rdf:resource="#AffirmationOfBodyForceProcess"/>
+  <work:subClassOf rdf:resource="#Thought"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Affect</rdfs:label>
 </owl:Class>
 
@@ -22345,6 +22347,18 @@
   <work:subClassOf rdf:resource="#Imagination"/>
   <work:subClassOf rdf:resource="#BodyConstitutionQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AffectIsImagination</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#AffectIdeaContentRole">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AffectIdeaContentRole</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#AffirmationOfBodyForceProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AffirmationOfBodyForceProcess</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
