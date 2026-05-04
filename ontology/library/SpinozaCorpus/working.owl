@@ -15623,6 +15623,8 @@
 
 <owl:Class rdf:about="#FreedomQuality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#FreeMan"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FreedomQuality</rdfs:label>
 </owl:Class>
 
@@ -24241,6 +24243,35 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ReasonGuidanceDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#MeditationOnLifeDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:RO_0000052 rdf:resource="#FreeMan"/>
+  <obo:BFO_0000054 rdf:resource="#MeditationOnLifeProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MeditationOnLifeDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#WisdomOfFreeManQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#FreeMan"/>
+  <work:subClassOf rdf:resource="#MeditationOnLifeDisposition"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WisdomOfFreeManQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#MeditationOnLifeProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MeditationOnLifeProcess</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ThinkingOfDeathAbsenceQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#FreeMan"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ThinkingOfDeathAbsenceQuality</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
