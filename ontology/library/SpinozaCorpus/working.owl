@@ -24150,12 +24150,19 @@
 <owl:Class rdf:about="#KnowledgeOfEvil">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="#InadequateKnowledge"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#Sadness"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">KnowledgeOfEvil</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#InadequateKnowledge">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">InadequateKnowledge</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ConsciousnessOfSadness">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConsciousnessOfSadness</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
@@ -34449,6 +34456,27 @@
 <owl:NamedIndividual rdf:about="#DictateOfReason">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DictateOfReason</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#SadnessQualityInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work3:type rdf:resource="#Sadness"/>
+  <obo:RO_0000052 rdf:resource="#Speaker"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SadnessQualityInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#KnowledgeOfEvilQualityInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work3:type rdf:resource="#KnowledgeOfEvil"/>
+  <work2:sameAs rdf:resource="#SadnessQualityInstance"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">KnowledgeOfEvilQualityInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ConsciousnessOfSadnessInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work3:type rdf:resource="#ConsciousnessOfSadness"/>
+  <obo:RO_0000052 rdf:resource="#Speaker"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConsciousnessOfSadnessInstance</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
