@@ -19442,6 +19442,8 @@
   <rdfs:subClassOf rdf:resource="#SadnessQuality"/>
   <work:subClassOf rdf:resource="#SadnessQuality"/>
   <work:subClassOf rdf:resource="#PityArisingFromInjuryDisposition"/>
+  <rdfs:subClassOf rdf:resource="#Affect"/>
+  <work:subClassOf rdf:resource="#ImitationOfAffect"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Pity</rdfs:label>
 </owl:Class>
 
@@ -19546,6 +19548,18 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UnjustUndervaluationOfAnother</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ImitationOfAffect">
+  <rdfs:subClassOf rdf:resource="#Affect"/>
+  <work:subClassOf rdf:resource="#Affect"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ImitationOfAffect</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PityRelatedToSadnessQuality">
+  <rdfs:subClassOf rdf:resource="#Pity"/>
+  <work:subClassOf rdf:resource="#Pity"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PityRelatedToSadnessQuality</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
