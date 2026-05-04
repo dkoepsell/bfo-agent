@@ -213,6 +213,7 @@
 
 <owl:Class rdf:about="#ImaginationInaccessibility">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ImaginationInaccessibility</rdfs:label>
 </owl:Class>
 
@@ -16275,6 +16276,11 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ImaginationMode</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#ImaginationModeSubjectiveBasis">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ImaginationModeSubjectiveBasis</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#Beauty">
   <rdfs:subClassOf rdf:resource="#ImaginationMode"/>
   <work:subClassOf rdf:resource="#ImaginationMode"/>
@@ -16299,9 +16305,38 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Harmony</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#ImaginationModeSubjectiveBasis">
+<owl:Class rdf:about="#SensoryNotion">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SensoryNotion</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#OrdinaryNatureExplanation">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work:subClassOf rdf:resource="#SensoryNotion"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OrdinaryNatureExplanation</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ImaginativeGrasping">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ImaginativeGrasping</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#IntellectualUnderstandingOfNature">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IntellectualUnderstandingOfNature</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#MereImaginingQuality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ImaginationModeSubjectiveBasis</rdfs:label>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MereImaginingQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SensoryNotionBasedExplanationMerelyImaginingQuality">
+  <rdfs:subClassOf rdf:resource="#MereImaginingQuality"/>
+  <work:subClassOf rdf:resource="#MereImaginingQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SensoryNotionBasedExplanationMerelyImaginingQuality</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
