@@ -3699,6 +3699,8 @@
   <obo:BFO_0000050 rdf:resource="#Thought"/>
   <rdfs:subClassOf rdf:resource="#ModeOfThinking"/>
   <work:subClassOf rdf:resource="#ModeOfThinking"/>
+  <rdfs:subClassOf rdf:resource="#EssentialExistenceQuality"/>
+  <work:subClassOf rdf:resource="#Joy"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Love</rdfs:label>
 </owl:Class>
 
@@ -19185,6 +19187,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExistenceExclusionQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#AccompanyingIdeaOfExternalCause">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AccompanyingIdeaOfExternalCause</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
@@ -28955,6 +28963,12 @@
   <obo:RO_0000052 rdf:resource="#FormalBeingOfHumanMind"/>
   <obo:BFO_0000054 rdf:resource="#RecollectionOfExistenceExcludingThings"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindStrivingToRecollectDispositionInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#LoveDefinitionContent">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <obo:BFO_0000050 rdf:resource="#TheEthics"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LoveDefinitionContent</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
