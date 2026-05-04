@@ -31087,6 +31087,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UnactualisedWilledPossibilityImpossibilityQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#TrueBlessednessQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TrueBlessednessQuality</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -44578,6 +44584,7 @@
 <owl:NamedIndividual rdf:about="#UniversalApplicabilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <obo:RO_0000052 rdf:resource="#EternalCovenant"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UniversalApplicabilityQuality</rdfs:label>
 </owl:NamedIndividual>
 
@@ -44750,6 +44757,18 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <obo:RO_0000052 rdf:resource="#God"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodEternalDivinityQuality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#BlessednessProducingDivineLaw">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work3:type rdf:resource="#DivineLaw"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BlessednessProducingDivineLaw</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#BlessednessProducingDivineLawUniversalityQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#BlessednessProducingDivineLaw"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BlessednessProducingDivineLawUniversalityQuality</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
