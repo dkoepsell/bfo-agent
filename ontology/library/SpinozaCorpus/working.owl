@@ -3967,6 +3967,8 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <obo:RO_0000052 rdf:resource="#HumanBeing"/>
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
+  <obo:RO_0000053 rdf:resource="#StrainAgainstHumilityAndDespondencyDisposition"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HumanNature</rdfs:label>
 </owl:Class>
 
@@ -21223,6 +21225,7 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="#SelfAppraisalQuality"/>
   <work:subClassOf rdf:resource="#UndervaluationOfSelf"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Despondency</rdfs:label>
 </owl:Class>
 
@@ -21248,6 +21251,12 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="#SelfEsteem"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PrideBornOfSelfEsteemDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#StrainAgainstHumilityAndDespondencyDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">StrainAgainstHumilityAndDespondencyDisposition</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
