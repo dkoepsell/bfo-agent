@@ -23818,6 +23818,7 @@
 <owl:Class rdf:about="#TrueVirtue">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <obo:BFO_0000054 rdf:resource="#LivingAccordingToReason"/>
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TrueVirtue</rdfs:label>
 </owl:Class>
 
@@ -30358,6 +30359,18 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SoothsayerDivinerIdentityWithTrueProphetQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#LawOfTrueVirtue">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LawOfTrueVirtue</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#LivingUnderLawProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#Person"/>
+  <obo:RO_0000057 rdf:resource="#LawOfTrueVirtue"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LivingUnderLawProcess</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -34014,6 +34027,11 @@
 <owl:NamedIndividual rdf:about="#TrueVoice">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TrueVoice</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#TheLaw">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TheLaw</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#EternityNonCommunicabilityToCreatures">
@@ -43513,11 +43531,6 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <obo:RO_0000052 rdf:resource="#Israelites"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LackOfKnowledgeOfVirtueAndBlessednessQuality</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#TheLaw">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TheLaw</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#BelievedExemptionFromLawQuality">
