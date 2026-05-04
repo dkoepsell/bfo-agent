@@ -5750,6 +5750,11 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Rest</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#HumanBodyPart">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HumanBodyPart</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#BodyAtRest">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
@@ -6194,6 +6199,7 @@
   <work:subClassOf rdf:resource="#GoodEvilRelationalQuality"/>
   <work:subClassOf rdf:resource="#RelativeGoodEvilQuality"/>
   <work:subClassOf rdf:resource="#RelationalEvaluativeDesignation"/>
+  <obo:RO_0000052 rdf:resource="#MotionRestProportionAlteringAgent"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EvilQuality</rdfs:label>
 </owl:Class>
 
@@ -9096,6 +9102,7 @@
   <work:subClassOf rdf:resource="#EssenceInvariance"/>
   <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <obo:RO_0000052 rdf:resource="#Body"/>
+  <obo:RO_0000052 rdf:resource="#HumanBodyPart"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MotionRestProportion</rdfs:label>
 </owl:Class>
 
@@ -23342,11 +23349,6 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BodyMultipleAffectabilityDisposition</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#HumanBodyPart">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HumanBodyPart</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#MotionAndRestProportionPreservationDisposition">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <obo:BFO_0000054 rdf:resource="#MotionAndRestProportionPreservationProcess"/>
@@ -23364,6 +23366,18 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GoodForHumanBodyQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#AlterationOfMotionRestProportion">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#HumanBodyPart"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AlterationOfMotionRestProportion</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#MotionRestProportionAlteringAgent">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
+  <obo:RO_0000056 rdf:resource="#AlterationOfMotionRestProportion"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MotionRestProportionAlteringAgent</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
