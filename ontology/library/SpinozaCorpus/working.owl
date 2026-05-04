@@ -20017,6 +20017,48 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodIntellectWillPowerIdentity</rdfs:label>
 </owl:NamedIndividual>
 
+<owl:NamedIndividual rdf:about="#Father">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
+  <obo:RO_0000053 rdf:resource="#FatherSoul"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Father</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Son">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
+  <obo:RO_0000057 rdf:resource="#SonConsequences"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Son</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#FatherSoul">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000020"/>
+  <obo:RO_0000052 rdf:resource="#Father"/>
+  <obo:RO_0000053 rdf:resource="#IdealParticipationRelation"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FatherSoul</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#SonEssenceQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#Son"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SonEssenceQuality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#SonAffections">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000020"/>
+  <obo:RO_0000052 rdf:resource="#Son"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SonAffections</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#SonConsequences">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SonConsequences</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#IdealParticipationRelation">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:RO_0000052 rdf:resource="#FatherSoul"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IdealParticipationRelation</rdfs:label>
+</owl:NamedIndividual>
+
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
   <rdfs:label xml:lang="en">realized in</rdfs:label>
   <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A realizable entity (e.g., role, disposition, function) is realized in some process. r realized_in p if r is borne by some independent continuant during the process p.</rdfs:comment>
