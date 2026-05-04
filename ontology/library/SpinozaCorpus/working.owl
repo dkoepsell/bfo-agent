@@ -29945,6 +29945,7 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <obo:BFO_0000055 rdf:resource="#ThirdKindOfKnowledgeInstance"/>
   <obo:RO_0000057 rdf:resource="#GreatestSatisfactionQualityInstance"/>
+  <obo:BFO_0000055 rdf:resource="#LoveOfGodInstance"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ThirdKindKnowledgeRealizationProcess</rdfs:label>
 </owl:NamedIndividual>
 
@@ -37359,6 +37360,8 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#LoveOfGod"/>
   <RO_0000052 rdf:resource="#God"/>
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:BFO_0000054 rdf:resource="#ThirdKindKnowledgeRealizationProcess"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LoveOfGodInstance</rdfs:label>
 </owl:NamedIndividual>
 
