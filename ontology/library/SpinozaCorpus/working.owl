@@ -8646,6 +8646,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BodyAffectionProcess</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#BodyConstituent">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <obo:BFO_0000050 rdf:resource="#HumanBody"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BodyConstituent</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#AssociationOfParticles">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
@@ -19239,17 +19245,41 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ContraryAffect</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#BodyConstituent">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
-  <obo:BFO_0000050 rdf:resource="#HumanBody"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BodyConstituent</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#ConstituentNatureQuality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <obo:RO_0000052 rdf:resource="#BodyConstituent"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConstituentNatureQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#AffectFromPastOrFutureImageQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AffectFromPastOrFutureImageQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ImageOfPastThing">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ImageOfPastThing</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ImageOfFutureThing">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ImageOfFutureThing</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ImageOfPresentThing">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ImageOfPresentThing</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#AffectEqualityAcrossTemporalImagesDisposition">
+  <rdfs:subClassOf rdf:resource="#Affect"/>
+  <work:subClassOf rdf:resource="#Affect"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AffectEqualityAcrossTemporalImagesDisposition</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
