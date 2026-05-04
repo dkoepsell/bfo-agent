@@ -30738,6 +30738,30 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WillIntellectNumericalIdentityQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#DivineAffirmation">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#DivineAttribute"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivineAffirmation</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DivineDenial">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#DivineAttribute"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivineDenial</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#EternalNecessityOrTruthQuality">
+  <rdfs:subClassOf rdf:resource="#EssentialExistenceQuality"/>
+  <work:subClassOf rdf:resource="#EssentialExistenceQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EternalNecessityOrTruthQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DivinePropositionalActInvolvesEternalNecessityDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:RO_0000052 rdf:resource="#God"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivinePropositionalActInvolvesEternalNecessityDisposition</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
