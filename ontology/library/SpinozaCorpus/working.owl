@@ -19884,6 +19884,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IdeaOfActuallyExistingBody</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#KnowledgeQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">KnowledgeQuality</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#IdeaAdequacyQuality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IdeaAdequacyQuality</rdfs:label>
@@ -25772,12 +25778,6 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OrderingOfAffects</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#KnowledgeQuality">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">KnowledgeQuality</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#InadequateIdeaProportionQuality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
@@ -25950,6 +25950,7 @@
 
 <owl:Class rdf:about="#BodyDestructionProcess">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000055 rdf:resource="#PerishingWithBodyInstance"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BodyDestructionProcess</rdfs:label>
 </owl:Class>
 
@@ -26186,6 +26187,16 @@
   <rdfs:subClassOf rdf:resource="#FearOfDeathQuality"/>
   <work:subClassOf rdf:resource="#FearOfDeathQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DecreasedFearOfDeathQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PerishingWithBody">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PerishingWithBody</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#MindPartCorruptibilityQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindPartCorruptibilityQuality</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
@@ -37225,6 +37236,27 @@
   <work3:type rdf:resource="#MindEssenceQuality"/>
   <obo:RO_0000052 rdf:resource="#InfiniteIntellectOfGod"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindEssenceConsistsInKnowledgeQuality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#PartOfMindThatPerishesWithBody">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
+  <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
+  <obo:BFO_0000050 rdf:resource="#InfiniteIntellectOfGod"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PartOfMindThatPerishesWithBody</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#PerishingWithBodyInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work3:type rdf:resource="#PerishingWithBody"/>
+  <RO_0000052 rdf:resource="#PartOfMindThatPerishesWithBody"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PerishingWithBodyInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#MindPartCorruptibilityQualityInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work3:type rdf:resource="#MindPartCorruptibilityQuality"/>
+  <RO_0000052 rdf:resource="#PartOfMindThatPerishesWithBody"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindPartCorruptibilityQualityInstance</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
