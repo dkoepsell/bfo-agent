@@ -13830,6 +13830,32 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WillIntellectAlignmentDisposition</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#InfallibilityPerfection">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="#AttributeOfSubstance"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">InfallibilityPerfection</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ErrorProneness">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ErrorProneness</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#Errer">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Errer</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DivineGrantOfInfallibility">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#God"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivineGrantOfInfallibility</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#God">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
   <obo:BFO_0000051 rdf:resource="#DivineAttribute"/>
