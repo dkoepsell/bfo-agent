@@ -27438,6 +27438,25 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">InconceivabilityOfLimitedThoughtDisposition</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#LimitedBeing">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LimitedBeing</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PrivationOfExistence">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000017"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PrivationOfExistence</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#LimitationDenotesOnlyPrivationQuality">
+  <rdfs:subClassOf rdf:resource="#PrivationOfExistence"/>
+  <work:subClassOf rdf:resource="#PrivationOfExistence"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LimitationDenotesOnlyPrivationQuality</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
