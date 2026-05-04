@@ -42371,6 +42371,33 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">JoshuaLackOfCausalKnowledgeQuality</rdfs:label>
 </owl:NamedIndividual>
 
+<owl:NamedIndividual rdf:about="#Isaiah">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <obo:RO_0000056 rdf:resource="#IsaiahBelievingProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Isaiah</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#BelieveSunMovesEarthAtRestBelief">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BelieveSunMovesEarthAtRestBelief</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#IsaiahBelievingProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000051 rdf:resource="#BelieveSunMovesEarthAtRestBelief"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IsaiahBelievingProcess</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#InadequateCosmologicalBeliefQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#Isaiah"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">InadequateCosmologicalBeliefQuality</rdfs:label>
+</owl:NamedIndividual>
+
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
   <rdfs:label xml:lang="en">realized in</rdfs:label>
   <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A realizable entity (e.g., role, disposition, function) is realized in some process. r realized_in p if r is borne by some independent continuant during the process p.</rdfs:comment>
