@@ -8429,6 +8429,26 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivineRevelationProcess</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#PropheticRecipient">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PropheticRecipient</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#VisionMedium">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">VisionMedium</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DreamMedium">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DreamMedium</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#WordMedium">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WordMedium</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#InfallibilityAbsenceQuality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
@@ -28573,26 +28593,6 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">InnateRightInnatenessQuality</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#PropheticRecipient">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PropheticRecipient</rdfs:label>
-</owl:Class>
-
-<owl:Class rdf:about="#VisionMedium">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">VisionMedium</rdfs:label>
-</owl:Class>
-
-<owl:Class rdf:about="#DreamMedium">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DreamMedium</rdfs:label>
-</owl:Class>
-
-<owl:Class rdf:about="#WordMedium">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WordMedium</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#DivineCertaintyQuality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="#DivineAttribute"/>
@@ -29875,6 +29875,26 @@
 <owl:Class rdf:about="#CareOfNations">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CareOfNations</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#LegislatorRole">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LegislatorRole</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#WayOfLiving">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WayOfLiving</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#Teaching">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Teaching</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#UneducatedQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UneducatedQuality</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
@@ -33485,6 +33505,7 @@
 
 <owl:NamedIndividual rdf:about="#Moses">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <obo:RO_0000053 rdf:resource="#MosesLegislatorRole"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Moses</rdfs:label>
 </owl:NamedIndividual>
 
@@ -42109,6 +42130,7 @@
 
 <owl:NamedIndividual rdf:about="#Israelites">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <obo:RO_0000053 rdf:resource="#IsraelitesUneducatedQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Israelites</rdfs:label>
 </owl:NamedIndividual>
 
@@ -42794,6 +42816,32 @@
   <work3:type rdf:resource="#CareOfNations"/>
   <obo:BFO_0000054 rdf:resource="#EntrustmentOfNations"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CareOfNationsRoleInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#MosesLegislatorRole">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <obo:RO_0000052 rdf:resource="#Moses"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MosesLegislatorRole</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#MosaicWayOfLiving">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MosaicWayOfLiving</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#MosesTeachingProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#Moses"/>
+  <obo:RO_0000057 rdf:resource="#Israelites"/>
+  <obo:RO_0000057 rdf:resource="#MosaicWayOfLiving"/>
+  <obo:BFO_0000055 rdf:resource="#MosesLegislatorRole"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MosesTeachingProcess</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#IsraelitesUneducatedQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#Israelites"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IsraelitesUneducatedQuality</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
