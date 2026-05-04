@@ -1365,6 +1365,7 @@
   <obo:RO_0000052 rdf:resource="#God"/>
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:BFO_0000054 rdf:resource="#BringingAboutProcess"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HumanEssence</rdfs:label>
 </owl:Class>
 
@@ -4205,6 +4206,9 @@
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
   <work:subClassOf rdf:resource="#_:x [RO_0000053 some working:WillRestraintWithinIntellectDisposition]"/>
   <work:subClassOf rdf:resource="#_:r1"/>
+  <obo:RO_0000053 rdf:resource="#Virtue"/>
+  <obo:RO_0000053 rdf:resource="#Power"/>
+  <obo:RO_0000053 rdf:resource="#HumanEssence"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Human</rdfs:label>
 </owl:Class>
 
@@ -8527,6 +8531,8 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="#GovernanceByIntellect"/>
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#VirtuePowerIdentityQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Virtue</rdfs:label>
 </owl:Class>
 
@@ -21981,6 +21987,23 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EssenceCannotDetermineDurationDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#Power">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="#HumanEssence"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Power</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#VirtuePowerIdentityQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#HumanEssence"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">VirtuePowerIdentityQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#BringingAboutProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BringingAboutProcess</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
