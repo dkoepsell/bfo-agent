@@ -4306,6 +4306,7 @@
   <work:subClassOf rdf:resource="#Idea"/>
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work:subClassOf rdf:resource="#EternalTruth"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EternalTruth</rdfs:label>
 </owl:Class>
 
@@ -26383,6 +26384,25 @@
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <obo:RO_0000052 rdf:resource="#Substance"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OneAttributePerSubstanceConstraint</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#TemporalTruth">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TemporalTruth</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#EternalTemporalConceptionAbsurdityQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#ConceivingEternalAsTemporal"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EternalTemporalConceptionAbsurdityQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ConceivingEternalAsTemporal">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConceivingEternalAsTemporal</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
