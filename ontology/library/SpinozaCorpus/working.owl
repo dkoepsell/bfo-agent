@@ -21511,12 +21511,16 @@
 <owl:Class rdf:about="#AffectOfSadness">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AffectOfSadness</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#AffectOfJoy">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="#ActiveAffect"/>
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AffectOfJoy</rdfs:label>
 </owl:Class>
 
@@ -25612,6 +25616,16 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MaximalMindEngagementQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#Passionlessness">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Passionlessness</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#AffectUnaffectednessDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AffectUnaffectednessDisposition</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
@@ -25907,6 +25921,8 @@
   <obo:RO_0000053 rdf:resource="#EternalAndInfiniteEssenceOfGod"/>
   <obo:RO_0000053 rdf:resource="#ActingFromSameNecessityAsExistingDispositionInstance"/>
   <obo:RO_0000056 rdf:resource="#ActingFromNecessityOfNatureProcess"/>
+  <obo:RO_0000053 rdf:resource="#GodPassionlessnessQuality"/>
+  <obo:RO_0000053 rdf:resource="#GodAffectUnaffectednessDispositionInstance"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">God</rdfs:label>
 </owl:NamedIndividual>
 
@@ -36147,6 +36163,18 @@
 <owl:NamedIndividual rdf:about="#AbsenceOfContraryAffects">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AbsenceOfContraryAffects</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#GodPassionlessnessQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#God"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodPassionlessnessQuality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#GodAffectUnaffectednessDispositionInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:RO_0000052 rdf:resource="#God"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodAffectUnaffectednessDispositionInstance</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
