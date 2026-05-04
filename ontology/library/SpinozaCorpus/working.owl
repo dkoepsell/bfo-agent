@@ -22767,6 +22767,7 @@
 
 <owl:Class rdf:about="#AgreementInNature">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AgreementInNature</rdfs:label>
 </owl:Class>
 
@@ -22821,6 +22822,33 @@
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <obo:RO_0000052 rdf:resource="#PassionDominatedBeing"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ContrariousRelationQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#GuidanceByReason">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:BFO_0000054 rdf:resource="#RationalGuidanceProcess"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GuidanceByReason</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#RationalAgent">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <obo:RO_0000053 rdf:resource="#GuidanceByReason"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RationalAgent</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#RationalGuidanceProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000055 rdf:resource="#GuidanceByReason"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RationalGuidanceProcess</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#NecessaryAgreementInNatureQuality">
+  <rdfs:subClassOf rdf:resource="#AgreementInNature"/>
+  <obo:RO_0000052 rdf:resource="#RationalAgent"/>
+  <work:subClassOf rdf:resource="#AgreementInNature"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NecessaryAgreementInNatureQuality</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
