@@ -4328,6 +4328,7 @@
   <work:subClassOf rdf:resource="#EternalImmutabilityQuality"/>
   <obo:RO_0000052 rdf:resource="#God"/>
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#EternalAndInfiniteFollowerQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EternalityQuality</rdfs:label>
 </owl:Class>
 
@@ -13208,6 +13209,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EternityQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#EternalAndInfiniteFollowingQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EternalAndInfiniteFollowingQuality</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#NoDurationQuality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
@@ -15680,12 +15687,6 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ThingsFollowingFromGodAttributes</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#EternalAndInfiniteFollowingQuality">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EternalAndInfiniteFollowingQuality</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#InfinityQuality">
   <rdfs:subClassOf rdf:resource="#EternalAndInfiniteFollowingQuality"/>
   <work:subClassOf rdf:resource="#EternalAndInfiniteFollowingQuality"/>
@@ -15697,6 +15698,32 @@
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <obo:RO_0000052 rdf:resource="#Attribute"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AttributeConsequenceDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#FollowsFromAbsoluteNatureOfAttribute">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="#AttributeExpressesEternalInfiniteEssenceRelation"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FollowsFromAbsoluteNatureOfAttribute</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#EternalAndInfiniteFollowerQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EternalAndInfiniteFollowerQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#InfiniteMode">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
+  <work:subClassOf rdf:resource="#ModificationBearer"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">InfiniteMode</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#InfinityQualityOfMode">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#EternalAndInfiniteFollowerQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">InfinityQualityOfMode</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
