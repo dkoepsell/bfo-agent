@@ -2204,6 +2204,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AcquisitionProcess</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#AidToLife">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AidToLife</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#Esteem">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
   <work:subClassOf rdf:resource="#Honor"/>
@@ -6005,6 +6011,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExternalBody</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#BodyPartFunction">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:BFO_0000054 rdf:resource="#BodyPartFunctionPerformance"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BodyPartFunction</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#ChangeInProportionOfMotionAndRest">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <obo:RO_0000057 rdf:resource="#Body"/>
@@ -8821,12 +8833,6 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TransgressibilityDisposition</rdfs:label>
-</owl:Class>
-
-<owl:Class rdf:about="#AidToLife">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AidToLife</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#NaturalParthood">
@@ -25119,12 +25125,6 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MoneyInstrumentRoleDisposition</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#BodyPartFunction">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <obo:BFO_0000054 rdf:resource="#BodyPartFunctionPerformance"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BodyPartFunction</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#BodyPartFunctionPerformance">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BodyPartFunctionPerformance</rdfs:label>
@@ -25135,6 +25135,20 @@
   <work:subClassOf rdf:resource="#Good"/>
   <obo:BFO_0000054 rdf:resource="#BodyPartFunctionPerformance"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GoodAssistsBodyPartFunctionDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PowerIncrease">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000055 rdf:resource="#HumanPower"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PowerIncrease</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#JoyAsAidedPowerQuality">
+  <rdfs:subClassOf rdf:resource="#Joy"/>
+  <work:subClassOf rdf:resource="#Joy"/>
+  <work:subClassOf rdf:resource="#TransitionToGreaterPerfection"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">JoyAsAidedPowerQuality</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
@@ -26151,6 +26165,16 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ImaginationToRealInabilityRealizationProcess</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Good">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000020"/>
+  <work3:type rdf:resource="#ModeOfThinking"/>
+  <obo:RO_0000052 rdf:resource="#TrueIntellect"/>
+  <work:subClassOf rdf:resource="#HumanPerfection"/>
+  <work:subClassOf rdf:resource="#ModeOfThinking"/>
+  <work:subClassOf rdf:resource="#GoodEvilRelationalBasis"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Good</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#NaturaNaturans">
@@ -29779,16 +29803,6 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <obo:BFO_0000050 rdf:resource="#TheEthics"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GoodAndEvilAsModeOfThinking</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#Good">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000020"/>
-  <work3:type rdf:resource="#ModeOfThinking"/>
-  <obo:RO_0000052 rdf:resource="#TrueIntellect"/>
-  <work:subClassOf rdf:resource="#HumanPerfection"/>
-  <work:subClassOf rdf:resource="#ModeOfThinking"/>
-  <work:subClassOf rdf:resource="#GoodEvilRelationalBasis"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Good</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#Evil">
