@@ -8388,6 +8388,22 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PropheticImaginationVividnessQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#Piety">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Piety</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PropheticImaginingContent">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PropheticImaginingContent</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#VividnessQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">VividnessQuality</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#InfallibilityAbsenceQuality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
@@ -15051,12 +15067,6 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SubstanceSelfPreservationPower</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#VividnessQuality">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">VividnessQuality</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#ImaginativeEffectivenessQuality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
@@ -15787,16 +15797,6 @@
 <owl:Class rdf:about="#Godliness">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Godliness</rdfs:label>
-</owl:Class>
-
-<owl:Class rdf:about="#Piety">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Piety</rdfs:label>
-</owl:Class>
-
-<owl:Class rdf:about="#PropheticImaginingContent">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PropheticImaginingContent</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#DivineRevelation">
@@ -29302,6 +29302,26 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MoralCertainty</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#FalseRevelation">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FalseRevelation</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DeceptionByGodProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#God"/>
+  <obo:RO_0000057 rdf:resource="#Human"/>
+  <obo:RO_0000057 rdf:resource="#FalseRevelation"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DeceptionByGodProcess</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DeceptiveDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:RO_0000052 rdf:resource="#God"/>
+  <obo:BFO_0000054 rdf:resource="#DeceptionByGodProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DeceptiveDisposition</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
