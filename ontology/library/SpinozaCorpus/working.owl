@@ -5730,6 +5730,8 @@
   <obo:RO_0000052 rdf:resource="#FiniteSingularThing"/>
   <obo:BFO_0000051 rdf:resource="#Motion"/>
   <obo:BFO_0000051 rdf:resource="#Rest"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#HumanBodyPart"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MotionAndRestProportion</rdfs:label>
 </owl:Class>
 
@@ -23338,6 +23340,30 @@
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/RO_0000052 some working:HumanBody"/>
   <work:subClassOf rdf:resource="#UsefulnessToHumanQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BodyMultipleAffectabilityDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#HumanBodyPart">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HumanBodyPart</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#MotionAndRestProportionPreservationDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:BFO_0000054 rdf:resource="#MotionAndRestProportionPreservationProcess"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MotionAndRestProportionPreservationDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#MotionAndRestProportionPreservationProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000055 rdf:resource="#MotionAndRestProportionPreservationDisposition"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MotionAndRestProportionPreservationProcess</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#GoodForHumanBodyQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GoodForHumanBodyQuality</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
