@@ -15755,6 +15755,7 @@
   <work:subClassOf rdf:resource="#DivineAttribute"/>
   <work:subClassOf rdf:resource="#BearerOfProphetRoleRestriction"/>
   <work:subClassOf rdf:resource="#BearerOfSingularVirtueRestriction"/>
+  <obo:RO_0000053 rdf:resource="#PietyConstancy"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Prophet</rdfs:label>
 </owl:Class>
 
@@ -28983,6 +28984,24 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OrdinaryVirtue</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#Piety">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Piety</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PietyConstancy">
+  <rdfs:subClassOf rdf:resource="#Piety"/>
+  <work:subClassOf rdf:resource="#Piety"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PietyConstancy</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PietyCultivationProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#Prophet"/>
+  <obo:BFO_0000055 rdf:resource="#PietyConstancy"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PietyCultivationProcess</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
