@@ -6314,6 +6314,7 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="#SaluataryQualityValuation"/>
+  <work:subClassOf rdf:resource="#Sadness"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Humility</rdfs:label>
 </owl:Class>
 
@@ -20393,6 +20394,19 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PowerOfActingPositingQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#IdeaOfOwnWeakness">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IdeaOfOwnWeakness</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#HumilityAccompaniedByIdeaOfWeaknessQuality">
+  <rdfs:subClassOf rdf:resource="#Humility"/>
+  <work:subClassOf rdf:resource="#Humility"/>
+  <work:subClassOf rdf:resource="#IdeaOfOwnWeakness"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HumilityAccompaniedByIdeaOfWeaknessQuality</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
@@ -23133,6 +23147,14 @@
 <owl:NamedIndividual rdf:about="#SoulEssence">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SoulEssence</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#MindImaginesOnlyActingPowerPositingThingsDisposition">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:RO_0000052 rdf:resource="#FormalBeingOfHumanMind"/>
+  <obo:BFO_0000054 rdf:resource="#ImaginingProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindImaginesOnlyActingPowerPositingThingsDisposition</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#AttributePriorToModesQuality">
@@ -30250,14 +30272,6 @@
   <obo:RO_0000052 rdf:resource="#FormalBeingOfHumanMind"/>
   <obo:BFO_0000050 rdf:resource="#ConatusMentalDispositionInstance"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindPowerIsEssenceDisposition</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#MindImaginesOnlyActingPowerPositingThingsDisposition">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <obo:RO_0000052 rdf:resource="#FormalBeingOfHumanMind"/>
-  <obo:BFO_0000054 rdf:resource="#ImaginingProcess"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindImaginesOnlyActingPowerPositingThingsDisposition</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
