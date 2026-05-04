@@ -628,6 +628,9 @@
   <work:subClassOf rdf:resource="#LacksNecessaryOrPossibleObjectQuality"/>
   <work:subClassOf rdf:resource="#RealBeingQuality"/>
   <obo:RO_0000052 rdf:resource="#ThinkingAttribute"/>
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000020"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000020"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/RO_0000052 some working:FiniteMind"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ModeOfThinking</rdfs:label>
 </owl:Class>
 
@@ -13790,6 +13793,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ManEssenceDependenceOnGodRole</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#FiniteMind">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FiniteMind</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#God">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
   <obo:BFO_0000051 rdf:resource="#DivineAttribute"/>
@@ -14257,6 +14266,24 @@
   <obo:RO_0000052 rdf:resource="#WillDeterminationIncapacity"/>
   <obo:RO_0000052 rdf:resource="#God"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WillFictumStatusInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#WillFreedomQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#Will"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WillFreedomQuality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#WillSelfDeterminationDisposition">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:RO_0000052 rdf:resource="#Will"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WillSelfDeterminationDisposition</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#WillErrorRestraintDisposition">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:RO_0000052 rdf:resource="#Will"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WillErrorRestraintDisposition</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#GodProximateCauseRole">
@@ -20614,24 +20641,6 @@
   <obo:RO_0000052 rdf:resource="#God"/>
   <work3:type rdf:resource="#SubstanceInfinityOrPerfectionQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodPerfectionExceedenceQuality</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#WillSelfDeterminationDisposition">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <obo:RO_0000052 rdf:resource="#Will"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WillSelfDeterminationDisposition</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#WillErrorRestraintDisposition">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <obo:RO_0000052 rdf:resource="#Will"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WillErrorRestraintDisposition</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#WillFreedomQuality">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <obo:RO_0000052 rdf:resource="#Will"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WillFreedomQuality</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
