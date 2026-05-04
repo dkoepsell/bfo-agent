@@ -16770,6 +16770,7 @@
   <obo:RO_0000053 rdf:resource="#GodEssenceQuality"/>
   <obo:RO_0000053 rdf:resource="#GodFreeCauseRoleInstance"/>
   <obo:RO_0000056 rdf:resource="#ProductionFromGodNatureProcess"/>
+  <obo:RO_0000053 rdf:resource="#ThinkingAttribute"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">God</rdfs:label>
 </owl:NamedIndividual>
 
@@ -24823,6 +24824,11 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <obo:RO_0000052 rdf:resource="#CertainBody"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BodyAffection1</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#GodThinkingThingQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodThinkingThingQuality</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
