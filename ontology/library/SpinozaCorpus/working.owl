@@ -400,6 +400,8 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <obo:RO_0000052 rdf:resource="#Substance"/>
+  <rdfs:subClassOf rdf:resource="#Mode"/>
+  <work:subClassOf rdf:resource="#Mode"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AffectionOfSubstance</rdfs:label>
 </owl:Class>
 
@@ -14808,6 +14810,18 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IntellectPerceivingSubstance</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ConceivableThroughAnother">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="#Mode"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConceivableThroughAnother</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ExistsInAnother">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="#Mode"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExistsInAnother</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#God">
