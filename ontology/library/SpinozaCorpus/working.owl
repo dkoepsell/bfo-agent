@@ -11851,6 +11851,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MotionOrSpeedQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#BodyIndividuationByMotionRestQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BodyIndividuationByMotionRestQuality</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#Size">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
@@ -16891,12 +16897,6 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Slowness</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#BodyIndividuationByMotionRestQuality">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BodyIndividuationByMotionRestQuality</rdfs:label>
-</owl:Class>
-
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
@@ -17381,6 +17381,7 @@
   <work3:type rdf:resource="#CorporealSubstanceExtensionQuality"/>
   <obo:RO_0000053 rdf:resource="#ExtensionLacksSelfExistenceDisposition"/>
   <obo:RO_0000053 rdf:resource="#CreatedByGodQuality"/>
+  <obo:RO_0000052 rdf:resource="#Body"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Extension</rdfs:label>
 </owl:NamedIndividual>
 
@@ -25630,6 +25631,13 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BodyDistinctionCriterion</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#BodiesShareExtensionAttributeQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work3:type rdf:resource="#AttributeOfSubstance"/>
+  <obo:RO_0000052 rdf:resource="#Body"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BodiesShareExtensionAttributeQuality</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
