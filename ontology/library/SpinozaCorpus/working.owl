@@ -6203,6 +6203,7 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="#ConatusMentalDispositionInstance"/>
+  <work:subClassOf rdf:resource="#NegativeAffectiveQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Anger</rdfs:label>
 </owl:Class>
 
@@ -19622,6 +19623,8 @@
 <owl:Class rdf:about="#Envy">
   <rdfs:subClassOf rdf:resource="#Hate"/>
   <work:subClassOf rdf:resource="#Hate"/>
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#NegativeAffectiveQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Envy</rdfs:label>
 </owl:Class>
 
@@ -20343,6 +20346,24 @@
 <owl:Class rdf:about="#VenerationObject">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">VenerationObject</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#Dread">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#Wonder"/>
+  <work:subClassOf rdf:resource="#DreadWonderRelation"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Dread</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#NegativeAffectiveQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NegativeAffectiveQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DreadWonderRelation">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="#Wonder"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DreadWonderRelation</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
