@@ -32142,6 +32142,7 @@
   <obo:RO_0000056 rdf:resource="#SpinozaAuthorshipOfTPT"/>
   <obo:RO_0000056 rdf:resource="#DutchRepublic"/>
   <RO_0000053 rdf:resource="#SpinozaIndirectGreekNTQuotationPractice"/>
+  <obo:RO_0000053 rdf:resource="#DoubtAboutOriginalLanguage"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Spinoza</rdfs:label>
 </owl:NamedIndividual>
 
@@ -32198,6 +32199,13 @@
 <owl:NamedIndividual rdf:about="#DutchRepublic">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000029"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DutchRepublic</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#SpinozaIndirectGreekNTQuotationPractice">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <RO_0000052 rdf:resource="#Spinoza"/>
+  <obo:BFO_0000054 rdf:resource="#QuotationViaLatinTranslationProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SpinozaIndirectGreekNTQuotationPractice</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#ShortTreatiseManuscript1662">
@@ -40027,11 +40035,26 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OriginalLanguageTextRequirement</rdfs:label>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#SpinozaIndirectGreekNTQuotationPractice">
+<owl:NamedIndividual rdf:about="#NewTestament">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NewTestament</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#GreekLanguage">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GreekLanguage</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#DoubtAboutOriginalLanguage">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <RO_0000052 rdf:resource="#Spinoza"/>
-  <obo:BFO_0000054 rdf:resource="#QuotationViaLatinTranslationProcess"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SpinozaIndirectGreekNTQuotationPractice</rdfs:label>
+  <obo:RO_0000052 rdf:resource="#Spinoza"/>
+  <obo:BFO_0000050 rdf:resource="#GreekAsOriginalLanguageOfNTClaim"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DoubtAboutOriginalLanguage</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#GreekAsOriginalLanguageOfNTClaim">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GreekAsOriginalLanguageOfNTClaim</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
