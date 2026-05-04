@@ -18226,6 +18226,11 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AbsoluteFaculty</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#AbsoluteFacultyOntologicalStatusQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AbsoluteFacultyOntologicalStatusQuality</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#AbsoluteIntellect">
   <rdfs:subClassOf rdf:resource="#AbsoluteFaculty"/>
   <work:subClassOf rdf:resource="#AbsoluteFaculty"/>
@@ -18262,9 +18267,10 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MetaphysicalBeingStatusQuality</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#AbsoluteFacultyOntologicalStatusQuality">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AbsoluteFacultyOntologicalStatusQuality</rdfs:label>
+<owl:Class rdf:about="#FacultyOfAffirmingAndDenying">
+  <rdfs:subClassOf rdf:resource="#Will"/>
+  <work:subClassOf rdf:resource="#Will"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FacultyOfAffirmingAndDenying</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
@@ -27636,6 +27642,12 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <obo:BFO_0000055 rdf:resource="#MindDeterminationByExternalCausesQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WillingProcess</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#WillIsNotDesireQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WillIsNotDesireQuality</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
