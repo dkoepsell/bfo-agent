@@ -1198,6 +1198,9 @@
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="#ModeAttributeDependence"/>
   <obo:BFO_0000054 rdf:resource="#IntellectTracingProcess"/>
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000051 rdf:resource="#ImaginationObjectExistenceDisposition"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Imagination</rdfs:label>
 </owl:Class>
 
@@ -18440,6 +18443,18 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="#WillIsNotRealBeingQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FreeWillActNonCharacterQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ImaginationObjectExistenceQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ImaginationObjectExistenceQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ImaginationObjectExistenceDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ImaginationObjectExistenceDisposition</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
