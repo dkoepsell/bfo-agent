@@ -22156,6 +22156,19 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExternalCausalDependenceQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#SubjectToPassionsQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SubjectToPassionsQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#NecessaryPassibilityQuality">
+  <rdfs:subClassOf rdf:resource="#SubjectToPassionsQuality"/>
+  <work:subClassOf rdf:resource="#SubjectToPassionsQuality"/>
+  <obo:RO_0000052 rdf:resource="#Man"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NecessaryPassibilityQuality</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
