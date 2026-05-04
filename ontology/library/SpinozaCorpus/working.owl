@@ -30158,6 +30158,7 @@
   <obo:RO_0000053 rdf:resource="#GodOmniscienceQualityInstance"/>
   <obo:RO_0000053 rdf:resource="#GodForeknowledgeDispositionInstance"/>
   <obo:RO_0000053 rdf:resource="#EternalExistenceQuality"/>
+  <obo:RO_0000053 rdf:resource="#UniquenessInPowerQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">God</rdfs:label>
 </owl:NamedIndividual>
 
@@ -42690,6 +42691,12 @@
   <work3:type rdf:resource="#InvisibilityToHumansQuality"/>
   <obo:RO_0000052 rdf:resource="#God"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">InvisibilityOfGodToHumans</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#UniquenessInPowerQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#God"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UniquenessInPowerQuality</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
