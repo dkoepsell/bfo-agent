@@ -25914,6 +25914,31 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SpeciesOfEternityQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#EternalPartOfMind">
+  <rdfs:subClassOf rdf:resource="#HumanMind"/>
+  <work:subClassOf rdf:resource="#HumanMind"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/RO_0000053"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EternalPartOfMind</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#MindIndestructibilityConstraint">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="#SubstanceIndestructibilityDisposition"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindIndestructibilityConstraint</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#EternalityOfMindPartQuality">
+  <rdfs:subClassOf rdf:resource="#SubstanceExistenceEternalityQuality"/>
+  <work:subClassOf rdf:resource="#SubstanceExistenceEternalityQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EternalityOfMindPartQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#BodyDestructionProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BodyDestructionProcess</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
@@ -26371,6 +26396,7 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <obo:RO_0000052 rdf:resource="#Mind"/>
   <obo:RO_0000052 rdf:resource="#SoulEssence"/>
+  <work3:type rdf:resource="#EternalityOfMindPartQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindImmortalityQuality</rdfs:label>
 </owl:NamedIndividual>
 
@@ -28807,6 +28833,24 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RelatingAffectionsToGodProcess</rdfs:label>
 </owl:NamedIndividual>
 
+<owl:NamedIndividual rdf:about="#IdeaOfHumanMindInGod">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IdeaOfHumanMindInGod</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#IdeaOfHumanBodyInGod">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IdeaOfHumanBodyInGod</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#IdeaOfHumanBodyEssence">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IdeaOfHumanBodyEssence</rdfs:label>
+</owl:NamedIndividual>
+
 <owl:NamedIndividual rdf:about="#AttributePriorToModesQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <obo:RO_0000052 rdf:resource="#Extension"/>
@@ -28865,18 +28909,6 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <obo:RO_0000052 rdf:resource="#Extension"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CreatedByGodQuality</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#IdeaOfHumanMindInGod">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
-  <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IdeaOfHumanMindInGod</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#IdeaOfHumanBodyInGod">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
-  <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IdeaOfHumanBodyInGod</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#MindEssenceIdea">
@@ -36582,12 +36614,6 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <obo:RO_0000052 rdf:resource="#Mind"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BodyEnduranceConditionQualityInstance</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#IdeaOfHumanBodyEssence">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
-  <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IdeaOfHumanBodyEssence</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#EternalEssenceExpressionInGodDisposition">
