@@ -3568,6 +3568,7 @@
   <work:subClassOf rdf:resource="#_:participatesInThinking"/>
   <work:subClassOf rdf:resource="#_:bearerOfThinkingDisposition"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
+  <obo:RO_0000053 rdf:resource="#HumanEssence"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Man</rdfs:label>
 </owl:Class>
 
@@ -16683,7 +16684,16 @@
 <owl:Class rdf:about="#HumanEssence">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="#EssentialExistenceQuality"/>
+  <work:subClassOf rdf:resource="#AttributeModification"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#God"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HumanEssence</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#AttributeModification">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#Attribute"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AttributeModification</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
