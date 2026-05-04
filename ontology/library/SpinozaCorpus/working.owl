@@ -1528,6 +1528,11 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PerseveranceInBeing</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#CanatusBearerThing">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CanatusBearerThing</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#AnimalSpirits">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AnimalSpirits</rdfs:label>
@@ -18956,9 +18961,23 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ActualEssenceQuality</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#CanatusBearerThing">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CanatusBearerThing</rdfs:label>
+<owl:Class rdf:about="#IndefiniteTemporalDuration">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IndefiniteTemporalDuration</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#FiniteTemporalDuration">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FiniteTemporalDuration</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ConatusTemporalScope">
+  <rdfs:subClassOf rdf:resource="#Conatus"/>
+  <work:subClassOf rdf:resource="#Conatus"/>
+  <work:subClassOf rdf:resource="#IndefiniteTemporalDuration"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConatusTemporalScope</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
