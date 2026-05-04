@@ -26767,6 +26767,24 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConceptualDistinction</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#Existimatio">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Existimatio</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#MisjudgmentOfWorth">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MisjudgmentOfWorth</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ExistimatioMisjudgmentQuality">
+  <rdfs:subClassOf rdf:resource="#MisjudgmentOfWorth"/>
+  <work:subClassOf rdf:resource="#MisjudgmentOfWorth"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExistimatioMisjudgmentQuality</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
@@ -38058,16 +38076,16 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Achting_KV</rdfs:label>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#Existimatio_E">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Existimatio_E</rdfs:label>
-</owl:NamedIndividual>
-
 <owl:NamedIndividual rdf:about="#AchtingExistimatioDivergenceQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#ConceptualDistinction"/>
   <obo:RO_0000052 rdf:resource="#Achting_KV"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AchtingExistimatioDivergenceQuality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Existimatio_E">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Existimatio_E</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
