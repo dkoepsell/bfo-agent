@@ -22831,17 +22831,19 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GuidanceByReason</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#RationalAgent">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
-  <obo:RO_0000053 rdf:resource="#GuidanceByReason"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RationalAgent</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#RationalGuidanceProcess">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <obo:BFO_0000055 rdf:resource="#GuidanceByReason"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RationalGuidanceProcess</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#RationalAgent">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <obo:RO_0000053 rdf:resource="#GuidanceByReason"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <obo:RO_0000053 rdf:resource="#LivingAccordingToReason"/>
+  <obo:RO_0000053 rdf:resource="#AgreementInNature"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RationalAgent</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#NecessaryAgreementInNatureQuality">
@@ -22849,6 +22851,19 @@
   <obo:RO_0000052 rdf:resource="#RationalAgent"/>
   <work:subClassOf rdf:resource="#AgreementInNature"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NecessaryAgreementInNatureQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#LivingAccordingToReason">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LivingAccordingToReason</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#AgreementInNatureNecessitation">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="#LivingAccordingToReason"/>
+  <obo:BFO_0000054 rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AgreementInNatureNecessitation</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
