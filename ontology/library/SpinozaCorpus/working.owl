@@ -21832,6 +21832,8 @@
 <owl:Class rdf:about="#OppositeAffect">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:subClassOf rdf:resource="#Affect"/>
+  <work:subClassOf rdf:resource="#Affect"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OppositeAffect</rdfs:label>
 </owl:Class>
 
@@ -22227,6 +22229,24 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="#Passion"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AffectPersistenceDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#AffectRestraintProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AffectRestraintProcess</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#StrongerAffectQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#Affect"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">StrongerAffectQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#AffectSuppressionCondition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="#Affect"/>
+  <obo:BFO_0000054 rdf:resource="#AffectRestraintProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AffectSuppressionCondition</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
