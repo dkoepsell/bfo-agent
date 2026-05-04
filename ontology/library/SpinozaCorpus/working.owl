@@ -4487,6 +4487,8 @@
 <owl:Class rdf:about="#EternalNecessityAndTruth">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="#NecessityOfExistence"/>
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EternalNecessityAndTruth</rdfs:label>
 </owl:Class>
 
@@ -32026,6 +32028,17 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LawConformityQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#UniversalLawGovernanceQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UniversalLawGovernanceQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#EternalLawsDisposition">
+  <rdfs:subClassOf rdf:resource="#SubstanceNecessaryInfinityDisposition"/>
+  <work:subClassOf rdf:resource="#SubstanceNecessaryInfinityDisposition"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EternalLawsDisposition</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -32372,6 +32385,7 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
   <obo:BFO_0000050 rdf:resource="#MetaphysicalSubjectMatter"/>
+  <obo:BFO_0000050 rdf:resource="#EternalNecessityAndTruth"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NecessityOfThingsSubjectMatter</rdfs:label>
 </owl:NamedIndividual>
 
@@ -46198,6 +46212,13 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <obo:RO_0000052 rdf:resource="#WholeOfNature"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NatureLawfulnessDisposition</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#AllThingsGovernedByEternalLawsProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#WholeOfNature"/>
+  <obo:BFO_0000055 rdf:resource="#LawFollowsFromNecessityAndPerfectionRelation"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AllThingsGovernedByEternalLawsProcess</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
