@@ -31306,6 +31306,13 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExtensionExpressesGodNatureDisposition</rdfs:label>
 </owl:NamedIndividual>
 
+<owl:NamedIndividual rdf:about="#UniverseEternalityQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work3:type rdf:resource="#SubstanceExistenceEternalityQuality"/>
+  <obo:RO_0000052 rdf:resource="#Universe"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UniverseEternalityQuality</rdfs:label>
+</owl:NamedIndividual>
+
 <owl:NamedIndividual rdf:about="#MindEssenceIdea">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
@@ -40056,13 +40063,6 @@
 <owl:NamedIndividual rdf:about="#GreekLanguage">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GreekLanguage</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#UniverseEternalityQuality">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <work3:type rdf:resource="#SubstanceExistenceEternalityQuality"/>
-  <obo:RO_0000052 rdf:resource="#Universe"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UniverseEternalityQuality</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
