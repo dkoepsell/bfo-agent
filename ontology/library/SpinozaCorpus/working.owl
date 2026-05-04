@@ -12303,6 +12303,9 @@
 
 <owl:Class rdf:about="#DivineWill">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:BFO_0000054 rdf:resource="#DivineConcurrence"/>
+  <obo:RO_0000052 rdf:resource="#God"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivineWill</rdfs:label>
 </owl:Class>
 
@@ -13434,6 +13437,25 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ContinuousPreservationQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DivineConcurrence">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#God"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivineConcurrence</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DeterminingInParticularWay">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="#DivineConcurrence"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DeterminingInParticularWay</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DeterminedinParticularWayQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DeterminedinParticularWayQuality</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#God">
