@@ -1194,6 +1194,7 @@
   <obo:RO_0000053 rdf:resource="#HumanEssence"/>
   <obo:BFO_0000051 rdf:resource="#Mind"/>
   <obo:BFO_0000051 rdf:resource="#Body"/>
+  <work:subClassOf rdf:resource="#ModificationBearer"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Man</rdfs:label>
 </owl:Class>
 
@@ -13952,7 +13953,14 @@
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="#ConatusMentalDispositionInstance"/>
   <work:subClassOf rdf:resource="#MindBodyStrivingQuality"/>
+  <work:subClassOf rdf:resource="#ConceivableThroughItself"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Appetite</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#MindBodyStrivingQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindBodyStrivingQuality</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#AffirmationPower">
@@ -19006,10 +19014,10 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IndefiniteDurationQuality</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#MindBodyStrivingQuality">
+<owl:Class rdf:about="#AppetiteIsEssenceOfManQuality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindBodyStrivingQuality</rdfs:label>
+  <work:subClassOf rdf:resource="#EssentialExistenceQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AppetiteIsEssenceOfManQuality</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
