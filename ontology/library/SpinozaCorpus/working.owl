@@ -24380,16 +24380,59 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HonestyDisposition</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#HonestAction">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HonestAction</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#DeceptiveActingAbsenceQuality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DeceptiveActingAbsenceQuality</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#HonestAction">
+<owl:Class rdf:about="#ManGuidedByReason">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <work:subClassOf rdf:resource="#RationalGuidanceDisposition"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ManGuidedByReason</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#RationalGuidanceDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RationalGuidanceDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#CivicState">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000029"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000029"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CivicState</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#CommonDecisionProcess">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HonestAction</rdfs:label>
+  <obo:BFO_0000050 rdf:resource="#CivicState"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CommonDecisionProcess</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SolitudeCondition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000029"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000029"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SolitudeCondition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#FreedomDegreeQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FreedomDegreeQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#GreaterFreedomInCivicStateQuality">
+  <rdfs:subClassOf rdf:resource="#FreedomDegreeQuality"/>
+  <work:subClassOf rdf:resource="#FreedomDegreeQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GreaterFreedomInCivicStateQuality</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
