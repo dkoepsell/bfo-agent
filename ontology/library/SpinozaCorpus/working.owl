@@ -24116,6 +24116,37 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ActiveAffectExclusionAxiom</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#FearMotivatedConduct">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:BFO_0000054 rdf:resource="#FearMotivatedGoodAction"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FearMotivatedConduct</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#FearQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FearQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#GuidedByReason">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GuidedByReason</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#FearMotivatedGoodAction">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FearMotivatedGoodAction</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#AbsenceOfRationalGuidanceQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AbsenceOfRationalGuidanceQuality</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
