@@ -27634,6 +27634,8 @@
 <owl:Class rdf:about="#Circle">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <rdfs:subClassOf rdf:resource="#GeometricFigure"/>
+  <work:subClassOf rdf:resource="#GeometricFigure"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Circle</rdfs:label>
 </owl:Class>
 
@@ -27657,6 +27659,25 @@
 <owl:Class rdf:about="#LightRefractionProcess">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LightRefractionProcess</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#GeometricFigure">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GeometricFigure</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#UniformPropertyDistributionQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#Circle"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UniformPropertyDistributionQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SuperiorityAmongFiguresQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#Circle"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SuperiorityAmongFiguresQuality</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
