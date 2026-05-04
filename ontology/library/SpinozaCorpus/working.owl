@@ -1428,6 +1428,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EpistemicNecessityOfIdeas</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#NecessityOfFollowingDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="#ExistenceNecessitation"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NecessityOfFollowingDisposition</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#ModeOfThought">
   <rdfs:subClassOf rdf:resource="#Mode"/>
   <work:subClassOf rdf:resource="#Mode"/>
@@ -17782,16 +17788,27 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BodyAffectionInvolvesSunEssenceQuality</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#NecessityOfFollowingDisposition">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <work:subClassOf rdf:resource="#ExistenceNecessitation"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NecessityOfFollowingDisposition</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#EqualNecessityOfIdeaFollowingQuality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="#NecessityOfExistence"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EqualNecessityOfIdeaFollowingQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#CommonNotion">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CommonNotion</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SingularThingEssence">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#EssentialExistenceQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SingularThingEssence</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#CommonNotionNonConstitutionOfSingularEssenceQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#EssentialExistenceQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CommonNotionNonConstitutionOfSingularEssenceQuality</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
