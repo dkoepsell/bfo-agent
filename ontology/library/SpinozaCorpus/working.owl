@@ -19072,6 +19072,36 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindContainmentIncapacityForBodyExcludingIdea</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#BodyPowerOfActingQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BodyPowerOfActingQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#MindPowerOfThinkingQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindPowerOfThinkingQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#BodyPowerIncreaseDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BodyPowerIncreaseDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#MindPowerIncreaseDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindPowerIncreaseDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#BodyMindPowerCovarianceQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BodyMindPowerCovarianceQuality</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
@@ -28774,6 +28804,19 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <obo:RO_0000052 rdf:resource="#FormalBeingOfHumanMind"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindEssenceConstitution</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#IdeaIncreasingBodyPowerProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000055 rdf:resource="#BodyPowerIncreaseDisposition"/>
+  <obo:BFO_0000051 rdf:resource="#IdeaIncreasingMindPowerProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IdeaIncreasingBodyPowerProcess</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#IdeaIncreasingMindPowerProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000055 rdf:resource="#MindPowerIncreaseDisposition"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IdeaIncreasingMindPowerProcess</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
