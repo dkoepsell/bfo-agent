@@ -27922,6 +27922,8 @@
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
   <obo:RO_0000056 rdf:resource="#SecurityProvisionProcess"/>
   <obo:RO_0000056 rdf:resource="#CooperationEnablingProcess"/>
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Government</rdfs:label>
 </owl:Class>
 
@@ -27944,17 +27946,17 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SecurityProvisionDisposition</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#SecurityQuality">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SecurityQuality</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#CooperationBenefitDisposition">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <obo:RO_0000052 rdf:resource="#Government"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CooperationBenefitDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SecurityQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SecurityQuality</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#CivilSociety">
@@ -27979,6 +27981,25 @@
   <obo:RO_0000052 rdf:resource="#CivilSociety"/>
   <obo:BFO_0000054 rdf:resource="#CultivationOfArtsAndSciences"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CivilSocietyCultivationEnablement</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#FormalPoliticalStructure">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FormalPoliticalStructure</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DeFactoPowerLimit">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000020"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DeFactoPowerLimit</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PoliticalPower">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PoliticalPower</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
