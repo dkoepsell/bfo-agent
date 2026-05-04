@@ -22923,6 +22923,30 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ReasonJudgmentVeracityDisposition</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#RationalMan">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <work:subClassOf rdf:resource="#SingularThingInNature"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RationalMan</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#RationalityQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#RationalMan"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RationalityQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SingularThingInNature">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SingularThingInNature</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#MaximalUtilityForManQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#RationalMan"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MaximalUtilityForManQuality</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
