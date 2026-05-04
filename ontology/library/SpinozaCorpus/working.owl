@@ -8628,6 +8628,7 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <rdfs:subClassOf rdf:resource="#Love"/>
   <work:subClassOf rdf:resource="#Love"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IntellectualLove</rdfs:label>
 </owl:Class>
 
@@ -26141,6 +26142,18 @@
 <owl:Class rdf:about="#MindExistenceDependenceOnGodQualityClass">
   <rdfs:subClassOf rdf:resource="#EssentialExistenceQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindExistenceDependenceOnGodQualityClass</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#IntellectualLoveIndestructibilityQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#IntellectualLove"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IntellectualLoveIndestructibilityQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#NothingContraryToIntellectualLoveQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#IntellectualLove"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NothingContraryToIntellectualLoveQuality</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
