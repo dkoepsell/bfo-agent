@@ -958,6 +958,7 @@
   <obo:RO_0000053 rdf:resource="#DeterminateModeOfThinkingQualityInstance"/>
   <obo:RO_0000053 rdf:resource="#ConatusMentalDispositionInstance"/>
   <obo:RO_0000056 rdf:resource="#PerseveranceInBeingProcess"/>
+  <obo:RO_0000053 rdf:resource="#RelatingBodyAffectionsToIdeaOfGodDispositionInstance"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Mind</rdfs:label>
 </owl:Class>
 
@@ -25553,6 +25554,11 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ImageFlourishingProcess</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#RelatingBodyAffectionsToIdeaOfGodDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RelatingBodyAffectionsToIdeaOfGodDisposition</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
@@ -29008,6 +29014,8 @@
   <obo:RO_0000056 rdf:resource="#FormalExistenceNecessitationProcess"/>
   <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <obo:BFO_0000050 rdf:resource="#HavingIdeaOfGodProcess"/>
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#Mind"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IdeaOfGod</rdfs:label>
 </owl:NamedIndividual>
 
@@ -36069,6 +36077,23 @@
 <owl:NamedIndividual rdf:about="#AbsenceOfContraryAffects">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AbsenceOfContraryAffects</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#RelatingBodyAffectionsToIdeaOfGodDispositionInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:RO_0000052 rdf:resource="#Mind"/>
+  <obo:BFO_0000054 rdf:resource="#RelatingAffectionsToGodProcess"/>
+  <work3:type rdf:resource="#RelatingBodyAffectionsToIdeaOfGodDisposition"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RelatingBodyAffectionsToIdeaOfGodDispositionInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#RelatingAffectionsToGodProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000055 rdf:resource="#RelatingBodyAffectionsToIdeaOfGodDispositionInstance"/>
+  <obo:RO_0000057 rdf:resource="#Mind"/>
+  <obo:RO_0000057 rdf:resource="#HumanBody"/>
+  <obo:RO_0000057 rdf:resource="#IdeaOfGod"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RelatingAffectionsToGodProcess</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
