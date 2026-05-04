@@ -28133,6 +28133,7 @@
   <obo:RO_0000053 rdf:resource="#CreatedByGodQuality"/>
   <obo:RO_0000052 rdf:resource="#Body"/>
   <obo:RO_0000053 rdf:resource="#ExtensionDenialOfThought"/>
+  <obo:RO_0000053 rdf:resource="#ExtensionExpressesGodNatureDisposition"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Extension</rdfs:label>
 </owl:NamedIndividual>
 
@@ -39193,6 +39194,13 @@
   <obo:RO_0000052 rdf:resource="#Extension"/>
   <work3:type rdf:resource="#EssenceContainsExistenceDisposition"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExtensionInvolvesExistenceDisposition</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ExtensionExpressesGodNatureDisposition">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:RO_0000052 rdf:resource="#Extension"/>
+  <work3:type rdf:resource="#AttributeExpressesEternalInfiniteEssenceRelation"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExtensionExpressesGodNatureDisposition</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
