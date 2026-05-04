@@ -27079,6 +27079,26 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OrderQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#CoherenceOfParts">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#CoherenceOfParts"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CoherenceOfParts</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#LawOrNatureOfPart">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LawOrNatureOfPart</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#MutualAdaptationOfLaws">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000055 rdf:resource="#LawOrNatureOfPart"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MutualAdaptationOfLaws</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
