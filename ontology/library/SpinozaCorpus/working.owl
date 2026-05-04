@@ -24808,6 +24808,30 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PertainsToReasonExerciseQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#SensualLove">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SensualLove</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PurelySensualLove">
+  <rdfs:subClassOf rdf:resource="#SensualLove"/>
+  <work:subClassOf rdf:resource="#SensualLove"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PurelySensualLove</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#TransitionToHate">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TransitionToHate</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#TransitionFromPurelySensualLoveToHateTendency">
+  <rdfs:subClassOf rdf:resource="#PurelySensualLove"/>
+  <work:subClassOf rdf:resource="#PurelySensualLove"/>
+  <obo:BFO_0000054 rdf:resource="#TransitionToHate"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TransitionFromPurelySensualLoveToHateTendency</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
