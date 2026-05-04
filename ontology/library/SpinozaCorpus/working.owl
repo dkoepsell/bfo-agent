@@ -6521,6 +6521,8 @@
   <obo:BFO_0000051 rdf:resource="#Volition"/>
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="#DivineAttribute"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:BFO_0000054 rdf:resource="#EffectProductionProcess"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivineDetermination</rdfs:label>
 </owl:Class>
 
@@ -15839,6 +15841,29 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodDeterminesDeterminationDisposition</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#DivinelyUndeterminedThing">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivinelyUndeterminedThing</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#AbsenceOfDivineDetermination">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AbsenceOfDivineDetermination</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SelfDeterminationToProduceEffectDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SelfDeterminationToProduceEffectDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#EffectProductionProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EffectProductionProcess</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
@@ -16097,6 +16122,7 @@
   <RO_0000056 rdf:resource="#EssenceCausationProcess"/>
   <obo:RO_0000056 rdf:resource="#GodDeterminesAllEffectsProcess"/>
   <obo:RO_0000053 rdf:resource="#GodDeterminesDeterminationDisposition"/>
+  <obo:RO_0000057 rdf:resource="#EffectProductionProcess"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">God</rdfs:label>
 </owl:NamedIndividual>
 
@@ -17985,6 +18011,14 @@
   <RO_0000052 rdf:resource="#God"/>
   <obo:BFO_0000054 rdf:resource="#EssenceCausationProcess"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EfficientCauseOfEssenceRole</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#GodDeterminesAllEffectsProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work3:type rdf:resource="#GodDeterminesAllEffectsProcess"/>
+  <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000055 rdf:resource="#GodDeterminesDeterminationDisposition"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodDeterminesAllEffectsProcess</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#ThinkingThingRole">
@@ -23666,14 +23700,6 @@
 <owl:NamedIndividual rdf:about="#GodCausesExistenceProcess">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodCausesExistenceProcess</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#GodDeterminesAllEffectsProcess">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <work3:type rdf:resource="#GodDeterminesAllEffectsProcess"/>
-  <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <obo:BFO_0000055 rdf:resource="#GodDeterminesDeterminationDisposition"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodDeterminesAllEffectsProcess</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
