@@ -10562,6 +10562,7 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="#SubstanceInfinityOrPerfectionQuality"/>
   <rdfs:subClassOf rdf:resource="#SubstanceInfinityOrPerfectionQuality"/>
+  <work2:equivalentClass rdf:resource="#DegreeOfReality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DegreeOfPerfection</rdfs:label>
 </owl:Class>
 
@@ -16397,6 +16398,12 @@
   <rdfs:subClassOf rdf:resource="#Duration"/>
   <work:subClassOf rdf:resource="#Duration"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IndefiniteContinuationQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#RealityPerfectionIdentityQuality">
+  <rdfs:subClassOf rdf:resource="#EssentialExistenceQuality"/>
+  <work:subClassOf rdf:resource="#EssentialExistenceQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RealityPerfectionIdentityQuality</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
