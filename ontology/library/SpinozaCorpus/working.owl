@@ -6278,6 +6278,9 @@
   <work:subClassOf rdf:resource="#NegativeAffectiveDisposition"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <obo:BFO_0000054 rdf:resource="#AversionRealizationProcess"/>
+  <rdfs:subClassOf rdf:resource="#Sadness"/>
+  <work:subClassOf rdf:resource="#Sadness"/>
+  <work:subClassOf rdf:resource="#AcCompaniedByAccidentalCauseIdeaConstraint"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Aversion</rdfs:label>
 </owl:Class>
 
@@ -20941,6 +20944,16 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IdeaOfAccidentalCauseOfJoy</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#AccidentalCauseOfSadnessIdea">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AccidentalCauseOfSadnessIdea</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#AccidentalCauseOfSadness">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AccidentalCauseOfSadness</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
