@@ -1220,6 +1220,7 @@
   <obo:RO_0000056 rdf:resource="#ExternalBodyPerceptionProcess"/>
   <obo:RO_0000056 rdf:resource="#ImaginationOfExternalBody"/>
   <obo:RO_0000053 rdf:resource="#InadequateKnowledgeOfExternalBodyQuality"/>
+  <obo:RO_0000056 rdf:resource="#CommonOrderOfNaturePerception"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HumanMind</rdfs:label>
 </owl:Class>
 
@@ -17603,6 +17604,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConfusedIdeaQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#InadequateIdeaQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">InadequateIdeaQuality</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#InvolvesAdequateKnowledgeDisposition">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
@@ -17630,12 +17637,6 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">InadequateKnowledgeOfHumanBodyQuality</rdfs:label>
-</owl:Class>
-
-<owl:Class rdf:about="#InadequateIdeaQuality">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">InadequateIdeaQuality</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#ClearAndDistinctIdeaQuality">
@@ -17670,6 +17671,18 @@
 <owl:Class rdf:about="#ConsideredInItselfAloneCondition">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConsideredInItselfAloneCondition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ConfusedKnowledgeQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConfusedKnowledgeQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#MutilatedKnowledgeQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MutilatedKnowledgeQuality</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
@@ -26732,6 +26745,42 @@
   <work3:type rdf:resource="#LackOfClarityAndDistinctnessQuality"/>
   <obo:RO_0000052 rdf:resource="#IdeaConstitutingHumanMindNature"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IdeaConstitutingHumanMindLackOfClarityDistinctnessInItselfQuality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#CommonOrderOfNaturePerception">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#HumanMind"/>
+  <obo:BFO_0000055 rdf:resource="#MindBodyKnowledgeThroughAffectionsDisposition"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CommonOrderOfNaturePerception</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#CommonOrderOfNature">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CommonOrderOfNature</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ConfusedAndMutilatedKnowledgeOfSelfQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#HumanMind"/>
+  <work3:type rdf:resource="#ConfusedKnowledgeQuality"/>
+  <work3:type rdf:resource="#MutilatedKnowledgeQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConfusedAndMutilatedKnowledgeOfSelfQuality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ConfusedAndMutilatedKnowledgeOfBodyQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#HumanMind"/>
+  <work3:type rdf:resource="#ConfusedKnowledgeQuality"/>
+  <work3:type rdf:resource="#MutilatedKnowledgeQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConfusedAndMutilatedKnowledgeOfBodyQuality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ConfusedAndMutilatedKnowledgeOfExternalBodiesQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#HumanMind"/>
+  <work3:type rdf:resource="#ConfusedKnowledgeQuality"/>
+  <work3:type rdf:resource="#MutilatedKnowledgeQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConfusedAndMutilatedKnowledgeOfExternalBodiesQuality</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
