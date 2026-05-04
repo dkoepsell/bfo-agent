@@ -22581,6 +22581,18 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AffectRestraintProcess</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#StrongerAffect">
+  <rdfs:subClassOf rdf:resource="#Affect"/>
+  <work:subClassOf rdf:resource="#Affect"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">StrongerAffect</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#AffectRestrainabilityOnlyByContraryStrongerAffectQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AffectRestrainabilityOnlyByContraryStrongerAffectQuality</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#StrongerAffectQuality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <obo:RO_0000052 rdf:resource="#Affect"/>
@@ -24294,16 +24306,24 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BornFreeAndRemainsFreeQuality</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#StrongerAffect">
-  <rdfs:subClassOf rdf:resource="#Affect"/>
-  <work:subClassOf rdf:resource="#Affect"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">StrongerAffect</rdfs:label>
+<owl:Class rdf:about="#EqualVirtueQuality">
+  <rdfs:subClassOf rdf:resource="#Virtue"/>
+  <work:subClassOf rdf:resource="#Virtue"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EqualVirtueQuality</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#AffectRestrainabilityOnlyByContraryStrongerAffectQuality">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AffectRestrainabilityOnlyByContraryStrongerAffectQuality</rdfs:label>
+<owl:Class rdf:about="#TimelyFlight">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000055 rdf:resource="#Virtue"/>
+  <obo:RO_0000057 rdf:resource="#FreeMan"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TimelyFlight</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#Fighting">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000055 rdf:resource="#Virtue"/>
+  <obo:RO_0000057 rdf:resource="#FreeMan"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Fighting</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
