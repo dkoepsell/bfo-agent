@@ -25632,6 +25632,7 @@
 
 <owl:Class rdf:about="#PowerOfThinking">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:RO_0000052 rdf:resource="#ThinkingAttribute"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PowerOfThinking</rdfs:label>
 </owl:Class>
 
@@ -27639,6 +27640,11 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Circle</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#GeometricFigure">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GeometricFigure</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#OpticalAxis">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000141"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OpticalAxis</rdfs:label>
@@ -27659,11 +27665,6 @@
 <owl:Class rdf:about="#LightRefractionProcess">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LightRefractionProcess</rdfs:label>
-</owl:Class>
-
-<owl:Class rdf:about="#GeometricFigure">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GeometricFigure</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#UniformPropertyDistributionQuality">
@@ -39365,6 +39366,18 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <obo:BFO_0000050 rdf:resource="#TrueMethodKnowledgeContent"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LawsOfPureIntellect</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#PowerOfNatureForExistingAndProducingEffects">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:RO_0000052 rdf:resource="#WholeOfNature"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PowerOfNatureForExistingAndProducingEffects</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#PowerEquality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#PowerOfThinking"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PowerEquality</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
