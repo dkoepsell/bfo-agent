@@ -26582,6 +26582,7 @@
 
 <owl:Class rdf:about="#Affectus">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000020"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000020"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Affectus</rdfs:label>
 </owl:Class>
 
@@ -26596,6 +26597,18 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ActiveAffectusDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#MentalAffectusQuality">
+  <rdfs:subClassOf rdf:resource="#Affectus"/>
+  <work:subClassOf rdf:resource="#Affectus"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MentalAffectusQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#BodilyAffectusQuality">
+  <rdfs:subClassOf rdf:resource="#Affectus"/>
+  <work:subClassOf rdf:resource="#Affectus"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BodilyAffectusQuality</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
