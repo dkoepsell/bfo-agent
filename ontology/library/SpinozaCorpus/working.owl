@@ -1203,6 +1203,7 @@
   <obo:RO_0000052 rdf:resource="#God"/>
   <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
   <obo:BFO_0000050 rdf:resource="#God"/>
+  <obo:RO_0000053 rdf:resource="#FormalBeingOfHumanMind"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HumanMind</rdfs:label>
 </owl:Class>
 
@@ -17346,6 +17347,16 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindPerceptiveCapacityCovaresWithBodyDispositionQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#ComponentIdea">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ComponentIdea</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#CompositionOfManyIdeasQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CompositionOfManyIdeasQuality</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
@@ -26114,6 +26125,26 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <obo:RO_0000052 rdf:resource="#WholeOfNature"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WholeInvarianceUnderPartChangeQuality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#FormalBeingOfHumanMind">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#HumanMind"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FormalBeingOfHumanMind</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#IdeaConstitutingFormalBeingOfHumanMind">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
+  <obo:RO_0000053 rdf:resource="#CompositionOfManyIdeasQualityInstance"/>
+  <obo:BFO_0000051 rdf:resource="#ComponentIdea"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IdeaConstitutingFormalBeingOfHumanMind</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#CompositionOfManyIdeasQualityInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#IdeaConstitutingFormalBeingOfHumanMind"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CompositionOfManyIdeasQualityInstance</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
