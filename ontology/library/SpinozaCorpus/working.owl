@@ -31395,6 +31395,16 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LegalObligation</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#SacrificialPractice">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SacrificialPractice</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#CustomMotivation">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CustomMotivation</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -45190,6 +45200,38 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
   <obo:RO_0000052 rdf:resource="#HebrewPeopleBeforeExodus"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HebrewLegalObligationByRepublicLegislation</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Patriarchs">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Patriarchs</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#SacrificialCustom">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SacrificialCustom</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#DivineLegislation">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivineLegislation</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#PatriarchsSacrificeProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work3:type rdf:resource="#SacrificialPractice"/>
+  <obo:RO_0000057 rdf:resource="#Patriarchs"/>
+  <obo:RO_0000057 rdf:resource="#God"/>
+  <obo:BFO_0000055 rdf:resource="#CustomMotivationInstance"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PatriarchsSacrificeProcess</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#CustomMotivationInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work3:type rdf:resource="#CustomMotivation"/>
+  <obo:RO_0000052 rdf:resource="#Patriarchs"/>
+  <obo:BFO_0000054 rdf:resource="#PatriarchsSacrificeProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CustomMotivationInstance</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
