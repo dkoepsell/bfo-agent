@@ -19807,6 +19807,7 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="#Joy"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#Love"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Overestimation</rdfs:label>
 </owl:Class>
 
