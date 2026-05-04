@@ -1469,6 +1469,13 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExternalBodyPerceptionProcess</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#AdequateIdeaInMindDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:BFO_0000054 rdf:resource="#AdequateIdea"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AdequateIdeaInMindDisposition</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#ConatusRealizationProcess">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConatusRealizationProcess</rdfs:label>
@@ -17845,11 +17852,33 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CommonAndPeculiarProperty</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#AdequateIdeaInMindDisposition">
+<owl:Class rdf:about="#AdequatePerceptionCapacityQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AdequatePerceptionCapacityQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#CommonalityWithOtherBodiesQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CommonalityWithOtherBodiesQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#AdequatePerceptionDisposition">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <obo:BFO_0000054 rdf:resource="#AdequateIdea"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AdequateIdeaInMindDisposition</rdfs:label>
+  <obo:BFO_0000054 rdf:resource="#AdequatePerceptionProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AdequatePerceptionDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#AdequatePerceptionProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AdequatePerceptionProcess</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#CommonNotionGround">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CommonNotionGround</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
