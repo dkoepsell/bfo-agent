@@ -19509,6 +19509,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HarmRecipient</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#Envy">
+  <rdfs:subClassOf rdf:resource="#Hate"/>
+  <work:subClassOf rdf:resource="#Hate"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Envy</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
