@@ -22310,6 +22310,30 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConsideringAsPresent</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#ConstitutionOfHumanBody">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConstitutionOfHumanBody</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ExternalThing">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExternalThing</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#NatureOfExternalThing">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NatureOfExternalThing</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ImaginationIndicatesBodyConstitutionMoreThanExternalNatureQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#InadequateKnowledgeOfExternalBodyQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ImaginationIndicatesBodyConstitutionMoreThanExternalNatureQuality</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
