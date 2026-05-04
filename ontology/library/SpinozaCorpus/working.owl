@@ -15253,6 +15253,31 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ContradictionExclusionDisposition</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#PowerQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PowerQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#LackOfPowerQuality">
+  <rdfs:subClassOf rdf:resource="#PowerQuality"/>
+  <work:subClassOf rdf:resource="#PowerQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LackOfPowerQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#FullPowerQuality">
+  <rdfs:subClassOf rdf:resource="#PowerQuality"/>
+  <work:subClassOf rdf:resource="#PowerQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FullPowerQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ExistencePowerCorrelationDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="#ExistenceNecessitation"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExistencePowerCorrelationDisposition</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
@@ -17256,6 +17281,12 @@
   <work3:type rdf:resource="#SubstanceUniquenessInNatureQuality"/>
   <RO_0000052 rdf:resource="#God"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SubstanceUniquenessInNatureQualityInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#AbsoluteInfinityQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#SubstanceInfinityOrPerfectionQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AbsoluteInfinityQuality</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#ThinkingThingRole">
@@ -21829,12 +21860,6 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UniquenessGroundedInPerfectionDisposition</rdfs:label>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#AbsoluteInfinityQuality">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <work:subClassOf rdf:resource="#SubstanceInfinityOrPerfectionQuality"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AbsoluteInfinityQuality</rdfs:label>
-</owl:NamedIndividual>
-
 <owl:NamedIndividual rdf:about="#AbsoluteInfinityGroundedInPerfectionDependence">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <obo:RO_0000052 rdf:resource="#God"/>
@@ -22807,6 +22832,12 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <obo:RO_0000052 rdf:resource="#SquareCircle"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SquareCircleExistenceImpossibility</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ExistencePowerCorrelationPrinciple">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExistencePowerCorrelationPrinciple</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
