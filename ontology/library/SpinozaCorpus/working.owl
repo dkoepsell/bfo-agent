@@ -36416,6 +36416,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ProvidingForThingsProcess</rdfs:label>
 </owl:NamedIndividual>
 
+<owl:NamedIndividual rdf:about="#GodDivinePowerAndWillDispositionInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:RO_0000052 rdf:resource="#God"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodDivinePowerAndWillDispositionInstance</rdfs:label>
+</owl:NamedIndividual>
+
 <owl:NamedIndividual rdf:about="#EternalDecreeOfGod">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EternalDecreeOfGod</rdfs:label>
@@ -46433,10 +46439,24 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NaturalCausationRealizesGodsPowerProcess</rdfs:label>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#GodDivinePowerAndWillDispositionInstance">
+<owl:NamedIndividual rdf:about="#AllThingsDeterminedByGodQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#WholeOfNature"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AllThingsDeterminedByGodQuality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#GodOrdinainsAllThingsProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#God"/>
+  <obo:BFO_0000050 rdf:resource="#GodCausesAllThingsProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodOrdinainsAllThingsProcess</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#DivineOrdinationDisposition">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <obo:RO_0000052 rdf:resource="#God"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodDivinePowerAndWillDispositionInstance</rdfs:label>
+  <obo:BFO_0000054 rdf:resource="#GodOrdinainsAllThingsProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivineOrdinationDisposition</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
