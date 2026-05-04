@@ -29763,12 +29763,18 @@
 
 <owl:Class rdf:about="#PowerOfUnderstanding">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="#RevelationAdaptedToRecipientCapacityDisposition"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PowerOfUnderstanding</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#AdaptedToUnderstandingQuality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AdaptedToUnderstandingQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#RevelationAdaptedToRecipientCapacityDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RevelationAdaptedToRecipientCapacityDisposition</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
@@ -30100,6 +30106,7 @@
   <obo:BFO_0000051 rdf:resource="#OfGodParthood"/>
   <obo:RO_0000053 rdf:resource="#GodDivinePowerInstance"/>
   <obo:RO_0000056 rdf:resource="#DivineCausationOfNaturalThings"/>
+  <obo:RO_0000056 rdf:resource="#RevelationToCain"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">God</rdfs:label>
 </owl:NamedIndividual>
 
@@ -42532,6 +42539,36 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <obo:BFO_0000050 rdf:resource="#CommonOrderOfNature"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AdamLimitedDivineAttributeKnowledge</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Cain">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <obo:RO_0000053 rdf:resource="#CainPowerOfUnderstandingDisposition"/>
+  <obo:RO_0000056 rdf:resource="#RevelationToCain"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Cain</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#CainPowerOfUnderstandingDisposition">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work3:type rdf:resource="#PowerOfUnderstanding"/>
+  <obo:RO_0000052 rdf:resource="#Cain"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CainPowerOfUnderstandingDisposition</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#RevealedAsUnawareOfHumanAffairsQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#RevelationToCain"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RevealedAsUnawareOfHumanAffairsQuality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#RevelationToCain">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#Cain"/>
+  <obo:RO_0000057 rdf:resource="#God"/>
+  <obo:BFO_0000055 rdf:resource="#CainPowerOfUnderstandingDisposition"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RevelationToCain</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
