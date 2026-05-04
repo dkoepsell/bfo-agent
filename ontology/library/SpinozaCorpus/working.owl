@@ -504,6 +504,13 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DerivedEssenceQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#SingularThing">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
+  <work:subClassOf rdf:resource="#ModificationBearer"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SingularThing</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#ModeOfThinkingQuality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ModeOfThinkingQuality</rdfs:label>
@@ -1262,13 +1269,6 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="#Mode"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CognitiveModeDisposition</rdfs:label>
-</owl:Class>
-
-<owl:Class rdf:about="#SingularThing">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
-  <work:subClassOf rdf:resource="#ModificationBearer"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SingularThing</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#ExtendedSubstanceQuality">
@@ -16594,6 +16594,7 @@
 <owl:Class rdf:about="#NonExistentSingularThing">
   <rdfs:subClassOf rdf:resource="#SingularThing"/>
   <work:subClassOf rdf:resource="#SingularThing"/>
+  <work:subClassOf rdf:resource="#ModificationBearer"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NonExistentSingularThing</rdfs:label>
 </owl:Class>
 
@@ -16613,6 +16614,20 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IdeaComprehensionInInfiniteIdea</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ComprehendedInAttributeQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#ContingentExistenceQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ComprehendedInAttributeQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#VirtualExistenceInAttribute">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="#FormalExistenceNecessitation"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">VirtualExistenceInAttribute</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
