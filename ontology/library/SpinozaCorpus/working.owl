@@ -82,6 +82,7 @@
   <obo:RO_0000052 rdf:resource="#Substance"/>
   <work:subClassOf rdf:resource="#ConceivableThroughItself"/>
   <work:subClassOf rdf:resource="#EternalAndInfiniteEssenceExpression"/>
+  <work:subClassOf rdf:resource="#AttributeSatisfiesSubstanceDefinitionQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Attribute</rdfs:label>
 </owl:Class>
 
@@ -26720,6 +26721,28 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UniversalKnownness</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#AttributeSatisfiesSubstanceDefinitionQuality">
+  <rdfs:subClassOf rdf:resource="#EssentialExistenceQuality"/>
+  <work:subClassOf rdf:resource="#EssentialExistenceQuality"/>
+  <work:subClassOf rdf:resource="#AttributeSatisfiesSubstanceDefinitionQuality"/>
+  <obo:RO_0000052 rdf:resource="#Attribute"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AttributeSatisfiesSubstanceDefinitionQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#AttributeIsConceivableThroughItselfQuality">
+  <rdfs:subClassOf rdf:resource="#ConceptualIndependence"/>
+  <work:subClassOf rdf:resource="#ConceptualIndependence"/>
+  <obo:RO_0000052 rdf:resource="#Attribute"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AttributeIsConceivableThroughItselfQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#AttributeIsInItselfQuality">
+  <rdfs:subClassOf rdf:resource="#EssentialExistenceQuality"/>
+  <work:subClassOf rdf:resource="#EssentialExistenceQuality"/>
+  <obo:RO_0000052 rdf:resource="#Attribute"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AttributeIsInItselfQuality</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
@@ -29729,6 +29752,14 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IdeaOfHumanBodyEssence</rdfs:label>
 </owl:NamedIndividual>
 
+<owl:NamedIndividual rdf:about="#SubstanceUniquenessQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work3:type rdf:resource="#UniquenessInNatureQuality"/>
+  <obo:RO_0000052 rdf:resource="#ExtendedSubstance"/>
+  <work:subClassOf rdf:resource="#EssentialExistenceQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SubstanceUniquenessQuality</rdfs:label>
+</owl:NamedIndividual>
+
 <owl:NamedIndividual rdf:about="#AttributePriorToModesQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <obo:RO_0000052 rdf:resource="#Extension"/>
@@ -30404,14 +30435,6 @@
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
   <obo:RO_0000052 rdf:resource="#ExtendedSubstance"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IndivisibilityQuality</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#SubstanceUniquenessQuality">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <work3:type rdf:resource="#UniquenessInNatureQuality"/>
-  <obo:RO_0000052 rdf:resource="#ExtendedSubstance"/>
-  <work:subClassOf rdf:resource="#EssentialExistenceQuality"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SubstanceUniquenessQuality</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#ThreeDimensionalSpatialExtensionQuality">
