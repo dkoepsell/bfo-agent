@@ -30474,6 +30474,7 @@
 
 <owl:Class rdf:about="#HumanAgent">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HumanAgent</rdfs:label>
 </owl:Class>
 
@@ -30501,6 +30502,27 @@
   <obo:RO_0000052 rdf:resource="#Man"/>
   <obo:BFO_0000050 rdf:resource="#PowerOfNature"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PartOfPowerOfNatureDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#HumanMindPower">
+  <rdfs:subClassOf rdf:resource="#HumanPower"/>
+  <work:subClassOf rdf:resource="#HumanPower"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HumanMindPower</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#HumanDecisionProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000055 rdf:resource="#HumanPower"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HumanDecisionProcess</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#LawProductionFromHumanPowerProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000055 rdf:resource="#HumanMindPower"/>
+  <obo:BFO_0000050 rdf:resource="#HumanDecisionProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LawProductionFromHumanPowerProcess</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
