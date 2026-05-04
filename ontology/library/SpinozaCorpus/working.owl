@@ -19766,6 +19766,7 @@
   <rdfs:subClassOf rdf:resource="#Joy"/>
   <work:subClassOf rdf:resource="#Joy"/>
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Pleasure</rdfs:label>
 </owl:Class>
 
@@ -21423,6 +21424,8 @@
 <owl:Class rdf:about="#Pain">
   <rdfs:subClassOf rdf:resource="#Sadness"/>
   <work:subClassOf rdf:resource="#Sadness"/>
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:BFO_0000051 rdf:resource="#PainRestrainsExcessivePleasureDisposition"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Pain</rdfs:label>
 </owl:Class>
 
@@ -23504,6 +23507,29 @@
   <work:subClassOf rdf:resource="#Pleasure"/>
   <work:subClassOf rdf:resource="#EvilQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExcessivePleasureQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ExcessivePleasure">
+  <rdfs:subClassOf rdf:resource="#Pleasure"/>
+  <work:subClassOf rdf:resource="#Pleasure"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExcessivePleasure</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#RestrainingOfExcessivePleasure">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RestrainingOfExcessivePleasure</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PainAsGoodQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PainAsGoodQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PainRestrainsExcessivePleasureDisposition">
+  <rdfs:subClassOf rdf:resource="#Pain"/>
+  <obo:BFO_0000054 rdf:resource="#RestrainingOfExcessivePleasure"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PainRestrainsExcessivePleasureDisposition</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
