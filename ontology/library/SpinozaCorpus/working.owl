@@ -43871,6 +43871,24 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NationalTrueVirtueEquality</rdfs:label>
 </owl:NamedIndividual>
 
+<owl:NamedIndividual rdf:about="#SignOfCircumcision">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SignOfCircumcision</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#EternalPreservation">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:RO_0000052 rdf:resource="#SignOfCircumcision"/>
+  <obo:BFO_0000054 rdf:resource="#NationalPreservationProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EternalPreservation</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#NationalPreservationProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#JewishNation"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NationalPreservationProcess</rdfs:label>
+</owl:NamedIndividual>
+
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
   <rdfs:label xml:lang="en">realized in</rdfs:label>
   <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A realizable entity (e.g., role, disposition, function) is realized in some process. r realized_in p if r is borne by some independent continuant during the process p.</rdfs:comment>
