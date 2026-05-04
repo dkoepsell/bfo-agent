@@ -3570,6 +3570,7 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
   <obo:RO_0000053 rdf:resource="#HumanExistenceQuality"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <work:subClassOf rdf:resource="#_:x [RO_0000053 some working:WillRestraintWithinIntellectDisposition]"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Human</rdfs:label>
 </owl:Class>
 
@@ -13969,18 +13970,19 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <obo:BFO_0000054 rdf:resource="#PerfectionIncreaseProcess"/>
   <work:subClassOf rdf:resource="#WillErrorRestraintDisposition"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WillRestraintWithinIntellectDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PerfectionIncreaseProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PerfectionIncreaseProcess</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#PerfectionIncreaseDisposition">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <obo:BFO_0000054 rdf:resource="#PerfectionIncreaseProcess"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PerfectionIncreaseDisposition</rdfs:label>
-</owl:Class>
-
-<owl:Class rdf:about="#PerfectionIncreaseProcess">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PerfectionIncreaseProcess</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#WillIntellectAlignmentQuality">
