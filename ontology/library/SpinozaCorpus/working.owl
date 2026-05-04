@@ -2196,6 +2196,14 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">InstrumentRole</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#AcquisitionProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#Money"/>
+  <obo:RO_0000057 rdf:resource="#AidToLife"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AcquisitionProcess</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#Esteem">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
   <work:subClassOf rdf:resource="#Honor"/>
@@ -5975,6 +5983,7 @@
   <work:subClassOf rdf:resource="#PartOfExtendedSubstance"/>
   <obo:BFO_0000050 rdf:resource="#HumanBody"/>
   <work:subClassOf rdf:resource="#HumanBody"/>
+  <obo:BFO_0000051 rdf:resource="#BodyPartFunction"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BodyPart</rdfs:label>
 </owl:Class>
 
@@ -8814,12 +8823,10 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TransgressibilityDisposition</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#AcquisitionProcess">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <obo:RO_0000057 rdf:resource="#Money"/>
-  <obo:RO_0000057 rdf:resource="#AidToLife"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AcquisitionProcess</rdfs:label>
+<owl:Class rdf:about="#AidToLife">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AidToLife</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#NaturalParthood">
@@ -25084,12 +25091,6 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SufficiencyForSustenanceDisposition</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#AidToLife">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AidToLife</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#ConvenienceQuality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
@@ -25116,6 +25117,24 @@
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <obo:BFO_0000054 rdf:resource="#AcquisitionOfAids"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MoneyInstrumentRoleDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#BodyPartFunction">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:BFO_0000054 rdf:resource="#BodyPartFunctionPerformance"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BodyPartFunction</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#BodyPartFunctionPerformance">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BodyPartFunctionPerformance</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#GoodAssistsBodyPartFunctionDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="#Good"/>
+  <obo:BFO_0000054 rdf:resource="#BodyPartFunctionPerformance"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GoodAssistsBodyPartFunctionDisposition</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
