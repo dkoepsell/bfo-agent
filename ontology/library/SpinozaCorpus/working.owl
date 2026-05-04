@@ -30861,6 +30861,18 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DecreeEternalityQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#NormativeCommand">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NormativeCommand</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DivineNaturalLawContent">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivineNaturalLawContent</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -34957,6 +34969,18 @@
 <owl:NamedIndividual rdf:about="#ProphetRoleInstance">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ProphetRole</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#NecessityOfDivineNatureDisposition">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:RO_0000052 rdf:resource="#God"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NecessityOfDivineNatureDisposition</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#DivineGuidanceFromPerfectionDisposition">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:RO_0000052 rdf:resource="#God"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivineGuidanceFromPerfectionDisposition</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#EternalDecreeOfGod">
@@ -44464,16 +44488,17 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RevealedThings</rdfs:label>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#NecessityOfDivineNatureDisposition">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <obo:RO_0000052 rdf:resource="#God"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NecessityOfDivineNatureDisposition</rdfs:label>
+<owl:NamedIndividual rdf:about="#DivineNaturalLaw">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work3:type rdf:resource="#DivineNaturalLawContent"/>
+  <obo:BFO_0000051 rdf:resource="#SeekGoodFromLoveOfGood"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivineNaturalLaw</rdfs:label>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#DivineGuidanceFromPerfectionDisposition">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <obo:RO_0000052 rdf:resource="#God"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivineGuidanceFromPerfectionDisposition</rdfs:label>
+<owl:NamedIndividual rdf:about="#SeekGoodFromLoveOfGood">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work3:type rdf:resource="#NormativeCommand"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SeekGoodFromLoveOfGood</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
