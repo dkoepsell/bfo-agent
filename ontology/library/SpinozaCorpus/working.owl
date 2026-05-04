@@ -23660,6 +23660,8 @@
 
 <owl:Class rdf:about="#NatureAgreement">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#NatureAdaptation"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NatureAgreement</rdfs:label>
 </owl:Class>
 
@@ -27097,6 +27099,26 @@
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <obo:BFO_0000055 rdf:resource="#LawOrNatureOfPart"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MutualAdaptationOfLaws</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#NatureAdaptation">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NatureAdaptation</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#WholePartRelationCondition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:BFO_0000054 rdf:resource="#NatureAdaptationProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WholePartRelationCondition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#NatureAdaptationProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000055 rdf:resource="#WholePartRelationCondition"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NatureAdaptationProcess</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
