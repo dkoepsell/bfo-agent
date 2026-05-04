@@ -29701,6 +29701,18 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PropheticVariationDisposition</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#LearningProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LearningProcess</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PropheticKnowledgeQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PropheticKnowledgeQuality</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -42293,6 +42305,12 @@
   <work3:type rdf:resource="#ImaginativeNatureQuality"/>
   <obo:RO_0000052 rdf:resource="#DanielsWordsInProphecy"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DanielsWordsImaginativeNatureQualityInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ProphecyDoesNotIncreaseLearnednessQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work3:type rdf:resource="#PropheticKnowledgeQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ProphecyDoesNotIncreaseLearnednessQuality</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
