@@ -289,6 +289,7 @@
 <owl:Class rdf:about="#CausalReasonForExistence">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="#ExistenceOrNonexistenceCausalReason"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CausalReasonForExistence</rdfs:label>
 </owl:Class>
 
@@ -15186,6 +15187,23 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">InfiniteAttributesQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#ExistenceOrNonexistenceCausalReason">
+  <rdfs:subClassOf rdf:resource="#CausalReasonForExistence"/>
+  <work:subClassOf rdf:resource="#CausalReasonForExistence"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExistenceOrNonexistenceCausalReason</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#NonexistenceCausalReason">
+  <rdfs:subClassOf rdf:resource="#ExistenceOrNonexistenceCausalReason"/>
+  <work:subClassOf rdf:resource="#ExistenceOrNonexistenceCausalReason"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NonexistenceCausalReason</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ExistenceCausalReasonSubclass">
+  <rdfs:subClassOf rdf:resource="#ExistenceOrNonexistenceCausalReason"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExistenceCausalReasonSubclass</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
@@ -22712,6 +22730,12 @@
   <work3:type rdf:resource="#EssenceContainsExistenceDisposition"/>
   <obo:RO_0000052 rdf:resource="#God"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodEssenceContainsExistenceInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#CausalReasonAssignmentPrinciple">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CausalReasonAssignmentPrinciple</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
