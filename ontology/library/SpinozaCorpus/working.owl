@@ -8365,6 +8365,29 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Prophet</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#PietyConstancy">
+  <rdfs:subClassOf rdf:resource="#Piety"/>
+  <work:subClassOf rdf:resource="#Piety"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PietyConstancy</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PropheticImagination">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:BFO_0000054 rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#Prophet"/>
+  <obo:BFO_0000051 rdf:resource="#PropheticImaginingContent"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PropheticImagination</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PropheticImaginationVividnessQuality">
+  <rdfs:subClassOf rdf:resource="#VividnessQuality"/>
+  <work:subClassOf rdf:resource="#VividnessQuality"/>
+  <work:subClassOf rdf:resource="#ImaginationPerfectionQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PropheticImaginationVividnessQuality</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#InfallibilityAbsenceQuality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
@@ -11239,6 +11262,7 @@
 
 <owl:Class rdf:about="#MathematicalCertainty">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MathematicalCertainty</rdfs:label>
 </owl:Class>
 
@@ -15763,29 +15787,6 @@
 <owl:Class rdf:about="#Godliness">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Godliness</rdfs:label>
-</owl:Class>
-
-<owl:Class rdf:about="#PietyConstancy">
-  <rdfs:subClassOf rdf:resource="#Piety"/>
-  <work:subClassOf rdf:resource="#Piety"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PietyConstancy</rdfs:label>
-</owl:Class>
-
-<owl:Class rdf:about="#PropheticImagination">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <obo:BFO_0000054 rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <obo:RO_0000057 rdf:resource="#Prophet"/>
-  <obo:BFO_0000051 rdf:resource="#PropheticImaginingContent"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PropheticImagination</rdfs:label>
-</owl:Class>
-
-<owl:Class rdf:about="#PropheticImaginationVividnessQuality">
-  <rdfs:subClassOf rdf:resource="#VividnessQuality"/>
-  <work:subClassOf rdf:resource="#VividnessQuality"/>
-  <work:subClassOf rdf:resource="#ImaginationPerfectionQuality"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PropheticImaginationVividnessQuality</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#Piety">
@@ -29288,6 +29289,19 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SignIndependence</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PropheticCertainty">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#MoralCertainty"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PropheticCertainty</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#MoralCertainty">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MoralCertainty</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
