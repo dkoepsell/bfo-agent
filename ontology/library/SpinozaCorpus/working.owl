@@ -4336,6 +4336,17 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GuidanceOfReason</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#RationalAgent">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <obo:RO_0000053 rdf:resource="#GuidanceByReason"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <obo:RO_0000053 rdf:resource="#LivingAccordingToReason"/>
+  <obo:RO_0000053 rdf:resource="#AgreementInNature"/>
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RationalAgent</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#Animal">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
   <obo:RO_0000053 rdf:resource="#AnimalExistenceQuality"/>
@@ -20083,6 +20094,7 @@
   <work:subClassOf rdf:resource="#FavorDirectednessTowardBenefactor"/>
   <rdfs:subClassOf rdf:resource="#Love"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="#FavorDirectednessTowardBenefactorQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Favor</rdfs:label>
 </owl:Class>
 
@@ -20096,6 +20108,7 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
   <obo:BFO_0000054 rdf:resource="#BeneficialAct"/>
+  <obo:BFO_0000054 rdf:resource="#BenefitingProcess"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Benefactor</rdfs:label>
 </owl:Class>
 
@@ -23006,17 +23019,6 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RationalGuidanceProcess</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#RationalAgent">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
-  <obo:RO_0000053 rdf:resource="#GuidanceByReason"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
-  <obo:RO_0000053 rdf:resource="#LivingAccordingToReason"/>
-  <obo:RO_0000053 rdf:resource="#AgreementInNature"/>
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RationalAgent</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#LivingAccordingToReason">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
@@ -23717,6 +23719,11 @@
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <obo:RO_0000052 rdf:resource="#Pity"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EvilInItselfQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#FavorDirectednessTowardBenefactorQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FavorDirectednessTowardBenefactorQuality</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
