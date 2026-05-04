@@ -14955,6 +14955,23 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NothingInCommonQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#CausalRequirementOfCommonNature">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CausalRequirementOfCommonNature</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#CausalIncapacityFromNoCommonNature">
+  <rdfs:subClassOf rdf:resource="#CausalRequirementOfCommonNature"/>
+  <work:subClassOf rdf:resource="#CausalRequirementOfCommonNature"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CausalIncapacityFromNoCommonNature</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SharedNatureQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#RelationalQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SharedNatureQuality</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#God">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
   <obo:BFO_0000051 rdf:resource="#DivineAttribute"/>
