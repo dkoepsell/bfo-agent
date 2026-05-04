@@ -20659,6 +20659,13 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EnvyAndBadHeartDisposition</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#JoyFromComparisonArisingProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000050 rdf:resource="#ComparisonWithOthers"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">JoyFromComparisonArisingProcess</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#Overestimation">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="#Joy"/>
@@ -30111,13 +30118,6 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ComparisonWithOthers</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#JoyFromComparisonArisingProcess">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <obo:BFO_0000050 rdf:resource="#ComparisonWithOthers"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">JoyFromComparisonArisingProcess</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#HumanGovernance">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
@@ -30148,6 +30148,24 @@
   <obo:BFO_0000055 rdf:resource="#InjuryAvoidanceDisposition"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GovernanceAndVigilanceProcess</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SocialOrder">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
+  <obo:BFO_0000051 rdf:resource="#Law"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SocialOrder</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SocialOrderFormationDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:BFO_0000054 rdf:resource="#SocialOrderFormationProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SocialOrderFormationDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SocialOrderFormationProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SocialOrderFormationProcess</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
@@ -43358,6 +43376,12 @@
   <obo:RO_0000056 rdf:resource="#ApostolicReasoning"/>
   <obo:RO_0000056 rdf:resource="#ApostolicSigns"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ApostolicAudience</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ReasonAndExperienceInstruction">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ReasonAndExperienceInstruction</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
