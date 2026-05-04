@@ -16244,6 +16244,23 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LoveOfGodArisesFromKnowledgeProcess</rdfs:label>
 </owl:NamedIndividual>
 
+<owl:NamedIndividual rdf:about="#GodImmanentCauseRole">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <work3:type rdf:resource="#ImmanentCausation"/>
+  <RO_0000052 rdf:resource="#God"/>
+  <obo:BFO_0000054 rdf:resource="#ImmanentCausationProcess"/>
+  <obo:BFO_0000054 rdf:resource="#GodCausesAllThingsProcess"/>
+  <obo:BFO_0000054 rdf:resource="#GodImmanentCauseRoleRealization"/>
+  <obo:BFO_0000054 rdf:resource="#ImmanentCausalUnification"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <obo:RO_0000053 rdf:resource="#ImmanentCauseFreestQualityInstance"/>
+  <obo:RO_0000053 rdf:resource="#ImmanentCauseSuitabilityQualityInstance"/>
+  <work:subClassOf rdf:resource="#ImmanentCauseRole"/>
+  <work3:type rdf:resource="#ImmanentCauseRole"/>
+  <obo:RO_0000052 rdf:resource="#God"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodImmanentCauseRole</rdfs:label>
+</owl:NamedIndividual>
+
 <owl:NamedIndividual rdf:about="#GodRemoteCauseRole">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
   <work3:type rdf:resource="#RemoteCauseRole"/>
@@ -16458,23 +16475,6 @@
   <work3:type rdf:resource="#ExistenceNecessitation"/>
   <obo:RO_0000052 rdf:resource="#God"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodNecessaryExistenceDisposition</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#GodImmanentCauseRole">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
-  <work3:type rdf:resource="#ImmanentCausation"/>
-  <RO_0000052 rdf:resource="#God"/>
-  <obo:BFO_0000054 rdf:resource="#ImmanentCausationProcess"/>
-  <obo:BFO_0000054 rdf:resource="#GodCausesAllThingsProcess"/>
-  <obo:BFO_0000054 rdf:resource="#GodImmanentCauseRoleRealization"/>
-  <obo:BFO_0000054 rdf:resource="#ImmanentCausalUnification"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
-  <obo:RO_0000053 rdf:resource="#ImmanentCauseFreestQualityInstance"/>
-  <obo:RO_0000053 rdf:resource="#ImmanentCauseSuitabilityQualityInstance"/>
-  <work:subClassOf rdf:resource="#ImmanentCauseRole"/>
-  <work3:type rdf:resource="#ImmanentCauseRole"/>
-  <obo:RO_0000052 rdf:resource="#God"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodImmanentCauseRole</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#GodCausesAllThings">
@@ -23436,6 +23436,13 @@
   <obo:RO_0000052 rdf:resource="#GodIntellect"/>
   <work3:type rdf:resource="#ExistenceDifferenceQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodIntellectExistenceDifference</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#GodEternalityQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work3:type rdf:resource="#SubstanceExistenceEternalityQuality"/>
+  <obo:RO_0000052 rdf:resource="#God"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodEternalityQuality</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
