@@ -13203,6 +13203,8 @@
 <owl:Class rdf:about="#EternityQuality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:subClassOf rdf:resource="#EternalAndInfiniteFollowingQuality"/>
+  <work:subClassOf rdf:resource="#EternalAndInfiniteFollowingQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EternityQuality</rdfs:label>
 </owl:Class>
 
@@ -15670,6 +15672,31 @@
   <rdfs:subClassOf rdf:resource="#EternalityQuality"/>
   <work:subClassOf rdf:resource="#EternalityQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivineAttributeEternalityQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ThingsFollowingFromGodAttributes">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ThingsFollowingFromGodAttributes</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#EternalAndInfiniteFollowingQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EternalAndInfiniteFollowingQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#InfinityQuality">
+  <rdfs:subClassOf rdf:resource="#EternalAndInfiniteFollowingQuality"/>
+  <work:subClassOf rdf:resource="#EternalAndInfiniteFollowingQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">InfinityQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#AttributeConsequenceDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:RO_0000052 rdf:resource="#Attribute"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AttributeConsequenceDisposition</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
