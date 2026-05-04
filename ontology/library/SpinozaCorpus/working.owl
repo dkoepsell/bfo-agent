@@ -20225,6 +20225,8 @@
   <work:subClassOf rdf:resource="#FutureEvilAvoidanceDisposition"/>
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="#DesireToAvoidEvil"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:BFO_0000054 rdf:resource="#DesireRestraintProcess"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Timidity</rdfs:label>
 </owl:Class>
 
@@ -21539,6 +21541,33 @@
 <owl:Class rdf:about="#Equal">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Equal</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#Cowardice">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Cowardice</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DesireRestraintProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#Danger"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DesireRestraintProcess</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#Danger">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Danger</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#CowardPerson">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <obo:RO_0000053 rdf:resource="#Cowardice"/>
+  <obo:RO_0000053 rdf:resource="#Timidity"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CowardPerson</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
