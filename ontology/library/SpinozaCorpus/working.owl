@@ -12207,6 +12207,9 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <obo:BFO_0000054 rdf:resource="#DecreeNecessitationProcess"/>
   <obo:BFO_0000054 rdf:resource="#NecessityFromDecreeProcess"/>
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000050 rdf:resource="#GodCausesAllThingsProcess"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodDecree</rdfs:label>
 </owl:Class>
 
@@ -13469,6 +13472,18 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Striving</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#OurDetermination">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OurDetermination</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DecreeCausationRelation">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DecreeCausationRelation</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#God">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
   <obo:BFO_0000051 rdf:resource="#DivineAttribute"/>
@@ -13704,6 +13719,7 @@
   <obo:BFO_0000055 rdf:resource="#HumanExistenceGodDependence"/>
   <work3:type rdf:resource="#ContinuousCreationProcess"/>
   <work3:type rdf:resource="#ContinualCreationProcess"/>
+  <obo:BFO_0000057 rdf:resource="#OurDetermination"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodCausesAllThingsProcess</rdfs:label>
 </owl:NamedIndividual>
 
@@ -15274,6 +15290,21 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodAbsoluteCauseRole</rdfs:label>
 </owl:NamedIndividual>
 
+<owl:NamedIndividual rdf:about="#GodEternalKnowledgeOfWillDeterminations">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:RO_0000052 rdf:resource="#God"/>
+  <obo:BFO_0000054 rdf:resource="#EternalKnowledgeProcess"/>
+  <work:subClassOf rdf:resource="#SubstanceExistsByEternity"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodEternalKnowledgeOfWillDeterminations</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#EternalKnowledgeProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000055 rdf:resource="#GodEternalKnowledgeOfWillDeterminations"/>
+  <obo:RO_0000057 rdf:resource="#God"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EternalKnowledgeProcess</rdfs:label>
+</owl:NamedIndividual>
+
 <owl:NamedIndividual rdf:about="#ThinkingThingRole">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
   <obo:RO_0000052 rdf:resource="#Speaker"/>
@@ -15842,6 +15873,14 @@
   <obo:RO_0000057 rdf:resource="#God"/>
   <obo:RO_0000057 rdf:resource="#WholeOfNature"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MotionConservationProcess</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#GodWillCausesAllProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000055 rdf:resource="#GodWill"/>
+  <obo:RO_0000057 rdf:resource="#God"/>
+  <obo:BFO_0000050 rdf:resource="#GodCausesAllThingsProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodWillCausesAllProcess</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#AttributeUnityConstraint">
@@ -16919,14 +16958,6 @@
   <obo:BFO_0000050 rdf:resource="#God"/>
   <work3:type rdf:resource="#EternalInfiniteEssence"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodEssence</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#GodWillCausesAllProcess">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <obo:BFO_0000055 rdf:resource="#GodWill"/>
-  <obo:RO_0000057 rdf:resource="#God"/>
-  <obo:BFO_0000050 rdf:resource="#GodCausesAllThingsProcess"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodWillCausesAllProcess</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#DivinePartlessnessQuality">
@@ -20223,21 +20254,6 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <obo:RO_0000052 rdf:resource="#GodWill"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AbsoluteCausalityQualityInstance</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#GodEternalKnowledgeOfWillDeterminations">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <obo:RO_0000052 rdf:resource="#God"/>
-  <obo:BFO_0000054 rdf:resource="#EternalKnowledgeProcess"/>
-  <work:subClassOf rdf:resource="#SubstanceExistsByEternity"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodEternalKnowledgeOfWillDeterminations</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#EternalKnowledgeProcess">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <obo:BFO_0000055 rdf:resource="#GodEternalKnowledgeOfWillDeterminations"/>
-  <obo:RO_0000057 rdf:resource="#God"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EternalKnowledgeProcess</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
