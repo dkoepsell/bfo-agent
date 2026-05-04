@@ -17689,6 +17689,13 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MutilatedKnowledgeQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#IdeaRelatedToGodQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#Attribute"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IdeaRelatedToGodQuality</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
@@ -26785,6 +26792,13 @@
   <work3:type rdf:resource="#ConfusedKnowledgeQuality"/>
   <work3:type rdf:resource="#MutilatedKnowledgeQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConfusedAndMutilatedKnowledgeOfExternalBodiesQuality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#IdeasRelatedToGodAreTrueAxiom">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <obo:BFO_0000050 rdf:resource="#TheEthics"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IdeasRelatedToGodAreTrueAxiom</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
