@@ -8383,6 +8383,8 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <obo:RO_0000057 rdf:resource="#Prophet"/>
   <obo:BFO_0000051 rdf:resource="#PropheticImaginingContent"/>
+  <work:subClassOf rdf:resource="#RevealedAccordingToImaginationDisposition"/>
+  <obo:RO_0000052 rdf:resource="#Prophet"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PropheticImagination</rdfs:label>
 </owl:Class>
 
@@ -28561,6 +28563,7 @@
   <obo:BFO_0000051 rdf:resource="#VisionMedium"/>
   <obo:BFO_0000051 rdf:resource="#DreamMedium"/>
   <obo:BFO_0000051 rdf:resource="#WordMedium"/>
+  <obo:RO_0000057 rdf:resource="#Prophet"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivineRevelationProcess</rdfs:label>
 </owl:Class>
 
@@ -29861,6 +29864,12 @@
   <rdfs:subClassOf rdf:resource="#SupremeRightAndPower"/>
   <work:subClassOf rdf:resource="#SupremeRightAndPower"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DominionOverAllThingsQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#RevealedAccordingToImaginationDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:BFO_0000054 rdf:resource="#DivineRevelationProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RevealedAccordingToImaginationDisposition</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
