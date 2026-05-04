@@ -27503,6 +27503,24 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PrivationOfBeing</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#AbsoluteUnlimitednessQuality">
+  <rdfs:subClassOf rdf:resource="#SubstanceInfinityOrPerfectionQuality"/>
+  <work:subClassOf rdf:resource="#SubstanceInfinityOrPerfectionQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AbsoluteUnlimitednessQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#AbsolutePerfectionQuality">
+  <rdfs:subClassOf rdf:resource="#SubstanceInfinityOrPerfectionQuality"/>
+  <work:subClassOf rdf:resource="#SubstanceInfinityOrPerfectionQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AbsolutePerfectionQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SufficiencyForExistenceDisposition">
+  <rdfs:subClassOf rdf:resource="#FormalExistenceNecessitation"/>
+  <work:subClassOf rdf:resource="#FormalExistenceNecessitation"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SufficiencyForExistenceDisposition</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -30644,6 +30662,14 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <obo:RO_0000052 rdf:resource="#Extension"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CreatedByGodQuality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ExtensionDenialOfThought">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#Extension"/>
+  <work3:type rdf:resource="#AbsenceOfImperfectionQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExtensionDenialOfThought</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#MindEssenceIdea">
@@ -39064,12 +39090,30 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LimitedExtensionConceivabilityAbsence</rdfs:label>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#ExtensionDenialOfThought">
+<owl:NamedIndividual rdf:about="#AbsolutelyUnlimitedAndPerfectBeing">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AbsolutelyUnlimitedAndPerfectBeing</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#KindRelativeUnlimitednessInference">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#God"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">KindRelativeUnlimitednessInference</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#AbsoluteUnlimitednessQualityInstance">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <obo:RO_0000052 rdf:resource="#Extension"/>
-  <work3:type rdf:resource="#AbsenceOfImperfectionQuality"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExtensionDenialOfThought</rdfs:label>
+  <work3:type rdf:resource="#AbsoluteUnlimitednessQuality"/>
+  <obo:RO_0000052 rdf:resource="#God"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AbsoluteUnlimitednessQualityInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#AbsolutePerfectionQualityInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work3:type rdf:resource="#AbsolutePerfectionQuality"/>
+  <obo:RO_0000052 rdf:resource="#God"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AbsolutePerfectionQualityInstance</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
