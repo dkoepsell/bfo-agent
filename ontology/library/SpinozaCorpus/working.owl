@@ -24451,6 +24451,7 @@
 <owl:Class rdf:about="#FearQuality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#FearfulMind"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FearQuality</rdfs:label>
 </owl:Class>
 
@@ -28185,6 +28186,39 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="#Affect"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PowerfulAffect</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SuperstitiousWorshipObject">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SuperstitiousWorshipObject</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#Apparition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="#ImaginationInaccessibility"/>
+  <obo:RO_0000052 rdf:resource="#FearfulMind"/>
+  <obo:BFO_0000054 rdf:resource="#SuperstitiousWorship"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Apparition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#Delusion">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:RO_0000052 rdf:resource="#FearfulMind"/>
+  <obo:BFO_0000054 rdf:resource="#SuperstitiousWorship"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Delusion</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#FearfulMind">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FearfulMind</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SuperstitiousWorship">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#SuperstitiousWorshipObject"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SuperstitiousWorship</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
