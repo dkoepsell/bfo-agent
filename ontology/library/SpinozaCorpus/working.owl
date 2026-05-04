@@ -29713,6 +29713,21 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PropheticKnowledgeQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#BeliefContent">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BeliefContent</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DoxasticDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DoxasticDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#InadequateBelief">
+  <rdfs:subClassOf rdf:resource="#DoxasticDisposition"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">InadequateBelief</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -42311,6 +42326,26 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#PropheticKnowledgeQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ProphecyDoesNotIncreaseLearnednessQuality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Joshua">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Joshua</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#SunMovesAroundEarthBelief">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work3:type rdf:resource="#BeliefContent"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SunMovesAroundEarthBelief</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#JoshuaBeliefInSunMovement">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work3:type rdf:resource="#InadequateBelief"/>
+  <obo:RO_0000052 rdf:resource="#Joshua"/>
+  <obo:BFO_0000051 rdf:resource="#SunMovesAroundEarthBelief"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">JoshuaBeliefInSunMovement</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
