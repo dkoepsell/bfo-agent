@@ -16269,6 +16269,41 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HumanImagination</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#ImaginationMode">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#ImaginationModeSubjectiveBasis"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ImaginationMode</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#Beauty">
+  <rdfs:subClassOf rdf:resource="#ImaginationMode"/>
+  <work:subClassOf rdf:resource="#ImaginationMode"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Beauty</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#Ugliness">
+  <rdfs:subClassOf rdf:resource="#ImaginationMode"/>
+  <work:subClassOf rdf:resource="#ImaginationMode"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Ugliness</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#Pleasantness">
+  <rdfs:subClassOf rdf:resource="#ImaginationMode"/>
+  <work:subClassOf rdf:resource="#ImaginationMode"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Pleasantness</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#Harmony">
+  <rdfs:subClassOf rdf:resource="#ImaginationMode"/>
+  <work:subClassOf rdf:resource="#ImaginationMode"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Harmony</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ImaginationModeSubjectiveBasis">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ImaginationModeSubjectiveBasis</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
