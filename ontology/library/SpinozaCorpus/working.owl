@@ -18220,6 +18220,53 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CausalDeterminednessOfWillingDisposition</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#AbsoluteFaculty">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#AbsoluteFacultyOntologicalStatusQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AbsoluteFaculty</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#AbsoluteIntellect">
+  <rdfs:subClassOf rdf:resource="#AbsoluteFaculty"/>
+  <work:subClassOf rdf:resource="#AbsoluteFaculty"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AbsoluteIntellect</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#AbsoluteWill">
+  <rdfs:subClassOf rdf:resource="#AbsoluteFaculty"/>
+  <work:subClassOf rdf:resource="#AbsoluteFaculty"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AbsoluteWill</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#AbsoluteUnderstanding">
+  <rdfs:subClassOf rdf:resource="#AbsoluteFaculty"/>
+  <work:subClassOf rdf:resource="#AbsoluteFaculty"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AbsoluteUnderstanding</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#AbsoluteDesire">
+  <rdfs:subClassOf rdf:resource="#AbsoluteFaculty"/>
+  <work:subClassOf rdf:resource="#AbsoluteFaculty"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AbsoluteDesire</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#FictionStatusQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#AbsoluteFacultyOntologicalStatusQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FictionStatusQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#MetaphysicalBeingStatusQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#AbsoluteFacultyOntologicalStatusQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MetaphysicalBeingStatusQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#AbsoluteFacultyOntologicalStatusQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AbsoluteFacultyOntologicalStatusQuality</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
@@ -18878,12 +18925,14 @@
   <work3:type rdf:resource="#FictumStatus"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work3:type rdf:resource="#FictionStatusQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WillIsNotRealBeingQuality</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#WillProductionIncapacity">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <obo:RO_0000052 rdf:resource="#Will"/>
+  <work3:type rdf:resource="#FictionStatusQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WillProductionIncapacity</rdfs:label>
 </owl:NamedIndividual>
 
@@ -21108,6 +21157,12 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IncompatibilityOfOmniscienceWithFeigning</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#MindDeterminationByExternalCausesQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#FormalBeingOfHumanMind"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindDeterminationByExternalCausesQuality</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#GodImmanentCauseRoleRealization">
@@ -27567,12 +27622,6 @@
   <work3:type rdf:resource="#AdequateAndPerfectKnowledgeQuality"/>
   <obo:RO_0000052 rdf:resource="#KnowledgeOfGodEternalInfiniteEssence"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AdequateAndPerfectKnowledgeQualityInstance</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#MindDeterminationByExternalCausesQuality">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <obo:RO_0000052 rdf:resource="#FormalBeingOfHumanMind"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindDeterminationByExternalCausesQuality</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#CausalDeterminationChain">
