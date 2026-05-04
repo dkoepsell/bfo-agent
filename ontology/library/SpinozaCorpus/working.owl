@@ -26785,6 +26785,11 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExistimatioMisjudgmentQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#Achting">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Achting</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
@@ -38086,6 +38091,12 @@
 <owl:NamedIndividual rdf:about="#Existimatio_E">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Existimatio_E</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#AchtingDoesNotImplyMisjudgmentAxiom">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work:comment rdf:resource="#Achting (as a disposition) is disjoint from MisjudgmentOfWorth (as a quality): bearing Achting toward X does not entail that the bearer holds an erroneous appraisal of X's worth."/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AchtingDoesNotImplyMisjudgmentAxiom</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
