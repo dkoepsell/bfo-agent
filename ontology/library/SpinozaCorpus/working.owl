@@ -6601,6 +6601,7 @@
   <obo:BFO_0000054 rdf:resource="#DoingEvilToHatedObject"/>
   <rdfs:subClassOf rdf:resource="#Passion"/>
   <work:subClassOf rdf:resource="#Passion"/>
+  <work:subClassOf rdf:resource="#EvilAffect"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Anger</rdfs:label>
 </owl:Class>
 
@@ -7143,6 +7144,7 @@
   <work:subClassOf rdf:resource="#Imperfection"/>
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="#Joy"/>
+  <work:subClassOf rdf:resource="#EvilAffect"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Mockery</rdfs:label>
 </owl:Class>
 
@@ -7934,6 +7936,8 @@
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:subClassOf rdf:resource="#ImaginationInaccessibility"/>
   <work:subClassOf rdf:resource="#ImaginationInaccessibility"/>
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="#EvilAffect"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Disdain</rdfs:label>
 </owl:Class>
 
@@ -20100,6 +20104,8 @@
   <work:subClassOf rdf:resource="#RestrainmentOfPowerOfActing"/>
   <work:subClassOf rdf:resource="#SadnessAtAnotherHappinessQuality"/>
   <work:subClassOf rdf:resource="#GladnessAtAnotherIllFortuneQuality"/>
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="#EvilAffect"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Envy</rdfs:label>
 </owl:Class>
 
@@ -20637,6 +20643,7 @@
   <obo:BFO_0000054 rdf:resource="#EvilAction"/>
   <rdfs:subClassOf rdf:resource="#Passion"/>
   <work:subClassOf rdf:resource="#Passion"/>
+  <work:subClassOf rdf:resource="#EvilAffect"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Vengeance</rdfs:label>
 </owl:Class>
 
@@ -23545,6 +23552,12 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="#ExistenceNonEvilQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HateCannotBeGoodQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#EvilAffect">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EvilAffect</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
