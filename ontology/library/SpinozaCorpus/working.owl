@@ -2082,6 +2082,8 @@
   <work:subClassOf rdf:resource="#PrimitiveAffect"/>
   <work:subClassOf rdf:resource="#PrimaryAffect"/>
   <work:subClassOf rdf:resource="#DirectEvil"/>
+  <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work2:sameAs rdf:resource="#TransitionToLesserPerfection"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Sadness</rdfs:label>
 </owl:Class>
 
