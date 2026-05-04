@@ -8981,6 +8981,24 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Creature</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#EssenceDependenceOnGodQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#RelationalQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EssenceDependenceOnGodQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PerfectionDependenceOnGodQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#RelationalQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PerfectionDependenceOnGodQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#CreatureEssenceDependenceDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:BFO_0000054 rdf:resource="#CreatureEssenceCausationProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CreatureEssenceDependenceDisposition</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#ExtraIntellectualDefinition">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
@@ -13917,29 +13935,34 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OmniscienceDisposition</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#EssenceDependenceOnGodQuality">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <work:subClassOf rdf:resource="#RelationalQuality"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EssenceDependenceOnGodQuality</rdfs:label>
-</owl:Class>
-
-<owl:Class rdf:about="#PerfectionDependenceOnGodQuality">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <work:subClassOf rdf:resource="#RelationalQuality"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PerfectionDependenceOnGodQuality</rdfs:label>
-</owl:Class>
-
-<owl:Class rdf:about="#CreatureEssenceDependenceDisposition">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <obo:BFO_0000054 rdf:resource="#CreatureEssenceCausationProcess"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CreatureEssenceDependenceDisposition</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#CreatureEssenceCausationProcess">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <work:subClassOf rdf:resource="#EssenceCausationProcess"/>
   <obo:RO_0000057 rdf:resource="#God"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CreatureEssenceCausationProcess</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#Godless">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Godless</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DivinelyGrantedEssenceQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivinelyGrantedEssenceQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#EssenceGrantingDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EssenceGrantingDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#EssenceDelimitationConstraint">
+  <rdfs:subClassOf rdf:resource="#SubstanceProductionConstraint"/>
+  <work:subClassOf rdf:resource="#SubstanceProductionConstraint"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EssenceDelimitationConstraint</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#God">
@@ -14157,6 +14180,8 @@
   <obo:RO_0000053 rdf:resource="#DivineConcurrenceInstance"/>
   <obo:RO_0000056 rdf:resource="#GodConcursWithAllPositiveActsProcess"/>
   <obo:RO_0000053 rdf:resource="#GodKnowledgeOfHumanActionsQuality"/>
+  <obo:RO_0000056 rdf:resource="#DivineWillingProcess"/>
+  <obo:RO_0000056 rdf:resource="#EssenceGrantingProcess"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">God</rdfs:label>
 </owl:NamedIndividual>
 
@@ -20868,6 +20893,19 @@
   <obo:RO_0000057 rdf:resource="#Speaker"/>
   <obo:BFO_0000055 rdf:resource="#GodProximateCauseRole"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ImpressingOfIntellectWillOrderProcess</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#DivineWillingProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000050 rdf:resource="#GodCausesAllThingsProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivineWillingProcess</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#EssenceGrantingProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000050 rdf:resource="#GodCausesAllThingsProcess"/>
+  <obo:BFO_0000055 rdf:resource="#EssenceGrantingDisposition"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EssenceGrantingProcess</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
