@@ -16352,6 +16352,28 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NominalExistenceOutsideImaginationQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#PerfectionOfThings">
+  <rdfs:subClassOf rdf:resource="#SubstanceInfinityOrPerfectionQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PerfectionOfThings</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#NatureAndPowerBasisQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#PerfectionOfThings"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NatureAndPowerBasisQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#HumanSensoryResponseQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HumanSensoryResponseQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PerfectionJudgmentCriterionDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="#PerfectionOfThings"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PerfectionJudgmentCriterionDisposition</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
