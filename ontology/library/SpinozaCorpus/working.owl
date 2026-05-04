@@ -26305,6 +26305,8 @@
 <owl:Class rdf:about="#WiseMan">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000053"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WiseMan</rdfs:label>
 </owl:Class>
 
@@ -26318,6 +26320,29 @@
   <rdfs:subClassOf rdf:resource="#PowerQuality"/>
   <work:subClassOf rdf:resource="#PowerQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HigherPowerQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ConsciousnessOfSelfByEternalNecessity">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#EternalNecessityConsciousness"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConsciousnessOfSelfByEternalNecessity</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ConsciousnessOfGodByEternalNecessity">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#EternalNecessityConsciousness"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConsciousnessOfGodByEternalNecessity</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ConsciousnessOfThingsByEternalNecessity">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#EternalNecessityConsciousness"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConsciousnessOfThingsByEternalNecessity</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#EternalNecessityConsciousness">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EternalNecessityConsciousness</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
@@ -26999,6 +27024,7 @@
   <obo:RO_0000052 rdf:resource="#HumanMind"/>
   <work3:type rdf:resource="#AdequateIdeaQuality"/>
   <obo:BFO_0000050 rdf:resource="#MindKnowsGodNecessarilyProcess"/>
+  <obo:BFO_0000050 rdf:resource="#ConsciousnessOfGodByEternalNecessity"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AdequateKnowledgeOfGodQualityInstance</rdfs:label>
 </owl:NamedIndividual>
 
