@@ -6311,6 +6311,18 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DestructiveQualityValuation</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#Madness">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="#Mode"/>
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Madness</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#OverestimationOfSelfQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OverestimationOfSelfQuality</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#FalseSelfAttributionProcess">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
@@ -14189,13 +14201,6 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CorporealChange</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#Madness">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <work:subClassOf rdf:resource="#Mode"/>
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Madness</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#FeverCausesMadnessRelation">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FeverCausesMadnessRelation</rdfs:label>
@@ -19519,9 +19524,16 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Envy</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#OverestimationOfSelfQuality">
+<owl:Class rdf:about="#Overestimation">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OverestimationOfSelfQuality</rdfs:label>
+  <work:subClassOf rdf:resource="#Joy"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Overestimation</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#UnfairlyElevatedOpinionOfAnother">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UnfairlyElevatedOpinionOfAnother</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
@@ -29321,6 +29333,13 @@
   <work3:type rdf:resource="#TemporalObjectIndifferenceQuality"/>
   <obo:RO_0000052 rdf:resource="#Sadness"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SadnessTemporalObjectIndifference</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#OverestimationDefinition">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <obo:BFO_0000050 rdf:resource="#TheEthics"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OverestimationDefinition</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
