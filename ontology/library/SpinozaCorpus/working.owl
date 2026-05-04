@@ -2136,6 +2136,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EpistemicQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#PrivationOfDoubt">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PrivationOfDoubt</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#ObjectiveBeingQuality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
@@ -3052,6 +3058,7 @@
   <work:subClassOf rdf:resource="#IdeaFormationCapacity"/>
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work:subClassOf rdf:resource="#AffirmationOrNegationInvolvementDisposition"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Negation</rdfs:label>
 </owl:Class>
 
@@ -3762,6 +3769,7 @@
   <rdfs:subClassOf rdf:resource="#Idea"/>
   <work:subClassOf rdf:resource="#Idea"/>
   <work:subClassOf rdf:resource="#CognitiveModeDisposition"/>
+  <work:subClassOf rdf:resource="#AffirmationOrNegationInvolvementDisposition"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Affirmation</rdfs:label>
 </owl:Class>
 
@@ -18353,10 +18361,10 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PositivenessOfCertaintyQuality</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#PrivationOfDoubt">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PrivationOfDoubt</rdfs:label>
+<owl:Class rdf:about="#AffirmationOrNegationInvolvementDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AffirmationOrNegationInvolvementDisposition</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
