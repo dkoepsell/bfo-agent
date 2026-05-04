@@ -19622,6 +19622,11 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">StrivingToPlease</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#ActionOfAnother">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ActionOfAnother</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#PleaseOthersMotivation">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
@@ -19635,15 +19640,33 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Praise</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#ActionOfAnother">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ActionOfAnother</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#RegardingOfAction">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <obo:RO_0000057 rdf:resource="#ActionOfAnother"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RegardingOfAction</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#Blame">
+  <rdfs:subClassOf rdf:resource="#Sadness"/>
+  <work:subClassOf rdf:resource="#Sadness"/>
+  <work:subClassOf rdf:resource="#BlameAversion"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Blame</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#AffectiveAversion">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AffectiveAversion</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#AnotherPersonsAction">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AnotherPersonsAction</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#BlameAversion">
+  <rdfs:subClassOf rdf:resource="#AffectiveAversion"/>
+  <obo:BFO_0000054 rdf:resource="#AnotherPersonsAction"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BlameAversion</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
