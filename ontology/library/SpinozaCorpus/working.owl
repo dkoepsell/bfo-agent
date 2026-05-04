@@ -31295,6 +31295,30 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AbsenceOfStateLawTeachingQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#UniversalDivineLaw">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UniversalDivineLaw</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#CeremonialPractice">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CeremonialPractice</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#FollowingUniversalDivineLaw">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000055 rdf:resource="#BlessednessRealizationDisposition"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FollowingUniversalDivineLaw</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#BlessednessRealizationDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:BFO_0000054 rdf:resource="#FollowingUniversalDivineLaw"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BlessednessRealizationDisposition</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -35070,6 +35094,12 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <obo:BFO_0000055 rdf:resource="#AdequatePerceptionDisposition"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ChristAdequatePerceptionProcess</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ChristTeachingProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#Christ"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TeachingProcess</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#PartOfMindThatPerishesWithBody">
@@ -45003,12 +45033,6 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ChristTeaching</rdfs:label>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#ChristTeachingProcess">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <obo:RO_0000057 rdf:resource="#Christ"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TeachingProcess</rdfs:label>
-</owl:NamedIndividual>
-
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
   <rdfs:label xml:lang="en">realized in</rdfs:label>
   <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A realizable entity (e.g., role, disposition, function) is realized in some process. r realized_in p if r is borne by some independent continuant during the process p.</rdfs:comment>
@@ -45318,6 +45342,10 @@
 
 <rdf:Description rdf:about="#ClearUnderstandingQuality">
   <work:subClassOf rdf:resource="#TruePerceptionQuality"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#BlessednessLawDependenceQuality">
+  <work:subClassOf rdf:resource="#Blessedness"/>
 </rdf:Description>
 
 
