@@ -15996,6 +15996,56 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FollowsFromNecessityOfGodDisposition</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#ActualIntellect">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000053"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ActualIntellect</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#FiniteActualIntellect">
+  <rdfs:subClassOf rdf:resource="#ActualIntellect"/>
+  <work:subClassOf rdf:resource="#ActualIntellect"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FiniteActualIntellect</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#InfiniteActualIntellect">
+  <rdfs:subClassOf rdf:resource="#ActualIntellect"/>
+  <work:subClassOf rdf:resource="#ActualIntellect"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">InfiniteActualIntellect</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ComprehensionOfGodAttributesDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:RO_0000052 rdf:resource="#ActualIntellect"/>
+  <obo:BFO_0000054 rdf:resource="#ComprehensionOfGodAttributesProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ComprehensionOfGodAttributesDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ComprehensionOfGodAffectionsDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:RO_0000052 rdf:resource="#ActualIntellect"/>
+  <obo:BFO_0000054 rdf:resource="#ComprehensionOfGodAffectionsProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ComprehensionOfGodAffectionsDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#GodAffection">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000020"/>
+  <obo:RO_0000052 rdf:resource="#God"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodAffection</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ComprehensionOfGodAttributesProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#ActualIntellect"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ComprehensionOfGodAttributesProcess</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ComprehensionOfGodAffectionsProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#ActualIntellect"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ComprehensionOfGodAffectionsProcess</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
@@ -16788,6 +16838,15 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <obo:RO_0000057 rdf:resource="#God"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ModeFollowingFromDivineNatureProcess</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#NaturaNaturata">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
+  <work3:type rdf:resource="#Substance"/>
+  <obo:BFO_0000050 rdf:resource="#WholeOfNature"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
+  <work:subClassOf rdf:resource="#NaturaNaturata"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NaturaNaturata</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#NaturaNaturans">
@@ -18214,6 +18273,13 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NecessityOfExistenceQualityOfGod</rdfs:label>
 </owl:NamedIndividual>
 
+<owl:NamedIndividual rdf:about="#NaturaNaturataDefinitionContent">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <obo:BFO_0000050 rdf:resource="#TheEthics"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NaturaNaturataDefinitionContent</rdfs:label>
+</owl:NamedIndividual>
+
 <owl:NamedIndividual rdf:about="#ThinkingThingRole">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
   <obo:RO_0000052 rdf:resource="#Speaker"/>
@@ -18517,15 +18583,6 @@
   <obo:BFO_0000055 rdf:resource="#EternalityOfCauseDisposition"/>
   <obo:RO_0000057 rdf:resource="#TrueIntellect"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IntellectProducesEffectsProcess</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#NaturaNaturata">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
-  <work3:type rdf:resource="#Substance"/>
-  <obo:BFO_0000050 rdf:resource="#WholeOfNature"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
-  <work:subClassOf rdf:resource="#NaturaNaturata"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NaturaNaturata</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#IntellectualGraspOfQuantityProcess">
@@ -23922,13 +23979,6 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <RO_0000052 rdf:resource="#God"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ContingencyAbsenceQualityOfGod</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#NaturaNaturataDefinitionContent">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
-  <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
-  <obo:BFO_0000050 rdf:resource="#TheEthics"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NaturaNaturataDefinitionContent</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
