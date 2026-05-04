@@ -22334,6 +22334,19 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ImaginationIndicatesBodyConstitutionMoreThanExternalNatureQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#BodyConstitutionQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BodyConstitutionQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#AffectIsImagination">
+  <rdfs:subClassOf rdf:resource="#Affect"/>
+  <work:subClassOf rdf:resource="#Affect"/>
+  <work:subClassOf rdf:resource="#Imagination"/>
+  <work:subClassOf rdf:resource="#BodyConstitutionQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AffectIsImagination</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
