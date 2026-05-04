@@ -29932,6 +29932,21 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ViolationOfLawProcess</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#SensualPleasureIndulgenceDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SensualPleasureIndulgenceDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PhilosophicUnworthinessQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PhilosophicUnworthinessQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ErrorQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ErrorQuality</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -42673,6 +42688,11 @@
   <obo:RO_0000053 rdf:resource="#SolomonNaturalLightSuperiorityQualityInstance"/>
   <obo:RO_0000053 rdf:resource="#SolomonKingRole"/>
   <obo:RO_0000056 rdf:resource="#SolomonViolationOfThreeKinglyLaws"/>
+  <obo:RO_0000053 rdf:resource="#SensualPleasureIndulgenceDispositionInstance"/>
+  <obo:RO_0000053 rdf:resource="#SolomonPhilosopherRoleInstance"/>
+  <obo:RO_0000053 rdf:resource="#SolomonPhilosophicUnworthinessQualityInstance"/>
+  <obo:RO_0000053 rdf:resource="#SolomonErrorQualityInstance"/>
+  <obo:RO_0000056 rdf:resource="#SensualPleasureIndulgenceProcess"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Solomon</rdfs:label>
 </owl:NamedIndividual>
 
@@ -42694,6 +42714,19 @@
   <work3:type rdf:resource="#NaturalLightSuperiorityQuality"/>
   <obo:RO_0000052 rdf:resource="#Solomon"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SolomonNaturalLightSuperiorityQualityInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#SolomonKingRole">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <obo:RO_0000052 rdf:resource="#Solomon"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SolomonKingRole</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#SolomonViolationOfThreeKinglyLaws">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#Solomon"/>
+  <obo:RO_0000057 rdf:resource="#ThreeChiefLawsConcerningTheKing"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SolomonViolationOfThreeKinglyLaws</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#ThreeToOneRatioBelief">
@@ -43002,17 +43035,35 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ThreeChiefLawsConcerningTheKing</rdfs:label>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#SolomonKingRole">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+<owl:NamedIndividual rdf:about="#SensualPleasureIndulgenceDispositionInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <obo:RO_0000052 rdf:resource="#Solomon"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SolomonKingRole</rdfs:label>
+  <obo:BFO_0000054 rdf:resource="#SensualPleasureIndulgenceProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SensualPleasureIndulgenceDispositionInstance</rdfs:label>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#SolomonViolationOfThreeKinglyLaws">
+<owl:NamedIndividual rdf:about="#SolomonPhilosopherRoleInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <obo:RO_0000052 rdf:resource="#Solomon"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SolomonPhilosopherRoleInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#SolomonPhilosophicUnworthinessQualityInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#Solomon"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SolomonPhilosophicUnworthinessQualityInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#SensualPleasureIndulgenceProcess">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <obo:RO_0000057 rdf:resource="#Solomon"/>
-  <obo:RO_0000057 rdf:resource="#ThreeChiefLawsConcerningTheKing"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SolomonViolationOfThreeKinglyLaws</rdfs:label>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SensualPleasureIndulgenceProcess</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#SolomonErrorQualityInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#Solomon"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SolomonErrorQualityInstance</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
