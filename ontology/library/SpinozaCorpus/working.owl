@@ -16021,6 +16021,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ComprehensionOfGodAttributesDisposition</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#ComprehensionOfGodAttributesProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#ActualIntellect"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ComprehensionOfGodAttributesProcess</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#ComprehensionOfGodAffectionsDisposition">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <obo:RO_0000052 rdf:resource="#ActualIntellect"/>
@@ -16028,22 +16034,16 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ComprehensionOfGodAffectionsDisposition</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#GodAffection">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000020"/>
-  <obo:RO_0000052 rdf:resource="#God"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodAffection</rdfs:label>
-</owl:Class>
-
-<owl:Class rdf:about="#ComprehensionOfGodAttributesProcess">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <obo:RO_0000057 rdf:resource="#ActualIntellect"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ComprehensionOfGodAttributesProcess</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#ComprehensionOfGodAffectionsProcess">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <obo:RO_0000057 rdf:resource="#ActualIntellect"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ComprehensionOfGodAffectionsProcess</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#GodAffection">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000020"/>
+  <obo:RO_0000052 rdf:resource="#God"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodAffection</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
@@ -16314,6 +16314,7 @@
   <obo:RO_0000053 rdf:resource="#NecessaryFollowingDisposition"/>
   <obo:RO_0000053 rdf:resource="#NaturaNaturans"/>
   <obo:RO_0000057 rdf:resource="#NaturaNaturataDefinitionContent"/>
+  <work3:type rdf:resource="#UniquenessInNatureQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">God</rdfs:label>
 </owl:NamedIndividual>
 
