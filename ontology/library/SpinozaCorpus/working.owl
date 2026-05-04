@@ -17372,13 +17372,6 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IdeaInvolvesNatureRelation</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#AffectionMode">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000020"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000020"/>
-  <obo:RO_0000052 rdf:resource="#HumanBody"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AffectionMode</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#NatureOfHumanBodyQuality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
@@ -17391,6 +17384,13 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NatureOfExternalBodyQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#AffectionMode">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000020"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000020"/>
+  <obo:RO_0000052 rdf:resource="#HumanBody"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AffectionMode</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#BodyNaturePerceptionDisposition">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BodyNaturePerceptionDisposition</rdfs:label>
@@ -17399,6 +17399,24 @@
 <owl:Class rdf:about="#BodyNatureQuality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BodyNatureQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#IdeaOfExternalBody">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IdeaOfExternalBody</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#BodyConditionIndicationQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#IdeaOfExternalBody"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BodyConditionIndicationQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ExternalBodyNatureIndicationQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#IdeaOfExternalBody"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExternalBodyNatureIndicationQuality</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
@@ -26209,6 +26227,14 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OwnBodyNaturePerceptionDisposition</rdfs:label>
 </owl:NamedIndividual>
 
+<owl:NamedIndividual rdf:about="#BodyNaturePerceptionProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#HumanMind"/>
+  <obo:RO_0000057 rdf:resource="#OwnBody"/>
+  <obo:RO_0000057 rdf:resource="#ExternalBodies"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BodyNaturePerceptionProcess</rdfs:label>
+</owl:NamedIndividual>
+
 <owl:NamedIndividual rdf:about="#ExternalBodiesNaturePerceptionDisposition">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work3:type rdf:resource="#BodyNaturePerceptionDisposition"/>
@@ -26217,12 +26243,15 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExternalBodiesNaturePerceptionDisposition</rdfs:label>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#BodyNaturePerceptionProcess">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <obo:RO_0000057 rdf:resource="#HumanMind"/>
-  <obo:RO_0000057 rdf:resource="#OwnBody"/>
-  <obo:RO_0000057 rdf:resource="#ExternalBodies"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BodyNaturePerceptionProcess</rdfs:label>
+<owl:NamedIndividual rdf:about="#OurBody">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OurBody</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#IdeaIndicatesOwnBodyMoreThanExternalBodyAssertion">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <obo:BFO_0000050 rdf:resource="#TheEthics"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IdeaIndicatesOwnBodyMoreThanExternalBodyAssertion</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
