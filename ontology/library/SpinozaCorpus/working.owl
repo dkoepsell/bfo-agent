@@ -15753,6 +15753,8 @@
   <work:subClassOf rdf:resource="#_:bearerOfMessengerRole"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
   <work:subClassOf rdf:resource="#DivineAttribute"/>
+  <work:subClassOf rdf:resource="#BearerOfProphetRoleRestriction"/>
+  <work:subClassOf rdf:resource="#BearerOfSingularVirtueRestriction"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Prophet</rdfs:label>
 </owl:Class>
 
@@ -28969,6 +28971,18 @@
 <owl:Class rdf:about="#ExpressDivineAffectDisposition">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExpressDivineAffectDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SingularVirtue">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SingularVirtue</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#OrdinaryVirtue">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OrdinaryVirtue</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
