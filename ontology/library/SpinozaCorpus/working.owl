@@ -139,6 +139,7 @@
   <work:subClassOf rdf:resource="#SubstanceExistenceEternalityQuality"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000051"/>
   <obo:BFO_0000051 rdf:resource="#Attribute"/>
+  <work:subClassOf rdf:resource="#SubstanceExistenceFromNatureAloneQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Substance</rdfs:label>
 </owl:Class>
 
@@ -15213,6 +15214,19 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="#EssentialExistenceQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExistenceImpossibilityQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SubstanceExistenceFromNatureAloneQuality">
+  <rdfs:subClassOf rdf:resource="#EssentialExistenceQuality"/>
+  <work:subClassOf rdf:resource="#EssentialExistenceQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SubstanceExistenceFromNatureAloneQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#NatureInvolvesExistenceDisposition">
+  <rdfs:subClassOf rdf:resource="#EssenceContainsExistenceDisposition"/>
+  <work:subClassOf rdf:resource="#EssenceContainsExistenceDisposition"/>
+  <work:subClassOf rdf:resource="#CausalReasonForExistence"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NatureInvolvesExistenceDisposition</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
