@@ -28094,6 +28094,23 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ScripturalInterpretationProcess</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#GreekNewTestamentText">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GreekNewTestamentText</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#LatinTranslationOfNewTestament">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LatinTranslationOfNewTestament</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#QuotationViaLatinTranslationProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">QuotationViaLatinTranslationProcess</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -32124,6 +32141,7 @@
   <obo:RO_0000053 rdf:resource="#SpinozaMajorPhilosopherRoleInstance"/>
   <obo:RO_0000056 rdf:resource="#SpinozaAuthorshipOfTPT"/>
   <obo:RO_0000056 rdf:resource="#DutchRepublic"/>
+  <RO_0000053 rdf:resource="#SpinozaIndirectGreekNTQuotationPractice"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Spinoza</rdfs:label>
 </owl:NamedIndividual>
 
@@ -40007,6 +40025,13 @@
   <obo:RO_0000052 rdf:resource="#ScripturalInterpretationTheory"/>
   <obo:BFO_0000054 rdf:resource="#ScripturalInterpretationProcess"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OriginalLanguageTextRequirement</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#SpinozaIndirectGreekNTQuotationPractice">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <RO_0000052 rdf:resource="#Spinoza"/>
+  <obo:BFO_0000054 rdf:resource="#QuotationViaLatinTranslationProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SpinozaIndirectGreekNTQuotationPractice</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
