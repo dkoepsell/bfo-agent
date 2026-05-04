@@ -16567,6 +16567,11 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExpressionUnderTwoAttributesDisposition</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#AttributeIdentityUnderDifferentAttributes">
+  <rdfs:subClassOf rdf:resource="#Attribute"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AttributeIdentityUnderDifferentAttributes</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
@@ -25095,6 +25100,33 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <obo:RO_0000052 rdf:resource="#God"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ThinkingExtendedSubstanceIdentity</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ExistingCircle">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
+  <obo:RO_0000053 rdf:resource="#CircleExplainedThroughExtension"/>
+  <obo:RO_0000053 rdf:resource="#CircleExplainedThroughThought"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExistingCircle</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#IdeaOfExistingCircle">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#ExistingCircle"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IdeaOfExistingCircle</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#CircleExplainedThroughExtension">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#ExistingCircle"/>
+  <work3:type rdf:resource="#AttributeIdentityUnderDifferentAttributes"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CircleExplainedThroughExtension</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#CircleExplainedThroughThought">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#ExistingCircle"/>
+  <work3:type rdf:resource="#AttributeIdentityUnderDifferentAttributes"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CircleExplainedThroughThought</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
