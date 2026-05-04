@@ -17592,6 +17592,7 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work:subClassOf rdf:resource="#ConfusedIdeaQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IdeaOfBodyAffection</rdfs:label>
 </owl:Class>
 
@@ -17631,22 +17632,28 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConfusedIdeaQuality</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#ClearAndDistinctIdeaQuality">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ClearAndDistinctIdeaQuality</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#InadequateIdeaQuality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">InadequateIdeaQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#ClearAndDistinctIdeaQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ClearAndDistinctIdeaQuality</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#RelationToHumanMindOnlyQuality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RelationToHumanMindOnlyQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#RelatedOnlyToMindCondition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RelatedOnlyToMindCondition</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
@@ -26688,6 +26695,12 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <obo:RO_0000052 rdf:resource="#IdeasOfBodyAffections"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RelationToHumanMindOnlyQualityInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#BodyAffectionIdeaConfusionPrinciple">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <obo:BFO_0000050 rdf:resource="#TheEthics"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BodyAffectionIdeaConfusionPrinciple</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
