@@ -8169,6 +8169,8 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work:subClassOf rdf:resource="#NecessaryIdea"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:subClassOf rdf:resource="#ModeOfThinking"/>
+  <work:subClassOf rdf:resource="#ModeOfThinking"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IdeaOfObject</rdfs:label>
 </owl:Class>
 
@@ -16418,6 +16420,25 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DeterminateExistenceQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#LoveModeOfThinking">
+  <rdfs:subClassOf rdf:resource="#ModeOfThinking"/>
+  <work:subClassOf rdf:resource="#ModeOfThinking"/>
+  <work:subClassOf rdf:resource="#ModeOfThinkingPresupposesIdeaConstraint"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LoveModeOfThinking</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DesireModeOfThinking">
+  <rdfs:subClassOf rdf:resource="#ModeOfThinking"/>
+  <work:subClassOf rdf:resource="#ModeOfThinking"/>
+  <work:subClassOf rdf:resource="#ModeOfThinkingPresupposesIdeaConstraint"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DesireModeOfThinking</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ModeOfThinkingPresupposesIdeaConstraint">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ModeOfThinkingPresupposesIdeaConstraint</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
