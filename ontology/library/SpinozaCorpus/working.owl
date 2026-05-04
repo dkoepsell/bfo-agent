@@ -1888,6 +1888,7 @@
   <work:subClassOf rdf:resource="#Passion"/>
   <obo:RO_0000052 rdf:resource="#Soul"/>
   <work:subClassOf rdf:resource="#Joy"/>
+  <work:subClassOf rdf:resource="#Sadness"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Sadness</rdfs:label>
 </owl:Class>
 
@@ -6553,6 +6554,11 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <obo:RO_0000052 rdf:resource="#EnviedOther"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IdeaOfEnviedOther</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#EnviedOther">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EnviedOther</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#IncorrectOpinion">
@@ -19838,11 +19844,6 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ImageProductionDisposition</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#EnviedOther">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EnviedOther</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#Longing">
   <rdfs:subClassOf rdf:resource="#Sadness"/>
   <work:subClassOf rdf:resource="#Sadness"/>
@@ -19853,6 +19854,25 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AbsenceOfLovedObject</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PowerOfActingQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PowerOfActingQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DiminishingPowerOfActingDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:BFO_0000054 rdf:resource="#DiminishingPowerOfActingProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DiminishingPowerOfActingDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DiminishingPowerOfActingProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DiminishingPowerOfActingProcess</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
@@ -20474,6 +20494,7 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <obo:BFO_0000055 rdf:resource="#PassionOfSadness"/>
   <obo:RO_0000057 rdf:resource="#LesserPerfectionQualityInstance"/>
+  <obo:BFO_0000055 rdf:resource="#DiminishingPowerOfActingDisposition"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TransitionToLesserPerfection</rdfs:label>
 </owl:NamedIndividual>
 
@@ -29672,6 +29693,12 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <obo:BFO_0000050 rdf:resource="#TheEthics"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LongingDefinitionContent</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#SadnessInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work3:type rdf:resource="#Sadness"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SadnessInstance</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
