@@ -1915,6 +1915,17 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Repentance</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#RepentanceAccompaniedByInternalCauseIdea">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RepentanceAccompaniedByInternalCauseIdea</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#RepentanceAccompanimentRelation">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RepentanceAccompanimentRelation</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#SadnessExemptionQuality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <obo:RO_0000052 rdf:resource="#Joy"/>
@@ -5789,6 +5800,8 @@
   <obo:BFO_0000054 rdf:resource="#UniversalConclusionFormation"/>
   <obo:BFO_0000054 rdf:resource="#WonderOccurrence"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="#AffectionOfMind"/>
+  <obo:BFO_0000054 rdf:resource="#ImaginingProcess"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Wonder</rdfs:label>
 </owl:Class>
 
@@ -6651,17 +6664,6 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OppositeAffectRelation</rdfs:label>
-</owl:Class>
-
-<owl:Class rdf:about="#RepentanceAccompaniedByInternalCauseIdea">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RepentanceAccompaniedByInternalCauseIdea</rdfs:label>
-</owl:Class>
-
-<owl:Class rdf:about="#RepentanceAccompanimentRelation">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RepentanceAccompanimentRelation</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#InjuriousEvil">
@@ -19787,6 +19789,11 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SelfEsteem</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#JoyAccompaniedBySelfCausalIdeaQuality">
+  <rdfs:subClassOf rdf:resource="#Joy"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">JoyAccompaniedBySelfCausalIdea</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#InternalCauseQuality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
@@ -20288,9 +20295,15 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SelfEsteem</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#JoyAccompaniedBySelfCausalIdeaQuality">
-  <rdfs:subClassOf rdf:resource="#Joy"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">JoyAccompaniedBySelfCausalIdea</rdfs:label>
+<owl:Class rdf:about="#AffectionOfMind">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AffectionOfMind</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SingularThingAloneInMindQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#ImaginingProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SingularThingAloneInMindQuality</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
