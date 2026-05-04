@@ -1307,6 +1307,7 @@
   <work:subClassOf rdf:resource="#Individual"/>
   <obo:BFO_0000054 rdf:resource="#AffirmationOfBodyForceProcess"/>
   <work:subClassOf rdf:resource="#Thought"/>
+  <obo:RO_0000052 rdf:resource="#HumanBeing"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Affect</rdfs:label>
 </owl:Class>
 
@@ -4284,6 +4285,9 @@
 <owl:Class rdf:about="#HumanPower">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#HumanBeing"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HumanPower</rdfs:label>
 </owl:Class>
 
@@ -16132,6 +16136,26 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExistingThing</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#HighestRightOfNature">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000020"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HighestRightOfNature</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#NecessityOfOwnNature">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:BFO_0000054 rdf:resource="#ActingFromOwnNatureProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NecessityOfOwnNature</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ActingFromOwnNatureProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ActingFromOwnNatureProcess</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#CauseOfExistence">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
@@ -23167,24 +23191,17 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NatureAgreement</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#HighestRightOfNature">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000020"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HighestRightOfNature</rdfs:label>
+<owl:Class rdf:about="#AffectSurpassingHumanPowerQuality">
+  <rdfs:subClassOf rdf:resource="#HumanPower"/>
+  <work:subClassOf rdf:resource="#HumanPower"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AffectSurpassingHumanPowerQuality</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#NecessityOfOwnNature">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <obo:BFO_0000054 rdf:resource="#ActingFromOwnNatureProcess"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NecessityOfOwnNature</rdfs:label>
-</owl:Class>
-
-<owl:Class rdf:about="#ActingFromOwnNatureProcess">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ActingFromOwnNatureProcess</rdfs:label>
+<owl:Class rdf:about="#SubjectToAffectRole">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <obo:RO_0000052 rdf:resource="#HumanBeing"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SubjectToAffectRole</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
