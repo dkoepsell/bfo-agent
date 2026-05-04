@@ -1983,6 +1983,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PassageToLesserPerfection</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#PowerDiminishingDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:BFO_0000054 rdf:resource="#Sadness"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PowerDiminishingDisposition</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#RepentanceAccompaniedByInternalCauseIdea">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
@@ -19377,11 +19383,15 @@
 
 <owl:Class rdf:about="#Pleasure">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:subClassOf rdf:resource="#Joy"/>
+  <work:subClassOf rdf:resource="#Joy"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Pleasure</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#Cheerfulness">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:subClassOf rdf:resource="#Joy"/>
+  <work:subClassOf rdf:resource="#Joy"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Cheerfulness</rdfs:label>
 </owl:Class>
 
@@ -20862,10 +20872,16 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DiminishedPowerOfActingQuality</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#PowerDiminishingDisposition">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <obo:BFO_0000054 rdf:resource="#Sadness"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PowerDiminishingDisposition</rdfs:label>
+<owl:Class rdf:about="#Melancholy">
+  <rdfs:subClassOf rdf:resource="#Sadness"/>
+  <work:subClassOf rdf:resource="#Sadness"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Melancholy</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#Pain">
+  <rdfs:subClassOf rdf:resource="#Sadness"/>
+  <work:subClassOf rdf:resource="#Sadness"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Pain</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
