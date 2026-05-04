@@ -21707,6 +21707,8 @@
   <work:subClassOf rdf:resource="#Tenacity"/>
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="#ActiveAffect"/>
+  <rdfs:subClassOf rdf:resource="#Animositas"/>
+  <work:subClassOf rdf:resource="#Animositas"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Moderation</rdfs:label>
 </owl:Class>
 
@@ -21715,6 +21717,8 @@
   <work:subClassOf rdf:resource="#Tenacity"/>
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="#ActiveAffect"/>
+  <rdfs:subClassOf rdf:resource="#Animositas"/>
+  <work:subClassOf rdf:resource="#Animositas"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Sobriety</rdfs:label>
 </owl:Class>
 
@@ -26947,6 +26951,17 @@
 <owl:Class rdf:about="#MetaphysicalGeneralizationRelation">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MetaphysicalGeneralizationRelation</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#Animositas">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Animositas</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PresenceOfMindInDanger">
+  <rdfs:subClassOf rdf:resource="#Animositas"/>
+  <work:subClassOf rdf:resource="#Animositas"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PresenceOfMindInDanger</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
