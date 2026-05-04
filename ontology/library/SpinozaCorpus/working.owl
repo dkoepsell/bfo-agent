@@ -13769,6 +13769,24 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WorseBetter</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#ManEssenceDependenceQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#RelationalQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ManEssenceDependenceQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ManPerfectionDependenceQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#RelationalQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ManPerfectionDependenceQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ManEssenceDependenceOnGodRole">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ManEssenceDependenceOnGodRole</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#God">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
   <obo:BFO_0000051 rdf:resource="#DivineAttribute"/>
@@ -13978,6 +13996,7 @@
   <obo:RO_0000053 rdf:resource="#GodEternalKnowledgeOfWillDeterminations"/>
   <obo:RO_0000056 rdf:resource="#EternalKnowledgeProcess"/>
   <obo:RO_0000056 rdf:resource="#EssenceAndExistenceGrantingProcess"/>
+  <obo:RO_0000053 rdf:resource="#ManEssenceDependenceOnGodRole"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">God</rdfs:label>
 </owl:NamedIndividual>
 
