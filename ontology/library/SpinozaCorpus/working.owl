@@ -25593,6 +25593,25 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ClearAndDistinctSelfAndAffectKnowledgeQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#LoveTowardGod">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:BFO_0000054 rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LoveTowardGod</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#MindEngagementQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindEngagementQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#MaximalMindEngagementQuality">
+  <rdfs:subClassOf rdf:resource="#MindEngagementQuality"/>
+  <work:subClassOf rdf:resource="#MindEngagementQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MaximalMindEngagementQuality</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
@@ -28436,6 +28455,15 @@
   <obo:RO_0000052 rdf:resource="#FormalBeingOfHumanMind"/>
   <obo:BFO_0000054 rdf:resource="#ImaginingProcess"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindImaginesOnlyActingPowerPositingThingsDisposition</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#RelatingAffectionsToGodProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000055 rdf:resource="#RelatingBodyAffectionsToIdeaOfGodDispositionInstance"/>
+  <obo:RO_0000057 rdf:resource="#Mind"/>
+  <obo:RO_0000057 rdf:resource="#HumanBody"/>
+  <obo:RO_0000057 rdf:resource="#IdeaOfGod"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RelatingAffectionsToGodProcess</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#AttributePriorToModesQuality">
@@ -36119,15 +36147,6 @@
 <owl:NamedIndividual rdf:about="#AbsenceOfContraryAffects">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AbsenceOfContraryAffects</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#RelatingAffectionsToGodProcess">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <obo:BFO_0000055 rdf:resource="#RelatingBodyAffectionsToIdeaOfGodDispositionInstance"/>
-  <obo:RO_0000057 rdf:resource="#Mind"/>
-  <obo:RO_0000057 rdf:resource="#HumanBody"/>
-  <obo:RO_0000057 rdf:resource="#IdeaOfGod"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RelatingAffectionsToGodProcess</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
