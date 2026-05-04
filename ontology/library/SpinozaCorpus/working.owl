@@ -14327,6 +14327,24 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Act</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#DependenceOnGodPerfectionQuality">
+  <rdfs:subClassOf rdf:resource="#EssentialExistenceQuality"/>
+  <work:subClassOf rdf:resource="#EssentialExistenceQuality"/>
+  <work:subClassOf rdf:resource="#ExistenceNonImperfectionQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DependenceOnGodPerfectionQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DependenceOnGodRole">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DependenceOnGodRole</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DeathOrImperfectionAbsenceQuality">
+  <rdfs:subClassOf rdf:resource="#ImperfectionQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DeathOrImperfectionAbsenceQuality</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#God">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
   <obo:BFO_0000051 rdf:resource="#DivineAttribute"/>
