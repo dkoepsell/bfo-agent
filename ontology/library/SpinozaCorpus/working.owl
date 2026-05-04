@@ -28523,6 +28523,30 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivinityQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#RevelationInWords">
+  <rdfs:subClassOf rdf:resource="#DivineRevelation"/>
+  <work:subClassOf rdf:resource="#DivineRevelation"/>
+  <obo:BFO_0000051 rdf:resource="#PropheticWordContent"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RevelationInWords</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#RevelationInVisibleForms">
+  <rdfs:subClassOf rdf:resource="#DivineRevelation"/>
+  <work:subClassOf rdf:resource="#DivineRevelation"/>
+  <obo:BFO_0000051 rdf:resource="#VisibleForm"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RevelationInVisibleForms</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PropheticWordContent">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PropheticWordContent</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#VisibleForm">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">VisibleForm</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -29528,6 +29552,14 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#VirtueQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">VirtueItself</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#RevelationProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#God"/>
+  <obo:RO_0000057 rdf:resource="#Moses"/>
+  <obo:BFO_0000051 rdf:resource="#TrueVoice"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RevelationProcess</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#GreatestGood">
@@ -40553,14 +40585,6 @@
   <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
   <obo:RO_0000052 rdf:resource="#MindPowerToFormNotions"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FirstCauseCausalRole</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#RevelationProcess">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <obo:RO_0000057 rdf:resource="#God"/>
-  <obo:RO_0000057 rdf:resource="#Moses"/>
-  <obo:BFO_0000051 rdf:resource="#TrueVoice"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RevelationProcess</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#Moses">
