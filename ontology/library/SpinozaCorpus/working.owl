@@ -28345,7 +28345,16 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work:subClassOf rdf:resource="#Prophecy"/>
+  <work:subClassOf rdf:resource="#_:restriction_bearer_of_DivinityQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NaturalKnowledge</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#Prophecy">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work:subClassOf rdf:resource="#CertainKnowledge"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work:subClassOf rdf:resource="#PropheticSubjectMatter"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Prophecy</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#ObjectOfKnowledge">
@@ -28451,14 +28460,6 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">InnateRightInnatenessQuality</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#Prophecy">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
-  <work:subClassOf rdf:resource="#CertainKnowledge"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
-  <work:subClassOf rdf:resource="#PropheticSubjectMatter"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Prophecy</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#CertainKnowledge">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CertainKnowledge</rdfs:label>
@@ -28512,6 +28513,12 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NaturalKnowledgeCallableProphecyQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DivinityQuality">
+  <rdfs:subClassOf rdf:resource="#DivineAttribute"/>
+  <work:subClassOf rdf:resource="#DivineAttribute"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivinityQuality</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
