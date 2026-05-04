@@ -19759,6 +19759,7 @@
 
 <owl:Class rdf:about="#AffectIntensityQuality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#Affect"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AffectIntensityQuality</rdfs:label>
 </owl:Class>
 
@@ -22268,6 +22269,24 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConsciousnessOfAffect</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ImaginingCauseAsPresentDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:BFO_0000054 rdf:resource="#ImaginingCauseAsPresentProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ImaginingCauseAsPresentDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ImaginingCauseAsPresentProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000055 rdf:resource="#ImaginingCauseAsPresentDisposition"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ImaginingCauseAsPresentProcess</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#AffectIntensificationByPresentCauseImagining">
+  <rdfs:subClassOf rdf:resource="#Affect"/>
+  <work:subClassOf rdf:resource="#Affect"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AffectIntensificationByPresentCauseImagining</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
