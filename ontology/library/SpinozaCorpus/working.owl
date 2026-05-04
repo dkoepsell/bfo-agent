@@ -1553,6 +1553,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CanatusBearerThing</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#MindBodyStrivingQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindBodyStrivingQuality</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#AnimalSpirits">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AnimalSpirits</rdfs:label>
@@ -13965,12 +13971,6 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExternalDestructionIncapacity</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#MindBodyStrivingQuality">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindBodyStrivingQuality</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#AffirmationPower">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
@@ -19049,6 +19049,23 @@
   <work:subClassOf rdf:resource="#GoodJudgmentQuality"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GoodJudgmentCausedByStrivingQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#IdeaExcludingBodyExistence">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IdeaExcludingBodyExistence</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#BodyExistenceExclusionQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#EssentialExistenceQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BodyExistenceExclusionQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#MindContainmentIncapacityForBodyExcludingIdea">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindContainmentIncapacityForBodyExcludingIdea</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
