@@ -14367,6 +14367,7 @@
   <obo:RO_0000056 rdf:resource="#GodEstablishesIntellectWillOrderProcess"/>
   <obo:RO_0000053 rdf:resource="#SupremePerfection"/>
   <obo:RO_0000053 rdf:resource="#SupremePerfectionEntailsCreatureConsistencyDisposition"/>
+  <obo:RO_0000053 rdf:resource="#SupremePerfectionQualityInstance"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">God</rdfs:label>
 </owl:NamedIndividual>
 
@@ -21207,6 +21208,13 @@
   <obo:RO_0000052 rdf:resource="#HolyScripture"/>
   <work3:type rdf:resource="#Godliness"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HolyScriptureGodlinessQuality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#SupremePerfectionQualityInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work3:type rdf:resource="#SupremePerfectionQuality"/>
+  <obo:RO_0000052 rdf:resource="#God"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SupremePerfectionQualityInstance</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
