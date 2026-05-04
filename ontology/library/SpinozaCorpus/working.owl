@@ -1911,6 +1911,15 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">JoyClass</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#JoyAffect">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:subClassOf rdf:resource="#Affect"/>
+  <work:subClassOf rdf:resource="#Affect"/>
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">JoyAffect</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#ServingGodProcess">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <obo:RO_0000057 rdf:resource="#God"/>
@@ -2154,6 +2163,16 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DirectEvil</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SadnessAffect">
+  <rdfs:subClassOf rdf:resource="#Affect"/>
+  <work:subClassOf rdf:resource="#Affect"/>
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SadnessAffect</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#RepentanceAccompaniedByInternalCauseIdea">
@@ -20569,15 +20588,6 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">JoyAccompaniedBySelfCausalIdea</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#JoyAffect">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <rdfs:subClassOf rdf:resource="#Affect"/>
-  <work:subClassOf rdf:resource="#Affect"/>
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">JoyAffect</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#InternalCauseQuality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
@@ -22733,16 +22743,6 @@
 <owl:Class rdf:about="#GoodAndEvilDistinction">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GoodAndEvilDistinction</rdfs:label>
-</owl:Class>
-
-<owl:Class rdf:about="#SadnessAffect">
-  <rdfs:subClassOf rdf:resource="#Affect"/>
-  <work:subClassOf rdf:resource="#Affect"/>
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SadnessAffect</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#ImaginingCauseAsPresentDisposition">
@@ -25670,6 +25670,22 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodAsCauseOfSadnessQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#SadnessPassion">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SadnessPassion</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SadnessCause">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SadnessCause</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PassionCessationDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="#SadnessPassion"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PassionCessationDisposition</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
@@ -28347,6 +28363,12 @@
   <work3:type rdf:resource="#AbsenceOfHateQuality"/>
   <obo:RO_0000052 rdf:resource="#God"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodHatesNoOneQuality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#UnderstandingGodAsCauseOfSadnessProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000055 rdf:resource="#UnderstandingGodAsCauseOfSadnessDisposition"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UnderstandingGodAsCauseOfSadnessProcess</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#ThinkingThingRole">
@@ -36258,10 +36280,16 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LoveToHateTransitionImpossibilityQuality</rdfs:label>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#UnderstandingGodAsCauseOfSadnessProcess">
+<owl:NamedIndividual rdf:about="#UnderstandingCausesOfSadnessProcess">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <obo:BFO_0000055 rdf:resource="#UnderstandingGodAsCauseOfSadnessDisposition"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UnderstandingGodAsCauseOfSadnessProcess</rdfs:label>
+  <obo:BFO_0000055 rdf:resource="#PassionCessationDisposition"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UnderstandingCausesOfSadnessProcess</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#SadnessPassionCessationProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000050 rdf:resource="#UnderstandingCausesOfSadnessProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SadnessPassionCessationProcess</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
