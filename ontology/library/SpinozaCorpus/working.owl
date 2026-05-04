@@ -15759,6 +15759,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Prophet</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#PietyConstancy">
+  <rdfs:subClassOf rdf:resource="#Piety"/>
+  <work:subClassOf rdf:resource="#Piety"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PietyConstancy</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#DivineRevelation">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <obo:RO_0000057 rdf:resource="#God"/>
@@ -28991,17 +28997,25 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Piety</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#PietyConstancy">
-  <rdfs:subClassOf rdf:resource="#Piety"/>
-  <work:subClassOf rdf:resource="#Piety"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PietyConstancy</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#PietyCultivationProcess">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <obo:RO_0000057 rdf:resource="#Prophet"/>
   <obo:BFO_0000055 rdf:resource="#PietyConstancy"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PietyCultivationProcess</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PropheticPerceptionDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:BFO_0000054 rdf:resource="#PropheticPerceptionProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PropheticPerceptionDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PropheticPerceptionProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="#CommonOrderOfNaturePerception"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PropheticPerceptionProcess</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
@@ -41391,6 +41405,13 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <obo:RO_0000052 rdf:resource="#SpiritOfGod"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExpressDivineAffectDispositionInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#DivineMindOrJudgment">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work3:type rdf:resource="#DivineAttribute"/>
+  <obo:RO_0000052 rdf:resource="#God"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivineMindOrJudgment</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
