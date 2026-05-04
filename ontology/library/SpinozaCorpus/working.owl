@@ -21585,6 +21585,7 @@
 <owl:Class rdf:about="#MindPower">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="#Understanding"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindPower</rdfs:label>
 </owl:Class>
 
@@ -25182,6 +25183,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindDominionOverAffectsDisposition</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#MindPowerDefinedByUnderstandingQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindPowerDefinedByUnderstandingQuality</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
@@ -28079,6 +28086,12 @@
   <obo:BFO_0000051 rdf:resource="#AdequateIdea"/>
   <obo:BFO_0000051 rdf:resource="#InadequateIdea"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindEssenceIdea</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#MindDominionOverAffectsQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work3:type rdf:resource="#NonAbsoluteDominionQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindDominionOverAffectsQuality</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#PassionOfSadness">
@@ -35587,12 +35600,6 @@
   <work3:type rdf:resource="#DefinedByUnderstanding"/>
   <obo:RO_0000052 rdf:resource="#BetterPartOfUs"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DefinedByUnderstandingQuality</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#MindDominionOverAffectsQuality">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <work3:type rdf:resource="#NonAbsoluteDominionQuality"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindDominionOverAffectsQuality</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
