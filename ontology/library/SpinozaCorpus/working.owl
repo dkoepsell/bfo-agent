@@ -27174,6 +27174,13 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NaturalLightOfReason</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#NaturalLightUnderstandingProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#God"/>
+  <obo:RO_0000057 rdf:resource="#EveryPerson"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NaturalLightUnderstandingProcess</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#SupernaturalLightOfRevelation">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
@@ -30987,17 +30994,48 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UnderstandingDependenceOnIdeaOfGodQuality</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#NaturalLightUnderstandingProcess">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <obo:RO_0000057 rdf:resource="#God"/>
-  <obo:RO_0000057 rdf:resource="#EveryPerson"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NaturalLightUnderstandingProcess</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#EveryPerson">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EveryPerson</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#EvilDeed">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EvilDeed</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#EvilConsequence">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EvilConsequence</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#NecessarySequelDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:BFO_0000054 rdf:resource="#EvilConsequence"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NecessarySequelDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#WiseCorrection">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WiseCorrection</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#WiseCorrectionDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:BFO_0000054 rdf:resource="#WiseCorrection"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WiseCorrectionDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#CausalNecessityFromEvilDeedQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CausalNecessityFromEvilDeedQuality</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
