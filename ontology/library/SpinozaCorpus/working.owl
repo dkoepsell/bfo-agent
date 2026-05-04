@@ -22745,6 +22745,30 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NatureAgreementUsefulnessProportionalityQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#SubjectToPassions">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:RO_0000052 rdf:resource="#PassionSubjectMan"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SubjectToPassions</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PassionSubjectMan">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PassionSubjectMan</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#AgreementInNature">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AgreementInNature</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PassionDrivenDisagreementQuality">
+  <rdfs:subClassOf rdf:resource="#AgreementInNature"/>
+  <obo:RO_0000052 rdf:resource="#PassionSubjectMan"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PassionDrivenDisagreementQuality</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
@@ -32927,6 +32951,12 @@
   <obo:RO_0000052 rdf:resource="#FormalBeingOfHumanMind"/>
   <work:subClassOf rdf:resource="#AdequateKnowledgeOfGodQualityInstance"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindGreatestVirtueQuality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#PassionDrivenDisagreementAxiom">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <obo:BFO_0000050 rdf:resource="#TheEthics"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PassionDrivenDisagreementAxiom</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
