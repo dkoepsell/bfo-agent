@@ -14943,6 +14943,18 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConceivableAsNonExisting</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#AttributeDifference">
+  <rdfs:subClassOf rdf:resource="#Attribute"/>
+  <work:subClassOf rdf:resource="#Attribute"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AttributeDifference</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#NothingInCommonQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#RelationalQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NothingInCommonQuality</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#God">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
   <obo:BFO_0000051 rdf:resource="#DivineAttribute"/>
@@ -22400,6 +22412,13 @@
   <obo:RO_0000052 rdf:resource="#Substance"/>
   <work3:type rdf:resource="#OntologicalPriority"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OntologicalPriorityOfSubstanceOverAffections</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#AttributeDifferenceEntailsNothingInCommonAxiom">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <obo:BFO_0000050 rdf:resource="#TheEthics"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AttributeDifferenceEntailsNothingInCommonAxiom</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
