@@ -142,6 +142,7 @@
   <work:subClassOf rdf:resource="#SubstanceExistenceFromNatureAloneQuality"/>
   <work:subClassOf rdf:resource="#ExistenceIsEssenceIdentityQuality"/>
   <work:subClassOf rdf:resource="#_:bearerOfIndivisibility"/>
+  <work:subClassOf rdf:resource="#_:restriction_bearer_of_SubstanceIndivisibilityDisposition"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Substance</rdfs:label>
 </owl:Class>
 
