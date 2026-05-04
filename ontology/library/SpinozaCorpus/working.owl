@@ -6601,6 +6601,7 @@
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#Sadness"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Hatred</rdfs:label>
 </owl:Class>
 
@@ -19632,6 +19633,9 @@
   <work:subClassOf rdf:resource="#Hate"/>
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="#NegativeAffectiveQuality"/>
+  <work:subClassOf rdf:resource="#Hatred"/>
+  <work:subClassOf rdf:resource="#Sadness"/>
+  <work:subClassOf rdf:resource="#RestrainmentOfPowerOfActing"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Envy</rdfs:label>
 </owl:Class>
 
@@ -20474,6 +20478,12 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="#NaturalInclinationTowardEnvy"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AugmentationOfEnvyDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#RestrainmentOfPowerOfActing">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RestrainmentOfPowerOfActing</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
