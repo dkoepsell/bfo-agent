@@ -402,6 +402,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EternalExistenceQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#NecessaryExistenceImpliesPerfectionQuality">
+  <rdfs:subClassOf rdf:resource="#EssentialExistenceQuality"/>
+  <work:subClassOf rdf:resource="#EssentialExistenceQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NecessaryExistenceImpliesPerfectionQuality</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#FormalReality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
@@ -14264,6 +14270,7 @@
 
 <owl:Class rdf:about="#AllPerfectionsQuality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AllPerfectionsQuality</rdfs:label>
 </owl:Class>
 
@@ -27359,12 +27366,6 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NecessaryExistenceEntailsInfinityDisposition</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#NecessaryExistenceImpliesPerfectionQuality">
-  <rdfs:subClassOf rdf:resource="#EssentialExistenceQuality"/>
-  <work:subClassOf rdf:resource="#EssentialExistenceQuality"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NecessaryExistenceImpliesPerfectionQuality</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#AbsenceOfImperfectionQuality">
   <rdfs:subClassOf rdf:resource="#EssentialExistenceQuality"/>
   <work:subClassOf rdf:resource="#EssentialExistenceQuality"/>
@@ -27382,6 +27383,12 @@
   <work:subClassOf rdf:resource="#FormalExistenceNecessitation"/>
   <obo:BFO_0000054 rdf:resource="#FormalExistenceNecessitationProcess"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NecessaryExistenceExcludesImperfectionDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#UniqueNecessaryExistentDisposition">
+  <rdfs:subClassOf rdf:resource="#NecessityOfExistence"/>
+  <work:subClassOf rdf:resource="#NecessityOfExistence"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UniqueNecessaryExistentDisposition</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
@@ -27693,6 +27700,9 @@
   <obo:RO_0000056 rdf:resource="#UnderstandingGodAsCauseOfSadnessProcess"/>
   <obo:RO_0000053 rdf:resource="#GodSelfLoveQualityInstance"/>
   <obo:RO_0000053 rdf:resource="#GodNecessityOfExistenceInstance"/>
+  <obo:RO_0000053 rdf:resource="#UniquenessOfGodQuality"/>
+  <obo:RO_0000053 rdf:resource="#AllPerfectionsQuality"/>
+  <obo:RO_0000053 rdf:resource="#UniqueNecessaryExistentDisposition"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">God</rdfs:label>
 </owl:NamedIndividual>
 
@@ -28556,6 +28566,25 @@
   <work:subClassOf rdf:resource="#InItself"/>
   <obo:BFO_0000054 rdf:resource="#FormalExistenceNecessitationProcess"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EsseInSe</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ExtendedSubstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
+  <work3:type rdf:resource="#Substance"/>
+  <obo:RO_0000053 rdf:resource="#Extension"/>
+  <obo:RO_0000053 rdf:resource="#ExtendedSubstanceInfinityQuality"/>
+  <obo:RO_0000053 rdf:resource="#IndivisibilityQuality"/>
+  <obo:RO_0000053 rdf:resource="#SubstanceUniquenessQuality"/>
+  <obo:RO_0000053 rdf:resource="#ThreeDimensionalSpatialExtensionQuality"/>
+  <obo:RO_0000053 rdf:resource="#FormalExistenceOfExtendedSubstance"/>
+  <obo:RO_0000053 rdf:resource="#ExtendedSubstanceCausalRoleInSensation"/>
+  <obo:RO_0000053 rdf:resource="#NecessaryExistenceOfGod"/>
+  <work:subClassOf rdf:resource="#CreatedSubstance"/>
+  <work:subClassOf rdf:resource="#_:ExtensionBearer"/>
+  <obo:RO_0000053 rdf:resource="#OnlySubstancesExistQuality"/>
+  <obo:RO_0000053 rdf:resource="#ExtensionAttribute"/>
+  <work2:sameAs rdf:resource="#God"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExtendedSubstance</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#NaturaNaturans">
@@ -30475,25 +30504,6 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <obo:RO_0000052 rdf:resource="#Extension"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExtensionNotThoughtQuality</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#ExtendedSubstance">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
-  <work3:type rdf:resource="#Substance"/>
-  <obo:RO_0000053 rdf:resource="#Extension"/>
-  <obo:RO_0000053 rdf:resource="#ExtendedSubstanceInfinityQuality"/>
-  <obo:RO_0000053 rdf:resource="#IndivisibilityQuality"/>
-  <obo:RO_0000053 rdf:resource="#SubstanceUniquenessQuality"/>
-  <obo:RO_0000053 rdf:resource="#ThreeDimensionalSpatialExtensionQuality"/>
-  <obo:RO_0000053 rdf:resource="#FormalExistenceOfExtendedSubstance"/>
-  <obo:RO_0000053 rdf:resource="#ExtendedSubstanceCausalRoleInSensation"/>
-  <obo:RO_0000053 rdf:resource="#NecessaryExistenceOfGod"/>
-  <work:subClassOf rdf:resource="#CreatedSubstance"/>
-  <work:subClassOf rdf:resource="#_:ExtensionBearer"/>
-  <obo:RO_0000053 rdf:resource="#OnlySubstancesExistQuality"/>
-  <obo:RO_0000053 rdf:resource="#ExtensionAttribute"/>
-  <work2:sameAs rdf:resource="#God"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExtendedSubstance</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#ExtensionLacksSelfExistenceDisposition">
@@ -34233,6 +34243,8 @@
 
 <owl:NamedIndividual rdf:about="#UniquenessOfGodQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work3:type rdf:resource="#UniquenessInNatureQuality"/>
+  <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UniquenessOfGodQuality</rdfs:label>
 </owl:NamedIndividual>
 
