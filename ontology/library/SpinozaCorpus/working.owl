@@ -6659,6 +6659,8 @@
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <obo:RO_0000053 rdf:resource="#InjuriousAffectQuality"/>
   <obo:RO_0000053 rdf:resource="#ObjectionableAffectQuality"/>
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#IdeaOfInternalCause"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LoveOfEsteem</rdfs:label>
 </owl:Class>
 
@@ -19679,6 +19681,23 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LoveConstitutionRelation</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#IdeaOfInternalCause">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IdeaOfInternalCause</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#BeliefInPraise">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#IdeaOfInternalCause"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BeliefInPraise</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#InternalCauseAttributionQuality">
+  <rdfs:subClassOf rdf:resource="#IdeaOfInternalCause"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">InternalCauseAttributionQuality</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
