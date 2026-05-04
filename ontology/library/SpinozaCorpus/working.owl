@@ -14993,6 +14993,24 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DistinctionByAffection</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#UniqueAttributePerSubstanceConstraint">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UniqueAttributePerSubstanceConstraint</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#AttributeUniquenessQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#AttributeOfSubstance"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AttributeUniquenessQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#AttributeCoinstantiationIncapacity">
+  <rdfs:subClassOf rdf:resource="#UniqueAttributePerSubstanceConstraint"/>
+  <work:subClassOf rdf:resource="#UniqueAttributePerSubstanceConstraint"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AttributeCoinstantiationIncapacity</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#God">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
   <obo:BFO_0000051 rdf:resource="#DivineAttribute"/>
