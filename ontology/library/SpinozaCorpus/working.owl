@@ -31601,6 +31601,9 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
   <obo:RO_0000053 rdf:resource="#SovereigntyOfThePeople"/>
   <obo:RO_0000056 rdf:resource="#MosesLegislativeEnactment"/>
+  <obo:RO_0000056 rdf:resource="#EnsuranceOfDutyProcess"/>
+  <obo:RO_0000056 rdf:resource="#VoluntaryDutyPerformance"/>
+  <obo:RO_0000053 rdf:resource="#ThePeopleStubbornnessQualityInstance"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ThePeople</rdfs:label>
 </owl:Class>
 
@@ -31656,6 +31659,21 @@
 <owl:Class rdf:about="#LegislativeEnactmentProcess">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LegislativeEnactmentProcess</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#VoluntaryCompliance">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">VoluntaryCompliance</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#FearMotivation">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FearMotivation</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#StubbornnessQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">StubbornnessQuality</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
@@ -32960,6 +32978,14 @@
   <work3:type rdf:resource="#Sovereignty"/>
   <obo:RO_0000052 rdf:resource="#ThePeople"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SovereigntyOfThePeople</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#MosesLegislativeEnactment">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000055 rdf:resource="#MosesDivineAuthorityRole"/>
+  <obo:RO_0000057 rdf:resource="#Moses"/>
+  <obo:RO_0000057 rdf:resource="#ThePeople"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MosesLegislativeEnactment</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#ExtendedSubstance">
@@ -35373,6 +35399,8 @@
   <obo:RO_0000053 rdf:resource="#MosesDivinePowerRoleInstance"/>
   <obo:RO_0000053 rdf:resource="#MosesDivineAuthorityRole"/>
   <obo:RO_0000056 rdf:resource="#MosesLegislativeEnactment"/>
+  <obo:RO_0000053 rdf:resource="#MosesLeadershipRole"/>
+  <obo:RO_0000056 rdf:resource="#EnsuranceOfDutyProcess"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Moses</rdfs:label>
 </owl:NamedIndividual>
 
@@ -35918,6 +35946,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MosesDivinePowerRoleInstance</rdfs:label>
 </owl:NamedIndividual>
 
+<owl:NamedIndividual rdf:about="#MosesDivineAuthorityRole">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <obo:RO_0000052 rdf:resource="#Moses"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MosesDivineAuthorityRole</rdfs:label>
+</owl:NamedIndividual>
+
 <owl:NamedIndividual rdf:about="#FatherSoul">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000020"/>
   <obo:RO_0000052 rdf:resource="#Father"/>
@@ -35995,6 +36029,14 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <obo:RO_0000052 rdf:resource="#PartOfExtendedSubstance"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EssenceOfBodyUnderEternityQuality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#PersuasionByEvidence">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#Moses"/>
+  <obo:RO_0000057 rdf:resource="#Hebrews"/>
+  <obo:BFO_0000050 rdf:resource="#EvidenceContent"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PersuasionByEvidence</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#IdealParticipationRelation">
@@ -45516,14 +45558,6 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HebrewSovereigntyRetentionCapacityAbsence</rdfs:label>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#PersuasionByEvidence">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <obo:RO_0000057 rdf:resource="#Moses"/>
-  <obo:RO_0000057 rdf:resource="#Hebrews"/>
-  <obo:BFO_0000050 rdf:resource="#EvidenceContent"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PersuasionByEvidence</rdfs:label>
-</owl:NamedIndividual>
-
 <owl:NamedIndividual rdf:about="#EvidenceContent">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EvidenceContent</rdfs:label>
@@ -45535,24 +45569,38 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivinePowerExceedance</rdfs:label>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#MosesDivineAuthorityRole">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
-  <obo:RO_0000052 rdf:resource="#Moses"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MosesDivineAuthorityRole</rdfs:label>
-</owl:NamedIndividual>
-
 <owl:NamedIndividual rdf:about="#MosaicLegislation">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <obo:BFO_0000050 rdf:resource="#MosesLegislativeEnactment"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MosaicLegislation</rdfs:label>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#MosesLegislativeEnactment">
+<owl:NamedIndividual rdf:about="#VoluntaryDutyPerformance">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <obo:BFO_0000055 rdf:resource="#MosesDivineAuthorityRole"/>
-  <obo:RO_0000057 rdf:resource="#Moses"/>
-  <obo:RO_0000057 rdf:resource="#ThePeople"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MosesLegislativeEnactment</rdfs:label>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">VoluntaryDutyPerformance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ThePeopleStubbornnessQualityInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#ThePeople"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ThePeopleStubbornnessQualityInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ThreatOfWar">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:RO_0000052 rdf:resource="#ThePeople"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ThreatOfWar</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#MosesLeadershipRole">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <obo:RO_0000052 rdf:resource="#Moses"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MosesLeadershipRole</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#EnsuranceOfDutyProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EnsuranceOfDutyProcess</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
