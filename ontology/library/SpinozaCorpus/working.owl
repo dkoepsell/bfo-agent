@@ -4302,6 +4302,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PreservingOnesBeingProcess</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#ActingFromGuidanceOfReason">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000055 rdf:resource="#GuidanceOfReason"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ActingFromGuidanceOfReason</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#Animal">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
   <obo:RO_0000053 rdf:resource="#AnimalExistenceQuality"/>
@@ -22607,6 +22613,7 @@
 <owl:Class rdf:about="#UnderstandingDisposition">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:BFO_0000054 rdf:resource="#UnderstandingProcess"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UnderstandingDisposition</rdfs:label>
 </owl:Class>
 
@@ -22990,10 +22997,25 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">VirtueSeekingProcess</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#ActingFromGuidanceOfReason">
+<owl:Class rdf:about="#StrivingFromReason">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <obo:BFO_0000055 rdf:resource="#GuidanceOfReason"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ActingFromGuidanceOfReason</rdfs:label>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="#UnderstandingProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">StrivingFromReason</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ReasonDirectedStriving">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:BFO_0000054 rdf:resource="#StrivingFromReason"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ReasonDirectedStriving</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#StrivingEndIsUnderstandingQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#StrivingFromReason"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">StrivingEndIsUnderstandingQuality</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
