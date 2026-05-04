@@ -1898,6 +1898,13 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AppetiteOrDesire</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#PrivationOfKnowledge">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#InadequateIdea"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PrivationOfKnowledge</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#PerfectionQuality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="#RelationalQuality"/>
@@ -3039,13 +3046,6 @@
   <obo:RO_0000052 rdf:resource="#PropositionalAct"/>
   <work:subClassOf rdf:resource="#PrivationOfKnowledge"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Falsity</rdfs:label>
-</owl:Class>
-
-<owl:Class rdf:about="#PrivationOfKnowledge">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <obo:RO_0000052 rdf:resource="#InadequateIdea"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PrivationOfKnowledge</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#PropositionalAct">
@@ -25761,6 +25761,24 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">KnowledgeQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#InadequateIdeaProportionQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">InadequateIdeaProportionQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PassivelyActedOnDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PassivelyActedOnDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#MindMaximallyActedOnQuality">
+  <rdfs:subClassOf rdf:resource="#InadequateIdeaProportionQuality"/>
+  <work:subClassOf rdf:resource="#InadequateIdeaProportionQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindMaximallyActedOnQuality</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
