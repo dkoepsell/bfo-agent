@@ -4656,6 +4656,8 @@
 <owl:Class rdf:about="#ContingencyQuality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:subClassOf rdf:resource="#ContingentExistenceQuality"/>
+  <work:subClassOf rdf:resource="#ContingentExistenceQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ContingencyQuality</rdfs:label>
 </owl:Class>
 
@@ -14264,6 +14266,22 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IndeterminateWill</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#Freedom">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Freedom</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#AffirmingAndDenyingManner">
+  <rdfs:subClassOf rdf:resource="#Freedom"/>
+  <work:subClassOf rdf:resource="#Freedom"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AffirmingAndDenyingManner</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#IndifferenceQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IndifferenceQuality</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#God">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
   <obo:BFO_0000051 rdf:resource="#DivineAttribute"/>
@@ -21439,6 +21457,12 @@
   <obo:RO_0000057 rdf:resource="#HumanIntellectInstance"/>
   <obo:RO_0000057 rdf:resource="#HumanWillInstance"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodGivingIntellectAndWillProcess</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#FreedomNotContingencyAxiom">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FreedomNotContingencyAxiom</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
