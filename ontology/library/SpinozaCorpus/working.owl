@@ -14849,6 +14849,25 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SelfDeterminedActionDisposition</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#EternalThing">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
+  <work:subClassOf rdf:resource="#Substance"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EternalThing</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#EternalExistenceNecessitationDisposition">
+  <rdfs:subClassOf rdf:resource="#ExistenceNecessitation"/>
+  <work:subClassOf rdf:resource="#ExistenceNecessitation"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EternalExistenceNecessitationDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DefinitionBasedExistenceQuality">
+  <rdfs:subClassOf rdf:resource="#EssentialExistenceQuality"/>
+  <work:subClassOf rdf:resource="#EssentialExistenceQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DefinitionBasedExistenceQuality</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#God">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
   <obo:BFO_0000051 rdf:resource="#DivineAttribute"/>
@@ -16540,6 +16559,7 @@
   <obo:RO_0000053 rdf:resource="#EternityUniquenessToGodQuality"/>
   <work3:type rdf:resource="#EssentialExistenceQuality"/>
   <work3:type rdf:resource="#MannerOfExistingQuality"/>
+  <work:subClassOf rdf:resource="#EssentialExistenceQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Eternity</rdfs:label>
 </owl:NamedIndividual>
 
