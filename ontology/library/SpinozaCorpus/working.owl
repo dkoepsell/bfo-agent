@@ -14520,6 +14520,37 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PerfectionInvolvementQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#IntellectualSubstance">
+  <rdfs:subClassOf rdf:resource="#Substance"/>
+  <work:subClassOf rdf:resource="#Substance"/>
+  <work:subClassOf rdf:resource="#_:x [owl:onProperty RO_0000053; owl:someValuesFrom working:EssenceDegreeHigherQuality]"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IntellectualSubstance</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#LifelessThing">
+  <rdfs:subClassOf rdf:resource="#Substance"/>
+  <work:subClassOf rdf:resource="#Substance"/>
+  <work:subClassOf rdf:resource="#_:y [owl:onProperty RO_0000053; owl:someValuesFrom working:EssenceDegreeLowerQuality]"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LifelessThing</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#EssenceDegreeQuality">
+  <rdfs:subClassOf rdf:resource="#EssentialExistenceQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EssenceDegreeQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#EssenceDegreeHigherQuality">
+  <rdfs:subClassOf rdf:resource="#EssenceDegreeQuality"/>
+  <work:subClassOf rdf:resource="#EssenceDegreeQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EssenceDegreeHigherQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#EssenceDegreeLowerQuality">
+  <rdfs:subClassOf rdf:resource="#EssenceDegreeQuality"/>
+  <work:subClassOf rdf:resource="#EssenceDegreeQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EssenceDegreeLowerQuality</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#God">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
   <obo:BFO_0000051 rdf:resource="#DivineAttribute"/>
