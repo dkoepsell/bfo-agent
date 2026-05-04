@@ -2752,6 +2752,8 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000020"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000020"/>
+  <work:subClassOf rdf:resource="#ImperfectionQuality"/>
+  <work:subClassOf rdf:resource="#NullOntologicalContent"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Privation</rdfs:label>
 </owl:Class>
 
@@ -14220,6 +14222,17 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PerfectionIncreaseQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#PureAndSimpleLackQuality">
+  <rdfs:subClassOf rdf:resource="#Privation"/>
+  <work:subClassOf rdf:resource="#Privation"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PureAndSimpleLackQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#NullOntologicalContent">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NullOntologicalContent</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#God">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
   <obo:BFO_0000051 rdf:resource="#DivineAttribute"/>
@@ -14732,6 +14745,13 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <obo:BFO_0000055 rdf:resource="#EssenceCausation"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EssenceCausationProcess</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#LoveOfGodArisesFromKnowledgeProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000055 rdf:resource="#KnowledgeOfGod"/>
+  <obo:RO_0000057 rdf:resource="#LoveOfGod"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LoveOfGodArisesFromKnowledgeProcess</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#GodRemoteCauseRole">
@@ -21377,13 +21397,6 @@
   <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <obo:BFO_0000050 rdf:resource="#TheEthics"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BlessednessConstitutionRelation</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#LoveOfGodArisesFromKnowledgeProcess">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <obo:BFO_0000055 rdf:resource="#KnowledgeOfGod"/>
-  <obo:RO_0000057 rdf:resource="#LoveOfGod"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LoveOfGodArisesFromKnowledgeProcess</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
