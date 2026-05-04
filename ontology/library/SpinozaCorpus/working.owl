@@ -4332,6 +4332,7 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <obo:BFO_0000054 rdf:resource="#ActingFromVirtue"/>
+  <obo:RO_0000052 rdf:resource="#RationalAgent"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GuidanceOfReason</rdfs:label>
 </owl:Class>
 
@@ -20049,6 +20050,7 @@
   <work:subClassOf rdf:resource="#Sadness"/>
   <work:subClassOf rdf:resource="#PityAccompaniedByIdeaRelation"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#RationalAgent"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Pity</rdfs:label>
 </owl:Class>
 
@@ -23010,6 +23012,8 @@
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
   <obo:RO_0000053 rdf:resource="#LivingAccordingToReason"/>
   <obo:RO_0000053 rdf:resource="#AgreementInNature"/>
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RationalAgent</rdfs:label>
 </owl:Class>
 
@@ -23706,6 +23710,13 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OverestimationCausesPrideDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#EvilInItselfQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#Pity"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EvilInItselfQuality</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
