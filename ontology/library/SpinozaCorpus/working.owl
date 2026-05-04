@@ -240,6 +240,20 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NecessityOfExistence</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#SubstanceInfinityQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:subClassOf rdf:resource="#SubstanceInfinityOrPerfectionQuality"/>
+  <work:subClassOf rdf:resource="#InfiniteInItsKind"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SubstanceInfinityQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SubstanceNecessaryInfinityDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="#ExistenceNecessitation"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SubstanceNecessaryInfinityDisposition</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#ExistenceNecessitation">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="#CausaSui"/>
@@ -289,6 +303,21 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ImperfectionQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#GodDecree">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <obo:RO_0000052 rdf:resource="#God"/>
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:BFO_0000054 rdf:resource="#DecreeNecessitationProcess"/>
+  <obo:BFO_0000054 rdf:resource="#NecessityFromDecreeProcess"/>
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000050 rdf:resource="#GodCausesAllThingsProcess"/>
+  <work3:type rdf:resource="#NecessityOfExistence"/>
+  <obo:BFO_0000054 rdf:resource="#GodCausesAllThingsProcess"/>
+  <obo:BFO_0000054 rdf:resource="#FormalExistenceNecessitationProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodDecree</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#CausaSui">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
@@ -309,21 +338,6 @@
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <obo:BFO_0000054 rdf:resource="#PerfectionLossProcess"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PerfectionLossDisposition</rdfs:label>
-</owl:Class>
-
-<owl:Class rdf:about="#GodDecree">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
-  <obo:RO_0000052 rdf:resource="#God"/>
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <obo:BFO_0000054 rdf:resource="#DecreeNecessitationProcess"/>
-  <obo:BFO_0000054 rdf:resource="#NecessityFromDecreeProcess"/>
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <obo:BFO_0000050 rdf:resource="#GodCausesAllThingsProcess"/>
-  <work3:type rdf:resource="#NecessityOfExistence"/>
-  <obo:BFO_0000054 rdf:resource="#GodCausesAllThingsProcess"/>
-  <obo:BFO_0000054 rdf:resource="#FormalExistenceNecessitationProcess"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodDecree</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#SelfLimitationIncapacity">
@@ -460,6 +474,7 @@
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000020"/>
   <obo:RO_0000052 rdf:resource="#FiniteSingularThing"/>
   <work:subClassOf rdf:resource="#ImperfectionQuality"/>
+  <work:subClassOf rdf:resource="#NegationQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Finitude</rdfs:label>
 </owl:Class>
 
@@ -9275,14 +9290,6 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SubstanceNatureUniquenessConstraint</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#SubstanceInfinityQuality">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <rdfs:subClassOf rdf:resource="#SubstanceInfinityOrPerfectionQuality"/>
-  <work:subClassOf rdf:resource="#InfiniteInItsKind"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SubstanceInfinityQuality</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#ModeExistenceNonEssentiality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
@@ -15019,11 +15026,30 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AttributeCoinstantiationIncapacity</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#SubstanceNecessaryInfinityDisposition">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <work:subClassOf rdf:resource="#ExistenceNecessitation"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SubstanceNecessaryInfinityDisposition</rdfs:label>
+<owl:Class rdf:about="#NegationQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#ImperfectionQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NegationQuality</rdfs:label>
 </owl:Class>
+
+<owl:Class rdf:about="#Infinitude">
+  <rdfs:subClassOf rdf:resource="#InfiniteInItsKind"/>
+  <work:subClassOf rdf:resource="#AbsoluteAffirmationOfExistence"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Infinitude</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#AbsoluteAffirmationOfExistence">
+  <rdfs:subClassOf rdf:resource="#FormalExistence"/>
+  <work:subClassOf rdf:resource="#FormalExistence"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AbsoluteAffirmationOfExistence</rdfs:label>
+</owl:Class>
+
+<owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
+  <obo:BFO_0000050 rdf:resource="#MetaphysicalSubjectMatter"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NecessityOfThingsSubjectMatter</rdfs:label>
+</owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#God">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
@@ -15264,13 +15290,6 @@
   <obo:RO_0000053 rdf:resource="#SpeakerPreservationByAnotherRoleInstance"/>
   <obo:RO_0000053 rdf:resource="#SpeakerUnionWithBodyRoleInstance"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Speaker</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
-  <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
-  <obo:BFO_0000050 rdf:resource="#MetaphysicalSubjectMatter"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NecessityOfThingsSubjectMatter</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#DecreeNecessitationProcess">
