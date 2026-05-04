@@ -412,6 +412,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SelfLimitationIncapacity</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#Action">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000055 rdf:resource="#AdequateCausation"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Action</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#PerfectionLossProcess">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
@@ -11856,12 +11862,6 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Assenting</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#Action">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <obo:BFO_0000055 rdf:resource="#AdequateCausation"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Action</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#AdequateCausation">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <obo:BFO_0000054 rdf:resource="#Action"/>
@@ -12720,6 +12720,12 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <obo:RO_0000057 rdf:resource="#Body"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExternalForceMoveBodyProcess</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#StrengtheningByExternalForceProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#BodyPart"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">StrengtheningByExternalForceProcess</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#CircularMotion">
@@ -23982,12 +23988,6 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IntrinsicMoralValenceQuality</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#StrengtheningByExternalForceProcess">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <obo:RO_0000057 rdf:resource="#BodyPart"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">StrengtheningByExternalForceProcess</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#StrengthState">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <obo:RO_0000052 rdf:resource="#BodyPart"/>
@@ -23998,6 +23998,17 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <obo:RO_0000057 rdf:resource="#BodyPart"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">StrengthStatePreservationProcess</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#BodyPartStrengthQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BodyPartStrengthQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#MindStriveToPreserveBodyPartStateDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="#ConatusMentalDispositionInstance"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindStriveToPreserveBodyPartStateDisposition</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
@@ -34258,6 +34269,19 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GeometricNecessityAnalogy</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#BodyPartStrengtheningProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#PartOfExtendedSubstance"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BodyPartStrengtheningProcess</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#MindPreservesBodyPartStateProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000055 rdf:resource="#MindStriveToPreserveBodyPartStateDisposition"/>
+  <obo:BFO_0000050 rdf:resource="#PerseveranceInBeingProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindPreservesBodyPartStateProcess</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
