@@ -24367,6 +24367,31 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MutualGratitudeProcess</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#FreedomByReason">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FreedomByReason</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#HonestyDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:BFO_0000054 rdf:resource="#HonestAction"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HonestyDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DeceptiveActingAbsenceQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DeceptiveActingAbsenceQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#HonestAction">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HonestAction</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
