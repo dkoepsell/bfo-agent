@@ -32155,6 +32155,18 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HumanUnderstandingTranscendence</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#NaturesOperationsFollowFromGodEssenceDisposition">
+  <rdfs:subClassOf rdf:resource="#SubstanceNecessaryInfinityDisposition"/>
+  <obo:RO_0000052 rdf:resource="#God"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NaturesOperationsFollowFromGodEssenceDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#NaturesOperations">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000055 rdf:resource="#NaturesOperationsFollowFromGodEssenceDisposition"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NaturesOperations</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
