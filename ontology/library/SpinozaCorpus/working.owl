@@ -1936,6 +1936,8 @@
   <work:subClassOf rdf:resource="#Affect"/>
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:subClassOf rdf:resource="#ComplexAffect"/>
+  <work:subClassOf rdf:resource="#ComplexAffect"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">JoyAffect</rdfs:label>
 </owl:Class>
 
@@ -2226,6 +2228,8 @@
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:subClassOf rdf:resource="#ComplexAffect"/>
+  <work:subClassOf rdf:resource="#ComplexAffect"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SadnessAffect</rdfs:label>
 </owl:Class>
 
@@ -2244,6 +2248,13 @@
 <owl:Class rdf:about="#RepentanceAccompanimentRelation">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RepentanceAccompanimentRelation</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PowerOfActing">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:RO_0000052 rdf:resource="#Body"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PowerOfActing</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#SadnessExemptionQuality">
@@ -4095,6 +4106,13 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IdeaOfExternalCause</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ExternalObjectCausalIdeaQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#ExternalObject"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExternalObjectCausalIdeaQuality</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#Perception">
@@ -19684,13 +19702,6 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EffectFollowingFromPartialNature</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#PowerOfActing">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <obo:RO_0000052 rdf:resource="#Body"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PowerOfActing</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#PowerOfActingChange">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="#BodyAffection"/>
@@ -26481,11 +26492,29 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">StrictnessQuality</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#ExternalObjectCausalIdeaQuality">
+<owl:Class rdf:about="#ComplexAffect">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ComplexAffect</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#IdeaOfExternalObject">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <obo:RO_0000052 rdf:resource="#ExternalObject"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExternalObjectCausalIdeaQuality</rdfs:label>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IdeaOfExternalObject</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#IdeaOfSelfAsCause">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IdeaOfSelfAsCause</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SelfAsCausalAgentQuality">
+  <rdfs:subClassOf rdf:resource="#IdeaOfSelfAsCause"/>
+  <work:subClassOf rdf:resource="#IdeaOfSelfAsCause"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SelfAsCausalAgentQuality</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
