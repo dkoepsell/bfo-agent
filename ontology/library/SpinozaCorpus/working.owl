@@ -9210,6 +9210,9 @@
 <owl:Class rdf:about="#TrueMannerOfLiving">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#Person"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TrueMannerOfLiving</rdfs:label>
 </owl:Class>
 
@@ -31766,6 +31769,13 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Men</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#TrueOpinionQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#Person"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TrueOpinionQuality</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -34901,6 +34911,13 @@
 <owl:NamedIndividual rdf:about="#DivineSustainmentAndDirectionProcess">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivineSustainmentAndDirectionProcess</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#DivineProvidenceInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:RO_0000052 rdf:resource="#God"/>
+  <obo:BFO_0000054 rdf:resource="#ProvidingForThingsProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivineProvidenceInstance</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#ThinkingThingRole">
@@ -45719,13 +45736,6 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
   <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UniversalChurch</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#DivineProvidenceInstance">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <obo:RO_0000052 rdf:resource="#God"/>
-  <obo:BFO_0000054 rdf:resource="#ProvidingForThingsProcess"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivineProvidenceInstance</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#ProvidingForThingsProcess">
