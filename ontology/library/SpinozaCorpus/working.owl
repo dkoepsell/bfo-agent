@@ -36818,6 +36818,7 @@
   <obo:RO_0000052 rdf:resource="#InfiniteIntellectOfGod"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="#LoveOfGod"/>
+  <work2:equivalentClass rdf:resource="#Virtue"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Blessedness</rdfs:label>
 </owl:NamedIndividual>
 
