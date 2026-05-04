@@ -29535,6 +29535,42 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SadTemperamentRevelationDisposition</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#RefinedProphet">
+  <rdfs:subClassOf rdf:resource="#Prophet"/>
+  <work:subClassOf rdf:resource="#Prophet"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RefinedProphet</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PropheticRefinementQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PropheticRefinementQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DivineMindPerceptionDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:BFO_0000054 rdf:resource="#DivineMindPerceptionProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivineMindPerceptionDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#RefinedStyleQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:BFO_0000050 rdf:resource="#DivineMindPerceptionProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RefinedStyleQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DivineMindPerceptionProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000055 rdf:resource="#DivineMindPerceptionDisposition"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivineMindPerceptionProcess</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DivineMind">
+  <rdfs:subClassOf rdf:resource="#DivineAttribute"/>
+  <work:subClassOf rdf:resource="#DivineAttribute"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivineMind</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
