@@ -15953,6 +15953,18 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AbsoluteProximateCauseQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#ContingencyAbsenceQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ContingencyAbsenceQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DivineNecessityDetermination">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivineNecessityDetermination</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
@@ -16216,6 +16228,7 @@
   <obo:RO_0000056 rdf:resource="#GodDeterminesExistenceAndEffectProcess"/>
   <obo:RO_0000053 rdf:resource="#GodAbsoluteProximateCauseRoleInstance"/>
   <obo:RO_0000056 rdf:resource="#ImmediateProduction"/>
+  <obo:RO_0000056 rdf:resource="#DivineNecessityDeterminationProcess"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">God</rdfs:label>
 </owl:NamedIndividual>
 
@@ -16331,6 +16344,7 @@
   <obo:BFO_0000051 rdf:resource="#Mode"/>
   <obo:RO_0000053 rdf:resource="#QuantityOfMotionQualityInstance"/>
   <obo:RO_0000053 rdf:resource="#AllThingsInGodQuality"/>
+  <obo:RO_0000056 rdf:resource="#DivineNecessityDeterminationProcess"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WholeOfNature</rdfs:label>
 </owl:NamedIndividual>
 
@@ -18500,6 +18514,13 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <obo:RO_0000052 rdf:resource="#GodImmanentCauseRole"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ImmanentCauseSuitabilityQualityInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#AllThingsInGodProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#God"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AllThingsInGodProcess</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#MotionUniversalModeRole">
@@ -23825,11 +23846,24 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodCausesExistenceProcess</rdfs:label>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#AllThingsInGodProcess">
+<owl:NamedIndividual rdf:about="#ContingencyAbsenceQualityInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work3:type rdf:resource="#ContingencyAbsenceQuality"/>
+  <obo:RO_0000052 rdf:resource="#WholeOfNature"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ContingencyAbsenceQualityInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#DivineNecessityDeterminationInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work3:type rdf:resource="#DivineNecessityDetermination"/>
+  <obo:RO_0000052 rdf:resource="#God"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivineNecessityDeterminationInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#DivineNecessityDeterminationProcess">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <obo:RO_0000057 rdf:resource="#God"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AllThingsInGodProcess</rdfs:label>
+  <obo:BFO_0000055 rdf:resource="#DivineNecessityDeterminationInstance"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivineNecessityDeterminationProcess</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
