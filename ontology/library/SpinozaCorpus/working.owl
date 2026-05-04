@@ -14232,6 +14232,9 @@
 <owl:Class rdf:about="#PiousAgent">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
   <obo:BFO_0000054 rdf:resource="#HonoringGodProcess"/>
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <work:subClassOf rdf:resource="#EssenceReceptionFromGodQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PiousAgent</rdfs:label>
 </owl:Class>
 
@@ -14471,6 +14474,25 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <work:subClassOf rdf:resource="#GodDecree"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EssenceAllotmentProcess</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#GodlessAgent">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <work:subClassOf rdf:resource="#EssenceReceptionFromGodQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodlessAgent</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#EssenceReceptionFromGodQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#EssenceCausationProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EssenceReceptionFromGodQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#EssenceReceptionFromGodDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EssenceReceptionFromGodDisposition</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#God">
@@ -15006,6 +15028,7 @@
 <owl:NamedIndividual rdf:about="#EssenceCausationProcess">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <obo:BFO_0000055 rdf:resource="#EssenceCausation"/>
+  <obo:RO_0000057 rdf:resource="#God"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EssenceCausationProcess</rdfs:label>
 </owl:NamedIndividual>
 
@@ -16424,6 +16447,12 @@
   <obo:RO_0000052 rdf:resource="#God"/>
   <obo:BFO_0000054 rdf:resource="#GodCausesAllThingsProcess"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SupremelyPerfectBeingPower</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#EssenceAllotmentProcessInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000055 rdf:resource="#EssenceAllotmentDispositionInstance"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EssenceAllotmentProcessInstance</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#ThinkingThingRole">
@@ -21754,12 +21783,6 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <obo:RO_0000052 rdf:resource="#God"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EssenceAllotmentDispositionInstance</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#EssenceAllotmentProcessInstance">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <obo:BFO_0000055 rdf:resource="#EssenceAllotmentDispositionInstance"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EssenceAllotmentProcessInstance</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
