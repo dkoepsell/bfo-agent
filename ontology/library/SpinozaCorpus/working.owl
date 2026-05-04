@@ -24067,12 +24067,6 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ReasonDeterminesDesireProcess</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#AdequateCognitionThroughEssenceQuality">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <work:subClassOf rdf:resource="#ConceptualIndependence"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AdequateCognitionThroughEssenceQuality</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#HumanNatureInsofar">
   <rdfs:subClassOf rdf:resource="#Substance"/>
   <obo:RO_0000053 rdf:resource="#DesireArisingFromReason"/>
@@ -24080,10 +24074,22 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HumanNatureInsofar</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#AdequateCognitionThroughEssenceQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#ConceptualIndependence"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AdequateCognitionThroughEssenceQuality</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#AbsenceOfExcessivenessQuality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AbsenceOfExcessivenessQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#IdeaOfFutureOrPastOrPresentThing">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IdeaOfFutureOrPastOrPresentThing</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
@@ -34357,6 +34363,24 @@
   <obo:BFO_0000055 rdf:resource="#MindStriveToPreserveBodyPartStateDisposition"/>
   <obo:BFO_0000050 rdf:resource="#PerseveranceInBeingProcess"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindPreservesBodyPartStateProcess</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ReasonDictateConception">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000055 rdf:resource="#TemporalIndifferenceUnderReasonQuality"/>
+  <obo:RO_0000057 rdf:resource="#DictateOfReason"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ReasonDictateConception</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#TemporalIndifferenceUnderReasonQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#TrueIntellect"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TemporalIndifferenceUnderReasonQuality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#DictateOfReason">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DictateOfReason</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
