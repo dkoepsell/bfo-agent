@@ -30720,6 +30720,24 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">KnowledgeDerivationProcess</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#GodWillQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodWillQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#GodIntellectQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodIntellectQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#WillIntellectNumericalIdentityQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WillIntellectNumericalIdentityQuality</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -33150,6 +33168,7 @@
   <work2:sameAs rdf:resource="#GodPower"/>
   <obo:BFO_0000054 rdf:resource="#GodWillCausesAllProcess"/>
   <work2:sameAs rdf:resource="#GodIntellect"/>
+  <work3:type rdf:resource="#GodWillQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodWill</rdfs:label>
 </owl:NamedIndividual>
 
@@ -34660,6 +34679,7 @@
   <work2:sameAs rdf:resource="#GodPower"/>
   <work2:sameAs rdf:resource="#GodEssence"/>
   <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work3:type rdf:resource="#GodIntellectQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodIntellect</rdfs:label>
 </owl:NamedIndividual>
 
@@ -44262,6 +44282,13 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <obo:RO_0000052 rdf:resource="#God"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UltimateEndOfActionsQuality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#GodWillIntellectIdentityQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work3:type rdf:resource="#WillIntellectNumericalIdentityQuality"/>
+  <obo:RO_0000052 rdf:resource="#God"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodWillIntellectIdentityQuality</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
