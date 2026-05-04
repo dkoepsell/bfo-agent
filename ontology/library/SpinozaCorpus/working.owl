@@ -21506,6 +21506,9 @@
 <owl:Class rdf:about="#GreaterPerfectionQuality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:subClassOf rdf:resource="#RelativePerfectionOrdering"/>
+  <work:subClassOf rdf:resource="#RelativePerfectionOrdering"/>
+  <obo:RO_0000052 rdf:resource="#AshamedPerson"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GreaterPerfectionQuality</rdfs:label>
 </owl:Class>
 
@@ -21830,6 +21833,8 @@
 
 <owl:Class rdf:about="#ShameQuality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#AshamedPerson"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ShameQuality</rdfs:label>
 </owl:Class>
 
@@ -23894,6 +23899,30 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NotAVirtueQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ShamelessnessQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#ShamelessPerson"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ShamelessnessQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#AshamedPerson">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AshameadPerson</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ShamelessPerson">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ShamelessPerson</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#RelativePerfectionOrdering">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RelativePerfectionOrdering</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
