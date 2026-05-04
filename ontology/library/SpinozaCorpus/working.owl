@@ -8786,6 +8786,7 @@
 
 <owl:Class rdf:about="#NaturalThing">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NaturalThing</rdfs:label>
 </owl:Class>
 
@@ -14001,6 +14002,7 @@
 <owl:Class rdf:about="#DivinePower">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="#DivineAttribute"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivinePower</rdfs:label>
 </owl:Class>
 
@@ -28870,6 +28872,18 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExpressesGodSuperlativelyDisposition</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#WorkOfGod">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WorkOfGod</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#NaturalThingExistenceAndActionProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NaturalThingExistenceAndActionProcess</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -29197,6 +29211,8 @@
   <obo:RO_0000053 rdf:resource="#EssenceCommunicationToMindDispositionInstance"/>
   <obo:RO_0000056 rdf:resource="#MindToMindCommunicationProcess"/>
   <obo:BFO_0000051 rdf:resource="#OfGodParthood"/>
+  <obo:RO_0000053 rdf:resource="#GodDivinePowerInstance"/>
+  <obo:RO_0000056 rdf:resource="#DivineCausationOfNaturalThings"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">God</rdfs:label>
 </owl:NamedIndividual>
 
@@ -41123,6 +41139,21 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <obo:RO_0000052 rdf:resource="#Ruagh"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ProperMeaningOfRuagh</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#GodDivinePowerInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work3:type rdf:resource="#DivinePower"/>
+  <obo:RO_0000052 rdf:resource="#God"/>
+  <obo:BFO_0000054 rdf:resource="#DivineCausationOfNaturalThings"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodDivinePowerInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#DivineCausationOfNaturalThings">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000055 rdf:resource="#GodDivinePowerInstance"/>
+  <obo:BFO_0000051 rdf:resource="#NaturalThingExistenceAndActionProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivineCausationOfNaturalThings</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
