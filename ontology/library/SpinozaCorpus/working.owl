@@ -22204,6 +22204,31 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PassionForceDefinitionRelation</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#ForceOfPassion">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#Passion"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ForceOfPassion</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PowerOfMan">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PowerOfMan</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PassionOverwhelmingProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000055 rdf:resource="#AffectPersistenceDisposition"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PassionOverwhelmingProcess</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#AffectPersistenceDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="#Passion"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AffectPersistenceDisposition</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
