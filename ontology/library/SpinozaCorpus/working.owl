@@ -14118,6 +14118,35 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Godliness</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#Prophet">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Prophet</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DivineRevelation">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#God"/>
+  <obo:RO_0000057 rdf:resource="#DivineWord"/>
+  <obo:BFO_0000055 rdf:resource="#TeleologicalEnd"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivineRevelation</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DivineWord">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivineWord</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#TeleologicalEnd">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TeleologicalEnd</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ClarityOfRevelation">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#DivineRevelation"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ClarityOfRevelation</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#God">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
   <obo:BFO_0000051 rdf:resource="#DivineAttribute"/>
