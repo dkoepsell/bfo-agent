@@ -15476,6 +15476,31 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NonComposedOfFinitePartsQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#CorporealSubstanceInfinityQuality">
+  <rdfs:subClassOf rdf:resource="#SubstanceInfinityQuality"/>
+  <work:subClassOf rdf:resource="#SubstanceInfinityQuality"/>
+  <work:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CorporealSubstanceInfinityQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#CorporealSubstanceUniquenessQuality">
+  <rdfs:subClassOf rdf:resource="#SubstanceInfinityOrPerfectionQuality"/>
+  <work:subClassOf rdf:resource="#SubstanceInfinityOrPerfectionQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CorporealSubstanceUniquenessQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#CorporealSubstanceIndivisibilityQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CorporealSubstanceIndivisibilityQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#CorporealSubstanceConceivabilityConstraint">
+  <rdfs:subClassOf rdf:resource="#SelfConceivability"/>
+  <work:subClassOf rdf:resource="#SelfConceivability"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CorporealSubstanceConceivabilityConstraint</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
