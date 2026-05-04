@@ -1264,6 +1264,7 @@
   <obo:RO_0000053 rdf:resource="#AdequateKnowledgeOfGodQualityInstance"/>
   <obo:RO_0000053 rdf:resource="#PassionOfJoy"/>
   <obo:RO_0000056 rdf:resource="#TransitionToGreaterPerfection"/>
+  <obo:RO_0000056 rdf:resource="#TransitionToLesserPerfection"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HumanMind</rdfs:label>
 </owl:Class>
 
@@ -1534,6 +1535,20 @@
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <obo:BFO_0000054 rdf:resource="#AdequateIdea"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AdequateIdeaInMindDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PassionOfJoy">
+  <rdfs:subClassOf rdf:resource="#Passion"/>
+  <work:subClassOf rdf:resource="#Joy"/>
+  <work:subClassOf rdf:resource="#Passion"/>
+  <obo:BFO_0000054 rdf:resource="#TransitionToGreaterPerfection"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PassionOfJoy</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#TransitionToGreaterPerfection">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000055 rdf:resource="#PassionOfJoy"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TransitionToGreaterPerfection</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#ConatusRealizationProcess">
@@ -19104,18 +19119,9 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BodyMindPowerCovarianceQuality</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#PassionOfJoy">
-  <rdfs:subClassOf rdf:resource="#Passion"/>
-  <work:subClassOf rdf:resource="#Joy"/>
-  <work:subClassOf rdf:resource="#Passion"/>
-  <obo:BFO_0000054 rdf:resource="#TransitionToGreaterPerfection"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PassionOfJoy</rdfs:label>
-</owl:Class>
-
-<owl:Class rdf:about="#TransitionToGreaterPerfection">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <obo:BFO_0000055 rdf:resource="#PassionOfJoy"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TransitionToGreaterPerfection</rdfs:label>
+<owl:Class rdf:about="#LesserPerfectionQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LesserPerfectionQuality</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
@@ -28833,6 +28839,26 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <obo:BFO_0000055 rdf:resource="#MindPowerIncreaseDisposition"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IdeaIncreasingMindPowerProcess</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#PassionOfSadness">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work3:type rdf:resource="#Sadness"/>
+  <obo:RO_0000052 rdf:resource="#HumanMind"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PassionOfSadness</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#LesserPerfectionQualityInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#HumanMind"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LesserPerfectionQualityInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#TransitionToLesserPerfection">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000055 rdf:resource="#PassionOfSadness"/>
+  <obo:RO_0000057 rdf:resource="#LesserPerfectionQualityInstance"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TransitionToLesserPerfection</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
