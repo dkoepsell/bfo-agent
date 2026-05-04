@@ -12889,6 +12889,7 @@
 
 <owl:Class rdf:about="#ExternalObject">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExternalObject</rdfs:label>
 </owl:Class>
 
@@ -19373,6 +19374,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AccidentalCause</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#AccidentalCausingOfHopeOrFear">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000055 rdf:resource="#AccidentalCause"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AccidentalCausingOfHopeOrFear</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#AccidentalCausingOfAffect">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <obo:BFO_0000055 rdf:resource="#AccidentalCause"/>
@@ -20176,10 +20183,25 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LoveMagnitudeQuality</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#AccidentalCausingOfHopeOrFear">
+<owl:Class rdf:about="#AffectionByObject">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <obo:BFO_0000055 rdf:resource="#AccidentalCause"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AccidentalCausingOfHopeOrFear</rdfs:label>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#ExternalObject"/>
+  <obo:RO_0000057 rdf:resource="#HumanMind"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AffectionByObject</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DifferentialAffectionQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#HumanMind"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DifferentialAffectionQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SimultaneityTemporalRegion">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000008"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000008"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SimultaneityTemporalRegion</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
