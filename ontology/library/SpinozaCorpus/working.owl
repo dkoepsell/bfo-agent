@@ -1168,6 +1168,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Man</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#MindPerceptualCapacity">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindPerceptualCapacity</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#Imagination">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
@@ -1336,6 +1342,12 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindIndependentExistenceCapacity</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#BodyActionCapacity">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BodyActionCapacity</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#ObjectCausationOfAffirmationOrDenial">
@@ -16846,22 +16858,30 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ObjectiveRealityDegreeQuality</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#MindPerceptualCapacity">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindPerceptualCapacity</rdfs:label>
-</owl:Class>
-
-<owl:Class rdf:about="#BodyActionCapacity">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BodyActionCapacity</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#ProportionalityQuality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ProportionalityQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#MindDistinctUnderstandingCapacity">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:BFO_0000054 rdf:resource="#BodyActionSelfSufficiencyProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindDistinctUnderstandingCapacity</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#BodySelfDependenceQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:comment rdf:resource="#Inheres in a body and consists in its actions being primarily determined by itself rather than by other bodies."/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BodySelfDependenceQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#BodyActionSelfSufficiencyProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BodyActionSelfSufficiencyProcess</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
