@@ -2833,6 +2833,7 @@
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work:subClassOf rdf:resource="#EpistemicNecessityOfIdeas"/>
   <obo:RO_0000053 rdf:resource="#NecessityOfFollowingDisposition"/>
+  <obo:RO_0000053 rdf:resource="#FalsityQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">InadequateIdea</rdfs:label>
 </owl:Class>
 
@@ -2859,6 +2860,9 @@
 <owl:Class rdf:about="#FalsityQuality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:subClassOf rdf:resource="#Falsity"/>
+  <work:subClassOf rdf:resource="#PrivationOfKnowledge"/>
+  <work:subClassOf rdf:resource="#Falsity"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FalsityQuality</rdfs:label>
 </owl:Class>
 
@@ -4230,6 +4234,18 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="#HumanEssence"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Power</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#GovernanceByIntellect">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GovernanceByIntellect</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#VirtuePowerIdentityQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#HumanEssence"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">VirtuePowerIdentityQuality</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#Animal">
@@ -8545,18 +8561,6 @@
   <work:subClassOf rdf:resource="#InternalCausalLocus"/>
   <obo:BFO_0000054 rdf:resource="#ImperfectionPrevention"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PassionCause</rdfs:label>
-</owl:Class>
-
-<owl:Class rdf:about="#GovernanceByIntellect">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GovernanceByIntellect</rdfs:label>
-</owl:Class>
-
-<owl:Class rdf:about="#VirtuePowerIdentityQuality">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <work:subClassOf rdf:resource="#HumanEssence"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">VirtuePowerIdentityQuality</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#RuinProcess">
@@ -22587,6 +22591,7 @@
   <obo:RO_0000052 rdf:resource="#HumanMind"/>
   <work3:type rdf:resource="#InadequateIdeaQuality"/>
   <work:subClassOf rdf:resource="#InadequateOrConfusedIdeaQuality"/>
+  <work:subClassOf rdf:resource="#PrivationOfKnowledge"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">InadequateKnowledgeOfBodyPartsQuality</rdfs:label>
 </owl:NamedIndividual>
 
@@ -22610,6 +22615,7 @@
   <work3:type rdf:resource="#InadequateKnowledgeOfExternalBodyQualityClass"/>
   <work3:type rdf:resource="#InadequateIdeaQuality"/>
   <work:subClassOf rdf:resource="#InadequateOrConfusedIdeaQuality"/>
+  <work:subClassOf rdf:resource="#PrivationOfKnowledge"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">InadequateKnowledgeOfExternalBodyQuality</rdfs:label>
 </owl:NamedIndividual>
 
