@@ -1887,6 +1887,11 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HumanPerson</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#AppetiteOrDesire">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AppetiteOrDesire</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#PerfectionQuality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="#RelationalQuality"/>
@@ -25289,16 +25294,37 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AppetiteIdentityQuality</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#AppetiteOrDesire">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AppetiteOrDesire</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#PassionAppetiteOrDesire">
   <rdfs:subClassOf rdf:resource="#AppetiteOrDesire"/>
   <work:subClassOf rdf:resource="#Passion"/>
   <work:subClassOf rdf:resource="#AppetiteOrDesire"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PassionAppetiteOrDesire</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#AppetiteArousedByAdequateIdea">
+  <rdfs:subClassOf rdf:resource="#Appetite"/>
+  <work:subClassOf rdf:resource="#Appetite"/>
+  <obo:BFO_0000054 rdf:resource="#AdequateIdeaArousingProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AppetiteArousedByAdequateIdea</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DesireArousedByAdequateIdea">
+  <rdfs:subClassOf rdf:resource="#Desire"/>
+  <work:subClassOf rdf:resource="#Desire"/>
+  <obo:BFO_0000054 rdf:resource="#AdequateIdeaArousingProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DesireArousedByAdequateIdea</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#VirtueFromAdequateIdea">
+  <rdfs:subClassOf rdf:resource="#Virtue"/>
+  <work:subClassOf rdf:resource="#Virtue"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">VirtueFromAdequateIdea</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#AdequateIdeaArousingProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#AdequateIdea"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AdequateIdeaArousingProcess</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
