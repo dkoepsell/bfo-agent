@@ -24167,6 +24167,30 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConsciousnessOfSadness</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#RationalGuidance">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RationalGuidance</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#GreaterGoodSelectionDisposition">
+  <rdfs:subClassOf rdf:resource="#RationalGuidance"/>
+  <work:subClassOf rdf:resource="#RationalGuidance"/>
+  <obo:BFO_0000054 rdf:resource="#RationalDecisionProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GreaterGoodSelectionDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#LesserEvilSelectionDisposition">
+  <rdfs:subClassOf rdf:resource="#RationalGuidance"/>
+  <work:subClassOf rdf:resource="#RationalGuidance"/>
+  <obo:BFO_0000054 rdf:resource="#RationalDecisionProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LesserEvilSelectionDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#RationalDecisionProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RationalDecisionProcess</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
