@@ -142,6 +142,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Substance</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#EternalAndInfiniteEssenceExpression">
+  <rdfs:subClassOf rdf:resource="#AttributeExpressesEternalInfiniteEssenceRelation"/>
+  <work:subClassOf rdf:resource="#AttributeExpressesEternalInfiniteEssenceRelation"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EternalAndInfiniteEssenceExpression</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#SubstanceProductionConstraint">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
@@ -15174,10 +15180,10 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">InfiniteAttributeComposition</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#EternalAndInfiniteEssenceExpression">
-  <rdfs:subClassOf rdf:resource="#AttributeExpressesEternalInfiniteEssenceRelation"/>
-  <work:subClassOf rdf:resource="#AttributeExpressesEternalInfiniteEssenceRelation"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EternalAndInfiniteEssenceExpression</rdfs:label>
+<owl:Class rdf:about="#InfiniteAttributesQuality">
+  <rdfs:subClassOf rdf:resource="#SubstanceInfinityOrPerfectionQuality"/>
+  <work:subClassOf rdf:resource="#SubstanceInfinityOrPerfectionQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">InfiniteAttributesQuality</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
@@ -22685,6 +22691,27 @@
 <owl:NamedIndividual rdf:about="#MoreRealityMoreAttributesCorrelation">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MoreRealityMoreAttributesCorrelation</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#GodInfiniteAttributesQualityInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work3:type rdf:resource="#InfiniteAttributesQuality"/>
+  <obo:RO_0000052 rdf:resource="#God"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodInfiniteAttributesQualityInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#GodNecessityOfExistenceInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work3:type rdf:resource="#NecessityOfExistence"/>
+  <obo:RO_0000052 rdf:resource="#God"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodNecessityOfExistenceInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#GodEssenceContainsExistenceInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work3:type rdf:resource="#EssenceContainsExistenceDisposition"/>
+  <obo:RO_0000052 rdf:resource="#God"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodEssenceContainsExistenceInstance</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
