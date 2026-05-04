@@ -26921,6 +26921,23 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NonEvaluativePerfectionQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#PureIntellect">
+  <rdfs:subClassOf rdf:resource="#IntellectualGraspability"/>
+  <work:subClassOf rdf:resource="#IntellectualGraspability"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PureIntellect</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ExternallySourcedIdea">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExternallySourcedIdea</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#AbsenceOfExternallySourcedIdeasQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AbsenceOfExternallySourcedIdeasQuality</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
