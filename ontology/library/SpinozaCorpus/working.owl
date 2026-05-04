@@ -13484,6 +13484,23 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DecreeCausationRelation</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#Sin">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#PrivationQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Sin</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PrivationQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#ImperfectionQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PrivationQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#LacksPositiveOntologicalContent">
+  <rdfs:subClassOf rdf:resource="#PrivationQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LacksPositiveOntologicalContent</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#God">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
   <obo:BFO_0000051 rdf:resource="#DivineAttribute"/>
@@ -17114,6 +17131,7 @@
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="#HindersHumanPerfectionDisposition"/>
   <work:subClassOf rdf:resource="#ModeOfThinking"/>
+  <work:subClassOf rdf:resource="#PrivationQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Evil</rdfs:label>
 </owl:NamedIndividual>
 
