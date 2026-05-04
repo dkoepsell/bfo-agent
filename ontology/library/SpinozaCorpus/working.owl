@@ -16195,6 +16195,17 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OntologicalDependenceOnGodDisposition</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#FinalCause">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work:subClassOf rdf:resource="#HumanFiction"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FinalCause</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#HumanFiction">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HumanFiction</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
