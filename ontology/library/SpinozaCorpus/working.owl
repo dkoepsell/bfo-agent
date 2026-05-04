@@ -1854,6 +1854,11 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ServingGodRole</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#SingularThingInNature">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SingularThingInNature</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#Life">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <obo:BFO_0000054 rdf:resource="#PerseveranceProcess"/>
@@ -23243,11 +23248,6 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RationalMan</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#SingularThingInNature">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SingularThingInNature</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#RationalityQuality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
@@ -24964,6 +24964,17 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="#HumanMindFriendshipCapacityQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindFriendshipEnjoyabilityQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#NonHumanNature">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NonHumanNature</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PreservationOrDestructionNorm">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work:comment rdf:resource="#Normative principle: non-human natural things ought to be preserved or destroyed in accordance with their usefulness to human ends."/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PreservationOrDestructionNorm</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
