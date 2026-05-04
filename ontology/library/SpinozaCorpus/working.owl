@@ -25267,6 +25267,26 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PartialSelfUnderstandingQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#AppetiteByWhichOneActs">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="#AppetiteByWhichOneIsActedOn"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AppetiteByWhichOneActs</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#AppetiteByWhichOneIsActedOn">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="#AppetiteByWhichOneActs"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AppetiteByWhichOneIsActedOn</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#AppetiteIdentityQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AppetiteIdentityQuality</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
@@ -25739,6 +25759,8 @@
   <work3:type rdf:resource="#ConatusStriving"/>
   <work3:type rdf:resource="#SelfPreservationStriving"/>
   <work3:type rdf:resource="#GuidanceByOwnNature"/>
+  <work3:type rdf:resource="#AppetiteByWhichOneActs"/>
+  <work3:type rdf:resource="#AppetiteByWhichOneIsActedOn"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConatusMentalDispositionInstance</rdfs:label>
 </owl:NamedIndividual>
 
