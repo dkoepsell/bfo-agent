@@ -4369,6 +4369,17 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AgreementInNature</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#RationalGuidanceProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000055 rdf:resource="#GuidanceByReason"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RationalGuidanceProcess</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ReasonsGuidance">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ReasonsGuidance</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#Animal">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
   <obo:RO_0000053 rdf:resource="#AnimalExistenceQuality"/>
@@ -21747,6 +21758,8 @@
   <work:subClassOf rdf:resource="#SelfAppraisalQuality"/>
   <work:subClassOf rdf:resource="#UndervaluationOfSelf"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Despondency</rdfs:label>
 </owl:Class>
 
@@ -23029,17 +23042,6 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ContrariousRelationQuality</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#RationalGuidanceProcess">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <obo:BFO_0000055 rdf:resource="#GuidanceByReason"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RationalGuidanceProcess</rdfs:label>
-</owl:Class>
-
-<owl:Class rdf:about="#ReasonsGuidance">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ReasonsGuidance</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#NecessaryAgreementInNatureQuality">
   <rdfs:subClassOf rdf:resource="#AgreementInNature"/>
   <obo:RO_0000052 rdf:resource="#RationalAgent"/>
@@ -23744,6 +23746,27 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <obo:BFO_0000055 rdf:resource="#FavorAriseFromReasonDisposition"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FavorProductionByReasonProcess</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SelfPowerAssessmentQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SelfPowerAssessmentQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PowerOfOther">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PowerOfOther</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ComparativeJudgmentProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000055 rdf:resource="#Despondency"/>
+  <obo:RO_0000057 rdf:resource="#SelfPowerAssessmentQuality"/>
+  <obo:RO_0000057 rdf:resource="#PowerOfOther"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ComparativeJudgmentProcess</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
