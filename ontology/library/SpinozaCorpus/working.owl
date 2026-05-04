@@ -16229,6 +16229,7 @@
   <obo:RO_0000053 rdf:resource="#GodAbsoluteProximateCauseRoleInstance"/>
   <obo:RO_0000056 rdf:resource="#ImmediateProduction"/>
   <obo:RO_0000056 rdf:resource="#DivineNecessityDeterminationProcess"/>
+  <RO_0000053 rdf:resource="#NecessityOfExistenceQualityOfGod"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">God</rdfs:label>
 </owl:NamedIndividual>
 
@@ -18156,6 +18157,12 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <obo:BFO_0000055 rdf:resource="#GodAbsoluteProximateCauseRoleInstance"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ImmediateProduction</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#DivineNecessityDeterminationProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000055 rdf:resource="#DivineNecessityDeterminationInstance"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivineNecessityDeterminationProcess</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#ThinkingThingRole">
@@ -23860,10 +23867,16 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivineNecessityDeterminationInstance</rdfs:label>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#DivineNecessityDeterminationProcess">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <obo:BFO_0000055 rdf:resource="#DivineNecessityDeterminationInstance"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivineNecessityDeterminationProcess</rdfs:label>
+<owl:NamedIndividual rdf:about="#NecessityOfExistenceQualityOfGod">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <RO_0000052 rdf:resource="#God"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NecessityOfExistenceQualityOfGod</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ContingencyAbsenceQualityOfGod">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <RO_0000052 rdf:resource="#God"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ContingencyAbsenceQualityOfGod</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
