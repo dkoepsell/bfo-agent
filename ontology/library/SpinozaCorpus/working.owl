@@ -19895,6 +19895,7 @@
 <owl:Class rdf:about="#Emulation">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="#DesireForThing"/>
+  <work:subClassOf rdf:resource="#Desire"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Emulation</rdfs:label>
 </owl:Class>
 
@@ -19918,6 +19919,8 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <obo:BFO_0000051 rdf:resource="#ImaginingOthersSameSimilarDesire"/>
   <obo:BFO_0000055 rdf:resource="#Emulation"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000051 rdf:resource="#ImaginationOfOthersDesire"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EmulationGenerationProcess</rdfs:label>
 </owl:Class>
 
@@ -20142,6 +20145,11 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="#OppositionRelation"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Longing</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#OppositionRelation">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OppositionRelation</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#AbsenceOfLovedObject">
@@ -21406,9 +21414,10 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">JoyFromAbsenceOfHatedThing</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#OppositionRelation">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OppositionRelation</rdfs:label>
+<owl:Class rdf:about="#ImaginationOfOthersDesire">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ImaginationOfOthersDesire</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
