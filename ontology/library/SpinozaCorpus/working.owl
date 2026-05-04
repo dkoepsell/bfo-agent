@@ -25989,6 +25989,7 @@
 <owl:Class rdf:about="#SecondKindOfKnowledge">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <obo:BFO_0000054 rdf:resource="#SecondKindKnowledgeArisingProcess"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SecondKindOfKnowledge</rdfs:label>
 </owl:Class>
 
@@ -26154,6 +26155,18 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="#IntellectualLove"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NothingContraryToIntellectualLoveQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#UnderstandingBySecondKindProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000055 rdf:resource="#SecondKindOfKnowledge"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UnderstandingBySecondKindProcess</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ReductionOfEvilAffectsByKnowledgeQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ReductionOfEvilAffectsByKnowledgeQuality</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
@@ -29825,6 +29838,7 @@
 <owl:NamedIndividual rdf:about="#UnderstandingByThirdKindProcess">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <obo:BFO_0000055 rdf:resource="#ThirdKindOfKnowledgeInstance"/>
+  <obo:BFO_0000055 rdf:resource="#ThirdKindOfKnowledge"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UnderstandingByThirdKindProcess</rdfs:label>
 </owl:NamedIndividual>
 
