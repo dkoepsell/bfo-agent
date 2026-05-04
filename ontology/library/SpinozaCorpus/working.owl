@@ -27555,6 +27555,20 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CausalPotencyOfClearDistinctPerception</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#ClearAndDistinctPerceptionOriginatesFromClearAndDistinctPerceptionDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:BFO_0000054 rdf:resource="#ClearAndDistinctPerception"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ClearAndDistinctPerceptionOriginatesFromClearAndDistinctPerceptionDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ClearAndDistinctPerceptionClosureQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#ClearAndDistinctPerception"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ClearAndDistinctPerceptionClosureQuality</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
