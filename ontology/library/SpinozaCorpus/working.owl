@@ -3010,6 +3010,17 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">VolitionProcess</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#Striving">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Striving</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#StrivingRelationToMindQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">StrivingRelationToMindQuality</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#FalseIdeaFormationProcess">
   <rdfs:subClassOf rdf:resource="#IdeaFormationProcess"/>
   <work:subClassOf rdf:resource="#IdeaFormationProcess"/>
@@ -13938,6 +13949,9 @@
 
 <owl:Class rdf:about="#Appetite">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="#ConatusMentalDispositionInstance"/>
+  <work:subClassOf rdf:resource="#MindBodyStrivingQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Appetite</rdfs:label>
 </owl:Class>
 
@@ -14165,11 +14179,6 @@
 <owl:Class rdf:about="#AbsoluteCausalityQuality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AbsoluteCausalityQuality</rdfs:label>
-</owl:Class>
-
-<owl:Class rdf:about="#Striving">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Striving</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#OurDetermination">
@@ -18997,10 +19006,10 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IndefiniteDurationQuality</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#StrivingRelationToMindQuality">
+<owl:Class rdf:about="#MindBodyStrivingQuality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">StrivingRelationToMindQuality</rdfs:label>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindBodyStrivingQuality</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
