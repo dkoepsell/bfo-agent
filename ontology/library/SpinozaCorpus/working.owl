@@ -1006,6 +1006,7 @@
   <work:subClassOf rdf:resource="#Appetite"/>
   <obo:BFO_0000051 rdf:resource="#ConsciousnessOfAppetite"/>
   <work:subClassOf rdf:resource="#ConatusMentalDispositionInstance"/>
+  <work3:type rdf:resource="#PrimitiveAffect"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Desire</rdfs:label>
 </owl:Class>
 
@@ -1711,6 +1712,8 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="#TransitionToGreaterPerfection"/>
   <work:subClassOf rdf:resource="#Passion"/>
+  <work3:type rdf:resource="#PrimitiveAffect"/>
+  <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Joy</rdfs:label>
 </owl:Class>
 
@@ -1910,6 +1913,8 @@
   <work:subClassOf rdf:resource="#Sadness"/>
   <work:subClassOf rdf:resource="#AccompanimentRelation"/>
   <obo:BFO_0000050 rdf:resource="#Repentance"/>
+  <work3:type rdf:resource="#PrimitiveAffect"/>
+  <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Sadness</rdfs:label>
 </owl:Class>
 
@@ -20769,6 +20774,23 @@
   <rdfs:subClassOf rdf:resource="#Nobility"/>
   <work:subClassOf rdf:resource="#Nobility"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Mercy</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PrimitiveAffect">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PrimitiveAffect</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DerivedAffect">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DerivedAffect</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#AffectCompositionRelation">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AffectCompositionRelation</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
