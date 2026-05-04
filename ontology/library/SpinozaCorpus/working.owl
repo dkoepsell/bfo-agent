@@ -6299,6 +6299,9 @@
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="#Mode"/>
   <work:subClassOf rdf:resource="#DestructiveQualityValuation"/>
+  <work:subClassOf rdf:resource="#Madness"/>
+  <work:subClassOf rdf:resource="#Joy"/>
+  <work:subClassOf rdf:resource="#OverestimationOfSelfQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Pride</rdfs:label>
 </owl:Class>
 
@@ -14189,6 +14192,7 @@
 <owl:Class rdf:about="#Madness">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="#Mode"/>
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Madness</rdfs:label>
 </owl:Class>
 
@@ -19513,6 +19517,11 @@
   <rdfs:subClassOf rdf:resource="#Hate"/>
   <work:subClassOf rdf:resource="#Hate"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Envy</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#OverestimationOfSelfQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OverestimationOfSelfQuality</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
