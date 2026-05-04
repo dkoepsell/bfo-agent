@@ -17303,6 +17303,8 @@
 
 <owl:Class rdf:about="#OmnipotenceQuality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:subClassOf rdf:resource="#DivineAttribute"/>
+  <work:subClassOf rdf:resource="#DivineAttribute"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OmnipotenceQuality</rdfs:label>
 </owl:Class>
 
@@ -31062,6 +31064,29 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GoodOutcomeNecessitationDisposition</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#OmnipotentBeing">
+  <rdfs:subClassOf rdf:resource="#Substance"/>
+  <work:subClassOf rdf:resource="#Substance"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OmnipotentBeing</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#LogicallyPossibleState">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LogicallyPossibleState</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#OmnipotenceWillingNecessitationConstraint">
+  <rdfs:subClassOf rdf:resource="#SubstanceProductionConstraint"/>
+  <work:subClassOf rdf:resource="#SubstanceProductionConstraint"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OmnipotenceWillingNecessitationConstraint</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#UnactualisedWilledPossibilityImpossibilityQuality">
+  <rdfs:subClassOf rdf:resource="#EssentialExistenceQuality"/>
+  <work:subClassOf rdf:resource="#EssentialExistenceQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UnactualisedWilledPossibilityImpossibilityQuality</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -41348,6 +41373,7 @@
 <owl:NamedIndividual rdf:about="#WillingProcess">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <obo:BFO_0000055 rdf:resource="#MindDeterminationByExternalCausesQuality"/>
+  <obo:BFO_0000055 rdf:resource="#OmnipotenceWillingNecessitationConstraint"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WillingProcess</rdfs:label>
 </owl:NamedIndividual>
 
