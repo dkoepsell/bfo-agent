@@ -11024,6 +11024,13 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BodyInMotion</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#ContinuationOfMotionDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:BFO_0000054 rdf:resource="#DeterminationToRestProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ContinuationOfMotionDisposition</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#SourceBody">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
@@ -16930,18 +16937,32 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DeterminationToRestDisposition</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#ContinuationOfMotionDisposition">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <obo:BFO_0000054 rdf:resource="#DeterminationToRestProcess"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ContinuationOfMotionDisposition</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#DeterminationToRestProcess">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <obo:RO_0000057 rdf:resource="#BodyInMotion"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DeterminationToRestProcess</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PersistenceInRestDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:RO_0000052 rdf:resource="#BodyAtRest"/>
+  <obo:BFO_0000054 rdf:resource="#DeterminationToMotionProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PersistenceInRestDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DeterminingExternalBodyRole">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DeterminingExternalBodyRole</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DeterminationToMotionProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#BodyAtRest"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DeterminationToMotionProcess</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
