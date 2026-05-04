@@ -13593,6 +13593,45 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PerfectionProportionalExpressionDisposition</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#PiousEntity">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
+  <work:subClassOf rdf:resource="#PiousPerfectionQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PiousEntity</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#GodlessEntity">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
+  <work:subClassOf rdf:resource="#GodlessPerfectionQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodlessEntity</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PietyQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#PiousEntity"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PietyQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PerfectionDegreeQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PerfectionDegreeQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PiousPerfectionQuality">
+  <rdfs:subClassOf rdf:resource="#PerfectionDegreeQuality"/>
+  <work:subClassOf rdf:resource="#PerfectionDegreeQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PiousPerfectionQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#GodlessPerfectionQuality">
+  <rdfs:subClassOf rdf:resource="#PerfectionDegreeQuality"/>
+  <work:subClassOf rdf:resource="#PerfectionDegreeQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodlessPerfectionQuality</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#God">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
   <obo:BFO_0000051 rdf:resource="#DivineAttribute"/>
