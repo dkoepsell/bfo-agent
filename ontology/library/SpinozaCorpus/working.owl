@@ -25932,6 +25932,7 @@
   <rdfs:subClassOf rdf:resource="#HumanMind"/>
   <work:subClassOf rdf:resource="#HumanMind"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/RO_0000053"/>
+  <obo:BFO_0000050 rdf:resource="#InfiniteIntellectOfGod"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EternalPartOfMind</rdfs:label>
 </owl:Class>
 
@@ -26197,6 +26198,16 @@
 <owl:Class rdf:about="#MindPartCorruptibilityQuality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindPartCorruptibilityQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#IntellectQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IntellectQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#EternalityOfMindIntellectQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EternalityOfMindIntellectQuality</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
@@ -26887,6 +26898,7 @@
   <obo:BFO_0000050 rdf:resource="#ThirdKindOfKnowledgeInstance"/>
   <obo:BFO_0000050 rdf:resource="#SubSpecieAeternitatisUnderstanding"/>
   <work3:type rdf:resource="#ThirdKindOfKnowledge"/>
+  <obo:RO_0000052 rdf:resource="#EternalPartOfMind"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EternalIdeaOfBodyPertainsToMindEssenceQuality</rdfs:label>
 </owl:NamedIndividual>
 
@@ -27293,6 +27305,13 @@
   <obo:BFO_0000055 rdf:resource="#ActingFromSameNecessityAsExistingDispositionInstance"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ActingFromNecessityOfNatureProcess</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#PerishingWithBodyInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work3:type rdf:resource="#PerishingWithBody"/>
+  <RO_0000052 rdf:resource="#PartOfMindThatPerishesWithBody"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PerishingWithBodyInstance</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#InfiniteLoveOfGodForHimself">
@@ -37245,18 +37264,18 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PartOfMindThatPerishesWithBody</rdfs:label>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#PerishingWithBodyInstance">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <work3:type rdf:resource="#PerishingWithBody"/>
-  <RO_0000052 rdf:resource="#PartOfMindThatPerishesWithBody"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PerishingWithBodyInstance</rdfs:label>
-</owl:NamedIndividual>
-
 <owl:NamedIndividual rdf:about="#MindPartCorruptibilityQualityInstance">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#MindPartCorruptibilityQuality"/>
   <RO_0000052 rdf:resource="#PartOfMindThatPerishesWithBody"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindPartCorruptibilityQualityInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#IntellectQualityInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work3:type rdf:resource="#IntellectQuality"/>
+  <obo:RO_0000052 rdf:resource="#EternalPartOfMind"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IntellectQualityInstance</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
