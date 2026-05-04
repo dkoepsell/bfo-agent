@@ -317,6 +317,7 @@
 <owl:Class rdf:about="#ExistenceNonEvilQuality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#MoralValenceQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExistenceNonEvilQuality</rdfs:label>
 </owl:Class>
 
@@ -1398,6 +1399,11 @@
   <work:subClassOf rdf:resource="#AffectEssentiality"/>
   <work:subClassOf rdf:resource="#EssentialExistenceQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HumanEssenceQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#StrivingToAct">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">StrivingToAct</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#SoulDirectionProcess">
@@ -6352,6 +6358,8 @@
   <work:subClassOf rdf:resource="#RelativeGoodEvilQuality"/>
   <work:subClassOf rdf:resource="#RelationalEvaluativeDesignation"/>
   <obo:RO_0000052 rdf:resource="#MotionRestProportionAlteringAgent"/>
+  <rdfs:subClassOf rdf:resource="#MoralValenceQuality"/>
+  <work:subClassOf rdf:resource="#MoralValenceQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EvilQuality</rdfs:label>
 </owl:Class>
 
@@ -22977,6 +22985,8 @@
 <owl:Class rdf:about="#GoodnessQuality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:subClassOf rdf:resource="#MoralValenceQuality"/>
+  <work:subClassOf rdf:resource="#MoralValenceQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GoodnessQuality</rdfs:label>
 </owl:Class>
 
@@ -23959,9 +23969,16 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">JoyIncreasesOrAidsPowerOfActing</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#StrivingToAct">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">StrivingToAct</rdfs:label>
+<owl:Class rdf:about="#MoralValenceQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#Action"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MoralValenceQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#IntrinsicMoralValenceQuality">
+  <rdfs:subClassOf rdf:resource="#MoralValenceQuality"/>
+  <work:subClassOf rdf:resource="#MoralValenceQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IntrinsicMoralValenceQuality</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
