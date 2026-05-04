@@ -20483,6 +20483,8 @@
   <rdfs:subClassOf rdf:resource="#HumanNature"/>
   <work:subClassOf rdf:resource="#HumanNature"/>
   <obo:RO_0000052 rdf:resource="#Human"/>
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EnvyDisposition</rdfs:label>
 </owl:Class>
 
@@ -23767,6 +23769,26 @@
   <obo:RO_0000057 rdf:resource="#SelfPowerAssessmentQuality"/>
   <obo:RO_0000057 rdf:resource="#PowerOfOther"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ComparativeJudgmentProcess</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DespondentPerson">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DespondentPerson</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DespondencyQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#DespondentPerson"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DespondencyQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#MaximalEnvyProneness">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#DespondentPerson"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MaximalEnvyProneness</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
