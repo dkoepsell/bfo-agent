@@ -24010,6 +24010,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Institution</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#BehavioralCheckingRole">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BehavioralCheckingRole</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#StateMaintainedByLawsQuality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
@@ -31572,16 +31578,52 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FearDisposition</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#BehavioralCheckingRole">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BehavioralCheckingRole</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#NormativeMotivationQuality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NormativeMotivationQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#Democracy">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#DemocraticPolity"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Democracy</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DemocraticPolity">
+  <rdfs:subClassOf rdf:resource="#Polity"/>
+  <work:subClassOf rdf:resource="#Polity"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DemocraticPolity</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ThePeople">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <obo:RO_0000053 rdf:resource="#SovereigntyOfThePeople"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ThePeople</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#Obedience">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Obedience</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ObedienceAbsenceQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#DemocraticPolity"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ObedienceAbsenceQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ConsentBasedAction">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#ThePeople"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConsentBasedAction</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SelfConsentDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:RO_0000052 rdf:resource="#ThePeople"/>
+  <obo:BFO_0000054 rdf:resource="#ConsentBasedAction"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SelfConsentDisposition</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
@@ -45411,6 +45453,13 @@
   <obo:RO_0000052 rdf:resource="#Patriarchs"/>
   <obo:BFO_0000054 rdf:resource="#PatriarchsSacrificeProcess"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CustomMotivationInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#SovereigntyOfThePeople">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <work3:type rdf:resource="#Sovereignty"/>
+  <obo:RO_0000052 rdf:resource="#ThePeople"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SovereigntyOfThePeople</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
