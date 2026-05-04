@@ -438,6 +438,7 @@
   <work:subClassOf rdf:resource="#ModificationBearer"/>
   <obo:RO_0000052 rdf:resource="#Substance"/>
   <work:subClassOf rdf:resource="#SingularThing"/>
+  <obo:RO_0000052 rdf:resource="#Attribute"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Mode</rdfs:label>
 </owl:Class>
 
@@ -508,6 +509,9 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
   <work:subClassOf rdf:resource="#ModificationBearer"/>
+  <work:subClassOf rdf:resource="#Mode"/>
+  <obo:RO_0000053 rdf:resource="#DeterminateExpressionQuality"/>
+  <obo:RO_0000053 rdf:resource="#DeterminateAttributeExpression"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SingularThing</rdfs:label>
 </owl:Class>
 
@@ -1501,6 +1505,15 @@
 <owl:Class rdf:about="#ConatusRealizationProcess">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConatusRealizationProcess</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PerseveranceInBeing">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="#ExistenceNecessitation"/>
+  <work:subClassOf rdf:resource="#Life"/>
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PerseveranceInBeing</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#AnimalSpirits">
@@ -13122,15 +13135,6 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ForceOfPerseveringInState</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#PerseveranceInBeing">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <work:subClassOf rdf:resource="#ExistenceNecessitation"/>
-  <work:subClassOf rdf:resource="#Life"/>
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PerseveranceInBeing</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#Life">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <obo:BFO_0000054 rdf:resource="#PerseveranceProcess"/>
@@ -18901,6 +18905,17 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConatusQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DeterminateExpressionQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DeterminateExpressionQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DeterminateAttributeExpression">
+  <rdfs:subClassOf rdf:resource="#AttributeExpressesEternalInfiniteEssenceRelation"/>
+  <work:subClassOf rdf:resource="#AttributeExpressesEternalInfiniteEssenceRelation"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DeterminateAttributeExpression</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
