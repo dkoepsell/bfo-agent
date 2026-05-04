@@ -16169,6 +16169,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PotentialIntellect</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#EssenceIntellectWillDependenceQuality">
+  <rdfs:subClassOf rdf:resource="#EssentialExistenceQuality"/>
+  <work:subClassOf rdf:resource="#EssentialExistenceQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EssenceIntellectWillDependenceQuality</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
@@ -16444,6 +16450,9 @@
   <obo:RO_0000056 rdf:resource="#NecessaryFollowingFromNatureProcessInstance"/>
   <obo:RO_0000053 rdf:resource="#NonDistinctionOfIntellectWillFromEssence"/>
   <obo:RO_0000053 rdf:resource="#GodActualIntellectDisposition"/>
+  <obo:RO_0000053 rdf:resource="#ActualIntellectOfGod"/>
+  <obo:RO_0000053 rdf:resource="#ActualWillOfGod"/>
+  <obo:RO_0000053 rdf:resource="#GodEssenceIntellectWillDependenceQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">God</rdfs:label>
 </owl:NamedIndividual>
 
@@ -18437,6 +18446,13 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <obo:RO_0000052 rdf:resource="#God"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NonDistinctionOfIntellectWillFromEssence</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#GodActualIntellectDisposition">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work3:type rdf:resource="#ActualIntellect"/>
+  <obo:RO_0000052 rdf:resource="#God"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodActualIntellectDisposition</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#ThinkingThingRole">
@@ -24245,18 +24261,35 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HighestPerfectionQualityInstance</rdfs:label>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#GodActualIntellectDisposition">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <work3:type rdf:resource="#ActualIntellect"/>
-  <obo:RO_0000052 rdf:resource="#God"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodActualIntellectDisposition</rdfs:label>
-</owl:NamedIndividual>
-
 <owl:NamedIndividual rdf:about="#GodOnlyActualIntellectQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <obo:RO_0000052 rdf:resource="#God"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodLacksActualIntellectOnlyQuality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ActualIntellectOfGod">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:RO_0000052 rdf:resource="#God"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ActualIntellectOfGod</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ActualWillOfGod">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:RO_0000052 rdf:resource="#God"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ActualWillOfGod</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#GodEssenceIntellectWillDependenceQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#God"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodEssenceIntellectWillDependenceQuality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#CounterfactualEssenceAlterationProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#God"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CounterfactualEssenceAlterationProcess</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
