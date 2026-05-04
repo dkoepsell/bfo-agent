@@ -29838,17 +29838,17 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NationDirectingAuthority</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#Nation">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Nation</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#AuthorityGrantingProcess">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <obo:RO_0000057 rdf:resource="#God"/>
   <obo:RO_0000057 rdf:resource="#DivineAgent"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AuthorityGrantingProcess</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#Nation">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Nation</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
@@ -42724,6 +42724,30 @@
   <work3:type rdf:resource="#InvisibilityToHumansQuality"/>
   <obo:RO_0000052 rdf:resource="#God"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">InvisibilityOfGodToHumans</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Chaos">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Chaos</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#VisibleWorld">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">VisibleWorld</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#OrderOfVisibleWorld">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#VisibleWorld"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OrderOfVisibleWorld</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#BringingWorldFromChaosToOrderProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#God"/>
+  <obo:RO_0000057 rdf:resource="#VisibleWorld"/>
+  <obo:RO_0000057 rdf:resource="#Chaos"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BringingWorldFromChaosToOrderProcess</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
