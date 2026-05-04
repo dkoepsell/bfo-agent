@@ -26047,6 +26047,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AdequateFormalCausation</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#AccompanimentByPleasureAndIdeaOfGod">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AccompanimentByPleasureAndIdeaOfGod</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
@@ -36921,6 +36927,25 @@
   <work3:type rdf:resource="#AdequateFormalCausation"/>
   <obo:BFO_0000054 rdf:resource="#ThirdKindOfKnowledgeProduction"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AdequateFormalCausationOfThirdKindOfKnowledgeDispositionInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ThirdKindOfKnowledgeProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work3:type rdf:resource="#ThirdKindOfKnowledgeProcess"/>
+  <obo:BFO_0000055 rdf:resource="#ThirdKindOfKnowledge"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ThirdKindOfKnowledgeProcess</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#PleasureAccompanyingThirdKindOfKnowledge">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#ThirdKindOfKnowledgeProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PleasureAccompanyingThirdKindOfKnowledge</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#IdeaOfGodAsCause">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <obo:BFO_0000050 rdf:resource="#ThirdKindOfKnowledgeProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IdeaOfGodAsCause</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
