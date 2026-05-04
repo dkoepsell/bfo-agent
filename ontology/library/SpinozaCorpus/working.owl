@@ -2179,6 +2179,7 @@
   <work3:type rdf:resource="#SadnessAffect"/>
   <work3:type rdf:resource="#TransitionToLesserPerfection"/>
   <obo:RO_0000052 rdf:resource="#Speaker"/>
+  <obo:BFO_0000055 rdf:resource="#DiminutionOfPowerOfActing"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Sadness</rdfs:label>
 </owl:Class>
 
@@ -26469,6 +26470,12 @@
 <owl:Class rdf:about="#StrictnessQuality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">StrictnessQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DiminutionOfPowerOfActing">
+  <rdfs:subClassOf rdf:resource="#PowerOfActing"/>
+  <work:subClassOf rdf:resource="#PowerOfActing"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DiminutionOfPowerOfActing</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
