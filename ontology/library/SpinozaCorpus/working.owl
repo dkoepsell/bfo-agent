@@ -39955,18 +39955,6 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MarchandCopy</rdfs:label>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#VonMurrCopy">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
-  <work3:type rdf:resource="#DocumentCopy"/>
-  <obo:RO_0000053 rdf:resource="#VonMurrCopySourceDisposition"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">VonMurrCopy</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#SharedSourceText">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SharedSourceText</rdfs:label>
-</owl:NamedIndividual>
-
 <owl:NamedIndividual rdf:about="#MarchandCopySourceDisposition">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <obo:RO_0000052 rdf:resource="#MarchandCopy"/>
@@ -39974,11 +39962,23 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MarchandCopySourceDisposition</rdfs:label>
 </owl:NamedIndividual>
 
+<owl:NamedIndividual rdf:about="#VonMurrCopy">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <work3:type rdf:resource="#DocumentCopy"/>
+  <obo:RO_0000053 rdf:resource="#VonMurrCopySourceDisposition"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">VonMurrCopy</rdfs:label>
+</owl:NamedIndividual>
+
 <owl:NamedIndividual rdf:about="#VonMurrCopySourceDisposition">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <obo:RO_0000052 rdf:resource="#VonMurrCopy"/>
   <obo:BFO_0000054 rdf:resource="#SharedSourceText"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">VonMurrCopySourceDisposition</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#SharedSourceText">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SharedSourceText</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
