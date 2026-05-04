@@ -15372,6 +15372,8 @@
   <work:subClassOf rdf:resource="#CreatedNature"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HumanIntellect</rdfs:label>
 </owl:Class>
 
@@ -30292,6 +30294,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivineImpartialityQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#UniformIntellectDistributionQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UniformIntellectDistributionQuality</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -33319,6 +33327,13 @@
   <obo:RO_0000057 rdf:resource="#ProphetRoleInstance"/>
   <obo:BFO_0000055 rdf:resource="#AccommodationToUnderstanding"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodRevelationAccommodationProcess</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#DivineImpartialityQualityInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work3:type rdf:resource="#DivineImpartialityQuality"/>
+  <RO_0000052 rdf:resource="#God"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivineImpartialityQualityInstance</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#ThinkingThingRole">
@@ -43578,16 +43593,16 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BlessednessEqualityAmongNationsQuality</rdfs:label>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#DivineImpartialityQualityInstance">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <work3:type rdf:resource="#DivineImpartialityQuality"/>
-  <RO_0000052 rdf:resource="#God"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivineImpartialityQualityInstance</rdfs:label>
-</owl:NamedIndividual>
-
 <owl:NamedIndividual rdf:about="#IntellectAndVirtueScope">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IntellectAndVirtueScope</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#DivineIntellectGrantingProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#God"/>
+  <obo:BFO_0000055 rdf:resource="#GodCausesAllThingsProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivineIntellectGrantingProcess</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
