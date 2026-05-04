@@ -3724,6 +3724,7 @@
   <obo:BFO_0000054 rdf:resource="#DesireForOwnPossessionArisingProcess"/>
   <work:subClassOf rdf:resource="#IntellectualGraspability"/>
   <work:subClassOf rdf:resource="#HumanEssentialQuality"/>
+  <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">KnowledgeOfGod</rdfs:label>
 </owl:Class>
 
@@ -5762,6 +5763,7 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="#DivineAttribute"/>
   <obo:RO_0000052 rdf:resource="#God"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GreatestGoodQuality</rdfs:label>
 </owl:Class>
 
@@ -22183,6 +22185,20 @@
   <work3:type rdf:resource="#EpistemicPrecedence"/>
   <obo:RO_0000052 rdf:resource="#UnderstandingNecessityOfThings"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NecessityPrecedesOtherProblemsQuality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#GreatestGoodQualityInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#KnowledgeAndLoveOfGod"/>
+  <work3:type rdf:resource="#GreatestGoodQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GreatestGoodQualityInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#KnowledgeAndLoveOfGod">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:BFO_0000051 rdf:resource="#KnowledgeOfGod"/>
+  <obo:BFO_0000051 rdf:resource="#LoveOfGod"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">KnowledgeAndLoveOfGod</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
