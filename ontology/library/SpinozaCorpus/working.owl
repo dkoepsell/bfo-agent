@@ -7288,6 +7288,7 @@
 
 <owl:Class rdf:about="#InconstancyQuality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">InconstancyQuality</rdfs:label>
 </owl:Class>
 
@@ -29112,6 +29113,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ImaginationNatureCongruenceDisposition</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#RandomnessQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RandomnessQuality</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -41548,6 +41555,20 @@
   <obo:RO_0000057 rdf:resource="#EternalJudgmentsOfGod"/>
   <obo:BFO_0000055 rdf:resource="#InscriptionOfDivineJudgmentsQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">InscribingDivineJudgmentsProcess</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ImaginationRandomnessQualityInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work3:type rdf:resource="#RandomnessQuality"/>
+  <obo:RO_0000052 rdf:resource="#ImaginationOfExternalBody"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ImaginationRandomnessQualityInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ImaginationInconstancyQualityInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work3:type rdf:resource="#InconstancyQuality"/>
+  <obo:RO_0000052 rdf:resource="#ImaginationOfExternalBody"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ImaginationInconstancyQualityInstance</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
