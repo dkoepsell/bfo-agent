@@ -17406,6 +17406,7 @@
 <owl:Class rdf:about="#IdeaOfExternalBody">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#Thought"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IdeaOfExternalBody</rdfs:label>
 </owl:Class>
 
@@ -17445,6 +17446,24 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <obo:RO_0000052 rdf:resource="#HumanMind"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExternalBodyPresentnessQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#MindRegardingAbsentBodyAsPresent">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:BFO_0000054 rdf:resource="#MindRegardingAbsentBodyAsPresentProcess"/>
+  <work:subClassOf rdf:resource="#IntellectualGraspability"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindRegardingAbsentBodyAsPresent</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#MindRegardingAbsentBodyAsPresentProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000055 rdf:resource="#MindRegardingAbsentBodyAsPresent"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindRegardingAbsentBodyAsPresentProcess</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#AbsenceOfExternalBody">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AbsenceOfExternalBody</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
