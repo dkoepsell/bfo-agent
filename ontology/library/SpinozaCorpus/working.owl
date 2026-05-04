@@ -4817,6 +4817,7 @@
   <obo:BFO_0000054 rdf:resource="#LoveArisingFromKnowledgeProcess"/>
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work3:type rdf:resource="#HumanKnowledge"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">KnowledgeOfGod</rdfs:label>
 </owl:Class>
 
@@ -30932,6 +30933,23 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">KnowledgeGrantingDisposition</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#HumanUnderstanding">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="#DependenceOnIdeaOfGodDisposition"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HumanUnderstanding</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#HumanKnowledge">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="#DependenceOnIdeaOfGodDisposition"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HumanKnowledge</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DependenceOnIdeaOfGodDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DependenceOnIdeaOfGodDisposition</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -44570,17 +44588,17 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WisdomGrantingDispositionInstance</rdfs:label>
 </owl:NamedIndividual>
 
+<owl:NamedIndividual rdf:about="#WisdomFlowingFromGodProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#God"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WisdomFlowingFromGodProcess</rdfs:label>
+</owl:NamedIndividual>
+
 <owl:NamedIndividual rdf:about="#KnowledgeGrantingDispositionInstance">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <obo:RO_0000052 rdf:resource="#God"/>
   <obo:BFO_0000054 rdf:resource="#KnowledgeFlowingFromGodProcess"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">KnowledgeGrantingDispositionInstance</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#WisdomFlowingFromGodProcess">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <obo:RO_0000057 rdf:resource="#God"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WisdomFlowingFromGodProcess</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#KnowledgeFlowingFromGodProcess">
