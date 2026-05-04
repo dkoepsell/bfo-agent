@@ -16206,6 +16206,18 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HumanFiction</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#EternalNecessityOfNature">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EternalNecessityOfNature</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#GreatestPerfectionQuality">
+  <rdfs:subClassOf rdf:resource="#SubstanceInfinityOrPerfectionQuality"/>
+  <work:subClassOf rdf:resource="#SubstanceInfinityOrPerfectionQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GreatestPerfectionQuality</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
@@ -24416,6 +24428,27 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <obo:RO_0000052 rdf:resource="#WholeOfNature"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NatureHasNoEndQuality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#EternalNecessityProcessionOfAllThings">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#WholeOfNature"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EternalNecessityProcessionOfAllThings</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#EternalNecessityOfNatureInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work3:type rdf:resource="#EternalNecessityOfNature"/>
+  <obo:RO_0000052 rdf:resource="#God"/>
+  <obo:BFO_0000054 rdf:resource="#EternalNecessityProcessionOfAllThings"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EternalNecessityOfNatureInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#GreatestPerfectionQualityInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work3:type rdf:resource="#GreatestPerfectionQuality"/>
+  <obo:RO_0000052 rdf:resource="#EternalNecessityProcessionOfAllThings"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GreatestPerfectionQualityInstance</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
