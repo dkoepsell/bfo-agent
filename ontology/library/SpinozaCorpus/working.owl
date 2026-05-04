@@ -31112,6 +31112,7 @@
 <owl:Class rdf:about="#WrittenInMindQuality">
   <rdfs:subClassOf rdf:resource="#InnatenessInMindQuality"/>
   <work:subClassOf rdf:resource="#InnatenessInMindQuality"/>
+  <obo:RO_0000052 rdf:resource="#LawOfGod"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WrittenInMindQuality</rdfs:label>
 </owl:Class>
 
@@ -31195,6 +31196,18 @@
   <rdfs:subClassOf rdf:resource="#InstitutionalGoodness"/>
   <work:subClassOf rdf:resource="#InstitutionalGoodness"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CeremonyGoodnessFromInstitution</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#CeremonialLaw">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CeremonialLaw</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#MindInscriptionDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindInscriptionDisposition</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
@@ -44873,6 +44886,12 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <obo:RO_0000052 rdf:resource="#BlessednessProducingDivineLaw"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BlessednessProducingDivineLawUniversalityQuality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#LawOfGod">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <obo:RO_0000053 rdf:resource="#WrittenInMindQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LawOfGod</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
