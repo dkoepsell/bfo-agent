@@ -1003,6 +1003,8 @@
   <work3:type rdf:resource="#DesireDisposition"/>
   <rdfs:subClassOf rdf:resource="#ModeOfThinking"/>
   <work:subClassOf rdf:resource="#ModeOfThinking"/>
+  <work:subClassOf rdf:resource="#Appetite"/>
+  <obo:BFO_0000051 rdf:resource="#ConsciousnessOfAppetite"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Desire</rdfs:label>
 </owl:Class>
 
@@ -19020,6 +19022,17 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AppetiteIsEssenceOfManQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#ConsciousnessOfAppetite">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConsciousnessOfAppetite</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DesireCompositionRelation">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DesireCompositionRelation</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
@@ -19481,6 +19494,7 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <obo:RO_0000052 rdf:resource="#Mind"/>
   <obo:BFO_0000054 rdf:resource="#PerseveranceInBeingProcess"/>
+  <work3:type rdf:resource="#Appetite"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConatusMentalDispositionInstance</rdfs:label>
 </owl:NamedIndividual>
 
