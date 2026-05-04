@@ -2045,6 +2045,7 @@
 <owl:Class rdf:about="#Esteem">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
   <work:subClassOf rdf:resource="#Honor"/>
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Esteem</rdfs:label>
 </owl:Class>
 
@@ -19963,6 +19964,7 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <obo:BFO_0000054 rdf:resource="#StrivingToPlease"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="#DesireForEsteem"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Ambition</rdfs:label>
 </owl:Class>
 
@@ -21607,6 +21609,11 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DesireToPleasePeople</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#PleasingAction">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PleasingAction</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#DesireToAvoidDispleasingPeople">
   <rdfs:subClassOf rdf:resource="#HumanKindness"/>
   <work:subClassOf rdf:resource="#HumanKindness"/>
@@ -21614,14 +21621,19 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DesireToAvoidDispleasingPeople</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#PleasingAction">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PleasingAction</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#DispleasingAction">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DispleasingAction</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DesireForEsteem">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DesireForEsteem</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ExcessivenessQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExcessivenessQuality</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
