@@ -31333,6 +31333,7 @@
 
 <owl:Class rdf:about="#HebrewPeople">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HebrewPeople</rdfs:label>
 </owl:Class>
 
@@ -31624,6 +31625,21 @@
   <obo:RO_0000052 rdf:resource="#ThePeople"/>
   <obo:BFO_0000054 rdf:resource="#ConsentBasedAction"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SelfConsentDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#LegislativeCapacity">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LegislativeCapacity</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SovereigntyRetentionCapacity">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SovereigntyRetentionCapacity</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#CollectiveSovereignty">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CollectiveSovereignty</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
@@ -32921,6 +32937,13 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <obo:RO_0000053 rdf:resource="#WrittenInMindQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LawOfGod</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#SovereigntyOfThePeople">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <work3:type rdf:resource="#Sovereignty"/>
+  <obo:RO_0000052 rdf:resource="#ThePeople"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SovereigntyOfThePeople</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#ExtendedSubstance">
@@ -45455,11 +45478,16 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CustomMotivationInstance</rdfs:label>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#SovereigntyOfThePeople">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
-  <work3:type rdf:resource="#Sovereignty"/>
-  <obo:RO_0000052 rdf:resource="#ThePeople"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SovereigntyOfThePeople</rdfs:label>
+<owl:NamedIndividual rdf:about="#HebrewLegislativeCapacityAbsence">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#HebrewPeople"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HebrewLegislativeCapacityAbsence</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#HebrewSovereigntyRetentionCapacityAbsence">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#HebrewPeople"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HebrewSovereigntyRetentionCapacityAbsence</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
