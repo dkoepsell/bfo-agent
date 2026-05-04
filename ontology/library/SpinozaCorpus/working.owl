@@ -16397,6 +16397,14 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">KnowledgeOfGodQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#SupremeGood">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#IntellectPerfection"/>
+  <obo:RO_0000052 rdf:resource="#HumanMind"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SupremeGood</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#KnowledgeOfSelfQuality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
@@ -30613,14 +30621,6 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BetterPartOfUsQuality</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#SupremeGood">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <work:subClassOf rdf:resource="#IntellectPerfection"/>
-  <obo:RO_0000052 rdf:resource="#HumanMind"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SupremeGood</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#SupremeGoodConsistsInIntellectPerfectionRelation">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
@@ -30663,6 +30663,11 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PrincipleOfLivingDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#HumanBlessednessQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HumanBlessednessQuality</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
@@ -31677,6 +31682,8 @@
   <arisesFrom rdf:resource="#ThirdKindOfKnowledge"/>
   <work:subClassOf rdf:resource="#KnowledgeAndLoveOfGodConstitutesSupremeGoodRelation"/>
   <obo:RO_0000052 rdf:resource="#HumanMind"/>
+  <RO_0000052 rdf:resource="#Speaker"/>
+  <RO_0000053 rdf:resource="#HighestHappiness"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LoveOfGod</rdfs:label>
 </owl:NamedIndividual>
 
@@ -44177,6 +44184,20 @@
   <work3:type rdf:resource="#SupremeGoodQuality"/>
   <obo:RO_0000052 rdf:resource="#KnowledgeOfGod"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">KnowledgeOfGodIsSupremeGoodQuality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#HighestHappiness">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work3:type rdf:resource="#HumanBlessednessQuality"/>
+  <RO_0000052 rdf:resource="#Speaker"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HighestHappiness</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#UltimateEndOfHumanActions">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:BFO_0000054 rdf:resource="#HumanAction"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UltimateEndOfHumanActions</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
