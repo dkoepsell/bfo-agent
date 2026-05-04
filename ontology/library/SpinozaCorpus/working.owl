@@ -1696,6 +1696,7 @@
   <work:subClassOf rdf:resource="#ModeOfThinking"/>
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="#TransitionToGreaterPerfection"/>
+  <work:subClassOf rdf:resource="#Passion"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Joy</rdfs:label>
 </owl:Class>
 
@@ -20515,6 +20516,23 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AffectSpeciesIndividuationQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#PowerToPersevereInBeing">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PowerToPersevereInBeing</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#IncreaseOfPowerToPersevere">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#PowerToPersevereInBeing"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IncreaseOfPowerToPersevere</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DecreaseOfPowerToPersevere">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#PowerToPersevereInBeing"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DecreaseOfPowerToPersevere</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
@@ -20978,12 +20996,14 @@
   <obo:BFO_0000054 rdf:resource="#PerseveranceInBeingProcess"/>
   <work3:type rdf:resource="#Appetite"/>
   <obo:BFO_0000051 rdf:resource="#MindImaginesOnlyActingPowerPositingThingsDisposition"/>
+  <work3:type rdf:resource="#PowerToPersevereInBeing"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConatusMentalDispositionInstance</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#PerseveranceInBeingProcess">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <obo:BFO_0000055 rdf:resource="#ConatusMentalDispositionInstance"/>
+  <obo:BFO_0000055 rdf:resource="#PowerToPersevereInBeing"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PerseveranceInBeingProcess</rdfs:label>
 </owl:NamedIndividual>
 
