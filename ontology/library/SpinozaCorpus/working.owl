@@ -27616,6 +27616,7 @@
   <obo:BFO_0000050 rdf:resource="#InfiniteIntellectOfGod"/>
   <obo:RO_0000053 rdf:resource="#MindEssenceIdea"/>
   <RO_0000053 rdf:resource="#MindDominionOverAffectsQuality"/>
+  <obo:BFO_0000050 rdf:resource="#WholeOfNature"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FormalBeingOfHumanMind</rdfs:label>
 </owl:NamedIndividual>
 
