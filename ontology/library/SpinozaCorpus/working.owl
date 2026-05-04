@@ -432,6 +432,7 @@
   <work:subClassOf rdf:resource="#DerivedEssenceQuality"/>
   <work:subClassOf rdf:resource="#PossibleExistenceEssenceQuality"/>
   <work:subClassOf rdf:resource="#Substance"/>
+  <work:subClassOf rdf:resource="#ModificationBearer"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Mode</rdfs:label>
 </owl:Class>
 
@@ -15427,6 +15428,20 @@
   <rdfs:subClassOf rdf:resource="#ThingsInGodQuality"/>
   <work:subClassOf rdf:resource="#ThingsInGodQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExistenceInGodQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ModeSubstanceDependence">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000020"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ModeSubstanceDependence</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ModeConceivabilityDependence">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000020"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ModeConceivabilityDependence</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
