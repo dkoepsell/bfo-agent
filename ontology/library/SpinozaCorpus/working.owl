@@ -4476,6 +4476,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EternalTruth</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#EternalNecessityAndTruth">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#NecessityOfExistence"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EternalNecessityAndTruth</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#AffirmativeEternalTruth">
   <rdfs:subClassOf rdf:resource="#EternalTruth"/>
   <work:subClassOf rdf:resource="#EternalTruth"/>
@@ -31976,12 +31982,6 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivineWillingOrDetermining</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#EternalNecessityAndTruth">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <work:subClassOf rdf:resource="#NecessityOfExistence"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EternalNecessityAndTruth</rdfs:label>
-</owl:Class>
-
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -36254,6 +36254,17 @@
   <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <obo:BFO_0000050 rdf:resource="#GodCausesAllThingsProcess"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UniversalProvidenceProcess</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#OrderOfNatureNecessitationDisposition">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:RO_0000052 rdf:resource="#God"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OrderOfNatureNecessitationDisposition</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#EternalLawsOfGod">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EternalLawsOfGod</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#KnowledgeOfGodNecessitatedByEternalKnowledgeDispositionInstance">
@@ -46111,15 +46122,11 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BetterPerceivedViaFixedOrderQuality</rdfs:label>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#OrderOfNatureNecessitationDisposition">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+<owl:NamedIndividual rdf:about="#GodIntellectWillNonDistinctionQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <obo:RO_0000052 rdf:resource="#God"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OrderOfNatureNecessitationDisposition</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#EternalLawsOfGod">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EternalLawsOfGod</rdfs:label>
+  <obo:BFO_0000050 rdf:resource="#Thought"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodIntellectWillNonDistinctionQuality</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
