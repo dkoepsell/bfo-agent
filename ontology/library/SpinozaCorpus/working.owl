@@ -6082,6 +6082,7 @@
   <obo:BFO_0000051 rdf:resource="#BodyConstituent"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000050 some working:Human"/>
   <obo:BFO_0000051 rdf:resource="#BodyPart"/>
+  <work:subClassOf rdf:resource="#Substance"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HumanBody</rdfs:label>
 </owl:Class>
 
