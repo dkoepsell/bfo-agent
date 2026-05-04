@@ -18215,6 +18215,11 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DeterminateModeOfThinkingQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#CausalDeterminednessOfWillingDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CausalDeterminednessOfWillingDisposition</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
@@ -18664,6 +18669,13 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindImmortalityQuality</rdfs:label>
 </owl:NamedIndividual>
 
+<owl:NamedIndividual rdf:about="#DeterminateModeOfThinkingQualityInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work3:type rdf:resource="#DeterminateModeOfThinkingQuality"/>
+  <obo:RO_0000052 rdf:resource="#Mind"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DeterminateModeOfThinkingQualityInstance</rdfs:label>
+</owl:NamedIndividual>
+
 <owl:NamedIndividual rdf:about="#UniquenessInNatureQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <obo:RO_0000052 rdf:resource="#ThinkingThing"/>
@@ -18878,6 +18890,7 @@
 <owl:NamedIndividual rdf:about="#WillLacksRealBeingQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <obo:RO_0000052 rdf:resource="#Will"/>
+  <work:subClassOf rdf:resource="#MindDeterminationByExternalCausesQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WillLacksRealBeingQuality</rdfs:label>
 </owl:NamedIndividual>
 
@@ -27556,11 +27569,24 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AdequateAndPerfectKnowledgeQualityInstance</rdfs:label>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#DeterminateModeOfThinkingQualityInstance">
+<owl:NamedIndividual rdf:about="#MindDeterminationByExternalCausesQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <work3:type rdf:resource="#DeterminateModeOfThinkingQuality"/>
-  <obo:RO_0000052 rdf:resource="#Mind"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DeterminateModeOfThinkingQualityInstance</rdfs:label>
+  <obo:RO_0000052 rdf:resource="#FormalBeingOfHumanMind"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindDeterminationByExternalCausesQuality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#CausalDeterminationChain">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#FormalBeingOfHumanMind"/>
+  <obo:RO_0000057 rdf:resource="#WillingProcess"/>
+  <obo:BFO_0000051 rdf:resource="#CausalDeterminationChain"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CausalDeterminationChain</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#WillingProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000055 rdf:resource="#MindDeterminationByExternalCausesQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WillingProcess</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
