@@ -27886,6 +27886,11 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CredalBeliefNonRequirement</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#BeliefAboutOwnFreedom">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BeliefAboutOwnFreedom</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -31915,6 +31920,7 @@
   <obo:RO_0000056 rdf:resource="#SpinozaAssessmentOfDescartesArguments"/>
   <obo:RO_0000053 rdf:resource="#SpinozaMajorPhilosopherRoleInstance"/>
   <obo:RO_0000056 rdf:resource="#SpinozaAuthorshipOfTPT"/>
+  <obo:RO_0000056 rdf:resource="#DutchRepublic"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Spinoza</rdfs:label>
 </owl:NamedIndividual>
 
@@ -39736,6 +39742,23 @@
   <obo:RO_0000052 rdf:resource="#Speaker"/>
   <obo:BFO_0000054 rdf:resource="#BodyDeath"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SoulExistenceTerminationDisposition</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#DutchRepublic">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000029"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DutchRepublic</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#FreedomOfThoughtAndExpressionBelief">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000020"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FreedomOfThoughtAndExpressionBelief</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#IncompleteFreedomQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work3:type rdf:resource="#BeliefAboutOwnFreedom"/>
+  <obo:RO_0000052 rdf:resource="#Spinoza"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IncompleteFreedomQuality</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
