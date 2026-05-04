@@ -17076,6 +17076,38 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MotionRestRatioConstancyDisposition</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#MotionDirectionQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#Individual"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MotionDirectionQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#MotionRatioQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#Individual"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MotionRatioQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#MotionCommunicationProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MotionCommunicationProcess</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#MotionDirectionAlterationProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MotionDirectionAlterationProcess</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#FormPreservingRatioDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:BFO_0000054 rdf:resource="#MotionCommunicationProcess"/>
+  <obo:RO_0000052 rdf:resource="#Individual"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FormPreservingRatioDisposition</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
