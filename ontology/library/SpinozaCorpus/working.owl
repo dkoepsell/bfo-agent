@@ -17227,6 +17227,11 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RealityPerfectionIdentityQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#RealityQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RealityQuality</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#FiniteExistenceQuality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
@@ -21848,11 +21853,6 @@
   <work:subClassOf rdf:resource="#ModeOfThinkingQuality"/>
   <work:subClassOf rdf:resource="#FeignedNotion"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ImperfectionAsModeOfThinking</rdfs:label>
-</owl:Class>
-
-<owl:Class rdf:about="#RealityQuality">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RealityQuality</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
@@ -31831,6 +31831,13 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <obo:RO_0000052 rdf:resource="#FormalBeingOfHumanMind"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ActualExistenceAffirmationOfBody</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#NatureTeleologyAbsenceQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work3:type rdf:resource="#EssentialExistenceQuality"/>
+  <obo:RO_0000052 rdf:resource="#WholeOfNature"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NatureTeleologyAbsenceQuality</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
