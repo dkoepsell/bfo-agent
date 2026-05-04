@@ -59,6 +59,7 @@
 <owl:Class rdf:about="#AttributeSelfConceivability">
   <rdfs:subClassOf rdf:resource="#SelfConceivability"/>
   <work:subClassOf rdf:resource="#SelfConceivability"/>
+  <work:subClassOf rdf:resource="#ConceivableThroughItself"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AttributeSelfConceivability</rdfs:label>
 </owl:Class>
 
