@@ -28078,6 +28078,22 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TextualSourceRelation</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#OriginalLanguageText">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OriginalLanguageText</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ScripturalInterpreter">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ScripturalInterpreter</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ScripturalInterpretationProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#OriginalLanguageText"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ScripturalInterpretationProcess</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -39962,6 +39978,11 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MarchandCopySourceDisposition</rdfs:label>
 </owl:NamedIndividual>
 
+<owl:NamedIndividual rdf:about="#SharedSourceText">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SharedSourceText</rdfs:label>
+</owl:NamedIndividual>
+
 <owl:NamedIndividual rdf:about="#VonMurrCopy">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
   <work3:type rdf:resource="#DocumentCopy"/>
@@ -39976,9 +39997,16 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">VonMurrCopySourceDisposition</rdfs:label>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#SharedSourceText">
+<owl:NamedIndividual rdf:about="#ScripturalInterpretationTheory">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SharedSourceText</rdfs:label>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ScripturalInterpretationTheory</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#OriginalLanguageTextRequirement">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:RO_0000052 rdf:resource="#ScripturalInterpretationTheory"/>
+  <obo:BFO_0000054 rdf:resource="#ScripturalInterpretationProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OriginalLanguageTextRequirement</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
