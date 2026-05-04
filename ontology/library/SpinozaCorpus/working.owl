@@ -4292,6 +4292,7 @@
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <obo:BFO_0000051 rdf:resource="#PreservingOnesBeingProcess"/>
   <obo:BFO_0000055 rdf:resource="#Virtue"/>
+  <work2:equivalentClass rdf:resource="#ActingFromGuidanceOfReason"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ActingFromVirtue</rdfs:label>
 </owl:Class>
 
@@ -22987,6 +22988,12 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">VirtueSeekingProcess</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ActingFromGuidanceOfReason">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000055 rdf:resource="#GuidanceOfReason"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ActingFromGuidanceOfReason</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
