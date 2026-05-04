@@ -919,6 +919,7 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
   <obo:BFO_0000050 rdf:resource="#Man"/>
   <obo:RO_0000053 rdf:resource="#MindPerceptualCapacity"/>
+  <obo:RO_0000053 rdf:resource="#DeterminateModeOfThinkingQualityInstance"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Mind</rdfs:label>
 </owl:Class>
 
@@ -18208,6 +18209,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConceivableThroughGodDisposition</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#DeterminateModeOfThinkingQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DeterminateModeOfThinkingQuality</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
@@ -18571,6 +18578,7 @@
   <obo:BFO_0000051 rdf:resource="#CreatedMind"/>
   <obo:BFO_0000051 rdf:resource="#God"/>
   <obo:RO_0000052 rdf:resource="#God"/>
+  <obo:BFO_0000051 rdf:resource="#DeterminateModeOfThinkingQualityInstance"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ThinkingAttribute</rdfs:label>
 </owl:NamedIndividual>
 
@@ -20881,6 +20889,18 @@
   <work3:type rdf:resource="#OrderAndConnectionOfCauses"/>
   <obo:RO_0000052 rdf:resource="#WholeOfNature"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OrderAndConnectionOfCausesUnderThought</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#AllThingsInGodQualityInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#WholeOfNature"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AllThingsInGodQualityInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ConceivableThroughGodDispositionInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:RO_0000052 rdf:resource="#WholeOfNature"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConceivableThroughGodDispositionInstance</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#SoulEssence">
@@ -27536,16 +27556,11 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AdequateAndPerfectKnowledgeQualityInstance</rdfs:label>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#AllThingsInGodQualityInstance">
+<owl:NamedIndividual rdf:about="#DeterminateModeOfThinkingQualityInstance">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <obo:RO_0000052 rdf:resource="#WholeOfNature"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AllThingsInGodQualityInstance</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#ConceivableThroughGodDispositionInstance">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <obo:RO_0000052 rdf:resource="#WholeOfNature"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConceivableThroughGodDispositionInstance</rdfs:label>
+  <work3:type rdf:resource="#DeterminateModeOfThinkingQuality"/>
+  <obo:RO_0000052 rdf:resource="#Mind"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DeterminateModeOfThinkingQualityInstance</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
