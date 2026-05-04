@@ -6927,6 +6927,7 @@
   <work:subClassOf rdf:resource="#InconstantQuality"/>
   <work:subClassOf rdf:resource="#DoubtQuality"/>
   <work:subClassOf rdf:resource="#IdeaOfFutureOrPastThing"/>
+  <rdfs:subClassOf rdf:resource="#Sadness"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Fear</rdfs:label>
 </owl:Class>
 
