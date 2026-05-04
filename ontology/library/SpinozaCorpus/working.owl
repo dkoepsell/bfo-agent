@@ -6017,6 +6017,11 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BodyPartFunction</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#BodyPartFunctionPerformance">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BodyPartFunctionPerformance</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#ChangeInProportionOfMotionAndRest">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <obo:RO_0000057 rdf:resource="#Body"/>
@@ -25125,11 +25130,6 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MoneyInstrumentRoleDisposition</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#BodyPartFunctionPerformance">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BodyPartFunctionPerformance</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#GoodAssistsBodyPartFunctionDisposition">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="#Good"/>
@@ -25149,6 +25149,18 @@
   <work:subClassOf rdf:resource="#Joy"/>
   <work:subClassOf rdf:resource="#TransitionToGreaterPerfection"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">JoyAsAidedPowerQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#JoyProducingDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="#JoyProducingGoodnessRelation"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">JoyProducingDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#JoyProducingGoodnessRelation">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="#Good"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">JoyProducingGoodnessRelation</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
