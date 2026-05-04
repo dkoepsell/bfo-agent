@@ -5814,6 +5814,7 @@
 <owl:Class rdf:about="#CorruptibilityDisposition">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="#CorruptibilityDisposition"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CorruptibilityDisposition</rdfs:label>
 </owl:Class>
 
@@ -16004,6 +16005,9 @@
 <owl:Class rdf:about="#ParticularThing">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
   <work:subClassOf rdf:resource="#Mode"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
+  <work:subClassOf rdf:resource="#ContingentExistenceQuality"/>
+  <work:subClassOf rdf:resource="#CorruptibilityDisposition"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ParticularThing</rdfs:label>
 </owl:Class>
 
@@ -18240,6 +18244,13 @@
   <obo:RO_0000052 rdf:resource="#HumanMind"/>
   <work3:type rdf:resource="#InadequateKnowledgeOfExternalBodyQualityClass"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">InadequateKnowledgeOfExternalBodyQuality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#CommonOrderOfNaturePerception">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#HumanMind"/>
+  <obo:BFO_0000055 rdf:resource="#MindBodyKnowledgeThroughAffectionsDisposition"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CommonOrderOfNaturePerception</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#AnotherBeing">
@@ -26745,13 +26756,6 @@
   <work3:type rdf:resource="#LackOfClarityAndDistinctnessQuality"/>
   <obo:RO_0000052 rdf:resource="#IdeaConstitutingHumanMindNature"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IdeaConstitutingHumanMindLackOfClarityDistinctnessInItselfQuality</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#CommonOrderOfNaturePerception">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <obo:RO_0000057 rdf:resource="#HumanMind"/>
-  <obo:BFO_0000055 rdf:resource="#MindBodyKnowledgeThroughAffectionsDisposition"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CommonOrderOfNaturePerception</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#CommonOrderOfNature">
