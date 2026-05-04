@@ -25978,6 +25978,25 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GreatestSatisfactionQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#SecondKindOfKnowledge">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:BFO_0000054 rdf:resource="#SecondKindKnowledgeArisingProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SecondKindOfKnowledge</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DesireForThirdKindKnowledge">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:BFO_0000054 rdf:resource="#SecondKindKnowledgeArisingProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DesireForThirdKindKnowledge</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SecondKindKnowledgeArisingProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#SecondKindOfKnowledge"/>
+  <obo:RO_0000057 rdf:resource="#DesireForThirdKindKnowledge"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SecondKindKnowledgeArisingProcess</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
@@ -29595,6 +29614,19 @@
   <work3:type rdf:resource="#DivineAttribute"/>
   <work3:type rdf:resource="#InfiniteInItsKind"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExtensionAttribute</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#UnderstandingByThirdKindProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000055 rdf:resource="#ThirdKindOfKnowledgeInstance"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UnderstandingByThirdKindProcess</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ThirdKindKnowledgeRealizationProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000055 rdf:resource="#ThirdKindOfKnowledgeInstance"/>
+  <obo:RO_0000057 rdf:resource="#GreatestSatisfactionQualityInstance"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ThirdKindKnowledgeRealizationProcess</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#QuantityAsUnderstoodByIntellect">
@@ -36742,12 +36774,6 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindEternalityProcess</rdfs:label>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#UnderstandingByThirdKindProcess">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <obo:BFO_0000055 rdf:resource="#ThirdKindOfKnowledgeInstance"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UnderstandingByThirdKindProcess</rdfs:label>
-</owl:NamedIndividual>
-
 <owl:NamedIndividual rdf:about="#GreatestVirtueOfMindQualityInstance">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <obo:RO_0000052 rdf:resource="#ThirdKindOfKnowledgeInstance"/>
@@ -36759,13 +36785,6 @@
   <work3:type rdf:resource="#GreatestSatisfactionQuality"/>
   <obo:RO_0000052 rdf:resource="#FormalBeingOfHumanMind"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GreatestSatisfactionQualityInstance</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#ThirdKindKnowledgeRealizationProcess">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <obo:BFO_0000055 rdf:resource="#ThirdKindOfKnowledgeInstance"/>
-  <obo:RO_0000057 rdf:resource="#GreatestSatisfactionQualityInstance"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ThirdKindKnowledgeRealizationProcess</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
