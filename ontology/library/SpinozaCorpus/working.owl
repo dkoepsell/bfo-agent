@@ -1836,6 +1836,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PerfectionQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#ServingGodProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#God"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ServingGodProcess</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#PerseveranceProcess">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PerseveranceProcess</rdfs:label>
@@ -4049,12 +4055,6 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">StrainAgainstHumilityAndDespondencyDisposition</rdfs:label>
-</owl:Class>
-
-<owl:Class rdf:about="#ServingGodProcess">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <obo:RO_0000057 rdf:resource="#God"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ServingGodProcess</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#StrongerNature">
@@ -14769,6 +14769,8 @@
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000020"/>
   <work:subClassOf rdf:resource="#PrivationOfPerfection"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#Disobedience"/>
+  <work:subClassOf rdf:resource="#DisobedienceToState"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Sin</rdfs:label>
 </owl:Class>
 
@@ -23234,6 +23236,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">StateOfNature</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#AbsenceOfCommonAgreementQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#EssentialExistenceQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AbsenceOfCommonAgreementQuality</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#GoodByCommonAgreement">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
@@ -23251,10 +23259,25 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CommonAgreement</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#AbsenceOfCommonAgreementQuality">
+<owl:Class rdf:about="#Disobedience">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <work:subClassOf rdf:resource="#EssentialExistenceQuality"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AbsenceOfCommonAgreementQuality</rdfs:label>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Disobedience</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#CivilState">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CivilState</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DisobedienceToState">
+  <rdfs:subClassOf rdf:resource="#Disobedience"/>
+  <work:subClassOf rdf:resource="#Sin"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DisobedienceToState</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SinEquivalenceToStateDisobedienceQuality">
+  <rdfs:subClassOf rdf:resource="#Sin"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SinEquivalenceToStateDisobedienceQuality</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
