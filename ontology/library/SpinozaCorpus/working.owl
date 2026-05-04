@@ -27320,6 +27320,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExternalCausationNecessitation</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#DivineSingularityQuality">
+  <rdfs:subClassOf rdf:resource="#DivineAttribute"/>
+  <work:subClassOf rdf:resource="#DivineAttribute"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivineSingularityQuality</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
@@ -27719,6 +27725,7 @@
   <obo:RO_0000052 rdf:resource="#God"/>
   <work:subClassOf rdf:resource="#SubstanceInfinityOrPerfectionQuality"/>
   <work3:type rdf:resource="#SubstanceUniquenessQuality"/>
+  <work3:type rdf:resource="#DivineSingularityQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UniquenessInNatureQuality</rdfs:label>
 </owl:NamedIndividual>
 
@@ -30114,6 +30121,13 @@
   <work3:type rdf:resource="#InfiniteIntellectualLove"/>
   <obo:RO_0000052 rdf:resource="#God"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodSelfLoveQualityInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#GodNecessityOfExistenceInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work3:type rdf:resource="#NecessityOfExistence"/>
+  <obo:RO_0000052 rdf:resource="#God"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodNecessityOfExistenceInstance</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#ThinkingThingRole">
@@ -35951,13 +35965,6 @@
   <work3:type rdf:resource="#InfiniteAttributesQuality"/>
   <obo:RO_0000052 rdf:resource="#God"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodInfiniteAttributesQualityInstance</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#GodNecessityOfExistenceInstance">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <work3:type rdf:resource="#NecessityOfExistence"/>
-  <obo:RO_0000052 rdf:resource="#God"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodNecessityOfExistenceInstance</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#GodEssenceContainsExistenceInstance">
