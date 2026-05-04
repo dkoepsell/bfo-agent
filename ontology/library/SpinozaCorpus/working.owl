@@ -14300,6 +14300,11 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FreedomOfAffirmationOrDenial</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#FreedomQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FreedomQuality</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#God">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
   <obo:BFO_0000051 rdf:resource="#DivineAttribute"/>
@@ -14538,6 +14543,20 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Speaker</rdfs:label>
 </owl:NamedIndividual>
 
+<owl:NamedIndividual rdf:about="#DecreeNecessitationProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000055 rdf:resource="#GodDecree"/>
+  <obo:BFO_0000055 rdf:resource="#NecessityFromDecreeRelation"/>
+  <obo:RO_0000057 rdf:resource="#NecessityInThings"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DecreeNecessitationProcess</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#NecessityFromDecreeProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000055 rdf:resource="#GodDecree"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NecessityFromDecreeProcess</rdfs:label>
+</owl:NamedIndividual>
+
 <owl:NamedIndividual rdf:about="#GodCausesAllThingsProcess">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <obo:BFO_0000055 rdf:resource="#GodCausesAllThings"/>
@@ -14553,6 +14572,12 @@
   <obo:BFO_0000055 rdf:resource="#DivineDetermination"/>
   <obo:BFO_0000055 rdf:resource="#SupremelyPerfectBeingPower"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodCausesAllThingsProcess</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#FormalExistenceNecessitationProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000055 rdf:resource="#FormalExistenceNecessitationFromIdea"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FormalExistenceNecessitationProcess</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#ThinkingAttribute">
@@ -14632,6 +14657,7 @@
 <owl:NamedIndividual rdf:about="#SoulFreedomQualityInstance">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <obo:RO_0000052 rdf:resource="#Soul"/>
+  <work3:type rdf:resource="#FreedomQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SoulFreedomQualityInstance</rdfs:label>
 </owl:NamedIndividual>
 
@@ -14896,12 +14922,6 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LoveOfGod</rdfs:label>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#FormalExistenceNecessitationProcess">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <obo:BFO_0000055 rdf:resource="#FormalExistenceNecessitationFromIdea"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FormalExistenceNecessitationProcess</rdfs:label>
-</owl:NamedIndividual>
-
 <owl:NamedIndividual rdf:about="#IncorporealGreaterEffectQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IncorporealUnionEffectMagnitude"/>
@@ -14965,20 +14985,6 @@
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <obo:BFO_0000050 rdf:resource="#EssenceAndExistenceFromGodDisposition"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AbsoluteFreedomOfWill</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#DecreeNecessitationProcess">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <obo:BFO_0000055 rdf:resource="#GodDecree"/>
-  <obo:BFO_0000055 rdf:resource="#NecessityFromDecreeRelation"/>
-  <obo:RO_0000057 rdf:resource="#NecessityInThings"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DecreeNecessitationProcess</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#NecessityFromDecreeProcess">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <obo:BFO_0000055 rdf:resource="#GodDecree"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NecessityFromDecreeProcess</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#InfiniteEssenceQuality">
@@ -21495,6 +21501,19 @@
   <obo:RO_0000052 rdf:resource="#God"/>
   <obo:BFO_0000054 rdf:resource="#FormalExistenceNecessitationProcess"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NecessityIsGodDecreeQuality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#FreedomCompatibilityWithNecessity">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work3:type rdf:resource="#RelationalQuality"/>
+  <RO_0000052 rdf:resource="#ActingNecessarilyFromGodDecreeDisposition"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FreedomCompatibilityWithNecessity</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ActingNecessarilyFromGodDecreeDisposition">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:BFO_0000050 rdf:resource="#GodDecree"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ActingNecessarilyFromGodDecreeDisposition</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
