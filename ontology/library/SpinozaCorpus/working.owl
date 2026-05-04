@@ -1513,6 +1513,7 @@
 <owl:Class rdf:about="#ReflexiveKnowledgeProcess">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <obo:BFO_0000055 rdf:resource="#Method"/>
+  <obo:BFO_0000055 rdf:resource="#TrueIdeaReflexiveKnowledgeDisposition"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ReflexiveKnowledgeProcess</rdfs:label>
 </owl:Class>
 
@@ -18070,6 +18071,19 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TruthFalsehoodDiscernmentDisposition</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#TrueIdeaReflexiveKnowledgeDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:BFO_0000054 rdf:resource="#ReflexiveKnowledgeProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TrueIdeaReflexiveKnowledgeDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ReflexiveKnowledgeOfTrueIdeaQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ReflexiveKnowledgeOfTrueIdeaQuality</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
@@ -18967,6 +18981,12 @@
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
   <work:subClassOf rdf:resource="#NaturaNaturata"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NaturaNaturata</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#TruthFalsehoodDistinctionTeachingProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000055 rdf:resource="#TruthFalsehoodDiscernmentDisposition"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TruthFalsehoodDistinctionTeachingProcess</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#NaturaNaturans">
@@ -27295,12 +27315,6 @@
   <work3:type rdf:resource="#NecessaryTruthQuality"/>
   <obo:RO_0000052 rdf:resource="#KnowledgeOfThirdKind"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ThirdKindKnowledgeNecessaryTruthQuality</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#TruthFalsehoodDistinctionTeachingProcess">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <obo:BFO_0000055 rdf:resource="#TruthFalsehoodDiscernmentDisposition"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TruthFalsehoodDistinctionTeachingProcess</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
