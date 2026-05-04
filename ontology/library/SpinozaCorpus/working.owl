@@ -1314,6 +1314,21 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DesireDispositionClass</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#Appetite">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="#ConatusMentalDispositionInstance"/>
+  <work:subClassOf rdf:resource="#MindBodyStrivingQuality"/>
+  <work:subClassOf rdf:resource="#ConceivableThroughItself"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Appetite</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ConsciousnessOfAppetite">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConsciousnessOfAppetite</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#SoulDirectionProcess">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <obo:RO_0000057 rdf:resource="#Soul"/>
@@ -13950,15 +13965,6 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExternalDestructionIncapacity</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#Appetite">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <work:subClassOf rdf:resource="#ConatusMentalDispositionInstance"/>
-  <work:subClassOf rdf:resource="#MindBodyStrivingQuality"/>
-  <work:subClassOf rdf:resource="#ConceivableThroughItself"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Appetite</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#MindBodyStrivingQuality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
@@ -19022,15 +19028,27 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AppetiteIsEssenceOfManQuality</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#ConsciousnessOfAppetite">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConsciousnessOfAppetite</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#DesireCompositionRelation">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DesireCompositionRelation</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#GoodJudgmentQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GoodJudgmentQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#StrivingTowardObject">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">StrivingTowardObject</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#GoodJudgmentCausedByStrivingQuality">
+  <rdfs:subClassOf rdf:resource="#GoodJudgmentQuality"/>
+  <work:subClassOf rdf:resource="#GoodJudgmentQuality"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GoodJudgmentCausedByStrivingQuality</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
