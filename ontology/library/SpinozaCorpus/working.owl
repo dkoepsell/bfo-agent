@@ -14108,6 +14108,16 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AgreementNecessitationDisposition</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#InfallibleTruth">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">InfallibleTruth</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#Godliness">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Godliness</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#God">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
   <obo:BFO_0000051 rdf:resource="#DivineAttribute"/>
@@ -21147,6 +21157,27 @@
   <obo:RO_0000057 rdf:resource="#God"/>
   <obo:BFO_0000050 rdf:resource="#GodCausesAllThingsProcess"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodCreatesHumansProcess</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#HolyScripture">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <obo:RO_0000053 rdf:resource="#HolyScriptureInfallibleTruthQuality"/>
+  <obo:RO_0000053 rdf:resource="#HolyScriptureGodlinessQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HolyScripture</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#HolyScriptureInfallibleTruthQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#HolyScripture"/>
+  <work3:type rdf:resource="#InfallibleTruth"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HolyScriptureInfallibleTruthQuality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#HolyScriptureGodlinessQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#HolyScripture"/>
+  <work3:type rdf:resource="#Godliness"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HolyScriptureGodlinessQuality</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
