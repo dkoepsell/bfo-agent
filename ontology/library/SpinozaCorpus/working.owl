@@ -20652,6 +20652,13 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GladnessAtAnotherIllFortuneQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#EnvyAndBadHeartDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:BFO_0000054 rdf:resource="#JoyFromComparisonArisingProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EnvyAndBadHeartDisposition</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#Overestimation">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="#Joy"/>
@@ -30111,11 +30118,36 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">JoyFromComparisonArisingProcess</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#EnvyAndBadHeartDisposition">
+<owl:Class rdf:about="#HumanGovernance">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HumanGovernance</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#Vigilance">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <obo:BFO_0000054 rdf:resource="#JoyFromComparisonArisingProcess"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EnvyAndBadHeartDisposition</rdfs:label>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Vigilance</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SecureExistenceQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SecureExistenceQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#InjuryAvoidanceDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">InjuryAvoidanceDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#GovernanceAndVigilanceProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000055 rdf:resource="#Vigilance"/>
+  <obo:BFO_0000055 rdf:resource="#InjuryAvoidanceDisposition"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GovernanceAndVigilanceProcess</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
