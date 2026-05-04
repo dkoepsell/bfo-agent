@@ -31267,6 +31267,34 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CivicScopeQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#UniversalMoralTeachingContent">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work2:disjointWith rdf:resource="#StateLawContent"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UniversalMoralTeachingContent</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#StateLawContent">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">StateLawContent</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#UniversalScopeQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UniversalScopeQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#MoralContentQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MoralContentQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#AbsenceOfStateLawTeachingQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AbsenceOfStateLawTeachingQuality</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -32460,6 +32488,7 @@
   <obo:RO_0000056 rdf:resource="#MindToMindCommunicationProcess"/>
   <obo:RO_0000056 rdf:resource="#AccommodationProcess"/>
   <obo:RO_0000056 rdf:resource="#ChristAdequatePerceptionProcess"/>
+  <obo:RO_0000056 rdf:resource="#ChristTeachingProcess"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Christ</rdfs:label>
 </owl:NamedIndividual>
 
@@ -44966,6 +44995,18 @@
   <work3:type rdf:resource="#MoralPrecept"/>
   <obo:BFO_0000050 rdf:resource="#MosaicBooks"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MosaicMoralPreceptsInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ChristTeaching">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work3:type rdf:resource="#UniversalMoralTeachingContent"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ChristTeaching</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ChristTeachingProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#Christ"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TeachingProcess</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
