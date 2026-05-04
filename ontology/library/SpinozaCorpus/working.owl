@@ -17212,19 +17212,19 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BodyPreservationDisposition</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#BodyPreservationProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#HumanBody"/>
+  <obo:RO_0000057 rdf:resource="#OtherBody"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BodyPreservationProcess</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#BodyRegenerationDisposition">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <obo:RO_0000052 rdf:resource="#HumanBody"/>
   <obo:BFO_0000054 rdf:resource="#BodyRegenerationProcess"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BodyRegenerationDisposition</rdfs:label>
-</owl:Class>
-
-<owl:Class rdf:about="#BodyPreservationProcess">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <obo:RO_0000057 rdf:resource="#HumanBody"/>
-  <obo:RO_0000057 rdf:resource="#OtherBody"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BodyPreservationProcess</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#BodyRegenerationProcess">
@@ -17243,6 +17243,62 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <obo:RO_0000052 rdf:resource="#HumanBody"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RequirementForOtherBodiesQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#FluidPart">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FluidPart</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SoftPart">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SoftPart</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SoftPartSurface">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000141"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000141"/>
+  <obo:BFO_0000050 rdf:resource="#SoftPart"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SoftPartSurface</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SurfaceImpressedTrace">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#SoftPartSurface"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SurfaceImpressedTrace</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ExternalDeterminationDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:RO_0000052 rdf:resource="#ExternalBody"/>
+  <obo:BFO_0000054 rdf:resource="#FluidThrustingProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExternalDeterminationDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#FluidThrustingProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#FluidPart"/>
+  <obo:RO_0000057 rdf:resource="#SoftPart"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FluidThrustingProcess</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SurfaceChangeProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#SoftPart"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SurfaceChangeProcess</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#TraceImpressionProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000050 rdf:resource="#SurfaceChangeProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TraceImpressionProcess</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
@@ -17955,6 +18011,7 @@
   <work3:type rdf:resource="#ExtensionConceptualNecessityConstraint"/>
   <obo:BFO_0000050 rdf:resource="#QuantityOfMotionAndRest"/>
   <work3:type rdf:resource="#BodyIndividuationByMotionRestQuality"/>
+  <obo:RO_0000052 rdf:resource="#FluidPart"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MotionAndRest</rdfs:label>
 </owl:NamedIndividual>
 
