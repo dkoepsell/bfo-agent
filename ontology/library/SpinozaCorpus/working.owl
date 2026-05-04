@@ -28697,6 +28697,8 @@
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <obo:RO_0000057 rdf:resource="#Prophet"/>
   <obo:BFO_0000051 rdf:resource="#VictoryAndPeaceContent"/>
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Revelation</rdfs:label>
 </owl:Class>
 
@@ -29731,6 +29733,26 @@
 <owl:Class rdf:about="#KnowledgeOfCauseDisposition">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">KnowledgeOfCauseDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#OrdinaryOpinionAboutGod">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OrdinaryOpinionAboutGod</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#AccommodationToOpinionDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:BFO_0000054 rdf:resource="#AccommodationProcess"/>
+  <obo:RO_0000052 rdf:resource="#Revelation"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AccommodationToOpinionDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#AccommodationProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#Revelation"/>
+  <obo:RO_0000057 rdf:resource="#OrdinaryOpinionAboutGod"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AccommodationProcess</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
@@ -42404,6 +42426,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Solomon</rdfs:label>
 </owl:NamedIndividual>
 
+<owl:NamedIndividual rdf:about="#SolomonBeliefProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#ThreeToOneRatioBelief"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SolomonBeliefProcess</rdfs:label>
+</owl:NamedIndividual>
+
 <owl:NamedIndividual rdf:about="#RatioOfCircumferenceToDiameter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RatioOfCircumferenceToDiameter</rdfs:label>
@@ -42419,12 +42447,6 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <obo:BFO_0000050 rdf:resource="#RatioOfCircumferenceToDiameter"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ThreeTo OneRatioBelief</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#SolomonBeliefProcess">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <obo:RO_0000057 rdf:resource="#ThreeToOneRatioBelief"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SolomonBeliefProcess</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
