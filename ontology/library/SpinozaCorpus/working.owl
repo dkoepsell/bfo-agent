@@ -4955,6 +4955,9 @@
   <rdfs:subClassOf rdf:resource="#ModeInstance"/>
   <work:subClassOf rdf:resource="#ModeInstance"/>
   <obo:RO_0000052 rdf:resource="#AttributeOfSubstance"/>
+  <rdfs:subClassOf rdf:resource="#Mode"/>
+  <work:subClassOf rdf:resource="#Mode"/>
+  <obo:RO_0000052 rdf:resource="#Attribute"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ModeOfAttribute</rdfs:label>
 </owl:Class>
 
