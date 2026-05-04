@@ -29979,6 +29979,42 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OpinionsQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#PropheticIgnoranceOfSpeculativeMatters">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PropheticIgnoranceOfSpeculativeMatters</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PropheticKnowledgeOfLovingKindnessAndConduct">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PropheticKnowledgeOfLovingKindnessAndConduct</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SpeculativeMatters">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SpeculativeMatters</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#LovingKindnessAndConductMatters">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LovingKindnessAndConductMatters</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PropheticEpistemicLimitationDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PropheticEpistemicLimitationDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PropheticMoralAuthorityDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PropheticMoralAuthorityDisposition</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -32986,6 +33022,13 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <obo:RO_0000052 rdf:resource="#God"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UniquenessInPowerQuality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#GodRevelationAccommodationProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#ProphetRoleInstance"/>
+  <obo:BFO_0000055 rdf:resource="#AccommodationToUnderstanding"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodRevelationAccommodationProcess</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#ThinkingThingRole">
@@ -43116,13 +43159,6 @@
 <owl:NamedIndividual rdf:about="#ProphetRoleInstance">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ProphetRole</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#GodRevelationAccommodationProcess">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <obo:RO_0000057 rdf:resource="#ProphetRoleInstance"/>
-  <obo:BFO_0000055 rdf:resource="#AccommodationToUnderstanding"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodRevelationAccommodationProcess</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
