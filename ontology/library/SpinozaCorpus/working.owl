@@ -22658,6 +22658,11 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AbsoluteVirtueOfMind</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#UnderstandingGodDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UnderstandingGodDisposition</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
@@ -32823,6 +32828,21 @@
   <work3:type rdf:resource="#Understanding"/>
   <obo:RO_0000052 rdf:resource="#InfiniteIntellectOfGod"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UnderstandingDispositionInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#MindUnderstandingGodProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#FormalBeingOfHumanMind"/>
+  <obo:RO_0000057 rdf:resource="#God"/>
+  <obo:BFO_0000055 rdf:resource="#UnderstandingGodDisposition"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindUnderstandingGodProcess</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#MindGreatestVirtueQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#FormalBeingOfHumanMind"/>
+  <work:subClassOf rdf:resource="#AdequateKnowledgeOfGodQualityInstance"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindGreatestVirtueQuality</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
