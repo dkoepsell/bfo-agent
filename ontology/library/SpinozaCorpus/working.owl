@@ -30315,6 +30315,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NormativeObligation</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#ProphecyGift">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ProphecyGift</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -43643,6 +43649,19 @@
   <obo:RO_0000057 rdf:resource="#WholeHumanRace"/>
   <obo:RO_0000057 rdf:resource="#DivineLaw"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivineLawPrescriptionProcess</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#JewishNation">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <work3:type rdf:resource="#Nation"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">JewishNation</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ProphecyUniversalityQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#ProphecyGift"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ProphecyUniversalityQuality</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
