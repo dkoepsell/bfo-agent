@@ -1902,6 +1902,19 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AccompanimentRelation</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#Repentance">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="#_:RepentanceBearerOfInjuriousEvil"/>
+  <rdfs:subClassOf rdf:resource="#Sadness"/>
+  <work:subClassOf rdf:resource="#Sadness"/>
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#RepentanceAccompaniedByInternalCauseIdea"/>
+  <work:subClassOf rdf:resource="#RepentanceAccompanimentRelation"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Repentance</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#SadnessExemptionQuality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <obo:RO_0000052 rdf:resource="#Joy"/>
@@ -6640,23 +6653,15 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OppositeAffectRelation</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#Repentance">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <work:subClassOf rdf:resource="#_:RepentanceBearerOfInjuriousEvil"/>
-  <rdfs:subClassOf rdf:resource="#Sadness"/>
-  <work:subClassOf rdf:resource="#Sadness"/>
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <work:subClassOf rdf:resource="#RepentanceAccompaniedByInternalCauseIdea"/>
-  <work:subClassOf rdf:resource="#RepentanceAccompanimentRelation"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Repentance</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#RepentanceAccompaniedByInternalCauseIdea">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RepentanceAccompaniedByInternalCauseIdea</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#RepentanceAccompanimentRelation">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RepentanceAccompanimentRelation</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#InjuriousEvil">
@@ -19777,6 +19782,8 @@
   <rdfs:subClassOf rdf:resource="#Joy"/>
   <work:subClassOf rdf:resource="#Joy"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#JoyAccompaniedBySelfCausalIdeaQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SelfEsteem</rdfs:label>
 </owl:Class>
 
@@ -20271,12 +20278,19 @@
 <owl:Class rdf:about="#IdeaOfOneselfAsCause">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <obo:BFO_0000050 rdf:resource="#Repentance"/>
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IdeaOfOneselfAsCause</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#RepentanceAccompanimentRelation">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RepentanceAccompanimentRelation</rdfs:label>
+<owl:Class rdf:about="#SelfEsteemInstance">
+  <rdfs:subClassOf rdf:resource="#Joy"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SelfEsteem</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#JoyAccompaniedBySelfCausalIdeaQuality">
+  <rdfs:subClassOf rdf:resource="#Joy"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">JoyAccompaniedBySelfCausalIdea</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
