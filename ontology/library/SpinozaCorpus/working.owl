@@ -1235,6 +1235,7 @@
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/RO_0000053"/>
   <work:subClassOf rdf:resource="#_:x"/>
   <obo:BFO_0000050 rdf:resource="#CommonOrderOfNature"/>
+  <obo:RO_0000056 rdf:resource="#RationalLife"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Man</rdfs:label>
 </owl:Class>
 
@@ -24545,6 +24546,25 @@
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="#EssentialExistenceQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UnderstandingNecessityForRationalLifeQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#GuidedByUnderstanding">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="#AidingRationalLifeDisposition"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GuidedByUnderstanding</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#GoodForManQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#ExistenceNonEvilQuality"/>
+  <work:comment rdf:resource="#A quality borne by things insofar as they aid man to enjoy rational life defined by understanding."/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GoodForManQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#AidingRationalLifeDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:BFO_0000054 rdf:resource="#RationalLife"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AidingRationalLifeDisposition</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
