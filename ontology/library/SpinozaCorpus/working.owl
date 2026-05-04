@@ -19444,6 +19444,8 @@
   <work:subClassOf rdf:resource="#PityArisingFromInjuryDisposition"/>
   <rdfs:subClassOf rdf:resource="#Affect"/>
   <work:subClassOf rdf:resource="#ImitationOfAffect"/>
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Pity</rdfs:label>
 </owl:Class>
 
@@ -19589,6 +19591,19 @@
   <obo:BFO_0000051 rdf:resource="#ImaginingOthersSameSimilarDesire"/>
   <obo:BFO_0000055 rdf:resource="#Emulation"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EmulationGenerationProcess</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#Benevolence">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="#Desire"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Benevolence</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#BenevolenceDesireQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BenevolenceDesireQuality</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
