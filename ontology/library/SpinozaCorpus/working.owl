@@ -21550,6 +21550,7 @@
   <obo:BFO_0000054 rdf:resource="#AidingOtherMenProcess"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Nobility</rdfs:label>
 </owl:Class>
 
@@ -25461,6 +25462,30 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BodilyAffectionOrderingProcess</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#HateConquestByLoveOrNobility">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:BFO_0000054 rdf:resource="#HateConquestProcess"/>
+  <work:subClassOf rdf:resource="#Love"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HateConquestByLoveOrNobility</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#HateConquestProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000055 rdf:resource="#HateConquestByLoveOrNobility"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HateConquestProcess</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#RepayingHateWithHate">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RepayingHateWithHate</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#HateConquestIncapacityOfHateRepayment">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HateConquestIncapacityOfHateRepayment</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#MetaphysicalSubjectMatter"/>
@@ -26498,6 +26523,12 @@
   <work:subClassOf rdf:resource="#ModeOfThinking"/>
   <work:subClassOf rdf:resource="#GoodEvilRelationalBasis"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Good</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#OrderingAndConnectingBodilyAffections">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:BFO_0000054 rdf:resource="#BodilyAffectionOrderingProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OrderingAndConnectingBodillyAffections</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#NaturaNaturans">
@@ -35965,12 +35996,6 @@
   <obo:RO_0000052 rdf:resource="#MindEssenceQuality"/>
   <obo:RO_0000052 rdf:resource="#FormalBeingOfHumanMind"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindEssenceConsistsInThoughtQuality</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#OrderingAndConnectingBodilyAffections">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <obo:BFO_0000054 rdf:resource="#BodilyAffectionOrderingProcess"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OrderingAndConnectingBodillyAffections</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#AbsenceOfContraryAffects">
