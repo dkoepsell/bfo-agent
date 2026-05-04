@@ -3572,6 +3572,15 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Man</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#HumanEssence">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#EssentialExistenceQuality"/>
+  <work:subClassOf rdf:resource="#AttributeModification"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#God"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HumanEssence</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#AbstractConception">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="#IdeaFormationCapacity"/>
@@ -16681,15 +16690,6 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodHasIdeaOfObjectDisposition</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#HumanEssence">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <work:subClassOf rdf:resource="#EssentialExistenceQuality"/>
-  <work:subClassOf rdf:resource="#AttributeModification"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <obo:RO_0000052 rdf:resource="#God"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HumanEssence</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#AttributeModification">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="#Attribute"/>
@@ -17035,6 +17035,8 @@
   <obo:BFO_0000055 rdf:resource="#SupremelyPerfectBeingPower"/>
   <obo:RO_0000057 rdf:resource="#AllThings"/>
   <obo:BFO_0000055 rdf:resource="#ContinualDependenceOnGodInstance"/>
+  <obo:BFO_0000051 rdf:resource="#EssenceCausationProcess"/>
+  <obo:BFO_0000051 rdf:resource="#FormalExistenceNecessitationProcess"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodCausesAllThingsProcess</rdfs:label>
 </owl:NamedIndividual>
 
@@ -25331,6 +25333,13 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <obo:RO_0000052 rdf:resource="#Man"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SubstanceBeingNonPertinenceToHumanEssence</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#CausalRoleOfGodOverEssenceAndExistence">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <RO_0000052 rdf:resource="#God"/>
+  <obo:BFO_0000054 rdf:resource="#GodCausesAllThingsProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CausalRoleOfGodOverEssenceAndExistence</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
