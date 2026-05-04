@@ -6526,6 +6526,11 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivineDetermination</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#EffectProductionProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EffectProductionProcess</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#WillNotRealBeingQuality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <obo:RO_0000052 rdf:resource="#Will"/>
@@ -15859,9 +15864,24 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SelfDeterminationToProduceEffectDisposition</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#EffectProductionProcess">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EffectProductionProcess</rdfs:label>
+<owl:Class rdf:about="#DeterminedToProduceEffect">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DeterminedToProduceEffect</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#GodDeterminedThing">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
+  <work:subClassOf rdf:resource="#Substance"/>
+  <work:subClassOf rdf:resource="#DeterminedToProduceEffect"/>
+  <work:subClassOf rdf:resource="#SelfUndeterminingIncapacity"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodDeterminedThing</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SelfUndeterminingIncapacity">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SelfUndeterminingIncapacity</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
