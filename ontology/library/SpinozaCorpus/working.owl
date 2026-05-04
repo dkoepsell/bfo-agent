@@ -192,6 +192,7 @@
 <owl:Class rdf:about="#InItself">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="#ExistenceModalityQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">InItself</rdfs:label>
 </owl:Class>
 
@@ -15276,6 +15277,30 @@
   <work:subClassOf rdf:resource="#ExistenceNecessitation"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExistencePowerCorrelationDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ExistenceInItself">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExistenceInItself</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ExistenceInAnother">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="#ExistenceModalityQuality"/>
+  <obo:RO_0000052 rdf:resource="#NecessarilyExistingBearer"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExistenceInAnother</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#NecessarilyExistingBearer">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
+  <obo:RO_0000053 rdf:resource="#NecessityOfExistence"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NecessarilyExistingBearer</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ExistenceModalityQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExistenceModalityQuality</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
