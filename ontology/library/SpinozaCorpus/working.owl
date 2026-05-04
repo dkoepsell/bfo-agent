@@ -3904,6 +3904,7 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#HumanBeing"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HumanNature</rdfs:label>
 </owl:Class>
 
@@ -18878,6 +18879,9 @@
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:subClassOf rdf:resource="#Affect"/>
+  <work:subClassOf rdf:resource="#Affect"/>
+  <obo:RO_0000052 rdf:resource="#HumanBeing"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HumanAffect</rdfs:label>
 </owl:Class>
 
@@ -20573,6 +20577,7 @@
 <owl:Class rdf:about="#AnimalNature">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#LowerAnimal"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AnimalNature</rdfs:label>
 </owl:Class>
 
@@ -20586,6 +20591,13 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AffectDifferenceQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#LowerAnimalAffect">
+  <rdfs:subClassOf rdf:resource="#Affect"/>
+  <work:subClassOf rdf:resource="#Affect"/>
+  <obo:RO_0000052 rdf:resource="#LowerAnimal"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LowerAnimalAffect</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#NecessityOfThingsSubjectMatter">
