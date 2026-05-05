@@ -32577,6 +32577,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HebrewProphet</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#PropheticWritingProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#PropheticWriting"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PropheticWritingProcess</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#PropheticWriting">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PropheticWriting</rdfs:label>
@@ -32594,10 +32600,19 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DevoutCharacterQuality</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#PropheticWritingProcess">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <obo:RO_0000057 rdf:resource="#PropheticWriting"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PropheticWritingProcess</rdfs:label>
+<owl:Class rdf:about="#ObstinacyQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ObstinacyQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ScripturalAttributionToGod">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ScripturalAttributionToGod</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#NaturalisticReinterpretationDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NaturalisticReinterpretationDisposition</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
@@ -47037,6 +47052,24 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <RO_0000052 rdf:resource="#God"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodAllPerfectionsContainedQualityInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Pharaoh">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <obo:RO_0000053 rdf:resource="#PharaohObstinacyQualityInstance"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Pharaoh</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#PharaohObstinacyQualityInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#Pharaoh"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PharaohObstinacyQualityInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#GodHardenedPharaohsHeartStatement">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work3:type rdf:resource="#ScripturalAttributionToGod"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodHardenedPharaohsHeartStatement</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
