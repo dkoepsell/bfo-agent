@@ -33495,6 +33495,28 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CompiledFromDisposition</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#ChronologicalOrdering">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ChronologicalOrdering</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#TemporalConsistency">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TemporalConsistency</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PentateuchPrecept">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PentateuchPrecept</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PentateuchStory">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PentateuchStory</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -37662,6 +37684,8 @@
 <owl:NamedIndividual rdf:about="#Pentateuch">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <obo:BFO_0000051 rdf:resource="#PentateuchPrecept"/>
+  <obo:BFO_0000051 rdf:resource="#PentateuchStory"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Pentateuch</rdfs:label>
 </owl:NamedIndividual>
 
@@ -48949,6 +48973,20 @@
   <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <obo:RO_0000057 rdf:resource="#StoryOfJosephAndJacob"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CompilingProcess</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#LackOfChronologicalOrderQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work3:type rdf:resource="#ChronologicalOrdering"/>
+  <obo:RO_0000052 rdf:resource="#Pentateuch"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LackOfChronologicalOrderQuality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#LackOfTemporalConsistencyQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work3:type rdf:resource="#TemporalConsistency"/>
+  <obo:RO_0000052 rdf:resource="#Pentateuch"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LackOfTemporalConsistencyQuality</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
