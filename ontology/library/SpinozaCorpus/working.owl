@@ -1810,6 +1810,7 @@
   <obo:BFO_0000051 rdf:resource="#Individual"/>
   <work:subClassOf rdf:resource="#ModificationBearer"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Individual</rdfs:label>
 </owl:Class>
 
@@ -37333,6 +37334,18 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HatredOfOtherNationsDisposition</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#NatureProducesIndividualsDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="#SubstanceNecessaryInfinityDisposition"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NatureProducesIndividualsDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#NationArtificialConstructQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NationArtificialConstructQuality</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -37911,6 +37924,7 @@
   <obo:BFO_0000051 rdf:resource="#Matter"/>
   <obo:BFO_0000051 rdf:resource="#InfiniteOtherThings"/>
   <RO_0000053 rdf:resource="#NatureSupremeRight"/>
+  <obo:RO_0000053 rdf:resource="#NatureProducesIndividualsDisposition"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WholeOfNature</rdfs:label>
 </owl:NamedIndividual>
 
@@ -38793,6 +38807,13 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <obo:RO_0000053 rdf:resource="#WrittenInMindQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LawOfGod</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#DailyHebrewWorshipPractice">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000055 rdf:resource="#PietyDispositionInstance"/>
+  <obo:BFO_0000055 rdf:resource="#HatredOfOtherNationsDispositionInstance"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DailyHebrewWorshipPractice</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#HebrewStateTheocraticGovernanceQuality">
@@ -55205,13 +55226,6 @@
   <work3:type rdf:resource="#PietyQuality"/>
   <obo:RO_0000052 rdf:resource="#HebrewPeople"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HebrewLoveOfCountry</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#DailyHebrewWorshipPractice">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <obo:BFO_0000055 rdf:resource="#PietyDispositionInstance"/>
-  <obo:BFO_0000055 rdf:resource="#HatredOfOtherNationsDispositionInstance"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DailyHebrewWorshipPractice</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#PietyDispositionInstance">
