@@ -31871,6 +31871,8 @@
 <owl:Class rdf:about="#Authority">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Authority</rdfs:label>
 </owl:Class>
 
@@ -32034,6 +32036,12 @@
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <obo:BFO_0000054 rdf:resource="#InternalSoulAction"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Obedience</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#InternalSoulAction">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">InternalSoulAction</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#ObedienceAbsenceQuality">
@@ -36724,16 +36732,33 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MotivationIrrelevanceQuality</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#InternalSoulAction">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">InternalSoulAction</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#ExternalAction">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExternalAction</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#Ruler">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Ruler</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ReigningOverHeartsDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:BFO_0000054 rdf:resource="#GoverningProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ReigningOverHeartsDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#HeartLoyaltyQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HeartLoyaltyQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#GoverningProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000055 rdf:resource="#ReigningOverHeartsDisposition"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GoverningProcess</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
