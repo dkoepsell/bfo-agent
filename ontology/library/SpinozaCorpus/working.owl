@@ -34681,6 +34681,21 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">KnowledgeOfDivineJusticeAndLovingKindness</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#DivineLovinKindness">
+  <rdfs:subClassOf rdf:resource="#DivineAttribute"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivineLoving-kindness</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#KnowledgeOfDivineAttributesDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">KnowledgeOfDivineAttributesDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#Everyone">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Everyone</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -35036,6 +35051,9 @@
   <obo:RO_0000053 rdf:resource="#GodOmnipotenceQualityInstance"/>
   <obo:RO_0000056 rdf:resource="#DecreeNecessitationProcess"/>
   <obo:RO_0000053 rdf:resource="#GodDivineGraceInstance"/>
+  <obo:RO_0000053 rdf:resource="#DivineJusticeInstance"/>
+  <obo:RO_0000053 rdf:resource="#DivineLovinKindnessInstance"/>
+  <obo:RO_0000056 rdf:resource="#KnowledgeDemandProcess"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">God</rdfs:label>
 </owl:NamedIndividual>
 
@@ -51746,6 +51764,24 @@
   <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <obo:BFO_0000051 rdf:resource="#KnowledgeOfDivineJusticeAndLovingKindness"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivineKnowledgeDemandNorm</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#DivineJusticeInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#God"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivineJusticeInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#DivineLovinKindnessInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#God"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivineLovinKindnessInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#KnowledgeDemandProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#God"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">KnowledgeDemandProcess</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
