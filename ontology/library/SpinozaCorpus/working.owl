@@ -34690,7 +34690,7 @@
   <rdfs:subClassOf rdf:resource="#DivineAttribute"/>
   <work:subClassOf rdf:resource="#DivineAttribute"/>
   <obo:RO_0000052 rdf:resource="#God"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivineLoving-kindness</rdfs:label>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivingLovingKindness</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#KnowledgeOfDivineJusticeAndLovingKindness">
@@ -34898,6 +34898,12 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivineGiftDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#KnowledgeOfDivineAttributes">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">KnowledgeOfDivineAttributes</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
@@ -52136,6 +52142,15 @@
   <obo:RO_0000052 rdf:resource="#TrueKnowledgeOfGod"/>
   <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NotACommandQuality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#GodAsksKnowledgeProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#God"/>
+  <obo:RO_0000057 rdf:resource="#Man"/>
+  <obo:BFO_0000055 rdf:resource="#KnowledgeOfDivineAttributes"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodAsksKnowledgeProcess</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
