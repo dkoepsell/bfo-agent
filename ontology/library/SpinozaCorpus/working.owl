@@ -33480,6 +33480,11 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DerivedFromSourceQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#NarrativeCollection">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NarrativeCollection</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -48715,6 +48720,7 @@
   <obo:RO_0000056 rdf:resource="#WritingOfDeuteronomyProcess"/>
   <obo:RO_0000056 rdf:resource="#WritingOfHistoryProcess"/>
   <obo:RO_0000053 rdf:resource="#EzraAuthorRole"/>
+  <obo:RO_0000056 rdf:resource="#NarrativeCollectingProcess"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Ezra</rdfs:label>
 </owl:NamedIndividual>
 
@@ -48747,16 +48753,21 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BookOfDeuteronomy</rdfs:label>
 </owl:NamedIndividual>
 
+<owl:NamedIndividual rdf:about="#HistoryOfHebrewNation">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <obo:BFO_0000050 rdf:resource="#WorldOriginTemporalRegion"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HistoryOfHebrewNation</rdfs:label>
+</owl:NamedIndividual>
+
 <owl:NamedIndividual rdf:about="#ExplanationAndRewordingRelation">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <obo:BFO_0000050 rdf:resource="#MosesLaw"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExplanationAndRewordingRelation</rdfs:label>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#HistoryOfHebrewNation">
+<owl:NamedIndividual rdf:about="#LargerHistoricalNarrative">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
-  <obo:BFO_0000050 rdf:resource="#WorldOriginTemporalRegion"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HistoryOfHebrewNation</rdfs:label>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LargerHistoricalNarrative</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#WorldOriginTemporalRegion">
@@ -48767,11 +48778,6 @@
 <owl:NamedIndividual rdf:about="#DestructionOfJerusalemTemporalRegion">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000008"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DestructionOfJerusalemTemporalRegion</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#LargerHistoricalNarrative">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LargerHistoricalNarrative</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#InsertionOfDeuteronomyProcess">
@@ -48786,6 +48792,24 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <obo:RO_0000052 rdf:resource="#BookOfDeuteronomy"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ChronologicalPlacement</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#NarrativeCollectionByEzra">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work3:type rdf:resource="#NarrativeCollection"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NarrativeCollectionInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#NarrativeCollectingProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#Ezra"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NarrativeCollectingProcess</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#UncriticalCollectionQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#NarrativeCollectingProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UncriticalCollectionQuality</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
