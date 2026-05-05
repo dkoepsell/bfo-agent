@@ -37027,6 +37027,11 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BookOfTheLawOfGod</rdfs:label>
 </owl:NamedIndividual>
 
+<owl:NamedIndividual rdf:about="#MosesLaw">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MosesLaw</rdfs:label>
+</owl:NamedIndividual>
+
 <owl:NamedIndividual rdf:about="#CollectionOfEternalModesOfThinking">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
   <obo:BFO_0000050 rdf:resource="#InfiniteIntellectOfGod"/>
@@ -48708,18 +48713,9 @@
 <owl:NamedIndividual rdf:about="#Ezra">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
   <obo:RO_0000056 rdf:resource="#WritingOfDeuteronomyProcess"/>
+  <obo:RO_0000056 rdf:resource="#WritingOfHistoryProcess"/>
+  <obo:RO_0000053 rdf:resource="#EzraAuthorRole"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Ezra</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#BookOfDeuteronomy">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
-  <obo:BFO_0000050 rdf:resource="#ExplanationAndRewordingRelation"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BookOfDeuteronomy</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#MosesLaw">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MosesLaw</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#WritingOfDeuteronomyProcess">
@@ -48729,10 +48725,47 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WritingOfDeuteronomyProcess</rdfs:label>
 </owl:NamedIndividual>
 
+<owl:NamedIndividual rdf:about="#BookOfDeuteronomy">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <obo:BFO_0000050 rdf:resource="#ExplanationAndRewordingRelation"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BookOfDeuteronomy</rdfs:label>
+</owl:NamedIndividual>
+
 <owl:NamedIndividual rdf:about="#ExplanationAndRewordingRelation">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <obo:BFO_0000050 rdf:resource="#MosesLaw"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExplanationAndRewordingRelation</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#HistoryOfHebrewNation">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <obo:BFO_0000050 rdf:resource="#WorldOriginTemporalRegion"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HistoryOfHebrewNation</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#WritingOfHistoryProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#Ezra"/>
+  <obo:RO_0000057 rdf:resource="#HistoryOfHebrewNation"/>
+  <obo:BFO_0000055 rdf:resource="#EzraAuthorRole"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WritingOfHistoryProcess</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#WorldOriginTemporalRegion">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000008"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WorldOriginTemporalRegion</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#DestructionOfJerusalemTemporalRegion">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000008"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DestructionOfJerusalemTemporalRegion</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#EzraAuthorRole">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <obo:RO_0000052 rdf:resource="#Ezra"/>
+  <obo:BFO_0000054 rdf:resource="#WritingOfHistoryProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EzraAuthorRole</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
