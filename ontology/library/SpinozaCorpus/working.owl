@@ -36718,6 +36718,14 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WorshipRoleInstance</rdfs:label>
 </owl:NamedIndividual>
 
+<owl:NamedIndividual rdf:about="#GodImpassibilityQualityInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work3:type rdf:resource="#ImpassibilityQuality"/>
+  <work3:type rdf:resource="#PassionAbsenceQuality"/>
+  <obo:RO_0000052 rdf:resource="#God"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodImpassibilityQualityInstance</rdfs:label>
+</owl:NamedIndividual>
+
 <owl:NamedIndividual rdf:about="#ThinkingThingRole">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
   <obo:RO_0000052 rdf:resource="#Speaker"/>
@@ -48086,12 +48094,21 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SpinozaRejectionOfScriptureConsistency</rdfs:label>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#GodImpassibilityQualityInstance">
+<owl:NamedIndividual rdf:about="#ScriptureHistory">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ScriptureHistory</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#IncompletenessQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <work3:type rdf:resource="#ImpassibilityQuality"/>
-  <work3:type rdf:resource="#PassionAbsenceQuality"/>
-  <obo:RO_0000052 rdf:resource="#God"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodImpassibilityQualityInstance</rdfs:label>
+  <obo:RO_0000052 rdf:resource="#ScriptureHistory"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IncompletenessQuality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#DefectivenessQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#ScriptureHistory"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DefectivenessQuality</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
