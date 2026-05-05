@@ -4999,6 +4999,7 @@
 
 <owl:Class rdf:about="#MarginalNote">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <obo:BFO_0000050 rdf:resource="#HebrewManuscript"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MarginalNote</rdfs:label>
 </owl:Class>
 
@@ -33568,6 +33569,23 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TextualTransmission</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#HebrewManuscript">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HebrewManuscript</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#VariantReading">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">VariantReading</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#MarginalNoteOriginProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#MarginalNote"/>
+  <obo:RO_0000057 rdf:resource="#VariantReading"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MarginalNoteOriginProcess</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -49193,16 +49211,16 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BiblicalManuscripts</rdfs:label>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#ManuscriptTextContent">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
-  <obo:BFO_0000050 rdf:resource="#BiblicalManuscripts"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ManuscriptTextContent</rdfs:label>
-</owl:NamedIndividual>
-
 <owl:NamedIndividual rdf:about="#ManuscriptTransmissionProcess">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <obo:RO_0000057 rdf:resource="#BiblicalManuscripts"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ManuscriptTransmissionProcess</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ManuscriptTextContent">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <obo:BFO_0000050 rdf:resource="#BiblicalManuscripts"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ManuscriptTextContent</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
