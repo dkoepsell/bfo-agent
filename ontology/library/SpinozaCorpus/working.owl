@@ -28981,6 +28981,7 @@
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
   <obo:RO_0000052 rdf:resource="#HumanBeing"/>
   <obo:BFO_0000054 rdf:resource="#PerseveranceInBeingProcess"/>
+  <work:subClassOf rdf:resource="#ConatusDisposition"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NaturalRight</rdfs:label>
 </owl:Class>
 
@@ -35777,6 +35778,12 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">InscribedInHumanNatureQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#NaturalRightDeterminationByPower">
+  <rdfs:subClassOf rdf:resource="#NaturalRight"/>
+  <work:subClassOf rdf:resource="#NaturalRight"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NaturalRightDeterminationByPower</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
