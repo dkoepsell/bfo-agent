@@ -1651,6 +1651,19 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UnderstandingProcess</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#Hearer">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Hearer</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#HearingProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#Hearer"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HearingProcess</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#PerceptionProcess">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
@@ -8524,6 +8537,22 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">VividnessQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#Apostle">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <obo:BFO_0000054 rdf:resource="#PreachingProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Apostle</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#Faithful">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Faithful</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#Impious">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Impious</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#DivineRevelationProcess">
@@ -33198,22 +33227,6 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RestrictedGrantingToFaithfulQuality</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#Apostle">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
-  <obo:BFO_0000054 rdf:resource="#PreachingProcess"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Apostle</rdfs:label>
-</owl:Class>
-
-<owl:Class rdf:about="#Faithful">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Faithful</rdfs:label>
-</owl:Class>
-
-<owl:Class rdf:about="#Impious">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Impious</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#PropheticPreachingProcess">
   <rdfs:subClassOf rdf:resource="#PreachingProcess"/>
   <work:subClassOf rdf:resource="#PreachingProcess"/>
@@ -33226,23 +33239,39 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ApostolicPreachingProcess</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#Hearer">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Hearer</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#PropheticApostolicCommunication">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PropheticApostolicCommunication</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#HearingProcess">
+<owl:Class rdf:about="#LanguageKnowledge">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LanguageKnowledge</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#Language">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Language</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#UtteranceContent">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UtteranceContent</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#MeaningGraspingDisposition">
+  <rdfs:subClassOf rdf:resource="#LanguageKnowledge"/>
+  <work:subClassOf rdf:resource="#LanguageKnowledge"/>
+  <obo:BFO_0000054 rdf:resource="#MeaningGraspingProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MeaningGraspingDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#MeaningGraspingProcess">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <obo:RO_0000057 rdf:resource="#Hearer"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HearingProcess</rdfs:label>
+  <obo:RO_0000057 rdf:resource="#UtteranceContent"/>
+  <obo:BFO_0000050 rdf:resource="#Utterance"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MeaningGraspingProcess</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
