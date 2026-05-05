@@ -4732,6 +4732,7 @@
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <obo:BFO_0000054 rdf:resource="#ActingFromVirtue"/>
   <obo:RO_0000052 rdf:resource="#RationalAgent"/>
+  <obo:BFO_0000054 rdf:resource="#LivingByReasonAloneProcess"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GuidanceOfReason</rdfs:label>
 </owl:Class>
 
@@ -35909,6 +35910,24 @@
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <obo:BFO_0000054 rdf:resource="#RightToCommand"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RightToCommandDependsOnActualPowerDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#FreePerson">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <obo:BFO_0000054 rdf:resource="#LivingByReasonAloneProcess"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FreePerson</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#LivingByReasonAloneProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LivingByReasonAloneProcess</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#FreePersonRole">
+  <rdfs:subClassOf rdf:resource="#FreePerson"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FreePersonRole</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
