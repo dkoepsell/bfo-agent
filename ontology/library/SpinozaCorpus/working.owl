@@ -36908,6 +36908,11 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PopularState</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#ControlRole">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ControlRole</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -38384,6 +38389,12 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
   <obo:RO_0000053 rdf:resource="#HebrewsElectionRoleInstance"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Hebrews</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#HebrewStateTheocracyRole">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <work3:type rdf:resource="#Theocracy"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HebrewStateTheocracyRole</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#SovereigntyOfThePeople">
@@ -54528,10 +54539,22 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">InitialCovenant</rdfs:label>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#HebrewStateTheocracyRole">
+<owl:NamedIndividual rdf:about="#DwellingPlaceOfGod">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000029"/>
+  <obo:RO_0000056 rdf:resource="#CommunityControlRoleInstance"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DwellingPlaceOfGod</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Community">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <obo:RO_0000053 rdf:resource="#CommunityControlRoleInstance"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Community</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#CommunityControlRoleInstance">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
-  <work3:type rdf:resource="#Theocracy"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HebrewStateTheocracyRole</rdfs:label>
+  <obo:RO_0000052 rdf:resource="#Community"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CommunityControlRoleInstance</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
