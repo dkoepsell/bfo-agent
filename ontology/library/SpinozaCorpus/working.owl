@@ -35723,13 +35723,6 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CollectiveNaturalRight</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#IndividualNaturalRight">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <obo:RO_0000052 rdf:resource="#HumanAgent"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IndividualNaturalRight</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#AgreementToCombineRightsProcess">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
@@ -35737,10 +35730,47 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AgreementToComineRightsProcess</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#IndividualNaturalRight">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:RO_0000052 rdf:resource="#HumanAgent"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IndividualNaturalRight</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#CollectiveNaturalRightOriginQuality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <obo:RO_0000052 rdf:resource="#CollectiveNaturalRight"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CollectiveNaturalRightBroughtAboutQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PursuitOfPerceivedGoodDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="#ConatusDisposition"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PursuitOfPerceivedGoodDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#HopeOfGreaterGoodDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HopeOfGreaterGoodDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#FearOfGreaterHarmDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FearOfGreaterHarmDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#JudgmentOfGoodQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">JudgmentOfGoodQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#NeglectOfPerceivedGoodProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NeglectOfPerceivedGoodProcess</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
@@ -53232,6 +53262,12 @@
 <owl:NamedIndividual rdf:about="#HumanReasonLaws">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HumanReasonLaws</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#UniversalLawOfHumanNature">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UniversalLawOfHumanNature</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
