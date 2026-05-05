@@ -35208,6 +35208,7 @@
 <owl:Class rdf:about="#LovingKindness">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="#SufficientConditionForFaithfulness"/>
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LovingKindness</rdfs:label>
 </owl:Class>
 
@@ -35349,6 +35350,18 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <obo:RO_0000057 rdf:resource="#FaithHereticCondemnationCriterionInstance"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TeachingOfHarmfulOpinionProcess</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#EncouragingJusticeAndLovingKindness">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EncouragingJusticeAndLovingKindness</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#FaithfulnessRecognitionCriterion">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <obo:BFO_0000050 rdf:resource="#Faith"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FaithfulnessRecognitionCriterion</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
@@ -36935,6 +36948,12 @@
 <owl:NamedIndividual rdf:about="#GodRequiresKnowledgeProcess">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodRequiresKnowledgeProcess</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#FaithHereticCondemnationCriterionInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work3:type rdf:resource="#HereticCondemnationCriterion"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FaithHereticCondemnationCriterionInstance</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#ExtendedSubstance">
@@ -52730,12 +52749,6 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FaithRequiresPietyMoreThanTruthRelation</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#FaithHereticCondemnationCriterionInstance">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
-  <work3:type rdf:resource="#HereticCondemnationCriterion"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FaithHereticCondemnationCriterionInstance</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
