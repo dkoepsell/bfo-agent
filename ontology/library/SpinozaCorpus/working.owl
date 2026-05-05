@@ -33446,6 +33446,11 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AuthorshipAbsenceQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#HistorianAuthorRole">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HistorianAuthorRole</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -48562,6 +48567,37 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000008"/>
   <obo:BFO_0000050 rdf:resource="#WritingOfBookOfJoshuaProcess"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TemporalGapOfGenerations</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#BookOfJudges">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BookOfJudges</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#SingleHistorianAuthor">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <RO_0000053 rdf:resource="#SingleHistorianAuthorRoleInstance"/>
+  <RO_0000056 rdf:resource="#WritingOfBookOfJudgesProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SingleHistorianAuthor</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#SingleHistorianAuthorRoleInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <RO_0000052 rdf:resource="#SingleHistorianAuthor"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SingleHistorianAuthorRoleInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#WritingOfBookOfJudgesProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <RO_0000057 rdf:resource="#SingleHistorianAuthor"/>
+  <RO_0000057 rdf:resource="#BookOfJudges"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WritingOfBookOfJudgesProcess</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#JudgesNotAuthorsQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <RO_0000052 rdf:resource="#BookOfJudges"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">JudgesThemselvesAuthorshipNegation</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
