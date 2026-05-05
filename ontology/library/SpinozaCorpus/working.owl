@@ -11304,6 +11304,8 @@
 
 <owl:Class rdf:about="#NaturalPhenomenon">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000051"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NaturalPhenomenon</rdfs:label>
 </owl:Class>
 
@@ -13496,6 +13498,16 @@
   <obo:RO_0000057 rdf:resource="#SunRay"/>
   <obo:RO_0000057 rdf:resource="#WaterDrop"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ReflectionProcess</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SunRay">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SunRay</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#WaterDrop">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WaterDrop</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#SizeInequalityQuality">
@@ -29081,6 +29093,8 @@
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <rdfs:subClassOf rdf:resource="#NaturalPhenomenon"/>
+  <work:subClassOf rdf:resource="#NaturalPhenomenon"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Wind</rdfs:label>
 </owl:Class>
 
@@ -32375,14 +32389,27 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RefractionProcess</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#SunRay">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SunRay</rdfs:label>
+<owl:Class rdf:about="#Cold">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Cold</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#WaterDrop">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WaterDrop</rdfs:label>
+<owl:Class rdf:about="#WordOfGod">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WordOfGod</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#CommandOfGod">
+  <rdfs:subClassOf rdf:resource="#WordOfGod"/>
+  <work:subClassOf rdf:resource="#WordOfGod"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CommandOfGod</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#NaturalPhenomenonAsWordOfGodRelation">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NaturalPhenomenonAsWordOfGodRelation</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
