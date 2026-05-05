@@ -34606,6 +34606,23 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ProphetLacksIntellectualPowerQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#PropheticRevelationContent">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PropheticRevelationContent</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PhilosophicalKnowledge">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PhilosophicalKnowledge</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SimpleMatterKnowledge">
+  <rdfs:subClassOf rdf:resource="#PropheticRevelationContent"/>
+  <work:subClassOf rdf:resource="#PropheticRevelationContent"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SimpleMatterKnowledge</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -51610,6 +51627,20 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work3:type rdf:resource="#PropheticImaginativePower"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PropheticImaginativePowerInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#GodRevealsToProphetsProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#God"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodRevealsToProphetsProcess</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#PhilosophicalSecretExclusionQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#GodRevealsToProphetsProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PhilosophicalSecretExclusionQuality</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
