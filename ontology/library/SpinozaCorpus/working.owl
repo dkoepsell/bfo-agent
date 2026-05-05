@@ -33448,6 +33448,7 @@
 
 <owl:Class rdf:about="#HistorianAuthorRole">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <obo:RO_0000052 rdf:resource="#Historian"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HistorianAuthorRole</rdfs:label>
 </owl:Class>
 
@@ -48665,6 +48666,42 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <obo:RO_0000052 rdf:resource="#WritingOfBookOfSamuelProcess"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TemporalGapQuality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Historian">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <obo:RO_0000053 rdf:resource="#HistorianAuthorRole"/>
+  <obo:RO_0000053 rdf:resource="#IntentionToNarrateJewishHistory"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Historian</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#BooksOfJewishHistory">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BooksOfJewishHistory</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#IntentionToNarrateJewishHistory">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:RO_0000052 rdf:resource="#Historian"/>
+  <obo:BFO_0000054 rdf:resource="#WritingOfBookProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IntentionToNarrateJewishHistory</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#NarrationOfJewishHistory">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <obo:BFO_0000050 rdf:resource="#BooksOfJewishHistory"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NarrationOfJewishHistory</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#JewishHistoryOriginToFirstDestruction">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000008"/>
+  <obo:BFO_0000051 rdf:resource="#FirstDestructionOfJerusalem"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">JewishHistoryOriginToFirstDestruction</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#FirstDestructionOfJerusalem">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FirstDestructionOfJerusalem</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
