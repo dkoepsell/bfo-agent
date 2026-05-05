@@ -9423,6 +9423,8 @@
   <obo:BFO_0000050 rdf:resource="#HumanMind"/>
   <work:subClassOf rdf:resource="#TrueMannerOfLiving"/>
   <work:subClassOf rdf:resource="#DivineAttribute"/>
+  <work:subClassOf rdf:resource="#LawCessationUponCauseKnowledge"/>
+  <work:subClassOf rdf:resource="#DivineLaw"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivineLaw</rdfs:label>
 </owl:Class>
 
@@ -36545,6 +36547,24 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NecessaryPresenceOfLoveOfGodRelation</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#LawCessationUponCauseKnowledge">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:BFO_0000054 rdf:resource="#KnowledgeOfLawCauseProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LawCessationUponCauseKnowledge</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#KnowledgeOfLawCauseProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">KnowledgeOfLawCauseProcess</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#LawNormativeStatusQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LawNormativeStatusQuality</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -40266,6 +40286,13 @@
   <obo:RO_0000052 rdf:resource="#God"/>
   <work:seeAlso rdf:resource="#UniversalLawsOfNature"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodActivityIdentityWithNatureLawsQuality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#GodsPowerCausesAllThingsDisposition">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:RO_0000052 rdf:resource="#God"/>
+  <obo:BFO_0000054 rdf:resource="#GodCausesAllThingsProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodsPowerCausesAllThingsDisposition</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#FormalExistenceNecessitationFromIdea">
@@ -54068,13 +54095,6 @@
   <work3:type rdf:resource="#ExplicitPromiseToObeyGod"/>
   <obo:RO_0000057 rdf:resource="#God"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivineLawOriginationProcess</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#GodsPowerCausesAllThingsDisposition">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <obo:RO_0000052 rdf:resource="#God"/>
-  <obo:BFO_0000054 rdf:resource="#GodCausesAllThingsProcess"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodsPowerCausesAllThingsDisposition</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#AllEventsOccurByGodsPowerQuality">
