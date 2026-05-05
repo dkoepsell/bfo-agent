@@ -4747,6 +4747,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RationalAgent</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#LivingByReasonAloneProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LivingByReasonAloneProcess</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#GuidanceByReason">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <obo:BFO_0000054 rdf:resource="#RationalGuidanceProcess"/>
@@ -35293,6 +35299,7 @@
 <owl:Class rdf:about="#ObedienceDisposition">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:BFO_0000054 rdf:resource="#CommandObedience"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ObedienceDisposition</rdfs:label>
 </owl:Class>
 
@@ -35919,15 +35926,39 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FreePerson</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#LivingByReasonAloneProcess">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LivingByReasonAloneProcess</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#FreePersonRole">
   <rdfs:subClassOf rdf:resource="#FreePerson"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FreePersonRole</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#Slave">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Slave</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#Commander">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Commander</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#CommandObedience">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CommandObedience</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#CommanderAdvantageQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CommanderAdvantageQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#Command">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Command</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
