@@ -8568,6 +8568,7 @@
   <obo:BFO_0000054 rdf:resource="#PreachingProcess"/>
   <work:subClassOf rdf:resource="#Prophet"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <work:subClassOf rdf:resource="#Teacher"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Apostle</rdfs:label>
 </owl:Class>
 
@@ -34138,6 +34139,11 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TeachingAuthority</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#TeacherRole">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TeacherRole</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#SensoryExperience">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
@@ -34171,9 +34177,15 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ApostleRole</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#TeacherRole">
+<owl:Class rdf:about="#Teacher">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TeacherRole</rdfs:label>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Teacher</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ApostolicOffice">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <work:subClassOf rdf:resource="#Apostle"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ApostolicOffice</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
@@ -50856,6 +50868,13 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
   <obo:RO_0000052 rdf:resource="#Paul"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PaulTeachingAuthorityInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ApostleIndividual">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <obo:RO_0000053 rdf:resource="#ApostolicOffice"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ApostleIndividual</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
