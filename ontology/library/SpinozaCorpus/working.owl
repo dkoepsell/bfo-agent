@@ -8567,6 +8567,7 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
   <obo:BFO_0000054 rdf:resource="#PreachingProcess"/>
   <work:subClassOf rdf:resource="#Prophet"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Apostle</rdfs:label>
 </owl:Class>
 
@@ -8578,6 +8579,17 @@
 <owl:Class rdf:about="#Impious">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Impious</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#CallingToPreachDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:BFO_0000054 rdf:resource="#PreachingProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CallingToPreachDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ReligiousConversionProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ReligiousConversionProcess</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#DivineRevelationProcess">
@@ -34089,15 +34101,28 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PreachingToAllNationsRole</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#ReligiousConversionProcess">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ReligiousConversionProcess</rdfs:label>
+<owl:Class rdf:about="#SpecialRevelation">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SpecialRevelation</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#CallingToPreachDisposition">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <obo:BFO_0000054 rdf:resource="#PreachingProcess"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CallingToPreachDisposition</rdfs:label>
+<owl:Class rdf:about="#OralPreaching">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OralPreaching</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ConfirmationBySigns">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConfirmationBySigns</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ScopeOfApostolicSpecialRevelationQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ScopeOfApostolicSpecialRevelationQuality</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
