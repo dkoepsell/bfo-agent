@@ -8536,6 +8536,8 @@
   <obo:RO_0000057 rdf:resource="#Apostle"/>
   <obo:RO_0000057 rdf:resource="#Faithful"/>
   <obo:RO_0000057 rdf:resource="#Impious"/>
+  <obo:BFO_0000055 rdf:resource="#CallingToPreachDisposition"/>
+  <obo:BFO_0000051 rdf:resource="#ReligiousConversionProcess"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PreachingProcess</rdfs:label>
 </owl:Class>
 
@@ -34080,6 +34082,22 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PropheticAuthorityQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PreachingToAllNationsRole">
+  <rdfs:subClassOf rdf:resource="#Apostle"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PreachingToAllNationsRole</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ReligiousConversionProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ReligiousConversionProcess</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#CallingToPreachDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:BFO_0000054 rdf:resource="#PreachingProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CallingToPreachDisposition</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
