@@ -36839,6 +36839,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TheocraticGovernanceQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#SoleRepresentativeOfGodRole">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SoleRepresentativeOfGodRole</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -37306,6 +37312,7 @@
   <obo:RO_0000056 rdf:resource="#WritingOfSongProcess"/>
   <obo:RO_0000056 rdf:resource="#CommandToPreserveSongProcess"/>
   <obo:BFO_0000050 rdf:resource="#ScriptureAuthorCollection"/>
+  <obo:RO_0000053 rdf:resource="#MosesSoleRepresentativeRole"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Moses</rdfs:label>
 </owl:NamedIndividual>
 
@@ -38300,6 +38307,12 @@
   <work3:type rdf:resource="#TheocraticGovernanceQuality"/>
   <RO_0000052 rdf:resource="#HebrewState"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HebrewStateTheocraticGovernanceQuality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#CivilReligiousUnityQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#HebrewState"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CivilReligiousUnityQuality</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#SovereigntyOfThePeople">
@@ -54417,10 +54430,11 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ReligionOfHebrewState</rdfs:label>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#CivilReligiousUnityQuality">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <obo:RO_0000052 rdf:resource="#HebrewState"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CivilReligiousUnityQuality</rdfs:label>
+<owl:NamedIndividual rdf:about="#MosesSoleRepresentativeRole">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <work3:type rdf:resource="#SoleRepresentativeOfGodRole"/>
+  <obo:RO_0000052 rdf:resource="#Moses"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MosesSoleRepresentativeRole</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
