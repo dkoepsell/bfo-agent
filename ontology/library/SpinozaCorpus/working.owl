@@ -8509,6 +8509,7 @@
   <obo:BFO_0000054 rdf:resource="#PreachingProcess"/>
   <work:subClassOf rdf:resource="#_:x1"/>
   <work:subClassOf rdf:resource="#_:x2"/>
+  <obo:RO_0000052 rdf:resource="#PropheticCertainty"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Prophet</rdfs:label>
 </owl:Class>
 
@@ -29852,6 +29853,7 @@
 <owl:Class rdf:about="#PropheticSign">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PropheticSign</rdfs:label>
 </owl:Class>
 
@@ -29867,6 +29869,7 @@
   <obo:BFO_0000051 rdf:resource="#PropheticSign"/>
   <obo:BFO_0000051 rdf:resource="#HeartInclinedToRightAndGood"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:BFO_0000054 rdf:resource="#PropheticCertainty"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PropheticCertaintyGrounding</rdfs:label>
 </owl:Class>
 
@@ -35494,6 +35497,18 @@
   <rdfs:subClassOf rdf:resource="#TruthGroundingQuality"/>
   <work:subClassOf rdf:resource="#TruthGroundingQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ScriptureGroundedTruthQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DistinctVividImagination">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="#PropheticCertaintyGrounding"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DistinctVividImagination</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#HeartInclinedTowardGood">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="#PropheticCertaintyGrounding"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HeartInclinedTowardGood</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
