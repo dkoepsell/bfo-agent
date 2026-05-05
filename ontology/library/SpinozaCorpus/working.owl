@@ -1635,6 +1635,8 @@
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
   <obo:RO_0000053 rdf:resource="#PersonPerfectionQuality"/>
   <obo:RO_0000056 rdf:resource="#ReligiousJudgmentAndInterpretationProcess"/>
+  <obo:RO_0000053 rdf:resource="#PrivateCivilRight"/>
+  <obo:RO_0000053 rdf:resource="#SupremePower"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Person</rdfs:label>
 </owl:Class>
 
@@ -35989,6 +35991,26 @@
 <owl:Class rdf:about="#CollectiveGood">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CollectiveGood</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PrivateCivilRight">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <work:subClassOf rdf:resource="#SelfPreservationFreedom"/>
+  <obo:BFO_0000054 rdf:resource="#SupremePowerDetermination"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PrivateCivilRight</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SelfPreservationFreedom">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SelfPreservationFreedom</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SupremePowerDetermination">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#PrivateCivilRight"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SupremePowerDetermination</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
