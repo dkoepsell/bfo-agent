@@ -34962,6 +34962,13 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NaturalLight</rdfs:label>
 </owl:NamedIndividual>
 
+<owl:NamedIndividual rdf:about="#Historian">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <obo:RO_0000053 rdf:resource="#HistorianAuthorRole"/>
+  <obo:RO_0000053 rdf:resource="#IntentionToNarrateJewishHistory"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Historian</rdfs:label>
+</owl:NamedIndividual>
+
 <owl:NamedIndividual rdf:about="#ExtendedSubstance">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
   <work3:type rdf:resource="#Substance"/>
@@ -48668,23 +48675,16 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TemporalGapQuality</rdfs:label>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#Historian">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
-  <obo:RO_0000053 rdf:resource="#HistorianAuthorRole"/>
-  <obo:RO_0000053 rdf:resource="#IntentionToNarrateJewishHistory"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Historian</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#BooksOfJewishHistory">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BooksOfJewishHistory</rdfs:label>
-</owl:NamedIndividual>
-
 <owl:NamedIndividual rdf:about="#IntentionToNarrateJewishHistory">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <obo:RO_0000052 rdf:resource="#Historian"/>
   <obo:BFO_0000054 rdf:resource="#WritingOfBookProcess"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IntentionToNarrateJewishHistory</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#BooksOfJewishHistory">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BooksOfJewishHistory</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#NarrationOfJewishHistory">
