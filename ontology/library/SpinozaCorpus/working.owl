@@ -33861,6 +33861,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Subtotal</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#ErrorInText">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ErrorInText</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -50102,6 +50108,64 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <obo:RO_0000052 rdf:resource="#NehemiahSubtotals"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NehemiahSubtotalError</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#LetterOnGenealogy">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LetterOnGenealogy</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#SumsInLetterOnGenealogyErrorQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#LetterOnGenealogy"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SumsInLetterOnGenealogyErrorQuality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#FamilyNamesContent">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <obo:BFO_0000050 rdf:resource="#LetterOnGenealogy"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FamilyNamesContent</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#FamilyNamesErrorQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#FamilyNamesContent"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FamilyNamesErrorQuality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#GenealogiesContent">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <obo:BFO_0000050 rdf:resource="#LetterOnGenealogy"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GenealogiesContent</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#GenealogiesErrorQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#GenealogiesContent"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GenealogiesErrorQuality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#HistoriesContent">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <obo:BFO_0000050 rdf:resource="#LetterOnGenealogy"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HistoriesContent</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#HistoriesErrorQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#HistoriesContent"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HistoriesErrorQuality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#PropheciesContent">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PropheciesContent</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#PropheciesErrorQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#PropheciesContent"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PropheciesErrorQuality</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
