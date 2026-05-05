@@ -33441,6 +33441,11 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ContentNotWritableByMosesQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#AuthorshipAbsenceQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AuthorshipAbsenceQuality</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -38009,6 +38014,16 @@
 <owl:NamedIndividual rdf:about="#WarAgainstAmalek">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WarAgainstAmalek</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#SongOfMoses">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SongOfMoses</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#FutureGenerations">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FutureGenerations</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#DepartureFromEgypt">
@@ -48466,16 +48481,6 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PentateuchLengthQuality</rdfs:label>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#SongOfMoses">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SongOfMoses</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#FutureGenerations">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FutureGenerations</rdfs:label>
-</owl:NamedIndividual>
-
 <owl:NamedIndividual rdf:about="#PreservationObligationDisposition">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <obo:RO_0000052 rdf:resource="#FutureGenerations"/>
@@ -48487,6 +48492,18 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <obo:RO_0000052 rdf:resource="#Pentateuch"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PentateuchContentNotWritableByMoses</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#BookOfJoshua">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BookOfJoshua</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#NonAutographOfJoshuaQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work3:type rdf:resource="#AuthorshipAbsenceQuality"/>
+  <obo:RO_0000052 rdf:resource="#BookOfJoshua"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NonAutographOfJoshuaQuality</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
