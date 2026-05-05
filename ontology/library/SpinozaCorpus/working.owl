@@ -29290,6 +29290,7 @@
   <obo:RO_0000057 rdf:resource="#PropheticallyImpartedContent"/>
   <obo:RO_0000057 rdf:resource="#PropheticWord"/>
   <obo:RO_0000057 rdf:resource="#PropheticImage"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PropheticRevelation</rdfs:label>
 </owl:Class>
 
@@ -33932,6 +33933,26 @@
 <owl:Class rdf:about="#ForgeryQuality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ForgeryQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PropheticSpeechAct">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PropheticSpeechAct</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SpeechFromRevelationQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#PropheticSpeechAct"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SpeechFromRevelationQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#RarityQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#SpeechFromRevelationQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RarityQuality</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
