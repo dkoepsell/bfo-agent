@@ -13493,6 +13493,8 @@
 <owl:Class rdf:about="#ReflectionProcess">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <obo:BFO_0000050 rdf:resource="#UnequalBodiesCollisionProcess"/>
+  <obo:RO_0000057 rdf:resource="#SunRay"/>
+  <obo:RO_0000057 rdf:resource="#WaterDrop"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ReflectionProcess</rdfs:label>
 </owl:Class>
 
@@ -32357,6 +32359,30 @@
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <realizedUnder rdf:resource="#NaturalLawGovernance"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NaturalLawConformantProcess</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#Rainbow">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000051 rdf:resource="#RefractionProcess"/>
+  <obo:BFO_0000051 rdf:resource="#ReflectionProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Rainbow</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#RefractionProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#SunRay"/>
+  <obo:RO_0000057 rdf:resource="#WaterDrop"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RefractionProcess</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SunRay">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SunRay</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#WaterDrop">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WaterDrop</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
