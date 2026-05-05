@@ -28812,6 +28812,7 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <obo:BFO_0000051 rdf:resource="#PropheticContent"/>
+  <work:subClassOf rdf:resource="#PropheticBookContent"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Prophecy</rdfs:label>
 </owl:Class>
 
@@ -33692,6 +33693,7 @@
 
 <owl:Class rdf:about="#PropheticBook">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PropheticBook</rdfs:label>
 </owl:Class>
 
@@ -33712,6 +33714,29 @@
   <obo:RO_0000057 rdf:resource="#SourceBook"/>
   <obo:RO_0000057 rdf:resource="#PropheticBook"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CollectionProcess</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PropheticBookContent">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <obo:BFO_0000050 rdf:resource="#PropheticBook"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PropheticBookContent</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#EditorRole">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EditorRole</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SelectionOfPropheciesProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#EditorRole"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SelectionOfPropheciesProcess</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PropheciesNotIncludedInBookQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#PropheticBookContent"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PropheciesNotIncludedInBookQuality</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
