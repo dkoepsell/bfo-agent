@@ -31754,6 +31754,7 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000029"/>
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
   <RO_0000053 rdf:resource="#HebrewStateTheocraticGovernanceQuality"/>
+  <obo:RO_0000053 rdf:resource="#CivilReligiousUnityQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HebrewState</rdfs:label>
 </owl:Class>
 
@@ -38292,6 +38293,13 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <obo:RO_0000053 rdf:resource="#WrittenInMindQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LawOfGod</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#HebrewStateTheocraticGovernanceQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work3:type rdf:resource="#TheocraticGovernanceQuality"/>
+  <RO_0000052 rdf:resource="#HebrewState"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HebrewStateTheocraticGovernanceQuality</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#SovereigntyOfThePeople">
@@ -54397,11 +54405,22 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">StatePreservationDependsOnSubjectDispositions</rdfs:label>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#HebrewStateTheocraticGovernanceQuality">
+<owl:NamedIndividual rdf:about="#CivilLawOfHebrewState">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <obo:BFO_0000050 rdf:resource="#HebrewState"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CivilLawOfHebrewState</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ReligionOfHebrewState">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <obo:BFO_0000050 rdf:resource="#HebrewState"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ReligionOfHebrewState</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#CivilReligiousUnityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <work3:type rdf:resource="#TheocraticGovernanceQuality"/>
-  <RO_0000052 rdf:resource="#HebrewState"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HebrewStateTheocraticGovernanceQuality</rdfs:label>
+  <obo:RO_0000052 rdf:resource="#HebrewState"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CivilReligiousUnityQuality</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
