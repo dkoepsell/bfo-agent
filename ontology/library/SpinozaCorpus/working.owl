@@ -33418,6 +33418,16 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AuthorshipByMosesQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#PhysicalBook">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PhysicalBook</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#LegalTextContent">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LegalTextContent</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -38110,6 +38120,11 @@
   <obo:RO_0000057 rdf:resource="#Hebrews"/>
   <obo:BFO_0000050 rdf:resource="#EvidenceContent"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PersuasionByEvidence</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#WarAgainstAmalek">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WarAgainstAmalek</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#IdealParticipationRelation">
@@ -48261,11 +48276,6 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AccountOfWarAgainstAmalek</rdfs:label>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#WarAgainstAmalek">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WarAgainstAmalek</rdfs:label>
-</owl:NamedIndividual>
-
 <owl:NamedIndividual rdf:about="#DivineCommandRole">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
   <obo:RO_0000052 rdf:resource="#God"/>
@@ -48300,6 +48310,26 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
   <obo:RO_0000056 rdf:resource="#WarAgainstAmalek"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Amalek</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#BookOfTheCovenant">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <work3:type rdf:resource="#PhysicalBook"/>
+  <obo:BFO_0000051 rdf:resource="#BookOfTheCovenanTextualContent"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BookOfTheCovenant</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#BookOfTheCovenanTextualContent">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work3:type rdf:resource="#LegalTextContent"/>
+  <obo:BFO_0000050 rdf:resource="#ExodusLawCorpus"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BookOfTheCovenanTextualContent</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ExodusLawCorpus">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work3:type rdf:resource="#LegalTextContent"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExodusLawCorpus</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
