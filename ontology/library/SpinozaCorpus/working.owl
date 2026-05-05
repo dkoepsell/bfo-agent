@@ -34651,6 +34651,18 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ObedienceToGod</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#IntellectualKnowledgeOfGod">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IntellectualKnowledgeOfGod</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#CommonGiftQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CommonGiftQuality</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -36193,6 +36205,13 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <obo:RO_0000052 rdf:resource="#Scripture"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ScriptureTeachingScope</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#LoveOfNeighbor">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="#ObedienceToGod"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LoveOfNeighbor</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#ExtendedSubstance">
@@ -44223,13 +44242,6 @@
   <work3:type rdf:resource="#ScripturaryGoalDisposition"/>
   <obo:RO_0000052 rdf:resource="#Scripture"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ScripturePrimaryGoal</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#LoveOfNeighbor">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <work:subClassOf rdf:resource="#ObedienceToGod"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LoveOfNeighbor</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#EssenceCausationAbsoluteQuality">
