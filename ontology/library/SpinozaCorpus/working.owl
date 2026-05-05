@@ -49722,7 +49722,7 @@
 <owl:NamedIndividual rdf:about="#BookOfEzra">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Ezra</rdfs:label>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BookOfEzra</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#JudasMaccabee">
@@ -49897,7 +49897,8 @@
 
 <owl:NamedIndividual rdf:about="#BookOfEsther">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Esther</rdfs:label>
+  <isConnectedWith rdf:resource="#BookOfEzra"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BookOfEsther</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#BookOfNehemiah">
