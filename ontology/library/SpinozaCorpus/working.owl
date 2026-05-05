@@ -32471,6 +32471,19 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DevotionInducingDisposition</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#ScripturallyReportedEvent">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000054"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ScripturallyReportedEvent</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ConformityToLawsOfNatureDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConformityToLawsOfNatureDisposition</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -46875,6 +46888,11 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ScripturalDivineActionInterpretationRule</rdfs:label>
 </owl:NamedIndividual>
 
+<owl:NamedIndividual rdf:about="#ScripturalNaturalNecessityAxiom">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ScripturalNaturalNecessityAxiom</rdfs:label>
+</owl:NamedIndividual>
+
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
   <rdfs:label xml:lang="en">realized in</rdfs:label>
   <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A realizable entity (e.g., role, disposition, function) is realized in some process. r realized_in p if r is borne by some independent continuant during the process p.</rdfs:comment>
@@ -47188,6 +47206,10 @@
 
 <rdf:Description rdf:about="#BlessednessLawDependenceQuality">
   <work:subClassOf rdf:resource="#Blessedness"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#ScripturalNarrative">
+  <work:subClassOf rdf:resource="#Scripture"/>
 </rdf:Description>
 
 
