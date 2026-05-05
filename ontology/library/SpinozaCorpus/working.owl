@@ -33847,6 +33847,7 @@
 
 <owl:Class rdf:about="#TemporallyAfterRelation">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000008"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TemporallyAfterRelation</rdfs:label>
 </owl:Class>
 
@@ -49809,6 +49810,7 @@
 
 <owl:NamedIndividual rdf:about="#BooksOfChronicles">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BooksOfChronicles</rdfs:label>
 </owl:NamedIndividual>
 
@@ -50294,6 +50296,17 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CanonizationProcess</rdfs:label>
 </owl:NamedIndividual>
 
+<owl:NamedIndividual rdf:about="#SacredTextCanonAuthority">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <obo:RO_0000052 rdf:resource="#Pharisees"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SacredTextCanonAuthority</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#OldTestamentCanon">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OldTestamentCanon</rdfs:label>
+</owl:NamedIndividual>
+
 <owl:NamedIndividual rdf:about="#TheBooks">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
   <obo:RO_0000056 rdf:resource="#BookAcceptanceProcess"/>
@@ -50333,21 +50346,23 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CanonicalAuthority</rdfs:label>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#OldTestamentCanon">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OldTestamentCanon</rdfs:label>
-</owl:NamedIndividual>
-
 <owl:NamedIndividual rdf:about="#OldTestamentBooks">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <obo:BFO_0000050 rdf:resource="#OldTestamentCanon"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OldTestamentBooks</rdfs:label>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#SacredTextCanonAuthority">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
-  <obo:RO_0000052 rdf:resource="#Pharisees"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SacredTextCanonAuthority</rdfs:label>
+<owl:NamedIndividual rdf:about="#SecondRestorationOfCity">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <RO_0000057 rdf:resource="#JudasMaccabee"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SecondRestorationOfCity</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#PublicationOfChroniclesProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <RO_0000057 rdf:resource="#BooksOfChronicles"/>
+  <RO_0002087 rdf:resource="#SecondRestorationOfCity"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PublicationOfChroniclesProcess</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
