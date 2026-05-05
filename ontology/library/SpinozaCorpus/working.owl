@@ -14937,6 +14937,7 @@
 
 <owl:Class rdf:about="#NatureOfThing">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NatureOfThing</rdfs:label>
 </owl:Class>
 
@@ -28960,6 +28961,7 @@
   <work:subClassOf rdf:resource="#NaturalDesire"/>
   <work:subClassOf rdf:resource="#NaturalPower"/>
   <obo:RO_0000052 rdf:resource="#Subject"/>
+  <work:subClassOf rdf:resource="#NaturalRightDeterminationRelation"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NaturalRight</rdfs:label>
 </owl:Class>
 
@@ -35585,6 +35587,19 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="#InadequateKnowledgeOfExternalBodyQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">InsufficientForSalvationKnowledgeQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PowerOfThing">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="#NatureOfThing"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PowerOfThing</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#NaturalRightDeterminationRelation">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NaturalRightDeterminationRelation</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
