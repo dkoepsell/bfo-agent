@@ -33764,6 +33764,11 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PassageOfJeremiah</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#FragmentaryCompletenessQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FragmentaryCompletenessQuality</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -35125,6 +35130,20 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
   <RO_0000056 rdf:resource="#WritingOfBookProcess"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BookOfMoses</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Jeremiah">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <obo:RO_0000053 rdf:resource="#ProphetRole"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Jeremiah</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#DictationProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#Jeremiah"/>
+  <obo:RO_0000057 rdf:resource="#Baruch"/>
+  <obo:RO_0000057 rdf:resource="#BaruchScroll"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DictationProcess</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#AccommodationOfReasoningInstance">
@@ -49145,6 +49164,17 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CopyingProcess</rdfs:label>
 </owl:NamedIndividual>
 
+<owl:NamedIndividual rdf:about="#BaruchScroll">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BaruchScroll</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#JeremiahPropheciesText">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <obo:BFO_0000050 rdf:resource="#BaruchScroll"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">JeremiahPropheciesText</rdfs:label>
+</owl:NamedIndividual>
+
 <owl:NamedIndividual rdf:about="#LastChapterOf2Kings">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <obo:BFO_0000050 rdf:resource="#LastChapterOfJeremiah"/>
@@ -49684,12 +49714,6 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AssemblyOfPropheciesProcess</rdfs:label>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#Jeremiah">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
-  <obo:RO_0000053 rdf:resource="#ProphetRole"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Jeremiah</rdfs:label>
-</owl:NamedIndividual>
-
 <owl:NamedIndividual rdf:about="#BookOfJeremiah">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <obo:BFO_0000051 rdf:resource="#PassageOfJeremiah"/>
@@ -49708,30 +49732,24 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Baruch</rdfs:label>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#JeremiahPropheciesText">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
-  <obo:BFO_0000050 rdf:resource="#BaruchScroll"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">JeremiahPropheciesText</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#BaruchScroll">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BaruchScroll</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#DictationProcess">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <obo:RO_0000057 rdf:resource="#Jeremiah"/>
-  <obo:RO_0000057 rdf:resource="#Baruch"/>
-  <obo:RO_0000057 rdf:resource="#BaruchScroll"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DictationProcess</rdfs:label>
-</owl:NamedIndividual>
-
 <owl:NamedIndividual rdf:about="#ScribeRole">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
   <obo:RO_0000052 rdf:resource="#Baruch"/>
   <obo:BFO_0000054 rdf:resource="#DictationProcess"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ScribeRole</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Ezekiel">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <obo:RO_0000053 rdf:resource="#EzekielFragmentarynessQualityInstance"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Ezekiel</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#EzekielFragmentarynessQualityInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#Ezekiel"/>
+  <work3:type rdf:resource="#FragmentaryCompletenessQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EzekielFragmentarynessQualityInstance</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
