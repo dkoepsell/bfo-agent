@@ -34714,6 +34714,18 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NameSignifiesEssenceDisposition</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#RelationalAttributeOfGod">
+  <rdfs:subClassOf rdf:resource="#DivineAttribute"/>
+  <work:subClassOf rdf:resource="#DivineAttribute"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RelationalAttributeOfGod</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#CreatedThings">
+  <rdfs:subClassOf rdf:resource="#ModificationBearer"/>
+  <work:subClassOf rdf:resource="#ModificationBearer"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CreatedThings</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -51832,6 +51844,20 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <obo:RO_0000052 rdf:resource="#YahwehName"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">YahwehNameSignifiesEssenceDispositionInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#OtherNamesOfGod">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <RO_0000052 rdf:resource="#GodConsideredInRelationToCreatedThingsRole"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OtherNamesOfGod</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#GodConsideredInRelationToCreatedThingsRole">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <RO_0000052 rdf:resource="#God"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodConsideredInRelationToCreatedThingsRole</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
