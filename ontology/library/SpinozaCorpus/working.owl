@@ -32571,6 +32571,35 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AllPerfectionsContainedQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#HebrewProphet">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <obo:BFO_0000054 rdf:resource="#PropheticWritingProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HebrewProphet</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PropheticWriting">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PropheticWriting</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DevoutExpression">
+  <rdfs:subClassOf rdf:resource="#PropheticWriting"/>
+  <work:subClassOf rdf:resource="#PropheticWriting"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DevoutExpression</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DevoutCharacterQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DevoutCharacterQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PropheticWritingProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#PropheticWriting"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PropheticWritingProcess</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
