@@ -36940,6 +36940,37 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodTheKingRole</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#HighPriest">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HighPriest</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DivineInterpretationRight">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <obo:BFO_0000054 rdf:resource="#DivineLawInterpretationProcess"/>
+  <work:subClassOf rdf:resource="#HighPriest"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivineInterpretationRight</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DivineLawInterpretationProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#DivineLaw"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivineLawInterpretationProcess</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#GivingGodsRepliesToPeopleProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#GodsReply"/>
+  <obo:RO_0000057 rdf:resource="#ThePeople"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GivingGodsRepliesToPeopleProcess</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#GodsReply">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodsReply</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -40621,6 +40652,13 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <obo:BFO_0000055 rdf:resource="#EqualRightToConsultGod"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CovenantFormationProcess</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#GodTheKingRoleInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <obo:RO_0000052 rdf:resource="#God"/>
+  <work3:type rdf:resource="#GodTheKingRole"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodTheKingRoleInstance</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#ThinkingThingRole">
@@ -54639,13 +54677,6 @@
   <obo:RO_0000052 rdf:resource="#Aaron"/>
   <work3:type rdf:resource="#SecondToGodTheKingRole"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AaronSecondToGodTheKingRoleInstance</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#GodTheKingRoleInstance">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
-  <obo:RO_0000052 rdf:resource="#God"/>
-  <work3:type rdf:resource="#GodTheKingRole"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodTheKingRoleInstance</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
