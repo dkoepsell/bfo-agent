@@ -32631,6 +32631,11 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HeavyRainProcess</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#FixedAndImmutableOrder">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FixedAndImmutableOrder</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -33137,6 +33142,7 @@
   <obo:RO_0000056 rdf:resource="#DivineSustainmentAndDirectionProcess"/>
   <obo:RO_0000056 rdf:resource="#GodsDirectionOfNatureProcess"/>
   <obo:RO_0000056 rdf:resource="#GodAccountsForAllNatureProcess"/>
+  <obo:RO_0000053 rdf:resource="#FixedAndImmutableOrderQualityInstance"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WholeOfNature</rdfs:label>
 </owl:NamedIndividual>
 
@@ -47098,6 +47104,12 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#NaturalisticInterpretation"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HeavyRainNaturalisticInterpretation</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#FixedAndImmutableOrderQualityInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#WholeOfNature"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FixedAndImmutableOrderQualityInstance</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
