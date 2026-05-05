@@ -36361,6 +36361,26 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NaturalLawDependenceOnLawsOfNature</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#RightsOfState">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <obo:BFO_0000050 rdf:resource="#State"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RightsOfState</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PreservingAndProtectingRightsRole">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <obo:RO_0000052 rdf:resource="#SupremePower"/>
+  <obo:BFO_0000054 rdf:resource="#PreservingAndProtectingRightsProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PreservingAndProtectingRightsRole</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PreservingAndProtectingRightsProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#SupremePower"/>
+  <obo:RO_0000057 rdf:resource="#RightsOfState"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PreservingAndProtectingRightsProcess</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
