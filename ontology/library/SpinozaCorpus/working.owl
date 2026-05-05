@@ -34696,6 +34696,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Everyone</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#DivineNameKnowledge">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivineNameKnowledge</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -35054,6 +35060,7 @@
   <obo:RO_0000053 rdf:resource="#DivineJusticeInstance"/>
   <obo:RO_0000053 rdf:resource="#DivineLovinKindnessInstance"/>
   <obo:RO_0000056 rdf:resource="#KnowledgeDemandProcess"/>
+  <obo:RO_0000053 rdf:resource="#Yahweh"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">God</rdfs:label>
 </owl:NamedIndividual>
 
@@ -38166,6 +38173,24 @@
   <work3:type rdf:resource="#DivineGrace"/>
   <obo:RO_0000052 rdf:resource="#God"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodDivineGraceInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#DivineJusticeInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#God"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivineJusticeInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#DivineLovinKindnessInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#God"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivineLovinKindnessInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#KnowledgeDemandProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#God"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">KnowledgeDemandProcess</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#ThinkingThingRole">
@@ -49147,6 +49172,7 @@
 
 <owl:NamedIndividual rdf:about="#Patriarchs">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Patriarchs</rdfs:label>
 </owl:NamedIndividual>
 
@@ -51766,22 +51792,17 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivineKnowledgeDemandNorm</rdfs:label>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#DivineJusticeInstance">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <obo:RO_0000052 rdf:resource="#God"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivineJusticeInstance</rdfs:label>
+<owl:NamedIndividual rdf:about="#Yahweh">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Yahweh</rdfs:label>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#DivineLovinKindnessInstance">
+<owl:NamedIndividual rdf:about="#PatriarchsLackDivineNameKnowledgeQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <obo:RO_0000052 rdf:resource="#God"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivineLovinKindnessInstance</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#KnowledgeDemandProcess">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <obo:RO_0000057 rdf:resource="#God"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">KnowledgeDemandProcess</rdfs:label>
+  <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#Patriarchs"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PatriarchsLackDivineNameKnowledgeQuality</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
