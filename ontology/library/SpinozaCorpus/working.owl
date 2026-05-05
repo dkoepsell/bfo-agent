@@ -36971,6 +36971,18 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodsReply</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#CommandOverCommunityRole">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CommandOverCommunityRole</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#LandShareQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LandShareQuality</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -54677,6 +54689,25 @@
   <obo:RO_0000052 rdf:resource="#Aaron"/>
   <work3:type rdf:resource="#SecondToGodTheKingRole"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AaronSecondToGodTheKingRoleInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#LeviteTribe">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LeviteTribe</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#DeprivationOfCommandRoleQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <RO_0000052 rdf:resource="#LeviteTribe"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DeprivationOfCommandRoleQuality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#DeprivationOfLandShareQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <RO_0000052 rdf:resource="#LeviteTribe"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DeprivationOfLandShareQuality</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
