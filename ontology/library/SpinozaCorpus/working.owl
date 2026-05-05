@@ -9012,6 +9012,7 @@
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000017"/>
   <obo:BFO_0000051 rdf:resource="#Truth"/>
   <obo:BFO_0000051 rdf:resource="#Wisdom"/>
+  <work:subClassOf rdf:resource="#IntellectualGraspability"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Reason</rdfs:label>
 </owl:Class>
 
@@ -35460,6 +35461,24 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TheologicalScopeConstraint</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#RationalIlluminationQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#IntellectPerfectionQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RationalIlluminationQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DreamAndInventionQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#InadequateKnowledgeOfExternalBodyQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DreamAndInventionQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#AbsenceOfReasonQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AbsenceOfReasonQuality</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -37065,6 +37084,13 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#HereticCondemnationCriterion"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FaithHereticCondemnationCriterionInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Theology">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <obo:BFO_0000051 rdf:resource="#Piety"/>
+  <obo:BFO_0000051 rdf:resource="#Obedience"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Theology</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#ExtendedSubstance">
@@ -52875,13 +52901,6 @@
   <work3:type rdf:resource="#OriginalTextStatus"/>
   <RO_0000052 rdf:resource="#FormalBeingOfHumanMind"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindOriginalTextStatusInstance</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#Theology">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
-  <obo:BFO_0000051 rdf:resource="#Piety"/>
-  <obo:BFO_0000051 rdf:resource="#Obedience"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Theology</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#ReasonDomainQuality">
