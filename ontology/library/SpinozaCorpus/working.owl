@@ -33543,6 +33543,11 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NarrativeInternalInconsistencyQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#YearCalculationDiscrepancy">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">YearCalculationDiscrepancy</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -49143,6 +49148,23 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <obo:RO_0000052 rdf:resource="#FirstSamuel"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FirstSamuelNarrativeInconsistencyInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ChroniclesOfKingsOfJudah">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ChroniclesOfKingsOfJudah</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ChroniclesOfKingsOfIsrael">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ChroniclesOfKingsOfIsrael</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#YearCalculationDiscrepancyInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#ChroniclesOfKingsOfJudah"/>
+  <obo:RO_0000052 rdf:resource="#ChroniclesOfKingsOfIsrael"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">YearCalculationDiscrepancyInstance</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
