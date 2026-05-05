@@ -34831,6 +34831,7 @@
 <owl:Class rdf:about="#Faith">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:BFO_0000054 rdf:resource="#ThinkingAboutGod"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Faith</rdfs:label>
 </owl:Class>
 
@@ -34954,6 +34955,24 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LovingOneNeighborProcess</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ThinkingAboutGod">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000055 rdf:resource="#Faith"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ThinkingAboutGod</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#FaithContentAboutGod">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FaithContentAboutGod</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ObediencePreservationRelation">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="#Faith"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ObediencePreservationRelation</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
@@ -39363,6 +39382,11 @@
   <obo:RO_0000052 rdf:resource="#Scripture"/>
   <obo:BFO_0000054 rdf:resource="#TeachingObedienceProcess"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TeachingObedienceDispositionInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#CommandToLoveNeighbor">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CommandToLoveNeighbor</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#IntentionToNarrateJewishHistory">
@@ -52256,11 +52280,6 @@
   <RO_0000052 rdf:resource="#Scripture"/>
   <work3:type rdf:resource="#UniversalAudienceIntendedQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UniversalAudienceIntendedQualityInstance</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#CommandToLoveNeighbor">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CommandToLoveNeighbor</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
