@@ -7869,6 +7869,7 @@
   <work2:disjointWith rdf:resource="#TranscendentalTerm"/>
   <work2:disjointWith rdf:resource="#TranscendentalAffectionOfBeing"/>
   <obo:RO_0000052 rdf:resource="#TrueIdea"/>
+  <obo:BFO_0000054 rdf:resource="#Philosophy"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Truth</rdfs:label>
 </owl:Class>
 
@@ -35245,6 +35246,12 @@
 <owl:Class rdf:about="#ObedienceProcess">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ObedienceProcess</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#GoalOfPhilosophyRole">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GoalOfPhilosophyRole</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
