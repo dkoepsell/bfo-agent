@@ -33268,6 +33268,7 @@
 <owl:Class rdf:about="#SupernaturalLight">
   <rdfs:subClassOf rdf:resource="#DivineAttribute"/>
   <work:subClassOf rdf:resource="#DivineGift"/>
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SupernaturalLight</rdfs:label>
 </owl:Class>
 
@@ -34157,6 +34158,11 @@
 <owl:Class rdf:about="#MoralLesson">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MoralLesson</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#AccommodationOfReligionToHumanUnderstanding">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AccommodationOfReligionToHumanUnderstanding</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
@@ -47961,6 +47967,7 @@
   <obo:RO_0000053 rdf:resource="#ApostlesPropheticPowerInstance"/>
   <obo:RO_0000053 rdf:resource="#ApostlesTeachingAuthorityInstance"/>
   <obo:RO_0000056 rdf:resource="#InferenceAndExtractionProcess"/>
+  <obo:RO_0000056 rdf:resource="#AccommodationOfReligionToHumanUnderstanding"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Apostles</rdfs:label>
 </owl:NamedIndividual>
 
@@ -50804,6 +50811,12 @@
   <work3:type rdf:resource="#MoralLesson"/>
   <obo:BFO_0000050 rdf:resource="#ChristTeaching"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ChiefMoralLessonOfChrist</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ApostlesLackOfSupernaturalLightQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#Apostles"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ApostlesLackOfSupernaturalLightQuality</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
