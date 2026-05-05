@@ -8569,6 +8569,7 @@
   <work:subClassOf rdf:resource="#Prophet"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
   <work:subClassOf rdf:resource="#Teacher"/>
+  <obo:RO_0000056 rdf:resource="#ApostleChoosingTeachingStyleProcess"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Apostle</rdfs:label>
 </owl:Class>
 
@@ -34186,6 +34187,24 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
   <work:subClassOf rdf:resource="#Apostle"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ApostolicOffice</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#TeachingStyle">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TeachingStyle</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#IndividualTeachingStyleQuality">
+  <rdfs:subClassOf rdf:resource="#TeachingStyle"/>
+  <work:subClassOf rdf:resource="#TeachingStyle"/>
+  <obo:RO_0000052 rdf:resource="#Apostle"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IndividualTeachingStyleQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ApostleChoosingTeachingStyleProcess">
+  <rdfs:subClassOf rdf:resource="#TeachingProcess"/>
+  <work:subClassOf rdf:resource="#TeachingProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ApostleChoosingTeachingStyleProcess</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
