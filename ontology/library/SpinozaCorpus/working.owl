@@ -32733,6 +32733,7 @@
   <obo:BFO_0000057 rdf:resource="#ScriptureInterpreter"/>
   <obo:BFO_0000057 rdf:resource="#Scripture"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#Scripture"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ScriptureInterpretationProcess</rdfs:label>
 </owl:Class>
 
