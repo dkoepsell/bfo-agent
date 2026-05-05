@@ -25577,6 +25577,17 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HarmonyProductionDisposition</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#ConstancyOfMind">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConstancyOfMind</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ApportionmentProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000055 rdf:resource="#Justice"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ApportionmentProcess</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#Fairness">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
@@ -36049,20 +36060,38 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ContraryToCivilLawQuality</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#ConstancyOfMind">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConstancyOfMind</rdfs:label>
-</owl:Class>
-
-<owl:Class rdf:about="#ApportionmentProcess">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <obo:BFO_0000055 rdf:resource="#Justice"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ApportionmentProcess</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#LegalEntitlement">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LegalEntitlement</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#Injustice">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Injustice</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#InjusticeAct">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000055 rdf:resource="#Injustice"/>
+  <obo:RO_0000057 rdf:resource="#RightHolder"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">InjusticeAct</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#LegallyDueProperty">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LegallyDueProperty</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#TrueInterpretationOfLaw">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TrueInterpretationOfLaw</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#RightHolder">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RightHolder</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
