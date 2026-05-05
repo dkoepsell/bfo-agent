@@ -36381,6 +36381,23 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PreservingAndProtectingRightsProcess</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#ReligiousJudgmentDisposition">
+  <rdfs:subClassOf rdf:resource="#SupremeRight"/>
+  <work:subClassOf rdf:resource="#SupremeRight"/>
+  <obo:BFO_0000054 rdf:resource="#MaintenanceOfReligiousJudgmentProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ReligiousJudgmentDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#MaintenanceOfReligiousJudgmentProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MaintenanceOfReligiousJudgmentProcess</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ReligionSubjectMatter">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ReligionSubjectMatter</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
