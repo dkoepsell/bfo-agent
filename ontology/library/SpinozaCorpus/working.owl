@@ -34485,6 +34485,18 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LearnedManRole</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#WordOfGodDesignation">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WordOfGodDesignation</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#WordOfGodDesignationGrounding">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WordOfGodDesignationGrounding</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -35960,6 +35972,7 @@
   <obo:RO_0000053 rdf:resource="#SacrednessBySignificationInstance"/>
   <obo:RO_0000053 rdf:resource="#SignificationRelationInstance"/>
   <obo:RO_0000053 rdf:resource="#LinguisticFormQualityInstance"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Scripture</rdfs:label>
 </owl:NamedIndividual>
 
@@ -38810,6 +38823,12 @@
   <obo:RO_0000052 rdf:resource="#Apostles"/>
   <work3:type rdf:resource="#FoundationalDivergenceQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ApostlesFoundationalDivergenceQualityInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ApostleWritingProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000055 rdf:resource="#ApostleLearnedManRoleInstance"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ApostleWritingProcess</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#ExtendedSubstanceInfinityQuality">
@@ -51373,12 +51392,6 @@
 <owl:NamedIndividual rdf:about="#TheCanon">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TheCanon</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#ApostleWritingProcess">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <obo:BFO_0000055 rdf:resource="#ApostleLearnedManRoleInstance"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ApostleWritingProcess</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#ApostleLearnedManRoleInstance">
