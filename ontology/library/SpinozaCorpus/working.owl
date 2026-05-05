@@ -34668,18 +34668,21 @@
 <owl:Class rdf:about="#DivineJustice">
   <rdfs:subClassOf rdf:resource="#DivineAttribute"/>
   <work:subClassOf rdf:resource="#DivineAttribute"/>
+  <obo:RO_0000052 rdf:resource="#God"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivineJustice</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#DivineLovingKindness">
   <rdfs:subClassOf rdf:resource="#DivineAttribute"/>
   <work:subClassOf rdf:resource="#DivineAttribute"/>
+  <obo:RO_0000052 rdf:resource="#God"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivineLoving-kindness</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#KnowledgeOfDivineJusticeAndLovingKindness">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:BFO_0000054 rdf:resource="#GodRequiresKnowledgeProcess"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">KnowledgeOfDivineJusticeAndLovingKindness</rdfs:label>
 </owl:Class>
 
@@ -35160,6 +35163,7 @@
   <obo:RO_0000056 rdf:resource="#KnowledgeDemandProcess"/>
   <obo:RO_0000053 rdf:resource="#Yahweh"/>
   <RO_0000053 rdf:resource="#Yahweh"/>
+  <obo:RO_0000057 rdf:resource="#GodRequiresKnowledgeProcess"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">God</rdfs:label>
 </owl:NamedIndividual>
 
@@ -35796,6 +35800,12 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <obo:BFO_0000055 rdf:resource="#LoveOfGod"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LoveArisingFromKnowledgeProcess</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#GiftOfGodRoleInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <obo:RO_0000052 rdf:resource="#KnowledgeOfGod"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GiftOfGodRoleInstance</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#GodImmanentCauseRole">
@@ -51950,16 +51960,15 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">InequalityOfKnowledgeOfGodAmongFaithfulQuality</rdfs:label>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#GiftOfGodRoleInstance">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
-  <obo:RO_0000052 rdf:resource="#KnowledgeOfGod"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GiftOfGodRoleInstance</rdfs:label>
-</owl:NamedIndividual>
-
 <owl:NamedIndividual rdf:about="#KnowledgeOfGodIsGiftDisposition">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <obo:RO_0000052 rdf:resource="#KnowledgeOfGod"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">KnowledgeOfGodIsGiftDisposition</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#GodRequiresKnowledgeProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodRequiresKnowledgeProcess</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
