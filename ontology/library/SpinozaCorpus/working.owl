@@ -34859,6 +34859,8 @@
   <obo:RO_0000053 rdf:resource="#WorshipRoleInstance"/>
   <obo:RO_0000053 rdf:resource="#GodImpassibilityQualityInstance"/>
   <obo:RO_0000053 rdf:resource="#DivineAgencyRoleInstance"/>
+  <RO_0000053 rdf:resource="#GodProvidesForAllDisposition"/>
+  <RO_0000056 rdf:resource="#GodProvidesForAllProcess"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">God</rdfs:label>
 </owl:NamedIndividual>
 
@@ -51436,6 +51438,19 @@
   <work3:type rdf:resource="#MeaningIntegrityQuality"/>
   <obo:RO_0000052 rdf:resource="#ScriptureMeaning"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ScriptureMeaningIntegrityQualityInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#GodProvidesForAllDisposition">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <RO_0000052 rdf:resource="#God"/>
+  <obo:BFO_0000054 rdf:resource="#GodProvidesForAllProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodProvidesForAllDisposition</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#GodProvidesForAllProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000055 rdf:resource="#GodProvidesForAllDisposition"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodProvidesForAllProcess</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
