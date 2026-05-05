@@ -32020,6 +32020,7 @@
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <obo:BFO_0000050 rdf:resource="#WholeOfNature"/>
   <work:subClassOf rdf:resource="#NaturalEvent"/>
+  <work:subClassOf rdf:resource="#NarrativeOfUnusualEvent"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Miracle</rdfs:label>
 </owl:Class>
 
@@ -32758,6 +32759,28 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NonDeducibilityFromNaturalLightQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#NarrativeOfUnusualEvent">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <obo:BFO_0000050 rdf:resource="#CommonOrderOfNature"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NarrativeOfUnusualEvent</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#UnusualEventInNature">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UnusualEventInNature</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#AccommodationToHistorianOpinion">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#Miracle"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AccommodationToHistorianOpinion</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#HistorianOpinion">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HistorianOpinion</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
