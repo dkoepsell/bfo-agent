@@ -34217,6 +34217,36 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FoundationalDivergenceQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#ApostolicFoundation">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ApostolicFoundation</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DifferenceInApostolicFoundationQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DifferenceInApostolicFoundationQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SchismaticDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:BFO_0000054 rdf:resource="#SchismProcess"/>
+  <obo:BFO_0000054 rdf:resource="#DisputeProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SchismaticDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DisputeProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DisputeProcess</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SchismProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="#DisputeProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SchismProcess</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -48064,6 +48094,20 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">InferenceAndExtractionProcess</rdfs:label>
 </owl:NamedIndividual>
 
+<owl:NamedIndividual rdf:about="#ApostlesReligiousAgreementQualityInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#Apostles"/>
+  <work3:type rdf:resource="#ReligiousAgreementQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ApostlesReligiousAgreementQualityInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ApostlesFoundationalDivergenceQualityInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#Apostles"/>
+  <work3:type rdf:resource="#FoundationalDivergenceQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ApostlesFoundationalDivergenceQualityInstance</rdfs:label>
+</owl:NamedIndividual>
+
 <owl:NamedIndividual rdf:about="#ApostolicAccommodationDispositionInstance">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <obo:RO_0000052 rdf:resource="#Apostles"/>
@@ -50906,20 +50950,6 @@
   <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
   <obo:RO_0000053 rdf:resource="#ApostolicOffice"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ApostleIndividual</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#ApostlesReligiousAgreementQualityInstance">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <obo:RO_0000052 rdf:resource="#Apostles"/>
-  <work3:type rdf:resource="#ReligiousAgreementQuality"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ApostlesReligiousAgreementQualityInstance</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#ApostlesFoundationalDivergenceQualityInstance">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <obo:RO_0000052 rdf:resource="#Apostles"/>
-  <work3:type rdf:resource="#FoundationalDivergenceQuality"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ApostlesFoundationalDivergenceQualityInstance</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
