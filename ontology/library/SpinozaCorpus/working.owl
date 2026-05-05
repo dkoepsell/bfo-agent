@@ -46259,6 +46259,7 @@
 <owl:NamedIndividual rdf:about="#Samuel">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
   <obo:RO_0000056 rdf:resource="#VoiceHearingProcess"/>
+  <obo:RO_0000056 rdf:resource="#LifetimeOfSamuel"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Samuel</rdfs:label>
 </owl:NamedIndividual>
 
@@ -48613,6 +48614,34 @@
   <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <RO_0002083 rdf:resource="#WritingOfBookOfJudgesProcess"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">KingsRuleInIsraelProcess</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#BookOfSamuel">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BookOfSamuel</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#BookOfSamuelContent">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <obo:BFO_0000050 rdf:resource="#BookOfSamuel"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BookOfSamuelContent</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#WritingOfBookOfSamuelProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#BookOfSamuel"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WritingOfBookOfSamuelProcess</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#LifetimeOfSamuel">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LifetimeOfSamuel</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#TemporalGapQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#WritingOfBookOfSamuelProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TemporalGapQuality</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
