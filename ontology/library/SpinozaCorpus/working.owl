@@ -9446,6 +9446,13 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TrueMannerOfLiving</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#LawCessationUponCauseKnowledge">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:BFO_0000054 rdf:resource="#KnowledgeOfLawCauseProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LawCessationUponCauseKnowledge</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#BearerOfSpiritOfChrist">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
@@ -22852,6 +22859,7 @@
 
 <owl:Class rdf:about="#LoveQuality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LoveQuality</rdfs:label>
 </owl:Class>
 
@@ -36547,13 +36555,6 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NecessaryPresenceOfLoveOfGodRelation</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#LawCessationUponCauseKnowledge">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <obo:BFO_0000054 rdf:resource="#KnowledgeOfLawCauseProcess"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LawCessationUponCauseKnowledge</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#KnowledgeOfLawCauseProcess">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">KnowledgeOfLawCauseProcess</rdfs:label>
@@ -36563,6 +36564,26 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LawNormativeStatusQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ObedienceQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ObedienceQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#TrueKnowledgeOfGodDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:BFO_0000054 rdf:resource="#ObedienceToLoveTransformationProcess"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TrueKnowledgeOfGodDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ObedienceToLoveTransformationProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000055 rdf:resource="#TrueKnowledgeOfGodDisposition"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ObedienceToLoveTransformationProcess</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
