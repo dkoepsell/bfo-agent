@@ -34165,6 +34165,16 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AccommodationOfReligionToHumanUnderstanding</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#ApostleRole">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ApostleRole</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#TeacherRole">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TeacherRole</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -50817,6 +50827,27 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <obo:RO_0000052 rdf:resource="#Apostles"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ApostlesLackOfSupernaturalLightQuality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Paul">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <obo:RO_0000053 rdf:resource="#PaulApostleRoleInstance"/>
+  <obo:RO_0000053 rdf:resource="#PaulTeacherRoleInstance"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Paul</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#PaulApostleRoleInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <obo:RO_0000052 rdf:resource="#Paul"/>
+  <work3:type rdf:resource="#ApostleRole"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PaulApostleRoleInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#PaulTeacherRoleInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <obo:RO_0000052 rdf:resource="#Paul"/>
+  <work3:type rdf:resource="#TeacherRole"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PaulTeacherRoleInstance</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
