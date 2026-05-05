@@ -35364,6 +35364,18 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FaithfulnessRecognitionCriterion</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#ReligiousDutyTeaching">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ReligiousDutyTeaching</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PhilosophicMatterContent">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PhilosophicMatterContent</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -36877,6 +36889,7 @@
   <obo:RO_0000057 rdf:resource="#ScriptureTeachingProcess"/>
   <obo:RO_0000053 rdf:resource="#TeachingObedienceDispositionInstance"/>
   <obo:BFO_0000051 rdf:resource="#CommandToLoveNeighbor"/>
+  <obo:RO_0000056 rdf:resource="#ScriptureTeachingProcess"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Scripture</rdfs:label>
 </owl:NamedIndividual>
 
@@ -52749,6 +52762,13 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FaithRequiresPietyMoreThanTruthRelation</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ScriptureTeachesReligiousDutyDisposition">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:RO_0000052 rdf:resource="#Scripture"/>
+  <obo:BFO_0000054 rdf:resource="#ScriptureTeachingProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ScriptureTeachesReligiousDutyDisposition</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
