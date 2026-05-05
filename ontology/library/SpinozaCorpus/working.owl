@@ -36807,6 +36807,30 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DifficultWork</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#Multitude">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Multitude</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#GovernedByAffectDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="#Affect"/>
+  <obo:BFO_0000054 rdf:resource="#GovernanceByAffectProcess"/>
+  <obo:RO_0000052 rdf:resource="#Multitude"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GovernedByAffectDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#GovernedByReasonDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GovernedByReasonDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#GovernanceByAffectProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GovernanceByAffectProcess</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
