@@ -25299,6 +25299,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RationalGuidanceDisposition</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#ReasonGuidedAgent">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ReasonGuidedAgent</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#CivicState">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000029"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000029"/>
@@ -36495,12 +36501,6 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UrgingOfPeaceByReasonDisposition</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#ReasonGuidedAgent">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ReasonGuidedAgent</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#StateLaw">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">StateLaw</rdfs:label>
@@ -36524,6 +36524,25 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="#RationalGuidanceDisposition"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RationalityCorrelatesWithLawObservanceRelation</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#RightKnowledgeOfGod">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="#IntellectPerfectionQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RightKnowledgeOfGod</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#LoveOfGodVirtueQuality">
+  <rdfs:subClassOf rdf:resource="#VirtueQuality"/>
+  <work:subClassOf rdf:resource="#VirtueQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LoveOfGodVirtueQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#NecessaryPresenceOfLoveOfGodRelation">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="#LoveOfGod"/>
+  <obo:BFO_0000054 rdf:resource="#LoveOfGod"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NecessaryPresenceOfLoveOfGodRelation</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
@@ -37645,6 +37664,7 @@
   <RO_0000052 rdf:resource="#Speaker"/>
   <RO_0000053 rdf:resource="#HighestHappiness"/>
   <obo:RO_0000052 rdf:resource="#God"/>
+  <obo:BFO_0000054 rdf:resource="#LoveOfGodVirtueQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LoveOfGod</rdfs:label>
 </owl:NamedIndividual>
 
