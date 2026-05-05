@@ -33996,6 +33996,16 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConformityToDivineEdictDisposition</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#DivineRevelationOriginQuality">
+  <rdfs:subClassOf rdf:resource="#DivineAttribute"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivineRevelationOriginQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DivineCommandOriginQuality">
+  <rdfs:subClassOf rdf:resource="#DivineAttribute"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivineCommandOriginQuality</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -50533,6 +50543,14 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <obo:RO_0000052 rdf:resource="#ApostolicStyleInstance"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ApostolicPropheticStyleDissimilarity</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ApostlesLetters">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <lacksQuality rdf:resource="#DivineRevelationOriginQuality"/>
+  <lacksQuality rdf:resource="#DivineCommandOriginQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ApostlesLetters</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
