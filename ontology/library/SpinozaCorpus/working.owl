@@ -32855,6 +32855,11 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">VisibleThingsInHeavenEarthSea</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#Signification">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Signification</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -47411,6 +47416,26 @@
   <work3:type rdf:resource="#DivineAttribute"/>
   <obo:RO_0000052 rdf:resource="#God"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DissimilarityToVisibleThingsQuality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#FireTerm">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work3:type rdf:resource="#LinguisticTerm"/>
+  <canSignify rdf:resource="#AngerSignification"/>
+  <canSignify rdf:resource="#JealousySignification"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FireTerm</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#AngerSignification">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work3:type rdf:resource="#Signification"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AngerSignification</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#JealousySignification">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work3:type rdf:resource="#Signification"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">JealousySignification</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
