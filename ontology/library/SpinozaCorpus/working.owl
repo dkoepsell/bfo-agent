@@ -1939,6 +1939,8 @@
 <owl:Class rdf:about="#SupremePower">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SupremePower</rdfs:label>
 </owl:Class>
 
@@ -36333,6 +36335,18 @@
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <obo:BFO_0000054 rdf:resource="#ExplicitPromiseToObeyGod"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ObedienceCommitmentDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#UniversalPermissionDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="#NaturalRight"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UniversalPermissionDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#RetentionOfNaturalRightQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RetentionOfNaturalRightQuality</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
