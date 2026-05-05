@@ -33690,6 +33690,30 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PsalterCollectionClass</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#PropheticBook">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PropheticBook</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ProphecyContent">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <obo:BFO_0000050 rdf:resource="#PropheticBook"/>
+  <obo:BFO_0000050 rdf:resource="#SourceBook"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ProphecyContent</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SourceBook">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SourceBook</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#CollectionProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#SourceBook"/>
+  <obo:RO_0000057 rdf:resource="#PropheticBook"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CollectionProcess</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
