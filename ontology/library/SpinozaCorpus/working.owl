@@ -8564,6 +8564,7 @@
 <owl:Class rdf:about="#Apostle">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
   <obo:BFO_0000054 rdf:resource="#PreachingProcess"/>
+  <work:subClassOf rdf:resource="#Prophet"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Apostle</rdfs:label>
 </owl:Class>
 
