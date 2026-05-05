@@ -31811,6 +31811,9 @@
 
 <owl:Class rdf:about="#Sovereignty">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <obo:RO_0000052 rdf:resource="#SocialOrder"/>
+  <obo:BFO_0000054 rdf:resource="#SovereigntyEstablishmentProcess"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Sovereignty</rdfs:label>
 </owl:Class>
 
@@ -35834,6 +35837,20 @@
 <owl:Class rdf:about="#PowerEqualsRightQuality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PowerEqualsRightQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SupremeRightOfNature">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:RO_0000052 rdf:resource="#SocialOrder"/>
+  <obo:BFO_0000054 rdf:resource="#SovereigntyEstablishmentProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SupremeRightOfNature</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SovereigntyEstablishmentProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SovereigntyEstablishmentProcess</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
