@@ -33397,6 +33397,11 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PassionAbsenceQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#AuthorshipRole">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AuthorshipRole</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -37353,6 +37358,7 @@
   <obo:RO_0000056 rdf:resource="#MosesLegislativeEnactment"/>
   <obo:RO_0000053 rdf:resource="#MosesLeadershipRole"/>
   <obo:RO_0000056 rdf:resource="#EnsuranceOfDutyProcess"/>
+  <obo:RO_0000053 rdf:resource="#MosesAuthorshipRoleOfPentateuch"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Moses</rdfs:label>
 </owl:NamedIndividual>
 
@@ -48109,6 +48115,18 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <obo:RO_0000052 rdf:resource="#ScriptureHistory"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DefectivenessQuality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Pentateuch">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Pentateuch</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#MosesAuthorshipRoleOfPentateuch">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <work3:type rdf:resource="#AuthorshipRole"/>
+  <obo:RO_0000052 rdf:resource="#Pentateuch"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MosesAuthorshipRoleOfPentateuch</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
