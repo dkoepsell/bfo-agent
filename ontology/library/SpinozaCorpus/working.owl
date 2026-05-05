@@ -35375,6 +35375,7 @@
   <work4:RO_0000056 rdf:resource="#WritingOfBookProcess"/>
   <obo:RO_0000056 rdf:resource="#WritingOfSongProcess"/>
   <obo:RO_0000056 rdf:resource="#CommandToPreserveSongProcess"/>
+  <obo:BFO_0000050 rdf:resource="#ScriptureAuthorCollection"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Moses</rdfs:label>
 </owl:NamedIndividual>
 
@@ -52170,6 +52171,30 @@
   <RO_0000052 rdf:resource="#Scripture"/>
   <work3:type rdf:resource="#AccommodationToCommonUnderstanding"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AccommodationToCommonUnderstandingInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ScriptureAuthorship">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#ScriptureAuthorCollection"/>
+  <obo:RO_0000057 rdf:resource="#Scripture"/>
+  <obo:BFO_0000050 rdf:resource="#ScriptureAuthorshipTemporalExtent"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ScriptureAuthorship</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ScriptureAuthorCollection">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ScriptureAuthorCollection</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#MentalityDiversity">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#ScriptureAuthorCollection"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MentalityDiversity</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ScriptureAuthorshipTemporalExtent">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000008"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ScriptureAuthorshipTemporalExtent</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
