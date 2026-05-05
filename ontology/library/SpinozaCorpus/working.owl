@@ -35303,6 +35303,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ObedienceDisposition</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#CommandObedience">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CommandObedience</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#TruthDisposition">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TruthDisposition</rdfs:label>
@@ -35943,12 +35949,6 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Commander</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#CommandObedience">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CommandObedience</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#CommanderAdvantageQuality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
@@ -35959,6 +35959,23 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Command</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ParentalCommand">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ParentalCommand</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ObeyingParentalCommandProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ObeyingParentalCommandProcess</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SonAdvantageQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#ParentalCommand"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SonAdvantageQuality</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
@@ -41074,6 +41091,8 @@
 <owl:NamedIndividual rdf:about="#Son">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
   <obo:RO_0000057 rdf:resource="#SonConsequences"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <obo:BFO_0000054 rdf:resource="#ObeyingParentalCommandProcess"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Son</rdfs:label>
 </owl:NamedIndividual>
 
