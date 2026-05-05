@@ -36925,6 +36925,21 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AdministratorRole</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#ChiefOfLevitesRole">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ChiefOfLevitesRole</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SecondToGodTheKingRole">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SecondToGodTheKingRole</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#GodTheKingRole">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodTheKingRole</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -37298,6 +37313,7 @@
   <obo:RO_0000053 rdf:resource="#DominionOverAllThingsQualityInstance"/>
   <obo:RO_0000053 rdf:resource="#GodSovereigntyOverHebrewsRoleInstance"/>
   <obo:RO_0000056 rdf:resource="#CovenantFormationProcess"/>
+  <obo:RO_0000053 rdf:resource="#GodTheKingRoleInstance"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">God</rdfs:label>
 </owl:NamedIndividual>
 
@@ -54592,16 +54608,44 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LevitesAdministratorRoleInstance</rdfs:label>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#DivineCourt">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000029"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivineCourt</rdfs:label>
-</owl:NamedIndividual>
-
 <owl:NamedIndividual rdf:about="#LeviteSelectionProcess">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <obo:RO_0000057 rdf:resource="#Levites"/>
   <obo:RO_0000057 rdf:resource="#God"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LeviteSelectionProcess</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#DivineCourt">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000029"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivineCourt</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Aaron">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <obo:RO_0000053 rdf:resource="#AaronChiefOfLevitesRoleInstance"/>
+  <obo:RO_0000053 rdf:resource="#AaronSecondToGodTheKingRoleInstance"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Aaron</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#AaronChiefOfLevitesRoleInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <obo:RO_0000052 rdf:resource="#Aaron"/>
+  <work3:type rdf:resource="#ChiefOfLevitesRole"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AaronChiefOfLevitesRoleInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#AaronSecondToGodTheKingRoleInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <obo:RO_0000052 rdf:resource="#Aaron"/>
+  <work3:type rdf:resource="#SecondToGodTheKingRole"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AaronSecondToGodTheKingRoleInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#GodTheKingRoleInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <obo:RO_0000052 rdf:resource="#God"/>
+  <work3:type rdf:resource="#GodTheKingRole"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodTheKingRoleInstance</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
