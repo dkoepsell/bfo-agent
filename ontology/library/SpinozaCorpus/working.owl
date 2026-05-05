@@ -8582,6 +8582,7 @@
 
 <owl:Class rdf:about="#Faithful">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Faithful</rdfs:label>
 </owl:Class>
 
@@ -35032,6 +35033,23 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <obo:BFO_0000054 rdf:resource="#FaithfulnessJudgementProcess"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WorksEvidenceForFaithfulnessDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#GoodWorks">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GoodWorks</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DoctrinalAgreement">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DoctrinialAgreement</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#GoodWorksGroundsRoleDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:BFO_0000054 rdf:resource="#GoodWorks"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GoodWorksGroundsRoleDisposition</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
