@@ -24275,6 +24275,7 @@
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
   <work:subClassOf rdf:resource="#ModificationBearer"/>
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/RO_0000053"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">State</rdfs:label>
 </owl:Class>
 
@@ -36132,6 +36133,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LivingOutsideStateTerritory</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#NonRecognitionOfSovereigntyQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NonRecognitionOfSovereigntyQuality</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#SovereigntyRecognitionDisposition">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
@@ -36156,10 +36163,42 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LivingOutsideTheState</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#NonRecognitionOfSovereigntyQuality">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NonRecognitionOfSovereigntyQuality</rdfs:label>
+<owl:Class rdf:about="#NonSovereign">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NonSovereign</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SovereigntyRole">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SovereigntyRole</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#RightToCompel">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:BFO_0000054 rdf:resource="#CompellingSurrenderOrAllianceProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RightToCompel</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SurrenderRole">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SurrenderRole</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#AllyRole">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AllyRole</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#CompellingSurrenderOrAllianceProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#State"/>
+  <obo:RO_0000057 rdf:resource="#NonSovereign"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CompellingSurrenderOrAllianceProcess</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
