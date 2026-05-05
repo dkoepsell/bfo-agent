@@ -32615,6 +32615,22 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NaturalisticReinterpretationDisposition</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#AnthropomorphicLanguageInterpretation">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AnthropomorphicLanguageInterpretation</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#NaturalisticInterpretation">
+  <rdfs:subClassOf rdf:resource="#AnthropomorphicLanguageInterpretation"/>
+  <work:subClassOf rdf:resource="#AnthropomorphicLanguageInterpretation"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NaturalisticInterpretation</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#HeavyRainProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HeavyRainProcess</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -47070,6 +47086,18 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#ScripturalAttributionToGod"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodHardenedPharaohsHeartStatement</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#GodOpensHeavenStatement">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work3:type rdf:resource="#AnthropomorphicLanguageInterpretation"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodOpensHeavenStatement</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#HeavyRainNaturalisticInterpretation">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work3:type rdf:resource="#NaturalisticInterpretation"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HeavyRainNaturalisticInterpretation</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
