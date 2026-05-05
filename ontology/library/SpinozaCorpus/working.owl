@@ -8614,6 +8614,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ReligiousConversionProcess</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#MoralCertainty">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MoralCertainty</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#ObedientActionProcess">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ObedientActionProcess</rdfs:label>
@@ -29767,12 +29773,6 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SignIndependence</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#MoralCertainty">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MoralCertainty</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#FalseRevelation">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FalseRevelation</rdfs:label>
@@ -35534,6 +35534,16 @@
   <obo:RO_0000057 rdf:resource="#PropheticDoctrine"/>
   <obo:RO_0000057 rdf:resource="#PropheticMiracle"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ProphetEvaluationProcess</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SatisfactionFromGoodActionsQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SatisfactionFromGoodActionsQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#GoodActionPerformanceProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GoodActionPerformanceProcess</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
@@ -52983,6 +52993,13 @@
   <obo:RO_0000052 rdf:resource="#SalvationByObedienceTenet"/>
   <work:subClassOf rdf:resource="#ImaginationInaccessibility"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NaturalLightDiscoverabilityConstraint</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#HolySpirit">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work3:type rdf:resource="#SatisfactionFromGoodActionsQuality"/>
+  <RO_0000052 rdf:resource="#InfiniteIntellectOfGod"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HolySpirit</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
