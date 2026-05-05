@@ -32029,6 +32029,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NaturalEvent</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#NarrativeOfUnusualEvent">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <obo:BFO_0000050 rdf:resource="#CommonOrderOfNature"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NarrativeOfUnusualEvent</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#GodEssenceKnowledgeDisposition">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodEssenceKnowledgeDisposition</rdfs:label>
@@ -32761,12 +32767,6 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NonDeducibilityFromNaturalLightQuality</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#NarrativeOfUnusualEvent">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
-  <obo:BFO_0000050 rdf:resource="#CommonOrderOfNature"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NarrativeOfUnusualEvent</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#UnusualEventInNature">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UnusualEventInNature</rdfs:label>
@@ -32781,6 +32781,24 @@
 <owl:Class rdf:about="#HistorianOpinion">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HistorianOpinion</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#OpinionOfProphet">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OpinionOfProphet</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#AccommodationOfRevelation">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AccommodationOfRevelation</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#AccommodationToOpinionsQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AccommodationToOpinionsQuality</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
