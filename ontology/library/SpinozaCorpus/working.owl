@@ -53175,6 +53175,17 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConatusAsSupremeNaturalLaw</rdfs:label>
 </owl:NamedIndividual>
 
+<owl:NamedIndividual rdf:about="#NatureUnconstrainedByHumanReasonQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#WholeOfNature"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NatureUnconstrainedByHumanReasonQuality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#HumanReasonLaws">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HumanReasonLaws</rdfs:label>
+</owl:NamedIndividual>
+
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
   <rdfs:label xml:lang="en">realized in</rdfs:label>
   <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A realizable entity (e.g., role, disposition, function) is realized in some process. r realized_in p if r is borne by some independent continuant during the process p.</rdfs:comment>
