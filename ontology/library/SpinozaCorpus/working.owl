@@ -9010,6 +9010,8 @@
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000017"/>
+  <obo:BFO_0000051 rdf:resource="#Truth"/>
+  <obo:BFO_0000051 rdf:resource="#Wisdom"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Reason</rdfs:label>
 </owl:Class>
 
@@ -35416,6 +35418,11 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TemporallyDistinctComposition</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#DomainOf">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DomainOf</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -41773,6 +41780,7 @@
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
   <obo:RO_0000052 rdf:resource="#WisePerson"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Wisdom</rdfs:label>
 </owl:NamedIndividual>
 
@@ -52830,6 +52838,25 @@
   <work3:type rdf:resource="#OriginalTextStatus"/>
   <RO_0000052 rdf:resource="#FormalBeingOfHumanMind"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindOriginalTextStatusInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Theology">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <obo:BFO_0000051 rdf:resource="#Piety"/>
+  <obo:BFO_0000051 rdf:resource="#Obedience"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Theology</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ReasonDomainQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#Reason"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ReasonDomainQuality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#TheologyDomainQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#Theology"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TheologyDomainQuality</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
