@@ -34835,6 +34835,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Faith</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#ThinkingAboutGod">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000055 rdf:resource="#Faith"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ThinkingAboutGod</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#RevealedReligion">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
@@ -34957,12 +34963,6 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LovingOneNeighborProcess</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#ThinkingAboutGod">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <obo:BFO_0000055 rdf:resource="#Faith"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ThinkingAboutGod</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#FaithContentAboutGod">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
@@ -34973,6 +34973,19 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="#Faith"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ObediencePreservationRelation</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SalvificEfficacy">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#Faith"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SalvificEfficacy</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#FaithConditionedOnObedienceQuality">
+  <rdfs:subClassOf rdf:resource="#SalvificEfficacy"/>
+  <work:subClassOf rdf:resource="#SalvificEfficacy"/>
+  <obo:RO_0000052 rdf:resource="#Faith"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FaithConditionedOnObedienceQuality</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
