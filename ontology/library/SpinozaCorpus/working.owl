@@ -37385,6 +37385,8 @@
   <obo:RO_0000056 rdf:resource="#AuthorshipProcess"/>
   <obo:RO_0000056 rdf:resource="#LifetimeOfMoses"/>
   <obo:RO_0000056 rdf:resource="#WritingOfAccountProcess"/>
+  <obo:RO_0000056 rdf:resource="#MosesWritingProcess"/>
+  <obo:RO_0000053 rdf:resource="#WriterRole"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Moses</rdfs:label>
 </owl:NamedIndividual>
 
@@ -48240,6 +48242,7 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <obo:BFO_0000050 rdf:resource="#WritingOfAccountProcess"/>
   <obo:IAO_0000136 rdf:resource="#WarAgainstAmalek"/>
+  <obo:BFO_0000050 rdf:resource="#MosesWritingProcess"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AccountOfWarAgainstAmalek</rdfs:label>
 </owl:NamedIndividual>
 
@@ -48258,6 +48261,27 @@
 <owl:NamedIndividual rdf:about="#BooksWrittenByMoses">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BooksWrittenByMoses</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#MosesWritingProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#Moses"/>
+  <obo:BFO_0000055 rdf:resource="#WriterRole"/>
+  <obo:RO_0000057 rdf:resource="#WarAgainstAmalek"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WritingProcess</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#DivineCommandToWrite">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <obo:RO_0000052 rdf:resource="#God"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivineCommandToWrite</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#WriterRole">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <obo:RO_0000052 rdf:resource="#Moses"/>
+  <obo:BFO_0000054 rdf:resource="#MosesWritingProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WriterRole</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
