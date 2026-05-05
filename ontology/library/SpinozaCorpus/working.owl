@@ -37346,6 +37346,33 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NationArtificialConstructQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#Custom">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Custom</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#NationalMentality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <RO_0000052 rdf:resource="#Nation"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NationalMentality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#NationalCharacter">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <RO_0000052 rdf:resource="#Nation"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NationalCharacter</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#MentalityAndCharacterDetermination">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <RO_0000052 rdf:resource="#Law"/>
+  <RO_0000052 rdf:resource="#Custom"/>
+  <obo:BFO_0000054 rdf:resource="#NationalMentality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MentalityAndCharacterDetermination</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -41905,6 +41932,20 @@
 <owl:NamedIndividual rdf:about="#BaruchScroll">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BaruchScroll</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#PietyDispositionInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:RO_0000052 rdf:resource="#HebrewPeople"/>
+  <work3:type rdf:resource="#PietyDisposition"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PietyDispositionInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#HatredOfOtherNationsDispositionInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:RO_0000052 rdf:resource="#HebrewPeople"/>
+  <work3:type rdf:resource="#HatredOfOtherNationsDisposition"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HatredOfOtherNationsDispositionInstance</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#HebrewsElectionRoleInstance">
@@ -55226,20 +55267,6 @@
   <work3:type rdf:resource="#PietyQuality"/>
   <obo:RO_0000052 rdf:resource="#HebrewPeople"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HebrewLoveOfCountry</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#PietyDispositionInstance">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <obo:RO_0000052 rdf:resource="#HebrewPeople"/>
-  <work3:type rdf:resource="#PietyDisposition"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PietyDispositionInstance</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#HatredOfOtherNationsDispositionInstance">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <obo:RO_0000052 rdf:resource="#HebrewPeople"/>
-  <work3:type rdf:resource="#HatredOfOtherNationsDisposition"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HatredOfOtherNationsDispositionInstance</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
