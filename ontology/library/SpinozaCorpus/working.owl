@@ -35164,6 +35164,8 @@
   <obo:RO_0000053 rdf:resource="#Yahweh"/>
   <RO_0000053 rdf:resource="#Yahweh"/>
   <obo:RO_0000057 rdf:resource="#GodRequiresKnowledgeProcess"/>
+  <obo:RO_0000053 rdf:resource="#SupremeJusticeDivineQuality"/>
+  <obo:RO_0000053 rdf:resource="#SupremeMercyDivineQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">God</rdfs:label>
 </owl:NamedIndividual>
 
@@ -36364,6 +36366,11 @@
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="#ObedienceToGod"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LoveOfNeighbor</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#GodRequiresKnowledgeProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodRequiresKnowledgeProcess</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#ExtendedSubstance">
@@ -51966,9 +51973,30 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">KnowledgeOfGodIsGiftDisposition</rdfs:label>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#GodRequiresKnowledgeProcess">
+<owl:NamedIndividual rdf:about="#SupremeJusticeDivineQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#God"/>
+  <work3:type rdf:resource="#DivineAttribute"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SupremeJusticeDivineQuality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#SupremeMercyDivineQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#God"/>
+  <work3:type rdf:resource="#DivineAttribute"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SupremeMercyDivineQuality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#KnowledgeOfGodProcess">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodRequiresKnowledgeProcess</rdfs:label>
+  <obo:RO_0000057 rdf:resource="#God"/>
+  <obo:RO_0000057 rdf:resource="#KnowledgeOfDivineJusticeAndMercyContent"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">KnowledgeOfGodProcess</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#KnowledgeOfDivineJusticeAndMercyContent">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">KnowledgeOfDivineJusticeAndMercyContent</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
