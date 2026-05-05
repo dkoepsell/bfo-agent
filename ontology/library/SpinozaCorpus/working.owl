@@ -48496,6 +48496,8 @@
 
 <owl:NamedIndividual rdf:about="#BookOfJoshua">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <obo:RO_0000053 rdf:resource="#PosthumousNarrativeQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BookOfJoshua</rdfs:label>
 </owl:NamedIndividual>
 
@@ -48504,6 +48506,24 @@
   <work3:type rdf:resource="#AuthorshipAbsenceQuality"/>
   <obo:RO_0000052 rdf:resource="#BookOfJoshua"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NonAutographOfJoshuaQuality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#DeathOfJoshua">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#Joshua"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DeathOfJoshua</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#EventsAfterJoshuasDeath">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000050 rdf:resource="#BookOfJoshua"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EventsAfterJoshuasDeath</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#PosthumousNarrativeQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#BookOfJoshua"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PosthumousNarrativeQuality</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
