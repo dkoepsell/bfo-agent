@@ -33451,6 +33451,11 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HistorianAuthorRole</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#TemporallyPrecedes">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000008"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TemporallyPrecedes</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -48571,6 +48576,7 @@
 
 <owl:NamedIndividual rdf:about="#BookOfJudges">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BookOfJudges</rdfs:label>
 </owl:NamedIndividual>
 
@@ -48591,6 +48597,8 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <RO_0000057 rdf:resource="#SingleHistorianAuthor"/>
   <RO_0000057 rdf:resource="#BookOfJudges"/>
+  <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#BookOfJudges"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WritingOfBookOfJudgesProcess</rdfs:label>
 </owl:NamedIndividual>
 
@@ -48598,6 +48606,13 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <RO_0000052 rdf:resource="#BookOfJudges"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">JudgesThemselvesAuthorshipNegation</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#KingsRuleInIsraelProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <RO_0002083 rdf:resource="#WritingOfBookOfJudgesProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">KingsRuleInIsraelProcess</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
