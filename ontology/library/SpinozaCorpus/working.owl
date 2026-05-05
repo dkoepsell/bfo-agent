@@ -32306,6 +32306,11 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UniversalLawGovernanceDisposition</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#ParticularHumanLaw">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ParticularHumanLaw</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -32647,6 +32652,7 @@
   <obo:RO_0000056 rdf:resource="#DivineWillingOrDetermining"/>
   <obo:RO_0000057 rdf:resource="#NaturalCausationGroundedInGodProcess"/>
   <obo:RO_0000053 rdf:resource="#UniversalLawGovernanceDisposition"/>
+  <obo:RO_0000056 rdf:resource="#GodsDirectionOfNatureProcess"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">God</rdfs:label>
 </owl:NamedIndividual>
 
@@ -32808,6 +32814,7 @@
   <obo:RO_0000053 rdf:resource="#MotionToRestRatio"/>
   <obo:RO_0000056 rdf:resource="#MotionToRestRatioPreservationProcess"/>
   <obo:RO_0000056 rdf:resource="#DivineSustainmentAndDirectionProcess"/>
+  <obo:RO_0000056 rdf:resource="#GodsDirectionOfNatureProcess"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WholeOfNature</rdfs:label>
 </owl:NamedIndividual>
 
@@ -33684,6 +33691,13 @@
   <obo:RO_0000057 rdf:resource="#God"/>
   <obo:RO_0000057 rdf:resource="#Scripture"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivineTeachingProcess</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#DirectionOfNatureByUniversalLawProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#God"/>
+  <obo:RO_0000057 rdf:resource="#WholeOfNature"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DirectionOfNatureByUniversalLawProcess</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#ExtendedSubstance">
@@ -46632,11 +46646,17 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodsEstablishedOrder</rdfs:label>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#DirectionOfNatureByUniversalLawProcess">
+<owl:NamedIndividual rdf:about="#GodsDirectionOfNatureProcess">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <obo:RO_0000057 rdf:resource="#God"/>
-  <obo:RO_0000057 rdf:resource="#WholeOfNature"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DirectionOfNatureByUniversalLawProcess</rdfs:label>
+  <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000050 rdf:resource="#GodCausesAllThingsProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodsDirectionOfNatureProcess</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#GovernanceByUniversalLawQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#GodsDirectionOfNatureProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GovernanceByUniversalLawQuality</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
