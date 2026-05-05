@@ -32653,6 +32653,7 @@
   <obo:RO_0000057 rdf:resource="#NaturalCausationGroundedInGodProcess"/>
   <obo:RO_0000053 rdf:resource="#UniversalLawGovernanceDisposition"/>
   <obo:RO_0000056 rdf:resource="#GodsDirectionOfNatureProcess"/>
+  <obo:RO_0000056 rdf:resource="#GodAccountsForAllNatureProcess"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">God</rdfs:label>
 </owl:NamedIndividual>
 
@@ -32815,6 +32816,7 @@
   <obo:RO_0000056 rdf:resource="#MotionToRestRatioPreservationProcess"/>
   <obo:RO_0000056 rdf:resource="#DivineSustainmentAndDirectionProcess"/>
   <obo:RO_0000056 rdf:resource="#GodsDirectionOfNatureProcess"/>
+  <obo:RO_0000056 rdf:resource="#GodAccountsForAllNatureProcess"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WholeOfNature</rdfs:label>
 </owl:NamedIndividual>
 
@@ -35517,6 +35519,13 @@
   <obo:BFO_0000055 rdf:resource="#GodDivinePowerAndWillDispositionInstance"/>
   <obo:BFO_0000050 rdf:resource="#GodCausesAllThingsProcess"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NaturalCausationGroundedInGodProcess</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#GodsDirectionOfNatureProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000050 rdf:resource="#GodCausesAllThingsProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodsDirectionOfNatureProcess</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#ThinkingThingRole">
@@ -46646,17 +46655,22 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodsEstablishedOrder</rdfs:label>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#GodsDirectionOfNatureProcess">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <obo:BFO_0000050 rdf:resource="#GodCausesAllThingsProcess"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodsDirectionOfNatureProcess</rdfs:label>
-</owl:NamedIndividual>
-
 <owl:NamedIndividual rdf:about="#GovernanceByUniversalLawQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <obo:RO_0000052 rdf:resource="#GodsDirectionOfNatureProcess"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GovernanceByUniversalLawQuality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#GodAccountsForAllOfNatureQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#God"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodAccountsForAllOfNatureQuality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#GodAccountsForAllNatureProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000055 rdf:resource="#GodAccountsForAllOfNatureQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodAccountsForAllNatureProcess</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
