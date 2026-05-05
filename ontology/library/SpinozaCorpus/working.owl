@@ -33835,6 +33835,16 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AuthoringNation</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#AuthorshipAttributionQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AuthorshipAttributionQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ActualAuthorshipRole">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ActualAuthorshipRole</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -49903,7 +49913,7 @@
 
 <owl:NamedIndividual rdf:about="#BookOfNehemiah">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Nehemiah</rdfs:label>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BookOfNehemiah</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#TheHistorian">
@@ -49973,6 +49983,25 @@
 <owl:NamedIndividual rdf:about="#Mordecai">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Mordecai</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Nehemiah">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Nehemiah</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#EzraAttributionQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work3:type rdf:resource="#AuthorshipAttributionQuality"/>
+  <obo:RO_0000052 rdf:resource="#BookOfEzra"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EzraAttributionQuality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#NehemiahAttributionQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work3:type rdf:resource="#AuthorshipAttributionQuality"/>
+  <obo:RO_0000052 rdf:resource="#BookOfNehemiah"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NehemiahAttributionQuality</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
