@@ -33670,6 +33670,11 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BondageQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#LeaderRole">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LeaderRole</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -49418,6 +49423,30 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <obo:RO_0000052 rdf:resource="#Hebrews"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HebrewFreedomQualityInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Nahshon">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <obo:RO_0000053 rdf:resource="#NahshonLeaderRoleInstance"/>
+  <obo:RO_0000056 rdf:resource="#SecondYearAfterExodus"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Nahshon</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#TribeOfJudah">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TribeOfJudah</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#NahshonLeaderRoleInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <obo:RO_0000052 rdf:resource="#Nahshon"/>
+  <work3:type rdf:resource="#LeaderRole"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NahshonLeaderRoleInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#SecondYearAfterExodus">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000008"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SecondYearAfterExodus</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
