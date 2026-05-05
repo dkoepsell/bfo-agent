@@ -5003,6 +5003,11 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MarginalNote</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#HebrewManuscript">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HebrewManuscript</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#NonSpinozaMarginalNote">
   <rdfs:subClassOf rdf:resource="#MarginalNote"/>
   <work:subClassOf rdf:resource="#MarginalNote"/>
@@ -33567,11 +33572,6 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TextualTransmission</rdfs:label>
-</owl:Class>
-
-<owl:Class rdf:about="#HebrewManuscript">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HebrewManuscript</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#VariantReading">
