@@ -34186,6 +34186,7 @@
 
 <owl:Class rdf:about="#ApostleRole">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <obo:RO_0000052 rdf:resource="#Apostles"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ApostleRole</rdfs:label>
 </owl:Class>
 
@@ -34236,15 +34237,15 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SchismaticDisposition</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#DisputeProcess">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DisputeProcess</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#SchismProcess">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <work:subClassOf rdf:resource="#DisputeProcess"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SchismProcess</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DisputeProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DisputeProcess</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
@@ -50950,6 +50951,49 @@
   <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
   <obo:RO_0000053 rdf:resource="#ApostolicOffice"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ApostleIndividual</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#GospelNovelty">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#Gospel"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GospelNovelty</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Gospel">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Gospel</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Contemporaries">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Contemporaries</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#MentalityOfContemporaries">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#Contemporaries"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MentalityOfContemporaries</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#DoctrineAccommodationProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#Apostles"/>
+  <obo:RO_0000057 rdf:resource="#Contemporaries"/>
+  <obo:RO_0000057 rdf:resource="#AccommodatedDoctrine"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DoctrineAccommodationProcess</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#AccommodatedDoctrine">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <obo:BFO_0000050 rdf:resource="#Gospel"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AccommodatedDoctrine</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#AccommodationNecessitationDisposition">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:RO_0000052 rdf:resource="#Gospel"/>
+  <obo:BFO_0000054 rdf:resource="#DoctrineAccommodationProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AccommodationNecessitationDisposition</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
