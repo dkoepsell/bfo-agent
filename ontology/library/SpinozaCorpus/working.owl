@@ -54933,6 +54933,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LeviteSelectionProcess</rdfs:label>
 </owl:NamedIndividual>
 
+<owl:NamedIndividual rdf:about="#LeviteTrueLawInterpretationDispositionInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:RO_0000052 rdf:resource="#Levites"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LeviteTrueLawInterpretationDispositionInstance</rdfs:label>
+</owl:NamedIndividual>
+
 <owl:NamedIndividual rdf:about="#DivineCourt">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000029"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivineCourt</rdfs:label>
@@ -55020,12 +55026,6 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <obo:RO_0000052 rdf:resource="#Levites"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LeviteHonorQuality</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#LeviteTrueLawInterpretationDispositionInstance">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <obo:RO_0000052 rdf:resource="#Levites"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LeviteTrueLawInterpretationDispositionInstance</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#FortuneAndHonorDependenceOnTrueInterpretationQuality">
