@@ -34006,6 +34006,16 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivineCommandOriginQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#BrotherlyAdvice">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BrotherlyAdvice</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#Politeness">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Politeness</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -50551,6 +50561,19 @@
   <lacksQuality rdf:resource="#DivineRevelationOriginQuality"/>
   <lacksQuality rdf:resource="#DivineCommandOriginQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ApostlesLetters</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ApostlesLettersContent">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <obo:BFO_0000050 rdf:resource="#ApostlesLetters"/>
+  <obo:BFO_0000051 rdf:resource="#BrotherlyAdvice"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ApostlesLettersContent</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#PolitenessQualityOfApostlesLetters">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#ApostlesLettersContent"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PolitenessQualityOfApostlesLetters</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
