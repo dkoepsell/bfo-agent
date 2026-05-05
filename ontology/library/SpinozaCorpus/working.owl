@@ -32698,6 +32698,11 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ScriptureInterpretationDisposition</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#ScriptureInterpreter">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ScriptureInterpreter</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#ScriptureInterpretationProcess">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <obo:BFO_0000051 rdf:resource="#PreparationOfScriptureHistoryProcess"/>
@@ -32731,9 +32736,28 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ScriptureAuthor</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#ScriptureInterpreter">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ScriptureInterpreter</rdfs:label>
+<owl:Class rdf:about="#KnownByNaturalLight">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">KnownByNaturalLight</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PrincipleKnownByNaturalLight">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PrincipleKnownByNaturalLight</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ScripturalSubjectMatter">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ScripturalSubjectMatter</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#NonDeducibilityFromNaturalLightQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NonDeducibilityFromNaturalLightQuality</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
@@ -34138,6 +34162,22 @@
   <obo:BFO_0000051 rdf:resource="#HistoryOfNatureCompilingProcess"/>
   <obo:BFO_0000051 rdf:resource="#DefinitionInferenceProcess"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MethodOfInterpretingNature</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Scripture">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <obo:RO_0000053 rdf:resource="#ScriptureRevelationQualityInstance"/>
+  <obo:RO_0000053 rdf:resource="#ScriptureWordOfGodRoleInstance"/>
+  <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work3:type rdf:resource="#ScriptureEpistemicAuthorityQuality"/>
+  <obo:RO_0000053 rdf:resource="#ScriptureEpistemicAuthorityQuality"/>
+  <RO_0000053 rdf:resource="#DevotionInducingDisposition"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Scripture</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#HistoryOfScripture">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HistoryOfScripture</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#ExtendedSubstance">
@@ -36714,15 +36754,17 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MosesDivineAuthorityRole</rdfs:label>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#Scripture">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
-  <obo:RO_0000053 rdf:resource="#ScriptureRevelationQualityInstance"/>
-  <obo:RO_0000053 rdf:resource="#ScriptureWordOfGodRoleInstance"/>
-  <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
-  <work3:type rdf:resource="#ScriptureEpistemicAuthorityQuality"/>
-  <obo:RO_0000053 rdf:resource="#ScriptureEpistemicAuthorityQuality"/>
-  <RO_0000053 rdf:resource="#DevotionInducingDisposition"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Scripture</rdfs:label>
+<owl:NamedIndividual rdf:about="#HistoryOfNatureCompilingProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#HistoryOfNature"/>
+  <obo:BFO_0000050 rdf:resource="#MethodOfInterpretingNature"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HistoryOfNatureCompilingProcess</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#DefinitionInferenceProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000050 rdf:resource="#MethodOfInterpretingNature"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DefinitionInferenceProcess</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#ExtendedSubstanceInfinityQuality">
@@ -45269,6 +45311,7 @@
 <owl:NamedIndividual rdf:about="#NaturalLight">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NaturalLight</rdfs:label>
 </owl:NamedIndividual>
 
@@ -47237,27 +47280,9 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NatureCompositionQuality</rdfs:label>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#HistoryOfNatureCompilingProcess">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <obo:RO_0000057 rdf:resource="#HistoryOfNature"/>
-  <obo:BFO_0000050 rdf:resource="#MethodOfInterpretingNature"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HistoryOfNatureCompilingProcess</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#DefinitionInferenceProcess">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <obo:BFO_0000050 rdf:resource="#MethodOfInterpretingNature"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DefinitionInferenceProcess</rdfs:label>
-</owl:NamedIndividual>
-
 <owl:NamedIndividual rdf:about="#HistoryOfNature">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HistoryOfNature</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#HistoryOfScripture">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HistoryOfScripture</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
