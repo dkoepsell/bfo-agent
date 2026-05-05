@@ -33850,6 +33850,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TemporallyAfterRelation</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#ScriptureTextualError">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ScriptureTextualError</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -49753,6 +49759,11 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TempleRestorationProcess</rdfs:label>
 </owl:NamedIndividual>
 
+<owl:NamedIndividual rdf:about="#RestorationOfTempleWorship">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RestorationOfTempleWorship</rdfs:label>
+</owl:NamedIndividual>
+
 <owl:NamedIndividual rdf:about="#Temple">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Temple</rdfs:label>
@@ -50012,11 +50023,6 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NehemiahAttributionQuality</rdfs:label>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#RestorationOfTempleWorship">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RestorationOfTempleWorship</rdfs:label>
-</owl:NamedIndividual>
-
 <owl:NamedIndividual rdf:about="#WritingOfBookOfDanielProcess">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <obo:RO_0000057 rdf:resource="#BookOfDaniel"/>
@@ -50043,6 +50049,30 @@
   <obo:RO_0000057 rdf:resource="#BookOfNehemiah"/>
   <occursAfter rdf:resource="#RestorationOfTempleWorship"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WritingOfBookOfNehemiahProcess</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ScriptureTextualErrorInstanceDaniel">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <RO_0000052 rdf:resource="#BookOfDaniel"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ScriptureTextualErrorInstanceDaniel</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ScriptureTextualErrorInstanceEzra">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <RO_0000052 rdf:resource="#BookOfEzra"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ScriptureTextualErrorInstanceEzra</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ScriptureTextualErrorInstanceEsther">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <RO_0000052 rdf:resource="#BookOfEsther"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ScriptureTextualErrorInstanceEsther</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ScriptureTextualErrorInstanceNehemiah">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <RO_0000052 rdf:resource="#BookOfNehemiah"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ScriptureTextualErrorInstanceNehemiah</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
