@@ -27224,6 +27224,7 @@
 
 <owl:Class rdf:about="#DemonstrationProcess">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DemonstrationProcess</rdfs:label>
 </owl:Class>
 
@@ -34753,6 +34754,27 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DegreeOfKnowledgeOfGodQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#InvisibleThing">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
+  <work:subClassOf rdf:resource="#ImaginationInaccessibility"/>
+  <work:subClassOf rdf:resource="#IntellectualGraspability"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">InvisibleThing</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#InvisibilityQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">InvisibilityQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#KnowledgeThroughDemonstrationOnly">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:BFO_0000054 rdf:resource="#DemonstrationProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">KnowledgeThroughDemonstrationOnly</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
