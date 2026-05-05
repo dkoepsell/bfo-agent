@@ -34533,6 +34533,24 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WickedAgent</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#HumanSalvation">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HumanSalvation</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DivineGrace">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivineGrace</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SalvationDependenceOnGraceQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SalvationDependenceOnGraceQuality</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -34887,6 +34905,7 @@
   <RO_0000056 rdf:resource="#GodProvidesForAllProcess"/>
   <obo:RO_0000053 rdf:resource="#GodOmnipotenceQualityInstance"/>
   <obo:RO_0000056 rdf:resource="#DecreeNecessitationProcess"/>
+  <obo:RO_0000053 rdf:resource="#GodDivineGraceInstance"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">God</rdfs:label>
 </owl:NamedIndividual>
 
@@ -51490,6 +51509,13 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#DivineDecree"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodsDivineDecreeInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#GodDivineGraceInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work3:type rdf:resource="#DivineGrace"/>
+  <obo:RO_0000052 rdf:resource="#God"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodDivineGraceInstance</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
