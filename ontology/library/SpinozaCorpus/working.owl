@@ -28831,6 +28831,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PropheticContent</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#PropheticBookContent">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <obo:BFO_0000050 rdf:resource="#PropheticBook"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PropheticBookContent</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#ObjectOfKnowledge">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
@@ -33694,6 +33700,8 @@
 <owl:Class rdf:about="#PropheticBook">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000050"/>
+  <obo:BFO_0000050 rdf:resource="#ProphetCompleteWorks"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PropheticBook</rdfs:label>
 </owl:Class>
 
@@ -33716,12 +33724,6 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CollectionProcess</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#PropheticBookContent">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
-  <obo:BFO_0000050 rdf:resource="#PropheticBook"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PropheticBookContent</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#EditorRole">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EditorRole</rdfs:label>
@@ -33737,6 +33739,11 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <obo:RO_0000052 rdf:resource="#PropheticBookContent"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PropheciesNotIncludedInBookQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ProphetCompleteWorks">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ProphetCompleteWorks</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
