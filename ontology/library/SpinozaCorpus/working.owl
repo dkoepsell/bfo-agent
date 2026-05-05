@@ -33403,6 +33403,11 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AuthorshipRole</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#Bulk">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bulk</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -34731,6 +34736,7 @@
 <owl:NamedIndividual rdf:about="#BookOfMoses">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work2:differentFrom rdf:resource="#Pentateuch"/>
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BookOfMoses</rdfs:label>
 </owl:NamedIndividual>
 
@@ -37452,6 +37458,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PartOfMindThatPerishesWithBody</rdfs:label>
 </owl:NamedIndividual>
 
+<owl:NamedIndividual rdf:about="#Pentateuch">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Pentateuch</rdfs:label>
+</owl:NamedIndividual>
+
 <owl:NamedIndividual rdf:about="#MosesDivineAuthorityRole">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
   <obo:RO_0000052 rdf:resource="#Moses"/>
@@ -38058,11 +38070,6 @@
   <obo:RO_0000057 rdf:resource="#Hebrews"/>
   <obo:BFO_0000050 rdf:resource="#EvidenceContent"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PersuasionByEvidence</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#Pentateuch">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Pentateuch</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#IdealParticipationRelation">
@@ -48151,6 +48158,20 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
   <obo:RO_0000052 rdf:resource="#DeuteronomyPreface"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MosesAuthorshipRoleOfDeuteronomyPreface</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#BulkQualityOfBookOfMoses">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work3:type rdf:resource="#Bulk"/>
+  <obo:RO_0000052 rdf:resource="#BookOfMoses"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BulkQualityOfBookOfMoses</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#BulkQualityOfPentateuch">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work3:type rdf:resource="#Bulk"/>
+  <obo:RO_0000052 rdf:resource="#Pentateuch"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BulkQualityOfPentateuch</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
