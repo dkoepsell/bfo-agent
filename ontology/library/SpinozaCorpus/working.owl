@@ -33456,6 +33456,29 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TemporallyPrecedes</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#BiblicalBook">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BiblicalBook</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#EnumeratedBiblicalBook">
+  <rdfs:subClassOf rdf:resource="#BiblicalBook"/>
+  <work:subClassOf rdf:resource="#Apograph"/>
+  <work:subClassOf rdf:resource="#BiblicalBook"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EnumeratedBiblicalBook</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#Apograph">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work:subClassOf rdf:resource="#BiblicalBook"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Apograph</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DerivedFromSourceQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DerivedFromSourceQuality</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -46268,6 +46291,11 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">VoiceHearingProcess</rdfs:label>
 </owl:NamedIndividual>
 
+<owl:NamedIndividual rdf:about="#LifetimeOfSamuel">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LifetimeOfSamuel</rdfs:label>
+</owl:NamedIndividual>
+
 <owl:NamedIndividual rdf:about="#ImaginedVoiceQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#ImaginedPerceptionQuality"/>
@@ -48631,11 +48659,6 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <obo:RO_0000057 rdf:resource="#BookOfSamuel"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WritingOfBookOfSamuelProcess</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#LifetimeOfSamuel">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LifetimeOfSamuel</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#TemporalGapQuality">
