@@ -36821,14 +36821,14 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GovernedByAffectDisposition</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#GovernedByReasonDisposition">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GovernedByReasonDisposition</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#GovernanceByAffectProcess">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GovernanceByAffectProcess</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#GovernedByReasonDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GovernedByReasonDisposition</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
@@ -37202,6 +37202,7 @@
   <obo:RO_0000053 rdf:resource="#UniversalAccessibilityDispositionInstance"/>
   <obo:RO_0000053 rdf:resource="#SupremeRightAndDominionRoleInstance"/>
   <obo:RO_0000053 rdf:resource="#DominionOverAllThingsQualityInstance"/>
+  <obo:RO_0000053 rdf:resource="#GodSovereigntyOverHebrewsRoleInstance"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">God</rdfs:label>
 </owl:NamedIndividual>
 
@@ -54380,6 +54381,13 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">StatePreservationDependsOnSubjectDispositions</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#GodSovereigntyOverHebrewsRoleInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <work3:type rdf:resource="#SovereigntyRole"/>
+  <obo:RO_0000052 rdf:resource="#God"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodSovereigntyOverHebrewsRoleInstance</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
