@@ -34134,6 +34134,7 @@
 
 <owl:Class rdf:about="#TeachingAuthority">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <work:subClassOf rdf:resource="#TeacherRole"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TeachingAuthority</rdfs:label>
 </owl:Class>
 
@@ -50833,6 +50834,7 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
   <obo:RO_0000053 rdf:resource="#PaulApostleRoleInstance"/>
   <obo:RO_0000053 rdf:resource="#PaulTeacherRoleInstance"/>
+  <obo:RO_0000053 rdf:resource="#PaulTeachingAuthorityInstance"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Paul</rdfs:label>
 </owl:NamedIndividual>
 
@@ -50848,6 +50850,12 @@
   <obo:RO_0000052 rdf:resource="#Paul"/>
   <work3:type rdf:resource="#TeacherRole"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PaulTeacherRoleInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#PaulTeachingAuthorityInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <obo:RO_0000052 rdf:resource="#Paul"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PaulTeachingAuthorityInstance</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
