@@ -33408,6 +33408,11 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bulk</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#BiblicalTextAuthor">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BiblicalTextAuthor</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -48172,6 +48177,32 @@
   <work3:type rdf:resource="#Bulk"/>
   <obo:RO_0000052 rdf:resource="#Pentateuch"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BulkQualityOfPentateuch</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#BiblicalText">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BiblicalText</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#UnknownBiblicalAuthorRoleInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <obo:RO_0000052 rdf:resource="#NonMosesAuthor"/>
+  <obo:BFO_0000054 rdf:resource="#BiblicalTextWritingProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UnknownBiblicalAuthorRoleInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#NonMosesAuthor">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <obo:RO_0000053 rdf:resource="#UnknownBiblicalAuthorRoleInstance"/>
+  <obo:RO_0000056 rdf:resource="#BiblicalTextWritingProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NonMosesAuthor</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#BiblicalTextWritingProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#NonMosesAuthor"/>
+  <obo:RO_0000057 rdf:resource="#BiblicalText"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BiblicalTextWritingProcess</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
