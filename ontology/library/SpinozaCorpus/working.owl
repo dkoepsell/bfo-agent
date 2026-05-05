@@ -35614,6 +35614,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MaximalCausalPowerQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#NumericalIdentityQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NumericalIdentityQuality</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -36957,6 +36963,7 @@
 <owl:NamedIndividual rdf:about="#PowerOfGod">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <obo:RO_0000052 rdf:resource="#God"/>
+  <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PowerOfGod</rdfs:label>
 </owl:NamedIndividual>
 
@@ -39560,6 +39567,13 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <obo:RO_0000052 rdf:resource="#WholeOfNature"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FixedAndImmutableOrderQualityInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#NatureSupremeRight">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work3:type rdf:resource="#NatureSupremeRightDisposition"/>
+  <RO_0000052 rdf:resource="#WholeOfNature"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NatureSupremeRight</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#SoulEssence">
@@ -53071,11 +53085,11 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HolySpirit</rdfs:label>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#NatureSupremeRight">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <work3:type rdf:resource="#NatureSupremeRightDisposition"/>
-  <RO_0000052 rdf:resource="#WholeOfNature"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NatureSupremeRight</rdfs:label>
+<owl:NamedIndividual rdf:about="#PowerIdentityQualityInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work3:type rdf:resource="#NumericalIdentityQuality"/>
+  <obo:RO_0000052 rdf:resource="#PowerOfGod"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PowerIdentityQualityInstance</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
