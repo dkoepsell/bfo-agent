@@ -35565,6 +35565,28 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SoleSourceOfTruthTestimonyQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#SimpleObedience">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SimpleObedience</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SalvationQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SalvationQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PathToSalvationRelation">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="#SimpleObedience"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PathToSalvationRelation</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#InsufficientForSalvationKnowledgeQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#InadequateKnowledgeOfExternalBodyQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">InsufficientForSalvationKnowledgeQuality</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
