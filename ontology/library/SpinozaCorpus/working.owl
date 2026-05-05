@@ -31755,6 +31755,7 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
   <RO_0000053 rdf:resource="#HebrewStateTheocraticGovernanceQuality"/>
   <obo:RO_0000053 rdf:resource="#CivilReligiousUnityQuality"/>
+  <obo:BFO_0000050 rdf:resource="#Hebrews"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HebrewState</rdfs:label>
 </owl:Class>
 
@@ -36851,6 +36852,16 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SupremeMajestyRole</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#SovereignRight">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SovereignRight</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#AbsoluteRetention">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AbsoluteRetention</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -40692,6 +40703,13 @@
   <work3:type rdf:resource="#SoleRepresentativeOfGodRole"/>
   <obo:RO_0000052 rdf:resource="#Moses"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MosesSoleRepresentativeRole</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#MosesSupremeMajestyRoleInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <obo:RO_0000052 rdf:resource="#Moses"/>
+  <work3:type rdf:resource="#SupremeMajestyRole"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MosesSupremeMajestyRoleInstance</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#FortiethYearAfterDepartureFromEgypt">
@@ -54444,11 +54462,11 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ReligionOfHebrewState</rdfs:label>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#MosesSupremeMajestyRoleInstance">
+<owl:NamedIndividual rdf:about="#AbsoluteSovereignRightInstance">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
-  <obo:RO_0000052 rdf:resource="#Moses"/>
-  <work3:type rdf:resource="#SupremeMajestyRole"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MosesSupremeMajestyRoleInstance</rdfs:label>
+  <obo:RO_0000052 rdf:resource="#HebrewState"/>
+  <work3:type rdf:resource="#SovereignRight"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AbsoluteSovereignRightInstance</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
