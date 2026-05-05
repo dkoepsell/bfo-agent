@@ -32022,6 +32022,11 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Miracle</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#NaturalEvent">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NaturalEvent</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#GodEssenceKnowledgeDisposition">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodEssenceKnowledgeDisposition</rdfs:label>
@@ -32644,11 +32649,6 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NaturalExplicabilityByLawQuality</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#NaturalEvent">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NaturalEvent</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#MiracleNaturalityQuality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MiracleNaturalityQuality</rdfs:label>
@@ -32997,6 +32997,8 @@
   <obo:RO_0000053 rdf:resource="#UniversalLawGovernanceDisposition"/>
   <obo:RO_0000056 rdf:resource="#GodsDirectionOfNatureProcess"/>
   <obo:RO_0000056 rdf:resource="#GodAccountsForAllNatureProcess"/>
+  <obo:RO_0000053 rdf:resource="#GodIntellect"/>
+  <obo:RO_0000053 rdf:resource="#GodIntellectWillIdentityQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">God</rdfs:label>
 </owl:NamedIndividual>
 
@@ -47128,6 +47130,12 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#NaturalisticInterpretation"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HeavyRainNaturalisticInterpretation</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#GodIntellectWillIdentityQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#God"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodIntellectWillIdentityQuality</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
