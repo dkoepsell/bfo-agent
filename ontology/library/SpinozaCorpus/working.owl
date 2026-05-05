@@ -8605,6 +8605,11 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivineRevelationProcess</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#Teacher">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Teacher</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#PropheticRecipient">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PropheticRecipient</rdfs:label>
@@ -34175,11 +34180,6 @@
 <owl:Class rdf:about="#ApostleRole">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ApostleRole</rdfs:label>
-</owl:Class>
-
-<owl:Class rdf:about="#Teacher">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Teacher</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#ApostolicOffice">
