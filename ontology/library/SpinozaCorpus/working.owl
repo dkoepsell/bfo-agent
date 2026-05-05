@@ -33675,6 +33675,11 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LeaderRole</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#GreatGreatGrandfatherRole">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GreatGreatGrandfatherRole</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -49447,6 +49452,30 @@
 <owl:NamedIndividual rdf:about="#TribeOfJudah">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TribeOfJudah</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Salmon">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <obo:RO_0000053 rdf:resource="#SalmonGreatGreatGrandfatherRoleInstance"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Salmon</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#David">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">David</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#GenealogyOfDavid">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <obo:BFO_0000051 rdf:resource="#SalmonGreatGreatGrandfatherRoleInstance"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GenealogyOfDavid</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#SalmonGreatGreatGrandfatherRoleInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <work3:type rdf:resource="#GreatGreatGrandfatherRole"/>
+  <obo:RO_0000052 rdf:resource="#Salmon"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SalmonGreatGreatGrandfatherRoleInstance</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
