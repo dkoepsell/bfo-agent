@@ -31756,6 +31756,7 @@
   <RO_0000053 rdf:resource="#HebrewStateTheocraticGovernanceQuality"/>
   <obo:RO_0000053 rdf:resource="#CivilReligiousUnityQuality"/>
   <obo:BFO_0000050 rdf:resource="#Hebrews"/>
+  <obo:RO_0000053 rdf:resource="#HebrewStateTheocracyRole"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HebrewState</rdfs:label>
 </owl:Class>
 
@@ -36883,6 +36884,30 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EqualityOfRightQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#Theocracy">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Theocracy</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#Monarchy">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Monarchy</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#Aristocracy">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Aristocracy</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PopularState">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PopularState</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -40553,6 +40578,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodSovereigntyOverHebrewsRoleInstance</rdfs:label>
 </owl:NamedIndividual>
 
+<owl:NamedIndividual rdf:about="#CovenantFormationProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000055 rdf:resource="#EqualRightToConsultGod"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CovenantFormationProcess</rdfs:label>
+</owl:NamedIndividual>
+
 <owl:NamedIndividual rdf:about="#ThinkingThingRole">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
   <obo:RO_0000052 rdf:resource="#Speaker"/>
@@ -41396,6 +41427,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BaruchScroll</rdfs:label>
 </owl:NamedIndividual>
 
+<owl:NamedIndividual rdf:about="#HebrewsElectionRoleInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <obo:RO_0000052 rdf:resource="#Hebrews"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HebrewsElectionRoleInstance</rdfs:label>
+</owl:NamedIndividual>
+
 <owl:NamedIndividual rdf:about="#HistoryOfNatureCompilingProcess">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <obo:RO_0000057 rdf:resource="#HistoryOfNature"/>
@@ -42158,12 +42195,6 @@
 <owl:NamedIndividual rdf:about="#SonConsequences">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SonConsequences</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#HebrewsElectionRoleInstance">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
-  <obo:RO_0000052 rdf:resource="#Hebrews"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HebrewsElectionRoleInstance</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#IntellectualLoveEternalityQualityInstance">
@@ -54497,10 +54528,10 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">InitialCovenant</rdfs:label>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#CovenantFormationProcess">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <obo:BFO_0000055 rdf:resource="#EqualRightToConsultGod"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CovenantFormationProcess</rdfs:label>
+<owl:NamedIndividual rdf:about="#HebrewStateTheocracyRole">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <work3:type rdf:resource="#Theocracy"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HebrewStateTheocracyRole</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
