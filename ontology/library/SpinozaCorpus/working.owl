@@ -8503,6 +8503,7 @@
   <obo:RO_0000056 rdf:resource="#ConfusedPerceptionOfGodsMindProcess"/>
   <obo:BFO_0000054 rdf:resource="#PreachingProcess"/>
   <work:subClassOf rdf:resource="#_:x1"/>
+  <work:subClassOf rdf:resource="#_:x2"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Prophet</rdfs:label>
 </owl:Class>
 
@@ -34575,16 +34576,34 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AppearanceOfJusticeSeeking</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#EmbellishmentOfDeedsProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EmbellishmentOfDeedsProcess</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#Wrongdoer">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Wrongdoer</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#EmbellishmentOfDeedsProcess">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EmbellishmentOfDeedsProcess</rdfs:label>
+<owl:Class rdf:about="#PropheticImaginativePower">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PropheticImaginativePower</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PropheticIntellectualPower">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PropheticIntellectualPower</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ProphetLacksIntellectualPowerQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ProphetLacksIntellectualPowerQuality</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
@@ -38958,6 +38977,12 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <obo:BFO_0000055 rdf:resource="#ApostleLearnedManRoleInstance"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ApostleWritingProcess</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#MainPointsOfScripturalNarrative">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <obo:BFO_0000050 rdf:resource="#Scripture"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MainPointsOfScripturalNarrative</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#ExtendedSubstanceInfinityQuality">
@@ -51581,10 +51606,10 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TransmissionOfDivineLawProcess</rdfs:label>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#MainPointsOfScripturalNarrative">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
-  <obo:BFO_0000050 rdf:resource="#Scripture"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MainPointsOfScripturalNarrative</rdfs:label>
+<owl:NamedIndividual rdf:about="#PropheticImaginativePowerInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work3:type rdf:resource="#PropheticImaginativePower"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PropheticImaginativePowerInstance</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
