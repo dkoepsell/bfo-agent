@@ -31752,6 +31752,8 @@
 
 <owl:Class rdf:about="#HebrewState">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000029"/>
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <RO_0000053 rdf:resource="#HebrewStateTheocraticGovernanceQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HebrewState</rdfs:label>
 </owl:Class>
 
@@ -36831,6 +36833,11 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GovernedByReasonDisposition</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#TheocraticGovernanceQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TheocraticGovernanceQuality</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -40470,6 +40477,13 @@
   <work3:type rdf:resource="#DominionOverAllThingsQuality"/>
   <obo:RO_0000052 rdf:resource="#God"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DominionOverAllThingsQualityInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#GodSovereigntyOverHebrewsRoleInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <work3:type rdf:resource="#SovereigntyRole"/>
+  <obo:RO_0000052 rdf:resource="#God"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodSovereigntyOverHebrewsRoleInstance</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#ThinkingThingRole">
@@ -54383,11 +54397,11 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">StatePreservationDependsOnSubjectDispositions</rdfs:label>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#GodSovereigntyOverHebrewsRoleInstance">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
-  <work3:type rdf:resource="#SovereigntyRole"/>
-  <obo:RO_0000052 rdf:resource="#God"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodSovereigntyOverHebrewsRoleInstance</rdfs:label>
+<owl:NamedIndividual rdf:about="#HebrewStateTheocraticGovernanceQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work3:type rdf:resource="#TheocraticGovernanceQuality"/>
+  <RO_0000052 rdf:resource="#HebrewState"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HebrewStateTheocraticGovernanceQuality</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
