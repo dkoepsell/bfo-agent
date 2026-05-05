@@ -36913,6 +36913,18 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ControlRole</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#CourtierRole">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CourierRole</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#AdministratorRole">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AdministratorRole</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -54545,16 +54557,51 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DwellingPlaceOfGod</rdfs:label>
 </owl:NamedIndividual>
 
+<owl:NamedIndividual rdf:about="#CommunityControlRoleInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <obo:RO_0000052 rdf:resource="#Community"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CommunityControlRoleInstance</rdfs:label>
+</owl:NamedIndividual>
+
 <owl:NamedIndividual rdf:about="#Community">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
   <obo:RO_0000053 rdf:resource="#CommunityControlRoleInstance"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Community</rdfs:label>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#CommunityControlRoleInstance">
+<owl:NamedIndividual rdf:about="#Levites">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <obo:RO_0000053 rdf:resource="#LevitesCourtierRoleInstance"/>
+  <obo:RO_0000053 rdf:resource="#LevitesAdministratorRoleInstance"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Levites</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#LevitesCourtierRoleInstance">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
-  <obo:RO_0000052 rdf:resource="#Community"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CommunityControlRoleInstance</rdfs:label>
+  <obo:RO_0000052 rdf:resource="#Levites"/>
+  <obo:BFO_0000054 rdf:resource="#LeviteSelectionProcess"/>
+  <work3:type rdf:resource="#CourtierRole"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LevitesCourtierRoleInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#LevitesAdministratorRoleInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <obo:RO_0000052 rdf:resource="#Levites"/>
+  <obo:BFO_0000054 rdf:resource="#LeviteSelectionProcess"/>
+  <work3:type rdf:resource="#AdministratorRole"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LevitesAdministratorRoleInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#DivineCourt">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000029"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivineCourt</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#LeviteSelectionProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#Levites"/>
+  <obo:RO_0000057 rdf:resource="#God"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LeviteSelectionProcess</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
