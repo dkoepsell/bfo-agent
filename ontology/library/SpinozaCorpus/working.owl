@@ -4889,6 +4889,7 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#HumanKnowledge"/>
+  <obo:RO_0000053 rdf:resource="#GiftOfGodRoleInstance"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">KnowledgeOfGod</rdfs:label>
 </owl:Class>
 
@@ -34787,6 +34788,18 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">KnowledgeByName</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#GiftOfGodRole">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GiftOfGodRole</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#CommandOfGodRole">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CommandOfGodRole</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -49270,6 +49283,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Patriarchs</rdfs:label>
 </owl:NamedIndividual>
 
+<owl:NamedIndividual rdf:about="#PatriarchsLackOfKnowledgeByYahwehDisposition">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <RO_0000052 rdf:resource="#Patriarchs"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PatriarchsLackOfKnowledgeByYahwehDisposition</rdfs:label>
+</owl:NamedIndividual>
+
 <owl:NamedIndividual rdf:about="#SacrificialCustom">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SacrificialCustom</rdfs:label>
@@ -51931,10 +51950,16 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">InequalityOfKnowledgeOfGodAmongFaithfulQuality</rdfs:label>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#PatriarchsLackOfKnowledgeByYahwehDisposition">
+<owl:NamedIndividual rdf:about="#GiftOfGodRoleInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <obo:RO_0000052 rdf:resource="#KnowledgeOfGod"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GiftOfGodRoleInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#KnowledgeOfGodIsGiftDisposition">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <RO_0000052 rdf:resource="#Patriarchs"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PatriarchsLackOfKnowledgeByYahwehDisposition</rdfs:label>
+  <obo:RO_0000052 rdf:resource="#KnowledgeOfGod"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">KnowledgeOfGodIsGiftDisposition</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
