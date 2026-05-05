@@ -48725,9 +48725,25 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WritingOfDeuteronomyProcess</rdfs:label>
 </owl:NamedIndividual>
 
+<owl:NamedIndividual rdf:about="#WritingOfHistoryProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#Ezra"/>
+  <obo:RO_0000057 rdf:resource="#HistoryOfHebrewNation"/>
+  <obo:BFO_0000055 rdf:resource="#EzraAuthorRole"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WritingOfHistoryProcess</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#EzraAuthorRole">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <obo:RO_0000052 rdf:resource="#Ezra"/>
+  <obo:BFO_0000054 rdf:resource="#WritingOfHistoryProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EzraAuthorRole</rdfs:label>
+</owl:NamedIndividual>
+
 <owl:NamedIndividual rdf:about="#BookOfDeuteronomy">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <obo:BFO_0000050 rdf:resource="#ExplanationAndRewordingRelation"/>
+  <obo:BFO_0000050 rdf:resource="#LargerHistoricalNarrative"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BookOfDeuteronomy</rdfs:label>
 </owl:NamedIndividual>
 
@@ -48743,14 +48759,6 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HistoryOfHebrewNation</rdfs:label>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#WritingOfHistoryProcess">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <obo:RO_0000057 rdf:resource="#Ezra"/>
-  <obo:RO_0000057 rdf:resource="#HistoryOfHebrewNation"/>
-  <obo:BFO_0000055 rdf:resource="#EzraAuthorRole"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WritingOfHistoryProcess</rdfs:label>
-</owl:NamedIndividual>
-
 <owl:NamedIndividual rdf:about="#WorldOriginTemporalRegion">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000008"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WorldOriginTemporalRegion</rdfs:label>
@@ -48761,11 +48769,23 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DestructionOfJerusalemTemporalRegion</rdfs:label>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#EzraAuthorRole">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
-  <obo:RO_0000052 rdf:resource="#Ezra"/>
-  <obo:BFO_0000054 rdf:resource="#WritingOfHistoryProcess"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EzraAuthorRole</rdfs:label>
+<owl:NamedIndividual rdf:about="#LargerHistoricalNarrative">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LargerHistoricalNarrative</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#InsertionOfDeuteronomyProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#Ezra"/>
+  <obo:RO_0000057 rdf:resource="#BookOfDeuteronomy"/>
+  <obo:RO_0000057 rdf:resource="#LargerHistoricalNarrative"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">InsertionOfDeuteronomyProcess</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ChronologicalPlacement">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#BookOfDeuteronomy"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ChronologicalPlacement</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
