@@ -28834,6 +28834,7 @@
 <owl:Class rdf:about="#PropheticBookContent">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <obo:BFO_0000050 rdf:resource="#PropheticBook"/>
+  <obo:BFO_0000051 rdf:resource="#Prophecy"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PropheticBookContent</rdfs:label>
 </owl:Class>
 
@@ -33774,6 +33775,25 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TextualPresupposition</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#PropheticBookWriter">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Prophetic Book Writer</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ProphecyCollectionIncompleteness">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#PropheticBookContent"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ProphecyCollectionIncompleteness</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ProphecyCollectionProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#PropheticBookWriter"/>
+  <obo:RO_0000057 rdf:resource="#Prophecy"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ProphecyCollectionProcess</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -38519,6 +38539,13 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
   <obo:RO_0000057 rdf:resource="#SonConsequences"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Son</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ScribeRole">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <obo:RO_0000052 rdf:resource="#Baruch"/>
+  <obo:BFO_0000054 rdf:resource="#DictationProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ScribeRole</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#HistoryOfNature">
@@ -49737,13 +49764,6 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CollectionOfPassagesProcess</rdfs:label>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#ScribeRole">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
-  <obo:RO_0000052 rdf:resource="#Baruch"/>
-  <obo:BFO_0000054 rdf:resource="#DictationProcess"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ScribeRole</rdfs:label>
-</owl:NamedIndividual>
-
 <owl:NamedIndividual rdf:about="#Ezekiel">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <obo:RO_0000053 rdf:resource="#EzekielFragmentarynessQualityInstance"/>
@@ -49763,16 +49783,16 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BookOfEzekiel</rdfs:label>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#PreviousWritings">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PreviousWritings</rdfs:label>
-</owl:NamedIndividual>
-
 <owl:NamedIndividual rdf:about="#EzekielPresuppositionDisposition">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <obo:RO_0000052 rdf:resource="#BookOfEzekiel"/>
   <work3:type rdf:resource="#TextualPresupposition"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EzekielPresuppositionDisposition</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#PreviousWritings">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PreviousWritings</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
