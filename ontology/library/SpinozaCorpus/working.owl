@@ -33485,6 +33485,16 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NarrativeCollection</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#HistoricalSource">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HistoricalSource</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#CompiledFromDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CompiledFromDisposition</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -48926,6 +48936,19 @@
 <owl:NamedIndividual rdf:about="#OtherHistorianNarratives">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OtherHistorianNarratives</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#StoryOfJosephAndJacob">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">StoryOfJosephAndJacob</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#CompilingProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#StoryOfJosephAndJacob"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CompilingProcess</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
