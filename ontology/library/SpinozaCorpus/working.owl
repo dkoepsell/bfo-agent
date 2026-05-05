@@ -50228,6 +50228,7 @@
   <obo:RO_0000053 rdf:resource="#PhariseesCanonicalSelectionRoleInstance"/>
   <obo:RO_0000056 rdf:resource="#CanonSelectionProcess"/>
   <obo:BFO_0000050 rdf:resource="#SecondTemple"/>
+  <obo:RO_0000056 rdf:resource="#CanonizationProcess"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Pharisees</rdfs:label>
 </owl:NamedIndividual>
 
@@ -50251,24 +50252,17 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TheBooks</rdfs:label>
 </owl:NamedIndividual>
 
+<owl:NamedIndividual rdf:about="#BookAcceptanceProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#TheBooks"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BookAcceptanceProcess</rdfs:label>
+</owl:NamedIndividual>
+
 <owl:NamedIndividual rdf:about="#ThePharisees">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
   <obo:RO_0000053 rdf:resource="#PhariseesAuthoritativeRoleInstance"/>
   <obo:RO_0000056 rdf:resource="#PhariseesDecision"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ThePharisees</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#PhariseesDecision">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <obo:RO_0000057 rdf:resource="#ThePharisees"/>
-  <obo:BFO_0000055 rdf:resource="#PhariseesAuthoritativeRoleInstance"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PhariseesDecision</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#BookAcceptanceProcess">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <obo:RO_0000057 rdf:resource="#TheBooks"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BookAcceptanceProcess</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#PhariseesAuthoritativeRoleInstance">
@@ -50278,10 +50272,41 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PhariseesAuthoritativeRoleInstance</rdfs:label>
 </owl:NamedIndividual>
 
+<owl:NamedIndividual rdf:about="#PhariseesDecision">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#ThePharisees"/>
+  <obo:BFO_0000055 rdf:resource="#PhariseesAuthoritativeRoleInstance"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PhariseesDecision</rdfs:label>
+</owl:NamedIndividual>
+
 <owl:NamedIndividual rdf:about="#CanonicalAuthority">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <obo:BFO_0000050 rdf:resource="#PhariseesDecision"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CanonicalAuthority</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#OldTestamentCanon">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OldTestamentCanon</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#OldTestamentBooks">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <obo:BFO_0000050 rdf:resource="#OldTestamentCanon"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OldTestamentBooks</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#CanonizationProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000055 rdf:resource="#SacredTextCanonAuthority"/>
+  <obo:RO_0000057 rdf:resource="#OldTestamentCanon"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CanonizationProcess</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#SacredTextCanonAuthority">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <obo:RO_0000052 rdf:resource="#Pharisees"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SacredTextCanonAuthority</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
