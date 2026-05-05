@@ -35052,6 +35052,34 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GoodWorksGroundsRoleDisposition</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#FaithfulPerson">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FaithfulPerson</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#UnfaithfulPerson">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UnfaithfulPerson</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#WorksQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WorksQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#BadWorksQuality">
+  <rdfs:subClassOf rdf:resource="#WorksQuality"/>
+  <work:subClassOf rdf:resource="#WorksQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BadWorksQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#VerbalProfessionOfFaith">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">VerbalProfessionOfFaith</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
