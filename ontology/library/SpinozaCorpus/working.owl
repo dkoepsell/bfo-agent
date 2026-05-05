@@ -36767,6 +36767,18 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DefinitionInferenceProcess</rdfs:label>
 </owl:NamedIndividual>
 
+<owl:NamedIndividual rdf:about="#ScriptureRevelationQualityInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#Scripture"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ScriptureRevelationQualityInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ScriptureWordOfGodRoleInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <obo:RO_0000052 rdf:resource="#Scripture"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ScriptureWordOfGodRoleInstance</rdfs:label>
+</owl:NamedIndividual>
+
 <owl:NamedIndividual rdf:about="#ExtendedSubstanceInfinityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#SubstanceInfinityOrPerfectionQuality"/>
@@ -37275,16 +37287,9 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Son</rdfs:label>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#ScriptureRevelationQualityInstance">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <obo:RO_0000052 rdf:resource="#Scripture"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ScriptureRevelationQualityInstance</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#ScriptureWordOfGodRoleInstance">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
-  <obo:RO_0000052 rdf:resource="#Scripture"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ScriptureWordOfGodRoleInstance</rdfs:label>
+<owl:NamedIndividual rdf:about="#HistoryOfNature">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HistoryOfNature</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#Spouses">
@@ -47280,9 +47285,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NatureCompositionQuality</rdfs:label>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#HistoryOfNature">
+<owl:NamedIndividual rdf:about="#GreatestPartOfScripture">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HistoryOfNature</rdfs:label>
+  <obo:BFO_0000050 rdf:resource="#Scripture"/>
+  <work3:type rdf:resource="#HistoricalNarrative"/>
+  <work3:type rdf:resource="#Revelation"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GreatestPartOfScripture</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
