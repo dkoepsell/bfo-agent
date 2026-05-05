@@ -172,6 +172,7 @@
   <rdfs:subClassOf rdf:resource="#SubstanceNecessaryInfinityDisposition"/>
   <obo:RO_0000052 rdf:resource="#God"/>
   <work:subClassOf rdf:resource="#NecessityOfExistence"/>
+  <work:subClassOf rdf:resource="#ConatusDisposition"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LawFollowsFromNecessityAndPerfectionRelation</rdfs:label>
 </owl:Class>
 
@@ -35640,6 +35641,25 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SupremeRightExtentQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#ConatusDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:BFO_0000054 rdf:resource="#SelfPerseveranceProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConatusDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SelfPerseveranceProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SelfPerseveranceProcess</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#OwnPowerQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OwnPowerQuality</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -36264,6 +36284,7 @@
   <work3:type rdf:resource="#AppetiteByWhichOneActs"/>
   <work3:type rdf:resource="#AppetiteByWhichOneIsActedOn"/>
   <work3:type rdf:resource="#Conatus"/>
+  <work3:type rdf:resource="#ConatusDisposition"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConatusMentalDispositionInstance</rdfs:label>
 </owl:NamedIndividual>
 
@@ -36271,6 +36292,7 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <obo:BFO_0000055 rdf:resource="#ConatusMentalDispositionInstance"/>
   <obo:BFO_0000055 rdf:resource="#PowerToPersevereInBeing"/>
+  <work3:type rdf:resource="#SelfPerseveranceProcess"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PerseveranceInBeingProcess</rdfs:label>
 </owl:NamedIndividual>
 
@@ -53110,6 +53132,12 @@
   <work3:type rdf:resource="#NumericalIdentityQuality"/>
   <obo:RO_0000052 rdf:resource="#PowerOfGod"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PowerIdentityQualityInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ConatusAsSupremeNaturalLaw">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConatusAsSupremeNaturalLaw</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
