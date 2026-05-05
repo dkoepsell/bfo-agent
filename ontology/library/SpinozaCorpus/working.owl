@@ -31282,6 +31282,8 @@
 <owl:Class rdf:about="#RulerRole">
   <rdfs:subClassOf rdf:resource="#HumanNatureRole"/>
   <work:subClassOf rdf:resource="#HumanNatureRole"/>
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RulerRole</rdfs:label>
 </owl:Class>
 
@@ -31757,6 +31759,7 @@
   <obo:RO_0000053 rdf:resource="#CivilReligiousUnityQuality"/>
   <obo:BFO_0000050 rdf:resource="#Hebrews"/>
   <obo:RO_0000053 rdf:resource="#HebrewStateTheocracyRole"/>
+  <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000029"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HebrewState</rdfs:label>
 </owl:Class>
 
@@ -37035,6 +37038,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">QueryAuthorizationCondition</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#SuccessionDesignation">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SuccessionDesignationProcessClass</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -37506,6 +37515,7 @@
   <obo:BFO_0000050 rdf:resource="#ScriptureAuthorCollection"/>
   <obo:RO_0000053 rdf:resource="#MosesSoleRepresentativeRole"/>
   <obo:RO_0000053 rdf:resource="#MosesSupremeMajestyRoleInstance"/>
+  <obo:RO_0000056 rdf:resource="#SuccessionDesignationProcess"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Moses</rdfs:label>
 </owl:NamedIndividual>
 
@@ -54798,6 +54808,13 @@
   <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <RO_0000052 rdf:resource="#LeviteTribe"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DeprivationOfLandShareQuality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#SuccessionDesignationProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work3:type rdf:resource="#SuccessionDesignation"/>
+  <obo:BFO_0000055 rdf:resource="#AdministratorRole"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SuccessionDesignationProcess</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
