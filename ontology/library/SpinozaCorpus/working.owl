@@ -24274,6 +24274,7 @@
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
   <work:subClassOf rdf:resource="#ModificationBearer"/>
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">State</rdfs:label>
 </owl:Class>
 
@@ -31877,6 +31878,9 @@
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
   <obo:RO_0000052 rdf:resource="#SocialOrder"/>
   <obo:BFO_0000054 rdf:resource="#SovereigntyEstablishmentProcess"/>
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000052"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Sovereignty</rdfs:label>
 </owl:Class>
 
@@ -36077,6 +36081,11 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">InjusticeAct</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#RightHolder">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RightHolder</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#LegallyDueProperty">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
@@ -36089,9 +36098,24 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TrueInterpretationOfLaw</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#RightHolder">
+<owl:Class rdf:about="#Ally">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RightHolder</rdfs:label>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000052"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Ally</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#AllianceTreaty">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AllianceTreaty</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#NonHarmObligation">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000052"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NonHarmObligation</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
