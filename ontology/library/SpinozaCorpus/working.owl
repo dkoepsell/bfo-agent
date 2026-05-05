@@ -34933,6 +34933,11 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LovingOneNeighbor</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#UniversalAudienceIntendedQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UniversalAudienceIntendedQuality</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -39922,6 +39927,12 @@
 <owl:NamedIndividual rdf:about="#MatterAsExtendedSubstance">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MatterAsExtendedSubstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#LawConsistsInLovingNeighborQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#TheLaw"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LawConsistsInLovingNeighborQuality</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#FatherSoul">
@@ -52221,10 +52232,11 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MentalityDiversity</rdfs:label>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#LawConsistsInLovingNeighborQuality">
+<owl:NamedIndividual rdf:about="#UniversalAudienceIntendedQualityInstance">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <obo:RO_0000052 rdf:resource="#TheLaw"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LawConsistsInLovingNeighborQuality</rdfs:label>
+  <RO_0000052 rdf:resource="#Scripture"/>
+  <work3:type rdf:resource="#UniversalAudienceIntendedQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UniversalAudienceIntendedQualityInstance</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
