@@ -38014,6 +38014,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LifetimeOfMoses</rdfs:label>
 </owl:NamedIndividual>
 
+<owl:NamedIndividual rdf:about="#WritingOfAccountProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#Moses"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WritingOfAccountProcess</rdfs:label>
+</owl:NamedIndividual>
+
 <owl:NamedIndividual rdf:about="#FatherSoul">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000020"/>
   <obo:RO_0000052 rdf:resource="#Father"/>
@@ -48237,10 +48243,9 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AccountOfWarAgainstAmalek</rdfs:label>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#WritingOfAccountProcess">
+<owl:NamedIndividual rdf:about="#WarAgainstAmalek">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <obo:RO_0000057 rdf:resource="#Moses"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WritingOfAccountProcess</rdfs:label>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WarAgainstAmalek</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#DivineCommandRole">
@@ -48250,9 +48255,9 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivineCommandRole</rdfs:label>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#WarAgainstAmalek">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WarAgainstAmalek</rdfs:label>
+<owl:NamedIndividual rdf:about="#BooksWrittenByMoses">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BooksWrittenByMoses</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
