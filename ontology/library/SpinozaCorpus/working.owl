@@ -8463,6 +8463,7 @@
   <obo:RO_0000053 rdf:resource="#PropheticImaginationVividnessQuality"/>
   <obo:RO_0000053 rdf:resource="#ProphetConfusedPerceptionQualityInstance"/>
   <obo:RO_0000056 rdf:resource="#ConfusedPerceptionOfGodsMindProcess"/>
+  <obo:BFO_0000054 rdf:resource="#PreachingProcess"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Prophet</rdfs:label>
 </owl:Class>
 
@@ -33183,6 +33184,43 @@
   <rdfs:subClassOf rdf:resource="#DivineAttribute"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RestrictedGrantingToFaithfulQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#Apostle">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <obo:BFO_0000054 rdf:resource="#PreachingProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Apostle</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#Faithful">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Faithful</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#Impious">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Impious</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PreachingProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#Prophet"/>
+  <obo:RO_0000057 rdf:resource="#Apostle"/>
+  <obo:RO_0000057 rdf:resource="#Faithful"/>
+  <obo:RO_0000057 rdf:resource="#Impious"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PreachingProcess</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PropheticPreachingProcess">
+  <rdfs:subClassOf rdf:resource="#PreachingProcess"/>
+  <work:subClassOf rdf:resource="#PreachingProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PropheticPreachingProcess</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ApostolicPreachingProcess">
+  <rdfs:subClassOf rdf:resource="#PreachingProcess"/>
+  <work:subClassOf rdf:resource="#PreachingProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ApostolicPreachingProcess</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
