@@ -34749,6 +34749,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AbsenceOfCommandObligationQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#DegreeOfKnowledgeOfGodQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DegreeOfKnowledgeOfGodQuality</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -51881,6 +51887,13 @@
   <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
   <RO_0000052 rdf:resource="#God"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodConsideredInRelationToCreatedThingsRole</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#InequalityOfKnowledgeOfGodAmongFaithfulQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work3:type rdf:resource="#DegreeOfKnowledgeOfGodQuality"/>
+  <obo:RO_0000052 rdf:resource="#TheFaithful"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">InequalityOfKnowledgeOfGodAmongFaithfulQuality</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
