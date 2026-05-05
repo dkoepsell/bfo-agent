@@ -33387,6 +33387,16 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">APrioriAssumption</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#ImpassibilityQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ImpassibilityQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PassionAbsenceQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PassionAbsenceQuality</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -33735,6 +33745,7 @@
   <obo:RO_0000053 rdf:resource="#GodJealousyQualityInstance"/>
   <obo:RO_0000053 rdf:resource="#OmnipotenceQualityInstance"/>
   <obo:RO_0000053 rdf:resource="#WorshipRoleInstance"/>
+  <obo:RO_0000053 rdf:resource="#GodImpassibilityQualityInstance"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">God</rdfs:label>
 </owl:NamedIndividual>
 
@@ -48073,6 +48084,14 @@
   <RO_0000052 rdf:resource="#Spinoza"/>
   <obo:BFO_0000054 rdf:resource="#SpinozaRejectionProcess"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SpinozaRejectionOfScriptureConsistency</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#GodImpassibilityQualityInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work3:type rdf:resource="#ImpassibilityQuality"/>
+  <work3:type rdf:resource="#PassionAbsenceQuality"/>
+  <obo:RO_0000052 rdf:resource="#God"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodImpassibilityQualityInstance</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
