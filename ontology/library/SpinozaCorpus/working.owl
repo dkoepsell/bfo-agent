@@ -31881,6 +31881,7 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000052"/>
+  <obo:RO_0000052 rdf:resource="#State"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Sovereignty</rdfs:label>
 </owl:Class>
 
@@ -36116,6 +36117,30 @@
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000052"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NonHarmObligation</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#Enemy">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <work:subClassOf rdf:resource="#LivingOutsideStateTerritory"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Enemy</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SovereigntyRecognitionDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SovereigntyRecognitionDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#StateTerritory">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000029"/>
+  <obo:BFO_0000050 rdf:resource="#State"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">StateTerritory</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#LivingOutsideStateTerritory">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LivingOutsideStateTerritory</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
