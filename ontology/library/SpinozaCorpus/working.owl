@@ -34928,6 +34928,11 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TeachingObedienceProcess</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#LovingOneNeighbor">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LovingOneNeighbor</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -39185,6 +39190,7 @@
 
 <owl:NamedIndividual rdf:about="#TheLaw">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <obo:RO_0000053 rdf:resource="#LawConsistsInLovingNeighborQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TheLaw</rdfs:label>
 </owl:NamedIndividual>
 
@@ -39326,6 +39332,13 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <obo:BFO_0000051 rdf:resource="#SimpleMoral"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ScriptureTeachingProcess</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#TeachingObedienceDispositionInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:RO_0000052 rdf:resource="#Scripture"/>
+  <obo:BFO_0000054 rdf:resource="#TeachingObedienceProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TeachingObedienceDispositionInstance</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#IntentionToNarrateJewishHistory">
@@ -52208,11 +52221,10 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MentalityDiversity</rdfs:label>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#TeachingObedienceDispositionInstance">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <obo:RO_0000052 rdf:resource="#Scripture"/>
-  <obo:BFO_0000054 rdf:resource="#TeachingObedienceProcess"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TeachingObedienceDispositionInstance</rdfs:label>
+<owl:NamedIndividual rdf:about="#LawConsistsInLovingNeighborQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#TheLaw"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LawConsistsInLovingNeighborQuality</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
