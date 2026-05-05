@@ -33868,6 +33868,7 @@
   <obo:RO_0000056 rdf:resource="#MosesWritingProcess"/>
   <obo:RO_0000053 rdf:resource="#WriterRole"/>
   <RO_0000056 rdf:resource="#WritingOfBookProcess"/>
+  <obo:RO_0000056 rdf:resource="#WritingOfBookProcess"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Moses</rdfs:label>
 </owl:NamedIndividual>
 
@@ -36880,6 +36881,70 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FormalExistenceNecessitationFromIdea</rdfs:label>
 </owl:NamedIndividual>
 
+<owl:NamedIndividual rdf:about="#MosesLegislatorRole">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <obo:RO_0000052 rdf:resource="#Moses"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MosesLegislatorRole</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#MosesDivinePowerRoleInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <obo:RO_0000052 rdf:resource="#Moses"/>
+  <obo:BFO_0000054 rdf:resource="#PersuasionByEvidence"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MosesDivinePowerRoleInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#MosesDivineAuthorityRole">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <obo:RO_0000052 rdf:resource="#Moses"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MosesDivineAuthorityRole</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#MosesLeadershipRole">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <obo:RO_0000052 rdf:resource="#Moses"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MosesLeadershipRole</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#MosesAuthorshipRoleOfPentateuch">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <work3:type rdf:resource="#AuthorshipRole"/>
+  <obo:RO_0000052 rdf:resource="#Pentateuch"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MosesAuthorshipRoleOfPentateuch</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#LifetimeOfMoses">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000038"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LifetimeOfMoses</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#WritingOfAccountProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#Moses"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WritingOfAccountProcess</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#MosesWritingProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#Moses"/>
+  <obo:BFO_0000055 rdf:resource="#WriterRole"/>
+  <obo:RO_0000057 rdf:resource="#WarAgainstAmalek"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WritingProcess</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#WriterRole">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <obo:RO_0000052 rdf:resource="#Moses"/>
+  <obo:BFO_0000054 rdf:resource="#MosesWritingProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WriterRole</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#FortiethYearAfterDepartureFromEgypt">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000038"/>
+  <obo:BFO_0000050 rdf:resource="#DepartureFromEgypt"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FortiethYearAfterDepartureFromEgypt</rdfs:label>
+</owl:NamedIndividual>
+
 <owl:NamedIndividual rdf:about="#CollectionOfEternalModesOfThinking">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
   <obo:BFO_0000050 rdf:resource="#InfiniteIntellectOfGod"/>
@@ -37498,12 +37563,6 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Pentateuch</rdfs:label>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#MosesDivineAuthorityRole">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
-  <obo:RO_0000052 rdf:resource="#Moses"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MosesDivineAuthorityRole</rdfs:label>
-</owl:NamedIndividual>
-
 <owl:NamedIndividual rdf:about="#HistoryOfNatureCompilingProcess">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <obo:RO_0000057 rdf:resource="#HistoryOfNature"/>
@@ -38003,58 +38062,6 @@
 <owl:NamedIndividual rdf:about="#MatterAsExtendedSubstance">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MatterAsExtendedSubstance</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#MosesLegislatorRole">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
-  <obo:RO_0000052 rdf:resource="#Moses"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MosesLegislatorRole</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#MosesDivinePowerRoleInstance">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
-  <obo:RO_0000052 rdf:resource="#Moses"/>
-  <obo:BFO_0000054 rdf:resource="#PersuasionByEvidence"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MosesDivinePowerRoleInstance</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#MosesLeadershipRole">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
-  <obo:RO_0000052 rdf:resource="#Moses"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MosesLeadershipRole</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#MosesAuthorshipRoleOfPentateuch">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
-  <work3:type rdf:resource="#AuthorshipRole"/>
-  <obo:RO_0000052 rdf:resource="#Pentateuch"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MosesAuthorshipRoleOfPentateuch</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#LifetimeOfMoses">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000038"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LifetimeOfMoses</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#WritingOfAccountProcess">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <obo:RO_0000057 rdf:resource="#Moses"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WritingOfAccountProcess</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#MosesWritingProcess">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <obo:RO_0000057 rdf:resource="#Moses"/>
-  <obo:BFO_0000055 rdf:resource="#WriterRole"/>
-  <obo:RO_0000057 rdf:resource="#WarAgainstAmalek"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WritingProcess</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#WriterRole">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
-  <obo:RO_0000052 rdf:resource="#Moses"/>
-  <obo:BFO_0000054 rdf:resource="#MosesWritingProcess"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WriterRole</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#FatherSoul">
@@ -48348,12 +48355,6 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ContentOfBookOfMoses</rdfs:label>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#FortiethYearAfterDepartureFromEgypt">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000038"/>
-  <obo:BFO_0000050 rdf:resource="#DepartureFromEgypt"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FortiethYearAfterDepartureFromEgypt</rdfs:label>
-</owl:NamedIndividual>
-
 <owl:NamedIndividual rdf:about="#DepartureFromEgypt">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DepartureFromEgypt</rdfs:label>
@@ -48387,6 +48388,29 @@
   <obo:RO_0000057 rdf:resource="#Joshua"/>
   <obo:RO_0000057 rdf:resource="#BookOfTheLaw"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AdditionOfCovenantAccountProcess</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#BookContainingMosesAndJoshuaCovenants">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BookContainingMosesAndJoshuaCovenants</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#MosesCovenant">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <obo:BFO_0000050 rdf:resource="#BookContainingMosesAndJoshuaCovenants"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MosesCovenant</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#JoshuaCovenant">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <obo:BFO_0000050 rdf:resource="#BookContainingMosesAndJoshuaCovenants"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">JoshuaCovenant</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#PerishingOfBook">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#BookContainingMosesAndJoshuaCovenants"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PerishingOfBook</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
