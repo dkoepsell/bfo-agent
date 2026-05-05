@@ -29610,6 +29610,7 @@
 
 <owl:Class rdf:about="#Salvation">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Salvation</rdfs:label>
 </owl:Class>
 
@@ -34667,6 +34668,7 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="#LoveOfNeighbor"/>
+  <obo:BFO_0000054 rdf:resource="#JustLiving"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ObedienceToGod</rdfs:label>
 </owl:Class>
 
@@ -35122,6 +35124,30 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LovingKindnessTowardNeighbor</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#JustLiving">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000055 rdf:resource="#ObedienceToGod"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">JustLiving</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ControlledByPleasures">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:BFO_0000054 rdf:resource="#PleasureBondageRealizationProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ControlledByPleasures</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#Perdition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Perdition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PleasureBondageRealizationProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000055 rdf:resource="#ControlledByPleasures"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PleasureBondageRealizationProcess</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
