@@ -12348,6 +12348,11 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ClearAndDistinctUnderstandingOfNatureProcess</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#WorkOfNature">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WorkOfNature</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#MindDeceptionAbsenceQuality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
@@ -32187,11 +32192,6 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EternalVolition</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#WorkOfNature">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WorkOfNature</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#KnowledgeOfGodElevationQuality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <obo:RO_0000052 rdf:resource="#Speaker"/>
@@ -32215,6 +32215,35 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MiracleExpressesLimitedPowerRelation</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#InfiniteExtensionToThings">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#SubstanceInfinityQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">InfiniteExtensionToThings</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DivineInfinityIndicationQuality">
+  <rdfs:subClassOf rdf:resource="#DivineAttribute"/>
+  <work:subClassOf rdf:resource="#SubstanceInfinityOrPerfectionQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivinInfinityIndicationQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DivineEternityIndicationQuality">
+  <rdfs:subClassOf rdf:resource="#DivineAttribute"/>
+  <work:subClassOf rdf:resource="#SubstanceExistenceEternalityQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivineEternityIndicationQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DivineImmutabilityIndicationQuality">
+  <rdfs:subClassOf rdf:resource="#DivineAttribute"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivineImmutabilityIndicationQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DivineImmutabilityQuality">
+  <rdfs:subClassOf rdf:resource="#DivineAttribute"/>
+  <work:subClassOf rdf:resource="#EssentialExistenceQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivineImmutabilityQuality</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
