@@ -30192,6 +30192,8 @@
 
 <owl:Class rdf:about="#OmnipresenceQuality">
   <rdfs:subClassOf rdf:resource="#DivineAttribute"/>
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OmnipresenceQuality</rdfs:label>
 </owl:Class>
 
@@ -35098,6 +35100,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SupremeMercifulnessQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#UniversalAccessibilityDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UniversalAccessibilityDisposition</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -35465,6 +35473,8 @@
   <obo:RO_0000053 rdf:resource="#SupremeBeingQualityInstance"/>
   <obo:RO_0000053 rdf:resource="#SupremeJustnessQualityInstance"/>
   <obo:RO_0000053 rdf:resource="#SupremeMercifulnessQualityInstance"/>
+  <obo:RO_0000053 rdf:resource="#OmnipresenceQualityInstance"/>
+  <obo:RO_0000053 rdf:resource="#UniversalAccessibilityDispositionInstance"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">God</rdfs:label>
 </owl:NamedIndividual>
 
@@ -52427,6 +52437,20 @@
   <RO_0000052 rdf:resource="#Scripture"/>
   <work3:type rdf:resource="#UniversalAudienceIntendedQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UniversalAudienceIntendedQualityInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#OmnipresenceQualityInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work3:type rdf:resource="#OmnipresenceQuality"/>
+  <obo:RO_0000052 rdf:resource="#God"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OmnipresenceQualityInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#UniversalAccessibilityDispositionInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work3:type rdf:resource="#UniversalAccessibilityDisposition"/>
+  <obo:RO_0000052 rdf:resource="#God"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UniversalAccessibilityDispositionInstance</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
