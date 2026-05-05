@@ -33864,6 +33864,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SacrednessQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#MindDependentQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindDependentQuality</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#AuthoringNation">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AuthoringNation</rdfs:label>
@@ -34324,16 +34330,28 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ProfanityQuality</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#MindDependentQuality">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindDependentQuality</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#IntrinsicPropertyAbsenceQuality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IntrinsicPropertyAbsenceQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DefiniteMeaning">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DefiniteMeaning</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#UseOfWord">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UseOfWord</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#MeaningGroundedInUseDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:BFO_0000054 rdf:resource="#UseOfWord"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MeaningGroundedInUseDisposition</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
