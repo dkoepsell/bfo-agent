@@ -4709,6 +4709,11 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Animal</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#Birth">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Birth</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#GovernanceByIntellect">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
@@ -36310,16 +36315,24 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ViolationOfRightAbsenceQuality</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#Birth">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Birth</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#NatalFreedomQuality">
   <rdfs:subClassOf rdf:resource="#Freedom"/>
   <work:subClassOf rdf:resource="#Freedom"/>
   <obo:RO_0000052 rdf:resource="#Human"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NatalFreedomQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ExplicitPromiseToObeyGod">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ExplicitPromiseToObeyGod</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ObedienceCommitmentDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:BFO_0000054 rdf:resource="#ExplicitPromiseToObeyGod"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ObedienceCommitmentDisposition</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
@@ -53833,6 +53846,13 @@
   <work3:type rdf:resource="#EternalTruth"/>
   <obo:BFO_0000050 rdf:resource="#HumanNature"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LawOfHumanNature</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#DivineLawOriginationProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work3:type rdf:resource="#ExplicitPromiseToObeyGod"/>
+  <obo:RO_0000057 rdf:resource="#God"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivineLawOriginationProcess</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
