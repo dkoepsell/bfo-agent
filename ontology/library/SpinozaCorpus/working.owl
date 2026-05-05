@@ -33665,6 +33665,11 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MarriageProcess</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#BondageQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BondageQuality</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -49368,6 +49373,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Jacob</rdfs:label>
 </owl:NamedIndividual>
 
+<owl:NamedIndividual rdf:about="#MarriageToLeah">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work3:type rdf:resource="#MarriageProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MarriageToLeah</rdfs:label>
+</owl:NamedIndividual>
+
 <owl:NamedIndividual rdf:about="#Leah">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
   <obo:RO_0000056 rdf:resource="#MarriageToLeah"/>
@@ -49381,10 +49392,32 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AgeQualityOfJacob</rdfs:label>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#MarriageToLeah">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <work3:type rdf:resource="#MarriageProcess"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MarriageToLeah</rdfs:label>
+<owl:NamedIndividual rdf:about="#HebrewBondageAndFreedomYearsContent">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <obo:BFO_0000050 rdf:resource="#Scripture"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HebrewBondageAndFreedomYearsContent</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#HebrewBondagePeriod">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000008"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HebrewBondagePeriod</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#HebrewFreedomPeriod">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000008"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HebrewFreedomPeriod</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#HebrewBondageQualityInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#Hebrews"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HebrewBondageQualityInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#HebrewFreedomQualityInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#Hebrews"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HebrewFreedomQualityInstance</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
