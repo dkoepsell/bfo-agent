@@ -34853,6 +34853,7 @@
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <obo:BFO_0000054 rdf:resource="#ThinkingAboutGod"/>
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Faith</rdfs:label>
 </owl:Class>
 
@@ -35302,6 +35303,52 @@
   <obo:BFO_0000050 rdf:resource="#Scripture"/>
   <obo:BFO_0000050 rdf:resource="#Revelation"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ScripturalLanguage</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#HereticCondemnationCriterion">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HereticCondemnationCriterion</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ObstinacyEncouragingOpinion">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work:subClassOf rdf:resource="#HereticCondemnationCriterion"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ObstinacyEncouragingOpinion</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#HatredEncouragingOpinion">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work:subClassOf rdf:resource="#HereticCondemnationCriterion"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HatredEncouragingOpinion</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#QuarrelsEncouragingOpinion">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work:subClassOf rdf:resource="#HereticCondemnationCriterion"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">QuarrelsEncouragingOpinion</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#AngerEncouragingOpinion">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work:subClassOf rdf:resource="#HereticCondemnationCriterion"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AngerEncouragingOpinion</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#HeresyCondemnationProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#Faith"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HeresyCondemnationProcess</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#HereticRole">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HereticRole</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#TeachingOfHarmfulOpinionProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#FaithHereticCondemnationCriterionInstance"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TeachingOfHarmfulOpinionProcess</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
@@ -52683,6 +52730,12 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FaithRequiresPietyMoreThanTruthRelation</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#FaithHereticCondemnationCriterionInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work3:type rdf:resource="#HereticCondemnationCriterion"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FaithHereticCondemnationCriterionInstance</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
