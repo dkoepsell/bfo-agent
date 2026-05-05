@@ -35773,6 +35773,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NeglectOfPerceivedGoodProcess</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#InscribedInHumanNatureQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">InscribedInHumanNatureQuality</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -53268,6 +53274,13 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UniversalLawOfHumanNature</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#LawOfHumanNature">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work3:type rdf:resource="#EternalTruth"/>
+  <obo:BFO_0000050 rdf:resource="#HumanNature"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LawOfHumanNature</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
