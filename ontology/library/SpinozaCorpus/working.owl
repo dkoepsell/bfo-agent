@@ -34918,6 +34918,16 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AccommodationToCommonUnderstanding</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#TeachingObedience">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TeachingObedience</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#TeachingObedienceProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TeachingObedienceProcess</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -36417,6 +36427,7 @@
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
   <obo:RO_0000057 rdf:resource="#ScriptureTeachingProcess"/>
+  <obo:RO_0000053 rdf:resource="#TeachingObedienceDispositionInstance"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Scripture</rdfs:label>
 </owl:NamedIndividual>
 
@@ -38613,6 +38624,11 @@
   <obo:RO_0000057 rdf:resource="#Moses"/>
   <obo:RO_0000057 rdf:resource="#FutureGenerations"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CommandToPreserveSongProcess</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ScriptureAuthorCollection">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ScriptureAuthorCollection</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#FortiethYearAfterDepartureFromEgypt">
@@ -52181,9 +52197,9 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ScriptureAuthorship</rdfs:label>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#ScriptureAuthorCollection">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ScriptureAuthorCollection</rdfs:label>
+<owl:NamedIndividual rdf:about="#ScriptureAuthorshipTemporalExtent">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000008"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ScriptureAuthorshipTemporalExtent</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#MentalityDiversity">
@@ -52192,9 +52208,11 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MentalityDiversity</rdfs:label>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#ScriptureAuthorshipTemporalExtent">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000008"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ScriptureAuthorshipTemporalExtent</rdfs:label>
+<owl:NamedIndividual rdf:about="#TeachingObedienceDispositionInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:RO_0000052 rdf:resource="#Scripture"/>
+  <obo:BFO_0000054 rdf:resource="#TeachingObedienceProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TeachingObedienceDispositionInstance</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
