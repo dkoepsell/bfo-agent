@@ -33845,6 +33845,11 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ActualAuthorshipRole</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#TemporallyAfterRelation">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TemporallyAfterRelation</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -49738,6 +49743,7 @@
 <owl:NamedIndividual rdf:about="#JudasMaccabee">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
   <obo:RO_0000056 rdf:resource="#TempleRestorationProcess"/>
+  <obo:RO_0000056 rdf:resource="#RestorationOfTempleWorship"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">JudasMaccabee</rdfs:label>
 </owl:NamedIndividual>
 
@@ -49908,11 +49914,13 @@
 <owl:NamedIndividual rdf:about="#BookOfEsther">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <isConnectedWith rdf:resource="#BookOfEzra"/>
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BookOfEsther</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#BookOfNehemiah">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BookOfNehemiah</rdfs:label>
 </owl:NamedIndividual>
 
@@ -50002,6 +50010,39 @@
   <work3:type rdf:resource="#AuthorshipAttributionQuality"/>
   <obo:RO_0000052 rdf:resource="#BookOfNehemiah"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NehemiahAttributionQuality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#RestorationOfTempleWorship">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RestorationOfTempleWorship</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#WritingOfBookOfDanielProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#BookOfDaniel"/>
+  <occursAfter rdf:resource="#RestorationOfTempleWorship"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WritingOfBookOfDanielProcess</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#WritingOfBookOfEzraProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#BookOfEzra"/>
+  <occursAfter rdf:resource="#RestorationOfTempleWorship"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WritingOfBookOfEzraProcess</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#WritingOfBookOfEstherProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#BookOfEsther"/>
+  <occursAfter rdf:resource="#RestorationOfTempleWorship"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WritingOfBookOfEstherProcess</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#WritingOfBookOfNehemiahProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#BookOfNehemiah"/>
+  <occursAfter rdf:resource="#RestorationOfTempleWorship"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WritingOfBookOfNehemiahProcess</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
