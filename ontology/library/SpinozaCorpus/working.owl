@@ -1941,6 +1941,8 @@
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SupremePower</rdfs:label>
 </owl:Class>
 
@@ -35436,6 +35438,11 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ObedienceProcess</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#StateAuthority">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">StateAuthority</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#GoalOfPhilosophyRole">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
@@ -36658,16 +36665,28 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ReservationDisposition</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#StateAuthority">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">StateAuthority</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#SubjectRoleConferralDisposition">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <obo:RO_0000052 rdf:resource="#ObedienceProcess"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SubjectRoleConferralDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#StateRight">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">StateRight</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ComplianceWithCommand">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000055 rdf:resource="#StateRight"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ComplianceWithCommand</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SovereignCommand">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SovereignCommand</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
