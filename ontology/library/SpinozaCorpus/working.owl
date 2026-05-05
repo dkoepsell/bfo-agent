@@ -35189,6 +35189,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LovingJustice</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#SufficientConditionForFaithfulness">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:RO_0000052 rdf:resource="#FaithfulPerson"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SufficientConditionForFaithfulness</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#LovingKindness">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="#SufficientConditionForFaithfulness"/>
@@ -35201,10 +35207,21 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Faithfulness</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#SufficientConditionForFaithfulness">
+<owl:Class rdf:about="#PiousDoctrine">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PiousDoctrine</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#MovesHeartToObedienceQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#PiousDoctrine"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MovesHeartToObedienceQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ObedienceDisposition">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <obo:RO_0000052 rdf:resource="#FaithfulPerson"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SufficientConditionForFaithfulness</rdfs:label>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ObedienceDisposition</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
@@ -52574,6 +52591,12 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="#EssentialExistenceQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WorshipEssenceConstraint</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#FaithRequiresPiousDoctrine">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work3:type rdf:resource="#Faith"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FaithRequiresPiousDoctrine</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
