@@ -8601,6 +8601,11 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ReligiousConversionProcess</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#ObedientActionProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ObedientActionProcess</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#DivineRevelationProcess">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <obo:RO_0000057 rdf:resource="#God"/>
@@ -34872,6 +34877,11 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Impiety</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#SinfulActionProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SinfulActionProcess</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#PietyInharesInOpinionConditionally">
   <rdfs:subClassOf rdf:resource="#Piety"/>
   <work:subClassOf rdf:resource="#Piety"/>
@@ -34884,14 +34894,10 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ImpietyInharesInOpinionConditionally</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#ObedientActionProcess">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ObedientActionProcess</rdfs:label>
-</owl:Class>
-
-<owl:Class rdf:about="#SinfulActionProcess">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SinfulActionProcess</rdfs:label>
+<owl:Class rdf:about="#DivineGiftDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivineGiftDisposition</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
@@ -52110,6 +52116,26 @@
   <obo:BFO_0000054 rdf:resource="#DivineAccommodationProcess"/>
   <work3:type rdf:resource="#DivineAccommodationDisposition"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodDivineAccommodationDispositionInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#TrueKnowledgeOfGod">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TrueKnowledgeOfGod</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#DivineGiftDispositionInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:RO_0000052 rdf:resource="#God"/>
+  <work3:type rdf:resource="#DivineGiftDisposition"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivineGiftDispositionInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#NotACommandQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#TrueKnowledgeOfGod"/>
+  <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NotACommandQuality</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
