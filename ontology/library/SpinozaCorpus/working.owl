@@ -3970,6 +3970,18 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PreservationProcess</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#Book">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Book</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#MeaningOfUtterance">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MeaningOfUtterance</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#SingularEssence">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <obo:RO_0000052 rdf:resource="#SingularThing"/>
@@ -33005,18 +33017,6 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Learned</rdfs:label>
-</owl:Class>
-
-<owl:Class rdf:about="#Book">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Book</rdfs:label>
-</owl:Class>
-
-<owl:Class rdf:about="#MeaningOfUtterance">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MeaningOfUtterance</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#Utterance">
