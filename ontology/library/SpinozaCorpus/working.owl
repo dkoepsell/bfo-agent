@@ -34988,6 +34988,24 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FaithConditionedOnObedienceQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#TrueObedience">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TrueObedience</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#TrueAndSavingFaith">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TrueAndSavingFaith</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#TrueObedienceNecessitatesFaithRelation">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TrueObedienceNecessitatesFaithRelation</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
