@@ -46518,6 +46518,8 @@
 <owl:NamedIndividual rdf:about="#GodProvidence">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <obo:RO_0000052 rdf:resource="#God"/>
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work2:sameAs rdf:resource="#CommonOrderOfNature"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodProvidence</rdfs:label>
 </owl:NamedIndividual>
 
@@ -46713,6 +46715,25 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <obo:RO_0000052 rdf:resource="#Philosophy"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PhilosophyTeachingEqualCareDispositionInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#GodDecrees">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work2:sameAs rdf:resource="#CommonOrderOfNature"/>
+  <obo:BFO_0000050 rdf:resource="#CommonOrderOfNature"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodDecrees</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#GodCommands">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work2:sameAs rdf:resource="#CommonOrderOfNature"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodCommands</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#DecreesCommandsProvidenceIdentityWithNaturalOrderQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <RO_0000052 rdf:resource="#God"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DecreesCommandsProvidenceIdentityWithNaturalOrderQuality</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
