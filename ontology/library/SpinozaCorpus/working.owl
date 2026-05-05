@@ -32484,6 +32484,35 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConformityToLawsOfNatureDisposition</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#ContraryToNature">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#ContraryToReason"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ContraryToNature</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ContraryToReason">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ContraryToReason</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#Absurdity">
+  <rdfs:subClassOf rdf:resource="#ContraryToReason"/>
+  <work:subClassOf rdf:resource="#ContraryToReason"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Absurdity</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#NormativeRejectionDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NormativeRejectionDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ContraryToNatureImpliesContraryToReasonRelation">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ContraryToNatureImpliesContraryToReasonRelation</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
