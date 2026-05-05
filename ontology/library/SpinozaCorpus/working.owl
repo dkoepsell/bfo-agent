@@ -3999,6 +3999,8 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
   <obo:BFO_0000051 rdf:resource="#BookContent"/>
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Book</rdfs:label>
 </owl:Class>
 
@@ -33025,6 +33027,8 @@
 
 <owl:Class rdf:about="#WritingProcess">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#Book"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WritingProcess</rdfs:label>
 </owl:Class>
 
@@ -35399,6 +35403,19 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OriginalTextStatus</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#Author">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <obo:BFO_0000054 rdf:resource="#WritingProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Author</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#TemporallyDistinctComposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#Scripture"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TemporallyDistinctComposition</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -36913,6 +36930,7 @@
   <obo:RO_0000053 rdf:resource="#TeachingObedienceDispositionInstance"/>
   <obo:BFO_0000051 rdf:resource="#CommandToLoveNeighbor"/>
   <obo:RO_0000056 rdf:resource="#ScriptureTeachingProcess"/>
+  <obo:BFO_0000051 rdf:resource="#Book"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Scripture</rdfs:label>
 </owl:NamedIndividual>
 
