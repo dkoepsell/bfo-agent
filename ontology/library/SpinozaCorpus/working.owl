@@ -36983,6 +36983,22 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LandShareQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#SupremeCommanderRole">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SupremeCommanderRole</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SoleRightToConsultGodRole">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SoleRightToConsultGodRole</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ConsultingGodProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <RO_0000057 rdf:resource="#God"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConsultingGodProcess</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -50702,6 +50718,8 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
   <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
   <obo:RO_0000056 rdf:resource="#LifetimeOfJoshua"/>
+  <RO_0000053 rdf:resource="#JoshuaSupremeCommanderRoleInstance"/>
+  <RO_0000053 rdf:resource="#JoshuaSoleConsultationRoleInstance"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Joshua</rdfs:label>
 </owl:NamedIndividual>
 
@@ -54708,6 +54726,21 @@
   <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <RO_0000052 rdf:resource="#LeviteTribe"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DeprivationOfLandShareQuality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#JoshuaSupremeCommanderRoleInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <work3:type rdf:resource="#SupremeCommanderRole"/>
+  <RO_0000052 rdf:resource="#Joshua"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">JoshuaSupremeCommanderRoleInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#JoshuaSoleConsultationRoleInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <work3:type rdf:resource="#SoleRightToConsultGodRole"/>
+  <RO_0000052 rdf:resource="#Joshua"/>
+  <obo:BFO_0000054 rdf:resource="#ConsultingGodProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">JoshuaSoleConsultationRoleInstance</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
