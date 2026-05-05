@@ -4697,6 +4697,7 @@
   <work:subClassOf rdf:resource="#HumanPower"/>
   <obo:BFO_0000054 rdf:resource="#ActingFromVirtue"/>
   <work:subClassOf rdf:resource="#SuperiorPrudenceOrDiligenceOrVirtueQuality"/>
+  <obo:RO_0000052 rdf:resource="#Subject"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Virtue</rdfs:label>
 </owl:Class>
 
@@ -31475,6 +31476,7 @@
 <owl:Class rdf:about="#ConstancyOfHeart">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:RO_0000052 rdf:resource="#Subject"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConstancyOfHeart</rdfs:label>
 </owl:Class>
 
@@ -36777,6 +36779,20 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PartialControlQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#StatePreservation">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:RO_0000052 rdf:resource="#State"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">StatePreservation</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#Loyalty">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:RO_0000052 rdf:resource="#Subject"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Loyalty</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
@@ -54322,6 +54338,12 @@
   <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <obo:RO_0000052 rdf:resource="#Obedience"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ObediencePrimarilyInternalQuality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#StatePreservationDependsOnSubjectDispositions">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">StatePreservationDependsOnSubjectDispositions</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
