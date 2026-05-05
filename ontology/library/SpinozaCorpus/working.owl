@@ -33612,6 +33612,34 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PublicReadingSuitabilityDisposition</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#HebrewLanguage">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HebrewLanguage</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#HebrewVerb">
+  <rdfs:subClassOf rdf:resource="#HebrewLanguage"/>
+  <work:subClassOf rdf:resource="#HebrewLanguage"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HebrewVerb</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#IrregularHebrewVerb">
+  <rdfs:subClassOf rdf:resource="#HebrewVerb"/>
+  <work:subClassOf rdf:resource="#HebrewVerb"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IrregularHebrewVerb</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#MorphologicalIrregularityQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MorphologicalIrregularityQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#HistoricalPeriodOfHebrew">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000008"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HistoricalPeriodOfHebrew</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
