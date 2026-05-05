@@ -31896,6 +31896,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DemocraticPolity</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#GeneralAssembly">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GeneralAssembly</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#ThePeople">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
   <obo:RO_0000053 rdf:resource="#SovereigntyOfThePeople"/>
@@ -35856,16 +35862,34 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SupremeRightOfNature</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#GeneralAssembly">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GeneralAssembly</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#DemocraticSupremacyDisposition">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DemocraticSupremacyDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SupremePower">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SupremePower</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#LawBindingDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LawBindingDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SupremePowerExemptionFromLawQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SupremePowerExemptionFromLawQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#UniversalObedienceRequirement">
+  <rdfs:subClassOf rdf:resource="#ObedienceDisposition"/>
+  <work:subClassOf rdf:resource="#ObedienceDisposition"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UniversalObedienceRequirement</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
