@@ -35254,6 +35254,14 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GoalOfPhilosophyRole</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#GoalOfFaithRelation">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="#Faith"/>
+  <obo:BFO_0000054 rdf:resource="#Obedience"/>
+  <obo:BFO_0000054 rdf:resource="#Piety"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GoalOfFaithRelation</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -36371,6 +36379,11 @@
   <RO_0000053 rdf:resource="#HighestHappiness"/>
   <obo:RO_0000052 rdf:resource="#God"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LoveOfGod</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Philosophy">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Philosophy</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#ProphetConfusedPerceptionQualityInstance">
@@ -48347,11 +48360,6 @@
   <obo:BFO_0000055 rdf:resource="#PowerfulAffect"/>
   <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SuperstitionArisingProcess</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#Philosophy">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Philosophy</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#ReasonFreedomQuality">
