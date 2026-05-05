@@ -33655,6 +33655,16 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GrandparentRole</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#AgeQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AgeQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#MarriageProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MarriageProcess</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -49350,6 +49360,31 @@
   <obo:RO_0000052 rdf:resource="#Benjamin"/>
   <work3:type rdf:resource="#GrandparentRole"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BenjaminGrandparentRoleInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Jacob">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <obo:RO_0000056 rdf:resource="#MarriageToLeah"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Jacob</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Leah">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <obo:RO_0000056 rdf:resource="#MarriageToLeah"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Leah</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#AgeQualityOfJacob">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#Jacob"/>
+  <work3:type rdf:resource="#AgeQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AgeQualityOfJacob</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#MarriageToLeah">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work3:type rdf:resource="#MarriageProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MarriageToLeah</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
