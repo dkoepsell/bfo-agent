@@ -32329,6 +32329,17 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MiracleEpistemicLimitationDisposition</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#EqualDivineCareQuality">
+  <rdfs:subClassOf rdf:resource="#DivineAttribute"/>
+  <work:subClassOf rdf:resource="#DivineAttribute"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EqualDivineCareQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PhilosophyTeachingDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PhilosophyTeachingDisposition</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -36619,6 +36630,12 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <obo:RO_0000052 rdf:resource="#God"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodDivinePowerAndWillDispositionInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#GodAccountsForAllOfNatureQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#God"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodAccountsForAllOfNatureQuality</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#EternalDecreeOfGod">
@@ -46685,10 +46702,17 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GovernanceByUniversalLawQuality</rdfs:label>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#GodAccountsForAllOfNatureQuality">
+<owl:NamedIndividual rdf:about="#PhilosophyTeachesEqualDivineCareQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work3:type rdf:resource="#EqualDivineCareQuality"/>
   <obo:RO_0000052 rdf:resource="#God"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodAccountsForAllOfNatureQuality</rdfs:label>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PhilosophyTeachesEqualDivineCareQuality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#PhilosophyTeachingEqualCareDispositionInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:RO_0000052 rdf:resource="#Philosophy"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PhilosophyTeachingEqualCareDispositionInstance</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
