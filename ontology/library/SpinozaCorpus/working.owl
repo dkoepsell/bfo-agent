@@ -37017,6 +37017,24 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WarPowersRole</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#SupremeCouncil">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SupremeCouncil</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DivineReplyReceptionProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000055 rdf:resource="#QueryAuthorizationCondition"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivineReplyReceptionProcess</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#QueryAuthorizationCondition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">QueryAuthorizationCondition</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -50765,6 +50783,24 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">JoshuaSoleConsultationRoleInstance</rdfs:label>
 </owl:NamedIndividual>
 
+<owl:NamedIndividual rdf:about="#JoshuaRightToEstablishDivineCommandsInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <obo:RO_0000052 rdf:resource="#Joshua"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">JoshuaRightToEstablishDivineCommandsInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#JoshuaRightToCompelObedienceInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <obo:RO_0000052 rdf:resource="#Joshua"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">JoshuaRightToCompelObedienceInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#JoshuaWarPowersRoleInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <obo:RO_0000052 rdf:resource="#Joshua"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">JoshuaWarPowersRoleInstance</rdfs:label>
+</owl:NamedIndividual>
+
 <owl:NamedIndividual rdf:about="#SunMovesAroundEarthBelief">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#BeliefContent"/>
@@ -54762,24 +54798,6 @@
   <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <RO_0000052 rdf:resource="#LeviteTribe"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DeprivationOfLandShareQuality</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#JoshuaRightToEstablishDivineCommandsInstance">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
-  <obo:RO_0000052 rdf:resource="#Joshua"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">JoshuaRightToEstablishDivineCommandsInstance</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#JoshuaRightToCompelObedienceInstance">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
-  <obo:RO_0000052 rdf:resource="#Joshua"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">JoshuaRightToCompelObedienceInstance</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#JoshuaWarPowersRoleInstance">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
-  <obo:RO_0000052 rdf:resource="#Joshua"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">JoshuaWarPowersRoleInstance</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
