@@ -32860,6 +32860,11 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Signification</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#JealousyQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">JealousyQuality</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -33205,6 +33210,7 @@
   <obo:RO_0000056 rdf:resource="#GodAccountsForAllNatureProcess"/>
   <obo:RO_0000053 rdf:resource="#GodIntellect"/>
   <obo:RO_0000053 rdf:resource="#GodIntellectWillIdentityQuality"/>
+  <obo:RO_0000053 rdf:resource="#GodJealousyQualityInstance"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">God</rdfs:label>
 </owl:NamedIndividual>
 
@@ -47436,6 +47442,13 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#Signification"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">JealousySignification</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#GodJealousyQualityInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work3:type rdf:resource="#JealousyQuality"/>
+  <obo:RO_0000052 rdf:resource="#God"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodJealousyQualityInstance</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
