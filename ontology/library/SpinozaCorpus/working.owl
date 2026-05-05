@@ -33882,6 +33882,11 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CanonicalSelectionRole</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#AuthoritativeAcceptanceRole">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AuthoritativeAcceptanceRole</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -50213,12 +50218,24 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SacredBooks</rdfs:label>
 </owl:NamedIndividual>
 
+<owl:NamedIndividual rdf:about="#LargerCorpusOfTexts">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LargerCorpusOfTexts</rdfs:label>
+</owl:NamedIndividual>
+
 <owl:NamedIndividual rdf:about="#Pharisees">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
   <obo:RO_0000053 rdf:resource="#PhariseesCanonicalSelectionRoleInstance"/>
   <obo:RO_0000056 rdf:resource="#CanonSelectionProcess"/>
   <obo:BFO_0000050 rdf:resource="#SecondTemple"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Pharisees</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#PhariseesCanonicalSelectionRoleInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <obo:RO_0000052 rdf:resource="#Pharisees"/>
+  <obo:BFO_0000054 rdf:resource="#CanonSelectionProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PhariseesCanonicalSelectionRoleInstance</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#CanonSelectionProcess">
@@ -50228,16 +50245,43 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CanonSelectionProcess</rdfs:label>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#LargerCorpusOfTexts">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LargerCorpusOfTexts</rdfs:label>
+<owl:NamedIndividual rdf:about="#TheBooks">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <obo:RO_0000056 rdf:resource="#BookAcceptanceProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TheBooks</rdfs:label>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#PhariseesCanonicalSelectionRoleInstance">
+<owl:NamedIndividual rdf:about="#ThePharisees">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <obo:RO_0000053 rdf:resource="#PhariseesAuthoritativeRoleInstance"/>
+  <obo:RO_0000056 rdf:resource="#PhariseesDecision"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ThePharisees</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#PhariseesDecision">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#ThePharisees"/>
+  <obo:BFO_0000055 rdf:resource="#PhariseesAuthoritativeRoleInstance"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PhariseesDecision</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#BookAcceptanceProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#TheBooks"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BookAcceptanceProcess</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#PhariseesAuthoritativeRoleInstance">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
-  <obo:RO_0000052 rdf:resource="#Pharisees"/>
-  <obo:BFO_0000054 rdf:resource="#CanonSelectionProcess"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PhariseesCanonicalSelectionRoleInstance</rdfs:label>
+  <obo:RO_0000052 rdf:resource="#ThePharisees"/>
+  <obo:BFO_0000054 rdf:resource="#PhariseesDecision"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PhariseesAuthoritativeRoleInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#CanonicalAuthority">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <obo:BFO_0000050 rdf:resource="#PhariseesDecision"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CanonicalAuthority</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
