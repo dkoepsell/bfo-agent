@@ -34509,6 +34509,30 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WordAlteration</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#WickednessQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WickednessQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#GoingWellProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GoingWellProcess</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#GoingBadlyProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GoingBadlyProcess</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#WickedAgent">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WickedAgent</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -34862,6 +34886,7 @@
   <RO_0000053 rdf:resource="#GodProvidesForAllDisposition"/>
   <RO_0000056 rdf:resource="#GodProvidesForAllProcess"/>
   <obo:RO_0000053 rdf:resource="#GodOmnipotenceQualityInstance"/>
+  <obo:RO_0000056 rdf:resource="#DecreeNecessitationProcess"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">God</rdfs:label>
 </owl:NamedIndividual>
 
@@ -37939,6 +37964,13 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <obo:BFO_0000055 rdf:resource="#GodProvidesForAllDisposition"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodProvidesForAllProcess</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#GodOmnipotenceQualityInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work3:type rdf:resource="#OmnipotenceQuality"/>
+  <obo:RO_0000052 rdf:resource="#God"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodOmnipotenceQualityInstance</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#ThinkingThingRole">
@@ -51454,11 +51486,10 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ScriptureMeaningIntegrityQualityInstance</rdfs:label>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#GodOmnipotenceQualityInstance">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <work3:type rdf:resource="#OmnipotenceQuality"/>
-  <obo:RO_0000052 rdf:resource="#God"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodOmnipotenceQualityInstance</rdfs:label>
+<owl:NamedIndividual rdf:about="#GodsDivineDecreeInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work3:type rdf:resource="#DivineDecree"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodsDivineDecreeInstance</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
