@@ -4008,6 +4008,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MeaningOfUtterance</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#BookContent">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BookContent</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#SingularEssence">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <obo:RO_0000052 rdf:resource="#SingularThing"/>
@@ -33810,12 +33816,6 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LinguisticFormQuality</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#BookContent">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BookContent</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#ExcellentTeachingQuality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
@@ -49721,7 +49721,8 @@
 
 <owl:NamedIndividual rdf:about="#BookOfEzra">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BookOfEzra</rdfs:label>
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Ezra</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#JudasMaccabee">
@@ -49859,7 +49860,8 @@
 
 <owl:NamedIndividual rdf:about="#BookOfDaniel">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BookOfDaniel</rdfs:label>
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Daniel</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#BookOfDanielText">
@@ -49891,6 +49893,51 @@
   <obo:BFO_0000055 rdf:resource="#DanielAuthorRole"/>
   <obo:RO_0000057 rdf:resource="#ChaptersEightOnwardText"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WritingOfChaptersEightOnwardProcess</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#BookOfEsther">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Esther</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#BookOfNehemiah">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Nehemiah</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#TheHistorian">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <obo:RO_0000053 rdf:resource="#TheHistorianAuthorRoleInstance"/>
+  <obo:RO_0000056 rdf:resource="#WritingOfDanielProcess"/>
+  <obo:RO_0000056 rdf:resource="#WritingOfEzraProcess"/>
+  <obo:RO_0000056 rdf:resource="#WritingOfEstherProcess"/>
+  <obo:RO_0000056 rdf:resource="#WritingOfNehemiahProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The Same Historian</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#TheHistorianAuthorRoleInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <obo:RO_0000052 rdf:resource="#TheHistorian"/>
+  <obo:BFO_0000054 rdf:resource="#WritingOfDanielProcess"/>
+  <obo:BFO_0000054 rdf:resource="#WritingOfEzraProcess"/>
+  <obo:BFO_0000054 rdf:resource="#WritingOfEstherProcess"/>
+  <obo:BFO_0000054 rdf:resource="#WritingOfNehemiahProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TheHistorianAuthorRoleInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#WritingOfDanielProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WritingOfDanielProcess</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#WritingOfEstherProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WritingOfEstherProcess</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#WritingOfNehemiahProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WritingOfNehemiahProcess</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
