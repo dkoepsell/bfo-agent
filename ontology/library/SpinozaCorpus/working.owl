@@ -1807,6 +1807,7 @@
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/RO_0000053"/>
   <obo:BFO_0000051 rdf:resource="#Individual"/>
   <work:subClassOf rdf:resource="#ModificationBearer"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Individual</rdfs:label>
 </owl:Class>
 
@@ -35693,6 +35694,26 @@
   <rdfs:subClassOf rdf:resource="#NaturalRightDetermination"/>
   <work:subClassOf rdf:resource="#NaturalRightDetermination"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SoundReasonExclusionQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DeterminationByNecessityOfNatureDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:RO_0000052 rdf:resource="#Individual"/>
+  <obo:BFO_0000054 rdf:resource="#DefiniteEffectProduction"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DeterminationByNecessityOfNatureDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DefiniteEffectProduction">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DefiniteEffectProduction</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#NecessityOfNaturesOrderQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#CommonOrderOfNature"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NecessityOfNaturesOrderQuality</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
