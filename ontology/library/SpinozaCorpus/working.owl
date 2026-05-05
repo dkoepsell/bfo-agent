@@ -436,6 +436,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FormalReality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#SelfPerseveranceProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SelfPerseveranceProcess</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#CausaSui">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
@@ -28972,6 +28978,8 @@
   <work:subClassOf rdf:resource="#NaturalRightDeterminationRelation"/>
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <obo:RO_0000052 rdf:resource="#HumanBeing"/>
+  <obo:BFO_0000054 rdf:resource="#PerseveranceInBeingProcess"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NaturalRight</rdfs:label>
 </owl:Class>
 
@@ -35650,12 +35658,6 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SupremeRightExtentQuality</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#SelfPerseveranceProcess">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SelfPerseveranceProcess</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#OwnPowerQuality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
@@ -35672,6 +35674,25 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NaturalRightEquivalenceQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#NaturalRightDetermination">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NaturalRightDetermination</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DesireAndPowerGrounding">
+  <rdfs:subClassOf rdf:resource="#NaturalRightDetermination"/>
+  <work:subClassOf rdf:resource="#NaturalRightDetermination"/>
+  <obo:RO_0000052 rdf:resource="#NaturalRight"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DesireAndPowerGrounding</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SoundReasonExclusionQuality">
+  <rdfs:subClassOf rdf:resource="#NaturalRightDetermination"/>
+  <work:subClassOf rdf:resource="#NaturalRightDetermination"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SoundReasonExclusionQuality</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
