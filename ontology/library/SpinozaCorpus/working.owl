@@ -48746,6 +48746,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EzraAuthorRole</rdfs:label>
 </owl:NamedIndividual>
 
+<owl:NamedIndividual rdf:about="#NarrativeCollectingProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#Ezra"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NarrativeCollectingProcess</rdfs:label>
+</owl:NamedIndividual>
+
 <owl:NamedIndividual rdf:about="#BookOfDeuteronomy">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <obo:BFO_0000050 rdf:resource="#ExplanationAndRewordingRelation"/>
@@ -48800,16 +48806,39 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NarrativeCollectionInstance</rdfs:label>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#NarrativeCollectingProcess">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <obo:RO_0000057 rdf:resource="#Ezra"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NarrativeCollectingProcess</rdfs:label>
-</owl:NamedIndividual>
-
 <owl:NamedIndividual rdf:about="#UncriticalCollectionQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <obo:RO_0000052 rdf:resource="#NarrativeCollectingProcess"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UncriticalCollectionQuality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#HezekiahNarrativeIn2Kings">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <obo:BFO_0000050 rdf:resource="#BookOf2Kings"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HezekiahNarrativeIn2Kings</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#HezekiahNarrativeInIsaiah">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <obo:BFO_0000050 rdf:resource="#BookOfIsaiah"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HezekiahNarrativeInIsaiah</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#BookOf2Kings">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BookOf2Kings</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#BookOfIsaiah">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BookOfIsaiah</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#CopyingProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#HezekiahNarrativeInIsaiah"/>
+  <obo:RO_0000057 rdf:resource="#HezekiahNarrativeIn2Kings"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CopyingProcess</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
