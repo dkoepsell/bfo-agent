@@ -35423,6 +35423,18 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DomainOf</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#TheologicalObedienceNorm">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work:subClassOf rdf:resource="#TheologicalTeaching"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TheologicalObedienceNorm</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ReasonConformityQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ReasonConformityQuality</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -36560,6 +36572,19 @@
   <obo:RO_0000057 rdf:resource="#God"/>
   <obo:BFO_0000055 rdf:resource="#ProphetConfusedPerceptionQualityInstance"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConfusedPerceptionOfGodsMindProcess</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Wisdom">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000020"/>
+  <work3:type rdf:resource="#ModeOfThinkingThing"/>
+  <obo:RO_0000052 rdf:resource="#TrueIntellect"/>
+  <work3:type rdf:resource="#Mode"/>
+  <obo:RO_0000052 rdf:resource="#God"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <obo:RO_0000052 rdf:resource="#WisePerson"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Wisdom</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#IncorporealGreaterEffectQuality">
@@ -41769,19 +41794,6 @@
   <work3:type rdf:resource="#NaturalPerfection"/>
   <obo:RO_0000052 rdf:resource="#WholeOfNature"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PerfectionOfNature</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#Wisdom">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000020"/>
-  <work3:type rdf:resource="#ModeOfThinkingThing"/>
-  <obo:RO_0000052 rdf:resource="#TrueIntellect"/>
-  <work3:type rdf:resource="#Mode"/>
-  <obo:RO_0000052 rdf:resource="#God"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
-  <obo:RO_0000052 rdf:resource="#WisePerson"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Wisdom</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#NaturaNaturataConceivabilityConstraint">
@@ -53176,6 +53188,10 @@
 
 <rdf:Description rdf:about="#ScripturalNarrative">
   <work:subClassOf rdf:resource="#Scripture"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="#TheologicalTeaching">
+  <work:subClassOf rdf:resource="#Theology"/>
 </rdf:Description>
 
 
