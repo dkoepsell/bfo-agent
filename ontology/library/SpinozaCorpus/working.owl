@@ -33860,6 +33860,7 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <obo:RO_0000052 rdf:resource="#Book"/>
+  <work:subClassOf rdf:resource="#MindDependentQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SacrednessQuality</rdfs:label>
 </owl:Class>
 
@@ -34315,6 +34316,24 @@
   <rdfs:subClassOf rdf:resource="#SacredStatusQuality"/>
   <work:subClassOf rdf:resource="#SacredStatusQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SacredStatusConditionedOnUseQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ProfanityQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#MindDependentQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ProfanityQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#MindDependentQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MindDependentQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#IntrinsicPropertyAbsenceQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IntrinsicPropertyAbsenceQuality</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
@@ -41718,6 +41737,7 @@
 <owl:NamedIndividual rdf:about="#ImpurityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="#PurityQuality"/>
+  <work:subClassOf rdf:resource="#MindDependentQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ImpurityQuality</rdfs:label>
 </owl:NamedIndividual>
 
