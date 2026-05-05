@@ -4,9 +4,10 @@
   "source_text": null,
   "author": null,
   "created_at": "2026-05-03T13:42:07.632585+00:00",
-  "status": "inactive",
+  "status": "finalized",
   "seeded_from": "GeometryofTheGood",
   "stats": {
     "note": "bootstrapped from seeds only"
-  }
+  },
+  "finalized_at": "2026-05-05T18:55:20.147296+00:00"
 }
