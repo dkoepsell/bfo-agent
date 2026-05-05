@@ -37373,6 +37373,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MentalityAndCharacterDetermination</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#AdvantageSeekingDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:BFO_0000054 rdf:resource="#HumanAction"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AdvantageSeekingDisposition</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -55267,6 +55273,12 @@
   <work3:type rdf:resource="#PietyQuality"/>
   <obo:RO_0000052 rdf:resource="#HebrewPeople"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HebrewLoveOfCountry</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#PrincipleOfAdvantage">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work:comment rdf:resource="#"The generically dependent content specifying that advantage is the basis of all human motivation, grounding the AdvantageSeekingDisposition class.""/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PrincipleOfAdvantage</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
