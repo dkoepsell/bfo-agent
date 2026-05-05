@@ -1928,6 +1928,20 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ReligiousJudgmentAndInterpretationProcess</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#PrivateCivilRight">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <work:subClassOf rdf:resource="#SelfPreservationFreedom"/>
+  <obo:BFO_0000054 rdf:resource="#SupremePowerDetermination"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PrivateCivilRight</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SupremePower">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SupremePower</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#SoulBodyAffectionProcess">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
@@ -22787,6 +22801,9 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <work:subClassOf rdf:resource="#EvilAction"/>
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000050 rdf:resource="#Compulsion"/>
+  <obo:RO_0000057 rdf:resource="#Citizen"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Injury</rdfs:label>
 </owl:Class>
 
@@ -35885,12 +35902,6 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DemocraticSupremacyDisposition</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#SupremePower">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SupremePower</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#LawBindingDisposition">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
@@ -35993,14 +36004,6 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CollectiveGood</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#PrivateCivilRight">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
-  <work:subClassOf rdf:resource="#SelfPreservationFreedom"/>
-  <obo:BFO_0000054 rdf:resource="#SupremePowerDetermination"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PrivateCivilRight</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#SelfPreservationFreedom">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
@@ -36011,6 +36014,36 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <obo:RO_0000057 rdf:resource="#PrivateCivilRight"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SupremePowerDetermination</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#CitizenRole">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CitizenRole</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#CivilLaw">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CivilLaw</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#Harm">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Harm</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#Compulsion">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Compulsion</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ContraryToCivilLawQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ContraryToCivilLawQuality</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
