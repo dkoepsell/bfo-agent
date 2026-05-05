@@ -35756,6 +35756,20 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Historian</rdfs:label>
 </owl:NamedIndividual>
 
+<owl:NamedIndividual rdf:about="#Apostles">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <obo:RO_0000056 rdf:resource="#ApostolicReasoning"/>
+  <obo:RO_0000056 rdf:resource="#ApostolicSigns"/>
+  <RO_0000056 rdf:resource="#ApostlesTeachingProcess"/>
+  <obo:RO_0000053 rdf:resource="#ApostlesPropheticPowerInstance"/>
+  <obo:RO_0000053 rdf:resource="#ApostlesTeachingAuthorityInstance"/>
+  <obo:RO_0000056 rdf:resource="#InferenceAndExtractionProcess"/>
+  <obo:RO_0000056 rdf:resource="#AccommodationOfReligionToHumanUnderstanding"/>
+  <obo:RO_0000053 rdf:resource="#ApostlesReligiousAgreementQualityInstance"/>
+  <obo:RO_0000053 rdf:resource="#ApostlesFoundationalDivergenceQualityInstance"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Apostles</rdfs:label>
+</owl:NamedIndividual>
+
 <owl:NamedIndividual rdf:about="#ExtendedSubstance">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
   <work3:type rdf:resource="#Substance"/>
@@ -48040,20 +48054,6 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <obo:RO_0000052 rdf:resource="#Prophets"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PropheticContraryOpinionsQuality</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#Apostles">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
-  <obo:RO_0000056 rdf:resource="#ApostolicReasoning"/>
-  <obo:RO_0000056 rdf:resource="#ApostolicSigns"/>
-  <RO_0000056 rdf:resource="#ApostlesTeachingProcess"/>
-  <obo:RO_0000053 rdf:resource="#ApostlesPropheticPowerInstance"/>
-  <obo:RO_0000053 rdf:resource="#ApostlesTeachingAuthorityInstance"/>
-  <obo:RO_0000056 rdf:resource="#InferenceAndExtractionProcess"/>
-  <obo:RO_0000056 rdf:resource="#AccommodationOfReligionToHumanUnderstanding"/>
-  <obo:RO_0000053 rdf:resource="#ApostlesReligiousAgreementQualityInstance"/>
-  <obo:RO_0000053 rdf:resource="#ApostlesFoundationalDivergenceQualityInstance"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Apostles</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#ApostolicReasoning">
