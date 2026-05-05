@@ -28845,6 +28845,11 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PropheticBook</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#ProphetCompleteWorks">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ProphetCompleteWorks</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#ObjectOfKnowledge">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
@@ -33705,11 +33710,6 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PsalterCollectionClass</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#ProphetCompleteWorks">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ProphetCompleteWorks</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#ProphecyContent">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <obo:BFO_0000050 rdf:resource="#PropheticBook"/>
@@ -33749,6 +33749,11 @@
 <owl:Class rdf:about="#LostStatusQuality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LostStatusQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#Chronicler">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Chronicler</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
@@ -47048,6 +47053,13 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IsaiahBelievingProcess</rdfs:label>
 </owl:NamedIndividual>
 
+<owl:NamedIndividual rdf:about="#RecordingOfDeedsProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#Isaiah"/>
+  <obo:RO_0000057 rdf:resource="#KingUzziah"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RecordingOfDeedsProcess</rdfs:label>
+</owl:NamedIndividual>
+
 <owl:NamedIndividual rdf:about="#BelieveSunMovesEarthAtRestBelief">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
@@ -49643,17 +49655,28 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BookOfDeedsOfUzziah</rdfs:label>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#RecordingOfDeedsProcess">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <obo:RO_0000057 rdf:resource="#Isaiah"/>
-  <obo:RO_0000057 rdf:resource="#KingUzziah"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RecordingOfDeedsProcess</rdfs:label>
-</owl:NamedIndividual>
-
 <owl:NamedIndividual rdf:about="#BookOfDeedsLostQualityInstance">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <obo:RO_0000052 rdf:resource="#BookOfDeedsOfUzziah"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BookOfDeedsLostQualityInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#JeremiahsProphecies">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <obo:BFO_0000050 rdf:resource="#AssemblyOfPropheciesProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">JeremiahsProphecies</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Jeremiah">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Jeremiah</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#AssemblyOfPropheciesProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#Jeremiah"/>
+  <obo:RO_0000057 rdf:resource="#JeremiahsProphecies"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AssemblyOfPropheciesProcess</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
