@@ -32732,6 +32732,7 @@
   <obo:BFO_0000051 rdf:resource="#InferenceOfAuthorialMindProcess"/>
   <obo:BFO_0000057 rdf:resource="#ScriptureInterpreter"/>
   <obo:BFO_0000057 rdf:resource="#Scripture"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ScriptureInterpretationProcess</rdfs:label>
 </owl:Class>
 
@@ -33140,6 +33141,18 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SufficientForTrueScriptureInterpretationQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ScriptureInterpretationDifficulty">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ScriptureInterpretationDifficulty</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#HumanNegligence">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HumanNegligence</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
@@ -47795,6 +47808,13 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#ScriptureInterpretationMethod"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TrueMethodOfScriptureInterpretation</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#NaturalLightDefectAbsenceQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <RO_0000052 rdf:resource="#NaturalLight"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NaturalLightDefectAbsenceQuality</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
