@@ -19416,6 +19416,7 @@
 <owl:Class rdf:about="#CommonNotion">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work:subClassOf rdf:resource="#PhilosophicalFoundations"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CommonNotion</rdfs:label>
 </owl:Class>
 
@@ -35260,6 +35261,24 @@
   <obo:BFO_0000054 rdf:resource="#Obedience"/>
   <obo:BFO_0000054 rdf:resource="#Piety"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GoalOfFaithRelation</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PhilosophicalFoundations">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PhilosophicalFoundations</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DerivedFromNatureQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DerivedFromNatureQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#FoundationalDerivationRelation">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FoundationalDerivationRelation</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
