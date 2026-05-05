@@ -49432,11 +49432,6 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Nahshon</rdfs:label>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#TribeOfJudah">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TribeOfJudah</rdfs:label>
-</owl:NamedIndividual>
-
 <owl:NamedIndividual rdf:about="#NahshonLeaderRoleInstance">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
   <obo:RO_0000052 rdf:resource="#Nahshon"/>
@@ -49447,6 +49442,11 @@
 <owl:NamedIndividual rdf:about="#SecondYearAfterExodus">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000008"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SecondYearAfterExodus</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#TribeOfJudah">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TribeOfJudah</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
