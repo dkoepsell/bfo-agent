@@ -37315,6 +37315,11 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WorshipSiteExclusivityBelief</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#MereLoveOfCountryQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MereLoveOfCountryQuality</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -55180,6 +55185,13 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000029"/>
   <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000029"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HebrewTerritory</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#HebrewLoveOfCountry">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work3:type rdf:resource="#PietyQuality"/>
+  <obo:RO_0000052 rdf:resource="#HebrewPeople"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HebrewLoveOfCountry</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
