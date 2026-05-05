@@ -34906,6 +34906,18 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">KnowledgeOfDivineAttributes</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#CommonPeople">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CommonPeople</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#AccommodationToCommonUnderstanding">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AccommodationToCommonUnderstanding</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -52151,6 +52163,13 @@
   <obo:RO_0000057 rdf:resource="#Man"/>
   <obo:BFO_0000055 rdf:resource="#KnowledgeOfDivineAttributes"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodAsksKnowledgeProcess</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#AccommodationToCommonUnderstandingInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <RO_0000052 rdf:resource="#Scripture"/>
+  <work3:type rdf:resource="#AccommodationToCommonUnderstanding"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AccommodationToCommonUnderstandingInstance</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
