@@ -33794,6 +33794,21 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ProphecyCollectionProcess</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#SacrednessBySignification">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SacrednessBySignification</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SignificationRelation">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SignificationRelation</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#LinguisticFormQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LinguisticFormQuality</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -35265,6 +35280,9 @@
   <RO_0000053 rdf:resource="#DevotionInducingDisposition"/>
   <obo:BFO_0000051 rdf:resource="#InexplicableUtterance"/>
   <obo:BFO_0000051 rdf:resource="#ScriptureNarrativeContent"/>
+  <obo:RO_0000053 rdf:resource="#SacrednessBySignificationInstance"/>
+  <obo:RO_0000053 rdf:resource="#SignificationRelationInstance"/>
+  <obo:RO_0000053 rdf:resource="#LinguisticFormQualityInstance"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Scripture</rdfs:label>
 </owl:NamedIndividual>
 
@@ -49829,6 +49847,24 @@
   <obo:BFO_0000055 rdf:resource="#DanielAuthorRole"/>
   <obo:RO_0000057 rdf:resource="#ChaptersEightOnwardText"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WritingOfChaptersEightOnwardProcess</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#SacrednessBySignificationInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#Scripture"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SacrednessBySignificationInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#SignificationRelationInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:RO_0000052 rdf:resource="#Scripture"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SignificationRelationInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#LinguisticFormQualityInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#Scripture"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LinguisticFormQualityInstance</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
