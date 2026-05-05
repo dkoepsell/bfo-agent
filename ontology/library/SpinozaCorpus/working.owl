@@ -37157,12 +37157,15 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <obo:RO_0000057 rdf:resource="#People"/>
   <obo:RO_0000057 rdf:resource="#Army"/>
+  <obo:RO_0000057 rdf:resource="#Leader"/>
+  <obo:RO_0000057 rdf:resource="#OppressedPeopleRole"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OppressionProcess</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#SalaryPaymentProcess">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <obo:RO_0000057 rdf:resource="#Army"/>
+  <obo:RO_0000057 rdf:resource="#Leader"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SalaryPaymentProcess</rdfs:label>
 </owl:Class>
 
@@ -37176,6 +37179,24 @@
   <obo:BFO_0000054 rdf:resource="#OppressionProcess"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OppressiveCapacityDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SoldierRole">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <obo:BFO_0000050 rdf:resource="#Army"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SoldierRole</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#OppressedPeopleRole">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OppressedPeopleRole</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ArmyEnablementOfOppressionDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:RO_0000052 rdf:resource="#Army"/>
+  <obo:BFO_0000054 rdf:resource="#OppressionProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ArmyEnablementOfOppressionDisposition</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
