@@ -31817,6 +31817,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Sovereignty</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#SovereigntyEstablishmentProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SovereigntyEstablishmentProcess</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#CollectiveSovereigntyRole">
   <rdfs:subClassOf rdf:resource="#Sovereignty"/>
   <work:subClassOf rdf:resource="#Sovereignty"/>
@@ -31878,6 +31884,9 @@
 <owl:Class rdf:about="#Democracy">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <obo:RO_0000052 rdf:resource="#DemocraticPolity"/>
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <work:subClassOf rdf:resource="#GeneralAssembly"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Democracy</rdfs:label>
 </owl:Class>
 
@@ -35847,10 +35856,16 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SupremeRightOfNature</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#SovereigntyEstablishmentProcess">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SovereigntyEstablishmentProcess</rdfs:label>
+<owl:Class rdf:about="#GeneralAssembly">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GeneralAssembly</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DemocraticSupremacyDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DemocraticSupremacyDisposition</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
