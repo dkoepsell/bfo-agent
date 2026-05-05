@@ -27495,6 +27495,7 @@
 
 <owl:Class rdf:about="#AuthorshipProcess">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#BookOfMoses"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AuthorshipProcess</rdfs:label>
 </owl:Class>
 
@@ -37359,6 +37360,7 @@
   <obo:RO_0000053 rdf:resource="#MosesLeadershipRole"/>
   <obo:RO_0000056 rdf:resource="#EnsuranceOfDutyProcess"/>
   <obo:RO_0000053 rdf:resource="#MosesAuthorshipRoleOfPentateuch"/>
+  <obo:RO_0000056 rdf:resource="#AuthorshipProcess"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Moses</rdfs:label>
 </owl:NamedIndividual>
 
@@ -37968,6 +37970,13 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
   <obo:RO_0000052 rdf:resource="#Moses"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MosesLeadershipRole</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#MosesAuthorshipRoleOfPentateuch">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <work3:type rdf:resource="#AuthorshipRole"/>
+  <obo:RO_0000052 rdf:resource="#Pentateuch"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MosesAuthorshipRoleOfPentateuch</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#FatherSoul">
@@ -48122,11 +48131,15 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Pentateuch</rdfs:label>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#MosesAuthorshipRoleOfPentateuch">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
-  <work3:type rdf:resource="#AuthorshipRole"/>
-  <obo:RO_0000052 rdf:resource="#Pentateuch"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MosesAuthorshipRoleOfPentateuch</rdfs:label>
+<owl:NamedIndividual rdf:about="#BookOfMoses">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work2:differentFrom rdf:resource="#Pentateuch"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BookOfMoses</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#BookOfMosesNonIdentityWithPentateuch">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NonIdentityRelation</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
