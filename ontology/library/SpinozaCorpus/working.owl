@@ -25295,6 +25295,7 @@
 <owl:Class rdf:about="#RationalGuidanceDisposition">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:RO_0000052 rdf:resource="#ReasonGuidedAgent"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RationalGuidanceDisposition</rdfs:label>
 </owl:Class>
 
@@ -36492,6 +36493,37 @@
   <work:subClassOf rdf:resource="#Reason"/>
   <obo:BFO_0000054 rdf:resource="#Peace"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UrgingOfPeaceByReasonDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ReasonGuidedAgent">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ReasonGuidedAgent</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#StateLaw">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">StateLaw</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#LawObservanceDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:RO_0000052 rdf:resource="#ReasonGuidedAgent"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LawObservanceDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#RationalityDegreeQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#ReasonGuidedAgent"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RationalityDegreeQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#RationalityCorrelatesWithLawObservanceRelation">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="#RationalGuidanceDisposition"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RationalityCorrelatesWithLawObservanceRelation</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
