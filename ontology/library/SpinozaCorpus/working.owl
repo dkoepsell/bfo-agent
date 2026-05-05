@@ -33756,6 +33756,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Chronicler</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#PassageOfJeremiah">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PassageOfJeremiah</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -47066,6 +47072,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BelieveSunMovesEarthAtRestBelief</rdfs:label>
 </owl:NamedIndividual>
 
+<owl:NamedIndividual rdf:about="#KingUzziah">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <obo:RO_0000053 rdf:resource="#UzziahKingRoleInstance"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">KingUzziah</rdfs:label>
+</owl:NamedIndividual>
+
 <owl:NamedIndividual rdf:about="#InadequateCosmologicalBeliefQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
@@ -49637,12 +49649,6 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CollectionAndDivisionOfPsalmsProcess</rdfs:label>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#KingUzziah">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
-  <obo:RO_0000053 rdf:resource="#UzziahKingRoleInstance"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">KingUzziah</rdfs:label>
-</owl:NamedIndividual>
-
 <owl:NamedIndividual rdf:about="#UzziahKingRoleInstance">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
   <obo:RO_0000052 rdf:resource="#KingUzziah"/>
@@ -49667,16 +49673,28 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">JeremiahsProphecies</rdfs:label>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#Jeremiah">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Jeremiah</rdfs:label>
-</owl:NamedIndividual>
-
 <owl:NamedIndividual rdf:about="#AssemblyOfPropheciesProcess">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <obo:RO_0000057 rdf:resource="#Jeremiah"/>
   <obo:RO_0000057 rdf:resource="#JeremiahsProphecies"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AssemblyOfPropheciesProcess</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Jeremiah">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Jeremiah</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#BookOfJeremiah">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <obo:BFO_0000051 rdf:resource="#PassageOfJeremiah"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BookOfJeremiah</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#CollectionOfPassagesProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#BookOfJeremiah"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CollectionOfPassagesProcess</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
