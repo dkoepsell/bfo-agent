@@ -33645,6 +33645,16 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OpenSpaceInParagraph</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#GrandchildRole">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GrandchildRelationship</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#GrandparentRole">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GrandparentRole</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -49324,15 +49334,22 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Benjamin</rdfs:label>
 </owl:NamedIndividual>
 
+<owl:NamedIndividual rdf:about="#JourneyToEgyptProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">JourneyToEgyptProcess</rdfs:label>
+</owl:NamedIndividual>
+
 <owl:NamedIndividual rdf:about="#AgeOfBenjaminAtEgyptJourney">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <obo:RO_0000052 rdf:resource="#Benjamin"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AgeOfBenjaminAtEgyptJourney</rdfs:label>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#JourneyToEgyptProcess">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">JourneyToEgyptProcess</rdfs:label>
+<owl:NamedIndividual rdf:about="#BenjaminGrandparentRoleInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <obo:RO_0000052 rdf:resource="#Benjamin"/>
+  <work3:type rdf:resource="#GrandparentRole"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BenjaminGrandparentRoleInstance</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
