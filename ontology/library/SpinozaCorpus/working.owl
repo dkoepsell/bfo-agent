@@ -34480,6 +34480,11 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LearningQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#LearnedManRole">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LearnedManRole</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -36000,6 +36005,7 @@
   <obo:RO_0000056 rdf:resource="#AccommodationOfReligionToHumanUnderstanding"/>
   <obo:RO_0000053 rdf:resource="#ApostlesReligiousAgreementQualityInstance"/>
   <obo:RO_0000053 rdf:resource="#ApostlesFoundationalDivergenceQualityInstance"/>
+  <obo:RO_0000056 rdf:resource="#ApostleWritingProcess"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Apostles</rdfs:label>
 </owl:NamedIndividual>
 
@@ -51367,6 +51373,19 @@
 <owl:NamedIndividual rdf:about="#TheCanon">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TheCanon</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ApostleWritingProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000055 rdf:resource="#ApostleLearnedManRoleInstance"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ApostleWritingProcess</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ApostleLearnedManRoleInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <obo:RO_0000052 rdf:resource="#Apostles"/>
+  <obo:BFO_0000054 rdf:resource="#ApostleWritingProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ApostleLearnedManRoleInstance</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
