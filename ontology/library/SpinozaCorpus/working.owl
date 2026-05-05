@@ -34058,6 +34058,30 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ConvergenceOfPropheticalToNaturalKnowledgeDisposition</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#PropheticKnowledge">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PropheticKnowledge</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#AuthoritativeJudgment">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AuthoritativeJudgment</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PropheticDecree">
+  <rdfs:subClassOf rdf:resource="#AuthoritativeJudgment"/>
+  <work:subClassOf rdf:resource="#AuthoritativeJudgment"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PropheticDecree</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PropheticAuthorityQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PropheticAuthorityQuality</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
