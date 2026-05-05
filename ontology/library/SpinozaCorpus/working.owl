@@ -33156,6 +33156,35 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HumanNegligence</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#SupernaturalLight">
+  <rdfs:subClassOf rdf:resource="#DivineAttribute"/>
+  <work:subClassOf rdf:resource="#DivineGift"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SupernaturalLight</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DivineGift">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivinGift</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#TheFaithful">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TheFaithful</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#FaithfulnessRole">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FaithfulnessRole</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#RestrictedGrantingToFaithfulQuality">
+  <rdfs:subClassOf rdf:resource="#DivineAttribute"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RestrictedGrantingToFaithfulQuality</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
