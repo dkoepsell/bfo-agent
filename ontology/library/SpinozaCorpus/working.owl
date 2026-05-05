@@ -34288,6 +34288,35 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DestinedForPietyAndReligionDisposition</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#SacredThing">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SacredThing</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SacredStatusQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#ContingentExistenceQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SacredStatusQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ReligiousUseDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:BFO_0000054 rdf:resource="#ReligiousUseProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ReligiousUseDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ReligiousUseProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ReligiousUseProcess</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SacredStatusConditionedOnUseQuality">
+  <rdfs:subClassOf rdf:resource="#SacredStatusQuality"/>
+  <work:subClassOf rdf:resource="#SacredStatusQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SacredStatusConditionedOnUseQuality</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
