@@ -1617,6 +1617,7 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
   <obo:RO_0000053 rdf:resource="#PersonPerfectionQuality"/>
+  <obo:RO_0000056 rdf:resource="#ReligiousJudgmentAndInterpretationProcess"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Person</rdfs:label>
 </owl:Class>
 
@@ -33315,6 +33316,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FreeThoughtAboutReligionRight</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#FreeThoughtAboutReligionProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FreeThoughtAboutReligionProcess</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#SupremeRightQuality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
@@ -33322,10 +33329,28 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SupremeRightQuality</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#FreeThoughtAboutReligionProcess">
+<owl:Class rdf:about="#SupremeAuthorityToInterpretReligion">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SupremeAuthorityToInterpretReligion</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ReligiousInterpretationAuthority">
+  <rdfs:subClassOf rdf:resource="#SupremeAuthorityToInterpretReligion"/>
+  <work:subClassOf rdf:resource="#SupremeAuthorityToInterpretReligion"/>
+  <obo:BFO_0000054 rdf:resource="#ReligiousJudgmentAndInterpretationProcess"/>
+  <obo:RO_0000052 rdf:resource="#Person"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ReligiousInterpretationAuthority</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ReligiousJudgmentAndInterpretationProcess">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FreeThoughtAboutReligionProcess</rdfs:label>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ReligiousJudgmentAndInterpretationProcess</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#IndividualReligiousAuthorityQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#Person"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IndividualReligiousAuthorityQuality</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
