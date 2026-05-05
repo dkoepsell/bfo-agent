@@ -35939,6 +35939,7 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <obo:BFO_0000055 rdf:resource="#NaturalRight"/>
+  <obo:BFO_0000055 rdf:resource="#SubjectRole"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RightTransferProcess</rdfs:label>
 </owl:Class>
 
@@ -36404,6 +36405,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ReligiousDecree</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#ContractWithSupremePower">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <obo:BFO_0000051 rdf:resource="#ObligationToObey"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ContractWithSupremePower</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#ObligationToObey">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
@@ -36411,10 +36418,10 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ObligationToObey</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#ContractWithSupremePower">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
-  <obo:BFO_0000051 rdf:resource="#ObligationToObey"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ContractWithSupremePower</rdfs:label>
+<owl:Class rdf:about="#ObedienceToDecreeProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000055 rdf:resource="#ObligationToObey"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ObedienceToDecreeProcess</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#SubjectOfSupremePower">
@@ -36423,10 +36430,40 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SubjectOfSupremePower</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#ObedienceToDecreeProcess">
+<owl:Class rdf:about="#RightTransferObligation">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:BFO_0000054 rdf:resource="#ObedienceProcess"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RightTransferObligation</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SovereignRole">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SovereignRole</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SubjectRole">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SubjectRole</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DivineSpecialAidDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:BFO_0000054 rdf:resource="#DivineSpecialAidProcess"/>
+  <obo:RO_0000052 rdf:resource="#God"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivineSpecialAidDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DivineSpecialAidProcess">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <obo:BFO_0000055 rdf:resource="#ObligationToObey"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ObedienceToDecreeProcess</rdfs:label>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivineSpecialAidProcess</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#RightTransferObligationSuspensionQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RightTransferObligationSuspensionQuality</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
