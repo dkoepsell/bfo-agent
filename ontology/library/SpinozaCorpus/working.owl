@@ -36750,15 +36750,33 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ReigningOverHeartsDisposition</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#GoverningProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000055 rdf:resource="#ReigningOverHeartsDisposition"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GoverningProcess</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#HeartLoyaltyQuality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HeartLoyaltyQuality</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#GoverningProcess">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <obo:BFO_0000055 rdf:resource="#ReigningOverHeartsDisposition"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GoverningProcess</rdfs:label>
+<owl:Class rdf:about="#Heart">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Heart</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ControlDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ControlDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PartialControlQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PartialControlQuality</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
