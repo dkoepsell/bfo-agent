@@ -32444,6 +32444,33 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MiracleRequiresNaturalCauseDisposition</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#ScriptureTeachingMode">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ScriptureTeachingMode</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ProximateCauseTeaching">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ProximateCauseTeaching</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DevotionMovingNarrativeOrder">
+  <rdfs:subClassOf rdf:resource="#ScriptureTeachingMode"/>
+  <work:subClassOf rdf:resource="#ScriptureTeachingMode"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DevotionMovingNarrativeOrder</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DevotionProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DevotionProcess</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DevotionInducingDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:BFO_0000054 rdf:resource="#DevotionProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DevotionInducingDisposition</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -36386,6 +36413,7 @@
   <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#ScriptureEpistemicAuthorityQuality"/>
   <obo:RO_0000053 rdf:resource="#ScriptureEpistemicAuthorityQuality"/>
+  <RO_0000053 rdf:resource="#DevotionInducingDisposition"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Scripture</rdfs:label>
 </owl:NamedIndividual>
 
