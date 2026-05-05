@@ -46661,6 +46661,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Joshua</rdfs:label>
 </owl:NamedIndividual>
 
+<owl:NamedIndividual rdf:about="#LifetimeOfJoshua">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#Joshua"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LifetimeOfJoshua</rdfs:label>
+</owl:NamedIndividual>
+
 <owl:NamedIndividual rdf:about="#SunMovesAroundEarthBelief">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="#BeliefContent"/>
@@ -48536,18 +48542,26 @@
 <owl:NamedIndividual rdf:about="#WritingOfBookOfJoshuaProcess">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <obo:RO_0000057 rdf:resource="#BookOfJoshuaTextualContent"/>
+  <obo:RO_0000057 rdf:resource="#BookOfJoshua"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WritingOfBookOfJoshuaProcess</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#LifetimeOfJoshua">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LifetimeOfJoshua</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#ManyGenerationsAfterJoshuaTemporalGapQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <obo:RO_0000052 rdf:resource="#WritingOfBookOfJoshuaProcess"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ManyGenerationsAfterJoshuaTemporalGapQuality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#BookOfJoshuaContent">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <obo:BFO_0000050 rdf:resource="#BookOfJoshua"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BookOfJoshuaContent</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#TemporalGapOfGenerations">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000008"/>
+  <obo:BFO_0000050 rdf:resource="#WritingOfBookOfJoshuaProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TemporalGapOfGenerations</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
