@@ -34016,6 +34016,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Politeness</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#NaturalJudgment">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NaturalJudgment</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -50560,6 +50566,8 @@
   <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
   <lacksQuality rdf:resource="#DivineRevelationOriginQuality"/>
   <lacksQuality rdf:resource="#DivineCommandOriginQuality"/>
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <obo:RO_0000056 rdf:resource="#WritingOfApostlesLettersProcess"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ApostlesLetters</rdfs:label>
 </owl:NamedIndividual>
 
@@ -50574,6 +50582,24 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <obo:RO_0000052 rdf:resource="#ApostlesLettersContent"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PolitenessQualityOfApostlesLetters</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#NaturalJudgmentInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:BFO_0000054 rdf:resource="#WritingOfApostlesLettersProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NaturalJudgmentInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#WritingOfApostlesLettersProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000055 rdf:resource="#NaturalJudgmentInstance"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WritingOfApostlesLettersProcess</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#WrittenFromNaturalJudgmentOnlyQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#ApostlesLetters"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WrittenFromNaturalJudgmentOnlyQuality</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
