@@ -33025,6 +33025,28 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Utterance</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#ModernPointsAndAccents">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ModernPointsAndAccents</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#HumanInterpretation">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HumanInterpretation</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#AuthoritativeStatus">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AuthoritativeStatus</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DerivedFromHumanInterpretationQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DerivedFromHumanInterpretationQuality</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
