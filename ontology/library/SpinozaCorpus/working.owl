@@ -22610,6 +22610,7 @@
 <owl:Class rdf:about="#Injury">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <work:subClassOf rdf:resource="#EvilAction"/>
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Injury</rdfs:label>
 </owl:Class>
 
@@ -32910,6 +32911,48 @@
 <owl:Class rdf:about="#ScripturalTeaching">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ScripturalTeaching</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#GoodRepublic">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GoodRepublic</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#JusticePreservation">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">JusticePreservation</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#Citizen">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Citizen</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ObligationToSeekJudicialRedress">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ObligationToSeekJudicialRedress</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#Judge">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Judge</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#JudicialPenaltyProceeding">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000055 rdf:resource="#ObligationToSeekJudicialRedress"/>
+  <obo:RO_0000057 rdf:resource="#Citizen"/>
+  <obo:RO_0000057 rdf:resource="#Judge"/>
+  <obo:BFO_0000050 rdf:resource="#JudicialForum"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">JudicialPenaltyProceeding</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#JudicialForum">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000029"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">JudicialForum</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
