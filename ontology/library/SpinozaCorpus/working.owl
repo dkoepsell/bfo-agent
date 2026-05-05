@@ -33119,6 +33119,23 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TranslationOrTransmissionProcess</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#TrueSalvation">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="#Blessedness"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TrueSalvation</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#TruePeaceOfMind">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TruePeaceOfMind</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SalvationBlessednessIdentityQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#EssentialExistenceQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SalvationBlessednessIdentityQuality</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -34502,6 +34519,7 @@
   <work:subClassOf rdf:resource="#TrueHappiness"/>
   <work:subClassOf rdf:resource="#SupremeGood"/>
   <obo:RO_0000052 rdf:resource="#HumanMind"/>
+  <work:subClassOf rdf:resource="#TruePeaceOfMind"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Blessedness</rdfs:label>
 </owl:NamedIndividual>
 
