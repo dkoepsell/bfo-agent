@@ -36988,6 +36988,7 @@
 
 <owl:Class rdf:about="#SupremeCommanderRole">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SupremeCommanderRole</rdfs:label>
 </owl:Class>
 
@@ -37069,6 +37070,30 @@
   <rdfs:subClassOf rdf:resource="#NormativeStatusQuality"/>
   <work:subClassOf rdf:resource="#NormativeStatusQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DecreeStatusQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#Tribe">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Tribe</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#RoleCessationQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RoleCessationQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#AllianceRelation">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AllianceRelation</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#FellowCitizenRelation">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FellowCitizenRelation</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
@@ -40761,6 +40786,12 @@
   <obo:RO_0000052 rdf:resource="#God"/>
   <work3:type rdf:resource="#GodTheKingRole"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodTheKingRoleInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#PriestMouthUtteranceProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#GodReplyInPriestMouth"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PriestMouthUtteranceProcess</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#ThinkingThingRole">
@@ -54851,18 +54882,36 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GodReplyInPriestMouth</rdfs:label>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#PriestMouthUtteranceProcess">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <obo:RO_0000057 rdf:resource="#GodReplyInPriestMouth"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PriestMouthUtteranceProcess</rdfs:label>
-</owl:NamedIndividual>
-
 <owl:NamedIndividual rdf:about="#DecreeAcceptanceProcess">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <obo:RO_0000057 rdf:resource="#Joshua"/>
   <obo:RO_0000057 rdf:resource="#GodReplyInPriestMouth"/>
   <obo:BFO_0000050 rdf:resource="#DecreeNecessitationProcess"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DecreeAcceptanceProcess</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#TribalLandDivision">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000055 rdf:resource="#SupremeCommanderRoleCessationInstance"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TribalLandDivision</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#SupremeCommanderRoleInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <work3:type rdf:resource="#SupremeCommanderRole"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SupremeCommanderRoleInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#SupremeCommanderRoleCessationInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work3:type rdf:resource="#RoleCessationQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SupremeCommanderRoleCessationInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#TribalAllianceFormationProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000050 rdf:resource="#TribalLandDivision"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TribalAllianceFormationProcess</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
