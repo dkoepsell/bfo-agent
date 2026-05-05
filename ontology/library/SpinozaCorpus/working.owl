@@ -9007,6 +9007,7 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000017"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Reason</rdfs:label>
 </owl:Class>
 
@@ -35374,6 +35375,18 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PhilosophicMatterContent</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#GiftOfGodQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GiftOfGodQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DivineLightQuality">
+  <rdfs:subClassOf rdf:resource="#DivineAttribute"/>
+  <work:subClassOf rdf:resource="#DivineAttribute"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivineLightQuality</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
