@@ -34568,6 +34568,25 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TransmissionInGoodFaithDisposition</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#AppearanceOfJusticeSeeking">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:BFO_0000054 rdf:resource="#EmbellishmentOfDeedsProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AppearanceOfJusticeSeeking</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#Wrongdoer">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Wrongdoer</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#EmbellishmentOfDeedsProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EmbellishmentOfDeedsProcess</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -36097,6 +36116,12 @@
   <obo:RO_0000053 rdf:resource="#ApostlesFoundationalDivergenceQualityInstance"/>
   <obo:RO_0000056 rdf:resource="#ApostleWritingProcess"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Apostles</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#HandingDownOfScripturalMainPointsProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#MainPointsOfScripturalNarrative"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HandingDownOfScripturalMainPointsProcess</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#ExtendedSubstance">
@@ -51560,12 +51585,6 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <obo:BFO_0000050 rdf:resource="#Scripture"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MainPointsOfScripturalNarrative</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#HandingDownOfScripturalMainPointsProcess">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <obo:RO_0000057 rdf:resource="#MainPointsOfScripturalNarrative"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HandingDownOfScripturalMainPointsProcess</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
