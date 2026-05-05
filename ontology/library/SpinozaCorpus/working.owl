@@ -4314,6 +4314,7 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work:subClassOf rdf:resource="#Error"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Opinion</rdfs:label>
 </owl:Class>
 
@@ -8546,6 +8547,9 @@
 
 <owl:Class rdf:about="#Piety">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:BFO_0000054 rdf:resource="#ObedientActionProcess"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Piety</rdfs:label>
 </owl:Class>
 
@@ -15579,6 +15583,8 @@
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="#Disobedience"/>
   <work:subClassOf rdf:resource="#DisobedienceToState"/>
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Sin</rdfs:label>
 </owl:Class>
 
@@ -31833,6 +31839,8 @@
 
 <owl:Class rdf:about="#Obedience">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Obedience</rdfs:label>
 </owl:Class>
 
@@ -34855,6 +34863,35 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivineAccommodationDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#Impiety">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:BFO_0000054 rdf:resource="#SinfulActionProcess"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Impiety</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PietyInharesInOpinionConditionally">
+  <rdfs:subClassOf rdf:resource="#Piety"/>
+  <work:subClassOf rdf:resource="#Piety"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PietyInharesInOpinionConditionally</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ImpietyInharesInOpinionConditionally">
+  <rdfs:subClassOf rdf:resource="#Impiety"/>
+  <work:subClassOf rdf:resource="#Impiety"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ImpietyInharesInOpinionConditionally</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ObedientActionProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ObedientActionProcess</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SinfulActionProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SinfulActionProcess</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
