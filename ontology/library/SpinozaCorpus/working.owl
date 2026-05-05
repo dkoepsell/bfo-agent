@@ -33090,6 +33090,18 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LexicalPolysemy</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#InexplicableUtterance">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">InexplicableUtterance</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#InexplicabilityQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">InexplicabilityQuality</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -34505,6 +34517,7 @@
   <work3:type rdf:resource="#ScriptureEpistemicAuthorityQuality"/>
   <obo:RO_0000053 rdf:resource="#ScriptureEpistemicAuthorityQuality"/>
   <RO_0000053 rdf:resource="#DevotionInducingDisposition"/>
+  <obo:BFO_0000051 rdf:resource="#InexplicableUtterance"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Scripture</rdfs:label>
 </owl:NamedIndividual>
 
