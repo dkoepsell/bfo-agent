@@ -32827,6 +32827,29 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivinityProofDisposition</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#HebrewPerson">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HebrewPerson</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#HebrewIdentityRole">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HebrewIdentityRole</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#TextualAuthorRole">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <obo:BFO_0000054 rdf:resource="#WritingProcess"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TextualAuthorRole</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#WritingProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WritingProcess</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -47371,6 +47394,11 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <obo:RO_0000052 rdf:resource="#Scripture"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ScriptureDefinitionAbsenceQuality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#OldTestament">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OldTestament</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
