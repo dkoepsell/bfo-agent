@@ -34938,6 +34938,24 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UniversalAudienceIntendedQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#ScripturallyRequiredBelief">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ScripturallyRequiredBelief</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#NecessityForCarryingOutCommand">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NecessityForCarryingOutCommand</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#LovingOneNeighborProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LovingOneNeighborProcess</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -36438,6 +36456,7 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
   <obo:RO_0000057 rdf:resource="#ScriptureTeachingProcess"/>
   <obo:RO_0000053 rdf:resource="#TeachingObedienceDispositionInstance"/>
+  <obo:BFO_0000051 rdf:resource="#CommandToLoveNeighbor"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Scripture</rdfs:label>
 </owl:NamedIndividual>
 
@@ -52237,6 +52256,11 @@
   <RO_0000052 rdf:resource="#Scripture"/>
   <work3:type rdf:resource="#UniversalAudienceIntendedQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UniversalAudienceIntendedQualityInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#CommandToLoveNeighbor">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CommandToLoveNeighbor</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
