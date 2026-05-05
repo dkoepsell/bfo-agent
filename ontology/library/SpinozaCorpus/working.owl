@@ -33522,6 +33522,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HistorianRole</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#ChronologicalContradictionQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ChronologicalContradictionQuality</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -49000,26 +49006,26 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1Samuel16</rdfs:label>
 </owl:NamedIndividual>
 
+<owl:NamedIndividual rdf:about="#HistoricalSourceA">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HistoricalSourceA</rdfs:label>
+</owl:NamedIndividual>
+
 <owl:NamedIndividual rdf:about="#1Samuel17">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <obo:BFO_0000050 rdf:resource="#HistoricalSourceB"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1Samuel17</rdfs:label>
 </owl:NamedIndividual>
 
+<owl:NamedIndividual rdf:about="#HistoricalSourceB">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HistoricalSourceB</rdfs:label>
+</owl:NamedIndividual>
+
 <owl:NamedIndividual rdf:about="#1Samuel18">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <obo:BFO_0000050 rdf:resource="#HistoricalSourceB"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1Samuel18</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#HistoricalSourceA">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HistoricalSourceA</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#HistoricalSourceB">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HistoricalSourceB</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#HistorianA">
@@ -49055,6 +49061,22 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <obo:RO_0000052 rdf:resource="#1Samuel16"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1Samuel16SourceDisposition</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#FirstKingsSixOneChronologyStatement">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FirstKingsSixOneChronologyStatement</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#IndividualNarrativeDerivedChronology">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IndividualNarrativeDerivedChronology</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ChronologicalContradictionInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#FirstKingsSixOneChronologyStatement"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ChronologicalContradictionInstance</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
