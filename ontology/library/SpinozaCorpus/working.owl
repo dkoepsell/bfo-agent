@@ -33431,6 +33431,11 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LegalTextContent</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#DocumentLengthQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DocumentLengthQuality</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -36948,6 +36953,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FortiethYearAfterDepartureFromEgypt</rdfs:label>
 </owl:NamedIndividual>
 
+<owl:NamedIndividual rdf:about="#BookOfTheLawOfGod">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work4:RO_0000057 rdf:resource="#Moses"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BookOfTheLawOfGod</rdfs:label>
+</owl:NamedIndividual>
+
 <owl:NamedIndividual rdf:about="#CollectionOfEternalModesOfThinking">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
   <obo:BFO_0000050 rdf:resource="#InfiniteIntellectOfGod"/>
@@ -38122,6 +38133,17 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HavingIdeaOfGodProcess</rdfs:label>
 </owl:NamedIndividual>
 
+<owl:NamedIndividual rdf:about="#Hebrews">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <obo:RO_0000053 rdf:resource="#HebrewsElectionRoleInstance"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Hebrews</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#EvidenceContent">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EvidenceContent</rdfs:label>
+</owl:NamedIndividual>
+
 <owl:NamedIndividual rdf:about="#GreatestSatisfactionQualityInstance">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#GreatestSatisfactionQuality"/>
@@ -38168,17 +38190,6 @@
   <obo:RO_0000052 rdf:resource="#IntellectualLoveOfGodInstance"/>
   <work3:type rdf:resource="#EternalityQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IntellectualLoveEternalityQualityInstance</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#Hebrews">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
-  <obo:RO_0000053 rdf:resource="#HebrewsElectionRoleInstance"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Hebrews</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#EvidenceContent">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EvidenceContent</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#HebrewsElectionRoleInstance">
@@ -48365,6 +48376,7 @@
 
 <owl:NamedIndividual rdf:about="#BookOfTheLaw">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <obo:RO_0000056 rdf:resource="#PublicAssemblyReadingProcess"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BookOfTheLaw</rdfs:label>
 </owl:NamedIndividual>
 
@@ -48416,10 +48428,21 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PerishingOfBook</rdfs:label>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#BookOfTheLawOfGod">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
-  <work4:RO_0000057 rdf:resource="#Moses"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BookOfTheLawOfGod</rdfs:label>
+<owl:NamedIndividual rdf:about="#BookOfTheLawLengthQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#BookOfTheLaw"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BookOfTheLawLengthQuality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#PentateuchLengthQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#Pentateuch"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PentateuchLengthQuality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#PublicAssemblyReadingProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PublicAssemblyReadingProcess</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
