@@ -37297,6 +37297,24 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">KingdomBelongsToGodQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#RequiredWorshipPractice">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RequiredWorshipPractice</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ObligationToWorshipQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ObligationToWorshipQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#WorshipSiteExclusivityBelief">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WorshipSiteExclusivityBelief</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -38954,6 +38972,11 @@
   <obo:BFO_0000051 rdf:resource="#Piety"/>
   <obo:BFO_0000051 rdf:resource="#Obedience"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Theology</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#HebrewKingdom">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000029"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HebrewKingdom</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#ExtendedSubstance">
@@ -55153,9 +55176,10 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FortuneAndHonorDependenceOnTrueInterpretationQuality</rdfs:label>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#HebrewKingdom">
+<owl:NamedIndividual rdf:about="#HebrewTerritory">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000029"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HebrewKingdom</rdfs:label>
+  <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000029"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HebrewTerritory</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
