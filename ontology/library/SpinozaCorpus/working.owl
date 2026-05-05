@@ -36603,6 +36603,29 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PowerTransferIncapacity</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#PsychologicalState">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000020"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PsychologicalState</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#LawsOfHumanNature">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work:subClassOf rdf:resource="#CommonOrderOfNature"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LawsOfHumanNature</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#NecessaryFollowingFromHumanNatureDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:BFO_0000054 rdf:resource="#PsychologicalStateNecessitationProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NecessaryFollowingFromHumanNatureDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PsychologicalStateNecessitationProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#PsychologicalState"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PsychologicalStateNecessitationProcess</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
