@@ -8549,6 +8549,14 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PreachingProcess</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#PropheticCertainty">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#MoralCertainty"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#Prophet"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PropheticCertainty</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#Piety">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
@@ -29759,14 +29767,6 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SignIndependence</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#PropheticCertainty">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <work:subClassOf rdf:resource="#MoralCertainty"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <obo:RO_0000052 rdf:resource="#Prophet"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PropheticCertainty</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#MoralCertainty">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
@@ -30748,6 +30748,7 @@
 
 <owl:Class rdf:about="#TrueProphet">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TrueProphet</rdfs:label>
 </owl:Class>
 
@@ -35509,6 +35510,30 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="#PropheticCertaintyGrounding"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HeartInclinedTowardGood</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PropheticDoctrine">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PropheticDoctrine</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PropheticMiracle">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PropheticMiracle</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ProphetDistinctionCriterion">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:BFO_0000054 rdf:resource="#ProphetEvaluationProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ProphetDistinctionCriterion</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ProphetEvaluationProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000055 rdf:resource="#ProphetDistinctionCriterion"/>
+  <obo:RO_0000057 rdf:resource="#PropheticDoctrine"/>
+  <obo:RO_0000057 rdf:resource="#PropheticMiracle"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ProphetEvaluationProcess</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
