@@ -32271,6 +32271,24 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LackOfConformityToNaturesLaws</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#FalseProphet">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FalseProphet</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#MiraclePerformingDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:BFO_0000054 rdf:resource="#MiraclePerformingProcess"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MiraclePerformingDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#MiraclePerformingProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MiraclePerformingProcess</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
