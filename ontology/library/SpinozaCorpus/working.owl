@@ -35479,6 +35479,23 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AbsenceOfReasonQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#UniversalHistoryOfNature">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UniversalHistoryOfNature</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#TruthGroundingQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#Theology"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TruthGroundingQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ScriptureGroundedTruthQuality">
+  <rdfs:subClassOf rdf:resource="#TruthGroundingQuality"/>
+  <work:subClassOf rdf:resource="#TruthGroundingQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ScriptureGroundedTruthQuality</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -50716,6 +50733,7 @@
 
 <owl:NamedIndividual rdf:about="#ScriptureHistory">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work:subClassOf rdf:resource="#Scripture"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ScriptureHistory</rdfs:label>
 </owl:NamedIndividual>
 
