@@ -36123,7 +36123,13 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
   <work:subClassOf rdf:resource="#LivingOutsideStateTerritory"/>
+  <work:subClassOf rdf:resource="#NonRecognitionOfSovereigntyQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Enemy</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#LivingOutsideStateTerritory">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LivingOutsideStateTerritory</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#SovereigntyRecognitionDisposition">
@@ -36138,9 +36144,22 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">StateTerritory</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#LivingOutsideStateTerritory">
+<owl:Class rdf:about="#RecognitionOfSovereignty">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RecognitionOfSovereignty</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#LivingOutsideTheState">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LivingOutsideStateTerritory</rdfs:label>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LivingOutsideTheState</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#NonRecognitionOfSovereigntyQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NonRecognitionOfSovereigntyQuality</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
