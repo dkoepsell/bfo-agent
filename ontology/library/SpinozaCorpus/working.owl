@@ -37162,6 +37162,11 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OppressionProcess</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#OppressedPeopleRole">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OppressedPeopleRole</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#SalaryPaymentProcess">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <obo:RO_0000057 rdf:resource="#Army"/>
@@ -37187,16 +37192,34 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SoldierRole</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#OppressedPeopleRole">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OppressedPeopleRole</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#ArmyEnablementOfOppressionDisposition">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <obo:RO_0000052 rdf:resource="#Army"/>
   <obo:BFO_0000054 rdf:resource="#OppressionProcess"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ArmyEnablementOfOppressionDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#CitizenSoldier">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CitizenSoldier</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#StateLeader">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">StateLeader</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#CitizenSoldierFreedom">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#RestraintOnLeaderDisposition"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CitizenSoldierFreedom</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#RestraintOnLeaderDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RestraintOnLeaderDisposition</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
