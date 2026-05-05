@@ -33640,6 +33640,11 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HistoricalPeriodOfHebrew</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#OpenSpaceInParagraph">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OpenSpaceInParagraph</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -49288,6 +49293,29 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <obo:RO_0000057 rdf:resource="#LaterScribes"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IntroductionOfEuphemismsProcess</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Masoretes">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <obo:RO_0000056 rdf:resource="#MasoreticTransmissionProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Masoretes</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#MasoreticTransmissionProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#MasoreticTextualRecord"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MasoreticTransmissionProcess</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#MasoreticTextualRecord">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <obo:BFO_0000051 rdf:resource="#TwentyEightPassagesCollection"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MasoreticTextualRecord</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#TwentyEightPassagesCollection">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TwentyEightPassagesCollection</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
