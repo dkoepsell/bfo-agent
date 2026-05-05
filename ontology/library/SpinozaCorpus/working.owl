@@ -48898,6 +48898,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AuthorOf1Chronicles</rdfs:label>
 </owl:NamedIndividual>
 
+<owl:NamedIndividual rdf:about="#WritingOf1ChroniclesProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#AuthorOf1Chronicles"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WritingOf1ChroniclesProcess</rdfs:label>
+</owl:NamedIndividual>
+
 <owl:NamedIndividual rdf:about="#BookOf1Chronicles">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BookOf1Chronicles</rdfs:label>
@@ -48909,23 +48915,17 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TwelveBooksAttributedToEzra</rdfs:label>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#OtherHistorianNarratives">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OtherHistorianNarratives</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#WritingOf1ChroniclesProcess">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <obo:RO_0000057 rdf:resource="#AuthorOf1Chronicles"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WritingOf1ChroniclesProcess</rdfs:label>
-</owl:NamedIndividual>
-
 <owl:NamedIndividual rdf:about="#NarrativeBorrowingProcess">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <obo:BFO_0000050 rdf:resource="#WritingOf1ChroniclesProcess"/>
   <obo:RO_0000057 rdf:resource="#OtherHistorianNarratives"/>
   <obo:RO_0000057 rdf:resource="#BookOf1Chronicles"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NarrativeBorrowingProcess</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#OtherHistorianNarratives">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OtherHistorianNarratives</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
