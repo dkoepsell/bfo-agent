@@ -33413,6 +33413,11 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BiblicalTextAuthor</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#AuthorshipByMosesQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AuthorshipByMosesQuality</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -37378,6 +37383,7 @@
   <obo:RO_0000056 rdf:resource="#EnsuranceOfDutyProcess"/>
   <obo:RO_0000053 rdf:resource="#MosesAuthorshipRoleOfPentateuch"/>
   <obo:RO_0000056 rdf:resource="#AuthorshipProcess"/>
+  <obo:RO_0000056 rdf:resource="#LifetimeOfMoses"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Moses</rdfs:label>
 </owl:NamedIndividual>
 
@@ -48203,6 +48209,24 @@
   <obo:RO_0000057 rdf:resource="#NonMosesAuthor"/>
   <obo:RO_0000057 rdf:resource="#BiblicalText"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BiblicalTextWritingProcess</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#CompositionOfPentateuch">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#Pentateuch"/>
+  <obo:BFO_0000003 rdf:resource="#ManyGenerationsAfterMoses"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CompositionOfPentateuch</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#LifetimeOfMoses">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000038"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LifetimeOfMoses</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ManyGenerationsAfterMoses">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000008"/>
+  <work:comment rdf:resource="#Temporal region that is many generations after the lifetime of Moses"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ManyGenerationsAfterMoses</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
