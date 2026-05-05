@@ -25257,6 +25257,8 @@
 <owl:Class rdf:about="#FreedomByReason">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#Man"/>
+  <work:comment rdf:resource="#Obtains in a man only insofar as the BeingLedByReason disposition is realized in a ReasonGuidanceProcess — capturing the conditional 'just insofar as' in Spinoza's claim."/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FreedomByReason</rdfs:label>
 </owl:Class>
 
@@ -35943,6 +35945,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RightTransferProcess</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#SubjectRole">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SubjectRole</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#PowerEqualsRightQuality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PowerEqualsRightQuality</rdfs:label>
@@ -36443,12 +36451,6 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SovereignRole</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#SubjectRole">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SubjectRole</rdfs:label>
-</owl:Class>
-
 <owl:Class rdf:about="#DivineSpecialAidDisposition">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <obo:BFO_0000054 rdf:resource="#DivineSpecialAidProcess"/>
@@ -36464,6 +36466,20 @@
 <owl:Class rdf:about="#RightTransferObligationSuspensionQuality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RightTransferObligationSuspensionQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#BeingLedByReason">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:RO_0000052 rdf:resource="#Man"/>
+  <obo:BFO_0000054 rdf:resource="#ReasonGuidanceProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BeingLedByReason</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ReasonGuidanceProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ReasonGuidanceProcess</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
