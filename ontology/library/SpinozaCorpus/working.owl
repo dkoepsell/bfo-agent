@@ -37278,6 +37278,25 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LeadershipSuperiorityQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#HebrewCitizen">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HebrewCitizen</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#BeliefThatKingdomIsDivine">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BeliefThatKingdomIsDivine</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#KingdomBelongsToGodQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#HebrewKingdom"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">KingdomBelongsToGodQuality</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -55132,6 +55151,11 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <obo:RO_0000052 rdf:resource="#Levites"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FortuneAndHonorDependenceOnTrueInterpretationQuality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#HebrewKingdom">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000029"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HebrewKingdom</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
