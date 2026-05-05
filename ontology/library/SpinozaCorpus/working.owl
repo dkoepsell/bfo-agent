@@ -36222,6 +36222,35 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TreasonCapabilityConstraint</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#NaturalKnowledgeOfObligationToObeyGodQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="#NaturalKnowledgeAbsenceOfObligationQuality"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NaturalKnowledgeOfObligationToObeyGodQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ObligationToObeyGodRole">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ObligationToObeyGodRole</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#NaturalKnowledgeAbsenceOfObligationQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NaturalKnowledgeAbsenceOfObligationQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#NaturalEpistemicAccessToNormativeObligation">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NaturalEpistemicAccessToNormativeObligation</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#HumanBeingClass">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HumanBeingClass</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -37562,6 +37591,13 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ImaginationToRealInabilityRealizationProcess</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#OntologicalPriorityInNature">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work3:type rdf:resource="#OntologicalPriority"/>
+  <obo:RO_0000052 rdf:resource="#StateOfNature"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OntologicalPriorityInNature</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#PowerOfGod">
@@ -53726,13 +53762,6 @@
   <work3:type rdf:resource="#EternalTruth"/>
   <obo:BFO_0000050 rdf:resource="#HumanNature"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LawOfHumanNature</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#OntologicalPriorityInNature">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-  <work3:type rdf:resource="#OntologicalPriority"/>
-  <obo:RO_0000052 rdf:resource="#StateOfNature"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OntologicalPriorityInNature</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
