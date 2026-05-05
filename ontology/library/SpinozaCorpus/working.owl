@@ -8502,6 +8502,7 @@
   <obo:RO_0000053 rdf:resource="#ProphetConfusedPerceptionQualityInstance"/>
   <obo:RO_0000056 rdf:resource="#ConfusedPerceptionOfGodsMindProcess"/>
   <obo:BFO_0000054 rdf:resource="#PreachingProcess"/>
+  <work:subClassOf rdf:resource="#_:x1"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Prophet</rdfs:label>
 </owl:Class>
 
@@ -34402,6 +34403,12 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <obo:BFO_0000055 rdf:resource="#PropheticGift"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PropheticPerception</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PropheticPerceptualPower">
+  <rdfs:subClassOf rdf:resource="#PropheticGift"/>
+  <work:subClassOf rdf:resource="#PropheticGift"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PropheticPerceptualPower</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
