@@ -34777,6 +34777,16 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">KnowledgeThroughDemonstrationOnly</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#DivineName">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DivineName</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#KnowledgeByName">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">KnowledgeByName</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -35136,6 +35146,7 @@
   <obo:RO_0000053 rdf:resource="#DivineLovinKindnessInstance"/>
   <obo:RO_0000056 rdf:resource="#KnowledgeDemandProcess"/>
   <obo:RO_0000053 rdf:resource="#Yahweh"/>
+  <RO_0000053 rdf:resource="#Yahweh"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">God</rdfs:label>
 </owl:NamedIndividual>
 
@@ -38271,6 +38282,7 @@
 <owl:NamedIndividual rdf:about="#Yahweh">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work3:type rdf:resource="#DivineName"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Yahweh</rdfs:label>
 </owl:NamedIndividual>
 
@@ -49254,6 +49266,7 @@
 <owl:NamedIndividual rdf:about="#Patriarchs">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
   <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <RO_0000053 rdf:resource="#PatriarchsLackOfKnowledgeByYahwehDisposition"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Patriarchs</rdfs:label>
 </owl:NamedIndividual>
 
@@ -51916,6 +51929,12 @@
   <work3:type rdf:resource="#DegreeOfKnowledgeOfGodQuality"/>
   <obo:RO_0000052 rdf:resource="#TheFaithful"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">InequalityOfKnowledgeOfGodAmongFaithfulQuality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#PatriarchsLackOfKnowledgeByYahwehDisposition">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <RO_0000052 rdf:resource="#Patriarchs"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PatriarchsLackOfKnowledgeByYahwehDisposition</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
