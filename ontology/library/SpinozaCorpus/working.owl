@@ -33769,6 +33769,11 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FragmentaryCompletenessQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#TextualPresupposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TextualPresupposition</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -37954,6 +37959,17 @@
   <obo:BFO_0000051 rdf:resource="#PentateuchPrecept"/>
   <obo:BFO_0000051 rdf:resource="#PentateuchStory"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Pentateuch</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Baruch">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <obo:RO_0000053 rdf:resource="#ScribeRole"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Baruch</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#BaruchScroll">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BaruchScroll</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#HistoryOfNatureCompilingProcess">
@@ -49164,11 +49180,6 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CopyingProcess</rdfs:label>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#BaruchScroll">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BaruchScroll</rdfs:label>
-</owl:NamedIndividual>
-
 <owl:NamedIndividual rdf:about="#JeremiahPropheciesText">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <obo:BFO_0000050 rdf:resource="#BaruchScroll"/>
@@ -49726,12 +49737,6 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CollectionOfPassagesProcess</rdfs:label>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#Baruch">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
-  <obo:RO_0000053 rdf:resource="#ScribeRole"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Baruch</rdfs:label>
-</owl:NamedIndividual>
-
 <owl:NamedIndividual rdf:about="#ScribeRole">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
   <obo:RO_0000052 rdf:resource="#Baruch"/>
@@ -49750,6 +49755,24 @@
   <obo:RO_0000052 rdf:resource="#Ezekiel"/>
   <work3:type rdf:resource="#FragmentaryCompletenessQuality"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EzekielFragmentarynessQualityInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#BookOfEzekiel">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <obo:RO_0000053 rdf:resource="#EzekielPresuppositionDisposition"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BookOfEzekiel</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#PreviousWritings">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PreviousWritings</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#EzekielPresuppositionDisposition">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:RO_0000052 rdf:resource="#BookOfEzekiel"/>
+  <work3:type rdf:resource="#TextualPresupposition"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EzekielPresuppositionDisposition</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
