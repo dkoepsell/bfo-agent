@@ -35204,6 +35204,7 @@
 <owl:Class rdf:about="#Faithfulness">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <obo:RO_0000052 rdf:resource="#FaithfulPerson"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Faithfulness</rdfs:label>
 </owl:Class>
 
@@ -35227,6 +35228,23 @@
 <owl:Class rdf:about="#TruthDisposition">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TruthDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#FaithfulnessByObedienceQuality">
+  <rdfs:subClassOf rdf:resource="#Faithfulness"/>
+  <work:subClassOf rdf:resource="#Faithfulness"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FaithfulnessByObedienceQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#FaithfulnessByObedienceCondition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:BFO_0000054 rdf:resource="#ObedienceProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FaithfulnessByObedienceCondition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ObedienceProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ObedienceProcess</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
