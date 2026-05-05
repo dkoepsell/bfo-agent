@@ -33528,6 +33528,16 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ChronologicalContradictionQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#ScriptureNarrativeContent">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ScriptureNarrativeContent</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#NarrativeOmission">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NarrativeOmission</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -34984,6 +34994,7 @@
   <obo:RO_0000053 rdf:resource="#ScriptureEpistemicAuthorityQuality"/>
   <RO_0000053 rdf:resource="#DevotionInducingDisposition"/>
   <obo:BFO_0000051 rdf:resource="#InexplicableUtterance"/>
+  <obo:BFO_0000051 rdf:resource="#ScriptureNarrativeContent"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Scripture</rdfs:label>
 </owl:NamedIndividual>
 
@@ -49077,6 +49088,17 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <obo:RO_0000052 rdf:resource="#FirstKingsSixOneChronologyStatement"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ChronologicalContradictionInstance</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ScriptureNarrativeOmissionQuality">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#Scripture"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ScriptureNarrativeOmissionQuality</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#MultiYearTemporalSpan">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000008"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MultiYearTemporalSpan</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
