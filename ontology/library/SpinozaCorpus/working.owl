@@ -34817,11 +34817,13 @@
 
 <owl:Class rdf:about="#Faith">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Faith</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#RevealedReligion">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RevealedReligion</rdfs:label>
 </owl:Class>
 
@@ -34829,6 +34831,18 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="#KnowledgeOfGodNatureInItself"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NonPertinenceToFaithQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#IntellectualKnowledgeOfGodNature">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IntellectualKnowledgeOfGodNature</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#IntellectualKnowledgeDisjointFromFaithQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IntellectualKnowledgeDisjointFromFaithQuality</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
