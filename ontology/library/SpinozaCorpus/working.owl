@@ -32513,6 +32513,40 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ContraryToNatureImpliesContraryToReasonRelation</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#Narration">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Narration</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#JudgmentMixingDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:RO_0000052 rdf:resource="#NarratorHuman"/>
+  <obo:BFO_0000054 rdf:resource="#Narration"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">JudgmentMixingDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SubjectiveJudgmentQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#Narration"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SubjectiveJudgmentQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#NarratorHuman">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <obo:RO_0000056 rdf:resource="#Narration"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NarratorHuman</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PureFactualNarrationRarity">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#Narration"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PureFactualNarrationRarity</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
