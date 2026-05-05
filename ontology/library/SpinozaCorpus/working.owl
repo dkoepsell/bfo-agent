@@ -4678,6 +4678,7 @@
   <obo:RO_0000053 rdf:resource="#Power"/>
   <obo:RO_0000053 rdf:resource="#HumanEssence"/>
   <work:subClassOf rdf:resource="#Animal"/>
+  <obo:RO_0000056 rdf:resource="#Birth"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Human</rdfs:label>
 </owl:Class>
 
@@ -16322,6 +16323,8 @@
 <owl:Class rdf:about="#Freedom">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Freedom</rdfs:label>
 </owl:Class>
 
@@ -36305,6 +36308,18 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ViolationOfRightAbsenceQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#Birth">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Birth</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#NatalFreedomQuality">
+  <rdfs:subClassOf rdf:resource="#Freedom"/>
+  <work:subClassOf rdf:resource="#Freedom"/>
+  <obo:RO_0000052 rdf:resource="#Human"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NatalFreedomQuality</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
