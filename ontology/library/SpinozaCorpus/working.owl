@@ -33887,6 +33887,47 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AuthoritativeAcceptanceRole</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#LearnedInLaw">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LearnedInLaw</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#Council">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Council</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SummoningOfCouncilProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SummoningOfCouncilProcess</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DeterminationOfSacredBooksProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000050 rdf:resource="#SummoningOfCouncilProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DeterminationOfSacredBooksProcess</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SacredBook">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <obo:BFO_0000051 rdf:resource="#SacredStatus"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SacredBook</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SacredStatus">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SacredStatus</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#AuthorityToConveneCouncilDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:BFO_0000054 rdf:resource="#SummoningOfCouncilProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AuthorityToConveneCouncilDisposition</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -50246,6 +50287,13 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CanonSelectionProcess</rdfs:label>
 </owl:NamedIndividual>
 
+<owl:NamedIndividual rdf:about="#CanonizationProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000055 rdf:resource="#SacredTextCanonAuthority"/>
+  <obo:RO_0000057 rdf:resource="#OldTestamentCanon"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CanonizationProcess</rdfs:label>
+</owl:NamedIndividual>
+
 <owl:NamedIndividual rdf:about="#TheBooks">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
   <obo:RO_0000056 rdf:resource="#BookAcceptanceProcess"/>
@@ -50294,13 +50342,6 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <obo:BFO_0000050 rdf:resource="#OldTestamentCanon"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OldTestamentBooks</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#CanonizationProcess">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
-  <obo:BFO_0000055 rdf:resource="#SacredTextCanonAuthority"/>
-  <obo:RO_0000057 rdf:resource="#OldTestamentCanon"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CanonizationProcess</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#SacredTextCanonAuthority">
