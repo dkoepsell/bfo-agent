@@ -29050,6 +29050,8 @@
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
   <obo:RO_0000052 rdf:resource="#Prophet"/>
+  <obo:RO_0000052 rdf:resource="#Jeremiah"/>
+  <obo:BFO_0000054 rdf:resource="#DictationProcess"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ProphetRole</rdfs:label>
 </owl:Class>
 
@@ -47078,6 +47080,12 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">KingUzziah</rdfs:label>
 </owl:NamedIndividual>
 
+<owl:NamedIndividual rdf:about="#UzziahKingRoleInstance">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <obo:RO_0000052 rdf:resource="#KingUzziah"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UzziahKingRoleInstance</rdfs:label>
+</owl:NamedIndividual>
+
 <owl:NamedIndividual rdf:about="#InadequateCosmologicalBeliefQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
@@ -49132,6 +49140,8 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <obo:RO_0000057 rdf:resource="#HezekiahNarrativeInIsaiah"/>
   <obo:RO_0000057 rdf:resource="#HezekiahNarrativeIn2Kings"/>
+  <obo:RO_0000057 rdf:resource="#BaruchScroll"/>
+  <obo:RO_0000057 rdf:resource="#JeremiahPropheciesText"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CopyingProcess</rdfs:label>
 </owl:NamedIndividual>
 
@@ -49649,12 +49659,6 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CollectionAndDivisionOfPsalmsProcess</rdfs:label>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#UzziahKingRoleInstance">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
-  <obo:RO_0000052 rdf:resource="#KingUzziah"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UzziahKingRoleInstance</rdfs:label>
-</owl:NamedIndividual>
-
 <owl:NamedIndividual rdf:about="#BookOfDeedsOfUzziah">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <obo:RO_0000053 rdf:resource="#BookOfDeedsLostQualityInstance"/>
@@ -49682,6 +49686,7 @@
 
 <owl:NamedIndividual rdf:about="#Jeremiah">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <obo:RO_0000053 rdf:resource="#ProphetRole"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Jeremiah</rdfs:label>
 </owl:NamedIndividual>
 
@@ -49695,6 +49700,38 @@
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <obo:RO_0000057 rdf:resource="#BookOfJeremiah"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CollectionOfPassagesProcess</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Baruch">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <obo:RO_0000053 rdf:resource="#ScribeRole"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Baruch</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#JeremiahPropheciesText">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <obo:BFO_0000050 rdf:resource="#BaruchScroll"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">JeremiahPropheciesText</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#BaruchScroll">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BaruchScroll</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#DictationProcess">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#Jeremiah"/>
+  <obo:RO_0000057 rdf:resource="#Baruch"/>
+  <obo:RO_0000057 rdf:resource="#BaruchScroll"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DictationProcess</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ScribeRole">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <obo:RO_0000052 rdf:resource="#Baruch"/>
+  <obo:BFO_0000054 rdf:resource="#DictationProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ScribeRole</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
