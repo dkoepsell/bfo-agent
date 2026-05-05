@@ -49861,7 +49861,7 @@
 <owl:NamedIndividual rdf:about="#BookOfDaniel">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Daniel</rdfs:label>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BookOfDaniel</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#BookOfDanielText">
@@ -49938,6 +49938,30 @@
 <owl:NamedIndividual rdf:about="#WritingOfNehemiahProcess">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WritingOfNehemiahProcess</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#BookOfEzra1">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BookOfEzra1</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#AuthorOfEzra1AndDaniel">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <obo:RO_0000053 rdf:resource="#AuthorRoleOfEzra1"/>
+  <obo:RO_0000053 rdf:resource="#AuthorRoleOfDaniel"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AuthorOfEzra1AndDaniel</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#AuthorRoleOfEzra1">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <obo:RO_0000052 rdf:resource="#AuthorOfEzra1AndDaniel"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AuthorRoleOfEzra1</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#AuthorRoleOfDaniel">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <obo:RO_0000052 rdf:resource="#AuthorOfEzra1AndDaniel"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AuthorRoleOfDaniel</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
