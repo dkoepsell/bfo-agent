@@ -35150,6 +35150,37 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Perdition</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#Antichrist">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <obo:BFO_0000054 rdf:resource="#PersecutionOfHonestMen"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Antichrist</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PersecutionOfHonestMen">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PersecutionOfHonestMen</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#HonestManRole">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HonestManRole</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#LoveOfJusticeDisposition">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LoveOfJusticeDisposition</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DoctrinalDisagreementQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DoctrinalDisagreementQuality</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
