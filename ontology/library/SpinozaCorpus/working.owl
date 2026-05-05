@@ -48818,15 +48818,15 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HezekiahNarrativeIn2Kings</rdfs:label>
 </owl:NamedIndividual>
 
+<owl:NamedIndividual rdf:about="#BookOf2Kings">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BookOf2Kings</rdfs:label>
+</owl:NamedIndividual>
+
 <owl:NamedIndividual rdf:about="#HezekiahNarrativeInIsaiah">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
   <obo:BFO_0000050 rdf:resource="#BookOfIsaiah"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HezekiahNarrativeInIsaiah</rdfs:label>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#BookOf2Kings">
-  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BookOf2Kings</rdfs:label>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#BookOfIsaiah">
@@ -48839,6 +48839,29 @@
   <obo:RO_0000057 rdf:resource="#HezekiahNarrativeInIsaiah"/>
   <obo:RO_0000057 rdf:resource="#HezekiahNarrativeIn2Kings"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CopyingProcess</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#LastChapterOf2Kings">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <obo:BFO_0000050 rdf:resource="#LastChapterOfJeremiah"/>
+  <obo:BFO_0000050 rdf:resource="#Jeremiah39"/>
+  <obo:BFO_0000050 rdf:resource="#Jeremiah40"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LastChapterOf2Kings</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#LastChapterOfJeremiah">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LastChapterOfJeremiah</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Jeremiah39">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Jeremiah39</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Jeremiah40">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Jeremiah40</rdfs:label>
 </owl:NamedIndividual>
 
 <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
