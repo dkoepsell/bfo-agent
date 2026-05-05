@@ -25817,6 +25817,7 @@
 
 <owl:Class rdf:about="#IndividualPower">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="#ConatusDisposition"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IndividualPower</rdfs:label>
 </owl:Class>
 
@@ -35804,16 +35805,35 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ContractLegalForce</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#UtilityGroundsLegalForceRelation">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UtilityGroundsLegalForceRelation</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#NullAndVoidQuality">
   <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NullAndVoidQuality</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#UtilityGroundsLegalForceRelation">
-  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <work:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UtilityGroundsLegalForceRelation</rdfs:label>
+<owl:Class rdf:about="#PowerTransferProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:BFO_0000050 rdf:resource="#SocialOrderFormationProcess"/>
+  <obo:RO_0000057 rdf:resource="#Person"/>
+  <obo:RO_0000057 rdf:resource="#SocialOrder"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PowerTransferProcess</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#RightTransferProcess">
+  <rdfs:subClassOf rdf:resource="#PowerTransferProcess"/>
+  <obo:BFO_0000050 rdf:resource="#PowerTransferProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RightTransferProcess</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PowerEqualsRightQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PowerEqualsRightQuality</rdfs:label>
 </owl:Class>
 
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
