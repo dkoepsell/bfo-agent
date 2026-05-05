@@ -35435,6 +35435,31 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ReasonConformityQuality</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#DoctrineOfFaith">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DoctrineOfFaith</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SufficientForObedienceQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <obo:RO_0000052 rdf:resource="#DoctrineOfFaith"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SufficientForObedienceQuality</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DeterminationOfDoctrinesProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#Theology"/>
+  <obo:RO_0000057 rdf:resource="#DoctrineOfFaith"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DeterminationOfDoctrinesProcess</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#TheologicalScopeConstraint">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <obo:RO_0000052 rdf:resource="#Theology"/>
+  <obo:BFO_0000054 rdf:resource="#DeterminationOfDoctrinesProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TheologicalScopeConstraint</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
@@ -53130,6 +53155,10 @@
   <obo:BFO_0000050 rdf:resource="#CorporealSubstance"/>
 </rdf:Description>
 
+<rdf:Description rdf:about="#TheologicalTeaching">
+  <work:subClassOf rdf:resource="#Theology"/>
+</rdf:Description>
+
 <obo:BFO_0000019 rdf:about="#ImmutabilityQualityInstance">
   <obo:RO_0000052 rdf:resource="#ImmutableDecree"/>
   <obo:RO_0000052 rdf:resource="#God"/>
@@ -53188,10 +53217,6 @@
 
 <rdf:Description rdf:about="#ScripturalNarrative">
   <work:subClassOf rdf:resource="#Scripture"/>
-</rdf:Description>
-
-<rdf:Description rdf:about="#TheologicalTeaching">
-  <work:subClassOf rdf:resource="#Theology"/>
 </rdf:Description>
 
 
