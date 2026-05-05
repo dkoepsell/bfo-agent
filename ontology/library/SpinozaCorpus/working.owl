@@ -34726,6 +34726,29 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CreatedThings</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#ObligationByCommand">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ObligationByCommand</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#KnowledgeOfDivineAttributesObligation">
+  <rdfs:subClassOf rdf:resource="#ObligationByCommand"/>
+  <work:subClassOf rdf:resource="#ObligationByCommand"/>
+  <obo:BFO_0000054 rdf:resource="#KnowingGodAttributesProcess"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">KnowledgeOfDivineAttributesObligation</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#KnowingGodAttributesProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <obo:RO_0000057 rdf:resource="#God"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">KnowingGodAttributesProcess</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#AbsenceOfCommandObligationQuality">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AbsenceOfCommandObligationQuality</rdfs:label>
+</owl:Class>
+
 <owl:NamedIndividual rdf:about="#IndivisibilityQuality">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
   <work3:type rdf:resource="#IndivisibilityQualityClass"/>
