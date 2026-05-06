@@ -55277,7 +55277,7 @@
 
 <owl:NamedIndividual rdf:about="#PrincipleOfAdvantage">
   <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
-  <work:comment rdf:resource="#"The generically dependent content specifying that advantage is the basis of all human motivation, grounding the AdvantageSeekingDisposition class.""/>
+  <rdfs:comment>The generically dependent content specifying that advantage is the basis of all human motivation, grounding the AdvantageSeekingDisposition class.</rdfs:comment>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PrincipleOfAdvantage</rdfs:label>
 </owl:NamedIndividual>
 
