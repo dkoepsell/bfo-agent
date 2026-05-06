@@ -1,1 +1,1 @@
-SpinozaCorpus
+LeibnizPhilosophyCorpus
