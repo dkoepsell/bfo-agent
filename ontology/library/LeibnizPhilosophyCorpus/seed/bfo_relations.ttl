@@ -1,0 +1,193 @@
+@prefix bfo: <http://purl.obolibrary.org/obo/> .
+@prefix obo: <http://purl.obolibrary.org/obo/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+
+#
+# bfo_relations.ttl
+#
+# Standard BFO object properties (relations between entities) with
+# their domain/range constraints, inverses, and characteristic axioms.
+#
+# This file is intended as a pure-BFO seed for any ontology built
+# through BFO-Agent. It contains no domain-specific vocabulary.
+#
+# References:
+#   Arp, Smith, Spear (2015), Building Ontologies with Basic Formal
+#   Ontology, MIT Press.
+#   Smith and Ceusters (2010), Applied Ontology 5(3-4):139-188.
+#
+
+# ---------------------------------------------------------------------------
+# Parthood relations (general)
+# ---------------------------------------------------------------------------
+
+obo:BFO_0000050 a owl:ObjectProperty ;
+    rdfs:label "part of"@en ;
+    rdfs:comment "A core mereological relation. p part_of w if and only if p is a part of w. The inverse of has_part." ;
+    a owl:TransitiveProperty .
+
+obo:BFO_0000051 a owl:ObjectProperty ;
+    rdfs:label "has part"@en ;
+    rdfs:comment "The inverse of part_of." ;
+    owl:inverseOf obo:BFO_0000050 ;
+    a owl:TransitiveProperty .
+
+# ---------------------------------------------------------------------------
+# Continuant relations
+# ---------------------------------------------------------------------------
+
+obo:BFO_0000176 a owl:ObjectProperty ;
+    rdfs:label "continuant part of"@en ;
+    rdfs:comment "A continuant c is part of a continuant c2 at all times during which c exists." ;
+    rdfs:domain obo:BFO_0000002 ;
+    rdfs:range obo:BFO_0000002 ;
+    rdfs:subPropertyOf obo:BFO_0000050 .
+
+obo:BFO_0000178 a owl:ObjectProperty ;
+    rdfs:label "has continuant part"@en ;
+    rdfs:comment "Inverse of continuant_part_of." ;
+    rdfs:domain obo:BFO_0000002 ;
+    rdfs:range obo:BFO_0000002 ;
+    owl:inverseOf obo:BFO_0000176 ;
+    rdfs:subPropertyOf obo:BFO_0000051 .
+
+# ---------------------------------------------------------------------------
+# Occurrent relations
+# ---------------------------------------------------------------------------
+
+obo:BFO_0000132 a owl:ObjectProperty ;
+    rdfs:label "occurrent part of"@en ;
+    rdfs:comment "An occurrent o is part of an occurrent o2." ;
+    rdfs:domain obo:BFO_0000003 ;
+    rdfs:range obo:BFO_0000003 ;
+    rdfs:subPropertyOf obo:BFO_0000050 .
+
+obo:BFO_0000117 a owl:ObjectProperty ;
+    rdfs:label "has occurrent part"@en ;
+    rdfs:comment "Inverse of occurrent_part_of." ;
+    rdfs:domain obo:BFO_0000003 ;
+    rdfs:range obo:BFO_0000003 ;
+    owl:inverseOf obo:BFO_0000132 ;
+    rdfs:subPropertyOf obo:BFO_0000051 .
+
+# ---------------------------------------------------------------------------
+# Specific dependence
+# ---------------------------------------------------------------------------
+
+obo:BFO_0000196 a owl:ObjectProperty ;
+    rdfs:label "bearer of"@en ;
+    rdfs:comment "An independent continuant that is the bearer of a specifically dependent continuant. b bearer_of s if and only if s specifically_depends_on b." ;
+    rdfs:domain obo:BFO_0000004 ;
+    rdfs:range obo:BFO_0000020 .
+
+obo:BFO_0000197 a owl:ObjectProperty ;
+    rdfs:label "inheres in"@en ;
+    rdfs:comment "A specifically dependent continuant inheres in its bearer. The inverse of bearer_of." ;
+    rdfs:domain obo:BFO_0000020 ;
+    rdfs:range obo:BFO_0000004 ;
+    owl:inverseOf obo:BFO_0000196 .
+
+# ---------------------------------------------------------------------------
+# Generic dependence
+# ---------------------------------------------------------------------------
+
+obo:BFO_0000084 a owl:ObjectProperty ;
+    rdfs:label "generically depends on"@en ;
+    rdfs:comment "A relation between a generically dependent continuant and any one of a class of bearers of which one or more is required for the continuant to exist." ;
+    rdfs:domain obo:BFO_0000031 ;
+    rdfs:range obo:BFO_0000004 .
+
+# ---------------------------------------------------------------------------
+# Realization (dispositions, roles, functions)
+# ---------------------------------------------------------------------------
+
+obo:BFO_0000054 a owl:ObjectProperty ;
+    rdfs:label "realized in"@en ;
+    rdfs:comment "A realizable entity (e.g., role, disposition, function) is realized in some process. r realized_in p if r is borne by some independent continuant during the process p." ;
+    rdfs:domain obo:BFO_0000017 ;
+    rdfs:range obo:BFO_0000015 .
+
+obo:BFO_0000055 a owl:ObjectProperty ;
+    rdfs:label "realizes"@en ;
+    rdfs:comment "Inverse of realized_in. A process realizes a realizable entity." ;
+    rdfs:domain obo:BFO_0000015 ;
+    rdfs:range obo:BFO_0000017 ;
+    owl:inverseOf obo:BFO_0000054 .
+
+# ---------------------------------------------------------------------------
+# Process participation
+# ---------------------------------------------------------------------------
+
+obo:BFO_0000056 a owl:ObjectProperty ;
+    rdfs:label "participates in"@en ;
+    rdfs:comment "A continuant participates in some process." ;
+    rdfs:domain obo:BFO_0000002 ;
+    rdfs:range obo:BFO_0000015 .
+
+obo:BFO_0000057 a owl:ObjectProperty ;
+    rdfs:label "has participant"@en ;
+    rdfs:comment "Inverse of participates_in." ;
+    rdfs:domain obo:BFO_0000015 ;
+    rdfs:range obo:BFO_0000002 ;
+    owl:inverseOf obo:BFO_0000056 .
+
+# ---------------------------------------------------------------------------
+# Concretization (gdc realized in sdc)
+# ---------------------------------------------------------------------------
+
+obo:BFO_0000058 a owl:ObjectProperty ;
+    rdfs:label "concretized as"@en ;
+    rdfs:comment "A generically dependent continuant is concretized as a specifically dependent continuant. e.g., the content of a book (gdc) concretized as the ink-pattern of a particular copy (sdc)." ;
+    rdfs:domain obo:BFO_0000031 ;
+    rdfs:range obo:BFO_0000020 .
+
+obo:BFO_0000059 a owl:ObjectProperty ;
+    rdfs:label "concretizes"@en ;
+    rdfs:comment "Inverse of concretized_as." ;
+    rdfs:domain obo:BFO_0000020 ;
+    rdfs:range obo:BFO_0000031 ;
+    owl:inverseOf obo:BFO_0000058 .
+
+# ---------------------------------------------------------------------------
+# Spatial / location relations
+# ---------------------------------------------------------------------------
+
+obo:BFO_0000171 a owl:ObjectProperty ;
+    rdfs:label "located in"@en ;
+    rdfs:comment "A relation between two material entities, where the first is located in the spatial region occupied by the second." ;
+    rdfs:domain obo:BFO_0000040 ;
+    rdfs:range obo:BFO_0000040 ;
+    a owl:TransitiveProperty .
+
+obo:BFO_0000170 a owl:ObjectProperty ;
+    rdfs:label "location of"@en ;
+    rdfs:comment "Inverse of located_in." ;
+    rdfs:domain obo:BFO_0000040 ;
+    rdfs:range obo:BFO_0000040 ;
+    owl:inverseOf obo:BFO_0000171 ;
+    a owl:TransitiveProperty .
+
+# ---------------------------------------------------------------------------
+# Temporal relations (occurrents)
+# ---------------------------------------------------------------------------
+
+obo:BFO_0000199 a owl:ObjectProperty ;
+    rdfs:label "occupies temporal region"@en ;
+    rdfs:comment "An occurrent o occupies a temporal region t." ;
+    rdfs:domain obo:BFO_0000003 ;
+    rdfs:range obo:BFO_0000008 .
+
+obo:BFO_0000222 a owl:ObjectProperty ;
+    rdfs:label "first instant of"@en ;
+    rdfs:comment "A zero-dimensional temporal region t is the first instant of an occurrent o." ;
+    rdfs:domain obo:BFO_0000148 ;
+    rdfs:range obo:BFO_0000003 .
+
+obo:BFO_0000224 a owl:ObjectProperty ;
+    rdfs:label "last instant of"@en ;
+    rdfs:comment "A zero-dimensional temporal region t is the last instant of an occurrent o." ;
+    rdfs:domain obo:BFO_0000148 ;
+    rdfs:range obo:BFO_0000003 .

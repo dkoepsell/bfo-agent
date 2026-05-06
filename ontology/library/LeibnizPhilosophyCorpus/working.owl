@@ -1,0 +1,277 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:owl="http://www.w3.org/2002/07/owl#"
+         xml:base="http://davidkoepsell.com/bfo-agent/working"
+         xmlns="http://davidkoepsell.com/bfo-agent/working#">
+
+<owl:Ontology rdf:about="http://davidkoepsell.com/bfo-agent/working">
+  <owl:imports rdf:resource="http://purl.obolibrary.org/obo/bfo.owl"/>
+</owl:Ontology>
+
+<owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/BFO_0000050">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
+  <rdfs:label xml:lang="en">part of</rdfs:label>
+  <rdfs:comment>A core mereological relation. p part_of w if and only if p is a part of w. The inverse of has_part.</rdfs:comment>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/BFO_0000051">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
+  <owl:inverseOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000050"/>
+  <rdfs:label xml:lang="en">has part</rdfs:label>
+  <rdfs:comment>The inverse of part_of.</rdfs:comment>
+</owl:ObjectProperty>
+
+<rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
+  <rdfs:label xml:lang="en">realized in</rdfs:label>
+  <rdfs:comment>A realizable entity (e.g., role, disposition, function) is realized in some process. r realized_in p if r is borne by some independent continuant during the process p.</rdfs:comment>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000055">
+  <owl:inverseOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000054"/>
+  <rdfs:label xml:lang="en">realizes</rdfs:label>
+  <rdfs:comment>Inverse of realized_in. A process realizes a realizable entity.</rdfs:comment>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000017">
+  <owl:disjointWith rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:label xml:lang="en">realizable entity</rdfs:label>
+  <rdfs:comment>A specifically dependent continuant that is exhibited through processes of a special sort that involve its bearer.</rdfs:comment>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000015">
+  <rdfs:label xml:lang="en">process</rdfs:label>
+  <rdfs:comment>An occurrent that is the realization of one or more dispositions, or that is performed by one or more participants. Examples: a heartbeat, a lecture, a war.</rdfs:comment>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000056">
+  <rdfs:domain rdf:resource="http://purl.obolibrary.org/obo/BFO_0000002"/>
+  <rdfs:label xml:lang="en">participates in</rdfs:label>
+  <rdfs:comment>A continuant participates in some process.</rdfs:comment>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000057">
+  <owl:inverseOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000056"/>
+  <rdfs:range rdf:resource="http://purl.obolibrary.org/obo/BFO_0000002"/>
+  <rdfs:label xml:lang="en">has participant</rdfs:label>
+  <rdfs:comment>Inverse of participates_in.</rdfs:comment>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000006">
+  <rdfs:label xml:lang="en">spatial region</rdfs:label>
+  <rdfs:comment>A continuant that consists of all or some part of space.</rdfs:comment>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000004">
+  <rdfs:label xml:lang="en">independent continuant</rdfs:label>
+  <rdfs:comment>A continuant that is a bearer of qualities and other specifically dependent continuants, but is not itself dependent on any other continuant.</rdfs:comment>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000020">
+  <rdfs:label xml:lang="en">specifically dependent continuant</rdfs:label>
+  <rdfs:comment>A continuant that depends specifically on some independent continuant for its existence (e.g., a quality of a particular bearer).</rdfs:comment>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000031">
+  <rdfs:label xml:lang="en">generically dependent continuant</rdfs:label>
+  <rdfs:comment>A continuant that depends on some bearer or other for its existence, but not on any specific bearer (e.g., the content of a text, which can be realized in many copies).</rdfs:comment>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000058">
+  <rdfs:range rdf:resource="http://purl.obolibrary.org/obo/BFO_0000020"/>
+  <rdfs:label xml:lang="en">concretized as</rdfs:label>
+  <rdfs:comment>A generically dependent continuant is concretized as a specifically dependent continuant. e.g., the content of a book (gdc) concretized as the ink-pattern of a particular copy (sdc).</rdfs:comment>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000059">
+  <owl:inverseOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000058"/>
+  <rdfs:domain rdf:resource="http://purl.obolibrary.org/obo/BFO_0000020"/>
+  <rdfs:label xml:lang="en">concretizes</rdfs:label>
+  <rdfs:comment>Inverse of concretized_as.</rdfs:comment>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000003">
+  <owl:disjointWith rdf:resource="http://purl.obolibrary.org/obo/BFO_0000002"/>
+  <rdfs:label xml:lang="en">occurrent</rdfs:label>
+  <rdfs:comment>An entity that has temporal parts and that happens, unfolds, or develops through time.</rdfs:comment>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000035">
+  <owl:disjointWith rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label xml:lang="en">process boundary</rdfs:label>
+  <rdfs:comment>A temporal part of a process that is a beginning or ending of the process.</rdfs:comment>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000029">
+  <rdfs:label xml:lang="en">site</rdfs:label>
+  <rdfs:comment>An immaterial entity that is a region of three-dimensional space, bounded partly or wholly by material entities.</rdfs:comment>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000040">
+  <rdfs:label xml:lang="en">material entity</rdfs:label>
+  <rdfs:comment>An independent continuant that has some portion of matter as part.</rdfs:comment>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000171">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
+  <owl:inverseOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000170"/>
+  <rdfs:domain rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <rdfs:range rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <rdfs:label xml:lang="en">located in</rdfs:label>
+  <rdfs:comment>A relation between two material entities, where the first is located in the spatial region occupied by the second.</rdfs:comment>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000084">
+  <rdfs:range rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
+  <rdfs:label xml:lang="en">generically depends on</rdfs:label>
+  <rdfs:comment>A relation between a generically dependent continuant and any one of a class of bearers of which one or more is required for the continuant to exist.</rdfs:comment>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000001">
+  <rdfs:label xml:lang="en">entity</rdfs:label>
+  <rdfs:comment>An entity is anything that exists or has existed or will exist.</rdfs:comment>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000008">
+  <owl:disjointWith rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label xml:lang="en">temporal region</rdfs:label>
+  <rdfs:comment>An occurrent that is a temporal interval or instant. Time itself, considered as having parts.</rdfs:comment>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000178">
+  <owl:inverseOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000176"/>
+  <rdfs:label xml:lang="en">has continuant part</rdfs:label>
+  <rdfs:comment>Inverse of continuant_part_of.</rdfs:comment>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000002">
+  <rdfs:label xml:lang="en">continuant</rdfs:label>
+  <rdfs:comment>An entity that persists, endures, or continues to exist through time while maintaining its identity.</rdfs:comment>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000016">
+  <rdfs:label xml:lang="en">disposition</rdfs:label>
+  <rdfs:comment>A realizable entity whose realization is grounded in some specific feature of its bearer (e.g., the disposition of glass to break, the disposition to act virtuously).</rdfs:comment>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000117">
+  <owl:inverseOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000132"/>
+  <rdfs:label xml:lang="en">has occurrent part</rdfs:label>
+  <rdfs:comment>Inverse of occurrent_part_of.</rdfs:comment>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000132">
+  <rdfs:label xml:lang="en">occurrent part of</rdfs:label>
+  <rdfs:comment>An occurrent o is part of an occurrent o2.</rdfs:comment>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000176">
+  <rdfs:label xml:lang="en">continuant part of</rdfs:label>
+  <rdfs:comment>A continuant c is part of a continuant c2 at all times during which c exists.</rdfs:comment>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000011">
+  <owl:disjointWith rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <owl:disjointWith rdf:resource="http://purl.obolibrary.org/obo/BFO_0000008"/>
+  <rdfs:label xml:lang="en">spatiotemporal region</rdfs:label>
+  <rdfs:comment>An occurrent entity that is part of spacetime.</rdfs:comment>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000170">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
+  <owl:inverseOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000171"/>
+  <rdfs:domain rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <rdfs:range rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <rdfs:label xml:lang="en">location of</rdfs:label>
+  <rdfs:comment>Inverse of located_in.</rdfs:comment>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000182">
+  <rdfs:label xml:lang="en">history</rdfs:label>
+  <rdfs:comment>A process that is the sum of all processes taking place in the spatiotemporal region of a particular material entity.</rdfs:comment>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000196">
+  <rdfs:domain rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
+  <rdfs:label xml:lang="en">bearer of</rdfs:label>
+  <rdfs:comment>An independent continuant that is the bearer of a specifically dependent continuant. b bearer_of s if and only if s specifically_depends_on b.</rdfs:comment>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000197">
+  <owl:inverseOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000196"/>
+  <rdfs:range rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
+  <rdfs:label xml:lang="en">inheres in</rdfs:label>
+  <rdfs:comment>A specifically dependent continuant inheres in its bearer. The inverse of bearer_of.</rdfs:comment>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000199">
+  <rdfs:domain rdf:resource="http://purl.obolibrary.org/obo/BFO_0000003"/>
+  <rdfs:label xml:lang="en">occupies temporal region</rdfs:label>
+  <rdfs:comment>An occurrent o occupies a temporal region t.</rdfs:comment>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000222">
+  <rdfs:domain rdf:resource="http://purl.obolibrary.org/obo/BFO_0000148"/>
+  <rdfs:range rdf:resource="http://purl.obolibrary.org/obo/BFO_0000003"/>
+  <rdfs:label xml:lang="en">first instant of</rdfs:label>
+  <rdfs:comment>A zero-dimensional temporal region t is the first instant of an occurrent o.</rdfs:comment>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000224">
+  <rdfs:domain rdf:resource="http://purl.obolibrary.org/obo/BFO_0000148"/>
+  <rdfs:range rdf:resource="http://purl.obolibrary.org/obo/BFO_0000003"/>
+  <rdfs:label xml:lang="en">last instant of</rdfs:label>
+  <rdfs:comment>A zero-dimensional temporal region t is the last instant of an occurrent o.</rdfs:comment>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000141">
+  <owl:disjointWith rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <rdfs:label xml:lang="en">immaterial entity</rdfs:label>
+  <rdfs:comment>An independent continuant that has no material entity as part.</rdfs:comment>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000023">
+  <owl:disjointWith rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:label xml:lang="en">role</rdfs:label>
+  <rdfs:comment>A realizable entity whose realization is a process triggered by external circumstances rather than by the bearer's intrinsic nature (e.g., the role of judge, the role of student).</rdfs:comment>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000019">
+  <rdfs:label xml:lang="en">quality</rdfs:label>
+  <rdfs:comment>A specifically dependent continuant that, in contrast to roles and dispositions, does not require any further realization in order to be exhibited. Examples: a temperature, a color, a shape.</rdfs:comment>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000024">
+  <rdfs:label xml:lang="en">fiat object part</rdfs:label>
+  <rdfs:comment>A material entity that is a part of an object delineated by a fiat surface (e.g., the northern hemisphere).</rdfs:comment>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000027">
+  <rdfs:label xml:lang="en">object aggregate</rdfs:label>
+  <rdfs:comment>A material entity that consists of a plurality of objects.</rdfs:comment>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000030">
+  <rdfs:label xml:lang="en">object</rdfs:label>
+  <rdfs:comment>A material entity that has discrete boundaries and consists of a single causally unified whole.</rdfs:comment>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000034">
+  <rdfs:label xml:lang="en">function</rdfs:label>
+  <rdfs:comment>A disposition that exists in virtue of the bearer's physical makeup and is held to a normative standard given the bearer's kind (e.g., the function of the heart to pump blood).</rdfs:comment>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000038">
+  <owl:disjointWith rdf:resource="http://purl.obolibrary.org/obo/BFO_0000148"/>
+  <rdfs:label xml:lang="en">one-dimensional temporal region</rdfs:label>
+  <rdfs:comment>A temporal region with extent (an interval).</rdfs:comment>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000148">
+  <rdfs:label xml:lang="en">zero-dimensional temporal region</rdfs:label>
+  <rdfs:comment>A temporal region with no extent (an instant).</rdfs:comment>
+</rdf:Description>
+
+
+</rdf:RDF>
