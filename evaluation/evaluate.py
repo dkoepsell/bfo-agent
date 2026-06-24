@@ -237,6 +237,37 @@ def run_convergence(api: str, scripts: dict) -> dict:
 
 
 # ---------- main ----------
+def _run_coherence(args):
+    """Score an ontology with the coherence win condition (SPEC Task 5)."""
+    from app import config
+    from evaluation import coherence_scorer
+
+    working = Path(args.working) if args.working else config.WORKING_PATH
+    bfo = config.BFO_PATH
+    gate_log = []
+    if args.gate_log:
+        glp = Path(args.gate_log)
+        if glp.exists():
+            gate_log = [json.loads(l) for l in glp.read_text().splitlines() if l.strip()]
+
+    result = coherence_scorer.score_ontology(working, bfo, gate_log=gate_log)
+    report = {"mode": "coherence", "working": str(working), "coherence_score": result}
+
+    print(f"[coherence] {working}")
+    print(f"  coherent: {result['coherence']['coherent']}")
+    print(f"  unsatisfiable classes: {len(result['coherence']['unsatisfiable_classes'])}")
+    print(f"  discriminating entailments: {result['discriminating_count']}")
+    print(f"  score: {result['score']}")
+    if result["coherence_preservation"]["proposed_clashes"]:
+        cp = result["coherence_preservation"]
+        print(f"  clashes proposed/recovered: "
+              f"{cp['proposed_clashes']}/{cp['recovered_clashes']}")
+
+    out_path = Path(args.out) if args.out else ROOT / "evaluation" / "report_coherence.json"
+    out_path.write_text(json.dumps(report, indent=2))
+    print(f"Wrote {out_path}")
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--agent", action="store_true", help="Run against the BFO-Agent orchestrator")
@@ -246,10 +277,27 @@ def main():
     parser.add_argument("--n-sessions", type=int, default=5)
     parser.add_argument("--out", default=None)
     parser.add_argument("--skip-convergence", action="store_true")
+    parser.add_argument(
+        "--coherence", action="store_true",
+        help="Score the active working ontology with the coherence win condition",
+    )
+    parser.add_argument(
+        "--working", default=None,
+        help="Path to a working ontology to score (defaults to the active one)",
+    )
+    parser.add_argument(
+        "--gate-log", default=None,
+        help="Path to a .gate.jsonl gate event log to fold into the score",
+    )
     args = parser.parse_args()
 
+    # Standalone coherence scoring needs no running server and no mode.
+    if args.coherence:
+        _run_coherence(args)
+        return
+
     if not (args.agent or args.baseline):
-        parser.error("Pass --agent or --baseline")
+        parser.error("Pass --agent, --baseline, or --coherence")
 
     mode = "agent" if args.agent else "baseline"
     questions = json.loads(QUESTIONS_PATH.read_text())

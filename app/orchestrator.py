@@ -21,7 +21,9 @@ from flask_cors import CORS
 from pydantic import ValidationError
 
 from . import config
+from . import coherence_gate as gate_mod
 from . import jobs as jobs_store
+from .coherence_gate import GateOutcome, GatePolicy
 from .extractor import ClaimExtractor, chunk_text
 from .llm_proposer import LLMProposer
 from .ontology_manager import OntologyManager
@@ -38,6 +40,7 @@ from .storage import (
     git_commit_working_ontology,
     load_session,
     log_event,
+    log_gate_events,
     recent_commits,
 )
 
@@ -90,6 +93,97 @@ def _get_extractor() -> ClaimExtractor:
     if _extractor is None:
         _extractor = ClaimExtractor()
     return _extractor
+
+
+def _gate_policy() -> GatePolicy:
+    try:
+        return GatePolicy(config.GATE_POLICY)
+    except ValueError:
+        return GatePolicy.REJECT_RESAMPLE
+
+
+def _run_coherence_gate(proposal, mgr, proposer, ctx, session_id, context=None):
+    """Run the coherence gate under the configured policy and log the events.
+
+    Returns the GateRun. The caller decides what to do with GateRun.outcome and
+    GateRun.proposal (which may be a repaired/resampled rewrite of the input).
+    """
+    utterance = proposal.utterance
+
+    def resample_fn(prev_proposal, gate_result, neighborhood):
+        scope = (
+            "Regenerate the local neighborhood of axioms for this claim"
+            if neighborhood
+            else "Re-propose this claim"
+        )
+        note = (
+            f"\n\nCONSTRAINT: a previous attempt violated BFO coherence. "
+            f"{gate_result.reason} {scope} so that no class is placed under two "
+            f"disjoint BFO categories. Choose a single coherent BFO genus."
+        )
+        try:
+            return proposer.propose(
+                utterance=utterance + note,
+                session_id=session_id,
+                working_classes=ctx["working_classes"],
+                known_individuals=ctx["known_individuals"],
+            )
+        except Exception:
+            return None
+
+    run = gate_mod.run_with_policy(
+        proposal,
+        mgr,
+        policy=_gate_policy(),
+        resample_fn=resample_fn,
+        run_reasoner=config.GATE_RUN_REASONER,
+        max_attempts=config.GATE_MAX_ATTEMPTS,
+    )
+
+    # Stamp the (possibly rewritten) proposal with the gate verdict.
+    final = run.proposal
+    final.gate_outcome = run.outcome.value
+    final.gate_tier = run.result.tier.value
+    final.gate_reason = run.result.reason or None
+    if run.events:
+        final.gate_policy_action = run.events[-1].get("policy_action")
+
+    log_gate_events(session_id, run.events, context=context)
+    return run
+
+
+def _apply_scaffolding(proposal, mgr, session_id) -> list[dict]:
+    """Add the BFO constraint a dependent-continuant class requires, then verify.
+
+    Runs after a class is committed. The scaffolding is validated by a coherence
+    dry-run; if it somehow makes the ontology incoherent it is rolled back, so
+    the scaffolding can never introduce a clash (SPEC Task 4).
+    """
+    if not config.ENABLE_SCAFFOLDING:
+        return []
+    directives = gate_mod.scaffolding_directives(proposal, mgr)
+    if not directives:
+        return []
+
+    backup = mgr.working_path.read_bytes() if mgr.working_path.exists() else None
+    applied = gate_mod.apply_scaffolding(directives, mgr)
+    if not applied:
+        return []
+    mgr.save()
+
+    coherent, _unsat, _detail = mgr.check_coherence_dry_run(
+        Proposal(session_id=session_id, utterance="")
+    )
+    if not coherent:
+        if backup is not None:
+            mgr.working_path.write_bytes(backup)
+        mgr._load()
+        log_event(session_id, "scaffold_rollback",
+                  {"directives": directives})
+        return []
+
+    log_event(session_id, "scaffold", {"applied": applied})
+    return applied
 
 
 # ---------------------------------------------------------------------------
@@ -457,14 +551,38 @@ def create_app() -> Flask:
                 )
                 return jsonify({"error": f"Proposer error: {e}"}), 500
 
-            # Reasoner dry-run
-            try:
-                ok, detail = mgr.check_consistency_dry_run(proposal)
-                proposal.reasoner_verdict = "consistent" if ok else "inconsistent"
-                proposal.reasoner_detail = detail
-            except Exception as e:
-                proposal.reasoner_verdict = "error"
-                proposal.reasoner_detail = str(e)
+            # Coherence gate (lint + reasoner). Reports the verdict for human
+            # review; it does not auto-resample on the interactive path.
+            if config.ENABLE_COHERENCE_GATE:
+                try:
+                    result = gate_mod.gate(
+                        proposal, mgr, run_reasoner=config.GATE_RUN_REASONER
+                    )
+                    proposal.gate_outcome = result.outcome.value
+                    proposal.gate_tier = result.tier.value
+                    proposal.gate_reason = result.reason or None
+                    proposal.reasoner_verdict = (
+                        "consistent" if result.accepted else "inconsistent"
+                    )
+                    proposal.reasoner_detail = (
+                        result.reason or result.justification or "coherent"
+                    )
+                    log_gate_events(
+                        session_id, [result.to_dict()],
+                        context={"endpoint": "propose",
+                                 "proposal_id": proposal.proposal_id},
+                    )
+                except Exception as e:
+                    proposal.reasoner_verdict = "error"
+                    proposal.reasoner_detail = str(e)
+            else:
+                try:
+                    ok, detail = mgr.check_consistency_dry_run(proposal)
+                    proposal.reasoner_verdict = "consistent" if ok else "inconsistent"
+                    proposal.reasoner_detail = detail
+                except Exception as e:
+                    proposal.reasoner_verdict = "error"
+                    proposal.reasoner_detail = str(e)
 
             _proposal_cache[proposal.proposal_id] = proposal
             log_event(
@@ -500,6 +618,36 @@ def create_app() -> Flask:
                 )
                 _proposal_cache.pop(body.proposal_id, None)
                 return jsonify({"status": "rejected"})
+
+            # Defensive gate: a user-edited proposal must not bypass coherence.
+            if config.ENABLE_COHERENCE_GATE:
+                try:
+                    result = gate_mod.gate(
+                        body.proposal, mgr, run_reasoner=config.GATE_RUN_REASONER
+                    )
+                except Exception as e:
+                    result = None
+                    log_event(body.session_id, "gate_error",
+                              {"proposal_id": body.proposal_id, "error": str(e)})
+                if result is not None:
+                    log_gate_events(
+                        body.session_id, [result.to_dict()],
+                        context={"endpoint": "commit",
+                                 "proposal_id": body.proposal_id},
+                    )
+                    if not result.accepted:
+                        log_event(body.session_id, "gate_reject", {
+                            "proposal_id": body.proposal_id,
+                            "reason": result.reason,
+                            "tier": result.tier.value,
+                        })
+                        return jsonify({
+                            "status": "rejected_by_gate",
+                            "tier": result.tier.value,
+                            "reason": result.reason,
+                            "justification": result.justification,
+                            "unsat_classes": result.unsat_classes,
+                        }), 409
 
             try:
                 warnings = mgr.commit_proposal(body.proposal)
@@ -857,14 +1005,31 @@ def create_app() -> Flask:
                     "remaining": remaining,
                 })
 
-            # Dry-run reasoner check
-            try:
-                ok, detail = mgr.check_consistency_dry_run(proposal)
-                proposal.reasoner_verdict = "consistent" if ok else "inconsistent"
-                proposal.reasoner_detail = detail
-            except Exception as e:
-                proposal.reasoner_verdict = "error"
-                proposal.reasoner_detail = str(e)
+            # Coherence gate under the configured policy. This is the
+            # load-bearing check: it may rewrite the proposal (repair/resample)
+            # before it becomes eligible to commit, and it catches the
+            # consistent-but-incoherent straddles the legacy check missed.
+            if config.ENABLE_COHERENCE_GATE:
+                run = _run_coherence_gate(
+                    proposal, mgr, proposer, ctx, session_id,
+                    context={"job_id": job_id, "claim_id": claim["id"],
+                             "proposal_id": proposal.proposal_id},
+                )
+                proposal = run.proposal
+                gate_accepted = run.outcome == GateOutcome.ACCEPT
+                verdict = "consistent" if gate_accepted else "inconsistent"
+                proposal.reasoner_verdict = verdict
+                proposal.reasoner_detail = run.result.reason or run.result.justification
+            else:
+                try:
+                    ok, detail = mgr.check_consistency_dry_run(proposal)
+                    proposal.reasoner_verdict = "consistent" if ok else "inconsistent"
+                    proposal.reasoner_detail = detail
+                except Exception as e:
+                    proposal.reasoner_verdict = "error"
+                    proposal.reasoner_detail = str(e)
+                gate_accepted = proposal.reasoner_verdict == "consistent"
+                verdict = proposal.reasoner_verdict
 
             _proposal_cache[proposal.proposal_id] = proposal
             log_event(session_id, "propose", {
@@ -873,13 +1038,12 @@ def create_app() -> Flask:
                 "claim_id": claim["id"],
             })
 
-            verdict = proposal.reasoner_verdict
             committed = False
             warnings: list[str] = []
 
-            if verdict == "inconsistent":
+            if not gate_accepted:
                 new_status = "inconsistent"
-            elif auto_accept and verdict == "consistent":
+            elif auto_accept:
                 try:
                     warnings = mgr.commit_proposal(proposal)
                 except Exception as e:
@@ -891,6 +1055,7 @@ def create_app() -> Flask:
                     })
                     new_status = "error"
                 else:
+                    scaffolded = _apply_scaffolding(proposal, mgr, session_id)
                     git_commit_working_ontology(
                         session_id, proposal.proposal_id,
                         claim["claim"][:80]
@@ -899,6 +1064,7 @@ def create_app() -> Flask:
                         "proposal_id": proposal.proposal_id,
                         "decision": "accept",
                         "warnings": warnings,
+                        "scaffolded": scaffolded,
                         "proposal": proposal.model_dump(),
                         "job_id": job_id,
                         "claim_id": claim["id"],

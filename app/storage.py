@@ -19,6 +19,28 @@ def _now() -> str:
     return datetime.now(timezone.utc).isoformat()
 
 
+def log_gate_events(session_id: str, events: list[dict], context: dict | None = None):
+    """Append coherence-gate events to a dedicated per-session gate log.
+
+    Kept separate from the main session log so the scorer (Task 5) can read
+    the experimental record cleanly: proposal, tier that fired, policy action,
+    outcome.
+    """
+    path = SESSIONS_DIR / f"{session_id}.gate.jsonl"
+    with path.open("a", encoding="utf-8") as f:
+        for ev in events:
+            record = {"ts": _now(), "session_id": session_id, **(context or {}), **ev}
+            f.write(json.dumps(record) + "\n")
+
+
+def load_gate_log(session_id: str) -> list[dict]:
+    path = SESSIONS_DIR / f"{session_id}.gate.jsonl"
+    if not path.exists():
+        return []
+    with path.open("r", encoding="utf-8") as f:
+        return [json.loads(line) for line in f if line.strip()]
+
+
 def log_event(session_id: str, event_type: str, payload: dict[str, Any]):
     path = SESSIONS_DIR / f"{session_id}.jsonl"
     record = {

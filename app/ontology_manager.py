@@ -22,10 +22,13 @@ from typing import Optional
 from owlready2 import (
     World,
     Thing,
+    Nothing,
     ObjectProperty,
     sync_reasoner,
     onto_path,
 )
+
+from . import bfo_catalog
 
 BFO_OBO_PREFIX = "http://purl.obolibrary.org/obo/"
 WORKING_IRI = "http://davidkoepsell.com/bfo-agent/working"
@@ -42,6 +45,18 @@ def _resolve_iri(iri_suggestion: str, working_base: str) -> str:
     """
     if iri_suggestion.startswith(("http", "file:")):
         return iri_suggestion
+    # Standard RDF/RDFS/OWL vocabulary prefixes. Without these, predicates like
+    # 'rdfs:subClassOf' fall through to the working namespace and silently
+    # corrupt the triple.
+    _STD = {
+        "rdf:": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+        "rdfs:": "http://www.w3.org/2000/01/rdf-schema#",
+        "owl:": "http://www.w3.org/2002/07/owl#",
+        "obo:": BFO_OBO_PREFIX,
+    }
+    for prefix, base in _STD.items():
+        if iri_suggestion.startswith(prefix):
+            return base + iri_suggestion.split(":", 1)[1]
     if iri_suggestion.startswith("bfo:"):
         return BFO_OBO_PREFIX + iri_suggestion.split(":", 1)[1]
     if iri_suggestion.startswith("working:"):
@@ -521,6 +536,116 @@ class OntologyManager:
             return False, output
         warn_prefix = ("Warnings: " + "; ".join(warnings)) if warnings else ""
         return True, (warn_prefix + "\n" + output).strip()
+
+    def check_coherence_dry_run(self, proposal) -> tuple[bool, list[str], str]:
+        """Apply the proposal to a fresh copy, reason, and report COHERENCE.
+
+        Coherence is distinct from consistency. HermiT does not raise or print
+        for an ontology that is consistent yet has an unsatisfiable class (a
+        class equivalent to owl:Nothing that no individual instantiates). That
+        is exactly the disjoint-parent straddle defect we must catch, so we
+        ask owlready2 for the inferred unsatisfiable classes directly rather
+        than grepping reasoner stdout.
+
+        Returns (is_coherent, unsatisfiable_class_iris, detail).
+        """
+        self._load()
+        self.apply_proposal(proposal)
+
+        buf = io.StringIO()
+        try:
+            with redirect_stdout(buf), redirect_stderr(buf):
+                with self.world:
+                    sync_reasoner(self.world, infer_property_values=False)
+        except Exception as e:
+            # A reasoner exception means the ontology is outright inconsistent,
+            # which is strictly worse than incoherent. Surface it as incoherent
+            # so the gate rejects.
+            detail = f"Reasoner error (inconsistent): {e}\n{buf.getvalue()}".strip()
+            self._load()
+            return False, [], detail
+
+        unsat = [
+            c.iri for c in self.world.inconsistent_classes()
+            if c is not Nothing
+        ]
+        output = buf.getvalue().strip()
+        self._load()  # discard dry-run state unconditionally
+
+        if unsat:
+            detail = "Unsatisfiable classes: " + ", ".join(unsat)
+            if output:
+                detail += "\n" + output
+            return False, unsat, detail
+        return True, [], output
+
+    def committed_bfo_anchors(self, ref: str) -> set[str]:
+        """Return all BFO category fragments among an existing class's ancestors.
+
+        `ref` may be a local name, a prefixed IRI (working:Foo, bfo:BFO_...),
+        or a full IRI. Used by the gate's lint tier to fold a class's already
+        committed BFO parents into the straddle test. Returns an empty set for
+        a class that does not yet exist in the working ontology.
+        """
+        full = _resolve_iri(ref, WORKING_IRI)
+        cls = self.world[full]
+        if cls is None:
+            local = _local_name(ref)
+            cls = next(
+                (c for c in self.working.classes() if c.name == local), None
+            )
+        if cls is None or not hasattr(cls, "ancestors"):
+            return set()
+        anchors: set[str] = set()
+        try:
+            for anc in cls.ancestors():
+                if hasattr(anc, "iri"):
+                    frag = _local_name(anc.iri)
+                    if frag.startswith("BFO_"):
+                        anchors.add(frag)
+        except Exception:
+            pass
+        return anchors
+
+    def add_existential_restriction(
+        self, class_ref: str, prop_frag: str, filler_frag: str
+    ) -> bool:
+        """Add `class_ref SubClassOf (prop some filler)` to the live world.
+
+        Used by Task 4 relation-aware scaffolding to turn a bare placement
+        under a dependent BFO category into an actual constraint (e.g. a
+        quality that inheres_in some independent continuant). Returns True if
+        applied, False if the class or property could not be resolved. Does
+        NOT save; the caller decides.
+        """
+        cls = self.world[_resolve_iri(class_ref, WORKING_IRI)]
+        if cls is None:
+            local = _local_name(class_ref)
+            cls = next((c for c in self.working.classes() if c.name == local), None)
+        prop = self.world[_resolve_iri(prop_frag, WORKING_IRI)]
+        filler = self.world[_resolve_iri(filler_frag, WORKING_IRI)]
+        if cls is None or prop is None or filler is None:
+            return False
+        with self.working:
+            try:
+                cls.is_a.append(prop.some(filler))
+            except Exception:
+                return False
+        return True
+
+    def has_restriction_on(self, class_ref: str, prop_frag: str) -> bool:
+        """True if the class already carries an existential restriction on prop."""
+        cls = self.world[_resolve_iri(class_ref, WORKING_IRI)]
+        if cls is None:
+            local = _local_name(class_ref)
+            cls = next((c for c in self.working.classes() if c.name == local), None)
+        if cls is None:
+            return False
+        prop = self.world[_resolve_iri(prop_frag, WORKING_IRI)]
+        for parent in cls.is_a:
+            if hasattr(parent, "property") and parent.property is prop:
+                return True
+        return False
 
     def commit_proposal(self, proposal) -> list[str]:
         """Apply the proposal for real and save to disk."""

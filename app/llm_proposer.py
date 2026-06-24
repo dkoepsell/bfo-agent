@@ -67,6 +67,7 @@ RULES:
 6. A person bearing a social function (mother, judge, CEO) is modeled as the person plus a role they bear; the role is an instance of the role class. Use `RO_0000053` (bearer of) or `RO_0000052` (inheres in).
 7. Be conservative. If the utterance does not actually assert new ontological commitments, return empty `entities` and `relations` and explain in `rationale_summary`.
 8. When minting IRIs, use `working:LocalName` for new items. Use CamelCase for classes, UpperCamel for individuals.
+9. A dependent continuant must constrain, not just classify. When you type a class as a quality, name the kind of independent continuant that bears it. When you type a class as a role, disposition, or function, name the kind of process it is realized in, and for a function vs disposition say whether the bearer was engineered or selected for it (function) or merely has it (disposition). Put the bearer/realization detail in the rationale and any uncertainty in open_questions.
 
 CURRENT WORKING ONTOLOGY CONTEXT:
 

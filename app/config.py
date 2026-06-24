@@ -65,6 +65,20 @@ FLASK_PORT = int(os.getenv("FLASK_PORT", "5000"))
 
 ENABLE_GIT_COMMITS = os.getenv("ENABLE_GIT_COMMITS", "true").lower() == "true"
 
+# ----- Coherence gate -----
+# Whether the in-loop BFO coherence gate runs at all. When off, the loop
+# reverts to the legacy consistency-only behavior.
+ENABLE_COHERENCE_GATE = os.getenv("ENABLE_COHERENCE_GATE", "true").lower() == "true"
+# How the loop reacts when the gate fires: reject_resample | repair | reground.
+GATE_POLICY = os.getenv("GATE_POLICY", "reject_resample")
+# Run the (expensive) reasoner tier inside the gate. Lint tier always runs.
+GATE_RUN_REASONER = os.getenv("GATE_RUN_REASONER", "true").lower() == "true"
+# Max resample/reground attempts before giving up and flagging for review.
+GATE_MAX_ATTEMPTS = int(os.getenv("GATE_MAX_ATTEMPTS", "2"))
+# Relation-aware scaffolding: when a dependent-continuant class is committed,
+# add the constraint its BFO category requires (inheres_in / realized_in).
+ENABLE_SCAFFOLDING = os.getenv("ENABLE_SCAFFOLDING", "true").lower() == "true"
+
 WORKING_NS = "http://davidkoepsell.com/bfo-agent/working#"
 
 SESSIONS_DIR.mkdir(parents=True, exist_ok=True)
