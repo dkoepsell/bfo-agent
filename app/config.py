@@ -79,6 +79,23 @@ GATE_MAX_ATTEMPTS = int(os.getenv("GATE_MAX_ATTEMPTS", "2"))
 # add the constraint its BFO category requires (inheres_in / realized_in).
 ENABLE_SCAFFOLDING = os.getenv("ENABLE_SCAFFOLDING", "true").lower() == "true"
 
+# ----- Accounts / billing / managed-jobs (Phase 1: accounts + BYOK) -----
+# Flask session signing key. Required in production; a dev fallback keeps
+# local/test runs working without extra setup.
+SECRET_KEY = os.getenv("SECRET_KEY", "dev-insecure-change-me")
+# Fernet key (base64 32-byte) used to encrypt BYOK Anthropic keys at rest.
+# Lives in the environment, never in the DB. Empty disables BYOK storage.
+BYOK_ENCRYPTION_KEY = os.getenv("BYOK_ENCRYPTION_KEY", "")
+# SQLite database for users/jobs/usage. Lives outside the ontology library.
+DATA_DIR = ROOT / "data"
+DB_PATH = ROOT / os.getenv("DB_PATH", "data/app.db")
+# Free-tier limits (free jobs run on the owner key).
+FREE_CHAR_LIMIT = int(os.getenv("FREE_CHAR_LIMIT", "20000"))
+FREE_JOB_QUOTA = int(os.getenv("FREE_JOB_QUOTA", "1"))
+# Hard owner-key token ceiling per free job (char cap != token cap, since
+# resamples multiply calls). 0 disables the ceiling.
+FREE_JOB_TOKEN_CAP = int(os.getenv("FREE_JOB_TOKEN_CAP", "200000"))
+
 WORKING_NS = "http://davidkoepsell.com/bfo-agent/working#"
 
 SESSIONS_DIR.mkdir(parents=True, exist_ok=True)
@@ -89,4 +106,12 @@ def require_api_key():
     if not ANTHROPIC_API_KEY or ANTHROPIC_API_KEY.startswith("sk-ant-..."):
         raise RuntimeError(
             "ANTHROPIC_API_KEY not set. Copy .env.example to .env and fill it in."
+        )
+
+
+def require_secret():
+    """Fail fast in production if the session secret was left at the default."""
+    if not SECRET_KEY or SECRET_KEY == "dev-insecure-change-me":
+        raise RuntimeError(
+            "SECRET_KEY not set. Set a strong random value in .env for production."
         )

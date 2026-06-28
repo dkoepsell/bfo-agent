@@ -145,10 +145,26 @@ def _extract_json(text: str) -> dict:
 
 
 class ClaimExtractor:
-    def __init__(self, model: str = ANTHROPIC_EXTRACTOR_MODEL):
-        require_api_key()
-        self.client = Anthropic(api_key=ANTHROPIC_API_KEY)
+    def __init__(self, model: str = ANTHROPIC_EXTRACTOR_MODEL,
+                 api_key: str | None = None, on_usage=None):
+        """api_key=None falls back to the owner key (legacy/CLI/test path);
+        when provided (BYOK), calls bill to it. on_usage(model, in_tok, out_tok)
+        is invoked after each LLM call for token metering."""
+        if api_key is None:
+            require_api_key()
+            api_key = ANTHROPIC_API_KEY
+        self.client = Anthropic(api_key=api_key)
         self.model = model
+        self._on_usage = on_usage
+
+    def _record_usage(self, resp) -> None:
+        usage = getattr(resp, "usage", None)
+        if self._on_usage and usage is not None:
+            self._on_usage(
+                self.model,
+                getattr(usage, "input_tokens", 0) or 0,
+                getattr(usage, "output_tokens", 0) or 0,
+            )
 
     def extract_chunk(self, passage: str, section: str = "") -> list[dict]:
         prompt = EXTRACTION_PROMPT.format(section=section or "unknown", passage=passage)
@@ -158,6 +174,7 @@ class ClaimExtractor:
             system=EXTRACTION_SYSTEM,
             messages=[{"role": "user", "content": prompt}],
         )
+        self._record_usage(resp)
         text = "".join(b.text for b in resp.content if getattr(b, "text", None)).strip()
         data = _extract_json(text)
         claims = data.get("claims", [])

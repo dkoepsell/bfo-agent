@@ -11,6 +11,10 @@ ontology/working.owl.bak
 .DS_Store
 *.egg-info/
 
+# Accounts / managed-jobs: SQLite DB and per-job ontology workspaces
+data/
+ontology/library/_jobs/
+
 # Windows NTFS metadata from WSL-side downloads
 *:Zone.Identifier
 backup_pre_phase1_*/

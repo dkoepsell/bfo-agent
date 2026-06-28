@@ -112,10 +112,31 @@ Return JSON only. No markdown fences, no commentary."""
 
 
 class LLMProposer:
-    def __init__(self, model: str = ANTHROPIC_MODEL):
-        require_api_key()
-        self.client = Anthropic(api_key=ANTHROPIC_API_KEY)
+    def __init__(self, model: str = ANTHROPIC_MODEL, api_key: str | None = None,
+                 on_usage=None):
+        """Build a proposer.
+
+        api_key: when None, falls back to the owner key in config (the legacy
+            singleton/CLI/test path). When provided (BYOK), all calls bill to it.
+        on_usage: optional callback(model, input_tokens, output_tokens) invoked
+            after each LLM call so the caller can meter token usage. Resample
+            calls go through the same client, so they are captured too.
+        """
+        if api_key is None:
+            require_api_key()
+            api_key = ANTHROPIC_API_KEY
+        self.client = Anthropic(api_key=api_key)
         self.model = model
+        self._on_usage = on_usage
+
+    def _record_usage(self, resp) -> None:
+        usage = getattr(resp, "usage", None)
+        if self._on_usage and usage is not None:
+            self._on_usage(
+                self.model,
+                getattr(usage, "input_tokens", 0) or 0,
+                getattr(usage, "output_tokens", 0) or 0,
+            )
 
     def propose(
         self,
@@ -147,6 +168,7 @@ class LLMProposer:
             }],
             messages=[{"role": "user", "content": dynamic_user}],
         )
+        self._record_usage(resp)
 
         text = "".join(
             block.text for block in resp.content if getattr(block, "text", None)
@@ -195,6 +217,7 @@ Return JSON only."""
             max_tokens=2000,
             messages=[{"role": "user", "content": prompt}],
         )
+        self._record_usage(resp)
         text = "".join(
             block.text for block in resp.content if getattr(block, "text", None)
         )
