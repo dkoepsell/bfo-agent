@@ -24,6 +24,7 @@ from dataclasses import dataclass, field
 from typing import Optional
 
 from . import bfo_catalog
+from . import construction_linter
 
 
 class GateOutcome(str, enum.Enum):
@@ -34,6 +35,7 @@ class GateOutcome(str, enum.Enum):
 
 class GateTier(str, enum.Enum):
     NONE = "none"
+    CONSTRUCTION = "construction"
     LINT = "lint"
     REASONER = "reasoner"
 
@@ -57,6 +59,9 @@ class GateResult:
     unsat_classes: list[str] = field(default_factory=list)
     # Subject (class) whose parents straddle, when known.
     subject: Optional[str] = None
+    # Prohibited-construction violations, when known (construction tier). Each
+    # is {rule, offending_term, suggested_rewrite, detail}.
+    violations: list[dict] = field(default_factory=list)
 
     @property
     def accepted(self) -> bool:
@@ -71,6 +76,7 @@ class GateResult:
             "clash_pair": list(self.clash_pair) if self.clash_pair else None,
             "unsat_classes": self.unsat_classes,
             "subject": self.subject,
+            "violations": self.violations,
         }
 
 
@@ -141,6 +147,35 @@ def _ref_anchors(ref: str, manager, proposed_types: dict[str, str]) -> set[str]:
     return set()
 
 
+def construction_check(
+    proposal, strict_closed_vocab: bool = False
+) -> Optional[GateResult]:
+    """Construction tier: run the PC-1..PC-6 prohibited-construction linter.
+
+    This is the cheapest tier and runs first. It catches the privation
+    primitives, relation-baked names, untyped entities, invented predicates,
+    and continuant/occurrent conflations that drive class proliferation
+    (bfo-agent-spec.md §6). Returns a REJECT GateResult carrying every
+    violation, or None when the draft is clean.
+    """
+    report = construction_linter.lint(
+        proposal, strict_closed_vocab=strict_closed_vocab
+    )
+    if report.ok:
+        return None
+    rules = ", ".join(sorted({v["rule"] for v in report.to_dicts()}))
+    return GateResult(
+        outcome=GateOutcome.REJECT,
+        tier=GateTier.CONSTRUCTION,
+        reason=(
+            f"Prohibited construction(s) [{rules}]: the draft would mint "
+            f"malformed terms instead of anchoring to BFO. See violations."
+        ),
+        justification=report.summary(),
+        violations=report.to_dicts(),
+    )
+
+
 def lint_check(proposal, manager) -> Optional[GateResult]:
     """Lint tier: detect disjoint-parent straddles without a reasoner.
 
@@ -184,11 +219,24 @@ def reasoner_check(proposal, manager) -> Optional[GateResult]:
     return None
 
 
-def gate(proposal, manager, run_reasoner: bool = True) -> GateResult:
-    """Run the gate. Lint first (cheap), then optionally the reasoner.
+def gate(
+    proposal,
+    manager,
+    run_reasoner: bool = True,
+    run_construction: bool = True,
+    strict_closed_vocab: bool = False,
+) -> GateResult:
+    """Run the gate. Construction first (cheapest), then lint, then reasoner.
 
-    Returns ACCEPT only if both tiers pass (or the reasoner tier is skipped).
+    Returns ACCEPT only if every enabled tier passes.
     """
+    if run_construction:
+        construction = construction_check(
+            proposal, strict_closed_vocab=strict_closed_vocab
+        )
+        if construction is not None:
+            return construction
+
     lint = lint_check(proposal, manager)
     if lint is not None:
         return lint
@@ -378,6 +426,8 @@ def run_with_policy(
     resample_fn=None,
     run_reasoner: bool = True,
     max_attempts: int = 2,
+    run_construction: bool = True,
+    strict_closed_vocab: bool = False,
 ) -> GateRun:
     """Run the gate and apply the configured policy on a clash.
 
@@ -389,7 +439,13 @@ def run_with_policy(
     current = proposal
 
     for attempt in range(max_attempts + 1):
-        result = gate(current, manager, run_reasoner=run_reasoner)
+        result = gate(
+            current,
+            manager,
+            run_reasoner=run_reasoner,
+            run_construction=run_construction,
+            strict_closed_vocab=strict_closed_vocab,
+        )
         events.append({
             "attempt": attempt,
             "policy": policy.value,
@@ -398,6 +454,18 @@ def run_with_policy(
 
         if result.accepted:
             return GateRun(GateOutcome.ACCEPT, current, result, events, attempt)
+
+        # Construction-tier violations cannot be programmatically repaired by
+        # the straddle rule table; they require the proposer to regenerate.
+        # Fall through to the resample path regardless of the configured policy.
+        if result.tier == GateTier.CONSTRUCTION:
+            if resample_fn is not None and attempt < max_attempts:
+                events[-1]["policy_action"] = "resample_construction"
+                resampled = resample_fn(current, result, False)
+                if resampled is not None:
+                    current = resampled
+                    continue
+            return GateRun(GateOutcome.REJECT, current, result, events, attempt)
 
         # The gate fired. React per policy.
         if policy == GatePolicy.REPAIR:

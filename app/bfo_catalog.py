@@ -73,6 +73,61 @@ BFO_LABEL: dict[str, str] = {f: lbl for f, (_, lbl) in _CATALOG.items()}
 
 
 # ---------------------------------------------------------------------------
+# Frozen kernel signature (BFO 2020). K_C is the allowed class set, K_P the
+# allowed object-property set. The agent selects from these and never invents
+# BFO categories (bfo-agent-spec.md §2, FR-2, PC-4). Both are derived from the
+# vendored ontology/bfo.owl (versionIRI
+# http://purl.obolibrary.org/obo/bfo/2020/bfo.owl); the drift-guard in
+# tests/test_bfo_catalog.py re-parses bfo.owl and asserts they still match.
+# ---------------------------------------------------------------------------
+BFO_VERSION_IRI = "http://purl.obolibrary.org/obo/bfo/2020/bfo.owl"
+
+# K_C: every BFO 2020 class fragment (the catalog keys).
+KERNEL_CLASSES: frozenset[str] = frozenset(_CATALOG)
+
+# K_P: every BFO 2020 native object-property fragment.
+KERNEL_PROPERTIES: frozenset[str] = frozenset({
+    "BFO_0000054", "BFO_0000055", "BFO_0000056", "BFO_0000057", "BFO_0000058",
+    "BFO_0000059", "BFO_0000062", "BFO_0000063", "BFO_0000066", "BFO_0000082",
+    "BFO_0000084", "BFO_0000101", "BFO_0000108", "BFO_0000110", "BFO_0000111",
+    "BFO_0000113", "BFO_0000115", "BFO_0000117", "BFO_0000118", "BFO_0000121",
+    "BFO_0000124", "BFO_0000127", "BFO_0000129", "BFO_0000132", "BFO_0000136",
+    "BFO_0000137", "BFO_0000138", "BFO_0000139", "BFO_0000153", "BFO_0000163",
+    "BFO_0000164", "BFO_0000165", "BFO_0000166", "BFO_0000167", "BFO_0000170",
+    "BFO_0000171", "BFO_0000172", "BFO_0000173", "BFO_0000174", "BFO_0000175",
+    "BFO_0000176", "BFO_0000177", "BFO_0000178", "BFO_0000181", "BFO_0000183",
+    "BFO_0000184", "BFO_0000185", "BFO_0000194", "BFO_0000195", "BFO_0000196",
+    "BFO_0000197", "BFO_0000199", "BFO_0000200", "BFO_0000210", "BFO_0000211",
+    "BFO_0000216", "BFO_0000217", "BFO_0000218", "BFO_0000219", "BFO_0000220",
+    "BFO_0000221", "BFO_0000222", "BFO_0000223", "BFO_0000224",
+})
+
+# Meta-predicates that are always permitted even in strict closed-vocabulary
+# mode: they carry the typing/subsumption skeleton, not domain content.
+META_PREDICATES: frozenset[str] = frozenset({
+    "rdf:type", "rdfs:subClassOf", "rdf:type", "a",
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+    "http://www.w3.org/2000/01/rdf-schema#subClassOf",
+})
+
+
+def is_kernel_class(ref: str) -> bool:
+    """True iff ref resolves to a BFO 2020 class fragment in K_C."""
+    return normalize_fragment(ref) in KERNEL_CLASSES
+
+
+def is_kernel_property(ref: str) -> bool:
+    """True iff ref resolves to a BFO 2020 object-property fragment in K_P."""
+    return normalize_fragment(ref) in KERNEL_PROPERTIES
+
+
+def is_meta_predicate(ref: str) -> bool:
+    """True iff ref is rdf:type / rdfs:subClassOf (always permitted)."""
+    s = ref.strip()
+    return s in META_PREDICATES or s.split("#")[-1] in {"type", "subClassOf"}
+
+
+# ---------------------------------------------------------------------------
 # Disjointness: the asserted AllDisjointClasses groups, copied verbatim from
 # bfo.owl. All BFO disjointness is asserted at sibling level only; the
 # transitive closure that catches cross-level straddles is computed by clash().

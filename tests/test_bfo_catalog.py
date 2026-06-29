@@ -51,6 +51,32 @@ def test_parent_map_matches_bfo_file(bfo_world):
         assert bc.BFO_PARENT.get(frag) == expected, frag
 
 
+def test_kernel_classes_match_bfo_file(bfo_world):
+    """K_C equals exactly the BFO_ class fragments declared in bfo.owl."""
+    derived = {
+        _frag(c) for c in bfo_world.classes() if _frag(c).startswith("BFO_")
+    }
+    assert set(bc.KERNEL_CLASSES) == derived
+
+
+def test_kernel_properties_match_bfo_file(bfo_world):
+    """K_P equals exactly the BFO_ object-property fragments in bfo.owl."""
+    derived = {
+        _frag(p) for p in bfo_world.object_properties()
+        if _frag(p).startswith("BFO_")
+    }
+    assert set(bc.KERNEL_PROPERTIES) == derived
+
+
+def test_kernel_membership_helpers():
+    assert bc.is_kernel_class("bfo:BFO_0000040")
+    assert not bc.is_kernel_class("working:Norm")
+    assert bc.is_kernel_property("BFO_0000197")        # inheres in
+    assert not bc.is_kernel_property("RO_0000052")     # obsolete RO alias
+    assert bc.is_meta_predicate("rdfs:subClassOf")
+    assert bc.is_meta_predicate("rdf:type")
+
+
 def test_quality_disposition_clash():
     """The canonical Force straddle: Quality vs Disposition must clash."""
     assert bc.clash(bc.QUALITY, bc.DISPOSITION)

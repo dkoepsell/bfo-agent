@@ -66,7 +66,7 @@ class Proposal(BaseModel):
 
     # Populated by the coherence gate (app/coherence_gate.py).
     gate_outcome: Optional[Literal["accept", "repair", "reject"]] = None
-    gate_tier: Optional[Literal["none", "lint", "reasoner"]] = None
+    gate_tier: Optional[Literal["none", "construction", "lint", "reasoner"]] = None
     gate_reason: Optional[str] = None
     gate_policy_action: Optional[str] = None
 

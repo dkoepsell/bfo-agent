@@ -79,6 +79,31 @@ GATE_MAX_ATTEMPTS = int(os.getenv("GATE_MAX_ATTEMPTS", "2"))
 # add the constraint its BFO category requires (inheres_in / realized_in).
 ENABLE_SCAFFOLDING = os.getenv("ENABLE_SCAFFOLDING", "true").lower() == "true"
 
+# ----- Construction linter (bfo-agent-spec.md §6, PC-1..PC-6) -----
+# The construction tier runs first in the gate. It rejects privation
+# primitives, relation-baked class names, untyped entities, invented
+# predicates, and continuant/occurrent conflations that drive class
+# proliferation. Always-on PC-1/PC-2/PC-3/PC-5/PC-6.
+ENABLE_CONSTRUCTION_LINTER = (
+    os.getenv("ENABLE_CONSTRUCTION_LINTER", "true").lower() == "true"
+)
+# Strict closed-vocabulary mode (PC-4): forbid ALL new classes; everything must
+# be an individual or a class expression over BFO. This is the spec's
+# case-fragment mode; OFF by default because the workbench builds domain
+# classes on top of BFO.
+STRICT_CLOSED_VOCAB = (
+    os.getenv("STRICT_CLOSED_VOCAB", "false").lower() == "true"
+)
+
+# ----- Class-count budget (bfo-agent-spec.md FR-7) -----
+# Soft cap on how many NEW classes a single proposal may mint. Exceeding it
+# raises a warning (logged + surfaced on the proposal), never a silent accept.
+# 0 disables the per-proposal warning.
+CLASS_BUDGET_PER_PROPOSAL = int(os.getenv("CLASS_BUDGET_PER_PROPOSAL", "5"))
+# Soft cap on the total working-class count; once the active ontology grows
+# past this, every commit logs a proliferation warning. 0 disables.
+CLASS_BUDGET_WARN_TOTAL = int(os.getenv("CLASS_BUDGET_WARN_TOTAL", "0"))
+
 # ----- Accounts / billing / managed-jobs (Phase 1: accounts + BYOK) -----
 # Flask session signing key. Required in production; a dev fallback keeps
 # local/test runs working without extra setup.

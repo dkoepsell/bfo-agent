@@ -116,11 +116,26 @@ def _run_coherence_gate(proposal, mgr, proposer, ctx, session_id, context=None):
             if neighborhood
             else "Re-propose this claim"
         )
-        note = (
-            f"\n\nCONSTRAINT: a previous attempt violated BFO coherence. "
-            f"{gate_result.reason} {scope} so that no class is placed under two "
-            f"disjoint BFO categories. Choose a single coherent BFO genus."
-        )
+        if getattr(gate_result, "violations", None):
+            # Construction tier: feed the structured rule/rewrite guidance back
+            # so the proposer self-corrects the prohibited constructions.
+            fixes = "\n".join(
+                f"- [{v['rule']}] '{v['offending_term']}': {v['suggested_rewrite']}"
+                for v in gate_result.violations
+            )
+            note = (
+                f"\n\nCONSTRAINT: a previous attempt used prohibited "
+                f"constructions. {scope}, applying each fix below. Prefer "
+                f"individuals + BFO object-property assertions + class "
+                f"expressions over minting new classes; never name a class for "
+                f"an absence or a relation.\n{fixes}"
+            )
+        else:
+            note = (
+                f"\n\nCONSTRAINT: a previous attempt violated BFO coherence. "
+                f"{gate_result.reason} {scope} so that no class is placed under "
+                f"two disjoint BFO categories. Choose a single coherent BFO genus."
+            )
         try:
             return proposer.propose(
                 utterance=utterance + note,
@@ -138,6 +153,8 @@ def _run_coherence_gate(proposal, mgr, proposer, ctx, session_id, context=None):
         resample_fn=resample_fn,
         run_reasoner=config.GATE_RUN_REASONER,
         max_attempts=config.GATE_MAX_ATTEMPTS,
+        run_construction=config.ENABLE_CONSTRUCTION_LINTER,
+        strict_closed_vocab=config.STRICT_CLOSED_VOCAB,
     )
 
     # Stamp the (possibly rewritten) proposal with the gate verdict.
@@ -150,6 +167,45 @@ def _run_coherence_gate(proposal, mgr, proposer, ctx, session_id, context=None):
 
     log_gate_events(session_id, run.events, context=context)
     return run
+
+
+def _budget_and_kext_notes(proposal, mgr) -> list[str]:
+    """Soft class-count budget (FR-7) + kernel-extension paper trail (spec §8).
+
+    Never blocks a commit; surfaces warnings so proliferation and
+    kernel-extension requests are visible rather than silently accepted.
+    """
+    notes: list[str] = []
+    new_classes = [
+        e for e in proposal.entities
+        if getattr(e, "kind", None) == "class"
+        and getattr(e, "is_new", False)
+        and not getattr(e, "existing_iri", None)
+    ]
+    n = len(new_classes)
+    if config.CLASS_BUDGET_PER_PROPOSAL and n > config.CLASS_BUDGET_PER_PROPOSAL:
+        names = ", ".join(
+            (e.iri_suggestion or e.label) for e in new_classes
+        )
+        notes.append(
+            f"class-budget: this proposal mints {n} new classes "
+            f"(soft cap {config.CLASS_BUDGET_PER_PROPOSAL}); prefer individuals "
+            f"and BFO property assertions over new classes. New: {names}"
+        )
+    if config.CLASS_BUDGET_WARN_TOTAL:
+        try:
+            total = mgr.stats().get("num_classes", 0)
+            if total > config.CLASS_BUDGET_WARN_TOTAL:
+                notes.append(
+                    f"class-proliferation: the working ontology now has {total} "
+                    f"classes (> {config.CLASS_BUDGET_WARN_TOTAL})."
+                )
+        except Exception:
+            pass
+    for q in getattr(proposal, "open_questions", []) or []:
+        if str(q).strip().upper().startswith("KEXT:"):
+            notes.append(f"kernel-extension-request: {str(q).strip()[5:].strip()}")
+    return notes
 
 
 def _apply_scaffolding(proposal, mgr, session_id) -> list[dict]:
@@ -556,7 +612,10 @@ def create_app() -> Flask:
             if config.ENABLE_COHERENCE_GATE:
                 try:
                     result = gate_mod.gate(
-                        proposal, mgr, run_reasoner=config.GATE_RUN_REASONER
+                        proposal, mgr,
+                        run_reasoner=config.GATE_RUN_REASONER,
+                        run_construction=config.ENABLE_CONSTRUCTION_LINTER,
+                        strict_closed_vocab=config.STRICT_CLOSED_VOCAB,
                     )
                     proposal.gate_outcome = result.outcome.value
                     proposal.gate_tier = result.tier.value
@@ -623,7 +682,10 @@ def create_app() -> Flask:
             if config.ENABLE_COHERENCE_GATE:
                 try:
                     result = gate_mod.gate(
-                        body.proposal, mgr, run_reasoner=config.GATE_RUN_REASONER
+                        body.proposal, mgr,
+                        run_reasoner=config.GATE_RUN_REASONER,
+                        run_construction=config.ENABLE_CONSTRUCTION_LINTER,
+                        strict_closed_vocab=config.STRICT_CLOSED_VOCAB,
                     )
                 except Exception as e:
                     result = None
@@ -659,6 +721,9 @@ def create_app() -> Flask:
                 )
                 return jsonify({"error": f"Commit error: {e}"}), 500
 
+            warnings = (warnings or []) + _budget_and_kext_notes(
+                body.proposal, mgr
+            )
             git_commit_working_ontology(
                 body.session_id,
                 body.proposal_id,
@@ -1055,6 +1120,9 @@ def create_app() -> Flask:
                     })
                     new_status = "error"
                 else:
+                    warnings = (warnings or []) + _budget_and_kext_notes(
+                        proposal, mgr
+                    )
                     scaffolded = _apply_scaffolding(proposal, mgr, session_id)
                     git_commit_working_ontology(
                         session_id, proposal.proposal_id,
