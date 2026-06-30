@@ -134,12 +134,22 @@ class OntologyManager:
         We strip such axioms in-memory on every load so one bad committed axiom
         cannot brick the ontology; the gate also rejects them up front.
         """
-        from rdflib import RDFS
+        from rdflib import RDF, RDFS, OWL, URIRef
         g = self.world.as_rdflib_graph()
+        # Every IRI typed as a property anywhere in the loaded world (BFO closure
+        # included), so we catch part_of/realized_in etc. that the curated K_P
+        # omits. Detecting from rdf:type is what makes this bulletproof.
+        prop_types = [
+            OWL.ObjectProperty, OWL.DatatypeProperty, OWL.AnnotationProperty,
+            OWL.TransitiveProperty, OWL.FunctionalProperty, OWL.SymmetricProperty,
+            URIRef("http://www.w3.org/2002/07/owl#InverseFunctionalProperty"),
+        ]
+        props = set()
+        for pt in prop_types:
+            props |= set(g.subjects(RDF.type, pt))
         removed = 0
         for s, o in list(g.subject_objects(RDFS.subClassOf)):
-            of = bfo_catalog.normalize_fragment(str(o))
-            if bfo_catalog.is_kernel_property(of):
+            if o in props:
                 g.remove((s, RDFS.subClassOf, o))
                 removed += 1
         if removed:

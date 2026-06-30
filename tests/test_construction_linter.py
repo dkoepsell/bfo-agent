@@ -244,3 +244,12 @@ def test_pc5_valid_class_parent_passes():
     ent.parent_class = "BFO_0000020"   # a real class
     p = _prop({"entities": [ent]})
     assert "PC-5" not in _rules(L.lint(p))
+
+
+def test_pc5_part_of_parent_rejected():
+    # BFO_0000050 ("part of") is a relation NOT in the curated K_P -- must still
+    # be rejected as a class parent (the metaclass-conflict crash).
+    ent = _cls("RelationalField", bfo="BFO_0000029")
+    ent.parent_class = "BFO_0000050"
+    p = _prop({"entities": [ent]})
+    assert "PC-5" in _rules(L.lint(p))

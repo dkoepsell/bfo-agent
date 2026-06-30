@@ -250,26 +250,47 @@ def _check_predicate(rel) -> Optional[Violation]:
     )
 
 
+# An upper-ontology id (BFO/RO/IAO) used as a subClassOf/type target is only
+# valid if it is a known BFO CLASS. If it is a relation (BFO_0000050 "part of",
+# BFO_0000054 "realized in", any RO_*) it is NOT in K_C -- and a class subclassed
+# to a property crashes owlready2 with a metaclass conflict that bricks the whole
+# ontology. K_P is a curated subset (it omits part_of etc.), so we cannot rely on
+# is_kernel_property alone: anything that looks like an upper-ontology id but is
+# not a kernel class is treated as a non-class target.
+_UPPER_ONTOLOGY_ID = re.compile(r"^(?:BFO|RO|IAO)_\d+$")
+
+
+def _target_is_not_a_class(ref: str) -> bool:
+    frag = bfo_catalog.normalize_fragment(ref or "")
+    if not frag:
+        return False
+    if bfo_catalog.is_kernel_property(frag):
+        return True
+    if _UPPER_ONTOLOGY_ID.match(frag) and frag not in bfo_catalog.KERNEL_CLASSES:
+        return True
+    return False
+
+
 def _check_class_parent(ent) -> Optional[Violation]:
     """PC-5: a subClassOf/type target must be a BFO class, not a relation.
 
     ``X subClassOf <a BFO property>`` (e.g. ``PropertyRight subClassOf
-    BFO_0000054`` -- "realized in") is logically malformed AND crashes owlready2
-    with a metaclass conflict that bricks the whole ontology. PC-3 misses it when
-    the entity's own ``bfo_type`` is a valid class but its ``parent_class`` is a
-    property.
+    BFO_0000054``, or ``RelationalField subClassOf BFO_0000050`` "part of")
+    crashes owlready2 with a metaclass conflict that bricks the whole ontology.
+    PC-3 misses it when the entity's own ``bfo_type`` is a valid class but its
+    ``parent_class`` is a property.
     """
-    parent = bfo_catalog.normalize_fragment(getattr(ent, "parent_class", "") or "")
-    if parent and bfo_catalog.is_kernel_property(parent):
+    parent = getattr(ent, "parent_class", "") or ""
+    if _target_is_not_a_class(parent):
         return Violation(
             rule="PC-5",
             offending_term=_local(getattr(ent, "iri_suggestion", "") or ent.label),
             suggested_rewrite=(
-                f"parent_class '{parent}' is a BFO relation, not a class. A class "
-                f"cannot be a subclass of a property. Anchor to a BFO category and "
-                f"express the relation as a property assertion instead."
+                f"parent_class '{_local(parent)}' is a BFO relation, not a class. "
+                f"A class cannot be a subclass of a property. Anchor to a BFO "
+                f"category and express the relation as a property assertion."
             ),
-            detail="subClassOf target is a BFO property",
+            detail="subClassOf target is not a BFO class",
         )
     return None
 
@@ -280,17 +301,17 @@ def _check_relation_class_target(rel) -> Optional[Violation]:
     p = getattr(rel, "p", "") or ""
     if "subClassOf" not in p and "type" not in p:
         return None
-    o = bfo_catalog.normalize_fragment(getattr(rel, "o", "") or "")
-    if o and bfo_catalog.is_kernel_property(o):
+    o = getattr(rel, "o", "") or ""
+    if _target_is_not_a_class(o):
         return Violation(
             rule="PC-5",
             offending_term=_local(getattr(rel, "s", "")),
             suggested_rewrite=(
-                f"'{o}' is a BFO relation; a class cannot be subClassOf/typed to "
-                f"a property. Use a BFO category, or assert the relation as a "
-                f"property triple."
+                f"'{_local(o)}' is a BFO relation; a class cannot be "
+                f"subClassOf/typed to a property. Use a BFO category, or assert "
+                f"the relation as a property triple."
             ),
-            detail="subClassOf/type target is a BFO property",
+            detail="subClassOf/type target is not a BFO class",
         )
     return None
 
