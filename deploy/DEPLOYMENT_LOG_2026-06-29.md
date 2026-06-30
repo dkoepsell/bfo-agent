@@ -156,7 +156,23 @@ Job `job_2220ffd472ef` (feed Aristotle's Categories) extracted **0 claims across
 + fix ollama scheme" — 10 files, +829/-34. Only code committed; runtime data
 (ontology/, jobs/, sessions/, locks, run.log) deliberately excluded.
 
-### Result: SUCCESS. Local LLM (ollama) preserved and working; extraction fixed.
+### Second incident: feed committed nothing (every proposal "inconsistent")
+During "feed selected" of 77 claims, the 72B proposer produced good output
+(properly-typed individuals), but every claim was rejected at the gate's
+**reasoner** tier and `committed:false`.
+
+- **Root cause:** the app process's PATH did not include `~/.local/bin`, where
+  `java` lives. owlready2 runs HermiT by spawning `java`; with java absent the
+  reasoner tier errored and the gate marked every proposal inconsistent. (Both
+  `start.sh` and a bare `setsid run.py` launch lacked the PATH; ollama worked
+  only because `start.sh` calls it via the full `$OLLAMA_BIN` path.)
+- **Fix:** `start.sh` now `export PATH="$HOME/.local/bin:$PATH"` (commit
+  `c303a7b`). Verified: with java on PATH, `check_coherence_dry_run` returns
+  coherent, and a live `feed_one` returned `committed:true, verdict:consistent`
+  with `num_classes` growing 0 -> 1. ~20 s/claim with the 72B model warm.
+
+### Result: SUCCESS. Local LLM (ollama) preserved and working; extraction AND
+feed/commit fixed.
 
 ### Rollback (if needed)
 Restore `~/bfo-agent-codebackup-20260629_235754/*` into
