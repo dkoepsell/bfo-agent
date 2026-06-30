@@ -14,6 +14,7 @@ and then optionally git-commits in storage.py.
 from __future__ import annotations
 
 import io
+import logging
 import types
 from contextlib import redirect_stderr, redirect_stdout
 from pathlib import Path
@@ -31,6 +32,8 @@ from owlready2 import (
 from . import bfo_catalog
 from . import config
 from . import stable_iri
+
+log = logging.getLogger(__name__)
 
 BFO_OBO_PREFIX = "http://purl.obolibrary.org/obo/"
 WORKING_IRI = "http://davidkoepsell.com/bfo-agent/working"
@@ -116,6 +119,39 @@ class OntologyManager:
             if self.seed_path and self.seed_path.exists():
                 self._apply_seed()
             self.save()
+
+        self._sanitize_bfo_disjointness()
+
+    def _sanitize_bfo_disjointness(self):
+        """Drop any owl:disjointWith between two BFO classes in a subclass
+        relationship (BFO-correctness guard).
+
+        A class disjoint with its own ancestor/descendant is unsatisfiable: the
+        classic case is ``Disposition (BFO_0000016) disjointWith Function
+        (BFO_0000034)`` -- but Function is a subclass of Disposition, so that
+        axiom makes Function (and every individual under it) inconsistent. This
+        ran the whole feed to "inconsistent". We strip such axioms in-memory on
+        every load, so no ontology -- however it was seeded or hand-edited -- can
+        carry a self-contradicting BFO disjointness. Operates on the live world;
+        the file on disk is untouched unless it is saved later.
+        """
+        from rdflib import OWL
+        g = self.world.as_rdflib_graph()
+        removed = 0
+        for s, o in list(g.subject_objects(OWL.disjointWith)):
+            sf = bfo_catalog.normalize_fragment(str(s))
+            of = bfo_catalog.normalize_fragment(str(o))
+            if sf not in bfo_catalog.KERNEL_CLASSES or of not in bfo_catalog.KERNEL_CLASSES:
+                continue
+            if bfo_catalog.is_descendant_of(sf, of) or bfo_catalog.is_descendant_of(of, sf):
+                g.remove((s, OWL.disjointWith, o))
+                g.remove((o, OWL.disjointWith, s))
+                removed += 1
+        if removed:
+            log.warning(
+                "stripped %d invalid BFO subclass-pair disjointness axiom(s) "
+                "on load (e.g. Disposition/Function)", removed
+            )
 
     def _apply_seed(self):
         """Apply all seed files from the seed directory.

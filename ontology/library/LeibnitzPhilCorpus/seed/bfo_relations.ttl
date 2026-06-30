@@ -164,7 +164,8 @@ obo:BFO_0000040 owl:disjointWith obo:BFO_0000141 .
 # Qualities and realizable entities are disjoint specifically dependent continuants.
 obo:BFO_0000019 owl:disjointWith obo:BFO_0000017 .
 
-# Roles, dispositions, and functions are mutually disjoint realizable entities.
+# Role is disjoint from Disposition and from Function. Disposition and Function
+# are NOT disjoint: in BFO 2020 Function is a subclass of Disposition, so
+# asserting them disjoint makes Function (BFO_0000034) unsatisfiable.
 obo:BFO_0000023 owl:disjointWith obo:BFO_0000016 .
 obo:BFO_0000023 owl:disjointWith obo:BFO_0000034 .
-obo:BFO_0000016 owl:disjointWith obo:BFO_0000034 .
