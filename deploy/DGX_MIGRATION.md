@@ -7,7 +7,14 @@
 > regardless). 47 migrated tests pass on DGX; the migration added **zero
 > regressions** (7 pre-existing DGX test failures in coherence_gate/scorer/
 > regression_corpus/scaffolding are unchanged before vs after — verified against
-> `~/bfo-agent-premigration-backup/`). Orchestrator gate_client rewiring was
+> `~/bfo-agent-premigration-backup/`). **Those 7 were a test-env PATH issue, not
+> product bugs:** pytest ran without `~/.local/bin` on PATH, so HermiT couldn't
+> find `java`, the reasoner silently failed, and the gate read it as
+> "inconsistent". Fixed at source — `config.py` now self-heals the java PATH
+> (commit `7697528`), so bare `pytest tests/` is **77 passed / 0 failed**, and the
+> service no longer silently mis-rejects when launched without start.sh.
+> Smoke-tested end to end on DGX (qwen2.5:72b propose → PC-1..8 → 200, 0 errors).
+> Orchestrator gate_client rewiring was
 > **deferred** (DGX invokes the gate differently; PC-1..8 already flow through the
 > existing gate path). Caching/cost work intentionally NOT migrated.
 
