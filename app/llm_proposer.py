@@ -221,26 +221,36 @@ class LLMProposer:
     ) -> Proposal:
         prompt = PROMPT_TEMPLATE.format(
             bfo_primer=BFO_PRIMER,
-            working_classes=json.dumps(working_classes, indent=2),
-            known_individuals=json.dumps(known_individuals, indent=2),
+            working_classes=_compact_lines(working_classes),
+            known_individuals=_compact_lines(known_individuals),
             utterance=utterance,
         )
 
-        # Split prompt into static (cached) and dynamic parts. The
-        # BFO primer, rules, and schema are identical on every call and
-        # account for ~80% of input tokens, so caching them drops cost
-        # dramatically for a full-book feed.
-        static_system, dynamic_user = _split_for_caching(prompt)
+        # Two cache breakpoints + compact context. The ontology snapshot (now
+        # one compact line per term, ~3-4x fewer tokens than indented JSON) is the
+        # dominant per-call input cost on a feed, so we (a) shrink it and (b) give
+        # it its own breakpoint so it is a cache READ between commits. The static
+        # block is instructions + the JSON schema (lifted out of the dynamic tail,
+        # where it was being re-sent uncached every call). Only the per-claim
+        # utterance is uncached.
+        static_system, ontology_block, claim = _split_for_breakpoints(prompt)
+        system = [{
+            "type": "text",
+            "text": static_system,
+            "cache_control": cache_control(self.ttl),
+        }]
+        if ontology_block:
+            system.append({
+                "type": "text",
+                "text": ontology_block,
+                "cache_control": cache_control(self.ttl),
+            })
 
         resp = self.client.messages.create(
             model=self.model,
             max_tokens=4000,
-            system=[{
-                "type": "text",
-                "text": static_system,
-                "cache_control": cache_control(self.ttl),
-            }],
-            messages=[{"role": "user", "content": dynamic_user}],
+            system=system,
+            messages=[{"role": "user", "content": claim or prompt}],
         )
         self._record_usage(resp)
 
@@ -338,6 +348,60 @@ def _extract_json(text: str) -> dict:
         raise ValueError(
             f"No parseable JSON object in LLM output (possibly truncated):\n{text[:500]}"
         )
+
+
+def _local_name(ref: str) -> str:
+    s = (ref or "").split("#")[-1]
+    return s.split("/")[-1]
+
+
+def _compact_lines(items: list[dict]) -> str:
+    """Render classes/individuals as one compact line each instead of indented
+    JSON, dropping the repeated namespace.
+
+    On a feed this ontology snapshot is the dominant per-call *uncached* input
+    (40 classes + 40 individuals as full ``{"iri","label","parents"}`` dicts is
+    ~4k tokens). The same information as ``Label [Name] <: Parents`` is ~3-4x
+    smaller, which directly cuts the per-call input bill -- the genuine win, more
+    than caching, since this content changes whenever a claim commits.
+    """
+    if not items:
+        return "(none)"
+    lines = []
+    for it in items:
+        name = _local_name(it.get("iri") or it.get("label") or "")
+        label = it.get("label") or name
+        rel = it.get("parents") or it.get("types") or []
+        rel = ", ".join(_local_name(r) for r in rel)
+        head = name if label == name else f'{name} "{label}"'
+        lines.append(f"- {head}" + (f" <: {rel}" if rel else ""))
+    return "\n".join(lines)
+
+
+def _split_for_breakpoints(full_prompt: str) -> tuple[str, str, str]:
+    """Split the rendered prompt into (static, ontology, claim) for two cache
+    breakpoints.
+
+    The JSON schema sits at the END of the template, so today it is re-sent
+    uncached on every call. We lift it into the static head, so the static block
+    is instructions + schema (one stable cached prefix), the ontology snapshot is
+    a second cached block (changes only when a claim commits -> a cache READ in
+    between), and only the per-claim utterance is uncached.
+    """
+    onto_m = "CURRENT WORKING ONTOLOGY CONTEXT:"
+    claim_m = "USER UTTERANCE:"
+    schema_m = "Respond with ONLY a JSON object matching this schema:"
+    i, j, k = (full_prompt.find(onto_m), full_prompt.find(claim_m),
+               full_prompt.find(schema_m))
+    if not (0 <= i < j < k):
+        # Markers missing/reordered: degrade to the old single-breakpoint split.
+        static, dynamic = _split_for_caching(full_prompt)
+        return static, "", dynamic
+    head = full_prompt[:i].rstrip()
+    ontology = full_prompt[i:j].rstrip()
+    claim = full_prompt[j:k].rstrip()
+    schema = full_prompt[k:].rstrip()
+    return head + "\n\n" + schema, ontology, claim
 
 
 def _split_for_caching(full_prompt: str) -> tuple[str, str]:
