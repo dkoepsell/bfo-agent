@@ -67,3 +67,38 @@ dominant kernel; MLC is gated to SOoL only.
   `OWLTESTER_URL` is unset.
 
 — rollout 2026-06-30 (BFO-dominant; MLC SOoL-only)
+
+---
+
+## Hotfix (same day) — BFO Function unsatisfiability
+
+**Symptom:** the book feed ran every claim to `inconsistent` (0 committed).
+
+**Root cause (pre-existing, not from the spec rollout):** the BFO seed template
+asserted `Disposition (BFO_0000016) disjointWith Function (BFO_0000034)`, but in
+BFO 2020 **Function is a subclass of Disposition** — so that axiom makes Function
+unsatisfiable, and the reasoner tier rejected every proposal. Reproduced at
+baseline in any ontology seeded from the template (SOoLRevised, SOoL_v1, …); eco
+happened not to carry it. The new gate merely surfaced a latent data bug.
+
+**Also confirmed your directive:** new ontologies must be built off **BFO 2020**,
+not on top of another domain ontology. The failing feed had been pointed at
+`eco` (3358 classes); the correct target is `SOoLRevised` (6 classes, BFO-only),
+now the active ontology.
+
+**Fix (commit `ad04ea2`):**
+- Seeds `bfo_relations.ttl`: removed the bad line + corrected the comment
+  (server: all 7 library seeds; repo: SOoL_v1 + LeibnitzPhilCorpus).
+- `ontology_manager._sanitize_bfo_disjointness()`: load-time guard that strips
+  any `owl:disjointWith` between two BFO classes in a subclass relationship,
+  in-memory, on every load. **Auto-heals every existing ontology without
+  rewriting data files** and prevents reintroduction.
+- `tests/test_bfo_disjointness_guard.py`: pins Function⊑Disposition + guards seeds.
+- Server `SOoLRevised/working.owl` corrected in place (backup
+  `working.owl.bak-funcfix`); other working.owls left on disk (auto-healed at
+  load). Three malformed-IRI ontologies were restored from backup after an
+  unsafe rdflib round-trip — their pre-existing PC-violation content is untouched.
+
+**Verified on prod:** guard strips the axiom from the live world even when still
+on disk (GeometryofTheGood: `present=False`); SOoLRevised baseline `coherent=True`;
+server tests 83 pass / 2 skip; service restarted, active = SOoLRevised.
