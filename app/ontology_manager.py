@@ -121,6 +121,32 @@ class OntologyManager:
             self.save()
 
         self._sanitize_bfo_disjointness()
+        self._strip_subclass_of_property()
+
+    def _strip_subclass_of_property(self):
+        """Drop any ``rdfs:subClassOf`` whose object is a BFO/RO *property*.
+
+        A class cannot be a subclass of a relation. owlready2 tries to build a
+        Python class whose bases include a property's metaclass and raises
+        ``TypeError: metaclass conflict``, which crashes class enumeration and
+        takes down the whole feed. The classic case was
+        ``PropertyRight subClassOf BFO_0000054`` ("realized in" is a relation).
+        We strip such axioms in-memory on every load so one bad committed axiom
+        cannot brick the ontology; the gate also rejects them up front.
+        """
+        from rdflib import RDFS
+        g = self.world.as_rdflib_graph()
+        removed = 0
+        for s, o in list(g.subject_objects(RDFS.subClassOf)):
+            of = bfo_catalog.normalize_fragment(str(o))
+            if bfo_catalog.is_kernel_property(of):
+                g.remove((s, RDFS.subClassOf, o))
+                removed += 1
+        if removed:
+            log.warning(
+                "stripped %d subClassOf-a-property axiom(s) on load "
+                "(e.g. PropertyRight subClassOf BFO_0000054)", removed
+            )
 
     def _sanitize_bfo_disjointness(self):
         """Drop any owl:disjointWith between two BFO classes in a subclass

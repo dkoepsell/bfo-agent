@@ -250,6 +250,51 @@ def _check_predicate(rel) -> Optional[Violation]:
     )
 
 
+def _check_class_parent(ent) -> Optional[Violation]:
+    """PC-5: a subClassOf/type target must be a BFO class, not a relation.
+
+    ``X subClassOf <a BFO property>`` (e.g. ``PropertyRight subClassOf
+    BFO_0000054`` -- "realized in") is logically malformed AND crashes owlready2
+    with a metaclass conflict that bricks the whole ontology. PC-3 misses it when
+    the entity's own ``bfo_type`` is a valid class but its ``parent_class`` is a
+    property.
+    """
+    parent = bfo_catalog.normalize_fragment(getattr(ent, "parent_class", "") or "")
+    if parent and bfo_catalog.is_kernel_property(parent):
+        return Violation(
+            rule="PC-5",
+            offending_term=_local(getattr(ent, "iri_suggestion", "") or ent.label),
+            suggested_rewrite=(
+                f"parent_class '{parent}' is a BFO relation, not a class. A class "
+                f"cannot be a subclass of a property. Anchor to a BFO category and "
+                f"express the relation as a property assertion instead."
+            ),
+            detail="subClassOf target is a BFO property",
+        )
+    return None
+
+
+def _check_relation_class_target(rel) -> Optional[Violation]:
+    """PC-5: a subClassOf / rdf:type triple's object must be a class, not a
+    relation. Same metaclass-conflict hazard as a bad parent_class."""
+    p = getattr(rel, "p", "") or ""
+    if "subClassOf" not in p and "type" not in p:
+        return None
+    o = bfo_catalog.normalize_fragment(getattr(rel, "o", "") or "")
+    if o and bfo_catalog.is_kernel_property(o):
+        return Violation(
+            rule="PC-5",
+            offending_term=_local(getattr(rel, "s", "")),
+            suggested_rewrite=(
+                f"'{o}' is a BFO relation; a class cannot be subClassOf/typed to "
+                f"a property. Use a BFO category, or assert the relation as a "
+                f"property triple."
+            ),
+            detail="subClassOf/type target is a BFO property",
+        )
+    return None
+
+
 def _check_off_vocabulary(ent) -> Optional[Violation]:
     """PC-4 (strict mode only): no class IRI outside K_C; zero new classes."""
     if _is_new_class(ent):
@@ -348,7 +393,7 @@ def lint(proposal, strict_closed_vocab: bool = False) -> LintReport:
                     report.violations.append(v)
 
         # Typing checks apply to every emitted entity.
-        for check in (_check_untyped, _check_conflation):
+        for check in (_check_untyped, _check_conflation, _check_class_parent):
             v = check(ent)
             if v is not None:
                 report.violations.append(v)
@@ -357,6 +402,10 @@ def lint(proposal, strict_closed_vocab: bool = False) -> LintReport:
         # subClassOf / type predicates are fine; only non-meta predicates that
         # are not BFO object properties are string-baked relations.
         v = _check_predicate(rel)
+        if v is not None:
+            report.violations.append(v)
+        # A subClassOf/type target must be a class, not a relation.
+        v = _check_relation_class_target(rel)
         if v is not None:
             report.violations.append(v)
 

@@ -218,3 +218,29 @@ def test_pc8_privation_operand_rejected():
 def test_pc8_clean_term_passes():
     p = _prop({"entities": [_cls("Norm", bfo="BFO_0000020")]})
     assert "PC-8" not in _rules(L.lint(p))
+
+
+# --- PC-5: subClassOf/type target must be a class, not a relation --------
+def test_pc5_parent_class_is_property_rejected():
+    # PropertyRight subClassOf BFO_0000054 ("realized in") -> metaclass conflict.
+    ent = _cls("PropertyRight", bfo="BFO_0000020")
+    ent.parent_class = "BFO_0000054"   # a relation, not a class
+    p = _prop({"entities": [ent]})
+    assert "PC-5" in _rules(L.lint(p))
+
+
+def test_pc5_subclassof_relation_target_rejected():
+    from app.schema import Relation
+    ent = _cls("PropertyRight", bfo="BFO_0000020")
+    p = _prop({"entities": [ent],
+               "relations": [Relation(s="working:PropertyRight",
+                                       p="rdfs:subClassOf", o="obo:BFO_0000054",
+                                       rationale="x")]})
+    assert "PC-5" in _rules(L.lint(p))
+
+
+def test_pc5_valid_class_parent_passes():
+    ent = _cls("PropertyRight", bfo="BFO_0000020")
+    ent.parent_class = "BFO_0000020"   # a real class
+    p = _prop({"entities": [ent]})
+    assert "PC-5" not in _rules(L.lint(p))
