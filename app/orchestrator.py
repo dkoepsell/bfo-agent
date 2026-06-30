@@ -22,6 +22,8 @@ from pydantic import ValidationError
 
 from . import config
 from . import coherence_gate as gate_mod
+from . import gate_client
+from . import kext as kext_mod
 from . import jobs as jobs_store
 from .coherence_gate import GateOutcome, GatePolicy
 from .extractor import ClaimExtractor, chunk_text
@@ -202,9 +204,17 @@ def _budget_and_kext_notes(proposal, mgr) -> list[str]:
                 )
         except Exception:
             pass
-    for q in getattr(proposal, "open_questions", []) or []:
-        if str(q).strip().upper().startswith("KEXT:"):
-            notes.append(f"kernel-extension-request: {str(q).strip()[5:].strip()}")
+    # §8: structured kernel-extension-requests. Persisted as *.kext.json for
+    # human review (best-effort) and surfaced as notes. Never blocks the commit.
+    requests = kext_mod.collect(proposal, config.KERNEL_VERSION_IRI)
+    for req in requests:
+        try:
+            kext_dir = Path(mgr.working_path).resolve().parent / "kext"
+            kext_mod.persist(req, kext_dir)
+        except Exception:
+            pass  # the paper trail is advisory; never fail a commit over it
+        detail = req.term + (f" -- {req.justification}" if req.justification else "")
+        notes.append(f"kernel-extension-request [{req.id}]: {detail}")
     return notes
 
 
@@ -324,10 +334,12 @@ def create_app() -> Flask:
                 mgr, resolved = _resolve_ontology_for_read(name)
             except KeyError:
                 return _not_found_response(name)
+            cache_stats = _proposer.stats() if _proposer is not None else None
             return jsonify({
                 "status": "ok",
                 "ontology": resolved,
                 "stats": mgr.stats(),
+                "prompt_cache": cache_stats,
             })
         except Exception as e:
             return jsonify({"status": "error", "error": str(e)}), 500
@@ -611,7 +623,7 @@ def create_app() -> Flask:
             # review; it does not auto-resample on the interactive path.
             if config.ENABLE_COHERENCE_GATE:
                 try:
-                    result = gate_mod.gate(
+                    result = gate_client.evaluate(
                         proposal, mgr,
                         run_reasoner=config.GATE_RUN_REASONER,
                         run_construction=config.ENABLE_CONSTRUCTION_LINTER,
@@ -681,7 +693,7 @@ def create_app() -> Flask:
             # Defensive gate: a user-edited proposal must not bypass coherence.
             if config.ENABLE_COHERENCE_GATE:
                 try:
-                    result = gate_mod.gate(
+                    result = gate_client.evaluate(
                         body.proposal, mgr,
                         run_reasoner=config.GATE_RUN_REASONER,
                         run_construction=config.ENABLE_CONSTRUCTION_LINTER,

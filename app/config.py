@@ -19,6 +19,36 @@ ANTHROPIC_EXTRACTOR_MODEL = os.getenv(
     "claude-haiku-4-5-20251001",
 )
 
+# ----- Kernel identity (bfo-agent-spec.md FR-1/§8) -----
+# The dominant kernel is BFO 2020. Its versionIRI stamps emitted fragments and
+# kernel-extension-requests so provenance is unambiguous.
+KERNEL_VERSION_IRI = os.getenv(
+    "KERNEL_VERSION_IRI", "http://purl.obolibrary.org/obo/bfo/2020/bfo.owl"
+)
+
+# ----- Validation gate (bfo-agent-spec.md: owltesterservice) -----
+# When set, the agent POSTs each emitted fragment to the external
+# owltesterservice for validation/repair before writing it. When empty, the
+# gate falls back to the in-process coherence gate (construction + lint +
+# local HermiT reasoner) plus the file-level owl_checks validators.
+OWLTESTER_URL = os.getenv("OWLTESTER_URL", "").strip()
+OWLTESTER_TIMEOUT = float(os.getenv("OWLTESTER_TIMEOUT", "30"))
+
+# ----- Deterministic individual IRIs (bfo-agent-spec.md FR-6) -----
+# When on, emitted individuals get a stable, content-hashed local name so two
+# runs over the same source produce the same IRIs (diffability). Off by default
+# to preserve the interactive workbench's human-readable suggested names; the
+# batch/case path turns it on.
+STABLE_INDIVIDUAL_IRIS = os.getenv("STABLE_INDIVIDUAL_IRIS", "false").lower() in (
+    "1", "true", "yes", "on",
+)
+
+# ----- Prompt caching (bfo-agent-spec.md §9, MC-5) -----
+# Cache TTL for the stable system prefix (BFO kernel + rules + few-shot). "5m"
+# keeps the cache hot for back-to-back corpus runs; "1h" (2x write, 0.1x read)
+# is better when calls are spaced >5 min apart. Anything else falls back to 5m.
+CACHE_TTL = os.getenv("CACHE_TTL", "5m")
+
 # ----- Library-aware path resolution -----
 
 LIBRARY_ROOT = ROOT / "ontology" / "library"

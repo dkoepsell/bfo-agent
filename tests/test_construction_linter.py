@@ -187,3 +187,34 @@ def test_artifact_actually_contains_prohibited_classes():
 def test_no_em_dashes_in_source():
     src = (REPO / "app" / "construction_linter.py").read_text(encoding="utf-8")
     assert "—" not in src
+
+
+# --- PC-7: class expression baked into an IRI ----------------------------
+def test_pc7_expression_iri_rejected():
+    # The exact AristotleCategories.owl defect: an OWL expression templated
+    # into an IRI fragment instead of a real anonymous construct.
+    ent = _cls("Quantity", bfo="BFO_0000019")
+    ent.iri_suggestion = "working#[ Quantity and not ( has_quality some Contrary ) ]"
+    p = _prop({"entities": [ent]})
+    assert "PC-7" in _rules(L.lint(p))
+
+
+def test_pc7_clean_iri_passes():
+    # A plain declaration IRI with no boolean/restriction tokens is fine.
+    p = _prop({"entities": [_cls("Contract", bfo="BFO_0000040")]})
+    assert "PC-7" not in _rules(L.lint(p))
+
+
+# --- PC-8: privation/compound term in ANY IRI fragment -------------------
+def test_pc8_privation_operand_rejected():
+    # A privation term smuggled inside an expression operand (not a clean
+    # declaration) must still be caught -- the IRI-fragment twin of PC-1.
+    ent = _cls("Quantity", bfo="BFO_0000019")
+    ent.iri_suggestion = "working#( Quantity and working:NonQuantity )"
+    p = _prop({"entities": [ent]})
+    assert "PC-8" in _rules(L.lint(p))
+
+
+def test_pc8_clean_term_passes():
+    p = _prop({"entities": [_cls("Norm", bfo="BFO_0000020")]})
+    assert "PC-8" not in _rules(L.lint(p))

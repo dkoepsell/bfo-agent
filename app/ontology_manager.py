@@ -29,6 +29,8 @@ from owlready2 import (
 )
 
 from . import bfo_catalog
+from . import config
+from . import stable_iri
 
 BFO_OBO_PREFIX = "http://purl.obolibrary.org/obo/"
 WORKING_IRI = "http://davidkoepsell.com/bfo-agent/working"
@@ -455,6 +457,13 @@ class OntologyManager:
         Does NOT save to disk. Caller decides whether to save or reload.
         """
         warnings: list[str] = []
+
+        # FR-6: deterministic, diffable individual IRIs (opt-in). Relation
+        # endpoints are remapped in lockstep, so this is verdict-neutral.
+        if config.STABLE_INDIVIDUAL_IRIS:
+            proposal = stable_iri.remap_proposal(
+                proposal, source=getattr(proposal, "utterance", "") or ""
+            )
 
         with self.working:
             # Entities first so relations can reference them

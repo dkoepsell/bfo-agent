@@ -1,4 +1,4 @@
-"""Agent-side construction linter (bfo-agent-spec.md §6, PC-1..PC-6).
+"""Agent-side construction linter (bfo-agent-spec.md §6, PC-1..PC-8).
 
 The proposer's failure mode is well documented: feeding a corpus produced
 thousands of flat classes (``AbsenceOfLegalExistence``,
@@ -17,6 +17,11 @@ ontology *on top of* BFO, which legitimately mints some classes (``Norm``,
   * PC-1, PC-2, PC-3, PC-5, PC-6 are ALWAYS-ON hard rejects -- they only ever
     catch genuinely malformed constructions (privations, relation-baked names,
     untyped entities, invented predicates, continuant/occurrent conflation).
+  * PC-7 (class expression baked into an IRI) and PC-8 (privation/compound term
+    in ANY IRI fragment, including expression operands) are ALWAYS-ON. They run
+    the lexical A7/A6 checks from ``owl_checks`` -- the SAME validators the gate
+    runs on the serialized fragment -- over the proposal's IRIs, so self-lint ==
+    gate. PC-8 is the IRI-fragment twin of PC-1's name-level privation reject.
   * PC-4 (off-vocabulary class IRI / zero-new-class) is OPT-IN via
     ``strict_closed_vocab=True`` -- it implements the spec's case-fragment mode.
 
@@ -30,6 +35,7 @@ from dataclasses import dataclass, field
 from typing import Optional
 
 from . import bfo_catalog
+from . import owl_checks
 
 
 # ---------------------------------------------------------------------------
@@ -263,15 +269,69 @@ def _check_off_vocabulary(ent) -> Optional[Violation]:
 
 
 # ---------------------------------------------------------------------------
+# PC-7 / PC-8: lexical IRI checks, delegated to owl_checks so the agent's
+# self-lint uses the exact validators the gate runs on the emitted fragment.
+# ---------------------------------------------------------------------------
+_PC7_PC8_REWRITE = {
+    "PC-7": (
+        "A class expression is baked into this IRI. Do not template "
+        "'#[ A and not (p some B) ]' as an IRI -- build a proper anonymous "
+        "OWL construct (owl:intersectionOf / owl:complementOf / "
+        "owl:Restriction) via owl_checks emitters and reference it by blank "
+        "node."
+    ),
+    "PC-8": (
+        "A privation/compound marker appears inside an IRI fragment. Reuse the "
+        "positive kernel term and negate with owl:complementOf / a "
+        "cardinality-0 restriction instead of minting an absence term (even as "
+        "an expression operand, e.g. 'working:NonQuantity')."
+    ),
+}
+
+
+def _proposal_iris(proposal) -> list[str]:
+    """Every minted/asserted IRI string in the proposal, for lexical checks."""
+    iris: list[str] = []
+    for ent in proposal.entities:
+        iris.append(getattr(ent, "iri_suggestion", "") or "")
+        iris.append(getattr(ent, "existing_iri", "") or "")
+    for rel in proposal.relations:
+        iris.append(getattr(rel, "s", "") or "")
+        iris.append(getattr(rel, "p", "") or "")
+        iris.append(getattr(rel, "o", "") or "")
+    return [i for i in iris if i]
+
+
+def _check_iris(proposal) -> list[Violation]:
+    """PC-7 (E_EXPR_IRI) and PC-8 (E_ANTIPATTERN) over the proposal's IRIs."""
+    report = owl_checks.check_iri_strings(_proposal_iris(proposal))
+    violations: list[Violation] = []
+    for f in report.findings:
+        rule = "PC-7" if f.code == "E_EXPR_IRI" else "PC-8"
+        violations.append(
+            Violation(
+                rule=rule,
+                offending_term=f.detail,
+                suggested_rewrite=_PC7_PC8_REWRITE[rule],
+                detail=f"owl_checks {f.code}",
+            )
+        )
+    return violations
+
+
+# ---------------------------------------------------------------------------
 # Top-level entry point.
 # ---------------------------------------------------------------------------
 def lint(proposal, strict_closed_vocab: bool = False) -> LintReport:
-    """Run PC-1..PC-6 over a proposal draft. Returns a LintReport.
+    """Run PC-1..PC-8 over a proposal draft. Returns a LintReport.
 
-    PC-1/PC-2/PC-3/PC-5/PC-6 always run. PC-4 runs only when
+    PC-1/PC-2/PC-3/PC-5/PC-6/PC-7/PC-8 always run. PC-4 runs only when
     ``strict_closed_vocab`` is set (the spec's case-fragment mode).
     """
     report = LintReport()
+
+    # PC-7 / PC-8: lexical IRI checks (same validators the gate runs).
+    report.violations.extend(_check_iris(proposal))
 
     for ent in proposal.entities:
         name = _local(getattr(ent, "iri_suggestion", "") or ent.label)

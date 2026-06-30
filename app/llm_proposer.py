@@ -6,11 +6,15 @@ typed JSON that the user reviews and the reasoner validates.
 from __future__ import annotations
 
 import json
+import logging
 from typing import Optional
 
 from anthropic import Anthropic
 
-from .config import ANTHROPIC_API_KEY, ANTHROPIC_MODEL, require_api_key
+from .config import ANTHROPIC_API_KEY, ANTHROPIC_MODEL, CACHE_TTL, require_api_key
+from .cached_client import Usage, cache_control, summarize
+
+log = logging.getLogger(__name__)
 from .schema import Proposal
 
 
@@ -175,15 +179,38 @@ class LLMProposer:
         self.client = Anthropic(api_key=api_key)
         self.model = model
         self._on_usage = on_usage
+        self.ttl = CACHE_TTL
+        # Session token accumulator: tracks cache_read / cache_write so the
+        # prompt-cache savings are measurable (§9). Same Usage/cost model as the
+        # batch CachedAnthropic client, so both report identical numbers.
+        self.usage = Usage()
 
     def _record_usage(self, resp) -> None:
         usage = getattr(resp, "usage", None)
-        if self._on_usage and usage is not None:
+        if usage is None:
+            return
+        self.usage.add(usage)
+        if self._on_usage:
             self._on_usage(
                 self.model,
                 getattr(usage, "input_tokens", 0) or 0,
                 getattr(usage, "output_tokens", 0) or 0,
             )
+
+    def stats(self) -> dict:
+        """Cache-hit ratio and $ saved across this proposer's calls (§9)."""
+        return summarize(self.usage, self.model, self.ttl)
+
+    def report(self) -> dict:
+        """Log the cache savings; returns the stats dict."""
+        s = self.stats()
+        log.info(
+            "prompt-cache: %d calls, hit=%.1f%%, cost=$%.4f (uncached $%.4f), "
+            "saved $%.4f (%.1f%%)",
+            s["calls"], s["cache_hit_ratio"] * 100, s["cost_usd"],
+            s["cost_without_cache_usd"], s["saved_usd"], s["saved_pct"],
+        )
+        return s
 
     def propose(
         self,
@@ -211,7 +238,7 @@ class LLMProposer:
             system=[{
                 "type": "text",
                 "text": static_system,
-                "cache_control": {"type": "ephemeral"},
+                "cache_control": cache_control(self.ttl),
             }],
             messages=[{"role": "user", "content": dynamic_user}],
         )
