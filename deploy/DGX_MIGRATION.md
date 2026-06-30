@@ -1,5 +1,18 @@
 # DGX migration — ontology-quality changes (2026-06-30 session)
 
+> **STATUS: DONE (2026-06-30).** Applied to `dgx:~/research/bfo-agent` (repo lives
+> at `~/research/bfo-agent`, venv `venv/`, launch `./start.sh`). All 6 new modules
+> + construction_linter (PC-5/7/8) + ontology_manager guards + config vars +
+> orchestrator kext wiring are live; seeds checked (load-time guard auto-heals
+> regardless). 47 migrated tests pass on DGX; the migration added **zero
+> regressions** (7 pre-existing DGX test failures in coherence_gate/scorer/
+> regression_corpus/scaffolding are unchanged before vs after — verified against
+> `~/bfo-agent-premigration-backup/`). Orchestrator gate_client rewiring was
+> **deferred** (DGX invokes the gate differently; PC-1..8 already flow through the
+> existing gate path). Caching/cost work intentionally NOT migrated.
+
+
+
 Tracking which changes from this session must migrate to the **DGX fork** (local
 ollama/qwen2.5). The DGX is a *diverged* fork — apply **surgically per change,
 never blanket rsync** (it would clobber the ollama divergence).
