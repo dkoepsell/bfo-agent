@@ -10,6 +10,19 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
+# Ensure the HermiT reasoner can find ``java`` regardless of how the process was
+# launched. On hosts where java lives in ~/.local/bin (e.g. the DGX), a launcher
+# that does not export it (bare ``python run.py``, cron, pytest) leaves owlready2
+# unable to reason -- it then silently fails, which the gate reads as
+# "inconsistent", wrongly rejecting every claim. Prepending ~/.local/bin only
+# when java is otherwise absent is a no-op anywhere java is already on PATH.
+import shutil as _shutil
+
+if _shutil.which("java") is None:
+    _local_bin = os.path.join(os.path.expanduser("~"), ".local", "bin")
+    if os.path.isdir(_local_bin) and _local_bin not in os.environ.get("PATH", ""):
+        os.environ["PATH"] = _local_bin + os.pathsep + os.environ.get("PATH", "")
+
 ROOT = Path(__file__).resolve().parent.parent
 
 ANTHROPIC_API_KEY = os.getenv("ANTHROPIC_API_KEY", "")
