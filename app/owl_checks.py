@@ -147,6 +147,23 @@ def check_antipatterns_all(raw_text: str) -> Report:
     return rep
 
 
+def check_bnode_iris(raw_text: str) -> Report:
+    """E_BNODE_IRI — a blank-node label (``_:``) baked into an rdf:about /
+    rdf:resource value. This is always malformed: it means a restriction (or
+    other anonymous node) was serialized as a dangling named IRI instead of a
+    real ``owl:Restriction``. Blank nodes belong in ``rdf:nodeID``, never in an
+    IRI attribute. Mirrors the commit-path guard in
+    ``OntologyManager._add_relation``."""
+    rep = Report()
+    seen = set()
+    for m in _IRI_ATTR.finditer(raw_text):
+        frag = m.group(1)
+        if "_:" in frag and frag not in seen:
+            seen.add(frag)
+            rep.add("E_BNODE_IRI", frag.strip())
+    return rep
+
+
 def check_dangling_and_remint(path: str, imported: Graph | None = None) -> Report:
     """B4 — (i) E_DANGLING_IRI: obo:/imported IRIs that resolve to nothing;
             (ii) E_BFO_REMINT: BFO/RO/IAO ids minted in the local namespace.
@@ -219,7 +236,7 @@ def run_all(path: str, imported: Graph | None = None) -> Report:
     raw = open(path, encoding="utf-8").read()
     rep = Report()
     for sub in (check_expression_iris(raw), check_antipatterns_all(raw),
-                check_dangling_and_remint(path, imported)):
+                check_bnode_iris(raw), check_dangling_and_remint(path, imported)):
         rep.findings.extend(sub.findings)
     return rep
 

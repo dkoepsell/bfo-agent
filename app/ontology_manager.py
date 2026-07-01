@@ -577,8 +577,46 @@ class OntologyManager:
             ind.label = [ent.label]
 
     def _add_relation(self, rel):
-        """Add a triple. Handles rdfs:subClassOf, rdf:type, and object properties."""
+        """Add a triple. Handles rdfs:subClassOf, rdf:type, and object properties.
+
+        The proposer sometimes expresses an existential restriction as the
+        object of a subClassOf edge using a blank-node placeholder rather than
+        a real ``owl:Restriction``, e.g.::
+
+            o = "_:x BFO_0000197 BFO_0000040"   # (has-participant some material entity)
+            o = "_:legalRoleInheresInPerson"    # a bare descriptive placeholder
+
+        Writing such an object verbatim minted a dangling ``#_:...`` IRI: an
+        invalid, semantically-inert axiom that also spammed the serializer with
+        "does not look like a valid URI" warnings. We now materialise the
+        parseable ``_:bnode PROP FILLER`` form as a real restriction and refuse
+        the rest, so no ``#_:`` IRI is ever persisted.
+        """
         from rdflib import URIRef
+
+        o_raw = (rel.o or "").strip()
+        if o_raw.startswith("_:"):
+            parts = o_raw.split()
+            # "_:bnode PROP FILLER" on a subClassOf edge -> existential restriction
+            if len(parts) == 3 and "subClassOf" in rel.p:
+                _, prop_tok, filler_tok = parts
+                # never mutate an imported BFO/RO/IAO kernel class
+                if "obolibrary.org/obo/" in _resolve_iri(rel.s, WORKING_IRI):
+                    raise ValueError(
+                        f"refusing to add a restriction to kernel class {rel.s}; "
+                        f"anchor a SOoL subclass instead"
+                    )
+                if self.add_existential_restriction(rel.s, prop_tok, filler_tok):
+                    return
+                raise ValueError(
+                    f"unresolvable restriction ({prop_tok} some {filler_tok}) "
+                    f"on {rel.s}; skipped rather than mint a dangling IRI"
+                )
+            # bare placeholder (not machine-parseable) -> refuse to persist
+            raise ValueError(
+                f"blank-node placeholder object {o_raw!r} is not a valid "
+                f"restriction; skipped to avoid a dangling '#_:' axiom"
+            )
 
         s_iri = _resolve_iri(rel.s, WORKING_IRI)
         p_iri = _resolve_iri(rel.p, WORKING_IRI)
