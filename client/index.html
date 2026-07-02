@@ -167,7 +167,7 @@
   .ontology-panel.open { display: block; }
   .ontology-panel .op-list { display: flex; flex-direction: column; gap: 4px; }
   .ontology-panel .op-entry {
-    display: grid; grid-template-columns: 1fr auto auto auto; gap: 10px;
+    display: grid; grid-template-columns: 1fr auto auto auto auto; gap: 10px;
     align-items: center;
     padding: 8px 10px;
     background: var(--panel-2); border: 1px solid var(--border);
@@ -1354,6 +1354,8 @@ function renderOntologyPanel() {
           <span class="os-badge ${esc(status === "finalized" ? "finalized" : (o.active ? "active" : "inactive"))}">${esc(status)}</span>
         </div>
         <div class="op-stats">${classes} classes, ${individuals} indivs</div>
+        <button class="secondary" data-download="${esc(o.name)}"
+                title="Download this ontology as an OWL file">Download</button>
         <button class="${o.active ? "secondary" : ""}" ${o.active ? "disabled" : ""}
                 data-activate="${esc(o.name)}">${o.active ? "current" : "Activate"}</button>
         <button class="danger" ${canDelete ? "" : "disabled"}
@@ -1470,6 +1472,15 @@ document.getElementById("ontology-panel").addEventListener("click", (e) => {
   if (actBtn && !actBtn.disabled) {
     e.stopPropagation();
     activateOntology(actBtn.dataset.activate);
+    return;
+  }
+  // Download buttons — plain navigation; Content-Disposition triggers the save
+  const dlBtn = e.target.closest("[data-download]");
+  if (dlBtn) {
+    e.stopPropagation();
+    window.open(
+      API + "/ontologies/" + encodeURIComponent(dlBtn.dataset.download) + "/download",
+      "_blank");
     return;
   }
   // Delete buttons (phase 6)

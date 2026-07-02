@@ -39,6 +39,11 @@ BFO_OBO_PREFIX = "http://purl.obolibrary.org/obo/"
 WORKING_IRI = "http://davidkoepsell.com/bfo-agent/working"
 
 
+class CommitCoherenceError(Exception):
+    """A commit was rolled back because it would leave the persisted ontology
+    inconsistent or introduce an unsatisfiable class."""
+
+
 def _resolve_iri(iri_suggestion: str, working_base: str) -> str:
     """Expand a prefixed IRI suggestion to a full IRI.
 
@@ -766,11 +771,73 @@ class OntologyManager:
                 return True
         return False
 
-    def commit_proposal(self, proposal) -> list[str]:
-        """Apply the proposal for real and save to disk."""
+    def commit_proposal(self, proposal, verify: bool = True) -> list[str]:
+        """Apply the proposal for real and save to disk.
+
+        When ``verify`` is set (the default), the persisted ontology is
+        re-checked for global consistency AND coherence after the write; if the
+        commit would leave the ontology inconsistent or introduce an
+        unsatisfiable class, the working file is rolled back to its pre-commit
+        state and ``CommitCoherenceError`` is raised. This is the backstop that
+        guarantees a malformed ontology can never accumulate on disk even if an
+        upstream gate tier was skipped, errored, or a scaffolding/ABox change
+        clashed retroactively with previously-committed content.
+        """
+        import shutil
+
+        backup = None
+        if verify and self.working_path.exists():
+            backup = self.working_path.with_suffix(
+                self.working_path.suffix + ".precommit"
+            )
+            shutil.copy2(self.working_path, backup)
+
         warnings = self.apply_proposal(proposal)
         self.save()
+
+        if verify:
+            ok, detail = self._verify_saved_coherent()
+            if not ok:
+                # roll the persisted file back to its pre-commit state
+                if backup is not None and backup.exists():
+                    shutil.copy2(backup, self.working_path)
+                    backup.unlink()
+                elif backup is None:
+                    # first-ever commit: no prior file to restore
+                    self.working_path.unlink(missing_ok=True)
+                self._load()  # resync in-memory state with the restored file
+                raise CommitCoherenceError(detail)
+            if backup is not None and backup.exists():
+                backup.unlink()
+
         return warnings
+
+    def _verify_saved_coherent(self) -> tuple[bool, str]:
+        """Reason over the just-saved working file; return ``(ok, detail)``.
+
+        ``ok`` is False if the reasoner reports the ontology inconsistent (it
+        raises) or if any named class is unsatisfiable. We reload through the
+        normal :meth:`_load` path so the check sees exactly the sanitized BFO
+        disjointness and property-stripping the app runs with, then reload once
+        more so reasoner-inferred axioms never leak into the state the caller
+        (scaffolding) keeps working on.
+        """
+        self._load()  # clean, sanitized load of the committed file
+        buf = io.StringIO()
+        try:
+            with redirect_stdout(buf), redirect_stderr(buf):
+                with self.world:
+                    sync_reasoner(self.world, infer_property_values=False)
+        except Exception as e:  # noqa: BLE001 — reasoner raises on inconsistency
+            self._load()  # discard partial inference state
+            return False, f"inconsistent ontology: {str(e)[:200]}"
+        unsat = [
+            c.iri for c in self.world.inconsistent_classes() if c is not Nothing
+        ]
+        self._load()  # drop reasoner-inferred axioms before returning
+        if unsat:
+            return False, "unsatisfiable classes: " + ", ".join(unsat[:12])
+        return True, ""
 
     # ------------------------------------------------------- persistence
     def save(self):

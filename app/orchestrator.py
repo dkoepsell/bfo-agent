@@ -28,7 +28,7 @@ from . import jobs as jobs_store
 from .coherence_gate import GateOutcome, GatePolicy
 from .extractor import ClaimExtractor, chunk_text
 from .llm_proposer import LLMProposer
-from .ontology_manager import OntologyManager
+from .ontology_manager import CommitCoherenceError, OntologyManager
 from .registry import OntologyRegistry
 from .schema import (
     CommitRequest,
@@ -466,6 +466,32 @@ def create_app() -> Flask:
         except Exception as e:
             return jsonify({"status": "error", "error": str(e)}), 500
 
+    @app.get("/ontologies/<name>/download")
+    def download_ontology(name):
+        """Download an ontology's OWL file as an attachment.
+
+        Works for any library ontology, finalized or not; the finalized flow
+        is finalize -> download. Bytes are read under the write lock so a
+        concurrent commit can't hand back a half-written file.
+        """
+        try:
+            reg = _get_registry()
+            try:
+                mgr = reg.get(name)
+            except KeyError:
+                return _not_found_response(name)
+            if not mgr.working_path.exists():
+                return jsonify({"error": f"no OWL file on disk for '{name}'"}), 404
+            with _lock:
+                data = mgr.working_path.read_bytes()
+            resp = app.response_class(data, mimetype="application/rdf+xml")
+            resp.headers["Content-Disposition"] = (
+                f'attachment; filename="{name}.owl"'
+            )
+            return resp
+        except Exception as e:
+            return jsonify({"status": "error", "error": str(e)}), 500
+
 
 
     @app.post("/ontologies/preview-import")
@@ -725,6 +751,18 @@ def create_app() -> Flask:
 
             try:
                 warnings = mgr.commit_proposal(body.proposal)
+            except CommitCoherenceError as e:
+                # backstop rolled the ontology back; the base is intact, so
+                # report a rejection (like the gate does), not a server error
+                log_event(
+                    body.session_id,
+                    "commit_rolled_back",
+                    {"proposal_id": body.proposal_id, "reason": str(e)},
+                )
+                return jsonify({
+                    "status": "rejected_by_commit_guard",
+                    "reason": str(e),
+                }), 409
             except Exception as e:
                 log_event(
                     body.session_id,
@@ -1123,6 +1161,18 @@ def create_app() -> Flask:
             elif auto_accept:
                 try:
                     warnings = mgr.commit_proposal(proposal)
+                except CommitCoherenceError as e:
+                    # commit-time backstop rolled the ontology back: the
+                    # proposal would have made the base incoherent. Treat it
+                    # exactly like a reasoner rejection, not an error.
+                    log_event(session_id, "commit_rolled_back", {
+                        "proposal_id": proposal.proposal_id,
+                        "reason": str(e),
+                        "job_id": job_id,
+                        "claim_id": claim["id"],
+                    })
+                    new_status = "inconsistent"
+                    verdict = "inconsistent"
                 except Exception as e:
                     log_event(session_id, "commit_error", {
                         "proposal_id": proposal.proposal_id,

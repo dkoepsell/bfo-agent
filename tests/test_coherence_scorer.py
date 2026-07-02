@@ -37,12 +37,13 @@ def test_incoherent_ontology_scores_zero(tmp_path):
     mgr = OntologyManager(bfo_path=BFO_PATH, working_path=working)
     mgr.commit_proposal(_force_quality())
     # Force the straddle directly into the committed ontology (bypassing the
-    # gate) so Force becomes unsatisfiable: Quality and Realizable are disjoint.
+    # gate AND the commit-time backstop via verify=False) so Force becomes
+    # unsatisfiable: Quality and Realizable are disjoint.
     mgr.commit_proposal(Proposal(
         session_id="t", utterance="Force is a disposition",
         relations=[Relation(s="working:Force", p="rdfs:subClassOf",
                             o="bfo:BFO_0000016", rationale="r")],
-    ))
+    ), verify=False)
 
     result = scorer.score_ontology(working, BFO_PATH, gate_log=[])
     assert result["coherence"]["coherent"] is False
