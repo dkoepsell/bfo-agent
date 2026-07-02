@@ -15,6 +15,7 @@ from __future__ import annotations
 
 import io
 import logging
+import threading
 import types
 from contextlib import redirect_stderr, redirect_stdout
 from pathlib import Path
@@ -34,6 +35,11 @@ from . import config
 from . import stable_iri
 
 log = logging.getLogger(__name__)
+
+# Each sync_reasoner() run spawns a HermiT java process that can take 0.5-1GB+;
+# on the 4GB host, concurrent requests stacking reasoner runs can freeze the
+# whole box (incident 2026-07-02). Serialize them process-wide.
+_REASONER_LOCK = threading.Lock()
 
 BFO_OBO_PREFIX = "http://purl.obolibrary.org/obo/"
 WORKING_IRI = "http://davidkoepsell.com/bfo-agent/working"
@@ -643,7 +649,7 @@ class OntologyManager:
         buf = io.StringIO()
         try:
             with redirect_stdout(buf), redirect_stderr(buf):
-                with self.world:
+                with _REASONER_LOCK, self.world:
                     sync_reasoner(self.world, infer_property_values=False)
         except Exception as e:
             # HermiT raises on inconsistency in some versions; in others it
@@ -679,7 +685,7 @@ class OntologyManager:
         buf = io.StringIO()
         try:
             with redirect_stdout(buf), redirect_stderr(buf):
-                with self.world:
+                with _REASONER_LOCK, self.world:
                     sync_reasoner(self.world, infer_property_values=False)
         except Exception as e:
             # A reasoner exception means the ontology is outright inconsistent,
@@ -826,7 +832,7 @@ class OntologyManager:
         buf = io.StringIO()
         try:
             with redirect_stdout(buf), redirect_stderr(buf):
-                with self.world:
+                with _REASONER_LOCK, self.world:
                     sync_reasoner(self.world, infer_property_values=False)
         except Exception as e:  # noqa: BLE001 — reasoner raises on inconsistency
             self._load()  # discard partial inference state
