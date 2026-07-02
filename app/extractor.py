@@ -23,12 +23,36 @@ EXTRACTION_SYSTEM = (
 
 EXTRACTION_PROMPT = """I will give you a passage from a philosophy text. Extract the atomic ontological claims the AUTHOR IS ASSERTING IN HIS OWN VOICE.
 
-An atomic ontological claim does ONE of the following:
+An atomic ontological claim does EXACTLY ONE of the following:
 - asserts that some kind of entity exists
 - asserts that one kind is a subkind of another (X is a Y)
 - asserts that some entity bears a relation to another (X is part of Y, X realizes Y, X participates in Y, etc.)
 - asserts that some entity has a property, quality, disposition, role, or function
 - asserts that something is an individual of a particular kind (Socrates is a man)
+
+ATOMICITY — one commitment per claim. A claim must make a SINGLE ontological
+assertion. If the source sentence bundles two or more, SPLIT it into separate
+claims (or drop the ones the author does not clearly commit to). In particular:
+- Do NOT join two commitments with "but", "yet", "while", "although", "however",
+  "once established", or a semicolon. "X depends on Y but keeps its integrity"
+  is TWO claims — emit them separately, or omit whichever is not asserted.
+- Do NOT assert both that something is dependent (needs a bearer / needs
+  recognition / is generically dependent) AND that it is independent
+  (self-standing, persists on its own, maintains integrity by itself) in the
+  same claim. In basic ontology these are mutually exclusive; pick the one the
+  author actually asserts.
+
+COHERENCE — stay in plain ontological vocabulary. Every claim must classify its
+subject using ONE ordinary category word: continuant, occurrent, process,
+object, quality, role, disposition, function, relation, part, or participant.
+This is a HARD rule. A metaphorical or invented noun ("repair node",
+"relational field", "attractor", "scaffold", "malformed structure") is NOT a
+category word. If the only predicate a passage offers is such a metaphor, DROP
+the claim entirely — do not restate the metaphor and do not guess a category
+the author did not state. Emitting a coined category is worse than emitting
+nothing; the downstream reasoner rejects it and the work is wasted.
+Example: "courts act as repair nodes that stabilize relational fields" yields NO
+claim (its only predicate is metaphor), not "courts are repair nodes".
 
 INCLUDE only:
 - the author's own positive assertions
@@ -45,7 +69,7 @@ EXCLUDE:
 
 For each claim, produce:
 {{
-  "claim": "A single short declarative sentence, 25 words or fewer, in the author's voice. Rephrase for clarity but do not change the commitment.",
+  "claim": "A single short declarative sentence, 25 words or fewer, asserting ONE ontological commitment, in the author's voice. No 'but'/'yet'/'while'/'although' clauses and no semicolons joining two assertions. Rephrase for clarity but do not change the commitment.",
   "source_quote": "The exact sentence(s) from the passage that motivate this claim, up to 40 words.",
   "confidence": "high" | "medium" | "low",
   "note": "Brief rationale: why this counts as an atomic ontological claim (and not, e.g., a methodological remark)."
