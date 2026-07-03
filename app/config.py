@@ -106,6 +106,15 @@ else:
 FLASK_HOST = os.getenv("FLASK_HOST", "127.0.0.1")
 FLASK_PORT = int(os.getenv("FLASK_PORT", "5000"))
 
+# ----- Server-side job runner -----
+# When a feed run completes or fails, POST a plain-text notification here.
+# ntfy.sh-compatible (body = message, "Title" header = subject); empty
+# disables notifications.
+NOTIFY_URL = os.getenv("BFO_NOTIFY_URL", "").strip()
+# On server boot, restart the feeder for any job left in status "feeding"
+# (i.e. a run interrupted by a restart or crash picks up where it left off).
+AUTORESUME_JOBS = os.getenv("AUTORESUME_JOBS", "true").lower() == "true"
+
 ENABLE_GIT_COMMITS = os.getenv("ENABLE_GIT_COMMITS", "true").lower() == "true"
 
 # ----- Coherence gate -----

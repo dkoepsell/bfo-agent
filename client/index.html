@@ -650,8 +650,8 @@ async function query() {
 
 // ---------- EXTRACT tab (job-based) ----------
 let currentJob = null;          // full job object, reloaded on any mutation
-let feedingLoop = false;        // true while feed loop is running
-let feedCancel = false;         // set true to interrupt loop between claims
+let feedingLoop = false;        // true while a server-side run is being polled
+let progressTimer = null;       // setInterval handle for progress polling
 
 function extractStatus(msg) {
   document.getElementById("extract-status").textContent = msg || "";
@@ -678,7 +678,13 @@ async function refreshJobList(selectJobId = null) {
 async function loadJob(jobId) {
   if (!jobId) { clearJobUI(); return; }
   try {
+    const switching = !currentJob || currentJob.job_id !== jobId;
+    if (switching) stopProgressPolling();
     currentJob = await api(`/jobs/${jobId}`);
+    // If a server-side run is already going (e.g. we just logged back
+    // in), attach to it so progress shows live.
+    feedingLoop = currentJob.status === "feeding";
+    if (feedingLoop) startProgressPolling();
     renderJobSummary();
     renderClaims();
     setJobControlsEnabled(true);
@@ -689,6 +695,7 @@ async function loadJob(jobId) {
 }
 
 function clearJobUI() {
+  stopProgressPolling();
   currentJob = null;
   document.getElementById("job-summary").textContent = "";
   document.getElementById("extract-claims").innerHTML = "";
@@ -911,76 +918,103 @@ async function selectByConfidence(levels) {
   } catch (e) { alert("bulk approve failed: " + e.message); }
 }
 
+// Feeding runs on the SERVER (job_runner.py): /resume starts a background
+// runner there, and this page only polls /progress to render its state.
+// Closing the tab or logging out no longer stops the run.
 async function feedLoop() {
-  if (!currentJob || feedingLoop) return;
-  feedingLoop = true;
-  feedCancel = false;
-  setJobControlsEnabled(true);
+  if (!currentJob) return;
   const autoAccept = document.getElementById("feed-auto-accept").checked;
-  const stats = { committed: 0, inconsistent: 0, needs_review: 0, error: 0, processed: 0 };
-
-  // Resume in case the server thinks the job is paused
   try {
-    await api(`/jobs/${currentJob.job_id}/resume`, { method: "POST" });
-  } catch (e) { /* ignore */ }
-
-  try {
-    while (!feedCancel) {
-      let r;
-      try {
-        r = await api(`/jobs/${currentJob.job_id}/feed_one`, {
-          method: "POST",
-          body: JSON.stringify({ auto_accept: autoAccept }),
-        });
-      } catch (e) {
-        renderFeedProgress(stats, `feed error: ${e.message}`);
-        break;
-      }
-      if (r.done) {
-        renderFeedProgress(stats, "all pending+approved claims processed", true);
-        break;
-      }
-      stats.processed++;
-      const claim = r.claim || {};
-      if (claim.status === "committed") stats.committed++;
-      else if (claim.status === "inconsistent") stats.inconsistent++;
-      else if (claim.status === "needs_review") stats.needs_review++;
-      else if (claim.status === "error") stats.error++;
-
-      // Periodically pull fresh job state so the UI reflects disk reality
-      if (stats.processed % 5 === 0) {
-        await loadJob(currentJob.job_id);
-      } else {
-        // Cheap local update
-        const localClaim = currentJob.claims.find(c => c.id === claim.id);
-        if (localClaim) Object.assign(localClaim, claim);
-        renderClaims();
-        renderJobSummary();
-      }
-      renderFeedProgress(stats, `remaining: ${r.remaining}`);
-    }
-  } finally {
-    feedingLoop = false;
-    if (feedCancel) {
-      try { await api(`/jobs/${currentJob.job_id}/pause`, { method: "POST" }); } catch {}
-    }
-    await loadJob(currentJob.job_id);
-    setJobControlsEnabled(true);
+    await api(`/jobs/${currentJob.job_id}/resume`, {
+      method: "POST",
+      body: JSON.stringify({ auto_accept: autoAccept }),
+    });
+  } catch (e) {
+    renderFeedProgress(null, `could not start feed: ${e.message}`);
+    return;
   }
+  feedingLoop = true;
+  setJobControlsEnabled(true);
+  startProgressPolling();
 }
 
-function renderFeedProgress(stats, extra, done = false) {
-  document.getElementById("feed-progress").innerHTML = `
+function startProgressPolling() {
+  if (progressTimer || !currentJob) return;
+  const jobId = currentJob.job_id;
+  let ticks = 0;
+  const poll = async () => {
+    if (!currentJob || currentJob.job_id !== jobId) { stopProgressPolling(); return; }
+    let p;
+    try {
+      p = await api(`/jobs/${jobId}/progress`);
+    } catch (e) {
+      renderFeedProgress(null, `progress check failed: ${e.message} (retrying)`);
+      return; // transient: keep polling
+    }
+    ticks++;
+    renderFeedProgress(p);
+    // Every ~15s pull the full job so the claims table reflects disk reality
+    if (ticks % 5 === 0) await loadJob(jobId);
+    const running = p.runner && p.runner.running;
+    if (!running && p.status !== "feeding") {
+      stopProgressPolling();
+      feedingLoop = false;
+      await loadJob(jobId);
+      renderFeedProgress(p, null, true);
+    }
+  };
+  progressTimer = setInterval(poll, 3000);
+  poll();
+}
+
+function stopProgressPolling() {
+  if (progressTimer) { clearInterval(progressTimer); progressTimer = null; }
+  feedingLoop = false;
+}
+
+function renderFeedProgress(p, extra, done = false) {
+  const el = document.getElementById("feed-progress");
+  if (!p) {
+    el.innerHTML = extra ? `<div class="progress"><span class="muted">${esc(extra)}</span></div>` : "";
+    return;
+  }
+  const r = p.runner || {};
+  const c = p.counts || {};
+  const remaining = p.remaining_approved != null ? p.remaining_approved : "?";
+  const eta = p.eta_seconds != null ? ` &middot; ~${fmtDuration(p.eta_seconds)} left` : "";
+  const cur = r.current_claim && r.current_claim.text
+    ? `<br/><span class="muted">last: [${esc(r.current_claim.status || "")}] ${esc(r.current_claim.text)}</span>` : "";
+  const err = r.last_error ? `<br/><span class="muted">last error: ${esc(r.last_error)}</span>` : "";
+  let note = "";
+  if (r.running || p.status === "feeding") {
+    note = `<br/><span class="muted">feeding on the server &mdash; safe to close this tab${eta}</span>`;
+  } else if (p.status === "completed" || done) {
+    note = `<br/><span class="muted">run finished &mdash; job status: ${esc(p.status)}</span>`;
+  } else if (r.outcome === "failed") {
+    note = `<br/><span class="muted">run stopped and job paused &mdash; hit Resume to retry</span>`;
+  }
+  el.innerHTML = `
     <div class="progress">
-      processed ${stats.processed} &middot; committed ${stats.committed} &middot; inconsistent ${stats.inconsistent} &middot; needs review ${stats.needs_review} &middot; errors ${stats.error}${extra ? "<br/><span class='muted'>" + esc(extra) + "</span>" : ""}
+      committed ${c.committed || 0} &middot; inconsistent ${c.inconsistent || 0} &middot; needs review ${c.needs_review || 0} &middot; errors ${c.error || 0} &middot; remaining ${remaining}${cur}${err}${note}${extra ? "<br/><span class='muted'>" + esc(extra) + "</span>" : ""}
     </div>`;
 }
 
+function fmtDuration(s) {
+  s = Math.max(0, Math.round(s));
+  const h = Math.floor(s / 3600), m = Math.floor((s % 3600) / 60);
+  if (h) return `${h}h ${m}m`;
+  if (m) return `${m}m`;
+  return `${s}s`;
+}
+
 async function pauseFeed() {
-  feedCancel = true;
+  if (!currentJob) return;
+  try {
+    await api(`/jobs/${currentJob.job_id}/pause`, { method: "POST" });
+  } catch (e) { alert("pause failed: " + e.message); }
+  // polling notices the status change and stops on its own
 }
 async function resumeFeed() {
-  if (feedingLoop) return;
   await feedLoop();
 }
 

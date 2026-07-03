@@ -24,6 +24,7 @@ from . import config
 from . import coherence_gate as gate_mod
 from . import gate_client
 from . import kext as kext_mod
+from . import job_runner
 from . import jobs as jobs_store
 from .coherence_gate import GateOutcome, GatePolicy
 from .extractor import ClaimExtractor, chunk_text
@@ -304,6 +305,181 @@ def _finalized_guard_response():
             f"writes are disabled. Create a new active ontology first."
         ),
     }), 409
+
+
+def _count_pending(job_id: str) -> int:
+    job = jobs_store.load_job(job_id)
+    return sum(1 for c in job["claims"]
+               if c["status"] == "pending" and c.get("approved"))
+
+
+def _feed_one_core(job_id: str, auto_accept: bool = True) -> dict:
+    """Feed the next pending+approved claim in the job.
+
+    Runs /propose internally (not the HTTP route) so the full proposal
+    and reasoner verdict are produced. If auto_accept is true and the
+    verdict is 'consistent', it also commits. Either way, the claim's
+    status is persisted to the job file before returning.
+
+    Shared by the /feed_one route and the server-side job runner, so it
+    returns plain dicts:
+      {done: true} when no pending+approved claims remain,
+      {fatal: ..., error: ...} when feeding must stop for good,
+      {claim, proposal, committed, warnings, remaining} otherwise.
+
+    Raises FileNotFoundError if the job does not exist.
+    """
+    if _active_is_finalized():
+        reg = _get_registry()
+        return {
+            "fatal": "finalized",
+            "error": (
+                f"active ontology {reg.active_name()!r} is finalized; "
+                f"writes are disabled."
+            ),
+        }
+
+    job = jobs_store.load_job(job_id)
+    session_id = job["session_id"]
+
+    with _lock:
+        # Claim selection happens under the lock so a concurrent caller
+        # (e.g. a stale browser tab still looping /feed_one alongside the
+        # server-side runner) cannot grab the same claim.
+        pending = jobs_store.next_pending(job_id, limit=1)
+        if not pending:
+            jobs_store.set_job_status(job_id, "completed")
+            return {"done": True, "remaining": 0}
+        claim = pending[0]
+
+        mgr = _get_manager()
+        proposer = _get_proposer()
+        ctx = mgr.summary_for_proposer()
+
+        try:
+            proposal = proposer.propose(
+                utterance=claim["claim"],
+                session_id=session_id,
+                working_classes=ctx["working_classes"],
+                known_individuals=ctx["known_individuals"],
+            )
+        except Exception as e:
+            jobs_store.update_claim_status(
+                job_id, claim["id"], "error", verdict="error"
+            )
+            log_event(session_id, "propose_error",
+                      {"utterance": claim["claim"], "error": str(e),
+                       "job_id": job_id, "claim_id": claim["id"]})
+            remaining = _count_pending(job_id)
+            return {
+                "claim": claim,
+                "proposal": None,
+                "error": str(e),
+                "committed": False,
+                "remaining": remaining,
+            }
+
+        # Coherence gate under the configured policy. This is the
+        # load-bearing check: it may rewrite the proposal (repair/resample)
+        # before it becomes eligible to commit, and it catches the
+        # consistent-but-incoherent straddles the legacy check missed.
+        if config.ENABLE_COHERENCE_GATE:
+            run = _run_coherence_gate(
+                proposal, mgr, proposer, ctx, session_id,
+                context={"job_id": job_id, "claim_id": claim["id"],
+                         "proposal_id": proposal.proposal_id},
+            )
+            proposal = run.proposal
+            gate_accepted = run.outcome == GateOutcome.ACCEPT
+            verdict = "consistent" if gate_accepted else "inconsistent"
+            proposal.reasoner_verdict = verdict
+            proposal.reasoner_detail = run.result.reason or run.result.justification
+        else:
+            try:
+                ok, detail = mgr.check_consistency_dry_run(proposal)
+                proposal.reasoner_verdict = "consistent" if ok else "inconsistent"
+                proposal.reasoner_detail = detail
+            except Exception as e:
+                proposal.reasoner_verdict = "error"
+                proposal.reasoner_detail = str(e)
+            gate_accepted = proposal.reasoner_verdict == "consistent"
+            verdict = proposal.reasoner_verdict
+
+        _proposal_cache[proposal.proposal_id] = proposal
+        log_event(session_id, "propose", {
+            "proposal": proposal.model_dump(),
+            "job_id": job_id,
+            "claim_id": claim["id"],
+        })
+
+        committed = False
+        warnings: list[str] = []
+
+        if not gate_accepted:
+            new_status = "inconsistent"
+        elif auto_accept:
+            try:
+                warnings = mgr.commit_proposal(proposal)
+            except CommitCoherenceError as e:
+                # commit-time backstop rolled the ontology back: the
+                # proposal would have made the base incoherent. Treat it
+                # exactly like a reasoner rejection, not an error.
+                log_event(session_id, "commit_rolled_back", {
+                    "proposal_id": proposal.proposal_id,
+                    "reason": str(e),
+                    "job_id": job_id,
+                    "claim_id": claim["id"],
+                })
+                new_status = "inconsistent"
+                verdict = "inconsistent"
+            except Exception as e:
+                log_event(session_id, "commit_error", {
+                    "proposal_id": proposal.proposal_id,
+                    "error": str(e),
+                    "job_id": job_id,
+                    "claim_id": claim["id"],
+                })
+                new_status = "error"
+            else:
+                warnings = (warnings or []) + _budget_and_kext_notes(
+                    proposal, mgr
+                )
+                scaffolded = _apply_scaffolding(proposal, mgr, session_id)
+                git_commit_working_ontology(
+                    session_id, proposal.proposal_id,
+                    claim["claim"][:80]
+                )
+                log_event(session_id, "commit", {
+                    "proposal_id": proposal.proposal_id,
+                    "decision": "accept",
+                    "warnings": warnings,
+                    "scaffolded": scaffolded,
+                    "proposal": proposal.model_dump(),
+                    "job_id": job_id,
+                    "claim_id": claim["id"],
+                })
+                _proposal_cache.pop(proposal.proposal_id, None)
+                new_status = "committed"
+                committed = True
+        else:
+            new_status = "needs_review"
+
+        jobs_store.update_claim_status(
+            job_id, claim["id"], new_status,
+            proposal_id=proposal.proposal_id,
+            verdict=verdict,
+        )
+
+    remaining = _count_pending(job_id)
+    return {
+        "claim": {**claim, "status": new_status,
+                  "proposal_id": proposal.proposal_id,
+                  "verdict": verdict},
+        "proposal": proposal.model_dump(),
+        "committed": committed,
+        "warnings": warnings,
+        "remaining": remaining,
+    }
 
 
 def create_app() -> Flask:
@@ -1058,20 +1234,21 @@ def create_app() -> Flask:
 
     @app.post("/jobs/<job_id>/feed_one")
     def jobs_feed_one(job_id):
-        # Phase 3: refuse writes against a finalized ontology.
-        if _active_is_finalized():
-            return _finalized_guard_response()
-        """Feed the next pending+approved claim in the job.
+        """Feed the next pending+approved claim in the job (single step).
 
-        Runs /propose internally (not the HTTP route) so the full proposal
-        and reasoner verdict are produced. If auto_accept is true and the
-        verdict is 'consistent', it also commits. Either way, the claim's
-        status is persisted to the job file before returning.
+        The browser no longer loops over this endpoint for long runs --
+        POST /jobs/<id>/resume starts a server-side runner instead (see
+        job_runner.py). This stays for one-off/manual stepping and for
+        API compatibility.
 
         Body: {auto_accept?: bool}
         Returns: {claim, proposal, committed: bool, remaining: int}
                  or {done: true} if no pending+approved claims remain.
         """
+        # Phase 3: refuse writes against a finalized ontology.
+        if _active_is_finalized():
+            return _finalized_guard_response()
+
         body = request.get_json(force=True) or {}
         auto_accept = bool(body.get("auto_accept", True))
 
@@ -1084,167 +1261,70 @@ def create_app() -> Flask:
         if job.get("status") == "paused":
             return jsonify({"error": "job is paused; call /resume first"}), 409
 
-        pending = jobs_store.next_pending(job_id, limit=1)
-        if not pending:
-            jobs_store.set_job_status(job_id, "completed")
-            return jsonify({"done": True, "remaining": 0})
-
-        claim = pending[0]
-        session_id = job["session_id"]
-
-        with _lock:
-            mgr = _get_manager()
-            proposer = _get_proposer()
-            ctx = mgr.summary_for_proposer()
-
-            try:
-                proposal = proposer.propose(
-                    utterance=claim["claim"],
-                    session_id=session_id,
-                    working_classes=ctx["working_classes"],
-                    known_individuals=ctx["known_individuals"],
-                )
-            except Exception as e:
-                jobs_store.update_claim_status(
-                    job_id, claim["id"], "error", verdict="error"
-                )
-                log_event(session_id, "propose_error",
-                          {"utterance": claim["claim"], "error": str(e),
-                           "job_id": job_id, "claim_id": claim["id"]})
-                remaining = _count_pending(job_id)
-                return jsonify({
-                    "claim": claim,
-                    "proposal": None,
-                    "error": str(e),
-                    "committed": False,
-                    "remaining": remaining,
-                })
-
-            # Coherence gate under the configured policy. This is the
-            # load-bearing check: it may rewrite the proposal (repair/resample)
-            # before it becomes eligible to commit, and it catches the
-            # consistent-but-incoherent straddles the legacy check missed.
-            if config.ENABLE_COHERENCE_GATE:
-                run = _run_coherence_gate(
-                    proposal, mgr, proposer, ctx, session_id,
-                    context={"job_id": job_id, "claim_id": claim["id"],
-                             "proposal_id": proposal.proposal_id},
-                )
-                proposal = run.proposal
-                gate_accepted = run.outcome == GateOutcome.ACCEPT
-                verdict = "consistent" if gate_accepted else "inconsistent"
-                proposal.reasoner_verdict = verdict
-                proposal.reasoner_detail = run.result.reason or run.result.justification
-            else:
-                try:
-                    ok, detail = mgr.check_consistency_dry_run(proposal)
-                    proposal.reasoner_verdict = "consistent" if ok else "inconsistent"
-                    proposal.reasoner_detail = detail
-                except Exception as e:
-                    proposal.reasoner_verdict = "error"
-                    proposal.reasoner_detail = str(e)
-                gate_accepted = proposal.reasoner_verdict == "consistent"
-                verdict = proposal.reasoner_verdict
-
-            _proposal_cache[proposal.proposal_id] = proposal
-            log_event(session_id, "propose", {
-                "proposal": proposal.model_dump(),
-                "job_id": job_id,
-                "claim_id": claim["id"],
-            })
-
-            committed = False
-            warnings: list[str] = []
-
-            if not gate_accepted:
-                new_status = "inconsistent"
-            elif auto_accept:
-                try:
-                    warnings = mgr.commit_proposal(proposal)
-                except CommitCoherenceError as e:
-                    # commit-time backstop rolled the ontology back: the
-                    # proposal would have made the base incoherent. Treat it
-                    # exactly like a reasoner rejection, not an error.
-                    log_event(session_id, "commit_rolled_back", {
-                        "proposal_id": proposal.proposal_id,
-                        "reason": str(e),
-                        "job_id": job_id,
-                        "claim_id": claim["id"],
-                    })
-                    new_status = "inconsistent"
-                    verdict = "inconsistent"
-                except Exception as e:
-                    log_event(session_id, "commit_error", {
-                        "proposal_id": proposal.proposal_id,
-                        "error": str(e),
-                        "job_id": job_id,
-                        "claim_id": claim["id"],
-                    })
-                    new_status = "error"
-                else:
-                    warnings = (warnings or []) + _budget_and_kext_notes(
-                        proposal, mgr
-                    )
-                    scaffolded = _apply_scaffolding(proposal, mgr, session_id)
-                    git_commit_working_ontology(
-                        session_id, proposal.proposal_id,
-                        claim["claim"][:80]
-                    )
-                    log_event(session_id, "commit", {
-                        "proposal_id": proposal.proposal_id,
-                        "decision": "accept",
-                        "warnings": warnings,
-                        "scaffolded": scaffolded,
-                        "proposal": proposal.model_dump(),
-                        "job_id": job_id,
-                        "claim_id": claim["id"],
-                    })
-                    _proposal_cache.pop(proposal.proposal_id, None)
-                    new_status = "committed"
-                    committed = True
-            else:
-                new_status = "needs_review"
-
-            jobs_store.update_claim_status(
-                job_id, claim["id"], new_status,
-                proposal_id=proposal.proposal_id,
-                verdict=verdict,
-            )
-
-        remaining = _count_pending(job_id)
-        return jsonify({
-            "claim": {**claim, "status": new_status,
-                      "proposal_id": proposal.proposal_id,
-                      "verdict": verdict},
-            "proposal": proposal.model_dump(),
-            "committed": committed,
-            "warnings": warnings,
-            "remaining": remaining,
-        })
+        return jsonify(_feed_one_core(job_id, auto_accept))
 
     @app.post("/jobs/<job_id>/pause")
     def jobs_pause(job_id):
+        """Pause feeding. The server-side runner notices between claims
+        and stops; a claim already mid-proposal finishes first."""
         try:
             job = jobs_store.set_job_status(job_id, "paused")
         except FileNotFoundError as e:
             return jsonify({"error": str(e)}), 404
-        return jsonify(jobs_store._job_summary(job))
+        out = jobs_store._job_summary(job)
+        out["runner"] = job_runner.status(job_id)
+        return jsonify(out)
 
     @app.post("/jobs/<job_id>/resume")
     def jobs_resume(job_id):
+        """Mark the job feeding AND start the server-side runner, so the
+        run keeps going after the browser tab closes. Idempotent while a
+        runner is alive. Body: {auto_accept?: bool}"""
+        if _active_is_finalized():
+            return _finalized_guard_response()
+        body = request.get_json(silent=True) or {}
+        auto_accept = bool(body.get("auto_accept", True))
         try:
             job = jobs_store.set_job_status(job_id, "feeding")
         except FileNotFoundError as e:
             return jsonify({"error": str(e)}), 404
-        return jsonify(jobs_store._job_summary(job))
+        runner = job_runner.start(job_id, _feed_one_core, auto_accept)
+        out = jobs_store._job_summary(job)
+        out["runner"] = runner
+        return jsonify(out)
 
-    def _count_pending(job_id: str) -> int:
-        job = jobs_store.load_job(job_id)
-        return sum(1 for c in job["claims"]
-                   if c["status"] == "pending" and c.get("approved"))
+    @app.get("/jobs/<job_id>/progress")
+    def jobs_progress(job_id):
+        """Cheap progress snapshot for polling (UI or curl): job counts
+        from disk plus the in-memory runner state and an ETA."""
+        try:
+            job = jobs_store.load_job(job_id)
+        except FileNotFoundError as e:
+            return jsonify({"error": str(e)}), 404
+        out = jobs_store._job_summary(job)
+        remaining = sum(1 for c in job["claims"]
+                        if c["status"] == "pending" and c.get("approved"))
+        out["remaining_approved"] = remaining
+        runner = job_runner.status(job_id)
+        out["runner"] = runner
+        if runner and runner.get("avg_seconds_per_claim") and remaining:
+            out["eta_seconds"] = int(
+                remaining * runner["avg_seconds_per_claim"])
+        return jsonify(out)
 
     @app.get("/session/<session_id>")
     def session_log(session_id):
         return jsonify(load_session(session_id))
+
+    # A restart (deploy, crash, OOM) interrupts any server-side feed run.
+    # Per-claim state is on disk, so pick those jobs up where they left off.
+    if config.AUTORESUME_JOBS:
+        try:
+            resumed = job_runner.resume_incomplete(_feed_one_core)
+            if resumed:
+                print(f"[job_runner] auto-resumed feeding jobs: "
+                      f"{', '.join(resumed)}")
+        except Exception as e:
+            print(f"[job_runner] auto-resume failed: {e}")
 
     return app
