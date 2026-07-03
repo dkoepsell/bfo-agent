@@ -32,6 +32,13 @@
   }
   header h1 { font-size: 14px; margin: 0; font-weight: 600; letter-spacing: 0.02em; }
   header .stats { font-family: var(--font); font-size: 12px; color: var(--muted); }
+  header .header-right { display: flex; align-items: center; gap: 14px; }
+  header .app-link {
+    font-family: var(--font); font-size: 12px; color: var(--muted);
+    text-decoration: none; padding: 4px 12px; border: 1px solid var(--border);
+    border-radius: 20px; background: var(--panel-2);
+  }
+  header .app-link:hover { color: var(--accent); border-color: var(--accent); }
   .app { display: grid; grid-template-columns: 1fr 1fr; height: calc(100vh - 45px); }
   .pane { display: flex; flex-direction: column; border-right: 1px solid var(--border); min-height: 0; }
   .pane:last-child { border-right: 0; }
@@ -294,7 +301,10 @@
     </div>
   </div>
 
-  <div class="stats" id="stats">connecting...</div>
+  <div class="header-right">
+    <a class="app-link" href="/case/" title="SOoL Case Reader — legal opinion analyzer">Case Reader ↗</a>
+    <div class="stats" id="stats">connecting...</div>
+  </div>
 </header>
 
 <!-- Phase 7: import modal -->
