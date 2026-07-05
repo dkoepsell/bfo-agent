@@ -119,6 +119,26 @@ RULES:
     expression covers, DO NOT mint it. Note it in `open_questions` prefixed
     with "KEXT:" (a kernel-extension request for human review) and proceed
     without it.
+12. DIFFERENTIAL EXCLUSION. When the source asserts that A is not a B, that A
+    excludes B, or that A is "not better explained by" B, emit
+    `{{"s": "working:A", "p": "rdfs:subClassOf", "o": "not working:B"}}`.
+    When the exclusion is mutual, also emit
+    `{{"s": "working:A", "p": "owl:disjointWith", "o": "working:B"}}`.
+    The `o` value `"not working:B"` is the ONLY sanctioned negation syntax:
+    NEVER write `owl:complementOf`, brackets, or any boolean operator as part
+    of an IRI or class name.
+13. SHARED CRITERIA. A symptom, criterion, or manifestation that can occur in
+    more than one condition (fatigue, insomnia, poor concentration, sleep
+    disturbance, psychomotor change, ...) is ONE class: mint it once with a
+    general name and REUSE it (`is_new=false` + `existing_iri`) in every later
+    condition that references it -- check REUSE CANDIDATES below first. A
+    condition is NEVER `subClassOf` its symptom (that says the condition IS
+    the symptom). Type the manifestation as a process (BFO_0000015) and link
+    the condition to it with an existential restriction:
+    `{{"s": "working:MajorDepressiveDisorder", "p": "rdfs:subClassOf",
+    "o": "bfo:BFO_0000054 some working:Fatigue"}}` (the disposition is
+    realized in such a process). The `o` form `"PROP some FILLER"` is the
+    sanctioned restriction syntax.
 
 CURRENT WORKING ONTOLOGY CONTEXT:
 
@@ -130,6 +150,10 @@ Known individuals:
 
 USER UTTERANCE:
 \"\"\"{utterance}\"\"\"
+
+REUSE CANDIDATES (existing classes lexically matching this utterance; reuse
+these with is_new=false instead of minting a near-duplicate):
+{relevant_classes}
 
 Respond with ONLY a JSON object matching this schema:
 
@@ -150,8 +174,8 @@ Respond with ONLY a JSON object matching this schema:
   "relations": [
     {{
       "s": "working:...",
-      "p": "bfo:BFO_... or rdfs:subClassOf or rdf:type",
-      "o": "working:... or bfo:BFO_...",
+      "p": "bfo:BFO_... or rdfs:subClassOf or rdf:type or owl:disjointWith",
+      "o": "working:... or bfo:BFO_... -- or, on a subClassOf edge only, 'not working:X' or 'bfo:BFO_xxx some working:X'",
       "rationale": "..."
     }}
   ],
@@ -218,12 +242,14 @@ class LLMProposer:
         session_id: str,
         working_classes: list[dict],
         known_individuals: list[dict],
+        relevant_classes: list[dict] | None = None,
     ) -> Proposal:
         prompt = PROMPT_TEMPLATE.format(
             bfo_primer=BFO_PRIMER,
             working_classes=_compact_lines(working_classes),
             known_individuals=_compact_lines(known_individuals),
             utterance=utterance,
+            relevant_classes=_compact_lines(relevant_classes or []),
         )
 
         # Two cache breakpoints + compact context. The ontology snapshot (now

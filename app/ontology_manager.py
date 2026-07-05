@@ -32,6 +32,7 @@ from owlready2 import (
 
 from . import bfo_catalog
 from . import config
+from . import owl_checks
 from . import stable_iri
 
 log = logging.getLogger(__name__)
@@ -76,11 +77,55 @@ def _resolve_iri(iri_suggestion: str, working_base: str) -> str:
     if iri_suggestion.startswith("bfo:"):
         return BFO_OBO_PREFIX + iri_suggestion.split(":", 1)[1]
     if iri_suggestion.startswith("working:"):
-        return f"{working_base}#{iri_suggestion.split(':', 1)[1]}"
+        return f"{working_base}#{_working_fragment(iri_suggestion.split(':', 1)[1])}"
     if iri_suggestion.startswith("BFO_"):
         return BFO_OBO_PREFIX + iri_suggestion
     # Bare name defaults to working namespace
-    return f"{working_base}#{iri_suggestion}"
+    return f"{working_base}#{_working_fragment(iri_suggestion)}"
+
+
+_STOPWORDS = frozenset(
+    "the and with that this from have has for are was were will would other "
+    "such into over more most some each which their there been being does "
+    "disorder disorders symptom symptoms criteria criterion".split()
+)
+
+
+def _rank_by_overlap(classes: list[dict], utterance: str,
+                     limit: int = 50) -> list[dict]:
+    """Rank classes by token overlap between the utterance and the class's
+    name + label (CamelCase split). Returns only classes with a nonzero
+    score, best first, capped at ``limit``."""
+    import re as _re
+
+    def tokens(text: str) -> set[str]:
+        return {
+            t.lower()
+            for t in _re.findall(r"[A-Za-z][a-z0-9]+|[A-Z]+(?![a-z])", text or "")
+            if len(t) > 3 and t.lower() not in _STOPWORDS
+        }
+
+    utt = tokens(utterance)
+    if not utt:
+        return []
+    scored = []
+    for c in classes:
+        name = (c.get("iri") or "").rsplit("#", 1)[-1]
+        score = len(utt & tokens(name + " " + (c.get("label") or "")))
+        if score:
+            scored.append((score, c))
+    scored.sort(key=lambda x: -x[0])
+    return [c for _, c in scored[:limit]]
+
+
+def _working_fragment(frag: str) -> str:
+    """H-1: slugify a label-like working fragment ('Premenstrual Dysphoric
+    Disorder' -> 'PremenstrualDysphoricDisorder') so display text never leaks
+    into the IRI. A fragment that is neither valid nor label-like is returned
+    unchanged; the write-path guard in ``_add_entity`` / ``_add_relation``
+    refuses it (read paths must stay non-raising)."""
+    slug = owl_checks.slugify_fragment(frag)
+    return slug if slug is not None else frag
 
 
 def _local_name(iri: str) -> str:
@@ -566,6 +611,11 @@ class OntologyManager:
 
     def _add_entity(self, ent):
         iri = _resolve_iri(ent.iri_suggestion, WORKING_IRI)
+        if owl_checks.iri_is_malformed(iri):
+            raise ValueError(
+                f"malformed IRI {iri!r} (H-1: fragment must be a valid token; "
+                f"put display text in the label)"
+            )
         name = _local_name(iri)
 
         # Resolve the BFO (or working) type class
@@ -606,6 +656,32 @@ class OntologyManager:
         from rdflib import URIRef
 
         o_raw = (rel.o or "").strip()
+
+        # Sanctioned class-expression object on a subClassOf edge (FIX-1 /
+        # X-1..X-3): materialise via owlready2 as a real anonymous construct.
+        # This also recovers the 'owl:complementOf working:X' form the DSM run
+        # baked into fabricated IRIs.
+        expr = owl_checks.parse_class_expression(o_raw)
+        if expr is not None and "subClassOf" in (rel.p or ""):
+            # never mutate an imported BFO/RO/IAO kernel class
+            if "obolibrary.org/obo/" in _resolve_iri(rel.s, WORKING_IRI):
+                raise ValueError(
+                    f"refusing to add a class expression to kernel class "
+                    f"{rel.s}; anchor a SOoL subclass instead"
+                )
+            if self.add_class_expression(rel.s, expr):
+                return
+            if expr["op"] == "some":
+                raise ValueError(
+                    f"unresolvable restriction ({expr['prop']} some "
+                    f"{expr['filler']}) on {rel.s}; skipped rather than mint "
+                    f"a dangling IRI"
+                )
+            raise ValueError(
+                f"unresolvable class expression {o_raw!r} on {rel.s}; "
+                f"skipped rather than mint a malformed IRI"
+            )
+
         if o_raw.startswith("_:"):
             parts = o_raw.split()
             # "_:bnode PROP FILLER" on a subClassOf edge -> existential restriction
@@ -632,6 +708,16 @@ class OntologyManager:
         s_iri = _resolve_iri(rel.s, WORKING_IRI)
         p_iri = _resolve_iri(rel.p, WORKING_IRI)
         o_iri = _resolve_iri(rel.o, WORKING_IRI)
+
+        # H-1 / X-1 write-path guard: never persist an IRI carrying whitespace
+        # or a templated OWL construct name. Reasoners silently drop such
+        # axioms, so writing them loses content while looking successful.
+        for iri in (s_iri, p_iri, o_iri):
+            if owl_checks.iri_is_malformed(iri):
+                raise ValueError(
+                    f"malformed IRI {iri!r}; skipped rather than persist an "
+                    f"axiom every reasoner would drop"
+                )
 
         g = self.world.as_rdflib_graph()
         g.add((URIRef(s_iri), URIRef(p_iri), URIRef(o_iri)))
@@ -763,6 +849,57 @@ class OntologyManager:
                 return False
         return True
 
+    def add_class_expression(self, class_ref: str, expr: dict) -> bool:
+        """Materialise a parsed sanctioned expression (owl_checks.
+        parse_class_expression) as a real anonymous construct on class_ref:
+
+            {"op": "some", ...}      -> class_ref SubClassOf (prop some filler)
+            {"op": "not", ...}       -> class_ref SubClassOf Not(cls)
+            {"op": "not_some", ...}  -> class_ref SubClassOf Not(prop some filler)
+
+        Returns True if applied, False if any operand failed to resolve.
+        Does NOT save; the caller decides."""
+        from owlready2 import Not
+
+        op = expr.get("op")
+        if op == "some":
+            return self.add_existential_restriction(
+                class_ref, expr["prop"], expr["filler"]
+            )
+
+        cls = self.world[_resolve_iri(class_ref, WORKING_IRI)]
+        if cls is None:
+            local = _local_name(class_ref)
+            cls = next((c for c in self.working.classes() if c.name == local), None)
+        if cls is None:
+            return False
+
+        if op == "not":
+            comp = self.world[_resolve_iri(expr["cls"], WORKING_IRI)]
+            if comp is None:
+                local = _local_name(expr["cls"])
+                comp = next(
+                    (c for c in self.working.classes() if c.name == local), None
+                )
+            if comp is None:
+                return False
+            target = Not(comp)
+        elif op == "not_some":
+            prop = self.world[_resolve_iri(expr["prop"], WORKING_IRI)]
+            filler = self.world[_resolve_iri(expr["filler"], WORKING_IRI)]
+            if prop is None or filler is None:
+                return False
+            target = Not(prop.some(filler))
+        else:
+            return False
+
+        with self.working:
+            try:
+                cls.is_a.append(target)
+            except Exception:
+                return False
+        return True
+
     def has_restriction_on(self, class_ref: str, prop_frag: str) -> bool:
         """True if the class already carries an existential restriction on prop."""
         cls = self.world[_resolve_iri(class_ref, WORKING_IRI)]
@@ -858,11 +995,26 @@ class OntologyManager:
             "bfo_loaded": self.bfo is not None,
         }
 
-    def summary_for_proposer(self, max_items: int = 40) -> dict:
-        """Compact context block for the LLM proposer prompt."""
-        working_cls = self.list_working_classes()[:max_items]
+    def summary_for_proposer(self, max_items: int = 40,
+                             utterance: str | None = None) -> dict:
+        """Compact context block for the LLM proposer prompt.
+
+        With ``utterance``, also returns ``relevant_classes``: existing working
+        classes ranked by lexical overlap with the utterance (FIX-2 / S-1 —
+        the running vocabulary that lets the proposer reuse an already-minted
+        criterion class instead of re-minting it per disorder). Kept separate
+        from ``working_classes`` because it changes per claim and must land in
+        the UNCACHED prompt segment, not the cached ontology block."""
+        all_cls = self.list_working_classes()
         indivs = self.list_individuals()[:max_items]
-        return {
-            "working_classes": working_cls,
+        out = {
+            "working_classes": all_cls[:max_items],
             "known_individuals": indivs,
         }
+        if utterance:
+            head_iris = {c["iri"] for c in all_cls[:max_items]}
+            out["relevant_classes"] = _rank_by_overlap(
+                [c for c in all_cls if c["iri"] not in head_iris],
+                utterance,
+            )
+        return out

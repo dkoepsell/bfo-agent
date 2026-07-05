@@ -145,6 +145,7 @@ def _run_coherence_gate(proposal, mgr, proposer, ctx, session_id, context=None):
                 session_id=session_id,
                 working_classes=ctx["working_classes"],
                 known_individuals=ctx["known_individuals"],
+                relevant_classes=ctx.get("relevant_classes"),
             )
         except Exception:
             return None
@@ -354,7 +355,7 @@ def _feed_one_core(job_id: str, auto_accept: bool = True) -> dict:
 
         mgr = _get_manager()
         proposer = _get_proposer()
-        ctx = mgr.summary_for_proposer()
+        ctx = mgr.summary_for_proposer(utterance=claim["claim"])
 
         try:
             proposal = proposer.propose(
@@ -362,6 +363,7 @@ def _feed_one_core(job_id: str, auto_accept: bool = True) -> dict:
                 session_id=session_id,
                 working_classes=ctx["working_classes"],
                 known_individuals=ctx["known_individuals"],
+                relevant_classes=ctx.get("relevant_classes"),
             )
         except Exception as e:
             jobs_store.update_claim_status(
@@ -804,7 +806,7 @@ def create_app() -> Flask:
         with _lock:
             mgr = _get_manager()
             proposer = _get_proposer()
-            ctx = mgr.summary_for_proposer()
+            ctx = mgr.summary_for_proposer(utterance=body.utterance)
 
             try:
                 proposal = proposer.propose(
@@ -812,6 +814,7 @@ def create_app() -> Flask:
                     session_id=session_id,
                     working_classes=ctx["working_classes"],
                     known_individuals=ctx["known_individuals"],
+                    relevant_classes=ctx.get("relevant_classes"),
                 )
             except Exception as e:
                 log_event(
