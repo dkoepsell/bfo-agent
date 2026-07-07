@@ -1,8 +1,8 @@
 {
   "name": "LeibnitzPhilCorpus",
   "description": "Leibnitz collected philosophical works, The Monadology^ New System of Nature, Principles of Nature and \n\nof Grace, Letters to Clarke, Refutation of Spinoza, and his \n\nother important philosophical opuscules, together \n\nwith the Abridgment of the Theodicy and \n\nextracts from the New Essays on \n\nSuman Understanding. \n\nTBANSLATED FROM THE OEIGINAL LATIN AND FKENCH. \n\n\n\nWITH NOTES \n\n\n\nBY \n\n\n\nGEORGE MARTIN DUNCAN,",
-  "source_text": null,
-  "author": null,
+  "source_text": "Duncan, ed., The Philosophical Works of Leibnitz (1890)",
+  "author": "Gottfried Wilhelm Leibniz",
   "created_at": "2026-05-06T15:31:21.946302+00:00",
   "status": "finalized",
   "seeded_from": "SOoL_v1",
