@@ -196,6 +196,20 @@ GATE_REASONER_STRUCTURAL_SKIP = (
 # guarantee is unchanged.
 INMEM_DRY_RUN = os.getenv("INMEM_DRY_RUN", "false").lower() == "true"
 
+# ----- Checkpointed full verification (SPEC-bfo-agent-speed.md change 6) -----
+# When VERIFY_EVERY_COMMIT is false, the per-claim commit skips the full-graph
+# post-commit reasoner pass; instead a full HermiT certificate runs every
+# FULL_VERIFY_EVERY_K commits and, mandatorily, once at job completion before
+# the job is marked completed. The artifact's final state is always fully
+# certified; only the timing of the full check changes.
+VERIFY_EVERY_COMMIT = os.getenv("VERIFY_EVERY_COMMIT", "true").lower() == "true"
+FULL_VERIFY_EVERY_K = int(os.getenv("FULL_VERIFY_EVERY_K", "250"))
+FINALIZE_REQUIRES_FULL_VERIFY = os.getenv("FINALIZE_REQUIRES_FULL_VERIFY", "true").lower() == "true"
+# On checkpoint failure (curated mode), also flip the suspect window's claims
+# from committed to needs_review. Off by default: evidence-first, the git
+# per-commit history of working.owl makes bisection tractable.
+CHECKPOINT_FAIL_MARK_REVIEW = os.getenv("CHECKPOINT_FAIL_MARK_REVIEW", "false").lower() == "true"
+
 # ----- Class-count budget (bfo-agent-spec.md FR-7) -----
 # Soft cap on how many NEW classes a single proposal may mint. Exceeding it
 # raises a warning (logged + surfaced on the proposal), never a silent accept.

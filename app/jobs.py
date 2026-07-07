@@ -83,6 +83,68 @@ def _job_path(job_id: str) -> Path:
     return JOBS_DIR / f"{job_id}.json"
 
 
+# Persisted checkpoint bookkeeping (SPEC-bfo-agent-speed.md change 6). Jobs
+# written before this field existed read as these defaults (get_feed_state).
+_FEED_STATE_DEFAULTS = {
+    "commits_since_checkpoint": 0,
+    "last_checkpoint_at": None,
+    "last_checkpoint_ok": None,
+    "last_verified_claim_id": None,
+    "last_saved_claim_id": None,
+}
+
+
+def get_feed_state(job: dict) -> dict:
+    """The job's feed_state, with defaults filled in for pre-existing job
+    files that lack the field (or lack newer keys)."""
+    fs = dict(_FEED_STATE_DEFAULTS)
+    fs.update(job.get("feed_state") or {})
+    return fs
+
+
+def bump_feed_state(job_id: str, increment: Optional[dict] = None,
+                    **updates) -> dict:
+    """Read-modify-write the job's persisted feed_state.
+
+    ``increment`` adds to numeric counters (e.g.
+    ``increment={"commits_since_checkpoint": 1}``); keyword arguments set
+    absolute values. Returns the updated feed_state. Follows the module's
+    load/modify/save pattern; the atomic write in save_job keeps a crash
+    mid-update from corrupting the record.
+    """
+    job = load_job(job_id)
+    fs = get_feed_state(job)
+    for key, delta in (increment or {}).items():
+        fs[key] = (fs.get(key) or 0) + delta
+    fs.update(updates)
+    job["feed_state"] = fs
+    save_job(job)
+    return fs
+
+
+def mark_window_needs_review(job_id: str, from_id: Optional[int],
+                             to_id: int) -> list[int]:
+    """Flip committed claims in the suspect window ``(from_id, to_id]`` to
+    needs_review after a failed full-graph checkpoint
+    (CHECKPOINT_FAIL_MARK_REVIEW). ``from_id`` None means from the start.
+    Returns the flipped claim ids."""
+    job = load_job(job_id)
+    flipped = []
+    for c in job["claims"]:
+        if c.get("status") != "committed":
+            continue
+        if from_id is not None and c["id"] <= from_id:
+            continue
+        if c["id"] > to_id:
+            continue
+        c["status"] = "needs_review"
+        c["updated_at"] = _now()
+        flipped.append(c["id"])
+    if flipped:
+        save_job(job)
+    return flipped
+
+
 # -------------------------------------------------------------- CRUD
 def create_job(name: str, meta: Optional[dict] = None) -> dict:
     """Create a new empty job."""
@@ -97,6 +159,7 @@ def create_job(name: str, meta: Optional[dict] = None) -> dict:
             "status": "draft",
             "meta": meta or {},
             "claims": [],
+            "feed_state": dict(_FEED_STATE_DEFAULTS),
         }
         _atomic_write(_job_path(job_id), job)
     return job

@@ -48,6 +48,19 @@ class OntologyNotFoundError(KeyError):
     """Raised when a lookup for an ontology name fails."""
 
 
+class FinalizeVerificationError(RuntimeError):
+    """finalize() refused: the ontology carries commits that skipped the
+    per-claim full verify and the fresh full-graph certificate failed
+    (SPEC-bfo-agent-speed.md change 6). Carries the verify_full report."""
+
+    def __init__(self, name: str, report: dict):
+        self.report = report
+        super().__init__(
+            f"cannot finalize {name!r}: full-graph verification failed: "
+            f"{report.get('detail')}"
+        )
+
+
 class OntologyRegistry:
     def __init__(
         self,
@@ -302,6 +315,14 @@ class OntologyRegistry:
     def finalize(self, name: str) -> dict:
         """Set manifest status to 'finalized'. Idempotent.
 
+        SPEC-bfo-agent-speed.md change 6: a curated ontology carrying
+        commits that skipped the per-claim full verify must pass a fresh
+        full-graph certificate before it freezes; on failure
+        FinalizeVerificationError is raised (the route surfaces it as 409).
+        Faithful ontologies finalize with the incoherence ledger as their
+        annotation -- their divergence from coherence is recorded evidence,
+        not a defect blocking finalization.
+
         Raises KeyError if name is unknown.
         """
         import json
@@ -310,6 +331,18 @@ class OntologyRegistry:
             raise OntologyNotFoundError(name)
 
         manifest = dict(self._manifests[name])
+
+        if (
+            config.FINALIZE_REQUIRES_FULL_VERIFY
+            and manifest.get("status") != "finalized"
+            and self.fidelity(name) != "faithful"
+        ):
+            mgr = self._managers[name]
+            if getattr(mgr, "commits_since_full_verify", 0) > 0:
+                report = mgr.verify_full()
+                if not report["ok"]:
+                    raise FinalizeVerificationError(name, report)
+
         manifest["status"] = "finalized"
         from datetime import datetime, timezone
         manifest["finalized_at"] = datetime.now(timezone.utc).isoformat()

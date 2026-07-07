@@ -16,6 +16,7 @@ from __future__ import annotations
 import io
 import logging
 import threading
+import time
 import types
 from contextlib import redirect_stderr, redirect_stdout
 from dataclasses import dataclass, field
@@ -187,6 +188,12 @@ class OntologyManager:
 
         # onto_path tells owlready2 where to find imported ontologies locally
         onto_path.append(str(self.bfo_path.parent))
+
+        # Commits applied with verify=False since the last full-graph
+        # certificate (SPEC-bfo-agent-speed.md change 6). Incremented by
+        # commit_proposal(verify=False), reset by verify_full(); the finalize
+        # guard and the job-completion pass consult it.
+        self.commits_since_full_verify = 0
 
         self._load()
 
@@ -1469,6 +1476,10 @@ class OntologyManager:
                 raise CommitCoherenceError(detail)
             elif backup is not None and backup.exists():
                 backup.unlink()
+        else:
+            # No full-graph pass covered this commit; the checkpoint /
+            # final-pass machinery (verify_full) owes it a certificate.
+            self.commits_since_full_verify += 1
 
         return warnings
 
@@ -1487,6 +1498,24 @@ class OntologyManager:
         if not config.INMEM_DRY_RUN:
             return self._verify_saved_coherent_legacy(exclude_axioms)
 
+        ok, detail, _unsat = self._scratch_verify_saved(exclude_axioms)
+        return ok, detail
+
+    def _scratch_verify_saved(
+        self,
+        exclude_axioms: Optional[list[dict]] = None,
+        phase: str = "reason_verify",
+    ) -> tuple[bool, str, list[str]]:
+        """Reason over the SAVED working file in a disposable scratch world.
+
+        Shared machinery for the in-memory post-commit verify and for
+        :meth:`verify_full` (which uses it regardless of INMEM_DRY_RUN).
+        Applies the same two sanitizers :meth:`_load` runs so the verdict is
+        identical to a full reload, retracts FM-9 exclusions in the scratch
+        world, and reasons there. The live world is never touched. Returns
+        ``(ok, detail, unsat_class_iris)`` -- detail capped as legacy does,
+        ``unsat_class_iris`` the full list.
+        """
         with timing.phase("scratch_build"):
             w = World()
             w.get_ontology(str(self.bfo_path)).load()
@@ -1500,18 +1529,43 @@ class OntologyManager:
         buf = io.StringIO()
         try:
             with redirect_stdout(buf), redirect_stderr(buf):
-                with timing.phase("reason_verify"):
+                with timing.phase(phase):
                     with _REASONER_LOCK, w:
                         sync_reasoner(w, infer_property_values=False)
         except Exception as e:  # noqa: BLE001 — reasoner raises on inconsistency
-            return False, f"inconsistent ontology: {str(e)[:200]}"
+            return False, f"inconsistent ontology: {str(e)[:200]}", []
         # Nothing is per-world in owlready2: compare by IRI, not identity.
         unsat = [
             c.iri for c in w.inconsistent_classes() if c.iri != _NOTHING_IRI
         ]
         if unsat:
-            return False, "unsatisfiable classes: " + ", ".join(unsat[:12])
-        return True, ""
+            return False, "unsatisfiable classes: " + ", ".join(unsat[:12]), unsat
+        return True, "", []
+
+    def verify_full(self, exclude_axioms: Optional[list[dict]] = None) -> dict:
+        """Full-graph HermiT certificate over the SAVED working file.
+
+        SPEC-bfo-agent-speed.md change 6: the per-claim gate is a sound
+        over-approximation; this is the periodic/final reconciliation that
+        certifies the artifact. Runs in a disposable scratch world (live world
+        untouched). Saves the live world first so the certificate covers every
+        in-memory commit. Returns {"ok", "unsat_classes", "detail",
+        "duration_ms", "classes", "individuals"}.
+        """
+        t0 = time.perf_counter()
+        self.save()
+        ok, detail, unsat = self._scratch_verify_saved(
+            exclude_axioms=exclude_axioms, phase="reason_full_verify"
+        )
+        self.commits_since_full_verify = 0
+        return {
+            "ok": ok,
+            "unsat_classes": unsat,
+            "detail": detail,
+            "duration_ms": round((time.perf_counter() - t0) * 1000, 1),
+            "classes": len(list(self.working.classes())),
+            "individuals": len(list(self.working.individuals())),
+        }
 
     def _verify_saved_coherent_legacy(
         self, exclude_axioms: Optional[list[dict]] = None

@@ -42,7 +42,8 @@ def _now() -> str:
 
 def start(job_id: str, feed_fn: Callable[[str, bool], dict],
           auto_accept: bool = True,
-          on_complete: Callable[[str, dict], str | None] | None = None) -> dict:
+          on_complete: Callable[[str, dict], str | None] | None = None,
+          resume_verify_fn: Callable[[str], bool] | None = None) -> dict:
     """Start the feeder thread for a job. Idempotent: if a runner is
     already alive for this job, return its status instead of starting a
     second one.
@@ -51,6 +52,13 @@ def start(job_id: str, feed_fn: Callable[[str, bool], dict],
     (not on pause/fail) -- e.g. the end-of-job FOL audit (fol-gate-spec.md
     FG-2). Whatever short string it returns is appended to the completion
     notification. It must never raise into the runner; we guard anyway.
+
+    ``resume_verify_fn(job_id)`` (SPEC-bfo-agent-speed.md change 6) runs
+    once at the top of the runner thread, before the first claim -- the
+    boot-resume path passes the orchestrator's full-graph certificate here
+    so a job interrupted with unverified commits is re-certified before
+    feeding continues. Returning False stops the run: the job is paused
+    and the failure notification fires.
     """
     with _registry_lock:
         t = _threads.get(job_id)
@@ -80,7 +88,7 @@ def start(job_id: str, feed_fn: Callable[[str, bool], dict],
         _runners[job_id] = state
         t = threading.Thread(
             target=_run, args=(job_id, feed_fn, auto_accept, state,
-                               on_complete),
+                               on_complete, resume_verify_fn),
             name=f"job-runner-{job_id}", daemon=True,
         )
         _threads[job_id] = t
@@ -101,19 +109,25 @@ def status(job_id: str) -> dict | None:
 
 
 def resume_incomplete(feed_fn: Callable[[str, bool], dict],
-                      on_complete=None) -> list[str]:
+                      on_complete=None,
+                      resume_verify_fn=None) -> list[str]:
     """Restart runners for jobs left in status "feeding" (a run that a
-    server restart or crash interrupted). Returns the resumed job ids."""
+    server restart or crash interrupted). Returns the resumed job ids.
+
+    ``resume_verify_fn`` is threaded through to the runner thread so a job
+    with unverified commits gets one full-graph certificate before its feed
+    loop restarts (SPEC-bfo-agent-speed.md change 6)."""
     resumed = []
     for j in jobs_store.list_jobs():
         if j.get("status") == "feeding":
-            start(j["job_id"], feed_fn, on_complete=on_complete)
+            start(j["job_id"], feed_fn, on_complete=on_complete,
+                  resume_verify_fn=resume_verify_fn)
             resumed.append(j["job_id"])
     return resumed
 
 
 def _run(job_id: str, feed_fn, auto_accept: bool, state: dict,
-         on_complete=None) -> None:
+         on_complete=None, resume_verify_fn=None) -> None:
     session_id = None
     job_name = job_id
     consecutive_errors = 0
@@ -124,6 +138,23 @@ def _run(job_id: str, feed_fn, auto_accept: bool, state: dict,
         job_name = job.get("name") or job_id
         log_event(session_id, "feed_run_start",
                   {"job_id": job_id, "auto_accept": auto_accept})
+
+        if resume_verify_fn is not None:
+            # Boot-resume certificate (SPEC-bfo-agent-speed.md change 6):
+            # runs in this thread so it never blocks server boot. The
+            # callback logs its own "resume_verify" event and decides the
+            # curated/faithful policy; False = do not resume.
+            try:
+                verified = resume_verify_fn(job_id)
+            except Exception as e:  # fail open; the final pass backstops
+                state["last_error"] = str(e)
+                verified = True
+            if not verified:
+                _fail(job_id, job_name, state,
+                      "resume verification failed: the persisted ontology "
+                      "did not pass the full-graph certificate (see the "
+                      "resume_verify event in the session log)")
+                return
 
         while True:
             # Reload status each iteration so POST /pause (or a status

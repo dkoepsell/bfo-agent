@@ -23,6 +23,16 @@ outside its graph, against a baseline of 0.100 ± 0.100 (n=3 runs per
 condition), demonstrating that persistent typed memory substantially
 reduces LLM confabulation on domain-specific questions.
 
+**Certification methodology.** Per-claim commits are guarded by the
+structural construction/lint gate plus an in-memory reasoner check — a
+sound over-approximation whose full-graph reconciliation is periodic. A
+full HermiT consistency-and-satisfiability certificate over the entire
+artifact runs every `FULL_VERIFY_EVERY_K` commits (default 250) and,
+mandatorily, at job completion before an artifact is finalized, so any
+published/final artifact is always fully certified; only the timing of
+the full check is amortized, never its presence
+(SPEC-bfo-agent-speed.md change 6).
+
 ## License
 
 Code: Apache 2.0

@@ -16,6 +16,7 @@ import json
 import logging
 import threading
 import time
+from datetime import datetime, timezone
 from pathlib import Path
 from uuid import uuid4
 
@@ -38,7 +39,7 @@ from .coherence_gate import GateOutcome, GatePolicy
 from .extractor import ClaimExtractor, chunk_text
 from .llm_proposer import LLMProposer
 from .ontology_manager import CommitCoherenceError, OntologyManager
-from .registry import OntologyRegistry
+from .registry import FinalizeVerificationError, OntologyRegistry
 from .schema import (
     CommitRequest,
     Proposal,
@@ -453,6 +454,214 @@ def _emit_claim_timing(session_id: str, job_id: str, claim_id,
         log.warning("claim_timing emission failed: %s", e)
 
 
+def _utcnow_iso() -> str:
+    return datetime.now(timezone.utc).isoformat()
+
+
+def _ledger_checkpoint_incoherence(mgr, report: dict, job_id: str,
+                                   suspect_from, suspect_to,
+                                   kind: str = "checkpoint") -> str | None:
+    """Faithful mode: a failed full-graph certificate is evidence, not a
+    defect to fix (extraction-fidelity principle). One incoherence-ledger
+    entry records the finding with checkpoint provenance; feeding continues.
+    Never raises -- evidence recording must not stop a faithful run."""
+    try:
+        return ledger_mod.append(mgr.working_path, {
+            "mode": "faithful",
+            "subjects": report.get("unsat_classes") or [],
+            "tier": kind,
+            "gate_result": {"reason": report.get("detail")},
+            "exclude_axioms": [],
+            "provenance": {
+                "checkpoint": True,
+                "kind": kind,
+                "job_id": job_id,
+                "claim_window": [suspect_from, suspect_to],
+            },
+        })
+    except Exception:
+        log.exception("Failed to ledger %s-verify incoherence", kind)
+        return None
+
+
+def _maybe_checkpoint_verify(job_id: str, claim: dict, session_id: str,
+                             mgr, faithful: bool,
+                             exclusions) -> dict | None:
+    """Bump the persisted commit counter and, every FULL_VERIFY_EVERY_K
+    commits, run the full-graph HermiT certificate over the saved artifact
+    (SPEC-bfo-agent-speed.md change 6). Called from _feed_one_core inside the
+    module _lock, only when VERIFY_EVERY_COMMIT is off.
+
+    Returns None to keep feeding, or a fatal-shaped dict when a curated
+    checkpoint failed: the job is paused here and job_runner._run reads the
+    "fatal" key as stop-the-loop-and-notify.
+    """
+    fs = jobs_store.bump_feed_state(
+        job_id, increment={"commits_since_checkpoint": 1}
+    )
+    if fs["commits_since_checkpoint"] < config.FULL_VERIFY_EVERY_K:
+        return None
+
+    suspect_from = fs.get("last_verified_claim_id")
+    report = mgr.verify_full(exclude_axioms=exclusions if faithful else None)
+    log_event(session_id, "checkpoint_verify", {
+        **report,
+        "job_id": job_id,
+        "suspect_from": suspect_from,
+        "suspect_to": claim["id"],
+    })
+
+    if report["ok"] or faithful:
+        if not report["ok"]:
+            _ledger_checkpoint_incoherence(
+                mgr, report, job_id, suspect_from, claim["id"]
+            )
+        jobs_store.bump_feed_state(
+            job_id, commits_since_checkpoint=0,
+            last_checkpoint_at=_utcnow_iso(),
+            last_checkpoint_ok=report["ok"],
+            last_verified_claim_id=claim["id"],
+        )
+        return None
+
+    # Curated failure: pause with a <=K-claim suspect window. The counter and
+    # last_verified_claim_id are left untouched so a resume re-runs the
+    # certificate with the same bisection bounds. No auto-rollback:
+    # evidence-first, the per-commit git history of working.owl makes
+    # bisection tractable.
+    jobs_store.bump_feed_state(
+        job_id, last_checkpoint_at=_utcnow_iso(), last_checkpoint_ok=False
+    )
+    flipped: list[int] = []
+    if config.CHECKPOINT_FAIL_MARK_REVIEW:
+        flipped = jobs_store.mark_window_needs_review(
+            job_id, suspect_from, claim["id"]
+        )
+    jobs_store.set_job_status(job_id, "paused")
+    return {
+        "fatal": "checkpoint_verify_failed",
+        "error": (
+            f"full-graph checkpoint failed after claim {claim['id']} "
+            f"(suspect window {suspect_from}..{claim['id']}"
+            + (f"; {len(flipped)} claim(s) flipped to needs_review"
+               if flipped else "")
+            + f"): {report['detail']}"
+        ),
+    }
+
+
+def _final_verify_before_complete(job_id: str, session_id: str) -> dict | None:
+    """Mandatory full-graph certificate before a job is marked completed
+    (SPEC-bfo-agent-speed.md change 6). Called from _feed_one_core's
+    no-pending branch inside the module _lock, so both the server-side
+    runner and manual stepping get it.
+
+    Returns None when completion may proceed, or a fatal-shaped dict when a
+    curated final pass failed (the job is paused instead of completed).
+    """
+    if not config.FINALIZE_REQUIRES_FULL_VERIFY:
+        return None
+    job = jobs_store.load_job(job_id)
+    fs = jobs_store.get_feed_state(job)
+    mgr = _get_manager()
+    if (
+        config.VERIFY_EVERY_COMMIT
+        and fs.get("commits_since_checkpoint", 0) <= 0
+        and getattr(mgr, "commits_since_full_verify", 0) <= 0
+    ):
+        return None  # every commit already carried the full certificate
+
+    faithful = _active_fidelity() == "faithful"
+    exclusions = (
+        ledger_mod.exclusion_triples(mgr.working_path) if faithful else None
+    )
+    report = mgr.verify_full(exclude_axioms=exclusions)
+    log_event(session_id, "final_verify", {**report, "job_id": job_id})
+
+    committed_ids = [c["id"] for c in job.get("claims", [])
+                     if c.get("status") == "committed"]
+    last_claim_id = max(committed_ids) if committed_ids else None
+
+    if report["ok"] or faithful:
+        if not report["ok"]:
+            _ledger_checkpoint_incoherence(
+                mgr, report, job_id,
+                fs.get("last_verified_claim_id"), last_claim_id,
+                kind="final",
+            )
+        jobs_store.bump_feed_state(
+            job_id, commits_since_checkpoint=0,
+            last_checkpoint_at=_utcnow_iso(),
+            last_checkpoint_ok=report["ok"],
+            last_verified_claim_id=last_claim_id,
+        )
+        return None
+
+    # Curated failure: pause instead of completing. job_runner._fail
+    # notifies; the job stays resumable once the operator bisects the
+    # offending commit out of working.owl's git history.
+    jobs_store.bump_feed_state(
+        job_id, last_checkpoint_at=_utcnow_iso(), last_checkpoint_ok=False
+    )
+    jobs_store.set_job_status(job_id, "paused")
+    return {
+        "fatal": "final_verify_failed",
+        "error": f"final full verification failed: {report['detail']}",
+    }
+
+
+def _resume_verify(job_id: str) -> bool:
+    """Boot-resume certificate (SPEC-bfo-agent-speed.md change 6): a job
+    interrupted with unverified commits gets one verify_full before its feed
+    loop restarts. Passed to job_runner.resume_incomplete; runs inside the
+    runner thread so boot is never blocked.
+
+    Returns True to resume feeding. False (curated failure) makes the runner
+    pause the job and notify instead of resuming. Fails open on mechanical
+    errors -- the mandatory completion pass remains the backstop.
+    """
+    try:
+        job = jobs_store.load_job(job_id)
+        fs = jobs_store.get_feed_state(job)
+        if fs.get("commits_since_checkpoint", 0) <= 0:
+            return True
+        session_id = job.get("session_id")
+        with _lock:
+            mgr = _get_manager()
+            faithful = _active_fidelity() == "faithful"
+            exclusions = (
+                ledger_mod.exclusion_triples(mgr.working_path)
+                if faithful else None
+            )
+            report = mgr.verify_full(exclude_axioms=exclusions)
+        log_event(session_id, "resume_verify", {**report, "job_id": job_id})
+        committed_ids = [c["id"] for c in job.get("claims", [])
+                         if c.get("status") == "committed"]
+        last_claim_id = max(committed_ids) if committed_ids else None
+        if report["ok"] or faithful:
+            if not report["ok"]:
+                _ledger_checkpoint_incoherence(
+                    mgr, report, job_id,
+                    fs.get("last_verified_claim_id"), last_claim_id,
+                    kind="resume",
+                )
+            jobs_store.bump_feed_state(
+                job_id, commits_since_checkpoint=0,
+                last_checkpoint_at=_utcnow_iso(),
+                last_checkpoint_ok=report["ok"],
+                last_verified_claim_id=last_claim_id,
+            )
+            return True
+        jobs_store.bump_feed_state(
+            job_id, last_checkpoint_at=_utcnow_iso(),
+            last_checkpoint_ok=False,
+        )
+        return False
+    except Exception as e:  # noqa: BLE001 — never brick boot-resume
+        log.warning("resume_verify failed open (%s); resuming feed", e)
+        return True
+
+
 def _feed_one_core(job_id: str, auto_accept: bool = True) -> dict:
     """Feed the next pending+approved claim in the job.
 
@@ -488,6 +697,12 @@ def _feed_one_core(job_id: str, auto_accept: bool = True) -> dict:
         # server-side runner) cannot grab the same claim.
         pending = jobs_store.next_pending(job_id, limit=1)
         if not pending:
+            # Mandatory final pass (SPEC-bfo-agent-speed.md change 6): any
+            # commit that skipped the per-claim full verify gets certified
+            # here, before the job may be marked completed.
+            final_fatal = _final_verify_before_complete(job_id, session_id)
+            if final_fatal is not None:
+                return final_fatal
             jobs_store.set_job_status(job_id, "completed")
             return {"done": True, "remaining": 0}
         claim = pending[0]
@@ -594,10 +809,15 @@ def _feed_one_core(job_id: str, auto_accept: bool = True) -> dict:
                 # coherent view so only NEW incoherence is reported.
                 flagged = gate_run is not None and \
                     gate_run.outcome == GateOutcome.FLAG
+                # SPEC-bfo-agent-speed.md change 6: with VERIFY_EVERY_COMMIT
+                # off, the per-claim commit never runs the full-graph verify;
+                # the checkpoint/final-pass certificate covers it instead.
+                # Default (on) keeps today's behavior exactly.
                 with timing.phase("commit_total"):
                     warnings = mgr.commit_proposal(
                         proposal,
-                        verify=not flagged,
+                        verify=(not flagged) if config.VERIFY_EVERY_COMMIT
+                        else False,
                         faithful=faithful,
                         exclude_axioms=exclusions,
                     )
@@ -685,12 +905,27 @@ def _feed_one_core(job_id: str, auto_accept: bool = True) -> dict:
             verdict=verdict,
         )
 
+        # Checkpointed full verification (SPEC-bfo-agent-speed.md change 6):
+        # only when the per-claim full verify is off. Runs after the claim's
+        # status is persisted so a failed checkpoint's suspect window is
+        # bounded by claims actually recorded as committed.
+        checkpoint_fatal = None
+        if committed and not config.VERIFY_EVERY_COMMIT:
+            checkpoint_fatal = _maybe_checkpoint_verify(
+                job_id, claim, session_id, mgr, faithful, exclusions
+            )
+
         _emit_claim_timing(
             session_id, job_id, claim["id"], proposal.proposal_id,
             verdict, committed,
             gate_run.attempts if gate_run is not None else None,
             mgr, t_claim,
         )
+
+    if checkpoint_fatal is not None:
+        # Curated checkpoint failure: the job was paused inside the lock;
+        # the fatal shape stops job_runner._run and fires its notification.
+        return checkpoint_fatal
 
     remaining = _count_pending(job_id)
     return {
@@ -849,6 +1084,15 @@ def create_app() -> Flask:
                     manifest = reg.finalize(name)
                 except KeyError:
                     return _not_found_response(name)
+                except FinalizeVerificationError as e:
+                    # SPEC-bfo-agent-speed.md change 6: unverified commits
+                    # failed the fresh full-graph certificate; refuse to
+                    # freeze an uncertified artifact.
+                    return jsonify({
+                        "status": "error",
+                        "error": str(e),
+                        "report": e.report,
+                    }), 409
 
                 manifest_path = config.LIBRARY_ROOT / name / "manifest.json"
                 git_commit_library_change(
@@ -1674,7 +1918,8 @@ def create_app() -> Flask:
     if config.AUTORESUME_JOBS:
         try:
             resumed = job_runner.resume_incomplete(
-                _feed_one_core, on_complete=_fol_audit_on_complete)
+                _feed_one_core, on_complete=_fol_audit_on_complete,
+                resume_verify_fn=_resume_verify)
             if resumed:
                 print(f"[job_runner] auto-resumed feeding jobs: "
                       f"{', '.join(resumed)}")
