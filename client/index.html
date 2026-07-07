@@ -278,6 +278,33 @@
     color: var(--warn);
   }
 
+/* ---------- Audits tab ---------- */
+.audit-card {
+  border: 1px solid #d7dbe0; border-radius: 8px; background: #fff;
+  padding: 12px 14px; margin-bottom: 12px;
+}
+.audit-card h3 { margin: 0 0 8px; font-size: 14px; }
+.audit-kv { display: grid; grid-template-columns: 160px 1fr; gap: 3px 10px; font-size: 13px; }
+.audit-kv dt { color: #667; }
+.audit-kv dd { margin: 0; }
+.audit-verdict {
+  display: inline-block; padding: 2px 10px; border-radius: 10px;
+  font-size: 12px; font-weight: 600;
+}
+.audit-verdict.v-consistent { background: #e2f5e6; color: #1a7a2e; }
+.audit-verdict.v-inconsistent { background: #fde3e3; color: #b3261e; }
+.audit-verdict.v-inconclusive, .audit-verdict.v-partial { background: #f0f1f3; color: #556; }
+.audit-verdict.v-flagged { background: #fff3d6; color: #8a6100; }
+.audit-finding {
+  border-left: 3px solid #e2a400; background: #fffaf0;
+  padding: 8px 10px; margin: 8px 0; border-radius: 0 6px 6px 0; font-size: 13px;
+}
+.audit-finding .src { font-style: italic; color: #444; margin: 4px 0; }
+.audit-finding .diag { color: #8a6100; }
+.audit-card details { margin-top: 6px; font-size: 12.5px; }
+.audit-card details summary { cursor: pointer; color: #556; }
+.audit-card details li { font-family: ui-monospace, monospace; font-size: 12px; }
+.audit-card .raw-link { font-size: 12px; }
 </style>
 </head>
 <body>
@@ -387,6 +414,7 @@
       <div class="tab" data-tab="graph">Graph</div>
       <div class="tab" data-tab="argmap">Argument Map</div>
       <div class="tab" data-tab="log">Session Log</div>
+      <div class="tab" data-tab="audits">Audits</div>
     </div>
     <div class="pane-body" id="right-body">
       <div id="tab-proposal" class="tab-pane">
@@ -470,6 +498,19 @@
 
       <div id="tab-log" class="tab-pane" style="display:none;">
         <div class="muted">Session events will appear here.</div>
+      </div>
+
+      <div id="tab-audits" class="tab-pane" style="display:none;">
+        <div class="row-flex" style="margin-bottom:10px; align-items:center; gap:8px;">
+          <label for="audit-onto" class="muted" style="margin:0;">Ontology:</label>
+          <select id="audit-onto" style="max-width:280px;"></select>
+          <button class="secondary" id="audit-refresh" data-keep-enabled="1">Refresh</button>
+        </div>
+        <div class="muted" style="margin-bottom:10px;">
+          Audits are evidence about the <em>source text</em> each ontology
+          faithfully represents; they never modify the ontology itself.
+        </div>
+        <div id="audit-body"><div class="muted">Select an ontology.</div></div>
       </div>
     </div>
   </section>
@@ -1302,9 +1343,166 @@ function switchTab(name) {
   if (name === "argmap") refreshArgmap();
   if (name === "log") refreshLog();
   if (name === "extract") initJobsOnFirstView();
+  if (name === "audits") initAuditsOnFirstView();
 }
 
 document.querySelectorAll(".tab").forEach(t => t.onclick = () => switchTab(t.dataset.tab));
+
+// ---------- audits tab ----------
+// Read-only report over GET /ontologies/<n>/fol_audit (latest Prover9/Mace4
+// record) and GET /ontologies/<n>/incoherence (faithful-mode ledger). The
+// audits are evidence about the source text; nothing here can modify an
+// ontology.
+let _auditsInited = false;
+
+async function initAuditsOnFirstView() {
+  if (!_auditsInited) {
+    _auditsInited = true;
+    document.getElementById("audit-refresh").onclick = refreshAudits;
+    document.getElementById("audit-onto").onchange = refreshAudits;
+  }
+  if (!currentOntologies.length) await refreshOntologies();
+  const sel = document.getElementById("audit-onto");
+  const prev = sel.value;
+  sel.innerHTML = "";
+  currentOntologies.forEach(o => {
+    const opt = document.createElement("option");
+    opt.value = o.name;
+    opt.textContent = o.name + (o.active ? " (active)" : "");
+    sel.appendChild(opt);
+  });
+  sel.value = prev && currentOntologies.some(o => o.name === prev)
+    ? prev : (currentActive || (currentOntologies[0] || {}).name || "");
+  refreshAudits();
+}
+
+function _verdictBadge(verdict) {
+  const map = {
+    consistent: ["v-consistent", "consistent"],
+    inconsistent: ["v-inconsistent", "INCONSISTENT"],
+    consistent_partial_translation: ["v-partial", "consistent (partial translation)"],
+    inconclusive: ["v-inconclusive", "inconclusive"],
+  };
+  const [cls, label] = map[verdict] || ["v-inconclusive", verdict || "?"];
+  return `<span class="audit-verdict ${cls}">${esc(label)}</span>`;
+}
+
+async function refreshAudits() {
+  const name = document.getElementById("audit-onto").value;
+  const body = document.getElementById("audit-body");
+  if (!name) { body.innerHTML = '<div class="muted">No ontologies in the library.</div>'; return; }
+  body.innerHTML = '<div class="muted">Loading audits…</div>';
+  const [folRes, incRes] = await Promise.all([
+    fetch(API + "/ontologies/" + encodeURIComponent(name) + "/fol_audit").then(r => r.json().then(d => ({ ok: r.ok, d }))).catch(e => ({ ok: false, d: { error: String(e) } })),
+    fetch(API + "/ontologies/" + encodeURIComponent(name) + "/incoherence").then(r => r.json().then(d => ({ ok: r.ok, d }))).catch(e => ({ ok: false, d: { error: String(e) } })),
+  ]);
+  body.innerHTML = "";
+  body.appendChild(_renderFolCard(name, folRes));
+  body.appendChild(_renderIncoherenceCard(name, incRes));
+}
+
+function _renderFolCard(name, res) {
+  const rawUrl = API + "/ontologies/" + encodeURIComponent(name) + "/fol_audit";
+  if (!res.ok || !res.d.record) {
+    const d = res.d || {};
+    const why = d.status === "no_audit"
+      ? "No FOL audit has been run for this ontology yet. Run one with " +
+        "<code>python -m app.fol_gate ontology/library/" + esc(name) +
+        "/working.owl --mode B --probes</code> on the server" +
+        (d.enabled ? "" : ", or set <code>FOL_GATE_ENABLED=true</code> for automatic end-of-job audits") + "."
+      : "Could not load the audit record: " + esc(d.error || d.detail || "unknown error");
+    return el(`<div class="audit-card"><h3>FOL audit (Prover9 / Mace4)</h3>
+      <div class="muted">${why}</div></div>`);
+  }
+  const r = res.d.record;
+  const mace = r.mace4 || {};
+  const p9 = r.prover9_refutation || {};
+  const skipped = r.skipped_axioms || [];
+  const probesProved = (r.probes || []).filter(p => p.outcome === "proved");
+  const culprits = p9.culprit_axioms || [];
+  const card = el(`<div class="audit-card">
+    <h3>FOL audit (Prover9 / Mace4) ${_verdictBadge(r.verdict)}</h3>
+    <dl class="audit-kv">
+      <dt>Mode</dt><dd>${esc(r.mode)}${r.axiom_profile ? " · ISO 21838-2 profile: " + esc(r.axiom_profile) : " (self-contained cross-check)"}</dd>
+      <dt>Mace4 (model finder)</dt><dd>${esc(mace.outcome || "?")}${mace.domain_size ? " — finite model, domain " + mace.domain_size + " (positive consistency evidence)" : ""}</dd>
+      <dt>Prover9 (refutation)</dt><dd>${esc(p9.outcome || "?")}${p9.outcome === "proved" ? " — definite inconsistency, proof object in the record" : ""}</dd>
+      <dt>Formulas translated</dt><dd>${r.formula_count ?? "?"}</dd>
+      <dt>Axioms skipped</dt><dd>${skipped.length}${skipped.length ? " (translation is partial; see below)" : ""}</dd>
+      ${r.probes ? `<dt>Probes proved</dt><dd>${probesProved.length} of ${(r.probes || []).filter(p => p.kind !== "cap_notice").length}</dd>` : ""}
+      <dt>Finished</dt><dd>${esc(r.finished || "?")}</dd>
+      <dt>Ontology untouched</dt><dd>${r.file_unchanged ? "yes — hash-verified" : "NOT VERIFIED"}</dd>
+    </dl>
+    <div class="raw-link" style="margin-top:8px;">
+      <a href="${rawUrl}" target="_blank" rel="noopener">Raw record (JSON)</a>
+      <span class="muted"> · ${esc(r.record_path || "")}</span>
+    </div>
+  </div>`);
+  if (culprits.length) {
+    const det = el(`<details open><summary>Culprit axioms from the proof (${culprits.length})</summary><ul></ul></details>`);
+    culprits.forEach(c => det.querySelector("ul").appendChild(el(`<li>${esc(c)}</li>`)));
+    card.appendChild(det);
+  }
+  if (probesProved.length) {
+    const det = el(`<details open><summary>Probes proved (${probesProved.length})</summary><ul></ul></details>`);
+    probesProved.forEach(p => det.querySelector("ul").appendChild(
+      el(`<li>${esc(p.kind)}: ${esc(p.class || (p.pair || []).join(" / "))}</li>`)));
+    card.appendChild(det);
+  }
+  if (skipped.length) {
+    const det = el(`<details><summary>Skipped axioms (${skipped.length})</summary><ul></ul></details>`);
+    skipped.slice(0, 200).forEach(s => det.querySelector("ul").appendChild(
+      el(`<li>${esc(s.axiom)} — ${esc(s.reason)}</li>`)));
+    if (skipped.length > 200) det.querySelector("ul").appendChild(
+      el(`<li class="muted">… ${skipped.length - 200} more in the raw record</li>`));
+    card.appendChild(det);
+  }
+  return card;
+}
+
+function _renderIncoherenceCard(name, res) {
+  const rawUrl = API + "/ontologies/" + encodeURIComponent(name) + "/incoherence";
+  if (!res.ok) {
+    return el(`<div class="audit-card"><h3>Incoherence findings (fidelity ledger)</h3>
+      <div class="muted">Could not load: ${esc((res.d || {}).error || "unknown error")}</div></div>`);
+  }
+  const d = res.d;
+  const entries = d.entries || [];
+  const card = el(`<div class="audit-card">
+    <h3>Incoherence findings (fidelity ledger)
+      <span class="audit-verdict ${entries.length ? "v-flagged" : "v-consistent"}">${entries.length} finding${entries.length === 1 ? "" : "s"}</span>
+      <span class="os-badge ${d.fidelity === "faithful" ? "finalized" : "inactive"}" title="Extraction fidelity mode">${esc(d.fidelity || "curated")}</span>
+    </h3>
+    <div id="inc-list"></div>
+    <div class="raw-link" style="margin-top:8px;">
+      <a href="${rawUrl}" target="_blank" rel="noopener">Raw ledger (JSON)</a>
+    </div>
+  </div>`);
+  const list = card.querySelector("#inc-list");
+  if (!entries.length) {
+    list.appendChild(el(`<div class="muted">No flagged claims. ${d.fidelity === "faithful"
+      ? "Nothing the text asserted has clashed under BFO so far."
+      : "This ontology runs in curated mode: clashes are rejected or repaired in-loop rather than committed and flagged."}</div>`));
+    return card;
+  }
+  list.appendChild(el(`<div class="muted" style="margin-bottom:6px;">${esc(d.framing || "")}</div>`));
+  entries.forEach(e2 => {
+    const g = e2.gate_result || {};
+    const src = (e2.provenance || {}).source_text || e2.utterance || "";
+    const axioms = (e2.exclude_axioms || []).map(t => `${t.s} ${t.p} ${t.o}`);
+    const item = el(`<div class="audit-finding">
+      <div class="diag"><strong>${esc((e2.subjects || []).join(", ") || "?")}</strong> — ${esc(g.reason || "incoherent under BFO")}</div>
+      ${src ? `<div class="src">Text: “${esc(src)}”</div>` : ""}
+      <div class="muted">${esc(e2.tier || "?")} tier · ${esc(e2.id || "")} · ${esc((e2.ts || "").slice(0, 19))}</div>
+    </div>`);
+    if (axioms.length) {
+      const det = el(`<details><summary>Committed clash axioms (${axioms.length})</summary><ul></ul></details>`);
+      axioms.forEach(a => det.querySelector("ul").appendChild(el(`<li>${esc(a)}</li>`)));
+      item.appendChild(det);
+    }
+    list.appendChild(item);
+  });
+  return card;
+}
 
 // ---------- misc ----------
 function setBusy(busy) {
