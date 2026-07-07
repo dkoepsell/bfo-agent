@@ -174,6 +174,10 @@ FOL_AXIOM_PROFILE = os.getenv("FOL_AXIOM_PROFILE", "default")
 # Cap on per-class unsatisfiability probes per audit (P-2; cap is logged).
 FOL_PROBES_MAX_CLASSES = int(os.getenv("FOL_PROBES_MAX_CLASSES", "25"))
 
+# ----- Speed instrumentation (SPEC-bfo-agent-speed.md Step 0) -----
+# Per-claim phase timings logged as "claim_timing" events in the session log.
+TIMING_INSTRUMENTATION = os.getenv("TIMING_INSTRUMENTATION", "true").lower() == "true"
+
 # ----- Class-count budget (bfo-agent-spec.md FR-7) -----
 # Soft cap on how many NEW classes a single proposal may mint. Exceeding it
 # raises a warning (logged + surfaced on the proposal), never a silent accept.

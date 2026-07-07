@@ -34,6 +34,7 @@ from . import bfo_catalog
 from . import config
 from . import owl_checks
 from . import stable_iri
+from . import timing
 
 log = logging.getLogger(__name__)
 
@@ -159,25 +160,26 @@ class OntologyManager:
     # ------------------------------------------------------------------ load
     def _load(self):
         """(Re)load BFO and working ontology from disk into a fresh World."""
-        for attr in ("_bfo_depth_cache", "_bfo_anchor_cache", "_working_depth_cache"):
-            self.__dict__.pop(attr, None)
-        self.world = World()
-        self.bfo = self.world.get_ontology(str(self.bfo_path)).load()
+        with timing.phase("reload"):
+            for attr in ("_bfo_depth_cache", "_bfo_anchor_cache", "_working_depth_cache"):
+                self.__dict__.pop(attr, None)
+            self.world = World()
+            self.bfo = self.world.get_ontology(str(self.bfo_path)).load()
 
-        if self.working_path.exists():
-            self.working = self.world.get_ontology(
-                self.working_path.as_uri()
-            ).load()
-        else:
-            self.working = self.world.get_ontology(WORKING_IRI)
-            # Import BFO by adding it to the imported_ontologies list
-            self.working.imported_ontologies.append(self.bfo)
-            if self.seed_path and self.seed_path.exists():
-                self._apply_seed()
-            self.save()
+            if self.working_path.exists():
+                self.working = self.world.get_ontology(
+                    self.working_path.as_uri()
+                ).load()
+            else:
+                self.working = self.world.get_ontology(WORKING_IRI)
+                # Import BFO by adding it to the imported_ontologies list
+                self.working.imported_ontologies.append(self.bfo)
+                if self.seed_path and self.seed_path.exists():
+                    self._apply_seed()
+                self.save()
 
-        self._sanitize_bfo_disjointness()
-        self._strip_subclass_of_property()
+            self._sanitize_bfo_disjointness()
+            self._strip_subclass_of_property()
 
     def _strip_subclass_of_property(self):
         """Drop any ``rdfs:subClassOf`` whose object is a BFO/RO *property*.
@@ -593,7 +595,7 @@ class OntologyManager:
                 proposal, source=getattr(proposal, "utterance", "") or ""
             )
 
-        with self.working:
+        with timing.phase("apply"), self.working:
             # Entities first so relations can reference them
             for ent in proposal.entities:
                 try:
@@ -735,8 +737,9 @@ class OntologyManager:
         buf = io.StringIO()
         try:
             with redirect_stdout(buf), redirect_stderr(buf):
-                with _REASONER_LOCK, self.world:
-                    sync_reasoner(self.world, infer_property_values=False)
+                with timing.phase("reason_dry_run"):
+                    with _REASONER_LOCK, self.world:
+                        sync_reasoner(self.world, infer_property_values=False)
         except Exception as e:
             # HermiT raises on inconsistency in some versions; in others it
             # just prints. We try to surface both.
@@ -810,8 +813,9 @@ class OntologyManager:
         buf = io.StringIO()
         try:
             with redirect_stdout(buf), redirect_stderr(buf):
-                with _REASONER_LOCK, self.world:
-                    sync_reasoner(self.world, infer_property_values=False)
+                with timing.phase("reason_dry_run"):
+                    with _REASONER_LOCK, self.world:
+                        sync_reasoner(self.world, infer_property_values=False)
         except Exception as e:
             # A reasoner exception means the ontology is outright inconsistent,
             # which is strictly worse than incoherent. Surface it as incoherent
@@ -1087,8 +1091,9 @@ class OntologyManager:
         buf = io.StringIO()
         try:
             with redirect_stdout(buf), redirect_stderr(buf):
-                with _REASONER_LOCK, self.world:
-                    sync_reasoner(self.world, infer_property_values=False)
+                with timing.phase("reason_verify"):
+                    with _REASONER_LOCK, self.world:
+                        sync_reasoner(self.world, infer_property_values=False)
         except Exception as e:  # noqa: BLE001 — reasoner raises on inconsistency
             self._load()  # discard partial inference state
             return False, f"inconsistent ontology: {str(e)[:200]}"
@@ -1102,8 +1107,9 @@ class OntologyManager:
 
     # ------------------------------------------------------- persistence
     def save(self):
-        self.working_path.parent.mkdir(parents=True, exist_ok=True)
-        self.working.save(file=str(self.working_path), format="rdfxml")
+        with timing.phase("save"):
+            self.working_path.parent.mkdir(parents=True, exist_ok=True)
+            self.working.save(file=str(self.working_path), format="rdfxml")
 
     def stats(self) -> dict:
         return {

@@ -15,6 +15,7 @@ from __future__ import annotations
 import json
 import logging
 import threading
+import time
 from pathlib import Path
 from uuid import uuid4
 
@@ -32,6 +33,7 @@ from . import kext as kext_mod
 from . import job_runner
 from . import job_transfer
 from . import jobs as jobs_store
+from . import timing
 from .coherence_gate import GateOutcome, GatePolicy
 from .extractor import ClaimExtractor, chunk_text
 from .llm_proposer import LLMProposer
@@ -420,6 +422,37 @@ def _count_pending(job_id: str) -> int:
                if c["status"] == "pending" and c.get("approved"))
 
 
+def _emit_claim_timing(session_id: str, job_id: str, claim_id,
+                       proposal_id, verdict, committed: bool,
+                       gate_attempts, mgr, t_claim: float) -> None:
+    """Emit one "claim_timing" event (SPEC-bfo-agent-speed.md Step 0).
+
+    ``ms`` carries the per-phase timings accumulated in :mod:`app.timing`
+    plus a wall-clock ``total`` measured from claim selection. Pure
+    instrumentation: guarded by TIMING_INSTRUMENTATION and wrapped so a
+    telemetry failure can never break the feed.
+    """
+    if not config.TIMING_INSTRUMENTATION:
+        return
+    try:
+        ms = timing.snapshot()
+        ms["total"] = round((time.perf_counter() - t_claim) * 1000, 1)
+        st = mgr.stats()
+        log_event(session_id, "claim_timing", {
+            "job_id": job_id,
+            "claim_id": claim_id,
+            "proposal_id": proposal_id,
+            "verdict": verdict,
+            "committed": committed,
+            "gate_attempts": gate_attempts,
+            "ms": ms,
+            "stats": {"classes": st.get("num_classes"),
+                      "individuals": st.get("num_individuals")},
+        })
+    except Exception as e:  # noqa: BLE001 — never break the feed for telemetry
+        log.warning("claim_timing emission failed: %s", e)
+
+
 def _feed_one_core(job_id: str, auto_accept: bool = True) -> dict:
     """Feed the next pending+approved claim in the job.
 
@@ -459,18 +492,23 @@ def _feed_one_core(job_id: str, auto_accept: bool = True) -> dict:
             return {"done": True, "remaining": 0}
         claim = pending[0]
 
+        # Per-claim phase timers (SPEC-bfo-agent-speed.md Step 0).
+        timing.start_claim()
+        t_claim = time.perf_counter()
+
         mgr = _get_manager()
         proposer = _get_proposer()
         ctx = mgr.summary_for_proposer(utterance=claim["claim"])
 
         try:
-            proposal = proposer.propose(
-                utterance=claim["claim"],
-                session_id=session_id,
-                working_classes=ctx["working_classes"],
-                known_individuals=ctx["known_individuals"],
-                relevant_classes=ctx.get("relevant_classes"),
-            )
+            with timing.phase("propose"):
+                proposal = proposer.propose(
+                    utterance=claim["claim"],
+                    session_id=session_id,
+                    working_classes=ctx["working_classes"],
+                    known_individuals=ctx["known_individuals"],
+                    relevant_classes=ctx.get("relevant_classes"),
+                )
         except Exception as e:
             jobs_store.update_claim_status(
                 job_id, claim["id"], "error", verdict="error"
@@ -478,6 +516,8 @@ def _feed_one_core(job_id: str, auto_accept: bool = True) -> dict:
             log_event(session_id, "propose_error",
                       {"utterance": claim["claim"], "error": str(e),
                        "job_id": job_id, "claim_id": claim["id"]})
+            _emit_claim_timing(session_id, job_id, claim["id"], None,
+                               "error", False, None, mgr, t_claim)
             remaining = _count_pending(job_id)
             return {
                 "claim": claim,
@@ -503,12 +543,13 @@ def _feed_one_core(job_id: str, auto_accept: bool = True) -> dict:
         # consistent-but-incoherent straddles the legacy check missed.
         gate_run = None
         if config.ENABLE_COHERENCE_GATE:
-            run = _run_coherence_gate(
-                proposal, mgr, proposer, ctx, session_id,
-                context={"job_id": job_id, "claim_id": claim["id"],
-                         "proposal_id": proposal.proposal_id},
-                faithful=faithful, exclude_axioms=exclusions,
-            )
+            with timing.phase("gate_total"):
+                run = _run_coherence_gate(
+                    proposal, mgr, proposer, ctx, session_id,
+                    context={"job_id": job_id, "claim_id": claim["id"],
+                             "proposal_id": proposal.proposal_id},
+                    faithful=faithful, exclude_axioms=exclusions,
+                )
             gate_run = run
             proposal = run.proposal
             gate_accepted = run.outcome in (GateOutcome.ACCEPT,
@@ -523,7 +564,8 @@ def _feed_one_core(job_id: str, auto_accept: bool = True) -> dict:
             proposal.reasoner_detail = run.result.reason or run.result.justification
         else:
             try:
-                ok, detail = mgr.check_consistency_dry_run(proposal)
+                with timing.phase("gate_total"):
+                    ok, detail = mgr.check_consistency_dry_run(proposal)
                 proposal.reasoner_verdict = "consistent" if ok else "inconsistent"
                 proposal.reasoner_detail = detail
             except Exception as e:
@@ -552,12 +594,13 @@ def _feed_one_core(job_id: str, auto_accept: bool = True) -> dict:
                 # coherent view so only NEW incoherence is reported.
                 flagged = gate_run is not None and \
                     gate_run.outcome == GateOutcome.FLAG
-                warnings = mgr.commit_proposal(
-                    proposal,
-                    verify=not flagged,
-                    faithful=faithful,
-                    exclude_axioms=exclusions,
-                )
+                with timing.phase("commit_total"):
+                    warnings = mgr.commit_proposal(
+                        proposal,
+                        verify=not flagged,
+                        faithful=faithful,
+                        exclude_axioms=exclusions,
+                    )
             except CommitCoherenceError as e:
                 # commit-time backstop rolled the ontology back: the
                 # proposal would have made the base incoherent. Treat it
@@ -611,11 +654,15 @@ def _feed_one_core(job_id: str, auto_accept: bool = True) -> dict:
                             "claim_id": claim["id"],
                         })
                 else:
-                    scaffolded = _apply_scaffolding(proposal, mgr, session_id)
-                git_commit_working_ontology(
-                    session_id, proposal.proposal_id,
-                    claim["claim"][:80]
-                )
+                    with timing.phase("scaffolding"):
+                        scaffolded = _apply_scaffolding(
+                            proposal, mgr, session_id
+                        )
+                with timing.phase("git"):
+                    git_commit_working_ontology(
+                        session_id, proposal.proposal_id,
+                        claim["claim"][:80]
+                    )
                 log_event(session_id, "commit", {
                     "proposal_id": proposal.proposal_id,
                     "decision": "accept",
@@ -636,6 +683,13 @@ def _feed_one_core(job_id: str, auto_accept: bool = True) -> dict:
             job_id, claim["id"], new_status,
             proposal_id=proposal.proposal_id,
             verdict=verdict,
+        )
+
+        _emit_claim_timing(
+            session_id, job_id, claim["id"], proposal.proposal_id,
+            verdict, committed,
+            gate_run.attempts if gate_run is not None else None,
+            mgr, t_claim,
         )
 
     remaining = _count_pending(job_id)
