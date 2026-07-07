@@ -188,6 +188,14 @@ GATE_REASONER_STRUCTURAL_SKIP = (
     os.getenv("GATE_REASONER_STRUCTURAL_SKIP", "false").lower() == "true"
 )
 
+# ----- In-memory dry-run (SPEC-bfo-agent-speed.md change 2) -----
+# Apply-and-rollback proposals against the live in-memory world and reason in
+# a disposable scratch world serialized from memory, instead of reloading the
+# working file from disk 2-5x per claim. The load-time sanitizer guards run
+# once at startup plus a targeted per-proposal check (_proposal_guards); the
+# guarantee is unchanged.
+INMEM_DRY_RUN = os.getenv("INMEM_DRY_RUN", "false").lower() == "true"
+
 # ----- Class-count budget (bfo-agent-spec.md FR-7) -----
 # Soft cap on how many NEW classes a single proposal may mint. Exceeding it
 # raises a warning (logged + surfaced on the proposal), never a silent accept.
