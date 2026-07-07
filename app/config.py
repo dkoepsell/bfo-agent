@@ -178,6 +178,16 @@ FOL_PROBES_MAX_CLASSES = int(os.getenv("FOL_PROBES_MAX_CLASSES", "25"))
 # Per-claim phase timings logged as "claim_timing" events in the session log.
 TIMING_INSTRUMENTATION = os.getenv("TIMING_INSTRUMENTATION", "true").lower() == "true"
 
+# ----- Structural reasoner skip (SPEC-bfo-agent-speed.md change 3) -----
+# When the construction+lint tiers fully resolve every touched entity's BFO
+# anchors and the proposal introduces nothing structure cannot decide (no
+# class expressions, restrictions, negations, equivalence/disjointness),
+# skip the per-claim HermiT tier. The commit-time / checkpoint full pass
+# remains the backstop; this changes when the JVM runs, not whether.
+GATE_REASONER_STRUCTURAL_SKIP = (
+    os.getenv("GATE_REASONER_STRUCTURAL_SKIP", "false").lower() == "true"
+)
+
 # ----- Class-count budget (bfo-agent-spec.md FR-7) -----
 # Soft cap on how many NEW classes a single proposal may mint. Exceeding it
 # raises a warning (logged + surfaced on the proposal), never a silent accept.

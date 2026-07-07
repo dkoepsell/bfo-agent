@@ -4,14 +4,21 @@ This sits between "LLM proposes axioms" and "commit to the working ontology".
 It holds the global BFO constraint that the proposer, emitting locally-plausible
 single axioms, cannot. Two tiers, cheap first:
 
-  1. Lint tier (no reasoner): for each newly proposed class, fold its proposed
-     BFO parents together with its already-committed BFO parents and test the
-     resulting set for a disjoint-parent straddle via bfo_catalog.straddles.
-     This catches the classic "Force is a Quality and Force is a Disposition"
-     family instantly with a localized reason.
+  1. Lint tier (no reasoner): structural checks over BFO anchors
+     (app/gate_structural.py, SPEC-bfo-agent-speed.md change 3). For each
+     newly proposed class, fold its proposed BFO parents together with its
+     already-committed BFO parents and test the resulting set for a
+     disjoint-parent straddle via bfo_catalog.straddles; same fold for each
+     proposed/typed individual's types; plus a domain/range clash test
+     against bfo_catalog.relation_signatures(). This catches the classic
+     "Force is a Quality and Force is a Disposition" family instantly with a
+     localized reason and no JVM.
   2. Reasoner tier (HermiT): run the coherence-correct dry-run on the candidate
      ontology and reject if any class becomes unsatisfiable. Catches clashes
-     mediated by restrictions or relation signatures that the lint cannot see.
+     mediated by restrictions or class expressions that the lint cannot see.
+     When GATE_REASONER_STRUCTURAL_SKIP is on and the lint resolved every
+     touched reference with nothing structure cannot decide, this tier is
+     skipped (the commit/checkpoint full pass remains the certificate).
 
 The gate returns a GateResult (ACCEPT, REPAIR, or REJECT). Policy handling
 (reject-resample, repair, reground) is dispatched by apply_policy; the gate
@@ -24,7 +31,17 @@ from dataclasses import dataclass, field
 from typing import Optional
 
 from . import bfo_catalog
+from . import config
 from . import construction_linter
+from . import gate_structural
+from .gate_structural import (  # noqa: F401  (re-exported; scaffolding/repair use them)
+    _collect_class_parents,
+    _is_subclass_predicate,
+    _local,
+    _proposed_class_types,
+    _ref_anchors,
+    proposal_needs_reasoner,
+)
 
 
 class GateOutcome(str, enum.Enum):
@@ -75,13 +92,19 @@ class GateResult:
     # view itself was incoherent (faithful mode only). Logged loudly by the
     # caller; construction+lint verdicts still stand.
     degraded: bool = False
+    # SPEC-bfo-agent-speed.md change 3: True when the reasoner tier was
+    # skipped because the lint fully resolved every touched reference and the
+    # proposal introduces nothing structure cannot decide. Lets telemetry
+    # count JVM avoidance. Only serialized when True so flag-off event dicts
+    # stay byte-identical to before.
+    reasoner_skipped: bool = False
 
     @property
     def accepted(self) -> bool:
         return self.outcome == GateOutcome.ACCEPT
 
     def to_dict(self) -> dict:
-        return {
+        d = {
             "outcome": self.outcome.value,
             "tier": self.tier.value,
             "reason": self.reason,
@@ -92,73 +115,9 @@ class GateResult:
             "violations": self.violations,
             "degraded": self.degraded,
         }
-
-
-def _is_subclass_predicate(p: str) -> bool:
-    return "subClassOf" in p
-
-
-def _local(ref: str) -> str:
-    s = ref.split("#")[-1]
-    s = s.split("/")[-1]
-    return s.split(":")[-1]
-
-
-def _collect_class_parents(proposal) -> dict[str, set[str]]:
-    """Map each subject class reference to the set of parent references it gains.
-
-    Sources merged: class entities (their bfo_type and parent_class) and any
-    rdfs:subClassOf relations in the proposal.
-    """
-    parents: dict[str, set[str]] = {}
-
-    for ent in proposal.entities:
-        if getattr(ent, "kind", None) != "class":
-            continue
-        subj = ent.iri_suggestion or ent.label
-        bucket = parents.setdefault(subj, set())
-        if getattr(ent, "bfo_type", None):
-            bucket.add(ent.bfo_type)
-        if getattr(ent, "parent_class", None):
-            bucket.add(ent.parent_class)
-
-    for rel in proposal.relations:
-        if _is_subclass_predicate(rel.p):
-            parents.setdefault(rel.s, set()).add(rel.o)
-
-    return parents
-
-
-def _proposed_class_types(proposal) -> dict[str, str]:
-    """Map local class name -> its proposed BFO type fragment."""
-    out: dict[str, str] = {}
-    for ent in proposal.entities:
-        if getattr(ent, "kind", None) == "class" and getattr(ent, "bfo_type", None):
-            out[_local(ent.iri_suggestion or ent.label)] = ent.bfo_type
-    return out
-
-
-def _ref_anchors(ref: str, manager, proposed_types: dict[str, str]) -> set[str]:
-    """Resolve a parent reference to its BFO category anchor(s).
-
-    A BFO fragment resolves to itself; a committed working class resolves to
-    its BFO ancestors; an as-yet-uncommitted class proposed in the same turn
-    resolves to its proposed bfo_type.
-    """
-    frag = bfo_catalog.normalize_fragment(ref)
-    if frag in bfo_catalog.BFO_PARENT:
-        return {frag}
-
-    committed = manager.committed_bfo_anchors(ref)
-    if committed:
-        return committed
-
-    local = _local(ref)
-    if local in proposed_types:
-        t = bfo_catalog.normalize_fragment(proposed_types[local])
-        if t in bfo_catalog.BFO_PARENT:
-            return {t}
-    return set()
+        if self.reasoner_skipped:
+            d["reasoner_skipped"] = True
+        return d
 
 
 def construction_check(
@@ -191,31 +150,39 @@ def construction_check(
 
 
 def lint_check(proposal, manager) -> Optional[GateResult]:
-    """Lint tier: detect disjoint-parent straddles without a reasoner.
+    """Lint tier: structural checks, no reasoner (speed-spec change 3).
 
-    Returns a REJECT GateResult on the first straddle found, else None.
+    Detects disjoint-parent straddles on proposed classes, disjoint-type
+    straddles on proposed individuals (including rdf:type edges onto existing
+    individuals), and BFO relation-signature (domain/range) clashes. Returns
+    a REJECT GateResult on the first clash found, else None.
     """
-    proposed_types = _proposed_class_types(proposal)
-    class_parents = _collect_class_parents(proposal)
+    result, _resolved_all = _lint_check_with_resolution(proposal, manager)
+    return result
 
-    for subject, parent_refs in class_parents.items():
-        anchors: set[str] = set()
-        # Already-committed BFO parents of this class (cross-turn straddles).
-        anchors |= manager.committed_bfo_anchors(subject)
-        # Newly proposed parents this turn.
-        for ref in parent_refs:
-            anchors |= _ref_anchors(ref, manager, proposed_types)
 
-        hit, pair = bfo_catalog.straddles(anchors)
-        if hit and pair is not None:
-            return GateResult(
-                outcome=GateOutcome.REJECT,
-                tier=GateTier.LINT,
-                reason=bfo_catalog.describe_clash(*pair),
-                clash_pair=pair,
-                subject=_local(subject),
-            )
-    return None
+def _lint_check_with_resolution(
+    proposal, manager
+) -> tuple[Optional[GateResult], bool]:
+    """lint_check plus whether every touched reference resolved to anchors.
+
+    The resolution bit feeds proposal_needs_reasoner: an unresolvable anchor
+    means the structure could not see the whole proposal, so the reasoner
+    tier must not be skipped.
+    """
+    clash, resolved_all = gate_structural.structural_lint(proposal, manager)
+    if clash is None:
+        return None, resolved_all
+    return (
+        GateResult(
+            outcome=GateOutcome.REJECT,
+            tier=GateTier.LINT,
+            reason=clash.reason,
+            clash_pair=clash.clash_pair,
+            subject=clash.subject,
+        ),
+        resolved_all,
+    )
 
 
 def reasoner_check(
@@ -262,11 +229,26 @@ def gate(
         if construction is not None:
             return construction
 
-    lint = lint_check(proposal, manager)
+    lint, lint_resolved_all = _lint_check_with_resolution(proposal, manager)
     if lint is not None:
         return lint
 
     if run_reasoner:
+        # SPEC-bfo-agent-speed.md change 3: when every touched reference
+        # resolved to BFO anchors and the proposal introduces nothing
+        # structure cannot decide, skip the JVM. Default off; the
+        # commit-time / checkpoint full pass remains the backstop.
+        if config.GATE_REASONER_STRUCTURAL_SKIP:
+            needed, why = proposal_needs_reasoner(
+                proposal, manager, lint_resolved_all
+            )
+            if not needed:
+                return GateResult(
+                    outcome=GateOutcome.ACCEPT,
+                    tier=GateTier.LINT,
+                    reason=f"reasoner skipped (structural): {why}",
+                    reasoner_skipped=True,
+                )
         reasoner = reasoner_check(proposal, manager,
                                   exclude_axioms=exclude_axioms)
         if reasoner is not None:

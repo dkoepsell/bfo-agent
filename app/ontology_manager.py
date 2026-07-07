@@ -866,6 +866,44 @@ class OntologyManager:
             pass
         return anchors
 
+    def committed_individual_anchors(self, ref: str) -> set[str]:
+        """Return all BFO category fragments among an existing INDIVIDUAL's types.
+
+        Mirrors :meth:`committed_bfo_anchors` for the ABox
+        (SPEC-bfo-agent-speed.md change 3): resolve ``ref`` to an individual
+        (full IRI first, then local-name fallback), then collect the BFO
+        fragments among the ancestors of every asserted type. Used by the
+        gate's lint tier to fold an individual's already-committed types into
+        the straddle test. Returns an empty set for a reference that does not
+        resolve to an existing individual.
+        """
+        full = _resolve_iri(ref, WORKING_IRI)
+        ind = self.world[full]
+        if ind is None or isinstance(ind, type):
+            local = _local_name(ref)
+            try:
+                ind = next(
+                    (i for i in self.working.individuals() if i.name == local),
+                    None,
+                )
+            except Exception:
+                ind = None
+        if ind is None or isinstance(ind, type) or not hasattr(ind, "is_a"):
+            return set()
+        anchors: set[str] = set()
+        try:
+            for t in ind.is_a:
+                if not hasattr(t, "ancestors"):
+                    continue
+                for anc in t.ancestors():
+                    if hasattr(anc, "iri"):
+                        frag = _local_name(anc.iri)
+                        if frag.startswith("BFO_"):
+                            anchors.add(frag)
+        except Exception:
+            pass
+        return anchors
+
     def add_existential_restriction(
         self, class_ref: str, prop_frag: str, filler_frag: str
     ) -> bool:
