@@ -12,9 +12,12 @@ Endpoints:
 """
 from __future__ import annotations
 
+import logging
 import threading
 from pathlib import Path
 from uuid import uuid4
+
+log = logging.getLogger(__name__)
 
 from flask import Flask, jsonify, request
 from flask_cors import CORS
@@ -23,6 +26,7 @@ from pydantic import ValidationError
 from . import config
 from . import coherence_gate as gate_mod
 from . import gate_client
+from . import incoherence_ledger as ledger_mod
 from . import kext as kext_mod
 from . import job_runner
 from . import jobs as jobs_store
@@ -98,14 +102,28 @@ def _get_extractor() -> ClaimExtractor:
     return _extractor
 
 
-def _gate_policy() -> GatePolicy:
+def _gate_policy(faithful: bool = False) -> GatePolicy:
+    # fidelity-mode-spec.md FM-4: faithful extraction forces annotate --
+    # lint/reasoner clashes are flagged and committed as-asserted, never
+    # repaired or content-resampled, regardless of GATE_POLICY.
+    if faithful:
+        return GatePolicy.ANNOTATE
     try:
         return GatePolicy(config.GATE_POLICY)
     except ValueError:
         return GatePolicy.REJECT_RESAMPLE
 
 
-def _run_coherence_gate(proposal, mgr, proposer, ctx, session_id, context=None):
+def _active_fidelity() -> str:
+    """Fidelity mode of the active ontology (FM-1/FM-2); curated on any error."""
+    try:
+        return _get_registry().fidelity()
+    except Exception:
+        return "curated"
+
+
+def _run_coherence_gate(proposal, mgr, proposer, ctx, session_id, context=None,
+                        faithful=False, exclude_axioms=None):
     """Run the coherence gate under the configured policy and log the events.
 
     Returns the GateRun. The caller decides what to do with GateRun.outcome and
@@ -153,13 +171,22 @@ def _run_coherence_gate(proposal, mgr, proposer, ctx, session_id, context=None):
     run = gate_mod.run_with_policy(
         proposal,
         mgr,
-        policy=_gate_policy(),
+        policy=_gate_policy(faithful),
         resample_fn=resample_fn,
         run_reasoner=config.GATE_RUN_REASONER,
         max_attempts=config.GATE_MAX_ATTEMPTS,
         run_construction=config.ENABLE_CONSTRUCTION_LINTER,
         strict_closed_vocab=config.STRICT_CLOSED_VOCAB,
+        exclude_axioms=exclude_axioms,
     )
+
+    if run.result.degraded:
+        # FM-10: reasoner tier was skipped because the coherent view itself
+        # is incoherent (ledger reconstruction incomplete). Log loudly.
+        log.warning(
+            "Coherence gate DEGRADED for session %s: %s",
+            session_id, run.result.reason,
+        )
 
     # Stamp the (possibly rewritten) proposal with the gate verdict.
     final = run.proposal
@@ -252,6 +279,83 @@ def _apply_scaffolding(proposal, mgr, session_id) -> list[dict]:
 
     log_event(session_id, "scaffold", {"applied": applied})
     return applied
+
+
+def _ledger_faithful_commit(mgr, proposal, gate_run, session_id,
+                            provenance) -> str | None:
+    """Record evidence after a faithful-mode commit (FM-7/FM-8).
+
+    Two sources, mutually exclusive by construction (a FLAGged commit skips
+    the post-commit verify): a gate FLAG carrying the pre-commit diagnosis,
+    or a post-commit verify that found NEW incoherence (retroactive ABox
+    clash). Returns the ledger entry id, or None when the commit was coherent.
+    Never raises -- evidence recording must not fail a commit that fidelity
+    says stands.
+    """
+    try:
+        if gate_run is not None and gate_run.outcome == GateOutcome.FLAG:
+            result = gate_run.result
+        elif getattr(mgr, "last_commit_incoherence", None):
+            detail = mgr.last_commit_incoherence.get("detail", "")
+            unsat = []
+            if "unsatisfiable classes:" in detail:
+                unsat = [
+                    s.strip() for s in
+                    detail.split("unsatisfiable classes:", 1)[1].split("\n")[0].split(",")
+                    if s.strip()
+                ]
+            result = gate_mod.GateResult(
+                outcome=gate_mod.GateOutcome.FLAG,
+                tier=gate_mod.GateTier.REASONER,
+                reason=f"post-commit incoherence: {detail}",
+                unsat_classes=unsat,
+            )
+        else:
+            return None
+
+        subjects = [result.subject] if result.subject else []
+        subjects += [iri for iri in result.unsat_classes if iri not in subjects]
+        exclude = gate_mod.clash_exclusion_triples(proposal, result)
+        entry_id = ledger_mod.record_flag(
+            mgr, proposal, result.to_dict(), exclude, subjects,
+            provenance=provenance,
+        )
+        log_event(session_id, "incoherence_flagged", {
+            "ledger_id": entry_id,
+            "subjects": subjects,
+            "reason": result.reason,
+            "exclude_axioms": exclude,
+            **{k: v for k, v in (provenance or {}).items()
+               if k in ("job_id", "claim_id")},
+        })
+        return entry_id
+    except Exception:
+        log.exception("Failed to record incoherence ledger entry")
+        return None
+
+
+def _fol_audit_on_complete(job_id: str, state: dict) -> str | None:
+    """End-of-job FOL audit hook (fol-gate-spec.md FG-2.2).
+
+    Evidence-only and best-effort: runs once after a feed job completes,
+    writes the R-1 record under the ontology's sessions/ directory, and
+    returns a one-line summary for the completion notification. Never blocks
+    or fails the job; disabled unless FOL_GATE_ENABLED and the prover9/mace4
+    binaries are present.
+    """
+    if not config.FOL_GATE_ENABLED:
+        return None
+    try:
+        from . import fol_gate
+
+        if not fol_gate.binaries_available():
+            return None
+        mgr = _get_manager()
+        record = fol_gate.audit(mgr.working_path, mode="B", probes=True)
+        return fol_gate.summarize(record)
+    except Exception as e:
+        log.exception("FOL audit failed for job %s", job_id)
+        return f"FOL audit failed: {e}"
 
 
 # ---------------------------------------------------------------------------
@@ -381,19 +485,38 @@ def _feed_one_core(job_id: str, auto_accept: bool = True) -> dict:
                 "remaining": remaining,
             }
 
+        # Extraction fidelity (fidelity-mode-spec.md): in faithful mode the
+        # ontology must stay true to the text including its errors -- clashes
+        # are flagged and committed as-asserted, with the ledgered clash
+        # axioms excluded from dry-runs so each claim is judged on its own
+        # merits (FM-9).
+        faithful = _active_fidelity() == "faithful"
+        exclusions = (
+            ledger_mod.exclusion_triples(mgr.working_path) if faithful else None
+        )
+
         # Coherence gate under the configured policy. This is the
         # load-bearing check: it may rewrite the proposal (repair/resample)
         # before it becomes eligible to commit, and it catches the
         # consistent-but-incoherent straddles the legacy check missed.
+        gate_run = None
         if config.ENABLE_COHERENCE_GATE:
             run = _run_coherence_gate(
                 proposal, mgr, proposer, ctx, session_id,
                 context={"job_id": job_id, "claim_id": claim["id"],
                          "proposal_id": proposal.proposal_id},
+                faithful=faithful, exclude_axioms=exclusions,
             )
+            gate_run = run
             proposal = run.proposal
-            gate_accepted = run.outcome == GateOutcome.ACCEPT
-            verdict = "consistent" if gate_accepted else "inconsistent"
+            gate_accepted = run.outcome in (GateOutcome.ACCEPT,
+                                            GateOutcome.FLAG)
+            if run.outcome == GateOutcome.ACCEPT:
+                verdict = "consistent"
+            elif run.outcome == GateOutcome.FLAG:
+                verdict = "flagged"
+            else:
+                verdict = "inconsistent"
             proposal.reasoner_verdict = verdict
             proposal.reasoner_detail = run.result.reason or run.result.justification
         else:
@@ -421,7 +544,18 @@ def _feed_one_core(job_id: str, auto_accept: bool = True) -> dict:
             new_status = "inconsistent"
         elif auto_accept:
             try:
-                warnings = mgr.commit_proposal(proposal)
+                # Faithful mode (FM-6): a gate FLAG already carries the
+                # incoherence verdict, so skip the redundant post-commit
+                # reasoner pass; an ACCEPTed claim is verified against the
+                # coherent view so only NEW incoherence is reported.
+                flagged = gate_run is not None and \
+                    gate_run.outcome == GateOutcome.FLAG
+                warnings = mgr.commit_proposal(
+                    proposal,
+                    verify=not flagged,
+                    faithful=faithful,
+                    exclude_axioms=exclusions,
+                )
             except CommitCoherenceError as e:
                 # commit-time backstop rolled the ontology back: the
                 # proposal would have made the base incoherent. Treat it
@@ -443,10 +577,39 @@ def _feed_one_core(job_id: str, auto_accept: bool = True) -> dict:
                 })
                 new_status = "error"
             else:
+                if faithful:
+                    entry_id = _ledger_faithful_commit(
+                        mgr, proposal, gate_run, session_id,
+                        {"session_id": session_id, "job_id": job_id,
+                         "claim_id": claim["id"],
+                         "source_text": claim["claim"]},
+                    )
+                    if entry_id:
+                        verdict = "flagged"
+                        warnings = (warnings or []) + [
+                            f"incoherence-flagged [{entry_id}]: committed "
+                            f"as-asserted; see incoherence ledger"
+                        ]
                 warnings = (warnings or []) + _budget_and_kext_notes(
                     proposal, mgr
                 )
-                scaffolded = _apply_scaffolding(proposal, mgr, session_id)
+                # FM-5: in faithful mode scaffolding is advisory -- the BFO
+                # constraint a category requires becomes an open question,
+                # never a committed axiom the text did not assert.
+                if faithful:
+                    scaffolded = []
+                    directives = gate_mod.scaffolding_directives(proposal, mgr)
+                    if directives:
+                        for d in directives:
+                            if d.get("question"):
+                                proposal.open_questions.append(d["question"])
+                        log_event(session_id, "scaffold_advisory", {
+                            "directives": directives,
+                            "job_id": job_id,
+                            "claim_id": claim["id"],
+                        })
+                else:
+                    scaffolded = _apply_scaffolding(proposal, mgr, session_id)
                 git_commit_working_ontology(
                     session_id, proposal.proposal_id,
                     claim["claim"][:80]
@@ -454,6 +617,7 @@ def _feed_one_core(job_id: str, auto_accept: bool = True) -> dict:
                 log_event(session_id, "commit", {
                     "proposal_id": proposal.proposal_id,
                     "decision": "accept",
+                    "fidelity": "faithful" if faithful else "curated",
                     "warnings": warnings,
                     "scaffolded": scaffolded,
                     "proposal": proposal.model_dump(),
@@ -670,7 +834,63 @@ def create_app() -> Flask:
         except Exception as e:
             return jsonify({"status": "error", "error": str(e)}), 500
 
+    @app.get("/ontologies/<name>/incoherence")
+    def ontology_incoherence(name):
+        """Incoherence-findings report (fidelity-mode-spec.md FM-11).
 
+        Renders the ledger: findings about the extracted TEXT (the ontology
+        faithfully represents it; these claims are jointly incoherent under
+        BFO), each with provenance back to the source passage. Empty for
+        curated ontologies.
+        """
+        try:
+            reg = _get_registry()
+            try:
+                mgr = reg.get(name)
+            except KeyError:
+                return _not_found_response(name)
+            entries = ledger_mod.read_all(mgr.working_path)
+            return jsonify({
+                "ontology": name,
+                "fidelity": reg.fidelity(name),
+                "framing": (
+                    "The ontology faithfully represents its source text; "
+                    "each finding below is evidence that claims OF THE TEXT "
+                    "are jointly inconsistent or incoherent under BFO."
+                ),
+                "count": len(entries),
+                "entries": entries,
+            })
+        except Exception as e:
+            return jsonify({"status": "error", "error": str(e)}), 500
+
+    @app.get("/ontologies/<name>/fol_audit")
+    def ontology_fol_audit(name):
+        """Latest FOL audit record for an ontology (fol-gate-spec.md R-1/R-2).
+
+        Read-only: reports the most recent Prover9/Mace4 audit; POST-free by
+        design -- audits run at end-of-job or via the CLI, never from here.
+        """
+        try:
+            reg = _get_registry()
+            try:
+                mgr = reg.get(name)
+            except KeyError:
+                return _not_found_response(name)
+            from . import fol_gate
+
+            record = fol_gate.latest_record(mgr.working_path)
+            if record is None:
+                return jsonify({
+                    "ontology": name,
+                    "status": "no_audit",
+                    "detail": "no FOL audit has been run for this ontology",
+                    "enabled": config.FOL_GATE_ENABLED,
+                    "binaries_available": fol_gate.binaries_available(),
+                }), 404
+            return jsonify({"ontology": name, "record": record})
+        except Exception as e:
+            return jsonify({"status": "error", "error": str(e)}), 500
 
     @app.post("/ontologies/preview-import")
     def preview_import_ontology():
@@ -895,6 +1115,13 @@ def create_app() -> Flask:
                 _proposal_cache.pop(body.proposal_id, None)
                 return jsonify({"status": "rejected"})
 
+            faithful = _active_fidelity() == "faithful"
+            exclusions = (
+                ledger_mod.exclusion_triples(mgr.working_path)
+                if faithful else None
+            )
+            flag_result = None
+
             # Defensive gate: a user-edited proposal must not bypass coherence.
             if config.ENABLE_COHERENCE_GATE:
                 try:
@@ -903,6 +1130,7 @@ def create_app() -> Flask:
                         run_reasoner=config.GATE_RUN_REASONER,
                         run_construction=config.ENABLE_CONSTRUCTION_LINTER,
                         strict_closed_vocab=config.STRICT_CLOSED_VOCAB,
+                        exclude_axioms=exclusions,
                     )
                 except Exception as e:
                     result = None
@@ -915,21 +1143,35 @@ def create_app() -> Flask:
                                  "proposal_id": body.proposal_id},
                     )
                     if not result.accepted:
-                        log_event(body.session_id, "gate_reject", {
-                            "proposal_id": body.proposal_id,
-                            "reason": result.reason,
-                            "tier": result.tier.value,
-                        })
-                        return jsonify({
-                            "status": "rejected_by_gate",
-                            "tier": result.tier.value,
-                            "reason": result.reason,
-                            "justification": result.justification,
-                            "unsat_classes": result.unsat_classes,
-                        }), 409
+                        # FM-4: in faithful mode a lint/reasoner clash is
+                        # evidence about the text, not grounds to refuse the
+                        # commit. Construction violations still reject -- a
+                        # malformed rendering is the proposer's error.
+                        if faithful and result.tier in (
+                            gate_mod.GateTier.LINT, gate_mod.GateTier.REASONER
+                        ):
+                            flag_result = result
+                        else:
+                            log_event(body.session_id, "gate_reject", {
+                                "proposal_id": body.proposal_id,
+                                "reason": result.reason,
+                                "tier": result.tier.value,
+                            })
+                            return jsonify({
+                                "status": "rejected_by_gate",
+                                "tier": result.tier.value,
+                                "reason": result.reason,
+                                "justification": result.justification,
+                                "unsat_classes": result.unsat_classes,
+                            }), 409
 
             try:
-                warnings = mgr.commit_proposal(body.proposal)
+                warnings = mgr.commit_proposal(
+                    body.proposal,
+                    verify=flag_result is None,
+                    faithful=faithful,
+                    exclude_axioms=exclusions,
+                )
             except CommitCoherenceError as e:
                 # backstop rolled the ontology back; the base is intact, so
                 # report a rejection (like the gate does), not a server error
@@ -950,6 +1192,22 @@ def create_app() -> Flask:
                 )
                 return jsonify({"error": f"Commit error: {e}"}), 500
 
+            if faithful:
+                shim = None
+                if flag_result is not None:
+                    from types import SimpleNamespace
+                    shim = SimpleNamespace(outcome=GateOutcome.FLAG,
+                                           result=flag_result)
+                entry_id = _ledger_faithful_commit(
+                    mgr, body.proposal, shim, body.session_id,
+                    {"session_id": body.session_id, "endpoint": "commit",
+                     "source_text": body.proposal.utterance},
+                )
+                if entry_id:
+                    warnings = (warnings or []) + [
+                        f"incoherence-flagged [{entry_id}]: committed "
+                        f"as-asserted; see incoherence ledger"
+                    ]
             warnings = (warnings or []) + _budget_and_kext_notes(
                 body.proposal, mgr
             )
@@ -1291,7 +1549,8 @@ def create_app() -> Flask:
             job = jobs_store.set_job_status(job_id, "feeding")
         except FileNotFoundError as e:
             return jsonify({"error": str(e)}), 404
-        runner = job_runner.start(job_id, _feed_one_core, auto_accept)
+        runner = job_runner.start(job_id, _feed_one_core, auto_accept,
+                                  on_complete=_fol_audit_on_complete)
         out = jobs_store._job_summary(job)
         out["runner"] = runner
         return jsonify(out)
@@ -1323,7 +1582,8 @@ def create_app() -> Flask:
     # Per-claim state is on disk, so pick those jobs up where they left off.
     if config.AUTORESUME_JOBS:
         try:
-            resumed = job_runner.resume_incomplete(_feed_one_core)
+            resumed = job_runner.resume_incomplete(
+                _feed_one_core, on_complete=_fol_audit_on_complete)
             if resumed:
                 print(f"[job_runner] auto-resumed feeding jobs: "
                       f"{', '.join(resumed)}")

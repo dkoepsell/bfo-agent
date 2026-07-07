@@ -147,6 +147,33 @@ STRICT_CLOSED_VOCAB = (
     os.getenv("STRICT_CLOSED_VOCAB", "false").lower() == "true"
 )
 
+# ----- Extraction fidelity (fidelity-mode-spec.md FM-1) -----
+# Default fidelity stamped into NEWLY created ontologies only; an existing
+# manifest without a "fidelity" field always means "curated" (FM-1).
+#   curated  -- today's behavior: gate rejects/repairs, commit backstop rolls back.
+#   faithful -- annotate, don't repair: the extracted ontology stays true to the
+#              source text including its errors; incoherence is evidence, not a
+#              defect to fix.
+FIDELITY_DEFAULT = os.getenv("FIDELITY_DEFAULT", "curated")
+
+# ----- FOL gate (fol-gate-spec.md) -----
+# Out-of-loop Prover9/Mace4 audit of committed ontologies against the BFO 2020
+# first-order axioms. Evidence-only (FG-0): never blocks, never writes to the
+# ontology. Soft-disabled when the binaries are absent.
+FOL_GATE_ENABLED = os.getenv("FOL_GATE_ENABLED", "false").lower() == "true"
+FOL_PROVER9_BIN = os.getenv("FOL_PROVER9_BIN", "prover9")
+FOL_MACE4_BIN = os.getenv("FOL_MACE4_BIN", "mace4")
+FOL_TIMEOUT_SECS = int(os.getenv("FOL_TIMEOUT_SECS", "60"))
+FOL_PROBE_TIMEOUT_SECS = int(os.getenv("FOL_PROBE_TIMEOUT_SECS", "10"))
+FOL_MACE4_MAX_DOMAIN = int(os.getenv("FOL_MACE4_MAX_DOMAIN", "8"))
+FOL_AXIOMS_DIR = ROOT / os.getenv("FOL_AXIOMS_DIR", "ontology/bfo-2020-fol")
+# Sub-theory profile: "default" (declaration/instantiation/mereology/dependence/
+# participation/temporalized-relations) or "full" (adds spatial, temporal,
+# material-entity, history, order, occurrent-mereology, spatiotemporal).
+FOL_AXIOM_PROFILE = os.getenv("FOL_AXIOM_PROFILE", "default")
+# Cap on per-class unsatisfiability probes per audit (P-2; cap is logged).
+FOL_PROBES_MAX_CLASSES = int(os.getenv("FOL_PROBES_MAX_CLASSES", "25"))
+
 # ----- Class-count budget (bfo-agent-spec.md FR-7) -----
 # Soft cap on how many NEW classes a single proposal may mint. Exceeding it
 # raises a warning (logged + surfaced on the proposal), never a silent accept.

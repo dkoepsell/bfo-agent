@@ -170,6 +170,7 @@ class GateClient:
         run_reasoner: bool = True,
         run_construction: bool = True,
         strict_closed_vocab: bool = False,
+        exclude_axioms: Optional[list] = None,
     ) -> GateResult:
         """Validate a proposal. Returns a GateResult (ACCEPT only if it passes)."""
         if self.url:
@@ -179,17 +180,19 @@ class GateClient:
             log.warning("owltesterservice unreachable at %s; falling back to "
                         "local gate", self.url)
         return self._evaluate_local(
-            proposal, manager, run_reasoner, run_construction, strict_closed_vocab
+            proposal, manager, run_reasoner, run_construction,
+            strict_closed_vocab, exclude_axioms
         )
 
     # ----- local backend --------------------------------------------------
     def _evaluate_local(self, proposal, manager, run_reasoner, run_construction,
-                        strict_closed_vocab) -> GateResult:
+                        strict_closed_vocab, exclude_axioms=None) -> GateResult:
         result = coherence_gate.gate(
             proposal, manager,
             run_reasoner=run_reasoner,
             run_construction=run_construction,
             strict_closed_vocab=strict_closed_vocab,
+            exclude_axioms=exclude_axioms,
         )
         if not result.accepted:
             return result

@@ -41,10 +41,17 @@ def _now() -> str:
 
 
 def start(job_id: str, feed_fn: Callable[[str, bool], dict],
-          auto_accept: bool = True) -> dict:
+          auto_accept: bool = True,
+          on_complete: Callable[[str, dict], str | None] | None = None) -> dict:
     """Start the feeder thread for a job. Idempotent: if a runner is
     already alive for this job, return its status instead of starting a
-    second one."""
+    second one.
+
+    ``on_complete(job_id, state)`` runs best-effort after a job completes
+    (not on pause/fail) -- e.g. the end-of-job FOL audit (fol-gate-spec.md
+    FG-2). Whatever short string it returns is appended to the completion
+    notification. It must never raise into the runner; we guard anyway.
+    """
     with _registry_lock:
         t = _threads.get(job_id)
         if t is not None and t.is_alive():
@@ -59,6 +66,9 @@ def start(job_id: str, feed_fn: Callable[[str, bool], dict],
             "outcome": None,  # completed | paused | failed
             "processed": 0,
             "committed": 0,
+            # Faithful-mode claims committed as-asserted with an incoherence
+            # ledger entry (fidelity-mode-spec.md FM-11 visibility).
+            "flagged": 0,
             "inconsistent": 0,
             "needs_review": 0,
             "errors": 0,
@@ -69,7 +79,8 @@ def start(job_id: str, feed_fn: Callable[[str, bool], dict],
         }
         _runners[job_id] = state
         t = threading.Thread(
-            target=_run, args=(job_id, feed_fn, auto_accept, state),
+            target=_run, args=(job_id, feed_fn, auto_accept, state,
+                               on_complete),
             name=f"job-runner-{job_id}", daemon=True,
         )
         _threads[job_id] = t
@@ -89,18 +100,20 @@ def status(job_id: str) -> dict | None:
     return out
 
 
-def resume_incomplete(feed_fn: Callable[[str, bool], dict]) -> list[str]:
+def resume_incomplete(feed_fn: Callable[[str, bool], dict],
+                      on_complete=None) -> list[str]:
     """Restart runners for jobs left in status "feeding" (a run that a
     server restart or crash interrupted). Returns the resumed job ids."""
     resumed = []
     for j in jobs_store.list_jobs():
         if j.get("status") == "feeding":
-            start(j["job_id"], feed_fn)
+            start(j["job_id"], feed_fn, on_complete=on_complete)
             resumed.append(j["job_id"])
     return resumed
 
 
-def _run(job_id: str, feed_fn, auto_accept: bool, state: dict) -> None:
+def _run(job_id: str, feed_fn, auto_accept: bool, state: dict,
+         on_complete=None) -> None:
     session_id = None
     job_name = job_id
     consecutive_errors = 0
@@ -145,14 +158,25 @@ def _run(job_id: str, feed_fn, auto_accept: bool, state: dict) -> None:
             if res.get("done"):
                 state["outcome"] = "completed"
                 state["remaining"] = 0
+                extra = ""
+                if on_complete is not None:
+                    try:
+                        extra = on_complete(job_id, state) or ""
+                    except Exception as e:  # never let the hook kill the run
+                        extra = f"(post-run hook failed: {e})"
+                flagged_note = (
+                    f"flagged {state['flagged']}, " if state["flagged"] else ""
+                )
                 _notify(
                     f"BFO job finished: {job_name}",
                     f"All approved claims processed. "
                     f"committed {state['committed']}, "
+                    f"{flagged_note}"
                     f"inconsistent {state['inconsistent']}, "
                     f"needs review {state['needs_review']}, "
                     f"errors {state['errors']} "
-                    f"({state['processed']} this run).",
+                    f"({state['processed']} this run)."
+                    + (f"\n{extra}" if extra else ""),
                 )
                 break
 
@@ -161,6 +185,8 @@ def _run(job_id: str, feed_fn, auto_accept: bool, state: dict) -> None:
             state["processed"] += 1
             if st == "committed":
                 state["committed"] += 1
+                if claim.get("verdict") == "flagged":
+                    state["flagged"] += 1
             elif st == "inconsistent":
                 state["inconsistent"] += 1
             elif st == "needs_review":

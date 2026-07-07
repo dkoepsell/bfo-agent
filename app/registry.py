@@ -34,10 +34,14 @@ Design notes:
 from __future__ import annotations
 
 import json
+import logging
 from pathlib import Path
 from typing import Optional
 
+from . import config
 from .ontology_manager import OntologyManager
+
+log = logging.getLogger(__name__)
 
 
 class OntologyNotFoundError(KeyError):
@@ -139,6 +143,26 @@ class OntologyRegistry:
             raise OntologyNotFoundError(name)
         return self._managers[name]
 
+    def fidelity(self, name: str | None = None) -> str:
+        """Resolve the extraction-fidelity mode for an ontology (FM-1/FM-2).
+
+        Reads the ``"fidelity"`` field of the manifest; an absent or invalid
+        value always means ``"curated"`` (today's behavior). ``name=None``
+        resolves the active ontology.
+        """
+        if name is None:
+            name = self._active_name
+        manifest = self._manifests.get(name) or {}
+        value = manifest.get("fidelity")
+        if value in ("faithful", "curated"):
+            return value
+        if value is not None:
+            log.warning(
+                "Ontology %s has invalid fidelity %r; treating as curated.",
+                name, value,
+            )
+        return "curated"
+
     def manifest(self, name: str) -> dict:
         if name not in self._manifests:
             raise OntologyNotFoundError(name)
@@ -234,6 +258,13 @@ class OntologyRegistry:
             "created_at": datetime.now(timezone.utc).isoformat(),
             "status": "inactive",
             "seeded_from": seed_source_name,
+            # FM-1: FIDELITY_DEFAULT applies to new ontologies only; existing
+            # manifests without the field always resolve to "curated".
+            "fidelity": (
+                config.FIDELITY_DEFAULT
+                if config.FIDELITY_DEFAULT in ("faithful", "curated")
+                else "curated"
+            ),
             "stats": {"note": "bootstrapped from seeds only"},
         }
         (target / "manifest.json").write_text(json.dumps(manifest, indent=2))

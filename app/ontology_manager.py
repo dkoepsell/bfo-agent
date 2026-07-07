@@ -753,7 +753,40 @@ class OntologyManager:
         warn_prefix = ("Warnings: " + "; ".join(warnings)) if warnings else ""
         return True, (warn_prefix + "\n" + output).strip()
 
-    def check_coherence_dry_run(self, proposal) -> tuple[bool, list[str], str]:
+    def _retract_axiom_triples(self, triples: Optional[list[dict]]) -> int:
+        """Remove named-parent subClassOf edges from the IN-MEMORY world only.
+
+        Faithful-extraction support (fidelity-mode-spec.md FM-9): the ledgered
+        clash axioms are retracted on the dry-run/verify copy so reasoning
+        evaluates the coherent view. The persisted file is never touched --
+        every caller reloads via :meth:`_load` afterwards. Returns the number
+        of edges actually removed.
+        """
+        removed = 0
+        for t in triples or []:
+            if "subClassOf" not in (t.get("p") or ""):
+                continue
+            cls = self.world[_resolve_iri(t["s"], WORKING_IRI)]
+            if cls is None:
+                local = _local_name(t["s"])
+                cls = next(
+                    (c for c in self.working.classes() if c.name == local),
+                    None,
+                )
+            parent = self.world[_resolve_iri(t["o"], WORKING_IRI)]
+            if cls is None or parent is None:
+                continue
+            try:
+                if parent in cls.is_a:
+                    cls.is_a.remove(parent)
+                    removed += 1
+            except Exception:
+                continue
+        return removed
+
+    def check_coherence_dry_run(
+        self, proposal, exclude_axioms: Optional[list[dict]] = None
+    ) -> tuple[bool, list[str], str]:
         """Apply the proposal to a fresh copy, reason, and report COHERENCE.
 
         Coherence is distinct from consistency. HermiT does not raise or print
@@ -763,10 +796,16 @@ class OntologyManager:
         ask owlready2 for the inferred unsatisfiable classes directly rather
         than grepping reasoner stdout.
 
+        ``exclude_axioms`` (faithful mode, FM-9): ledgered clash axioms to
+        retract from the dry-run copy so the candidate is judged against the
+        coherent view rather than against previously flagged incoherence.
+
         Returns (is_coherent, unsatisfiable_class_iris, detail).
         """
         self._load()
         self.apply_proposal(proposal)
+        if exclude_axioms:
+            self._retract_axiom_triples(exclude_axioms)
 
         buf = io.StringIO()
         try:
@@ -900,6 +939,39 @@ class OntologyManager:
                 return False
         return True
 
+    def annotate_incoherence(self, class_ref: str, text: str) -> bool:
+        """Attach a ``working:incoherenceEvidence`` annotation to a class.
+
+        Fidelity-mode-spec.md FM-8: annotations are OWL-DL semantics-free, so
+        this is the one permitted category of write in faithful mode -- the
+        ontology's logical content (the text's content) is untouched. Full
+        detail lives in the incoherence ledger; the annotation carries the
+        human summary + ledger entry id. Does NOT save; the caller decides.
+        """
+        from owlready2 import AnnotationProperty
+
+        cls = self.world[_resolve_iri(class_ref, WORKING_IRI)]
+        if cls is None:
+            local = _local_name(class_ref)
+            cls = next(
+                (c for c in self.working.classes() if c.name == local), None
+            )
+        if cls is None:
+            return False
+        with self.working:
+            prop = self.world[WORKING_IRI + "#incoherenceEvidence"]
+            if prop is None:
+                import types as _types
+
+                prop = _types.new_class(
+                    "incoherenceEvidence", (AnnotationProperty,)
+                )
+            try:
+                getattr(cls, "incoherenceEvidence").append(text)
+            except Exception:
+                return False
+        return True
+
     def has_restriction_on(self, class_ref: str, prop_frag: str) -> bool:
         """True if the class already carries an existential restriction on prop."""
         cls = self.world[_resolve_iri(class_ref, WORKING_IRI)]
@@ -914,7 +986,18 @@ class OntologyManager:
                 return True
         return False
 
-    def commit_proposal(self, proposal, verify: bool = True) -> list[str]:
+    # Set by commit_proposal in faithful mode when the post-commit verify
+    # found (new) incoherence that was recorded instead of rolled back
+    # (fidelity-mode-spec.md FM-6). None after every coherent commit.
+    last_commit_incoherence: Optional[dict] = None
+
+    def commit_proposal(
+        self,
+        proposal,
+        verify: bool = True,
+        faithful: bool = False,
+        exclude_axioms: Optional[list[dict]] = None,
+    ) -> list[str]:
         """Apply the proposal for real and save to disk.
 
         When ``verify`` is set (the default), the persisted ontology is
@@ -925,8 +1008,20 @@ class OntologyManager:
         guarantees a malformed ontology can never accumulate on disk even if an
         upstream gate tier was skipped, errored, or a scaffolding/ABox change
         clashed retroactively with previously-committed content.
+
+        ``faithful`` (fidelity-mode-spec.md FM-6): the extracted ontology must
+        stay true to the source text including its errors, so a coherence
+        failure is NOT rolled back -- the axioms stay committed as-asserted and
+        the verdict is recorded in :attr:`last_commit_incoherence` for the
+        caller to ledger. Rollback still applies to mechanical failures
+        (apply/serialization exceptions), which are pipeline bugs, not text
+        content. ``exclude_axioms`` makes the verify judge the file against
+        the coherent view (minus already-ledgered clashes) so only NEW
+        incoherence is reported.
         """
         import shutil
+
+        self.last_commit_incoherence = None
 
         backup = None
         if verify and self.working_path.exists():
@@ -935,12 +1030,27 @@ class OntologyManager:
             )
             shutil.copy2(self.working_path, backup)
 
-        warnings = self.apply_proposal(proposal)
-        self.save()
+        try:
+            warnings = self.apply_proposal(proposal)
+            self.save()
+        except Exception:
+            # Mechanical failure: roll back in every mode (FM-6).
+            if backup is not None and backup.exists():
+                shutil.copy2(backup, self.working_path)
+                backup.unlink()
+            self._load()
+            raise
 
         if verify:
-            ok, detail = self._verify_saved_coherent()
-            if not ok:
+            ok, detail = self._verify_saved_coherent(
+                exclude_axioms=exclude_axioms if faithful else None
+            )
+            if not ok and faithful:
+                # Evidence, not correction: keep the file, record the verdict.
+                self.last_commit_incoherence = {"detail": detail}
+                if backup is not None and backup.exists():
+                    backup.unlink()
+            elif not ok:
                 # roll the persisted file back to its pre-commit state
                 if backup is not None and backup.exists():
                     shutil.copy2(backup, self.working_path)
@@ -950,12 +1060,14 @@ class OntologyManager:
                     self.working_path.unlink(missing_ok=True)
                 self._load()  # resync in-memory state with the restored file
                 raise CommitCoherenceError(detail)
-            if backup is not None and backup.exists():
+            elif backup is not None and backup.exists():
                 backup.unlink()
 
         return warnings
 
-    def _verify_saved_coherent(self) -> tuple[bool, str]:
+    def _verify_saved_coherent(
+        self, exclude_axioms: Optional[list[dict]] = None
+    ) -> tuple[bool, str]:
         """Reason over the just-saved working file; return ``(ok, detail)``.
 
         ``ok`` is False if the reasoner reports the ontology inconsistent (it
@@ -964,8 +1076,14 @@ class OntologyManager:
         disjointness and property-stripping the app runs with, then reload once
         more so reasoner-inferred axioms never leak into the state the caller
         (scaffolding) keeps working on.
+
+        ``exclude_axioms`` (faithful mode, FM-9): retract the ledgered clash
+        axioms from the in-memory copy before reasoning, so the check reports
+        only incoherence NEW to this commit. The persisted file is untouched.
         """
         self._load()  # clean, sanitized load of the committed file
+        if exclude_axioms:
+            self._retract_axiom_triples(exclude_axioms)
         buf = io.StringIO()
         try:
             with redirect_stdout(buf), redirect_stderr(buf):
