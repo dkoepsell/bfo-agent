@@ -431,6 +431,9 @@
           </select>
           <button class="secondary" id="btn-job-refresh" title="Refresh job list">↻</button>
           <button class="secondary" id="btn-job-new">New job...</button>
+          <button class="secondary" id="btn-job-export" title="Download this job's extracted claims for feeding on another deployment" disabled>Export claims</button>
+          <button class="secondary" id="btn-job-import" title="Create a new job from an exported claims file">Import claims</button>
+          <input type="file" id="job-import-file" accept=".json,application/json" style="display:none" />
           <button class="danger" id="btn-job-delete" disabled>Delete</button>
         </div>
         <div id="job-summary" class="muted" style="margin-bottom:12px;"></div>
@@ -760,6 +763,7 @@ function setJobControlsEnabled(enabled) {
   const has = !!currentJob;
   document.getElementById("btn-extract").disabled = !has;
   document.getElementById("btn-job-delete").disabled = !has;
+  document.getElementById("btn-job-export").disabled = !has;
   document.getElementById("btn-select-high").disabled = !has;
   document.getElementById("btn-select-high-med").disabled = !has;
   document.getElementById("btn-select-none").disabled = !has;
@@ -1100,6 +1104,34 @@ document.getElementById("btn-job-new").onclick = createJob;
 document.getElementById("btn-job-delete").onclick = deleteCurrentJob;
 document.getElementById("btn-job-refresh").onclick = () => refreshJobList();
 document.getElementById("job-select").addEventListener("change", (ev) => loadJob(ev.target.value));
+
+// Export the current job's extracted claims (plain navigation; the server's
+// Content-Disposition triggers the download). Feed them on another deployment.
+document.getElementById("btn-job-export").onclick = () => {
+  if (!currentJob) return;
+  window.open(API + "/jobs/" + encodeURIComponent(currentJob.job_id) + "/export", "_blank");
+};
+
+// Import a claims file as a new, feedable job.
+document.getElementById("btn-job-import").onclick = () =>
+  document.getElementById("job-import-file").click();
+document.getElementById("job-import-file").addEventListener("change", async (ev) => {
+  const f = ev.target.files[0];
+  if (!f) return;
+  try {
+    const envelope = JSON.parse(await f.text());
+    const summary = await api("/jobs/import", {
+      method: "POST",
+      body: JSON.stringify(envelope),
+    });
+    await refreshJobList(summary.job_id);
+    extractStatus(`imported ${summary.counts.total} claims into "${summary.name}"`);
+  } catch (e) {
+    alert("import failed: " + e.message);
+  } finally {
+    ev.target.value = "";
+  }
+});
 
 // Initial job list load when the extract tab is first shown
 let _jobsInited = false;

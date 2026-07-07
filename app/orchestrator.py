@@ -12,6 +12,7 @@ Endpoints:
 """
 from __future__ import annotations
 
+import json
 import logging
 import threading
 from pathlib import Path
@@ -29,6 +30,7 @@ from . import gate_client
 from . import incoherence_ledger as ledger_mod
 from . import kext as kext_mod
 from . import job_runner
+from . import job_transfer
 from . import jobs as jobs_store
 from .coherence_gate import GateOutcome, GatePolicy
 from .extractor import ClaimExtractor, chunk_text
@@ -1456,6 +1458,41 @@ def create_app() -> Flask:
     def jobs_delete(job_id):
         ok = jobs_store.delete_job(job_id)
         return jsonify({"deleted": ok})
+
+    @app.get("/jobs/<job_id>/export")
+    def jobs_export(job_id):
+        """Download a job's extracted claims as a portable JSON envelope, so
+        another deployment can import and feed them without re-extracting."""
+        try:
+            job = jobs_store.load_job(job_id)
+        except FileNotFoundError as e:
+            return jsonify({"error": str(e)}), 404
+        envelope = job_transfer.build_export_envelope(job)
+        data = json.dumps(envelope, indent=2, ensure_ascii=False).encode("utf-8")
+        resp = app.response_class(data, mimetype="application/json")
+        resp.headers["Content-Disposition"] = (
+            f'attachment; filename="{job_transfer.export_filename(job)}"'
+        )
+        return resp
+
+    @app.post("/jobs/import")
+    def jobs_import():
+        """Create a new, feedable job from an exported claims envelope. Claims
+        arrive reset to pending (append_claims re-inits feed state), so the
+        expensive feed runs here while extraction happened elsewhere."""
+        # Phase 3: refuse writes against a finalized ontology.
+        if _active_is_finalized():
+            return _finalized_guard_response()
+        payload = request.get_json(force=True, silent=True)
+        if payload is None:
+            return jsonify({"error": "invalid or missing JSON body"}), 400
+        try:
+            name, meta, claims = job_transfer.parse_import_envelope(payload)
+        except ValueError as e:
+            return jsonify({"error": str(e)}), 400
+        job = jobs_store.create_job(name, meta=meta)
+        job = jobs_store.append_claims(job["job_id"], claims)
+        return jsonify(jobs_store._job_summary(job)), 201
 
     @app.post("/jobs/<job_id>/append_claims")
     def jobs_append_claims(job_id):
