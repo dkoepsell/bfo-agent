@@ -191,7 +191,18 @@ class _Emitter:
         return f"instanceOf({x},{cls_sym},{t})"
 
     def relate(self, prop, x: str, y: str, t: str) -> str:
-        pred, arity, swap = self.syms.rel(prop.iri)
+        iri = getattr(prop, "iri", None)
+        if iri is None and isinstance(prop, str) and \
+                prop.startswith(("http://", "https://")):
+            # owlready2 hands back a bare IRI string when the file references
+            # a property it never materialized (seen on live corpora); the
+            # IRI itself is usable.
+            iri = prop
+        if not iri:
+            # Genuinely malformed restriction axioms (the persisted
+            # "#_:label" bug) get skipped per TR-3 instead of crashing.
+            raise _Unsupported(f"malformed property reference {prop!r}")
+        pred, arity, swap = self.syms.rel(iri)
         a, b = (y, x) if swap else (x, y)
         if self.tr.mode == "B" and arity == 3:
             return f"{pred}({a},{b},{t})"
