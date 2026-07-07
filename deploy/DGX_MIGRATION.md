@@ -1,4 +1,24 @@
-# DGX migration — ontology-quality changes (2026-06-30 session)
+# DGX migration — ontology-quality changes
+
+> **2026-07-07 migration (fidelity mode + FOL gate, commits e22591e1..4e89e750): DONE.**
+> Shipped surgically per the method below. Wholesale copies: `coherence_gate.py`,
+> `registry.py` (base-identical) + new `incoherence_ledger.py`, `fol_translate.py`,
+> `fol_gate.py`, `ontology/bfo-2020-fol/` (15 files), `tests/test_fidelity_mode.py`,
+> `tests/test_fol_gate.py`. Patched with hand-merged rejects: `config.py` (append),
+> `gate_client.py`, `orchestrator.py` (DGX's inline feed_one — no job_runner there,
+> so the end-of-job audit hook is present but unwired), `ontology_manager.py`
+> (grafted the commit backstop + `_verify_saved_coherent` + `_REASONER_LOCK` +
+> `CommitCoherenceError`, which the fork never had), `client/index.html` (Audits
+> tab). **DGX behavior preserved:** curated commits stay no-verify (`verify` only
+> engages in faithful mode) so ollama feed throughput is unchanged; LLM_BACKEND=
+> ollama/qwen2.5 untouched. LADR built on-box (mace4 needs `CC="gcc -std=gnu89"`
+> and the `-lm`-after-objects Makefile fix in BOTH `provers.src/` and `mace4.src/`);
+> binaries in `~/.local/bin`, paths in `.env`. Tests: **86 passed / 0 failed**
+> (one DGX-local scorer test updated to `verify=False`, matching mainline).
+> Smoke: Mode A audit of AristotleCategories → `consistent`, mace4 model domain 2.
+> App intentionally NOT started (GPU/72B policy).
+
+## 2026-06-30 session
 
 > **STATUS: DONE (2026-06-30).** Applied to `dgx:~/research/bfo-agent` (repo lives
 > at `~/research/bfo-agent`, venv `venv/`, launch `./start.sh`). All 6 new modules
