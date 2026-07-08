@@ -22,7 +22,7 @@ from uuid import uuid4
 
 log = logging.getLogger(__name__)
 
-from flask import Flask, jsonify, request
+from flask import Flask, Response, jsonify, request
 from flask_cors import CORS
 from pydantic import ValidationError
 
@@ -48,12 +48,14 @@ from .schema import (
     QueryResponse,
 )
 from .storage import (
+    gate_log_path,
     git_commit_library_change,
     git_commit_working_ontology,
     load_session,
     log_event,
     log_gate_events,
     recent_commits,
+    session_path,
 )
 
 
@@ -1978,6 +1980,138 @@ def create_app() -> Flask:
     @app.get("/session/<session_id>")
     def session_log(session_id):
         return jsonify(load_session(session_id))
+
+    @app.get("/jobs/<job_id>/stream")
+    def jobs_stream(job_id):
+        """Read-only Server-Sent Events tail of a job's live feed.
+
+        Streams the per-claim trace by tailing the two on-disk logs the feed
+        already writes -- the main session log and the coherence-gate log --
+        so a browser panel can watch propose -> gate -> commit as it happens.
+        Pure log tailing: never touches the feed/gate/runner hot path.
+        """
+        try:
+            job = jobs_store.load_job(job_id)
+        except FileNotFoundError as e:
+            return jsonify({"error": str(e)}), 404
+        session_id = job["session_id"]
+        main_path = session_path(session_id)
+        gate_path = gate_log_path(session_id)
+
+        backlog_lines = 150
+        max_tail_bytes = 1_000_000  # cap initial backlog read at ~1MB/file
+        heartbeat_after = 15.0      # seconds of silence before a ping comment
+        poll_interval = 0.5
+
+        def _sse(obj) -> str:
+            return f"data: {json.dumps(obj)}\n\n"
+
+        def _tail_lines(path: Path) -> list[str]:
+            """Last ~backlog_lines complete lines, reading at most the final
+            ~max_tail_bytes so a huge log never loads whole into memory."""
+            try:
+                size = path.stat().st_size
+            except OSError:
+                return []
+            start = max(0, size - max_tail_bytes)
+            try:
+                with path.open("rb") as f:
+                    f.seek(start)
+                    data = f.read()
+            except OSError:
+                return []
+            if start > 0:
+                # Drop the partial first line produced by the mid-file seek.
+                nl = data.find(b"\n")
+                data = data[nl + 1:] if nl != -1 else b""
+            text = data.decode("utf-8", errors="replace")
+            lines = [ln for ln in text.split("\n") if ln.strip()]
+            return lines[-backlog_lines:]
+
+        def _emit_line(src: str, line: str) -> str | None:
+            try:
+                record = json.loads(line)
+            except (ValueError, TypeError):
+                return None
+            return _sse({"src": src, "event": record})
+
+        def gen():
+            try:
+                yield f"event: hello\ndata: {json.dumps({'session_id': session_id, 'job_id': job_id})}\n\n"
+
+                # Backlog: merge the tails of both files (best-effort file
+                # order), so a freshly-opened panel shows recent context.
+                for src, path in (("main", main_path), ("gate", gate_path)):
+                    if path.exists():
+                        for line in _tail_lines(path):
+                            chunk = _emit_line(src, line)
+                            if chunk:
+                                yield chunk
+
+                # Tail loop: track byte offsets and stream new complete lines.
+                offsets: dict[str, int] = {}
+                buffers: dict[str, bytes] = {"main": b"", "gate": b""}
+                for src, path in (("main", main_path), ("gate", gate_path)):
+                    try:
+                        offsets[src] = path.stat().st_size
+                    except OSError:
+                        offsets[src] = 0
+
+                last_data = time.monotonic()
+                while True:
+                    sent = False
+                    for src, path in (("main", main_path), ("gate", gate_path)):
+                        try:
+                            size = path.stat().st_size
+                        except OSError:
+                            continue  # file not created yet -- keep polling
+                        if size < offsets[src]:
+                            # Truncated/rotated: restart from the top.
+                            offsets[src] = 0
+                            buffers[src] = b""
+                        if size <= offsets[src]:
+                            continue
+                        try:
+                            with path.open("rb") as f:
+                                f.seek(offsets[src])
+                                chunk = f.read()
+                        except OSError:
+                            continue
+                        offsets[src] = size
+                        buffers[src] += chunk
+                        *complete, buffers[src] = buffers[src].split(b"\n")
+                        for raw in complete:
+                            line = raw.decode("utf-8", errors="replace")
+                            if not line.strip():
+                                continue
+                            out = _emit_line(src, line)
+                            if out:
+                                yield out
+                                sent = True
+
+                    now = time.monotonic()
+                    if sent:
+                        last_data = now
+                    elif now - last_data >= heartbeat_after:
+                        yield ": ping\n\n"
+                        last_data = now
+                    time.sleep(poll_interval)
+            except GeneratorExit:
+                # Client disconnected -- stop cleanly, no spin, no raise.
+                return
+            except Exception as e:  # noqa: BLE001 -- a stream must not 500 mid-flight
+                log.warning("jobs_stream generator error: %s", e)
+                return
+
+        return Response(
+            gen(),
+            mimetype="text/event-stream",
+            headers={
+                "Cache-Control": "no-cache",
+                "X-Accel-Buffering": "no",
+                "Connection": "keep-alive",
+            },
+        )
 
     # A restart (deploy, crash, OOM) interrupts any server-side feed run.
     # Per-claim state is on disk, so pick those jobs up where they left off.
