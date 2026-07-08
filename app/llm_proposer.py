@@ -159,10 +159,21 @@ RULES:
         episode", inflammation) -> process (BFO_0000015);
       - the causal AGENT / pathogen ("Mycobacterium tuberculosis", a virus,
         a parasite) -> material entity (BFO_0000040).
-    Link them with the BFO properties (the condition is `BFO_0000054`
-    realized in the process; the agent is a `BFO_0000057` has-participant of
-    the process), do not collapse them into one straddling class. An anatomical
-    structure or whole organism is a material entity (BFO_0000040).
+    If you relate them, use ONLY the restriction syntax from rule 13
+    (`"o": "bfo:BFO_0000054 some working:TheProcess"`) -- NEVER subclass a
+    class directly to a bare property id like `bfo:BFO_0000054` (that is
+    rejected). Relating the three is optional; typing each with one correct
+    category is what matters. An anatomical structure or whole organism is a
+    material entity (BFO_0000040).
+15. CLASS NAMES ARE SHORT ATOMS. A class name (the IRI local part) is a
+    single concept in CamelCase, ideally 2 and at most 3 meaningful tokens:
+    `Smallpox`, `HepatitisE`, `VariolaVirus`, `CommonWart`. Put the full
+    verbatim source term in `rdfs:label`, NOT in the name. NEVER fuse a
+    description into the name: no `HumanPapillomavirusInfectionOfEpidermis`,
+    no `AcuteHepatitisEVirusInfection` -- names with 4+ fused tokens are
+    rejected. NEVER bake a relation word (Of, In, By, Due, Caused, Associated,
+    Related) or a numeric/type qualifier suffix (`Type2`, `SubtypeB`) into the
+    name; express those as separate classes or property assertions.
 
 CURRENT WORKING ONTOLOGY CONTEXT:
 
