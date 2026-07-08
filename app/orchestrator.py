@@ -12,6 +12,7 @@ Endpoints:
 """
 from __future__ import annotations
 
+import atexit
 import json
 import logging
 import threading
@@ -267,6 +268,13 @@ def _apply_scaffolding(proposal, mgr, session_id) -> list[dict]:
     if not directives:
         return []
 
+    # Amortized save (change 7): the backup/rollback below works on disk
+    # bytes and _load()s on rollback, so the file must reflect the in-memory
+    # world (including this claim's just-applied commit) before scaffolding
+    # touches it — else a rollback would silently drop the unsaved window.
+    if not config.SAVE_EVERY_COMMIT and getattr(mgr, "unsaved_commits", 0) > 0:
+        mgr.save()
+
     backup = mgr.working_path.read_bytes() if mgr.working_path.exists() else None
     applied = gate_mod.apply_scaffolding(directives, mgr)
     if not applied:
@@ -486,6 +494,150 @@ def _ledger_checkpoint_incoherence(mgr, report: dict, job_id: str,
         return None
 
 
+def _flush_unsaved_locked(mgr, job_id: str | None, session_id: str | None,
+                          watermark_claim_id: int | None,
+                          reason: str) -> bool:
+    """Persist unsaved in-memory commits (SPEC-bfo-agent-speed.md change 7).
+
+    Caller must hold the module _lock. Saves the working file, git-commits
+    it, and advances the job's last_saved_claim_id watermark so crash
+    recovery never resets claims that are actually on disk. No-op when
+    nothing is unsaved.
+    """
+    if getattr(mgr, "unsaved_commits", 0) <= 0:
+        return False
+    unsaved = mgr.unsaved_commits
+    mgr.save()
+    git_commit_working_ontology(
+        session_id or "amortized-save", f"flush-{reason}",
+        f"amortized save flush ({reason}, {unsaved} commit(s))",
+    )
+    if job_id is not None:
+        if watermark_claim_id is None:
+            job = jobs_store.load_job(job_id)
+            committed = [c["id"] for c in job.get("claims", [])
+                         if c.get("status") == "committed"]
+            watermark_claim_id = max(committed) if committed else 0
+        jobs_store.bump_feed_state(
+            job_id, last_saved_claim_id=watermark_claim_id
+        )
+    if session_id:
+        log_event(session_id, "amortized_save", {
+            "reason": reason,
+            "unsaved_commits": unsaved,
+            "job_id": job_id,
+            "last_saved_claim_id": watermark_claim_id,
+        })
+    return True
+
+
+def flush_working_ontology(job_id: str | None = None,
+                           reason: str = "flush") -> bool:
+    """Public flush point for amortized save: pause/runner exit and graceful
+    shutdown. With no job_id, every job currently marked feeding gets its
+    watermark advanced (single-writer in practice). No-op unless
+    SAVE_EVERY_COMMIT is off and unsaved commits exist.
+    """
+    if config.SAVE_EVERY_COMMIT:
+        return False
+    with _lock:
+        try:
+            mgr = _get_manager()
+        except Exception:
+            return False  # no active ontology yet; nothing to flush
+        if getattr(mgr, "unsaved_commits", 0) <= 0:
+            return False
+        if job_id is not None:
+            job_ids = [job_id]
+        else:
+            job_ids = [j["job_id"] for j in jobs_store.list_jobs()
+                       if j.get("status") == "feeding"]
+        session_id = None
+        if job_ids:
+            try:
+                session_id = jobs_store.load_job(job_ids[0]).get("session_id")
+            except Exception:  # noqa: BLE001 — flush must not raise
+                pass
+        flushed = _flush_unsaved_locked(
+            mgr, job_ids[0] if job_ids else None, session_id, None, reason
+        )
+        # Multi-job edge: advance the remaining feeding jobs' watermarks too.
+        for extra in job_ids[1:]:
+            try:
+                job = jobs_store.load_job(extra)
+                committed = [c["id"] for c in job.get("claims", [])
+                             if c.get("status") == "committed"]
+                jobs_store.bump_feed_state(
+                    extra,
+                    last_saved_claim_id=max(committed) if committed else 0,
+                )
+            except Exception:  # noqa: BLE001
+                pass
+        return flushed
+
+
+def _flush_at_exit() -> None:
+    """Graceful-shutdown backstop (atexit): a clean SIGTERM/exit persists
+    whatever the amortized-save mode is still holding in memory."""
+    if _registry is None:
+        return  # nothing was ever loaded, so nothing can be unsaved
+    try:
+        flush_working_ontology(reason="shutdown")
+    except Exception:  # noqa: BLE001 — never raise during interpreter exit
+        pass
+
+
+atexit.register(_flush_at_exit)
+
+
+def _prepare_amortized_resume(job_id: str) -> list[int]:
+    """Crash recovery for amortized save (SPEC-bfo-agent-speed.md change 7),
+    run before a job's feed loop (re)starts.
+
+    A crash between saves loses the in-memory commits, so claims recorded
+    committed after the last on-disk save watermark are reset to pending and
+    re-feed through the full path (bounded to <= FULL_VERIFY_EVERY_K
+    re-proposals; stable IRIs plus the reservation map converge on the same
+    entities). When the live process still holds the unsaved commits
+    (plain pause/resume, no restart), nothing was lost and nothing is reset.
+    A None watermark means this is the job's first run under amortized save:
+    memory equals disk right now, so the current committed set becomes the
+    saved baseline. Returns the reset claim ids.
+    """
+    if config.SAVE_EVERY_COMMIT:
+        return []
+    with _lock:
+        try:
+            mgr = _get_manager()
+        except Exception:
+            return []
+        if getattr(mgr, "unsaved_commits", 0) > 0:
+            return []  # live memory still holds them; flush will persist
+        job = jobs_store.load_job(job_id)
+        fs = jobs_store.get_feed_state(job)
+        last_saved = fs.get("last_saved_claim_id")
+        committed_ids = [c["id"] for c in job.get("claims", [])
+                         if c.get("status") == "committed"]
+        if last_saved is None:
+            jobs_store.bump_feed_state(
+                job_id,
+                last_saved_claim_id=max(committed_ids) if committed_ids
+                else 0,
+            )
+            return []
+        stale = [cid for cid in committed_ids if cid > last_saved]
+        if not stale:
+            return []
+        reset = jobs_store.reset_claims_pending(job_id, stale)
+        log_event(job.get("session_id"), "resume_replay_reset", {
+            "job_id": job_id,
+            "claim_ids": reset,
+            "last_saved_claim_id": last_saved,
+            "reason": "committed after last on-disk save; memory lost",
+        })
+        return reset
+
+
 def _maybe_checkpoint_verify(job_id: str, claim: dict, session_id: str,
                              mgr, faithful: bool,
                              exclusions) -> dict | None:
@@ -498,11 +650,26 @@ def _maybe_checkpoint_verify(job_id: str, claim: dict, session_id: str,
     checkpoint failed: the job is paused here and job_runner._run reads the
     "fatal" key as stop-the-loop-and-notify.
     """
+    # With per-commit save still on, the just-committed claim is on disk, so
+    # keep the save watermark fresh (protects against a later flip to
+    # amortized save wrongly resetting these claims on crash recovery).
+    extra = (
+        {"last_saved_claim_id": claim["id"]}
+        if config.SAVE_EVERY_COMMIT else {}
+    )
     fs = jobs_store.bump_feed_state(
-        job_id, increment={"commits_since_checkpoint": 1}
+        job_id, increment={"commits_since_checkpoint": 1}, **extra
     )
     if fs["commits_since_checkpoint"] < config.FULL_VERIFY_EVERY_K:
         return None
+
+    # Amortized save (change 7): the certificate judges the saved artifact,
+    # so persist the unsaved window first. The checkpoint is the natural
+    # save boundary.
+    if not config.SAVE_EVERY_COMMIT:
+        _flush_unsaved_locked(
+            mgr, job_id, session_id, claim["id"], "checkpoint"
+        )
 
     suspect_from = fs.get("last_verified_claim_id")
     report = mgr.verify_full(exclude_axioms=exclusions if faithful else None)
@@ -577,12 +744,20 @@ def _final_verify_before_complete(job_id: str, session_id: str) -> dict | None:
     exclusions = (
         ledger_mod.exclusion_triples(mgr.working_path) if faithful else None
     )
-    report = mgr.verify_full(exclude_axioms=exclusions)
-    log_event(session_id, "final_verify", {**report, "job_id": job_id})
 
     committed_ids = [c["id"] for c in job.get("claims", [])
                      if c.get("status") == "committed"]
     last_claim_id = max(committed_ids) if committed_ids else None
+
+    # Amortized save (change 7): persist the tail window before the
+    # certificate and advance the watermark — completion is a save boundary.
+    if not config.SAVE_EVERY_COMMIT:
+        _flush_unsaved_locked(
+            mgr, job_id, session_id, last_claim_id or 0, "final"
+        )
+
+    report = mgr.verify_full(exclude_axioms=exclusions)
+    log_event(session_id, "final_verify", {**report, "job_id": job_id})
 
     if report["ok"] or faithful:
         if not report["ok"]:
@@ -623,6 +798,10 @@ def _resume_verify(job_id: str) -> bool:
     errors -- the mandatory completion pass remains the backstop.
     """
     try:
+        # Amortized-save crash recovery (change 7) runs first: claims
+        # committed after the last on-disk save are reset to pending before
+        # the certificate judges (and before feeding trusts) the disk state.
+        _prepare_amortized_resume(job_id)
         job = jobs_store.load_job(job_id)
         fs = jobs_store.get_feed_state(job)
         if fs.get("commits_since_checkpoint", 0) <= 0:
@@ -909,11 +1088,15 @@ def _feed_one_core(job_id: str, auto_accept: bool = True) -> dict:
                         scaffolded = _apply_scaffolding(
                             proposal, mgr, session_id
                         )
-                with timing.phase("git"):
-                    git_commit_working_ontology(
-                        session_id, proposal.proposal_id,
-                        claim["claim"][:80]
-                    )
+                # Amortized save (change 7): nothing new reached disk on
+                # this claim, so there is nothing for git to record; the
+                # flush points commit the batched window instead.
+                if config.SAVE_EVERY_COMMIT:
+                    with timing.phase("git"):
+                        git_commit_working_ontology(
+                            session_id, proposal.proposal_id,
+                            claim["claim"][:80]
+                        )
                 log_event(session_id, "commit", {
                     "proposal_id": proposal.proposal_id,
                     "decision": "accept",
@@ -1952,8 +2135,16 @@ def create_app() -> Flask:
             job = jobs_store.set_job_status(job_id, "feeding")
         except FileNotFoundError as e:
             return jsonify({"error": str(e)}), 404
+        try:
+            # Amortized-save crash recovery (change 7): a manual resume
+            # after a process death must not trust claim statuses beyond
+            # the last on-disk save.
+            _prepare_amortized_resume(job_id)
+        except Exception:  # noqa: BLE001 — never brick resume
+            log.exception("amortized-save resume preparation failed")
         runner = job_runner.start(job_id, _feed_one_core, auto_accept,
-                                  on_complete=_fol_audit_on_complete)
+                                  on_complete=_fol_audit_on_complete,
+                                  flush_fn=flush_working_ontology)
         out = jobs_store._job_summary(job)
         out["runner"] = runner
         return jsonify(out)
@@ -2119,7 +2310,8 @@ def create_app() -> Flask:
         try:
             resumed = job_runner.resume_incomplete(
                 _feed_one_core, on_complete=_fol_audit_on_complete,
-                resume_verify_fn=_resume_verify)
+                resume_verify_fn=_resume_verify,
+                flush_fn=flush_working_ontology)
             if resumed:
                 print(f"[job_runner] auto-resumed feeding jobs: "
                       f"{', '.join(resumed)}")

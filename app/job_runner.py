@@ -43,7 +43,8 @@ def _now() -> str:
 def start(job_id: str, feed_fn: Callable[[str, bool], dict],
           auto_accept: bool = True,
           on_complete: Callable[[str, dict], str | None] | None = None,
-          resume_verify_fn: Callable[[str], bool] | None = None) -> dict:
+          resume_verify_fn: Callable[[str], bool] | None = None,
+          flush_fn: Callable[[str], bool] | None = None) -> dict:
     """Start the feeder thread for a job. Idempotent: if a runner is
     already alive for this job, return its status instead of starting a
     second one.
@@ -59,6 +60,11 @@ def start(job_id: str, feed_fn: Callable[[str, bool], dict],
     so a job interrupted with unverified commits is re-certified before
     feeding continues. Returning False stops the run: the job is paused
     and the failure notification fires.
+
+    ``flush_fn(job_id)`` (SPEC-bfo-agent-speed.md change 7) runs best-effort
+    when the runner exits for any reason (pause, completion, failure) so
+    amortized-save mode persists its unsaved in-memory commits. It is a
+    no-op unless SAVE_EVERY_COMMIT is off and unsaved commits exist.
     """
     with _registry_lock:
         t = _threads.get(job_id)
@@ -88,7 +94,7 @@ def start(job_id: str, feed_fn: Callable[[str, bool], dict],
         _runners[job_id] = state
         t = threading.Thread(
             target=_run, args=(job_id, feed_fn, auto_accept, state,
-                               on_complete, resume_verify_fn),
+                               on_complete, resume_verify_fn, flush_fn),
             name=f"job-runner-{job_id}", daemon=True,
         )
         _threads[job_id] = t
@@ -110,7 +116,8 @@ def status(job_id: str) -> dict | None:
 
 def resume_incomplete(feed_fn: Callable[[str, bool], dict],
                       on_complete=None,
-                      resume_verify_fn=None) -> list[str]:
+                      resume_verify_fn=None,
+                      flush_fn=None) -> list[str]:
     """Restart runners for jobs left in status "feeding" (a run that a
     server restart or crash interrupted). Returns the resumed job ids.
 
@@ -121,13 +128,13 @@ def resume_incomplete(feed_fn: Callable[[str, bool], dict],
     for j in jobs_store.list_jobs():
         if j.get("status") == "feeding":
             start(j["job_id"], feed_fn, on_complete=on_complete,
-                  resume_verify_fn=resume_verify_fn)
+                  resume_verify_fn=resume_verify_fn, flush_fn=flush_fn)
             resumed.append(j["job_id"])
     return resumed
 
 
 def _run(job_id: str, feed_fn, auto_accept: bool, state: dict,
-         on_complete=None, resume_verify_fn=None) -> None:
+         on_complete=None, resume_verify_fn=None, flush_fn=None) -> None:
     session_id = None
     job_name = job_id
     consecutive_errors = 0
@@ -250,6 +257,13 @@ def _run(job_id: str, feed_fn, auto_accept: bool, state: dict,
         state["last_error"] = str(e)
         _fail(job_id, job_name, state, str(e))
     finally:
+        if flush_fn is not None:
+            # Amortized save: persist unsaved in-memory commits on any exit
+            # (pause, completion, failure). Never let it kill the cleanup.
+            try:
+                flush_fn(job_id)
+            except Exception:
+                pass
         state["running"] = False
         state["finished_at"] = _now()
         if session_id:

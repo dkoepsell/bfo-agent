@@ -195,6 +195,13 @@ class OntologyManager:
         # guard and the job-completion pass consult it.
         self.commits_since_full_verify = 0
 
+        # Commits applied without a disk write (SPEC-bfo-agent-speed.md
+        # change 7, SAVE_EVERY_COMMIT=false). Incremented by commit_proposal
+        # when it skips save(), reset by save(); the orchestrator's flush
+        # points (checkpoint, final pass, pause/runner exit, shutdown) and
+        # the crash-recovery reset consult it.
+        self.unsaved_commits = 0
+
         self._load()
 
     # ------------------------------------------------------------------ load
@@ -1820,9 +1827,20 @@ class OntologyManager:
             )
             shutil.copy2(self.working_path, backup)
 
+        # Amortized save (SPEC-bfo-agent-speed.md change 7): with
+        # SAVE_EVERY_COMMIT off (config guarantees verify-per-commit is off
+        # and INMEM_DRY_RUN is on), skip the O(N) per-claim serialization;
+        # the orchestrator's flush points write the file and the in-memory
+        # world stays the source of truth in between. The verify path always
+        # saves: _verify_saved_coherent judges what is on disk.
+        save_now = verify or config.SAVE_EVERY_COMMIT
+
         try:
             warnings = self.apply_proposal(proposal, delta=delta)
-            self.save()
+            if save_now:
+                self.save()
+            else:
+                self.unsaved_commits += 1
         except Exception:
             # Mechanical failure: roll back in every mode (FM-6).
             if backup is not None and backup.exists():
@@ -2016,6 +2034,7 @@ class OntologyManager:
         with timing.phase("save"):
             self.working_path.parent.mkdir(parents=True, exist_ok=True)
             self.working.save(file=str(self.working_path), format="rdfxml")
+            self.unsaved_commits = 0
 
     def stats(self) -> dict:
         return {

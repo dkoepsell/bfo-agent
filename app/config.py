@@ -236,6 +236,38 @@ BATCH_PROPOSE_POLL_SECS = float(os.getenv("BATCH_PROPOSE_POLL_SECS", "20"))
 # near-duplicate.
 IRI_RESERVATION_ENABLED = os.getenv("IRI_RESERVATION_ENABLED", "false").lower() == "true"
 
+# ----- Amortized save (SPEC-bfo-agent-speed.md change 7) -----
+# When false, the per-claim commit skips the O(N) RDF/XML serialization (and
+# the per-claim git commit of working.owl); the file is written at checkpoint
+# boundaries, the final pass, pause/runner exit, and graceful shutdown.
+# Between saves the source of truth is the in-memory world; crash recovery
+# resets claims committed after the last save back to pending so they re-feed
+# (bounded to <= FULL_VERIFY_EVERY_K re-proposals; stable IRIs converge).
+# Requires VERIFY_EVERY_COMMIT=false (the per-commit verify reasons over the
+# saved file) and INMEM_DRY_RUN=true (the legacy dry-run reloads from disk,
+# which would silently drop unsaved in-memory commits); refused otherwise.
+def _sanitize_save_every_commit(save_every: bool, verify_every: bool,
+                                inmem: bool) -> bool:
+    """Refuse SAVE_EVERY_COMMIT=false unless its prerequisites hold."""
+    if save_every:
+        return True
+    if verify_every or not inmem:
+        import logging
+        logging.getLogger(__name__).warning(
+            "SAVE_EVERY_COMMIT=false requires VERIFY_EVERY_COMMIT=false and "
+            "INMEM_DRY_RUN=true (got VERIFY_EVERY_COMMIT=%s, INMEM_DRY_RUN=%s)"
+            "; forcing SAVE_EVERY_COMMIT=true", verify_every, inmem,
+        )
+        return True
+    return False
+
+
+SAVE_EVERY_COMMIT = _sanitize_save_every_commit(
+    os.getenv("SAVE_EVERY_COMMIT", "true").lower() == "true",
+    VERIFY_EVERY_COMMIT,
+    INMEM_DRY_RUN,
+)
+
 # ----- Class-count budget (bfo-agent-spec.md FR-7) -----
 # Soft cap on how many NEW classes a single proposal may mint. Exceeding it
 # raises a warning (logged + surfaced on the proposal), never a silent accept.

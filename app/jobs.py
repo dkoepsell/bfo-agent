@@ -145,6 +145,26 @@ def mark_window_needs_review(job_id: str, from_id: Optional[int],
     return flipped
 
 
+def reset_claims_pending(job_id: str, claim_ids: list[int]) -> list[int]:
+    """Flip the given committed claims back to pending (amortized-save crash
+    recovery, SPEC-bfo-agent-speed.md change 7): their axioms were recorded
+    committed but never reached disk before the process died, so they must
+    re-feed through the full path. Only claims currently committed are
+    touched. Returns the reset claim ids."""
+    wanted = set(claim_ids)
+    job = load_job(job_id)
+    reset = []
+    for c in job["claims"]:
+        if c["id"] in wanted and c.get("status") == "committed":
+            c["status"] = "pending"
+            c["verdict"] = None
+            c["updated_at"] = _now()
+            reset.append(c["id"])
+    if reset:
+        save_job(job)
+    return reset
+
+
 # -------------------------------------------------------------- CRUD
 def create_job(name: str, meta: Optional[dict] = None) -> dict:
     """Create a new empty job."""
