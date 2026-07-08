@@ -210,6 +210,13 @@ FINALIZE_REQUIRES_FULL_VERIFY = os.getenv("FINALIZE_REQUIRES_FULL_VERIFY", "true
 # per-commit history of working.owl makes bisection tractable.
 CHECKPOINT_FAIL_MARK_REVIEW = os.getenv("CHECKPOINT_FAIL_MARK_REVIEW", "false").lower() == "true"
 
+# ----- Reduced reasoning world (SPEC-bfo-agent-speed.md change 1) -----
+# Dry-run reasoning over BFO + working TBox + only the proposal's touched
+# individuals instead of the full ABox. Sound for class satisfiability and
+# the proposal's own assertions; the checkpoint/final full pass (change 6)
+# reconciles cross-individual interactions. Requires INMEM_DRY_RUN.
+REDUCED_REASONING_WORLD = os.getenv("REDUCED_REASONING_WORLD", "false").lower() == "true"
+
 # ----- Class-count budget (bfo-agent-spec.md FR-7) -----
 # Soft cap on how many NEW classes a single proposal may mint. Exceeding it
 # raises a warning (logged + surfaced on the proposal), never a silent accept.
@@ -255,3 +262,24 @@ def require_secret():
         raise RuntimeError(
             "SECRET_KEY not set. Set a strong random value in .env for production."
         )
+
+
+def _warn_contradictory_flags():
+    """Log (never raise) when flag combinations are inert or self-defeating."""
+    import logging
+
+    _log = logging.getLogger(__name__)
+    if REDUCED_REASONING_WORLD and not INMEM_DRY_RUN:
+        _log.warning(
+            "REDUCED_REASONING_WORLD is set but INMEM_DRY_RUN is off: the "
+            "reduced world requires INMEM_DRY_RUN; flag has no effect"
+        )
+    if REDUCED_REASONING_WORLD and VERIFY_EVERY_COMMIT:
+        _log.warning(
+            "REDUCED_REASONING_WORLD with VERIFY_EVERY_COMMIT=true: the "
+            "reduced dry-run world still pays a full reasoner pass per "
+            "commit; set VERIFY_EVERY_COMMIT=false to realize the savings"
+        )
+
+
+_warn_contradictory_flags()

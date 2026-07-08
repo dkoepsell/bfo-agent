@@ -221,6 +221,14 @@ class OntologyManager:
             self._sanitize_bfo_disjointness()
             self._strip_subclass_of_property()
 
+            # Reduced-world indexes (SPEC-bfo-agent-speed.md change 1): built
+            # eagerly only when the feature is live, lazily otherwise
+            # (_ensure_reduced_indexes), so the flag-off path pays nothing.
+            self._individual_iris: Optional[set[str]] = None
+            self._tbox_mirror = None
+            if config.REDUCED_REASONING_WORLD and config.INMEM_DRY_RUN:
+                self._rebuild_reduced_indexes()
+
     def _strip_subclass_of_property(self, world: Optional[World] = None):
         """Drop any ``rdfs:subClassOf`` whose object is a BFO/RO *property*.
 
@@ -849,7 +857,12 @@ class OntologyManager:
                 self._proposal_guards(delta)
             except ValueError as e:
                 return False, f"proposal guard: {e}"
-            w, _onto = self._scratch_world()  # snapshot INCLUDES the delta
+            # Snapshot INCLUDES the delta. Reduced world (speed change 1):
+            # BFO + TBox + touched individuals only; else the full graph.
+            if config.REDUCED_REASONING_WORLD:
+                w, _onto = self._reduced_world(proposal, delta)
+            else:
+                w, _onto = self._scratch_world()
         finally:
             self.rollback(delta)
 
@@ -1072,6 +1085,252 @@ class OntologyManager:
                     f"subclass of a relation"
                 )
 
+    # ------------------------------------ reduced world (speed change 1)
+    def _working_context(self):
+        """rdflib view restricted to EXACTLY the working ontology's triples.
+
+        owlready2's rdflib store exposes each loaded ontology as a named
+        context; ``get_context(self.working)`` therefore yields the working
+        ontology's content without any of BFO's triples (verified empirically
+        on owlready2 0.50: a fresh working ontology shows only its header +
+        imports triples while the world graph also holds BFO's ~1400).
+        Subject-keyed lookups on it are SQL-indexed, not full scans.
+        """
+        return self.world.as_rdflib_graph().get_context(self.working)
+
+    def _rebuild_reduced_indexes(self) -> None:
+        """(Re)build the persistent TBox mirror + individual index.
+
+        ``_individual_iris``: full IRIs of every working individual.
+        ``_tbox_mirror``: every working-ontology triple whose subject is NOT
+        an individual -- named classes, properties, blank-node restriction
+        clusters, and the ontology header (owl:Ontology + imports), which the
+        reduced buffer must carry so owlready2 recognizes the ontology.
+        Called from _load (feature on), lazily on first use, and at every
+        verify_full checkpoint (drift guard for the incremental appends).
+        """
+        import rdflib
+        from rdflib import URIRef
+
+        self._individual_iris = {i.iri for i in self.working.individuals()}
+        mirror = rdflib.Graph()
+        inds = self._individual_iris
+        for s, p, o in self._working_context():
+            if isinstance(s, URIRef) and str(s) in inds:
+                continue
+            mirror.add((s, p, o))
+        self._tbox_mirror = mirror
+
+    def _ensure_reduced_indexes(self) -> None:
+        if getattr(self, "_tbox_mirror", None) is None:
+            self._rebuild_reduced_indexes()
+
+    @staticmethod
+    def _copy_subject_closure(src, dst, subj) -> None:
+        """Copy all of ``subj``'s subject-triples from ``src`` to ``dst``,
+        following blank-node objects transitively so restriction/complement
+        clusters (and any rdf:List inside them) arrive whole. A dangling
+        bnode reference would silently drop the constraint on reparse."""
+        from rdflib import BNode
+
+        stack, seen = [subj], set()
+        while stack:
+            s = stack.pop()
+            if s in seen:
+                continue
+            seen.add(s)
+            for t in src.triples((s, None, None)):
+                dst.add(t)
+                if isinstance(t[2], BNode):
+                    stack.append(t[2])
+
+    def _refresh_mirror_subject(self, iri: str) -> None:
+        """Re-copy one non-individual subject from the live working graph
+        into the TBox mirror (incremental maintenance after a commit or a
+        scaffolding write). Old bnode clusters may be orphaned in the mirror
+        until the next checkpoint rebuild; a detached restriction bnode is
+        semantically inert, so that is drift-free for reasoning."""
+        from rdflib import URIRef
+
+        subj = URIRef(iri)
+        self._tbox_mirror.remove((subj, None, None))
+        self._copy_subject_closure(self._working_context(), self._tbox_mirror, subj)
+
+    def _delta_new_individuals(self, delta: AppliedDelta) -> set[str]:
+        """IRIs among delta.new_entities that resolve to individuals. Must be
+        called while the delta is still applied (entities exist in the world)."""
+        out: set[str] = set()
+        for iri in delta.new_entities:
+            ent = self._resolve_entity(iri, _local_name(iri))
+            if ent is not None and not isinstance(ent, type):
+                out.add(iri)
+        return out
+
+    def _delta_class_subjects(
+        self, delta: AppliedDelta, new_individuals: set[str]
+    ) -> set[str]:
+        """Non-individual subjects the delta touched: the class-level content
+        that is NOT in the TBox mirror yet (the mirror updates on commit)."""
+        inds = (self._individual_iris or set()) | new_individuals
+        subjects: set[str] = set()
+        for iri in delta.new_entities:
+            if iri not in new_individuals:
+                subjects.add(iri)
+        for iri, _obj in delta.is_a_added:
+            if iri not in inds:
+                subjects.add(iri)
+        for iri, _lbl in delta.label_added:
+            if iri not in inds:
+                subjects.add(iri)
+        for iri, _lbl in delta.label_removed:
+            if iri not in inds:
+                subjects.add(iri)
+        for s, _p, _o in delta.raw_triples:
+            if s not in inds:
+                subjects.add(s)
+        for cls_iri, _parent in delta.retracted:
+            if cls_iri not in inds:
+                subjects.add(cls_iri)
+        return subjects
+
+    def _update_reduced_indexes(self, delta: Optional[AppliedDelta]) -> None:
+        """Incrementally fold a COMMITTED delta into the persistent indexes.
+
+        New individuals extend ``_individual_iris``; every non-individual
+        subject the delta touched is re-copied from the live graph into the
+        TBox mirror (bnode closure included) -- copy-from-live rather than
+        manual triple construction, so restriction clusters and owlready2's
+        auto-materialized companions can never drift from the real graph.
+        Dry-run deltas never reach here (they roll back before commit).
+        """
+        if delta is None or getattr(self, "_tbox_mirror", None) is None:
+            return
+        new_inds = self._delta_new_individuals(delta)
+        subjects = self._delta_class_subjects(delta, new_inds)
+        self._individual_iris |= new_inds
+        for iri in subjects:
+            self._refresh_mirror_subject(iri)
+
+    def _touched_individual_iris(self, proposal, delta: AppliedDelta) -> set[str]:
+        """Full IRIs of every working individual this proposal touches.
+
+        Union of: delta-created individuals; delta mutations whose subject or
+        raw-triple endpoint is an individual (these carry the ACTUAL IRIs,
+        surviving stable-IRI remaps); proposal entities with kind != "class"
+        (existing_iri reuse included) and relation endpoints, resolved full-IRI
+        first then by local name. Must run while the delta is applied.
+        """
+        self._ensure_reduced_indexes()
+        new_inds = self._delta_new_individuals(delta)
+        known = self._individual_iris | new_inds
+        by_local = {_local_name(i): i for i in known}
+        touched: set[str] = set(new_inds)
+
+        def resolve(ref: Optional[str]) -> Optional[str]:
+            if not ref:
+                return None
+            full = _resolve_iri(ref, WORKING_IRI)
+            if full in known:
+                return full
+            return by_local.get(_local_name(ref))
+
+        for ent in proposal.entities:
+            if ent.kind != "class":
+                for ref in (getattr(ent, "existing_iri", None),
+                            ent.iri_suggestion):
+                    r = resolve(ref)
+                    if r:
+                        touched.add(r)
+        for rel in proposal.relations:
+            for ref in (rel.s, rel.o):
+                r = resolve(ref)
+                if r:
+                    touched.add(r)
+        for iri, _obj in delta.is_a_added:
+            if iri in known:
+                touched.add(iri)
+        for iri, _lbl in delta.label_added:
+            if iri in known:
+                touched.add(iri)
+        for iri, _lbl in delta.label_removed:
+            if iri in known:
+                touched.add(iri)
+        for s, _p, o in delta.raw_triples:
+            if s in known:
+                touched.add(s)
+            if o in known:
+                touched.add(o)
+        return touched
+
+    def _reduced_world(self, proposal, delta: AppliedDelta) -> tuple:
+        """Fresh World for dry-run reasoning: BFO + working TBox mirror + only
+        the individuals touched by this proposal (SPEC change 1). Sound for
+        class satisfiability and the proposal's own assertions; may miss a
+        new-axiom x distant-individual interaction -- the checkpoint/final
+        verify_full (change 6) closes that gap.
+
+        Must be called while the delta is still applied to the live world:
+        the proposal's own triples are then picked up naturally from the live
+        graph (the same content commit would write). Class-level delta content
+        is refreshed from the live graph explicitly because the mirror only
+        updates on commit; FM-9 retractions are dropped from the buffer (the
+        persistent mirror still carries them until the next rebuild).
+        """
+        import rdflib
+        from rdflib import RDFS, URIRef
+
+        with timing.phase("scratch_build"):
+            self._ensure_reduced_indexes()
+            live = self._working_context()
+            g = rdflib.Graph()
+            for t in self._tbox_mirror:
+                g.add(t)
+
+            # Delta's class-level content (new classes, restriction bnode
+            # clusters, raw class-level triples): refresh each touched
+            # non-individual subject from the live graph, dropping the
+            # mirror's (possibly stale, e.g. replaced-label) version first.
+            new_inds = self._delta_new_individuals(delta)
+            for iri in self._delta_class_subjects(delta, new_inds):
+                subj = URIRef(iri)
+                g.remove((subj, None, None))
+                self._copy_subject_closure(live, g, subj)
+            # FM-9 exclusions: retracted from the live graph already, but the
+            # persistent mirror may still carry the edge -- drop it here.
+            for cls_iri, parent_iri in delta.retracted:
+                g.remove((URIRef(cls_iri), RDFS.subClassOf, URIRef(parent_iri)))
+
+            # Touched individuals' assertions, plus depth-1 pull-in: any
+            # individual a touched one references gets its own subject
+            # triples too (one level, no recursion beyond that). Inverse
+            # assertions owlready2 auto-materializes ride along as the
+            # neighbour's subject-triples.
+            known = self._individual_iris | new_inds
+            touched = self._touched_individual_iris(proposal, delta)
+            neighbours: set[str] = set()
+            for iri in touched:
+                for _s, _p, o in live.triples((URIRef(iri), None, None)):
+                    if isinstance(o, URIRef) and str(o) in known:
+                        neighbours.add(str(o))
+                self._copy_subject_closure(live, g, URIRef(iri))
+            for iri in neighbours - touched:
+                self._copy_subject_closure(live, g, URIRef(iri))
+
+            # The delta's raw triples verbatim (idempotent for those already
+            # copied above; covers e.g. an assertion onto a BFO-side subject).
+            for s, p, o in delta.raw_triples:
+                g.add((URIRef(s), URIRef(p), URIRef(o)))
+
+            data = g.serialize(format="xml")
+            if isinstance(data, str):
+                data = data.encode("utf-8")
+            w = World()
+            w.get_ontology(str(self.bfo_path)).load()
+            onto = w.get_ontology(self.working_path.as_uri()).load(
+                fileobj=io.BytesIO(data)
+            )
+        return w, onto
+
     def check_coherence_dry_run(
         self, proposal, exclude_axioms: Optional[list[dict]] = None
     ) -> tuple[bool, list[str], str]:
@@ -1099,7 +1358,12 @@ class OntologyManager:
                 self._proposal_guards(delta)
             except ValueError as e:
                 return False, [], f"proposal guard: {e}"
-            w, _onto = self._scratch_world()  # snapshot INCLUDES the delta
+            # Snapshot INCLUDES the delta. Reduced world (speed change 1):
+            # BFO + TBox + touched individuals only; else the full graph.
+            if config.REDUCED_REASONING_WORLD:
+                w, _onto = self._reduced_world(proposal, delta)
+            else:
+                w, _onto = self._scratch_world()
         finally:
             self.rollback(delta)
 
@@ -1274,6 +1538,10 @@ class OntologyManager:
                 return False
         if delta is not None:
             delta.is_a_added.append((cls.iri, restriction))
+        elif getattr(self, "_tbox_mirror", None) is not None:
+            # Delta-less caller (scaffolding) writes for keeps: keep the
+            # reduced-world TBox mirror in step (speed change 1).
+            self._refresh_mirror_subject(cls.iri)
         return True
 
     def add_class_expression(
@@ -1330,6 +1598,10 @@ class OntologyManager:
                 return False
         if delta is not None:
             delta.is_a_added.append((cls.iri, target))
+        elif getattr(self, "_tbox_mirror", None) is not None:
+            # Delta-less caller (scaffolding) writes for keeps: keep the
+            # reduced-world TBox mirror in step (speed change 1).
+            self._refresh_mirror_subject(cls.iri)
         return True
 
     def annotate_incoherence(self, class_ref: str, text: str) -> bool:
@@ -1481,6 +1753,10 @@ class OntologyManager:
             # final-pass machinery (verify_full) owes it a certificate.
             self.commits_since_full_verify += 1
 
+        # The commit stands (every failure path above raised): fold it into
+        # the reduced-world indexes (speed change 1). No-op unless built.
+        self._update_reduced_indexes(delta)
+
         return warnings
 
     def _verify_saved_coherent(
@@ -1558,6 +1834,11 @@ class OntologyManager:
             exclude_axioms=exclude_axioms, phase="reason_full_verify"
         )
         self.commits_since_full_verify = 0
+        # Checkpoint boundary: rebuild the reduced-world indexes from scratch
+        # so any drift the incremental appends missed is bounded to one
+        # checkpoint window (speed change 1). Cheap at this frequency.
+        if getattr(self, "_tbox_mirror", None) is not None:
+            self._rebuild_reduced_indexes()
         return {
             "ok": ok,
             "unsat_classes": unsat,
