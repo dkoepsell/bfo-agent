@@ -458,9 +458,11 @@ def test_reserve_iris_reuses_committed_class(tmp_path, monkeypatch):
     assert names == ["EmpathyDeficit"]
 
 
-def test_reserve_iris_off_by_default(tmp_path):
-    """With the flag off (default), apply_proposal never rewrites."""
-    assert config.IRI_RESERVATION_ENABLED is False
+def test_reserve_iris_off_by_default(tmp_path, monkeypatch):
+    """With the flag off, apply_proposal never rewrites. Pin the flag rather
+    than asserting the ambient default: a deployed box's .env may correctly
+    have IRI_RESERVATION_ENABLED flipped on while running the suite."""
+    monkeypatch.setattr(config, "IRI_RESERVATION_ENABLED", False)
     mgr = _make_manager(tmp_path)
     mgr.commit_proposal(
         Proposal(session_id="t", utterance="u",
