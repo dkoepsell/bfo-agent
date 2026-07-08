@@ -53,10 +53,18 @@ set_env() {
     echo "${key}=${val}" >> "$ENVF"
   fi
 }
+# ensure_env: add the key with a default ONLY if absent — never clobbers a
+# value chosen in the live .env (flag flips are operational state, not code).
+ensure_env() {
+  local key="$1" val="$2"
+  grep -q "^${key}=" "$ENVF" || echo "${key}=${val}" >> "$ENVF"
+}
 set_env ENABLE_COHERENCE_GATE true
 set_env GATE_POLICY reject_resample
 set_env GATE_RUN_REASONER true
-set_env GATE_MAX_ATTEMPTS 2
+# Tunable (1 = no resample, saves up to 2 extra propose calls per rejected
+# claim on LLM-bound feeds); default 2, but respect a live override.
+ensure_env GATE_MAX_ATTEMPTS 2
 set_env ENABLE_SCAFFOLDING true
 # bfo-agent-spec.md (2026-06-30) rollout:
 #   CACHE_TTL: "5m" keeps the BFO prefix hot for back-to-back corpus runs (lower
@@ -68,6 +76,23 @@ set_env ENABLE_SCAFFOLDING true
 set_env CACHE_TTL 5m
 set_env STABLE_INDIVIDUAL_IRIS false
 grep -q "^OWLTESTER_URL=" "$ENVF" || echo "OWLTESTER_URL=" >> "$ENVF"
+
+# SPEC-bfo-agent-speed.md rollout (stages 0-5). Ensured-if-absent only:
+# these are progressive flips validated by timing runs, so a deploy must
+# never reset a flip that is already live. Target end-state values are in
+# the plan's flag table; the conservative defaults below only seed a fresh
+# .env that has never been flipped.
+ensure_env TIMING_INSTRUMENTATION true
+ensure_env GATE_REASONER_STRUCTURAL_SKIP false   # flip 1 (live: true)
+ensure_env INMEM_DRY_RUN false                   # flip 2 (live: true)
+ensure_env VERIFY_EVERY_COMMIT true              # flip 3: false
+ensure_env FULL_VERIFY_EVERY_K 250
+ensure_env FINALIZE_REQUIRES_FULL_VERIFY true
+ensure_env CHECKPOINT_FAIL_MARK_REVIEW false
+ensure_env REDUCED_REASONING_WORLD false         # flip 3: true
+ensure_env BATCH_PROPOSE_ENABLED false           # flip 4: true
+ensure_env IRI_RESERVATION_ENABLED false         # flip 4: true
+ensure_env SAVE_EVERY_COMMIT true                # flip 5, only if timing says
 
 # 5. Smoke test: imports + the gate test suite (no server, no API key needed).
 echo "-- smoke test"
