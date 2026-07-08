@@ -32,6 +32,14 @@ ANTHROPIC_EXTRACTOR_MODEL = os.getenv(
     "claude-haiku-4-5-20251001",
 )
 
+# Sampling temperature for the proposer. BFO typing is a near-deterministic
+# task -- a term has one correct top-level category -- so the default is 0.
+# At the API default (1.0) the proposer stochastically assigns a class two
+# disjoint BFO types (e.g. a disease as both process and disposition), which
+# the construction linter rejects; that straddle-reject churn dominated the
+# ICD-11 feed. Raise only if deterministic output collapses into a rut.
+PROPOSER_TEMPERATURE = float(os.getenv("PROPOSER_TEMPERATURE", "0"))
+
 # ----- Kernel identity (bfo-agent-spec.md FR-1/§8) -----
 # The dominant kernel is BFO 2020. Its versionIRI stamps emitted fragments and
 # kernel-extension-requests so provenance is unambiguous.

@@ -11,7 +11,13 @@ from typing import Optional
 
 from anthropic import Anthropic
 
-from .config import ANTHROPIC_API_KEY, ANTHROPIC_MODEL, CACHE_TTL, require_api_key
+from .config import (
+    ANTHROPIC_API_KEY,
+    ANTHROPIC_MODEL,
+    CACHE_TTL,
+    PROPOSER_TEMPERATURE,
+    require_api_key,
+)
 from .cached_client import Usage, cache_control, summarize
 
 log = logging.getLogger(__name__)
@@ -273,6 +279,7 @@ class LLMProposer:
         resp = self.client.messages.create(
             model=self.model,
             max_tokens=4000,
+            temperature=PROPOSER_TEMPERATURE,
             system=system,
             messages=[{"role": "user", "content": user_message}],
         )
@@ -314,6 +321,7 @@ Return JSON only."""
         resp = self.client.messages.create(
             model=self.model,
             max_tokens=2000,
+            temperature=PROPOSER_TEMPERATURE,
             messages=[{"role": "user", "content": prompt}],
         )
         self._record_usage(resp)
