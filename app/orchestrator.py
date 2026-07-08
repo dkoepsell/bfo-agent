@@ -715,32 +715,58 @@ def _feed_one_core(job_id: str, auto_accept: bool = True) -> dict:
         proposer = _get_proposer()
         ctx = mgr.summary_for_proposer(utterance=claim["claim"])
 
-        try:
-            with timing.phase("propose"):
-                proposal = proposer.propose(
-                    utterance=claim["claim"],
-                    session_id=session_id,
-                    working_classes=ctx["working_classes"],
-                    known_individuals=ctx["known_individuals"],
-                    relevant_classes=ctx.get("relevant_classes"),
+        # Batch propose (SPEC-bfo-agent-speed.md change 5): a prepare pass
+        # (app/batch_propose.py) may have already run this claim through the
+        # LLM against a context snapshot. Consume the stored proposal instead
+        # of calling the API inline -- keeping the stored proposal_id for
+        # determinism -- and clear it (consume-once) in the same write that
+        # records the claim's outcome below. The gate + commit path is
+        # untouched, and any gate resample still re-proposes live.
+        proposal = None
+        used_stored_proposal = False
+        pre = claim.get("proposal") if config.BATCH_PROPOSE_ENABLED else None
+        if pre:
+            try:
+                with timing.phase("propose"):  # near-zero; keeps the key
+                    data = dict(pre)
+                    data["session_id"] = session_id
+                    data.setdefault("utterance", claim["claim"])
+                    proposal = Proposal.model_validate(data)
+                used_stored_proposal = True
+            except Exception as e:
+                # Malformed stored proposal: fall back to live propose.
+                log_event(session_id, "batch_proposal_invalid",
+                          {"error": str(e), "job_id": job_id,
+                           "claim_id": claim["id"]})
+                proposal = None
+
+        if proposal is None:
+            try:
+                with timing.phase("propose"):
+                    proposal = proposer.propose(
+                        utterance=claim["claim"],
+                        session_id=session_id,
+                        working_classes=ctx["working_classes"],
+                        known_individuals=ctx["known_individuals"],
+                        relevant_classes=ctx.get("relevant_classes"),
+                    )
+            except Exception as e:
+                jobs_store.update_claim_status(
+                    job_id, claim["id"], "error", verdict="error"
                 )
-        except Exception as e:
-            jobs_store.update_claim_status(
-                job_id, claim["id"], "error", verdict="error"
-            )
-            log_event(session_id, "propose_error",
-                      {"utterance": claim["claim"], "error": str(e),
-                       "job_id": job_id, "claim_id": claim["id"]})
-            _emit_claim_timing(session_id, job_id, claim["id"], None,
-                               "error", False, None, mgr, t_claim)
-            remaining = _count_pending(job_id)
-            return {
-                "claim": claim,
-                "proposal": None,
-                "error": str(e),
-                "committed": False,
-                "remaining": remaining,
-            }
+                log_event(session_id, "propose_error",
+                          {"utterance": claim["claim"], "error": str(e),
+                           "job_id": job_id, "claim_id": claim["id"]})
+                _emit_claim_timing(session_id, job_id, claim["id"], None,
+                                   "error", False, None, mgr, t_claim)
+                remaining = _count_pending(job_id)
+                return {
+                    "claim": claim,
+                    "proposal": None,
+                    "error": str(e),
+                    "committed": False,
+                    "remaining": remaining,
+                }
 
         # Extraction fidelity (fidelity-mode-spec.md): in faithful mode the
         # ontology must stay true to the text including its errors -- clashes
@@ -790,11 +816,14 @@ def _feed_one_core(job_id: str, auto_accept: bool = True) -> dict:
             verdict = proposal.reasoner_verdict
 
         _proposal_cache[proposal.proposal_id] = proposal
-        log_event(session_id, "propose", {
+        propose_payload = {
             "proposal": proposal.model_dump(),
             "job_id": job_id,
             "claim_id": claim["id"],
-        })
+        }
+        if used_stored_proposal:
+            propose_payload["proposal_source"] = "batch"
+        log_event(session_id, "propose", propose_payload)
 
         committed = False
         warnings: list[str] = []
@@ -903,6 +932,7 @@ def _feed_one_core(job_id: str, auto_accept: bool = True) -> dict:
             job_id, claim["id"], new_status,
             proposal_id=proposal.proposal_id,
             verdict=verdict,
+            clear_proposal=used_stored_proposal,
         )
 
         # Checkpointed full verification (SPEC-bfo-agent-speed.md change 6):
@@ -1858,6 +1888,42 @@ def create_app() -> Flask:
             return jsonify({"error": "job is paused; call /resume first"}), 409
 
         return jsonify(_feed_one_core(job_id, auto_accept))
+
+    @app.post("/jobs/<job_id>/prepare_proposals")
+    def jobs_prepare_proposals(job_id):
+        """Kick a batch prepare pass (SPEC-bfo-agent-speed.md change 5):
+        submit every pending+approved claim without a stored proposal to the
+        Anthropic Message Batches API and persist the parsed proposals into
+        the job file, so the feed consumes them instead of calling the API
+        inline. Runs on a daemon thread; poll GET /jobs/<id> and read
+        meta.batch_propose for progress. 409 while a batch is running."""
+        # Phase 3: refuse writes against a finalized ontology.
+        if _active_is_finalized():
+            return _finalized_guard_response()
+        try:
+            job = jobs_store.load_job(job_id)
+        except FileNotFoundError as e:
+            return jsonify({"error": str(e)}), 404
+        bp = (job.get("meta") or {}).get("batch_propose") or {}
+        if bp.get("status") in ("submitted", "processing"):
+            return jsonify({
+                "error": "a proposal batch is already running for this job",
+                "batch_propose": bp,
+            }), 409
+
+        # Anthropic-only module; imported lazily so the DGX fork (local LLM,
+        # no Batches API) never loads it.
+        from . import batch_propose
+
+        def _run():
+            try:
+                batch_propose.prepare_job_proposals(job_id)
+            except Exception:
+                log.exception("prepare_proposals failed for job %s", job_id)
+
+        threading.Thread(target=_run, daemon=True,
+                         name=f"prepare-proposals-{job_id}").start()
+        return jsonify({"started": True, "job_id": job_id})
 
     @app.post("/jobs/<job_id>/pause")
     def jobs_pause(job_id):

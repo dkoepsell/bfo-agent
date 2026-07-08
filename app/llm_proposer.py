@@ -244,55 +244,26 @@ class LLMProposer:
         known_individuals: list[dict],
         relevant_classes: list[dict] | None = None,
     ) -> Proposal:
-        prompt = PROMPT_TEMPLATE.format(
-            bfo_primer=BFO_PRIMER,
-            working_classes=_compact_lines(working_classes),
-            known_individuals=_compact_lines(known_individuals),
+        system, user_message = build_prompt_blocks(
             utterance=utterance,
-            relevant_classes=_compact_lines(relevant_classes or []),
+            working_classes=working_classes,
+            known_individuals=known_individuals,
+            relevant_classes=relevant_classes,
+            ttl=self.ttl,
         )
-
-        # Two cache breakpoints + compact context. The ontology snapshot (now
-        # one compact line per term, ~3-4x fewer tokens than indented JSON) is the
-        # dominant per-call input cost on a feed, so we (a) shrink it and (b) give
-        # it its own breakpoint so it is a cache READ between commits. The static
-        # block is instructions + the JSON schema (lifted out of the dynamic tail,
-        # where it was being re-sent uncached every call). Only the per-claim
-        # utterance is uncached.
-        static_system, ontology_block, claim = _split_for_breakpoints(prompt)
-        system = [{
-            "type": "text",
-            "text": static_system,
-            "cache_control": cache_control(self.ttl),
-        }]
-        if ontology_block:
-            system.append({
-                "type": "text",
-                "text": ontology_block,
-                "cache_control": cache_control(self.ttl),
-            })
 
         resp = self.client.messages.create(
             model=self.model,
             max_tokens=4000,
             system=system,
-            messages=[{"role": "user", "content": claim or prompt}],
+            messages=[{"role": "user", "content": user_message}],
         )
         self._record_usage(resp)
 
         text = "".join(
             block.text for block in resp.content if getattr(block, "text", None)
         )
-        data = _extract_json(text)
-
-        return Proposal(
-            session_id=session_id,
-            utterance=utterance,
-            entities=data.get("entities", []),
-            relations=data.get("relations", []),
-            open_questions=data.get("open_questions", []),
-            rationale_summary=data.get("rationale_summary", ""),
-        )
+        return parse_proposal_response(text, session_id, utterance)
 
     def answer_grounded(
         self,
@@ -332,6 +303,67 @@ Return JSON only."""
             block.text for block in resp.content if getattr(block, "text", None)
         )
         return _extract_json(text)
+
+
+def build_prompt_blocks(
+    utterance: str,
+    working_classes: list[dict],
+    known_individuals: list[dict],
+    relevant_classes: list[dict] | None,
+    ttl: str,
+) -> tuple[list[dict], str]:
+    """Render the proposer prompt into ``(system_blocks, user_message)``.
+
+    Two cache breakpoints + compact context. The ontology snapshot (one
+    compact line per term, ~3-4x fewer tokens than indented JSON) is the
+    dominant per-call input cost on a feed, so we (a) shrink it and (b) give
+    it its own breakpoint so it is a cache READ between commits. The static
+    block is instructions + the JSON schema (lifted out of the dynamic tail,
+    where it was being re-sent uncached every call). Only the per-claim
+    utterance is uncached.
+
+    Shared by the live :meth:`LLMProposer.propose` call and the batch prepare
+    pass (``app/batch_propose.py``, SPEC-bfo-agent-speed.md change 5) so both
+    produce byte-identical blocks -- batched entries then share the live
+    path's prompt-cache prefix (best-effort).
+    """
+    prompt = PROMPT_TEMPLATE.format(
+        bfo_primer=BFO_PRIMER,
+        working_classes=_compact_lines(working_classes),
+        known_individuals=_compact_lines(known_individuals),
+        utterance=utterance,
+        relevant_classes=_compact_lines(relevant_classes or []),
+    )
+    static_system, ontology_block, claim = _split_for_breakpoints(prompt)
+    system = [{
+        "type": "text",
+        "text": static_system,
+        "cache_control": cache_control(ttl),
+    }]
+    if ontology_block:
+        system.append({
+            "type": "text",
+            "text": ontology_block,
+            "cache_control": cache_control(ttl),
+        })
+    return system, (claim or prompt)
+
+
+def parse_proposal_response(text: str, session_id: str, utterance: str) -> Proposal:
+    """Parse a proposer completion into a :class:`Proposal`.
+
+    Factored out of :meth:`LLMProposer.propose` so the batch prepare pass
+    (``app/batch_propose.py``) parses batched results through the exact same
+    path as live calls."""
+    data = _extract_json(text)
+    return Proposal(
+        session_id=session_id,
+        utterance=utterance,
+        entities=data.get("entities", []),
+        relations=data.get("relations", []),
+        open_questions=data.get("open_questions", []),
+        rationale_summary=data.get("rationale_summary", ""),
+    )
 
 
 def _extract_json(text: str) -> dict:

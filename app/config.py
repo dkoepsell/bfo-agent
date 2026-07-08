@@ -217,6 +217,25 @@ CHECKPOINT_FAIL_MARK_REVIEW = os.getenv("CHECKPOINT_FAIL_MARK_REVIEW", "false").
 # reconciles cross-individual interactions. Requires INMEM_DRY_RUN.
 REDUCED_REASONING_WORLD = os.getenv("REDUCED_REASONING_WORLD", "false").lower() == "true"
 
+# ----- Batch propose (SPEC-bfo-agent-speed.md change 5) -----
+# Decouple propose from commit: a prepare pass (app/batch_propose.py) submits
+# all pending+approved claims to the Anthropic Message Batches API (~50%
+# cheaper) against one context snapshot and persists the parsed proposals in
+# the job file; the feed then consumes a stored proposal (consume-once)
+# instead of calling the API inline. Every precomputed proposal still passes
+# the full gate, and gate resamples always re-propose live. This feature is
+# Anthropic/Hetzner-only and is never merged to the DGX fork.
+BATCH_PROPOSE_ENABLED = os.getenv("BATCH_PROPOSE_ENABLED", "false").lower() == "true"
+# Poll interval (seconds) while waiting for a submitted batch to end.
+BATCH_PROPOSE_POLL_SECS = float(os.getenv("BATCH_PROPOSE_POLL_SECS", "20"))
+# Commit-time IRI reservation: batched proposals cannot see classes minted by
+# claims committed just before them, so at apply time each NEW entity's label
+# is canonicalized (stable_iri.canonical_key) and, on a key hit against an
+# already-committed entity of the same kind, the entity is rewritten to reuse
+# that IRI (relations remapped in lockstep) instead of minting a
+# near-duplicate.
+IRI_RESERVATION_ENABLED = os.getenv("IRI_RESERVATION_ENABLED", "false").lower() == "true"
+
 # ----- Class-count budget (bfo-agent-spec.md FR-7) -----
 # Soft cap on how many NEW classes a single proposal may mint. Exceeding it
 # raises a warning (logged + surfaced on the proposal), never a silent accept.

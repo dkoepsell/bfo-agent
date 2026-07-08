@@ -229,6 +229,15 @@ class OntologyManager:
             if config.REDUCED_REASONING_WORLD and config.INMEM_DRY_RUN:
                 self._rebuild_reduced_indexes()
 
+            # Commit-time IRI reservations (SPEC-bfo-agent-speed.md change 5):
+            # canonical label key -> existing IRI, so batched proposals that
+            # could not see classes minted by immediately-preceding commits
+            # reuse them instead of minting near-duplicates. Seeded lazily
+            # (None until first use) so the flag-off path pays nothing.
+            self._iri_reservations: Optional[dict[str, str]] = None
+            if config.IRI_RESERVATION_ENABLED:
+                self._seed_iri_reservations()
+
     def _strip_subclass_of_property(self, world: Optional[World] = None):
         """Drop any ``rdfs:subClassOf`` whose object is a BFO/RO *property*.
 
@@ -631,6 +640,113 @@ class OntologyManager:
                 return True
         return False
 
+    # ------------------------- IRI reservations (speed-spec change 5)
+    def _reservation_key(self, kind: str, label: str) -> Optional[str]:
+        body = stable_iri.canonical_key(label)
+        return f"{kind}|{body}" if body else None
+
+    def _seed_iri_reservations(self) -> None:
+        """Build the canonical-label -> IRI reservation map from the working
+        ontology's classes and individuals (first entity wins a collision)."""
+        res: dict[str, str] = {}
+        for kind, entities in (("class", self.working.classes()),
+                               ("individual", self.working.individuals())):
+            for ent in entities:
+                label = (str(ent.label.first()) if ent.label else "") or ent.name
+                key = self._reservation_key(kind, label)
+                if key is not None:
+                    res.setdefault(key, ent.iri)
+        self._iri_reservations = res
+
+    def _update_iri_reservations(self, delta: Optional[AppliedDelta]) -> None:
+        """Fold a successful commit's NEW entities into the reservation map,
+        so the next claim's :meth:`_reserve_iris` sees them. No-op unless
+        IRI_RESERVATION_ENABLED."""
+        if not config.IRI_RESERVATION_ENABLED:
+            return
+        if self._iri_reservations is None or delta is None:
+            # Legacy (no-delta) commits carry no new-entity record: re-walk.
+            # Also seeds on first use when the flag was flipped after load.
+            self._seed_iri_reservations()
+            return
+        for iri in delta.new_entities:
+            ent = self.world[iri]
+            if ent is None:
+                continue
+            kind = "class" if isinstance(ent, type) else "individual"
+            label = (str(ent.label.first()) if ent.label else "") or ent.name
+            key = self._reservation_key(kind, label)
+            if key is not None:
+                self._iri_reservations.setdefault(key, ent.iri)
+
+    def _reserve_iris(self, proposal):
+        """Rewrite NEW entities whose canonical label (stable_iri.canonical_key)
+        already names an EXISTING entity of the same kind to reference that IRI
+        instead of minting a near-duplicate, remapping relation endpoints in
+        lockstep (the same name_map mechanism as stable_iri.remap_proposal).
+
+        Pure: works on a copy; entities with an empty label, reused entities
+        (existing_iri set), and is_new=False entities are left untouched.
+        Batched proposals (SPEC-bfo-agent-speed.md change 5) cannot see classes
+        minted by claims committed just before them; this closes that gap at
+        apply time.
+        """
+        if self._iri_reservations is None:
+            self._seed_iri_reservations()
+        name_map: dict[str, str] = {}
+        changed = False
+        new_entities = []
+        for ent in proposal.entities:
+            label = (getattr(ent, "label", "") or "").strip()
+            reused = bool(getattr(ent, "existing_iri", None))
+            if not label or reused or not getattr(ent, "is_new", True):
+                new_entities.append(ent)
+                continue
+            kind = getattr(ent, "kind", "individual")
+            key = self._reservation_key(kind, label)
+            hit = self._iri_reservations.get(key) if key else None
+            if not hit or not self.iri_exists(hit):
+                new_entities.append(ent)
+                continue
+            old_ref = getattr(ent, "iri_suggestion", "") or label
+            old_local = _local_name(old_ref).split(":")[-1]
+            new_local = _local_name(hit)
+            if old_local and old_local != new_local:
+                name_map[old_local] = new_local
+            new_entities.append(ent.model_copy(update={
+                "iri_suggestion": f"working:{new_local}",
+                "is_new": False,
+                "existing_iri": hit,
+            }))
+            changed = True
+        if not changed:
+            return proposal
+
+        # Remap relation endpoints token-wise so compound objects
+        # ("not working:X", "PROP some working:X") keep their operators.
+        new_relations = []
+        for rel in proposal.relations:
+            upd = {}
+            for f in ("s", "o"):
+                val = getattr(rel, f, "") or ""
+                toks = val.split(" ")
+                hit_any = False
+                out_toks = []
+                for t in toks:
+                    loc = _local_name(t).split(":")[-1]
+                    if loc in name_map:
+                        out_toks.append(f"working:{name_map[loc]}")
+                        hit_any = True
+                    else:
+                        out_toks.append(t)
+                if hit_any:
+                    upd[f] = " ".join(out_toks)
+            new_relations.append(rel.model_copy(update=upd) if upd else rel)
+
+        return proposal.model_copy(
+            update={"entities": new_entities, "relations": new_relations}
+        )
+
     # -------------------------------------------------- apply a proposal
     def apply_proposal(
         self, proposal, delta: Optional[AppliedDelta] = None
@@ -645,6 +761,13 @@ class OntologyManager:
         apply exactly without reloading from disk.
         """
         warnings: list[str] = []
+
+        # Commit-time IRI reservation (speed-spec change 5): rewrite new
+        # entities whose canonical label already names a committed entity of
+        # the same kind to reuse that IRI -- BEFORE the stable-IRI remap so
+        # reserved (now reused) entities are never re-hashed.
+        if config.IRI_RESERVATION_ENABLED:
+            proposal = self._reserve_iris(proposal)
 
         # FR-6: deterministic, diffable individual IRIs (opt-in). Relation
         # endpoints are remapped in lockstep, so this is verdict-neutral.
@@ -1756,6 +1879,10 @@ class OntologyManager:
         # The commit stands (every failure path above raised): fold it into
         # the reduced-world indexes (speed change 1). No-op unless built.
         self._update_reduced_indexes(delta)
+
+        # Reserve the committed entities' canonical labels so later claims
+        # reuse them (speed change 5). No-op unless IRI_RESERVATION_ENABLED.
+        self._update_iri_reservations(delta)
 
         return warnings
 

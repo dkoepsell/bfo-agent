@@ -43,6 +43,27 @@ def stable_local_name(label: str, bfo_type: str = "", source: str = "",
     return f"{base}_{h}"
 
 
+_PUNCT = re.compile(r"[^A-Za-z0-9]+")
+
+
+def _singular(token: str) -> str:
+    """Naive singularization: strip one trailing 's' when the token is longer
+    than 3 chars and does not end in 'ss' ('Consciousness' stays whole).
+    Deliberately dumb -- this builds a reservation key, not linguistics."""
+    if len(token) > 3 and token.endswith("s") and not token.endswith("ss"):
+        return token[:-1]
+    return token
+
+
+def canonical_key(label: str) -> str:
+    """Canonical reservation key for an entity label (SPEC-bfo-agent-speed.md
+    change 5, commit-time IRI reservation): lowercase, punctuation collapsed
+    to spaces, whitespace collapsed, each token naively singularized. So
+    'Empathy Deficits' and 'empathy deficit' share one key."""
+    s = _PUNCT.sub(" ", (label or "").lower())
+    return " ".join(_singular(t) for t in s.split())
+
+
 def _ref_local(ref: str) -> str:
     s = (ref or "").split("#")[-1]
     s = s.split("/")[-1]

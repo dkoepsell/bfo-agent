@@ -55,7 +55,16 @@ def build_export_envelope(job: dict, box: str = BOX_LABEL) -> dict:
     meta = job.get("meta") or {}
     claims_out = []
     for c in job.get("claims", []):
-        claims_out.append({k: c.get(k) for k in EXPORT_CLAIM_FIELDS})
+        out = {k: c.get(k) for k in EXPORT_CLAIM_FIELDS}
+        # A precomputed proposal (batch propose, SPEC-bfo-agent-speed.md
+        # change 5) is plain JSON and survives the trip; included only when
+        # present so envelopes without one stay byte-identical to before.
+        # append_claims preserves it on import and the target's gate
+        # re-validates it at feed time.
+        if c.get("proposal") is not None:
+            out["proposal"] = c["proposal"]
+            out["proposal_source"] = c.get("proposal_source") or "batch"
+        claims_out.append(out)
     return {
         FORMAT_MARKER: True,
         "version": FORMAT_VERSION,
