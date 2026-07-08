@@ -277,7 +277,9 @@ def test_unresolvable_anchor_falls_through_to_reasoner(manager, monkeypatch):
 # (f) flag off (the default): reasoner invoked exactly as before.
 # ---------------------------------------------------------------------------
 def test_flag_off_reasoner_runs_as_before(manager, monkeypatch):
-    assert config.GATE_REASONER_STRUCTURAL_SKIP is False
+    # Pin the flag rather than asserting the ambient default: a deployed
+    # box's .env may (correctly) have the flip live while running the suite.
+    monkeypatch.setattr(config, "GATE_REASONER_STRUCTURAL_SKIP", False)
     calls = _spy_dry_run(manager, monkeypatch)
     p = Proposal(
         session_id="test",
