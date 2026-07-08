@@ -33,6 +33,15 @@ published/final artifact is always fully certified; only the timing of
 the full check is amortized, never its presence
 (SPEC-bfo-agent-speed.md change 6).
 
+## Related work
+
+The closest prior systems are OntoGPT and its SPIRES engine, which use an
+LLM to extract schema-conformant instances from text and ground them to
+ontology terms. BFO-Agent differs in what governs admission: rather than
+grounding extracted assertions to existing terms, it gates every commit on
+a description-logic reasoner, admitting a claim only if it leaves the graph
+consistent and coherent under BFO.
+
 ## License
 
 Code: Apache 2.0
