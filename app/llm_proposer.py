@@ -139,6 +139,24 @@ RULES:
     "o": "bfo:BFO_0000054 some working:Fatigue"}}` (the disposition is
     realized in such a process). The `o` form `"PROP some FILLER"` is the
     sanctioned restriction syntax.
+14. DISEASE / DISORDER / CONDITION ANCHORING (OGMS-under-BFO). A disease,
+    disorder, syndrome, or pathological condition is a DISPOSITION
+    (BFO_0000016) borne by an organism, realized in pathological processes.
+    Type it `BFO_0000016` and NEVER also as a material entity (BFO_0000040)
+    or a process (BFO_0000015) -- those BFO categories are pairwise disjoint,
+    so a class carrying two of them is rejected outright. One class, one
+    top-level BFO category. Separate the three senses a disease term blurs,
+    each its OWN class with its OWN single type:
+      - the CONDITION itself ("hepatitis E", "tuberculosis" as the disorder)
+        -> disposition (BFO_0000016);
+      - the pathological/infectious PROCESS ("the infection", "the acute
+        episode", inflammation) -> process (BFO_0000015);
+      - the causal AGENT / pathogen ("Mycobacterium tuberculosis", a virus,
+        a parasite) -> material entity (BFO_0000040).
+    Link them with the BFO properties (the condition is `BFO_0000054`
+    realized in the process; the agent is a `BFO_0000057` has-participant of
+    the process), do not collapse them into one straddling class. An anatomical
+    structure or whole organism is a material entity (BFO_0000040).
 
 CURRENT WORKING ONTOLOGY CONTEXT:
 
