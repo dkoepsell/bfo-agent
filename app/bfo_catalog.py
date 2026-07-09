@@ -103,11 +103,17 @@ KERNEL_PROPERTIES: frozenset[str] = frozenset({
 })
 
 # Meta-predicates that are always permitted even in strict closed-vocabulary
-# mode: they carry the typing/subsumption skeleton, not domain content.
+# mode: they carry the typing/subsumption/disjointness skeleton, not domain
+# content. owl:disjointWith is the structural axiom the proposer is told to
+# emit between a disposition and its realizing process (rule 14); the apply
+# path handles it (_OWL_DISJOINT_IRI) and the reasoner needs it, so the
+# construction linter must not reject it as an invented predicate.
 META_PREDICATES: frozenset[str] = frozenset({
     "rdf:type", "rdfs:subClassOf", "rdf:type", "a",
     "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
     "http://www.w3.org/2000/01/rdf-schema#subClassOf",
+    "owl:disjointWith",
+    "http://www.w3.org/2002/07/owl#disjointWith",
 })
 
 
@@ -122,9 +128,13 @@ def is_kernel_property(ref: str) -> bool:
 
 
 def is_meta_predicate(ref: str) -> bool:
-    """True iff ref is rdf:type / rdfs:subClassOf (always permitted)."""
+    """True iff ref is rdf:type / rdfs:subClassOf / owl:disjointWith
+    (structural axiom predicates that are always permitted)."""
     s = ref.strip()
-    return s in META_PREDICATES or s.split("#")[-1] in {"type", "subClassOf"}
+    return (
+        s in META_PREDICATES
+        or s.split("#")[-1] in {"type", "subClassOf", "disjointWith"}
+    )
 
 
 # ---------------------------------------------------------------------------

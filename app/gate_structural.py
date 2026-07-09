@@ -54,8 +54,18 @@ def _collect_class_parents(proposal) -> dict[str, set[str]]:
             bucket.add(ent.parent_class)
 
     for rel in proposal.relations:
-        if _is_subclass_predicate(rel.p):
-            parents.setdefault(rel.s, set()).add(rel.o)
+        if not _is_subclass_predicate(rel.p):
+            continue
+        o_raw = (rel.o or "").strip()
+        # A restriction / class-expression object (e.g. "realized_in some
+        # Process") is NOT a named superclass: its filler is the property's
+        # range, not a parent. Folding it in fabricates a straddle -- a
+        # disposition subClassOf (realized_in some Process) is not "also a
+        # process". The reasoner tier judges these (proposal_needs_reasoner
+        # forces it), so structure must not read the filler as a parent.
+        if o_raw.startswith("_:") or owl_checks.parse_class_expression(o_raw):
+            continue
+        parents.setdefault(rel.s, set()).add(rel.o)
 
     return parents
 

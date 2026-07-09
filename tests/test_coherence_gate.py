@@ -78,6 +78,42 @@ def test_clean_proposal_passes_full_gate(manager):
     assert result.outcome == GateOutcome.ACCEPT
 
 
+def test_realized_in_restriction_is_not_a_straddle(manager):
+    """Regression: a disposition subclassed to (realized_in some Process) must
+    NOT be read as "also a process". The lint straddle detector used to fold a
+    restriction object's filler in as a named parent, fabricating a
+    disposition/process clash and rejecting every correct rule-14 disease
+    proposal. The reasoner tier (which does run for restriction objects)
+    confirms the shape is coherent, so the whole gate must ACCEPT.
+    """
+    p = Proposal(
+        session_id="test",
+        utterance="Cholera",
+        entities=[
+            Entity(label="Cholera", iri_suggestion="working:Cholera",
+                   bfo_type="BFO_0000016", bfo_label="disposition",
+                   kind="class", rationale="disease disposition"),
+            Entity(label="Cholera Infection Process",
+                   iri_suggestion="working:CholeraProcess",
+                   bfo_type="BFO_0000015", bfo_label="process",
+                   kind="class", rationale="pathological process"),
+        ],
+        relations=[
+            Relation(s="working:Cholera", p="rdfs:subClassOf",
+                     o="bfo:BFO_0000054 some working:CholeraProcess",
+                     rationale="realized in"),
+            Relation(s="working:Cholera", p="owl:disjointWith",
+                     o="working:CholeraProcess",
+                     rationale="disposition != process"),
+        ],
+    )
+    # Lint must not fire a false straddle.
+    assert cg.lint_check(p, manager) is None
+    # And the full gate (construction + lint + reasoner) accepts.
+    result = cg.gate(p, manager, run_reasoner=True)
+    assert result.outcome == GateOutcome.ACCEPT, result.reason
+
+
 def test_reasoner_tier_catches_unsatisfiable_class(manager):
     """The coherence-correct dry-run flags an unsatisfiable class even when the
     ontology stays consistent (no individual instantiates it). This is the
