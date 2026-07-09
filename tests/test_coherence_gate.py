@@ -114,6 +114,65 @@ def test_realized_in_restriction_is_not_a_straddle(manager):
     assert result.outcome == GateOutcome.ACCEPT, result.reason
 
 
+def _poison(manager):
+    """Force a committed unsatisfiable class (BFO straddle) into working.owl,
+    bypassing the gate -- mirrors the reduced-world false-coherent commits that
+    poisoned the ICD-11 run."""
+    manager.commit_proposal(_force_as("BFO_0000019", "quality"))  # Force=quality
+    p2 = Proposal(session_id="test", utterance="straddle",
+                  relations=[Relation(s="working:Force", p="rdfs:subClassOf",
+                                      o="bfo:BFO_0000016", rationale="t")])
+    manager.apply_proposal(p2)
+    manager.save()
+
+
+def test_preexisting_unsat_does_not_cascade(manager):
+    """Incoherence-cascade fix: a class already unsatisfiable in the committed
+    ontology must not reject an unrelated, coherent new proposal. Before the
+    fix, one poisoned commit rejected every subsequent claim as 'inconsistent'.
+    """
+    _poison(manager)
+    # An unrelated, clean class -- disposition disease + its process.
+    clean = Proposal(
+        session_id="test", utterance="Cholera",
+        entities=[
+            Entity(label="Cholera", iri_suggestion="working:Cholera",
+                   bfo_type="BFO_0000016", bfo_label="disposition",
+                   kind="class", rationale="t"),
+            Entity(label="Cholera Process", iri_suggestion="working:CholeraProcess",
+                   bfo_type="BFO_0000015", bfo_label="process",
+                   kind="class", rationale="t"),
+        ],
+        relations=[
+            Relation(s="working:Cholera", p="rdfs:subClassOf",
+                     o="bfo:BFO_0000054 some working:CholeraProcess", rationale="t"),
+        ],
+    )
+    assert cg.reasoner_check(clean, manager) is None
+    assert cg.gate(clean, manager, run_reasoner=True).outcome == GateOutcome.ACCEPT
+
+
+def test_proposal_that_creates_unsat_still_rejected_despite_poison(manager):
+    """The cascade fix must not mask a REAL clash: a proposal that itself makes
+    a class it touches unsatisfiable is still rejected, even when unrelated
+    pre-existing poison is present."""
+    _poison(manager)
+    # Newton committed as a quality (apply+save, bypassing the commit-verify
+    # which would itself trip on the pre-existing poison in this test config).
+    newton = Proposal(session_id="test", utterance="Newton is a quality",
+                      entities=[Entity(label="Newton", iri_suggestion="working:Newton",
+                                       bfo_type="BFO_0000019", bfo_label="quality",
+                                       kind="class", rationale="t")])
+    manager.apply_proposal(newton)
+    manager.save()
+    straddle = Proposal(session_id="test", utterance="Newton is a disposition",
+                        relations=[Relation(s="working:Newton", p="rdfs:subClassOf",
+                                            o="bfo:BFO_0000016", rationale="t")])
+    res = cg.reasoner_check(straddle, manager)
+    assert res is not None and res.outcome == GateOutcome.REJECT
+    assert any("Newton" in u for u in res.unsat_classes)
+
+
 def test_reasoner_tier_catches_unsatisfiable_class(manager):
     """The coherence-correct dry-run flags an unsatisfiable class even when the
     ontology stays consistent (no individual instantiates it). This is the

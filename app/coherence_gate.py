@@ -27,6 +27,7 @@ itself only decides coherence.
 from __future__ import annotations
 
 import enum
+import logging
 from dataclasses import dataclass, field
 from typing import Optional
 
@@ -42,6 +43,8 @@ from .gate_structural import (  # noqa: F401  (re-exported; scaffolding/repair u
     _ref_anchors,
     proposal_needs_reasoner,
 )
+
+log = logging.getLogger(__name__)
 
 
 class GateOutcome(str, enum.Enum):
@@ -198,16 +201,49 @@ def reasoner_check(
     coherent, unsat, detail = manager.check_coherence_dry_run(
         proposal, exclude_axioms=exclude_axioms
     )
-    if not coherent:
+    if coherent:
+        return None
+
+    # Outright inconsistent (reasoner error): unsat is empty but the ontology
+    # is unusable -- always reject.
+    if not unsat:
         return GateResult(
             outcome=GateOutcome.REJECT,
             tier=GateTier.REASONER,
-            reason="Reasoner found unsatisfiable class(es); the proposal makes "
-                   "one or more classes incoherent under BFO.",
+            reason="Reasoner error: the proposal makes the ontology "
+                   "inconsistent under BFO.",
             justification=detail,
-            unsat_classes=unsat,
+            unsat_classes=[],
         )
-    return None
+
+    # Baseline-aware rejection (incoherence-cascade fix): reject only for
+    # classes THIS proposal asserts an axiom about. A class that was already
+    # unsatisfiable in the committed ontology (a poisoned earlier commit) is
+    # surfaced by every dry-run but was not caused by this claim -- letting it
+    # reject here turns one bad commit into a wall of false "inconsistent"
+    # verdicts for every subsequent, unrelated claim.
+    try:
+        touched = manager.proposal_touched_iris(proposal)
+    except Exception:  # noqa: BLE001 -- never let the guard brick the tier
+        touched = set()
+    new_unsat = [u for u in unsat
+                 if u.rsplit("#", 1)[-1].rsplit("/", 1)[-1] in touched]
+    if not new_unsat:
+        # Pure pre-existing poison: accept on this claim's own merits.
+        log.warning(
+            "reasoner tier: ignoring %d pre-existing unsatisfiable class(es) "
+            "not touched by this proposal: %s",
+            len(unsat), unsat,
+        )
+        return None
+    return GateResult(
+        outcome=GateOutcome.REJECT,
+        tier=GateTier.REASONER,
+        reason="Reasoner found unsatisfiable class(es); the proposal makes "
+               "one or more classes incoherent under BFO.",
+        justification=detail,
+        unsat_classes=new_unsat,
+    )
 
 
 def gate(

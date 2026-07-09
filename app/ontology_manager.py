@@ -1461,6 +1461,42 @@ class OntologyManager:
             )
         return w, onto
 
+    def proposal_touched_iris(self, proposal) -> set[str]:
+        """Local-name fragments of every class a proposal ASSERTS an axiom
+        about: created/typed entities (and their parents) plus the subject and
+        object of every relation. Used by the reasoner tier to tell a class the
+        proposal made unsatisfiable from a pre-existing (already-committed)
+        unsatisfiable class it merely inherited into the world -- the latter
+        must not poison every later proposal (the incoherence-cascade bug).
+        Fragments, not full IRIs, because owlready2 may serialize under a
+        file:// base so two IRIs can name the same class without string-equal.
+        """
+        frags: set[str] = set()
+
+        def _add(ref: Optional[str]) -> None:
+            if not ref:
+                return
+            try:
+                full = _resolve_iri(ref, WORKING_IRI)
+            except Exception:
+                return
+            frags.add(_local_name(full))
+
+        for ent in getattr(proposal, "entities", None) or []:
+            _add(getattr(ent, "iri_suggestion", None))
+            _add(getattr(ent, "parent_class", None))
+        for rel in getattr(proposal, "relations", None) or []:
+            _add(getattr(rel, "s", None))
+            o_raw = (getattr(rel, "o", None) or "").strip()
+            # A class-expression / restriction object names its filler class;
+            # count that filler as touched too.
+            expr = owl_checks.parse_class_expression(o_raw)
+            if expr is not None:
+                _add(expr.get("filler"))
+            elif not o_raw.startswith("_:"):
+                _add(o_raw)
+        return frags
+
     def check_coherence_dry_run(
         self, proposal, exclude_axioms: Optional[list[dict]] = None
     ) -> tuple[bool, list[str], str]:
