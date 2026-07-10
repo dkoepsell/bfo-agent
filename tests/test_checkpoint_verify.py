@@ -37,7 +37,11 @@ class FakeManager:
         self.last_commit_incoherence = None
         self.commit_calls: list[dict] = []
         self.verify_full_calls: list = []
+        self.quarantine_calls: list[list[str]] = []
         self._verify_report = dict(verify_report or OK_REPORT)
+        # Optional FIFO of reports; each verify_full pops one, so a test can
+        # script "fail then (after quarantine) pass". Empty => _verify_report.
+        self._verify_queue: list[dict] = []
 
     def summary_for_proposer(self, utterance=None, **kw):
         return {"working_classes": [], "known_individuals": []}
@@ -55,7 +59,13 @@ class FakeManager:
     def verify_full(self, exclude_axioms=None):
         self.verify_full_calls.append(exclude_axioms)
         self.commits_since_full_verify = 0
+        if self._verify_queue:
+            return dict(self._verify_queue.pop(0))
         return dict(self._verify_report)
+
+    def quarantine_classes(self, iris):
+        self.quarantine_calls.append(list(iris))
+        return list(iris)
 
     def stats(self):
         return {"num_classes": 0, "num_individuals": 0}
@@ -241,6 +251,63 @@ def test_checkpoint_failure_faithful_ledgers_and_continues(feed_env,
     assert fs["commits_since_checkpoint"] == 0
     assert fs["last_checkpoint_ok"] is False
     assert fs["last_verified_claim_id"] == 1
+
+
+# --------------------------------------------- self-healing checkpoint
+def test_checkpoint_curated_self_heals_and_continues(feed_env, monkeypatch):
+    """CHECKPOINT_SELF_HEAL on: a curated checkpoint that names an unsat class
+    quarantines it, ledgers the removal, re-certifies clean, and keeps
+    feeding instead of pausing."""
+    mgr, events, job = feed_env
+    job_id = job["job_id"]
+    monkeypatch.setattr(orchestrator.config, "CHECKPOINT_SELF_HEAL", True)
+    # First certificate fails naming one class; after quarantine it passes.
+    mgr._verify_queue = [dict(BAD_REPORT), dict(OK_REPORT)]
+
+    orchestrator._feed_one_core(job_id)
+    res = orchestrator._feed_one_core(job_id)  # K=2 -> checkpoint fires
+
+    assert "fatal" not in res  # healed, not paused
+    assert jobs_store.load_job(job_id)["status"] == "feeding"
+    assert mgr.quarantine_calls == [["working#Broken"]]
+    # The removal is recorded as curated evidence (distinct from faithful).
+    entries = ledger_mod.read_all(mgr.working_path)
+    assert len(entries) == 1
+    assert entries[0]["mode"] == "curated_quarantine"
+    assert entries[0]["subjects"] == ["working#Broken"]
+    assert entries[0]["provenance"]["self_heal"] is True
+    assert entries[0]["provenance"]["claim_window"] == [None, 1]
+    # Watermark advances exactly as a clean checkpoint would.
+    fs = jobs_store.get_feed_state(jobs_store.load_job(job_id))
+    assert fs["commits_since_checkpoint"] == 0
+    assert fs["last_checkpoint_ok"] is True
+    assert fs["last_verified_claim_id"] == 1
+    (heal,) = _events_of(events, "checkpoint_self_heal")
+    assert heal["removed"] == ["working#Broken"]
+    assert heal["ok"] is True and heal["rounds"] == 1
+
+
+def test_checkpoint_self_heal_unhealable_still_pauses(feed_env, monkeypatch):
+    """A bare inconsistency with no named unsatisfiable class cannot be
+    quarantined, so self-heal makes no change and the job still pauses."""
+    mgr, events, job = feed_env
+    job_id = job["job_id"]
+    monkeypatch.setattr(orchestrator.config, "CHECKPOINT_SELF_HEAL", True)
+    mgr._verify_report = {
+        "ok": False, "unsat_classes": [],
+        "detail": "inconsistent ontology: clash",
+        "duration_ms": 1.0, "classes": 0, "individuals": 0,
+    }
+
+    orchestrator._feed_one_core(job_id)
+    res = orchestrator._feed_one_core(job_id)
+
+    assert res.get("fatal") == "checkpoint_verify_failed"
+    assert jobs_store.load_job(job_id)["status"] == "paused"
+    assert mgr.quarantine_calls == []  # nothing named -> nothing removed
+    assert _events_of(events, "checkpoint_self_heal") == []
+    fs = jobs_store.get_feed_state(jobs_store.load_job(job_id))
+    assert fs["last_checkpoint_ok"] is False
 
 
 # ------------------------------------------------------------ final pass

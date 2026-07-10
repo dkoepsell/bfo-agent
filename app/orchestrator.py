@@ -494,6 +494,91 @@ def _ledger_checkpoint_incoherence(mgr, report: dict, job_id: str,
         return None
 
 
+def _ledger_quarantine(mgr, removed: list[str], job_id: str,
+                       suspect_from, suspect_to,
+                       kind: str = "checkpoint") -> str | None:
+    """Curated self-heal: record the classes a failed certificate named
+    unsatisfiable and that the checkpoint then quarantined. Distinct ledger
+    mode ("curated_quarantine") from the faithful evidence path so an audit
+    can tell "left in place, flagged" (faithful) from "removed to keep the
+    artifact coherent" (curated). Never raises."""
+    try:
+        return ledger_mod.append(mgr.working_path, {
+            "mode": "curated_quarantine",
+            "subjects": removed,
+            "tier": kind,
+            "gate_result": {
+                "reason": "reduced-world false-coherent commit removed by "
+                          "self-healing checkpoint",
+            },
+            "exclude_axioms": [],
+            "provenance": {
+                "self_heal": True,
+                "kind": kind,
+                "job_id": job_id,
+                "claim_window": [suspect_from, suspect_to],
+            },
+        })
+    except Exception:
+        log.exception("Failed to ledger %s self-heal quarantine", kind)
+        return None
+
+
+def _self_heal_unsat(mgr, report: dict, job_id: str, session_id: str | None,
+                     suspect_from, suspect_to, kind: str) -> dict:
+    """Curated self-heal for a failed full-graph certificate (opt-in via
+    config.CHECKPOINT_SELF_HEAL). Quarantine the classes the certificate names
+    unsatisfiable, git-commit + ledger the removal, and re-certify; repeat up
+    to CHECKPOINT_SELF_HEAL_MAX_ROUNDS to absorb any cascade the first sweep
+    exposes. A bare inconsistency with no named unsatisfiable class cannot be
+    quarantined, so the loop stops and the caller pauses.
+
+    Caller must hold the module _lock (mutates and saves the working world).
+    Returns {"ok", "removed", "report"} where report is the final certificate.
+    """
+    removed: list[str] = []
+    cur = report
+    rounds = 0
+    for _ in range(max(1, config.CHECKPOINT_SELF_HEAL_MAX_ROUNDS)):
+        unsat = cur.get("unsat_classes") or []
+        if not unsat:
+            break  # inconsistent with no named class -> unhealable
+        gone = mgr.quarantine_classes(unsat)
+        if not gone:
+            break  # nothing resolvable -> give up, let caller pause
+        rounds += 1
+        removed.extend(gone)
+        names = ", ".join(i.rsplit("#", 1)[-1].rsplit("/", 1)[-1]
+                          for i in gone)
+        git_commit_working_ontology(
+            session_id or f"self-heal-{job_id}", f"self-heal-{kind}",
+            f"quarantine {len(gone)} unsatisfiable class(es) "
+            f"({kind} self-heal): {names}",
+        )
+        cur = mgr.verify_full(exclude_axioms=None)  # curated: no exclusions
+        if cur["ok"]:
+            break
+    if removed:
+        _ledger_quarantine(mgr, removed, job_id, suspect_from, suspect_to,
+                           kind)
+        log_event(session_id, "checkpoint_self_heal", {
+            "job_id": job_id,
+            "kind": kind,
+            "removed": removed,
+            "rounds": rounds,
+            "ok": cur["ok"],
+            "detail": cur.get("detail"),
+            "claim_window": [suspect_from, suspect_to],
+        })
+        job_runner._notify(
+            f"BFO self-heal ({kind}): quarantined "
+            f"{len(removed)} unsat class(es)",
+            f"job {job_id}: removed {removed}; "
+            f"artifact {'coherent again' if cur['ok'] else 'STILL failing'}",
+        )
+    return {"ok": cur["ok"], "removed": removed, "report": cur}
+
+
 def _flush_unsaved_locked(mgr, job_id: str | None, session_id: str | None,
                           watermark_claim_id: int | None,
                           reason: str) -> bool:
@@ -693,7 +778,24 @@ def _maybe_checkpoint_verify(job_id: str, claim: dict, session_id: str,
         )
         return None
 
-    # Curated failure: pause with a <=K-claim suspect window. The counter and
+    # Curated failure. Self-heal first (opt-in): the certificate names the
+    # unsatisfiable classes, which are reduced-world false-coherent commits;
+    # quarantine them and re-certify rather than stall the run.
+    if config.CHECKPOINT_SELF_HEAL:
+        healed = _self_heal_unsat(
+            mgr, report, job_id, session_id, suspect_from, claim["id"],
+            "checkpoint",
+        )
+        if healed["ok"]:
+            jobs_store.bump_feed_state(
+                job_id, commits_since_checkpoint=0,
+                last_checkpoint_at=_utcnow_iso(), last_checkpoint_ok=True,
+                last_verified_claim_id=claim["id"],
+            )
+            return None
+        report = healed["report"]  # pause below with the post-heal detail
+
+    # Pause with a <=K-claim suspect window. The counter and
     # last_verified_claim_id are left untouched so a resume re-runs the
     # certificate with the same bisection bounds. No auto-rollback:
     # evidence-first, the per-commit git history of working.owl makes
@@ -774,9 +876,25 @@ def _final_verify_before_complete(job_id: str, session_id: str) -> dict | None:
         )
         return None
 
-    # Curated failure: pause instead of completing. job_runner._fail
-    # notifies; the job stays resumable once the operator bisects the
-    # offending commit out of working.owl's git history.
+    # Curated failure. Self-heal first (opt-in) so a lone poison class does
+    # not block completion of an otherwise-finished run.
+    if config.CHECKPOINT_SELF_HEAL:
+        healed = _self_heal_unsat(
+            mgr, report, job_id, session_id,
+            fs.get("last_verified_claim_id"), last_claim_id, "final",
+        )
+        if healed["ok"]:
+            jobs_store.bump_feed_state(
+                job_id, commits_since_checkpoint=0,
+                last_checkpoint_at=_utcnow_iso(), last_checkpoint_ok=True,
+                last_verified_claim_id=last_claim_id,
+            )
+            return None
+        report = healed["report"]
+
+    # Pause instead of completing. job_runner._fail notifies; the job stays
+    # resumable once the operator bisects the offending commit out of
+    # working.owl's git history.
     jobs_store.bump_feed_state(
         job_id, last_checkpoint_at=_utcnow_iso(), last_checkpoint_ok=False
     )
@@ -833,6 +951,22 @@ def _resume_verify(job_id: str) -> bool:
                 last_verified_claim_id=last_claim_id,
             )
             return True
+        # Curated failure. Self-heal first (opt-in): quarantine the named
+        # unsatisfiable classes and re-certify so a resume clears standing
+        # poison instead of refusing to restart the feed.
+        if config.CHECKPOINT_SELF_HEAL and not faithful:
+            with _lock:
+                healed = _self_heal_unsat(
+                    mgr, report, job_id, session_id,
+                    fs.get("last_verified_claim_id"), last_claim_id, "resume",
+                )
+            if healed["ok"]:
+                jobs_store.bump_feed_state(
+                    job_id, commits_since_checkpoint=0,
+                    last_checkpoint_at=_utcnow_iso(), last_checkpoint_ok=True,
+                    last_verified_claim_id=last_claim_id,
+                )
+                return True
         jobs_store.bump_feed_state(
             job_id, last_checkpoint_at=_utcnow_iso(),
             last_checkpoint_ok=False,

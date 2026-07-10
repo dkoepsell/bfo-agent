@@ -2029,6 +2029,36 @@ class OntologyManager:
             "individuals": len(list(self.working.individuals())),
         }
 
+    def quarantine_classes(self, iris: list[str]) -> list[str]:
+        """Destroy the named classes -- and every triple that references them
+        -- from the live working world, then save.
+
+        Used by the self-healing checkpoint to remove reduced-world
+        false-coherent commits: classes the per-claim gate admitted but that
+        the full-graph HermiT certificate proves unsatisfiable. Mirrors
+        :meth:`rollback` step 1 (``destroy_entity`` sweeps all referencing
+        triples). Returns the IRIs actually removed; a no-op (empty return)
+        when none resolve. Best-effort per IRI -- one failure never aborts the
+        sweep, so a partial quarantine still makes progress.
+        """
+        removed: list[str] = []
+        with self.working:
+            for iri in iris:
+                try:
+                    ent = self._resolve_entity(iri, _local_name(iri))
+                    if ent is not None:
+                        destroy_entity(ent)
+                        removed.append(iri)
+                except Exception:
+                    log.warning("quarantine: could not destroy %s", iri,
+                                exc_info=True)
+        if removed:
+            for attr in ("_bfo_depth_cache", "_bfo_anchor_cache",
+                         "_working_depth_cache"):
+                self.__dict__.pop(attr, None)
+            self.save()
+        return removed
+
     def _verify_saved_coherent_legacy(
         self, exclude_axioms: Optional[list[dict]] = None
     ) -> tuple[bool, str]:

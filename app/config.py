@@ -217,6 +217,19 @@ FINALIZE_REQUIRES_FULL_VERIFY = os.getenv("FINALIZE_REQUIRES_FULL_VERIFY", "true
 # from committed to needs_review. Off by default: evidence-first, the git
 # per-commit history of working.owl makes bisection tractable.
 CHECKPOINT_FAIL_MARK_REVIEW = os.getenv("CHECKPOINT_FAIL_MARK_REVIEW", "false").lower() == "true"
+# Self-healing checkpoint (curated mode). When on, a failed full-graph
+# certificate does not pause the run: the exact classes the certificate names
+# unsatisfiable are quarantined (destroyed with their referencing triples),
+# recorded in the incoherence ledger as evidence, and the artifact is
+# re-certified before feeding continues. These are reduced-world
+# false-coherent commits -- classes the per-claim gate admitted but that the
+# full graph proves unsatisfiable -- so removal restores the gate's intended
+# admission rather than corrupting a good artifact. A bare inconsistency with
+# no named unsatisfiable class is unhealable and still pauses. Off by default;
+# an unattended long regate run turns it on so a lone poison class cannot stall
+# the whole job.
+CHECKPOINT_SELF_HEAL = os.getenv("CHECKPOINT_SELF_HEAL", "false").lower() == "true"
+CHECKPOINT_SELF_HEAL_MAX_ROUNDS = int(os.getenv("CHECKPOINT_SELF_HEAL_MAX_ROUNDS", "6"))
 
 # ----- Reduced reasoning world (SPEC-bfo-agent-speed.md change 1) -----
 # Dry-run reasoning over BFO + working TBox + only the proposal's touched
