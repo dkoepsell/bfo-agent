@@ -2029,6 +2029,117 @@ class OntologyManager:
             "individuals": len(list(self.working.individuals())),
         }
 
+    def _scratch_consistent_dropping(self, drop_iris: set[str]) -> bool:
+        """Reason over the SAVED working file in a disposable scratch world
+        with the named INDIVIDUALS destroyed. Same sanitizers as
+        :meth:`_scratch_verify_saved`; the live world is never touched.
+        Returns True iff HermiT does not report the result inconsistent.
+
+        Used by :meth:`isolate_inconsistency_culprits` to test candidate
+        removals for the ABox self-heal (icd11bfo_v2 bare-inconsistency case).
+        """
+        with timing.phase("scratch_build"):
+            w = World()
+            w.get_ontology(str(self.bfo_path)).load()
+            onto = w.get_ontology(self.working_path.as_uri()).load()
+        self._sanitize_bfo_disjointness(world=w)
+        self._strip_subclass_of_property(world=w)
+        if drop_iris:
+            with onto:
+                for iri in drop_iris:
+                    ent = w[iri]
+                    if ent is not None:
+                        try:
+                            destroy_entity(ent)
+                        except Exception:
+                            log.warning("isolate: could not drop %s", iri,
+                                        exc_info=True)
+        buf = io.StringIO()
+        try:
+            with redirect_stdout(buf), redirect_stderr(buf):
+                with timing.phase("reason_isolate"):
+                    with _REASONER_LOCK, w:
+                        sync_reasoner(w, infer_property_values=False)
+            return True
+        except Exception:  # noqa: BLE001 — reasoner raises on inconsistency
+            return False
+
+    def isolate_inconsistency_culprits(
+        self, max_reason_calls: int = 400
+    ) -> Optional[list[str]]:
+        """Isolate the ABox individuals responsible for a BARE full-graph
+        inconsistency -- one HermiT reports by raising, before it can name any
+        unsatisfiable class, so the class-quarantine self-heal has nothing to
+        remove (the icd11bfo_v2 case: individuals whose types/relations clash
+        with BFO, e.g. a role instance realized inconsistently, admitted one at
+        a time by the reduced-world per-claim gate but contradictory in the
+        merged graph).
+
+        QuickXplain (Junker 2004): each round finds ONE minimal conflict -- a
+        minimal set of individuals that is inconsistent together with the TBox
+        -- in O(k log(n/k)) reasoner calls rather than the O(n) a linear scan
+        needs, then quarantines the newest member of that conflict and repeats
+        until the graph reasons consistent. Every test runs in a disposable
+        scratch world over the saved artifact (live world untouched); a
+        conflict of size one is a single self-inconsistent individual.
+
+        Returns the minimal culprit IRIs to quarantine (empty if the saved
+        graph is already consistent), or None when removing individuals cannot
+        restore consistency (a TBox-level cause) or the reasoner-call budget is
+        exhausted -- in which case the caller pauses, as before.
+        """
+        self.save()  # the certificate judges the saved artifact
+        inds = [i.iri for i in self.working.individuals()]
+        if not inds:
+            return None  # no ABox to blame -> not an ABox inconsistency
+        all_set = set(inds)
+        order = {iri: n for n, iri in enumerate(inds)}  # insertion order
+        calls = 0
+
+        def cons(keep: set[str]) -> bool:
+            """Consistent with ONLY ``keep`` individuals present (rest dropped)."""
+            nonlocal calls
+            calls += 1
+            return self._scratch_consistent_dropping(all_set - keep)
+
+        if cons(all_set):
+            return []  # already coherent (e.g. a prior class-heal fixed it)
+        if not cons(set()):
+            return None  # TBox-only is inconsistent -> not an ABox cause
+
+        def qx(bg: set[str], cand: set[str]) -> set[str]:
+            """Minimal subset of ``cand`` inconsistent together with ``bg``.
+            Precondition: cons(bg) and not cons(bg | cand)."""
+            c = list(cand)
+            if len(c) == 1:
+                return set(c)
+            mid = len(c) // 2
+            c1, c2 = set(c[:mid]), set(c[mid:])
+            if not cons(bg | c1):
+                return qx(bg, c1)
+            if not cons(bg | c2):
+                return qx(bg, c2)
+            d1 = qx(bg | c2, c1)
+            d2 = qx(bg | d1, c2)
+            return d1 | d2
+
+        culprits: list[str] = []
+        while calls < max_reason_calls:
+            keep = all_set - set(culprits)
+            if cons(keep):
+                return culprits
+            mus = qx(set(), keep)
+            # Quarantine the newest member of the conflict (bias toward the
+            # more recently admitted commit); any single member breaks it.
+            victim = max(mus, key=lambda x: order[x])
+            culprits.append(victim)
+            log.info("isolate: conflict %s -> quarantine %s (%d calls)",
+                     sorted(m.rsplit('#', 1)[-1] for m in mus),
+                     victim.rsplit('#', 1)[-1], calls)
+        log.warning("isolate: budget %d exhausted after %d culprits",
+                    max_reason_calls, len(culprits))
+        return None
+
     def quarantine_classes(self, iris: list[str]) -> list[str]:
         """Destroy the named classes -- and every triple that references them
         -- from the live working world, then save.

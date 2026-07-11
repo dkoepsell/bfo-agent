@@ -530,8 +530,15 @@ def _self_heal_unsat(mgr, report: dict, job_id: str, session_id: str | None,
     config.CHECKPOINT_SELF_HEAL). Quarantine the classes the certificate names
     unsatisfiable, git-commit + ledger the removal, and re-certify; repeat up
     to CHECKPOINT_SELF_HEAL_MAX_ROUNDS to absorb any cascade the first sweep
-    exposes. A bare inconsistency with no named unsatisfiable class cannot be
-    quarantined, so the loop stops and the caller pauses.
+    exposes.
+
+    A BARE inconsistency (HermiT reports the ontology inconsistent and raises
+    before naming any unsatisfiable class -- the icd11bfo_v2 ABox case) leaves
+    the class loop with nothing to quarantine. When CHECKPOINT_SELF_HEAL_ABOX
+    is set we then isolate the individuals responsible (mgr
+    .isolate_inconsistency_culprits) and quarantine those instead, so an ABox
+    clash no longer pauses the run forever. If isolation still cannot restore
+    consistency the caller pauses, as before.
 
     Caller must hold the module _lock (mutates and saves the working world).
     Returns {"ok", "removed", "report"} where report is the final certificate.
@@ -558,6 +565,31 @@ def _self_heal_unsat(mgr, report: dict, job_id: str, session_id: str | None,
         cur = mgr.verify_full(exclude_axioms=None)  # curated: no exclusions
         if cur["ok"]:
             break
+
+    # ABox self-heal (icd11bfo_v2 case): a BARE inconsistency leaves the class
+    # loop above with nothing to quarantine (HermiT raises before naming an
+    # unsatisfiable class). Isolate the individuals responsible and quarantine
+    # those instead. Runs only when class quarantine did not already clear the
+    # artifact, so the per-individual reasoning stays off the happy path.
+    if (not cur["ok"] and not (cur.get("unsat_classes") or [])
+            and config.CHECKPOINT_SELF_HEAL_ABOX):
+        culprits = mgr.isolate_inconsistency_culprits(
+            max_reason_calls=config.CHECKPOINT_SELF_HEAL_MAX_INDIVIDUALS
+        )
+        if culprits:
+            gone = mgr.quarantine_classes(culprits)  # generic destroy-by-IRI
+            if gone:
+                rounds += 1
+                removed.extend(gone)
+                names = ", ".join(i.rsplit("#", 1)[-1].rsplit("/", 1)[-1]
+                                  for i in gone)
+                git_commit_working_ontology(
+                    session_id or f"self-heal-{job_id}", f"self-heal-{kind}",
+                    f"quarantine {len(gone)} inconsistency-culprit "
+                    f"individual(s) ({kind} ABox self-heal): {names}",
+                )
+                cur = mgr.verify_full(exclude_axioms=None)
+
     if removed:
         _ledger_quarantine(mgr, removed, job_id, suspect_from, suspect_to,
                            kind)

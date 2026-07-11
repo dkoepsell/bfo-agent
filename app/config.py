@@ -225,11 +225,24 @@ CHECKPOINT_FAIL_MARK_REVIEW = os.getenv("CHECKPOINT_FAIL_MARK_REVIEW", "false").
 # false-coherent commits -- classes the per-claim gate admitted but that the
 # full graph proves unsatisfiable -- so removal restores the gate's intended
 # admission rather than corrupting a good artifact. A bare inconsistency with
-# no named unsatisfiable class is unhealable and still pauses. Off by default;
-# an unattended long regate run turns it on so a lone poison class cannot stall
-# the whole job.
+# no named unsatisfiable class is handled by the ABox self-heal below. Off by
+# default; an unattended long regate run turns it on so a lone poison class
+# cannot stall the whole job.
 CHECKPOINT_SELF_HEAL = os.getenv("CHECKPOINT_SELF_HEAL", "false").lower() == "true"
 CHECKPOINT_SELF_HEAL_MAX_ROUNDS = int(os.getenv("CHECKPOINT_SELF_HEAL_MAX_ROUNDS", "6"))
+# ABox extension of the self-heal. A BARE inconsistency (HermiT reports the
+# ontology inconsistent and raises before naming any unsatisfiable class -- the
+# icd11bfo_v2 case, where the reduced-world per-claim gate admits two
+# individuals whose combined types/relations clash) names no class to
+# quarantine, so the class sweep above cannot touch it and the run would pause
+# forever. When on, the self-heal isolates the culprit individuals
+# (OntologyManager.isolate_inconsistency_culprits, QuickXplain over the saved
+# graph) and quarantines those instead, then re-certifies. Bounded by
+# MAX_INDIVIDUALS reasoner calls; past that (or if removing individuals cannot
+# restore consistency, i.e. a TBox cause) it still pauses. Gated under
+# CHECKPOINT_SELF_HEAL; on by default when that is on.
+CHECKPOINT_SELF_HEAL_ABOX = os.getenv("CHECKPOINT_SELF_HEAL_ABOX", "true").lower() == "true"
+CHECKPOINT_SELF_HEAL_MAX_INDIVIDUALS = int(os.getenv("CHECKPOINT_SELF_HEAL_MAX_INDIVIDUALS", "400"))
 
 # ----- Reduced reasoning world (SPEC-bfo-agent-speed.md change 1) -----
 # Dry-run reasoning over BFO + working TBox + only the proposal's touched
