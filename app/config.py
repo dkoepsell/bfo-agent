@@ -135,6 +135,10 @@ GATE_POLICY = os.getenv("GATE_POLICY", "reject_resample")
 GATE_RUN_REASONER = os.getenv("GATE_RUN_REASONER", "true").lower() == "true"
 # Max resample/reground attempts before giving up and flagging for review.
 GATE_MAX_ATTEMPTS = int(os.getenv("GATE_MAX_ATTEMPTS", "2"))
+# Watchdog: SIGKILL a HermiT run that exceeds this many seconds so a single
+# pathological claim can't hang the reasoner for hours and pin the box's memory
+# cgroup, freezing the whole app (incident 2026-07-12). 0 disables the watchdog.
+REASONER_TIMEOUT_SECONDS = float(os.getenv("REASONER_TIMEOUT_SECONDS", "300"))
 # Relation-aware scaffolding: when a dependent-continuant class is committed,
 # add the constraint its BFO category requires (inheres_in / realized_in).
 ENABLE_SCAFFOLDING = os.getenv("ENABLE_SCAFFOLDING", "true").lower() == "true"

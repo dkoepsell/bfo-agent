@@ -15,6 +15,8 @@ from __future__ import annotations
 
 import io
 import logging
+import os
+import signal
 import threading
 import time
 import types
@@ -46,6 +48,95 @@ log = logging.getLogger(__name__)
 # on the 4GB host, concurrent requests stacking reasoner runs can freeze the
 # whole box (incident 2026-07-02). Serialize them process-wide.
 _REASONER_LOCK = threading.Lock()
+
+
+class ReasonerTimeout(Exception):
+    """HermiT exceeded config.REASONER_TIMEOUT_SECONDS and was killed."""
+
+
+def _hermit_child_pids() -> list[int]:
+    """PIDs of java children of this process running HermiT (Linux /proc only).
+
+    HermiT is spawned by owlready2 as a direct child via subprocess, so we match
+    on ppid == our pid and 'HermiT' in the cmdline. Returns [] off Linux.
+    """
+    me = os.getpid()
+    pids: list[int] = []
+    proc = Path("/proc")
+    if not proc.is_dir():
+        return pids
+    for entry in proc.iterdir():
+        if not entry.name.isdigit():
+            continue
+        try:
+            stat = (entry / "stat").read_text()
+            # comm (field 2) may contain spaces/parens; ppid is the 2nd field
+            # after the final ')': "<pid> (comm) <state> <ppid> ...".
+            fields = stat[stat.rindex(")") + 1:].split()
+            if int(fields[1]) != me:
+                continue
+            if b"HermiT" in (entry / "cmdline").read_bytes():
+                pids.append(int(entry.name))
+        except (OSError, ValueError, IndexError):
+            continue
+    return pids
+
+
+def _kill_hermit_children() -> int:
+    killed = 0
+    for pid in _hermit_child_pids():
+        try:
+            os.kill(pid, signal.SIGKILL)
+            killed += 1
+        except OSError:
+            pass
+    return killed
+
+
+def _sync_reasoner_guarded(target, infer_property_values: bool = False) -> None:
+    """Run HermiT with a watchdog that SIGKILLs a runaway java child.
+
+    A single sync_reasoner() has hung for hours on a pathological ontology
+    (incident 2026-07-12), pinning the box's memory cgroup over MemoryHigh and
+    freezing the whole app. After config.REASONER_TIMEOUT_SECONDS we kill
+    HermiT's java child so owlready2's check_output() returns and this raises
+    ReasonerTimeout -- which every call site already handles as a reasoner error
+    (the claim is rejected/failed rather than blocking forever).
+
+    Callers must hold _REASONER_LOCK, so at kill time there is at most one
+    HermiT child belonging to us.
+    """
+    timeout = config.REASONER_TIMEOUT_SECONDS
+    if not timeout or timeout <= 0:
+        sync_reasoner(target, infer_property_values=infer_property_values)
+        return
+
+    fired = threading.Event()
+
+    def _watchdog():
+        fired.set()
+        killed = _kill_hermit_children()
+        log.error(
+            "Reasoner watchdog: HermiT exceeded %.0fs; killed %d java child(ren)",
+            timeout, killed,
+        )
+
+    timer = threading.Timer(timeout, _watchdog)
+    timer.daemon = True
+    timer.start()
+    try:
+        sync_reasoner(target, infer_property_values=infer_property_values)
+    except Exception:
+        # If the watchdog fired, the underlying error is just the killed java
+        # process; surface it as a timeout. Otherwise it's a real reasoner
+        # error (e.g. genuine inconsistency) and must propagate unchanged.
+        if fired.is_set():
+            raise ReasonerTimeout(
+                f"HermiT exceeded REASONER_TIMEOUT_SECONDS={timeout:.0f}s and was killed"
+            )
+        raise
+    finally:
+        timer.cancel()
 
 BFO_OBO_PREFIX = "http://purl.obolibrary.org/obo/"
 WORKING_IRI = "http://davidkoepsell.com/bfo-agent/working"
@@ -1001,7 +1092,7 @@ class OntologyManager:
             with redirect_stdout(buf), redirect_stderr(buf):
                 with timing.phase("reason_dry_run"):
                     with _REASONER_LOCK, w:
-                        sync_reasoner(w, infer_property_values=False)
+                        _sync_reasoner_guarded(w)
         except Exception as e:
             return False, f"Reasoner error: {e}\n{buf.getvalue()}"
 
@@ -1026,7 +1117,7 @@ class OntologyManager:
             with redirect_stdout(buf), redirect_stderr(buf):
                 with timing.phase("reason_dry_run"):
                     with _REASONER_LOCK, self.world:
-                        sync_reasoner(self.world, infer_property_values=False)
+                        _sync_reasoner_guarded(self.world)
         except Exception as e:
             # HermiT raises on inconsistency in some versions; in others it
             # just prints. We try to surface both.
@@ -1538,7 +1629,7 @@ class OntologyManager:
             with redirect_stdout(buf), redirect_stderr(buf):
                 with timing.phase("reason_dry_run"):
                     with _REASONER_LOCK, w:
-                        sync_reasoner(w, infer_property_values=False)
+                        _sync_reasoner_guarded(w)
         except Exception as e:
             # Reasoner exception == outright inconsistent (strictly worse than
             # incoherent). Surface it as incoherent so the gate rejects.
@@ -1586,7 +1677,7 @@ class OntologyManager:
             with redirect_stdout(buf), redirect_stderr(buf):
                 with timing.phase("reason_dry_run"):
                     with _REASONER_LOCK, self.world:
-                        sync_reasoner(self.world, infer_property_values=False)
+                        _sync_reasoner_guarded(self.world)
         except Exception as e:
             # A reasoner exception means the ontology is outright inconsistent,
             # which is strictly worse than incoherent. Surface it as incoherent
@@ -1988,7 +2079,7 @@ class OntologyManager:
             with redirect_stdout(buf), redirect_stderr(buf):
                 with timing.phase(phase):
                     with _REASONER_LOCK, w:
-                        sync_reasoner(w, infer_property_values=False)
+                        _sync_reasoner_guarded(w)
         except Exception as e:  # noqa: BLE001 — reasoner raises on inconsistency
             return False, f"inconsistent ontology: {str(e)[:200]}", []
         # Nothing is per-world in owlready2: compare by IRI, not identity.
@@ -2059,7 +2150,7 @@ class OntologyManager:
             with redirect_stdout(buf), redirect_stderr(buf):
                 with timing.phase("reason_isolate"):
                     with _REASONER_LOCK, w:
-                        sync_reasoner(w, infer_property_values=False)
+                        _sync_reasoner_guarded(w)
             return True
         except Exception:  # noqa: BLE001 — reasoner raises on inconsistency
             return False
@@ -2194,7 +2285,7 @@ class OntologyManager:
             with redirect_stdout(buf), redirect_stderr(buf):
                 with timing.phase("reason_verify"):
                     with _REASONER_LOCK, self.world:
-                        sync_reasoner(self.world, infer_property_values=False)
+                        _sync_reasoner_guarded(self.world)
         except Exception as e:  # noqa: BLE001 — reasoner raises on inconsistency
             self._load()  # discard partial inference state
             return False, f"inconsistent ontology: {str(e)[:200]}"
