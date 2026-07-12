@@ -1,0 +1,3457 @@
+{
+  "n_disjoint_pairs": 266,
+  "n_complement": 78,
+  "candidates": [
+    {
+      "a": "CocaineMoodDisorder",
+      "b": "CocaineAnxietyDisorder",
+      "a_label": "Cocaine-induced Mood Disorder",
+      "b_label": "Cocaine-induced Anxiety Disorder",
+      "kind": "disjoint",
+      "shared_criteria": [
+        "BFO_0000054 CocaineIntoxicationProcess",
+        "BFO_0000054 CocaineWithdrawalProcess"
+      ],
+      "n_shared": 2,
+      "a_participation": 1,
+      "b_participation": 2
+    },
+    {
+      "a": "GeneticDeterminant",
+      "b": "PostnatalDeterminant",
+      "a_label": "Genetic Determinant",
+      "b_label": "Postnatal Determinant",
+      "kind": "disjoint",
+      "shared_criteria": [
+        "BFO_0000054 SplenicAtrophyProcess",
+        "BFO_0000197 Spleen"
+      ],
+      "n_shared": 2,
+      "a_participation": 1,
+      "b_participation": 2
+    },
+    {
+      "a": "PostnatalDeterminant",
+      "b": "AntenatalDeterminant",
+      "a_label": "Postnatal Determinant",
+      "b_label": "Antenatal Determinant",
+      "kind": "disjoint",
+      "shared_criteria": [
+        "BFO_0000054 SplenicAtrophyProcess",
+        "BFO_0000197 Spleen"
+      ],
+      "n_shared": 2,
+      "a_participation": 2,
+      "b_participation": 1
+    },
+    {
+      "a": "SevereZincDeficiency",
+      "b": "MildZincDeficiency",
+      "a_label": "Severe Zinc Deficiency",
+      "b_label": "Mild Zinc Deficiency",
+      "kind": "disjoint",
+      "shared_criteria": [
+        "BFO_0000054 GrowthRetardation",
+        "BFO_0000054 ImmuneImpairment"
+      ],
+      "n_shared": 2,
+      "a_participation": 1,
+      "b_participation": 1
+    },
+    {
+      "a": "GonadotropinResistance",
+      "b": "GonadotropinInsufficiency",
+      "a_label": "Gonadotropin Resistance",
+      "b_label": "Gonadotropin Insufficiency",
+      "kind": "disjoint",
+      "shared_criteria": [
+        "BFO_0000054 BFO_0000015",
+        "BFO_0000197 Gonad"
+      ],
+      "n_shared": 2,
+      "a_participation": 1,
+      "b_participation": 1
+    },
+    {
+      "a": "AcuteHepatitisC",
+      "b": "ChronicHepatitisC",
+      "a_label": "Acute Hepatitis C",
+      "b_label": "Chronic Hepatitis C",
+      "kind": "disjoint",
+      "shared_criteria": [
+        "BFO_0000054 HepatitisCInfection",
+        "BFO_0000054 LiverInflammation"
+      ],
+      "n_shared": 2,
+      "a_participation": 1,
+      "b_participation": 1
+    },
+    {
+      "a": "IschemicStroke",
+      "b": "HaemorrhagicStroke",
+      "a_label": "Ischemic Stroke Process",
+      "b_label": "Haemorrhagic Stroke Process",
+      "kind": "disjoint",
+      "shared_criteria": [
+        "BFO_0000108 PerinatalPeriod",
+        "BFO_0000108 PrenatalPeriod"
+      ],
+      "n_shared": 2,
+      "a_participation": 1,
+      "b_participation": 1
+    },
+    {
+      "a": "OtherSpecifiedWithdrawal",
+      "b": "SyntheticCannabinoidWithdrawal",
+      "a_label": "Other Specified Psychoactive Substance Withdrawal",
+      "b_label": "Synthetic Cannabinoid Withdrawal",
+      "kind": "disjoint",
+      "shared_criteria": [
+        "BFO_0000054 WithdrawalProcess"
+      ],
+      "n_shared": 1,
+      "a_participation": 9,
+      "b_participation": 1
+    },
+    {
+      "a": "InhaledAllergenAnaphylaxis",
+      "b": "ExerciseAnaphylaxis",
+      "a_label": "Inhaled Allergen Anaphylaxis",
+      "b_label": "Exercise-induced Anaphylaxis",
+      "kind": "disjoint",
+      "shared_criteria": [
+        "BFO_0000054 AnaphylaxisProcess"
+      ],
+      "n_shared": 1,
+      "a_participation": 4,
+      "b_participation": 4
+    },
+    {
+      "a": "InhaledAllergenAnaphylaxis",
+      "b": "FoodAnaphylaxis",
+      "a_label": "Inhaled Allergen Anaphylaxis",
+      "b_label": "Food-induced Anaphylaxis",
+      "kind": "disjoint",
+      "shared_criteria": [
+        "BFO_0000054 AnaphylaxisProcess"
+      ],
+      "n_shared": 1,
+      "a_participation": 4,
+      "b_participation": 3
+    },
+    {
+      "a": "CocainePsychoticDisorder",
+      "b": "PrimaryPsychoticDisorder",
+      "a_label": "Cocaine-induced Psychotic Disorder with Hallucinations",
+      "b_label": "Primary Psychotic Disorder",
+      "kind": "disjoint",
+      "shared_criteria": [
+        "BFO_0000054 Hallucination"
+      ],
+      "n_shared": 1,
+      "a_participation": 2,
+      "b_participation": 5
+    },
+    {
+      "a": "ExerciseAnaphylaxis",
+      "b": "FoodAnaphylaxis",
+      "a_label": "Exercise-induced Anaphylaxis",
+      "b_label": "Food-induced Anaphylaxis",
+      "kind": "disjoint",
+      "shared_criteria": [
+        "BFO_0000054 AnaphylaxisProcess"
+      ],
+      "n_shared": 1,
+      "a_participation": 4,
+      "b_participation": 3
+    },
+    {
+      "a": "InhaledAllergenAnaphylaxis",
+      "b": "InsectVenomAnaphylaxis",
+      "a_label": "Inhaled Allergen Anaphylaxis",
+      "b_label": "Insect Venom Anaphylaxis",
+      "kind": "disjoint",
+      "shared_criteria": [
+        "BFO_0000054 AnaphylaxisProcess"
+      ],
+      "n_shared": 1,
+      "a_participation": 4,
+      "b_participation": 2
+    },
+    {
+      "a": "MentalDisorderHypersomnia",
+      "b": "IdiopathicHypersomnia",
+      "a_label": "Hypersomnia Associated with Mental Disorder",
+      "b_label": "Idiopathic Hypersomnia",
+      "kind": "disjoint",
+      "shared_criteria": [
+        "BFO_0000054 DaytimeSleepLapse"
+      ],
+      "n_shared": 1,
+      "a_participation": 3,
+      "b_participation": 3
+    },
+    {
+      "a": "InsectVenomAnaphylaxis",
+      "b": "ExerciseAnaphylaxis",
+      "a_label": "Insect Venom Anaphylaxis",
+      "b_label": "Exercise-induced Anaphylaxis",
+      "kind": "disjoint",
+      "shared_criteria": [
+        "BFO_0000054 AnaphylaxisProcess"
+      ],
+      "n_shared": 1,
+      "a_participation": 2,
+      "b_participation": 4
+    },
+    {
+      "a": "PeripheralPrecociousPuberty",
+      "b": "CentralPrecociousPuberty",
+      "a_label": "Peripheral Precocious Puberty",
+      "b_label": "Central Precocious Puberty",
+      "kind": "disjoint+complement",
+      "shared_criteria": [
+        "BFO_0000054 BFO_0000015"
+      ],
+      "n_shared": 1,
+      "a_participation": 3,
+      "b_participation": 3
+    },
+    {
+      "a": "ChronicCondition",
+      "b": "FeedingEatingDisorder",
+      "a_label": "Chronic Condition",
+      "b_label": "Feeding and Eating Disorder",
+      "kind": "complement",
+      "shared_criteria": [
+        "BFO_0000054 BFO_0000015"
+      ],
+      "n_shared": 1,
+      "a_participation": 2,
+      "b_participation": 4
+    },
+    {
+      "a": "ExocrinePancreaticDiabetes",
+      "b": "Type2DiabetesMellitus",
+      "a_label": "Diabetes Mellitus Due to Exocrine Pancreatic Disease",
+      "b_label": "Type 2 Diabetes Mellitus",
+      "kind": "disjoint",
+      "shared_criteria": [
+        "BFO_0000054 BFO_0000015"
+      ],
+      "n_shared": 1,
+      "a_participation": 3,
+      "b_participation": 3
+    },
+    {
+      "a": "InfectiousKeratitis",
+      "b": "AutoimmuneKeratitis",
+      "a_label": "Infectious Keratitis",
+      "b_label": "Autoimmune Keratitis",
+      "kind": "disjoint",
+      "shared_criteria": [
+        "BFO_0000054 CornealInflammation"
+      ],
+      "n_shared": 1,
+      "a_participation": 2,
+      "b_participation": 3
+    },
+    {
+      "a": "TraumaticKeratitis",
+      "b": "AutoimmuneKeratitis",
+      "a_label": "Traumatic Keratitis",
+      "b_label": "Autoimmune Keratitis",
+      "kind": "disjoint",
+      "shared_criteria": [
+        "BFO_0000054 CornealInflammation"
+      ],
+      "n_shared": 1,
+      "a_participation": 2,
+      "b_participation": 3
+    },
+    {
+      "a": "OpioidPsychoticDisorder",
+      "b": "CannabisPsychoticDisorder",
+      "a_label": "Opioid-induced Psychotic Disorder",
+      "b_label": "Cannabis-induced Psychotic Disorder",
+      "kind": "disjoint",
+      "shared_criteria": [
+        "BFO_0000054 PsychoticSymptom"
+      ],
+      "n_shared": 1,
+      "a_participation": 2,
+      "b_participation": 2
+    },
+    {
+      "a": "ConstitutionalHaemorrhagicCondition",
+      "b": "AnticoagulantHaemorrhagicDisorder",
+      "a_label": "Congenital or Constitutional Haemorrhagic Condition",
+      "b_label": "Haemorrhagic Disorder due to Circulating Anticoagulants",
+      "kind": "disjoint",
+      "shared_criteria": [
+        "BFO_0000054 HaemorrhagicProcess"
+      ],
+      "n_shared": 1,
+      "a_participation": 3,
+      "b_participation": 1
+    },
+    {
+      "a": "OphthalmicDivision",
+      "b": "MaxillaryDivision",
+      "a_label": "Ophthalmic Division",
+      "b_label": "Maxillary Division",
+      "kind": "disjoint",
+      "shared_criteria": [
+        "BFO_0000050 TrigeminalNerve"
+      ],
+      "n_shared": 1,
+      "a_participation": 2,
+      "b_participation": 2
+    },
+    {
+      "a": "AcquiredAtaxia",
+      "b": "HereditaryAtaxia",
+      "a_label": "Acquired Ataxia",
+      "b_label": "Hereditary Ataxia",
+      "kind": "disjoint+complement",
+      "shared_criteria": [
+        "BFO_0000054 Ataxia"
+      ],
+      "n_shared": 1,
+      "a_participation": 2,
+      "b_participation": 2
+    },
+    {
+      "a": "NaturalOpioid",
+      "b": "SemisyntheticOpioid",
+      "a_label": "Natural Opioid",
+      "b_label": "Semisynthetic Opioid",
+      "kind": "disjoint",
+      "shared_criteria": [
+        "BFO_0000050 OpiumPoppy"
+      ],
+      "n_shared": 1,
+      "a_participation": 2,
+      "b_participation": 2
+    },
+    {
+      "a": "CerebralIschaemicStroke",
+      "b": "IntracerebellarHaemorrhage",
+      "a_label": "Cerebral Ischaemic Stroke",
+      "b_label": "Intracerebral Haemorrhage",
+      "kind": "disjoint+complement",
+      "shared_criteria": [
+        "BFO_0000054 BFO_0000015"
+      ],
+      "n_shared": 1,
+      "a_participation": 2,
+      "b_participation": 2
+    },
+    {
+      "a": "ExposureKeratitis",
+      "b": "AutoimmuneKeratitis",
+      "a_label": "Exposure Keratitis",
+      "b_label": "Autoimmune Keratitis",
+      "kind": "disjoint",
+      "shared_criteria": [
+        "BFO_0000054 CornealInflammation"
+      ],
+      "n_shared": 1,
+      "a_participation": 1,
+      "b_participation": 3
+    },
+    {
+      "a": "MandibularDivision",
+      "b": "OphthalmicDivision",
+      "a_label": "Mandibular Division",
+      "b_label": "Ophthalmic Division",
+      "kind": "disjoint",
+      "shared_criteria": [
+        "BFO_0000050 TrigeminalNerve"
+      ],
+      "n_shared": 1,
+      "a_participation": 2,
+      "b_participation": 2
+    },
+    {
+      "a": "SubarachnoidHaemorrhage",
+      "b": "CerebralIschaemicStroke",
+      "a_label": "Subarachnoid Haemorrhage",
+      "b_label": "Cerebral Ischaemic Stroke",
+      "kind": "disjoint+complement",
+      "shared_criteria": [
+        "BFO_0000054 BFO_0000015"
+      ],
+      "n_shared": 1,
+      "a_participation": 2,
+      "b_participation": 2
+    },
+    {
+      "a": "SubarachnoidHaemorrhage",
+      "b": "IntracerebellarHaemorrhage",
+      "a_label": "Subarachnoid Haemorrhage",
+      "b_label": "Intracerebral Haemorrhage",
+      "kind": "disjoint",
+      "shared_criteria": [
+        "BFO_0000054 BFO_0000015"
+      ],
+      "n_shared": 1,
+      "a_participation": 2,
+      "b_participation": 2
+    },
+    {
+      "a": "CannabisIntoxication",
+      "b": "CannabisDependence",
+      "a_label": "Cannabis Intoxication Disposition",
+      "b_label": "Cannabis Dependence Disposition",
+      "kind": "disjoint",
+      "shared_criteria": [
+        "BFO_0000197 CannabisPreparation"
+      ],
+      "n_shared": 1,
+      "a_participation": 2,
+      "b_participation": 2
+    },
+    {
+      "a": "MandibularDivision",
+      "b": "MaxillaryDivision",
+      "a_label": "Mandibular Division",
+      "b_label": "Maxillary Division",
+      "kind": "disjoint",
+      "shared_criteria": [
+        "BFO_0000050 TrigeminalNerve"
+      ],
+      "n_shared": 1,
+      "a_participation": 2,
+      "b_participation": 2
+    },
+    {
+      "a": "TTP",
+      "b": "ITP",
+      "a_label": "Thrombotic Thrombocytopenic Purpura",
+      "b_label": "Immune Thrombocytopenic Purpura",
+      "kind": "disjoint",
+      "shared_criteria": [
+        "BFO_0000054 CoagulationAbnormality"
+      ],
+      "n_shared": 1,
+      "a_participation": 2,
+      "b_participation": 2
+    },
+    {
+      "a": "InfectiousKeratitis",
+      "b": "TraumaticKeratitis",
+      "a_label": "Infectious Keratitis",
+      "b_label": "Traumatic Keratitis",
+      "kind": "disjoint",
+      "shared_criteria": [
+        "BFO_0000054 CornealInflammation"
+      ],
+      "n_shared": 1,
+      "a_participation": 2,
+      "b_participation": 2
+    },
+    {
+      "a": "AutosomalRecessiveInheritance",
+      "b": "AutosomalDominantInheritance",
+      "a_label": "Autosomal Recessive Inheritance Pattern",
+      "b_label": "Autosomal Dominant Inheritance Pattern",
+      "kind": "disjoint",
+      "shared_criteria": [
+        "BFO_0000054 BFO_0000015"
+      ],
+      "n_shared": 1,
+      "a_participation": 1,
+      "b_participation": 2
+    },
+    {
+      "a": "HereditaryAngioedema",
+      "b": "AcquiredAngioedema",
+      "a_label": "Hereditary Angioedema",
+      "b_label": "Acquired Angioedema",
+      "kind": "disjoint",
+      "shared_criteria": [
+        "BFO_0000054 AngioedemaProcess"
+      ],
+      "n_shared": 1,
+      "a_participation": 1,
+      "b_participation": 2
+    },
+    {
+      "a": "EosinophilicOesophagitis",
+      "b": "EosinophilicGastroenteritis",
+      "a_label": "Food-induced Eosinophilic Oesophagitis",
+      "b_label": "Food-induced Eosinophilic Gastroenteritis",
+      "kind": "disjoint",
+      "shared_criteria": [
+        "BFO_0000054 EosinophilicInfiltration"
+      ],
+      "n_shared": 1,
+      "a_participation": 1,
+      "b_participation": 2
+    },
+    {
+      "a": "MigraineWithoutAura",
+      "b": "MigraineAura",
+      "a_label": "Migraine without Aura",
+      "b_label": "Migraine with Aura",
+      "kind": "disjoint",
+      "shared_criteria": [
+        "BFO_0000054 MigraineAttack"
+      ],
+      "n_shared": 1,
+      "a_participation": 2,
+      "b_participation": 1
+    },
+    {
+      "a": "DissociativeParkinsonismDisorder",
+      "b": "FunctionalParkinsonism",
+      "a_label": "Dissociative Neurological Symptom Disorder with Parkinsonism",
+      "b_label": "Functional Parkinsonism",
+      "kind": "disjoint",
+      "shared_criteria": [
+        "BFO_0000054 Parkinsonism"
+      ],
+      "n_shared": 1,
+      "a_participation": 1,
+      "b_participation": 2
+    },
+    {
+      "a": "RecessiveInheritance",
+      "b": "AutosomalDominantInheritance",
+      "a_label": "Recessive Inheritance Pattern",
+      "b_label": "Autosomal Dominant Inheritance Pattern",
+      "kind": "disjoint",
+      "shared_criteria": [
+        "BFO_0000054 BFO_0000015"
+      ],
+      "n_shared": 1,
+      "a_participation": 1,
+      "b_participation": 2
+    },
+    {
+      "a": "HereditaryAtaxia",
+      "b": "DegenerativeAtaxia",
+      "a_label": "Hereditary Ataxia",
+      "b_label": "Non-Hereditary Degenerative Ataxia",
+      "kind": "disjoint+complement",
+      "shared_criteria": [
+        "BFO_0000054 Ataxia"
+      ],
+      "n_shared": 1,
+      "a_participation": 2,
+      "b_participation": 1
+    },
+    {
+      "a": "SecondaryChorea",
+      "b": "BenignHereditaryChorea",
+      "a_label": "Secondary Chorea",
+      "b_label": "Benign Hereditary Chorea",
+      "kind": "disjoint",
+      "shared_criteria": [
+        "BFO_0000054 Chorea"
+      ],
+      "n_shared": 1,
+      "a_participation": 1,
+      "b_participation": 1
+    },
+    {
+      "a": "NontoxicGoitre",
+      "b": "DiffuseGoitre",
+      "a_label": "Nontoxic Goitre",
+      "b_label": "Diffuse Goitre",
+      "kind": "disjoint",
+      "shared_criteria": [
+        "BFO_0000197 ThyroidGland"
+      ],
+      "n_shared": 1,
+      "a_participation": 1,
+      "b_participation": 1
+    },
+    {
+      "a": "TesticularHypofunction",
+      "b": "TesticularHyperfunction",
+      "a_label": "Testicular Hypofunction",
+      "b_label": "Testicular Hyperfunction",
+      "kind": "disjoint",
+      "shared_criteria": [
+        "BFO_0000197 Testis"
+      ],
+      "n_shared": 1,
+      "a_participation": 1,
+      "b_participation": 1
+    },
+    {
+      "a": "IntrinsicTongueMuscle",
+      "b": "ExtrinsicTongueMuscle",
+      "a_label": "Intrinsic Tongue Muscle",
+      "b_label": "Extrinsic Tongue Muscle",
+      "kind": "disjoint",
+      "shared_criteria": [
+        "BFO_0000050 Tongue"
+      ],
+      "n_shared": 1,
+      "a_participation": 1,
+      "b_participation": 1
+    },
+    {
+      "a": "FriedreichAtaxia",
+      "b": "SpinocerebellarAtaxia",
+      "a_label": "Friedreich Ataxia",
+      "b_label": "Spinocerebellar Ataxia",
+      "kind": "disjoint",
+      "shared_criteria": [
+        "BFO_0000054 Ataxia"
+      ],
+      "n_shared": 1,
+      "a_participation": 1,
+      "b_participation": 1
+    },
+    {
+      "a": "SpecificPhobia",
+      "b": "GeneralizedAnxietyDisorder",
+      "a_label": "Specific Phobia",
+      "b_label": "Generalized Anxiety Disorder",
+      "kind": "disjoint",
+      "shared_criteria": [
+        "BFO_0000054 ExcessiveAnxiety"
+      ],
+      "n_shared": 1,
+      "a_participation": 1,
+      "b_participation": 1
+    },
+    {
+      "a": "AcuteViralHepatitis",
+      "b": "ChronicViralHepatitis",
+      "a_label": "Acute Viral Hepatitis",
+      "b_label": "Chronic Viral Hepatitis",
+      "kind": "disjoint",
+      "shared_criteria": [
+        "BFO_0000054 LiverInflammation"
+      ],
+      "n_shared": 1,
+      "a_participation": 1,
+      "b_participation": 1
+    },
+    {
+      "a": "NoninflammDemyelinatingDisease",
+      "b": "InflammatoryDemyelinatingDisease",
+      "a_label": "Noninflammatory Demyelinating Disease",
+      "b_label": "Inflammatory Demyelinating Disease",
+      "kind": "disjoint+complement",
+      "shared_criteria": [
+        "BFO_0000054 DemyelinatingProcess"
+      ],
+      "n_shared": 1,
+      "a_participation": 1,
+      "b_participation": 1
+    },
+    {
+      "a": "DepressiveDisorder",
+      "b": "BipolarDisorder",
+      "a_label": "Depressive Disorder",
+      "b_label": "Bipolar Disorder",
+      "kind": "disjoint",
+      "shared_criteria": [
+        "BFO_0000054 BFO_0000015"
+      ],
+      "n_shared": 1,
+      "a_participation": 1,
+      "b_participation": 1
+    },
+    {
+      "a": "ConjunctivalDeposit",
+      "b": "ConjunctivalDegeneration",
+      "a_label": "Conjunctival Deposit Disposition",
+      "b_label": "Conjunctival Degeneration",
+      "kind": "disjoint",
+      "shared_criteria": [
+        "BFO_0000197 ConjunctivalTissue"
+      ],
+      "n_shared": 1,
+      "a_participation": 1,
+      "b_participation": 1
+    },
+    {
+      "a": "JuvenileMyelomonocyticLeukaemia",
+      "b": "ChronicMyelomonocyticLeukaemia",
+      "a_label": "Juvenile Myelomonocytic Leukaemia",
+      "b_label": "Chronic Myelomonocytic Leukaemia",
+      "kind": "disjoint",
+      "shared_criteria": [
+        "BFO_0000054 BFO_0000015"
+      ],
+      "n_shared": 1,
+      "a_participation": 1,
+      "b_participation": 1
+    },
+    {
+      "a": "ConvulsiveStatusEpilepticus",
+      "b": "NonconvulsiveStatusEpilepticus",
+      "a_label": "Convulsive Status Epilepticus",
+      "b_label": "Non-convulsive Status Epilepticus",
+      "kind": "disjoint",
+      "shared_criteria": [
+        "BFO_0000054 BFO_0000015"
+      ],
+      "n_shared": 1,
+      "a_participation": 1,
+      "b_participation": 1
+    },
+    {
+      "a": "PsychoBehaviouralFactor",
+      "b": "MentalDisorder",
+      "a_label": "Psychological or Behavioural Factor",
+      "b_label": "Mental Disorder",
+      "kind": "disjoint",
+      "shared_criteria": [
+        "BFO_0000054 AdverseEffectProcess"
+      ],
+      "n_shared": 1,
+      "a_participation": 1,
+      "b_participation": 1
+    },
+    {
+      "a": "Epidermis",
+      "b": "Dermis",
+      "a_label": "Epidermis",
+      "b_label": "Dermis",
+      "kind": "disjoint",
+      "shared_criteria": [
+        "BFO_0000050 Skin"
+      ],
+      "n_shared": 1,
+      "a_participation": 1,
+      "b_participation": 1
+    },
+    {
+      "a": "OcularSarcoidosis",
+      "b": "DigestiveSarcoidosis",
+      "a_label": "Ocular Sarcoidosis",
+      "b_label": "Sarcoidosis of the Digestive System",
+      "kind": "disjoint",
+      "shared_criteria": [
+        "BFO_0000054 GranulomaFormation"
+      ],
+      "n_shared": 1,
+      "a_participation": 1,
+      "b_participation": 1
+    },
+    {
+      "a": "PrimaryLateralSclerosis",
+      "b": "ALS",
+      "a_label": "Primary Lateral Sclerosis",
+      "b_label": "Amyotrophic Lateral Sclerosis",
+      "kind": "disjoint",
+      "shared_criteria": [
+        "BFO_0000054 BFO_0000015"
+      ],
+      "n_shared": 1,
+      "a_participation": 1,
+      "b_participation": 1
+    },
+    {
+      "a": "BilateralProptosis",
+      "b": "UnilateralProptosis",
+      "a_label": "Bilateral Proptosis",
+      "b_label": "Unilateral Proptosis",
+      "kind": "disjoint",
+      "shared_criteria": [
+        "BFO_0000054 BFO_0000015"
+      ],
+      "n_shared": 1,
+      "a_participation": 1,
+      "b_participation": 1
+    },
+    {
+      "a": "HypokalaemicPeriodicParalysis",
+      "b": "HyperkalaemicPeriodicParalysis",
+      "a_label": "Hypokalaemic Periodic Paralysis",
+      "b_label": "Hyperkalaemic Periodic Paralysis",
+      "kind": "disjoint",
+      "shared_criteria": [
+        "BFO_0000054 BFO_0000015"
+      ],
+      "n_shared": 1,
+      "a_participation": 1,
+      "b_participation": 1
+    },
+    {
+      "a": "Amenorrhea",
+      "b": "IrregularMenstrualCycle",
+      "a_label": "Amenorrhea",
+      "b_label": "Irregular Menstrual Cycle",
+      "kind": "disjoint",
+      "shared_criteria": [
+        "BFO_0000054 BFO_0000015"
+      ],
+      "n_shared": 1,
+      "a_participation": 1,
+      "b_participation": 1
+    },
+    {
+      "a": "NeurocognitiveDisorder",
+      "b": "DevelopmentalDisorder",
+      "a_label": "Neurocognitive Disorder",
+      "b_label": "Developmental Disorder",
+      "kind": "disjoint+complement",
+      "shared_criteria": [
+        "BFO_0000054 BFO_0000015"
+      ],
+      "n_shared": 1,
+      "a_participation": 1,
+      "b_participation": 1
+    },
+    {
+      "a": "RecurrentCornealErosion",
+      "b": "CornealUlcer",
+      "a_label": "Recurrent Corneal Erosion",
+      "b_label": "Corneal Ulcer",
+      "kind": "disjoint",
+      "shared_criteria": [
+        "BFO_0000054 CornealErosion"
+      ],
+      "n_shared": 1,
+      "a_participation": 1,
+      "b_participation": 1
+    },
+    {
+      "a": "AlcoholWithdrawal",
+      "b": "OtherSpecifiedWithdrawal",
+      "a_label": "Alcohol Withdrawal",
+      "b_label": "Other Specified Psychoactive Substance Withdrawal",
+      "kind": "disjoint",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 5,
+      "b_participation": 9
+    },
+    {
+      "a": "CannabisWithdrawal",
+      "b": "OtherSpecifiedWithdrawal",
+      "a_label": "Cannabis Withdrawal",
+      "b_label": "Other Specified Psychoactive Substance Withdrawal",
+      "kind": "disjoint",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 3,
+      "b_participation": 9
+    },
+    {
+      "a": "SubstanceDementia",
+      "b": "OtherSpecifiedWithdrawal",
+      "a_label": "Dementia Due to Psychoactive Substance",
+      "b_label": "Other Specified Psychoactive Substance Withdrawal",
+      "kind": "disjoint",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 2,
+      "b_participation": 9
+    },
+    {
+      "a": "BenignNeoplasm",
+      "b": "MalignantTumour",
+      "a_label": "Benign Neoplasm",
+      "b_label": "Malignant Neoplasm",
+      "kind": "disjoint+complement",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 4,
+      "b_participation": 6
+    },
+    {
+      "a": "NicotineWithdrawal",
+      "b": "OtherSpecifiedWithdrawal",
+      "a_label": "Nicotine Withdrawal",
+      "b_label": "Other Specified Psychoactive Substance Withdrawal",
+      "kind": "disjoint",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 1,
+      "b_participation": 9
+    },
+    {
+      "a": "OpioidWithdrawal",
+      "b": "OtherSpecifiedWithdrawal",
+      "a_label": "Opioid Withdrawal",
+      "b_label": "Other Specified Psychoactive Substance Withdrawal",
+      "kind": "disjoint",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 1,
+      "b_participation": 9
+    },
+    {
+      "a": "OtherSpecifiedWithdrawal",
+      "b": "CocaineWithdrawal",
+      "a_label": "Other Specified Psychoactive Substance Withdrawal",
+      "b_label": "Cocaine Withdrawal",
+      "kind": "disjoint",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 9,
+      "b_participation": 1
+    },
+    {
+      "a": "OtherSpecifiedWithdrawal",
+      "b": "CaffeineWithdrawal",
+      "a_label": "Other Specified Psychoactive Substance Withdrawal",
+      "b_label": "Caffeine Withdrawal",
+      "kind": "disjoint",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 9,
+      "b_participation": 1
+    },
+    {
+      "a": "SedativeWithdrawal",
+      "b": "OtherSpecifiedWithdrawal",
+      "a_label": "Sedative Hypnotic Anxiolytic Withdrawal",
+      "b_label": "Other Specified Psychoactive Substance Withdrawal",
+      "kind": "disjoint",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 1,
+      "b_participation": 9
+    },
+    {
+      "a": "AlcoholWithdrawal",
+      "b": "AlcoholIntoxication",
+      "a_label": "Alcohol Withdrawal",
+      "b_label": "Alcohol Intoxication",
+      "kind": "disjoint",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 5,
+      "b_participation": 3
+    },
+    {
+      "a": "AcuteCondition",
+      "b": "FeedingEatingDisorder",
+      "a_label": "Acute Condition",
+      "b_label": "Feeding and Eating Disorder",
+      "kind": "complement",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 4,
+      "b_participation": 4
+    },
+    {
+      "a": "Type1DiabetesMellitus",
+      "b": "Type2DiabetesMellitus",
+      "a_label": "Type 1 Diabetes Mellitus",
+      "b_label": "Type 2 Diabetes Mellitus",
+      "kind": "disjoint",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 4,
+      "b_participation": 3
+    },
+    {
+      "a": "PostproceduralMeningitis",
+      "b": "StaphylococcalMeningitis",
+      "a_label": "Postprocedural Meningitis",
+      "b_label": "Staphylococcal Meningitis",
+      "kind": "disjoint",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 4,
+      "b_participation": 3
+    },
+    {
+      "a": "SubstanceDementia",
+      "b": "AlcoholWithdrawal",
+      "a_label": "Dementia Due to Psychoactive Substance",
+      "b_label": "Alcohol Withdrawal",
+      "kind": "disjoint",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 2,
+      "b_participation": 5
+    },
+    {
+      "a": "PostproceduralMeningitis",
+      "b": "TuberculousMeningitis",
+      "a_label": "Postprocedural Meningitis",
+      "b_label": "Tuberculous Meningitis",
+      "kind": "disjoint",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 4,
+      "b_participation": 3
+    },
+    {
+      "a": "AlcoholWithdrawal",
+      "b": "AlcoholDependence",
+      "a_label": "Alcohol Withdrawal",
+      "b_label": "Alcohol Dependence",
+      "kind": "disjoint",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 5,
+      "b_participation": 2
+    },
+    {
+      "a": "Type1DiabetesMellitus",
+      "b": "InsulinActionDiabetes",
+      "a_label": "Type 1 Diabetes Mellitus",
+      "b_label": "Diabetes Mellitus Due to Genetic Defects in Insulin Action",
+      "kind": "disjoint+complement",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 4,
+      "b_participation": 3
+    },
+    {
+      "a": "OpioidPsychoticDisorder",
+      "b": "PrimaryPsychoticDisorder",
+      "a_label": "Opioid-induced Psychotic Disorder",
+      "b_label": "Primary Psychotic Disorder",
+      "kind": "disjoint",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 2,
+      "b_participation": 5
+    },
+    {
+      "a": "ExocrinePancreaticDiabetes",
+      "b": "Type1DiabetesMellitus",
+      "a_label": "Diabetes Mellitus Due to Exocrine Pancreatic Disease",
+      "b_label": "Type 1 Diabetes Mellitus",
+      "kind": "disjoint",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 3,
+      "b_participation": 4
+    },
+    {
+      "a": "LipBenignNeoplasm",
+      "b": "MalignantTumour",
+      "a_label": "Benign Neoplasm of Lip",
+      "b_label": "Malignant Neoplasm",
+      "kind": "disjoint",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 1,
+      "b_participation": 6
+    },
+    {
+      "a": "InhaledAllergenAnaphylaxis",
+      "b": "DrugAnaphylaxis",
+      "a_label": "Inhaled Allergen Anaphylaxis",
+      "b_label": "Drug-induced Anaphylaxis",
+      "kind": "disjoint",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 4,
+      "b_participation": 3
+    },
+    {
+      "a": "MalignantTumour",
+      "b": "InfantileHemangioma",
+      "a_label": "Malignant Neoplasm",
+      "b_label": "Infantile Hemangioma",
+      "kind": "disjoint",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 6,
+      "b_participation": 1
+    },
+    {
+      "a": "PrimaryPsychoticDisorder",
+      "b": "CannabisPsychoticDisorder",
+      "a_label": "Primary Psychotic Disorder",
+      "b_label": "Cannabis-induced Psychotic Disorder",
+      "kind": "disjoint+complement",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 5,
+      "b_participation": 2
+    },
+    {
+      "a": "PostproceduralMeningitis",
+      "b": "StreptococcalMeningitis",
+      "a_label": "Postprocedural Meningitis",
+      "b_label": "Streptococcal Meningitis",
+      "kind": "disjoint",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 4,
+      "b_participation": 3
+    },
+    {
+      "a": "DrugAnaphylaxis",
+      "b": "ExerciseAnaphylaxis",
+      "a_label": "Drug-induced Anaphylaxis",
+      "b_label": "Exercise-induced Anaphylaxis",
+      "kind": "disjoint",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 3,
+      "b_participation": 4
+    },
+    {
+      "a": "Leiomyoma",
+      "b": "MalignantTumour",
+      "a_label": "Leiomyoma",
+      "b_label": "Malignant Neoplasm",
+      "kind": "disjoint+complement",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 1,
+      "b_participation": 6
+    },
+    {
+      "a": "MalignantTumour",
+      "b": "TongueBenignNeoplasm",
+      "a_label": "Malignant Neoplasm",
+      "b_label": "Benign Neoplasm of Tongue",
+      "kind": "disjoint",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 6,
+      "b_participation": 1
+    },
+    {
+      "a": "OvarianBenignNeoplasm",
+      "b": "MalignantTumour",
+      "a_label": "Benign Neoplasm of Ovary",
+      "b_label": "Malignant Neoplasm",
+      "kind": "disjoint+complement",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 1,
+      "b_participation": 6
+    },
+    {
+      "a": "AlcoholInducedDementia",
+      "b": "AlcoholWithdrawal",
+      "a_label": "Alcohol-Induced Dementia",
+      "b_label": "Alcohol Withdrawal",
+      "kind": "disjoint+complement",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 2,
+      "b_participation": 5
+    },
+    {
+      "a": "PrimaryPsychoticDisorder",
+      "b": "SedativePsychoticDisorder",
+      "a_label": "Primary Psychotic Disorder",
+      "b_label": "Sedative Hypnotic Anxiolytic-induced Psychotic Disorder",
+      "kind": "disjoint+complement",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 5,
+      "b_participation": 1
+    },
+    {
+      "a": "TuberculousMeningitis",
+      "b": "StreptococcalMeningitis",
+      "a_label": "Tuberculous Meningitis",
+      "b_label": "Streptococcal Meningitis",
+      "kind": "disjoint",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 3,
+      "b_participation": 3
+    },
+    {
+      "a": "StaphylococcalMeningitis",
+      "b": "StreptococcalMeningitis",
+      "a_label": "Staphylococcal Meningitis",
+      "b_label": "Streptococcal Meningitis",
+      "kind": "disjoint",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 3,
+      "b_participation": 3
+    },
+    {
+      "a": "ViralAgent",
+      "b": "FungalAgent",
+      "a_label": "Viral Agent",
+      "b_label": "Fungal Agent",
+      "kind": "disjoint",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 3,
+      "b_participation": 3
+    },
+    {
+      "a": "MentalDisorderHypersomnia",
+      "b": "SubstanceHypersomnia",
+      "a_label": "Hypersomnia Associated with Mental Disorder",
+      "b_label": "Hypersomnia Due to Medication or Substance",
+      "kind": "disjoint",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 3,
+      "b_participation": 3
+    },
+    {
+      "a": "StaphylococcalMeningitis",
+      "b": "TuberculousMeningitis",
+      "a_label": "Staphylococcal Meningitis",
+      "b_label": "Tuberculous Meningitis",
+      "kind": "disjoint",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 3,
+      "b_participation": 3
+    },
+    {
+      "a": "InsulinActionDiabetes",
+      "b": "Type2DiabetesMellitus",
+      "a_label": "Diabetes Mellitus Due to Genetic Defects in Insulin Action",
+      "b_label": "Type 2 Diabetes Mellitus",
+      "kind": "disjoint+complement",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 3,
+      "b_participation": 3
+    },
+    {
+      "a": "BacterialAgent",
+      "b": "ParasiticAgent",
+      "a_label": "Bacterial Agent",
+      "b_label": "Parasitic Agent",
+      "kind": "disjoint",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 3,
+      "b_participation": 3
+    },
+    {
+      "a": "BacterialAgent",
+      "b": "FungalAgent",
+      "a_label": "Bacterial Agent",
+      "b_label": "Fungal Agent",
+      "kind": "disjoint",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 3,
+      "b_participation": 3
+    },
+    {
+      "a": "PrimaryPsychoticDisorder",
+      "b": "OtherSubstancePsychoticDisorder",
+      "a_label": "Primary Psychotic Disorder",
+      "b_label": "Psychotic Disorder Induced by Other Specified Psychoactive Substance",
+      "kind": "disjoint",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 5,
+      "b_participation": 1
+    },
+    {
+      "a": "ViralAgent",
+      "b": "ParasiticAgent",
+      "a_label": "Viral Agent",
+      "b_label": "Parasitic Agent",
+      "kind": "disjoint",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 3,
+      "b_participation": 3
+    },
+    {
+      "a": "IdiopathicHypersomnia",
+      "b": "MedicalHypersomnia",
+      "a_label": "Idiopathic Hypersomnia",
+      "b_label": "Hypersomnia Due to Medical Condition",
+      "kind": "disjoint+complement",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 3,
+      "b_participation": 3
+    },
+    {
+      "a": "IdiopathicHypersomnia",
+      "b": "SubstanceHypersomnia",
+      "a_label": "Idiopathic Hypersomnia",
+      "b_label": "Hypersomnia Due to Medication or Substance",
+      "kind": "disjoint",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 3,
+      "b_participation": 3
+    },
+    {
+      "a": "ParasiticAgent",
+      "b": "FungalAgent",
+      "a_label": "Parasitic Agent",
+      "b_label": "Fungal Agent",
+      "kind": "disjoint",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 3,
+      "b_participation": 3
+    },
+    {
+      "a": "AcuteCondition",
+      "b": "ChronicCondition",
+      "a_label": "Acute Condition",
+      "b_label": "Chronic Condition",
+      "kind": "disjoint",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 4,
+      "b_participation": 2
+    },
+    {
+      "a": "ViralAgent",
+      "b": "BacterialAgent",
+      "a_label": "Viral Agent",
+      "b_label": "Bacterial Agent",
+      "kind": "disjoint",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 3,
+      "b_participation": 3
+    },
+    {
+      "a": "MedicalHypersomnia",
+      "b": "SubstanceHypersomnia",
+      "a_label": "Hypersomnia Due to Medical Condition",
+      "b_label": "Hypersomnia Due to Medication or Substance",
+      "kind": "disjoint",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 3,
+      "b_participation": 3
+    },
+    {
+      "a": "ExocrinePancreaticDiabetes",
+      "b": "InsulinActionDiabetes",
+      "a_label": "Diabetes Mellitus Due to Exocrine Pancreatic Disease",
+      "b_label": "Diabetes Mellitus Due to Genetic Defects in Insulin Action",
+      "kind": "disjoint",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 3,
+      "b_participation": 3
+    },
+    {
+      "a": "MentalDisorderHypersomnia",
+      "b": "MedicalHypersomnia",
+      "a_label": "Hypersomnia Associated with Mental Disorder",
+      "b_label": "Hypersomnia Due to Medical Condition",
+      "kind": "disjoint",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 3,
+      "b_participation": 3
+    },
+    {
+      "a": "DrugAnaphylaxis",
+      "b": "FoodAnaphylaxis",
+      "a_label": "Drug-induced Anaphylaxis",
+      "b_label": "Food-induced Anaphylaxis",
+      "kind": "disjoint+complement",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 3,
+      "b_participation": 3
+    },
+    {
+      "a": "PostproceduralMeningitis",
+      "b": "MeningococcalMeningitis",
+      "a_label": "Postprocedural Meningitis",
+      "b_label": "Meningococcal Meningitis",
+      "kind": "disjoint",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 4,
+      "b_participation": 1
+    },
+    {
+      "a": "PeripheralPrecociousPuberty",
+      "b": "ConstitutionalDelayPuberty",
+      "a_label": "Peripheral Precocious Puberty",
+      "b_label": "Constitutional Delay of Puberty",
+      "kind": "disjoint",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 3,
+      "b_participation": 2
+    },
+    {
+      "a": "BenignNeoplasm",
+      "b": "ConjunctivalEpithelialCyst",
+      "a_label": "Benign Neoplasm",
+      "b_label": "Conjunctival Epithelial Cyst",
+      "kind": "complement",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 4,
+      "b_participation": 1
+    },
+    {
+      "a": "BenignNeoplasm",
+      "b": "MalignantSchwannoma",
+      "a_label": "Benign Neoplasm",
+      "b_label": "Malignant Schwannoma",
+      "kind": "disjoint+complement",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 4,
+      "b_participation": 1
+    },
+    {
+      "a": "AcquiredAplasia",
+      "b": "AcuteCondition",
+      "a_label": "Acquired Red Cell Aplasia",
+      "b_label": "Acute Condition",
+      "kind": "complement",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 1,
+      "b_participation": 4
+    },
+    {
+      "a": "TransientAbnormalMyelopoiesis",
+      "b": "AcuteMyeloidLeukaemia",
+      "a_label": "Transient Abnormal Myelopoiesis",
+      "b_label": "Acute Myeloid Leukaemia",
+      "kind": "disjoint",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 2,
+      "b_participation": 3
+    },
+    {
+      "a": "Pterygium",
+      "b": "BenignNeoplasm",
+      "a_label": "Pterygium",
+      "b_label": "Benign Neoplasm",
+      "kind": "disjoint",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 1,
+      "b_participation": 4
+    },
+    {
+      "a": "AcuteCondition",
+      "b": "Sequela",
+      "a_label": "Acute Condition",
+      "b_label": "Sequela",
+      "kind": "disjoint",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 4,
+      "b_participation": 1
+    },
+    {
+      "a": "IronDeficiencyAnaemia",
+      "b": "AcutePosthaemorrhagicAnaemia",
+      "a_label": "Iron Deficiency Anaemia",
+      "b_label": "Acute Posthaemorrhagic Anaemia",
+      "kind": "disjoint+complement",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 2,
+      "b_participation": 3
+    },
+    {
+      "a": "AlcoholIntoxication",
+      "b": "AlcoholDependence",
+      "a_label": "Alcohol Intoxication",
+      "b_label": "Alcohol Dependence",
+      "kind": "disjoint",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 3,
+      "b_participation": 2
+    },
+    {
+      "a": "AlcoholInducedDementia",
+      "b": "AlcoholIntoxication",
+      "a_label": "Alcohol-Induced Dementia",
+      "b_label": "Alcohol Intoxication",
+      "kind": "disjoint+complement",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 2,
+      "b_participation": 3
+    },
+    {
+      "a": "PeripheralPrecociousPuberty",
+      "b": "PrematureAdrenarche",
+      "a_label": "Peripheral Precocious Puberty",
+      "b_label": "Premature Adrenarche",
+      "kind": "disjoint+complement",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 3,
+      "b_participation": 2
+    },
+    {
+      "a": "CannabisWithdrawal",
+      "b": "CannabisDependence",
+      "a_label": "Cannabis Withdrawal",
+      "b_label": "Cannabis Dependence Disposition",
+      "kind": "disjoint",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 3,
+      "b_participation": 2
+    },
+    {
+      "a": "ConstitutionalDelayPuberty",
+      "b": "CentralPrecociousPuberty",
+      "a_label": "Constitutional Delay of Puberty",
+      "b_label": "Central Precocious Puberty",
+      "kind": "disjoint",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 2,
+      "b_participation": 3
+    },
+    {
+      "a": "CannabisWithdrawal",
+      "b": "CannabisIntoxication",
+      "a_label": "Cannabis Withdrawal",
+      "b_label": "Cannabis Intoxication Disposition",
+      "kind": "disjoint",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 3,
+      "b_participation": 2
+    },
+    {
+      "a": "Malabsorption",
+      "b": "FeedingEatingDisorder",
+      "a_label": "Malabsorption Condition",
+      "b_label": "Feeding and Eating Disorder",
+      "kind": "complement",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 1,
+      "b_participation": 4
+    },
+    {
+      "a": "PrematureAdrenarche",
+      "b": "CentralPrecociousPuberty",
+      "a_label": "Premature Adrenarche",
+      "b_label": "Central Precocious Puberty",
+      "kind": "disjoint+complement",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 2,
+      "b_participation": 3
+    },
+    {
+      "a": "InsulinResistance",
+      "b": "Type1DiabetesMellitus",
+      "a_label": "Insulin Resistance",
+      "b_label": "Type 1 Diabetes Mellitus",
+      "kind": "complement",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 1,
+      "b_participation": 4
+    },
+    {
+      "a": "Hypothyroidism",
+      "b": "FeedingEatingDisorder",
+      "a_label": "Hypothyroid Condition",
+      "b_label": "Feeding and Eating Disorder",
+      "kind": "complement",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 1,
+      "b_participation": 4
+    },
+    {
+      "a": "MyeloidSarcoma",
+      "b": "AcuteMyeloidLeukaemia",
+      "a_label": "Myeloid Sarcoma",
+      "b_label": "Acute Myeloid Leukaemia",
+      "kind": "disjoint",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 2,
+      "b_participation": 3
+    },
+    {
+      "a": "PlantarWart",
+      "b": "DigitalWart",
+      "a_label": "Plantar Wart",
+      "b_label": "Digital or Periungual Warts",
+      "kind": "disjoint",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 2,
+      "b_participation": 2
+    },
+    {
+      "a": "ConstitutionalHaemorrhagicCondition",
+      "b": "CrimeanCongoFever",
+      "a_label": "Congenital or Constitutional Haemorrhagic Condition",
+      "b_label": "Crimean-Congo Haemorrhagic Fever",
+      "kind": "disjoint",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 3,
+      "b_participation": 1
+    },
+    {
+      "a": "NaturalOpioid",
+      "b": "SyntheticOpioid",
+      "a_label": "Natural Opioid",
+      "b_label": "Synthetic Opioid",
+      "kind": "disjoint",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 2,
+      "b_participation": 2
+    },
+    {
+      "a": "MegaloblasticAnaemia",
+      "b": "AcutePosthaemorrhagicAnaemia",
+      "a_label": "Megaloblastic Anaemia",
+      "b_label": "Acute Posthaemorrhagic Anaemia",
+      "kind": "disjoint",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 1,
+      "b_participation": 3
+    },
+    {
+      "a": "SyntheticOpioid",
+      "b": "SemisyntheticOpioid",
+      "a_label": "Synthetic Opioid",
+      "b_label": "Semisynthetic Opioid",
+      "kind": "disjoint",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 2,
+      "b_participation": 2
+    },
+    {
+      "a": "PlaneWarts",
+      "b": "AnogenitalWarts",
+      "a_label": "Plane Warts",
+      "b_label": "Anogenital Warts",
+      "kind": "disjoint",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 2,
+      "b_participation": 2
+    },
+    {
+      "a": "BFO_0000004",
+      "b": "BFO_0000031",
+      "a_label": "BFO_0000004",
+      "b_label": "BFO_0000031",
+      "kind": "disjoint",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 2,
+      "b_participation": 2
+    },
+    {
+      "a": "FunctionalDystonia",
+      "b": "PrimaryDystonia",
+      "a_label": "Functional Dystonia",
+      "b_label": "Primary Dystonia",
+      "kind": "disjoint",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 2,
+      "b_participation": 2
+    },
+    {
+      "a": "EbolaDisease",
+      "b": "ConstitutionalHaemorrhagicCondition",
+      "a_label": "Ebola Virus Disease",
+      "b_label": "Congenital or Constitutional Haemorrhagic Condition",
+      "kind": "disjoint",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 1,
+      "b_participation": 3
+    },
+    {
+      "a": "AcquiredHaemophilia",
+      "b": "HaemophiliaA",
+      "a_label": "Acquired Haemophilia",
+      "b_label": "Haemophilia A",
+      "kind": "disjoint",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 3,
+      "b_participation": 1
+    },
+    {
+      "a": "AcquiredHaemophilia",
+      "b": "HaemophiliaB",
+      "a_label": "Acquired Haemophilia",
+      "b_label": "Haemophilia B",
+      "kind": "disjoint",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 3,
+      "b_participation": 1
+    },
+    {
+      "a": "SecondaryDystonia",
+      "b": "FunctionalDystonia",
+      "a_label": "Secondary Dystonia",
+      "b_label": "Functional Dystonia",
+      "kind": "disjoint",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 2,
+      "b_participation": 2
+    },
+    {
+      "a": "BFO_0000004",
+      "b": "BFO_0000020",
+      "a_label": "BFO_0000004",
+      "b_label": "BFO_0000020",
+      "kind": "disjoint",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 2,
+      "b_participation": 2
+    },
+    {
+      "a": "CocaineAnxietyDisorder",
+      "b": "CocainePsychoticDisorder",
+      "a_label": "Cocaine-induced Anxiety Disorder",
+      "b_label": "Cocaine-induced Psychotic Disorder with Hallucinations",
+      "kind": "disjoint",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 2,
+      "b_participation": 2
+    },
+    {
+      "a": "FocalNeurologicalDysfunction",
+      "b": "SilentCerebralMicrobleed",
+      "a_label": "Focal Neurological Dysfunction Process",
+      "b_label": "Silent Cerebral Microbleed",
+      "kind": "complement",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 2,
+      "b_participation": 2
+    },
+    {
+      "a": "IronDeficiencyAnaemia",
+      "b": "B12DeficiencyAnaemia",
+      "a_label": "Iron Deficiency Anaemia",
+      "b_label": "Vitamin B12 Deficiency Anaemia",
+      "kind": "disjoint+complement",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 2,
+      "b_participation": 2
+    },
+    {
+      "a": "AmbiguousLineageLeukaemia",
+      "b": "AcuteMyeloidLeukaemia",
+      "a_label": "Acute Leukaemia of Ambiguous Lineage",
+      "b_label": "Acute Myeloid Leukaemia",
+      "kind": "disjoint",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 1,
+      "b_participation": 3
+    },
+    {
+      "a": "PlantarWart",
+      "b": "AnogenitalWarts",
+      "a_label": "Plantar Wart",
+      "b_label": "Anogenital Warts",
+      "kind": "disjoint",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 2,
+      "b_participation": 2
+    },
+    {
+      "a": "NutritionalMetabolicAnaemia",
+      "b": "AcutePosthaemorrhagicAnaemia",
+      "a_label": "Other Nutritional or Metabolic Anaemias",
+      "b_label": "Acute Posthaemorrhagic Anaemia",
+      "kind": "disjoint",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 1,
+      "b_participation": 3
+    },
+    {
+      "a": "PlaneWarts",
+      "b": "DigitalWart",
+      "a_label": "Plane Warts",
+      "b_label": "Digital or Periungual Warts",
+      "kind": "disjoint",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 2,
+      "b_participation": 2
+    },
+    {
+      "a": "FocalNeurologicalDysfunction",
+      "b": "AcuteInfarction",
+      "a_label": "Focal Neurological Dysfunction Process",
+      "b_label": "Acute Infarction Process",
+      "kind": "disjoint",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 2,
+      "b_participation": 2
+    },
+    {
+      "a": "SecondaryDystonia",
+      "b": "PrimaryDystonia",
+      "a_label": "Secondary Dystonia",
+      "b_label": "Primary Dystonia",
+      "kind": "disjoint+complement",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 2,
+      "b_participation": 2
+    },
+    {
+      "a": "BFO_0000020",
+      "b": "BFO_0000031",
+      "a_label": "BFO_0000020",
+      "b_label": "BFO_0000031",
+      "kind": "disjoint",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 2,
+      "b_participation": 2
+    },
+    {
+      "a": "HaemophiliaC",
+      "b": "AcquiredHaemophilia",
+      "a_label": "Haemophilia C",
+      "b_label": "Acquired Haemophilia",
+      "kind": "disjoint",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 1,
+      "b_participation": 3
+    },
+    {
+      "a": "StressRelatedDisorder",
+      "b": "AnxietyFearDisorder",
+      "a_label": "Stress-Related Disorder",
+      "b_label": "Anxiety and Fear-Related Disorder",
+      "kind": "disjoint",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 2,
+      "b_participation": 1
+    },
+    {
+      "a": "HaematologicalMalignancy",
+      "b": "BenignCutaneousNeoplasm",
+      "a_label": "Haematological Malignancy",
+      "b_label": "Benign Cutaneous Neoplasm",
+      "kind": "disjoint",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 1,
+      "b_participation": 2
+    },
+    {
+      "a": "RestrictedRepetitiveBehaviour",
+      "b": "Chorea",
+      "a_label": "Restricted Repetitive Behaviour",
+      "b_label": "Chorea Process",
+      "kind": "disjoint+complement",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 2,
+      "b_participation": 1
+    },
+    {
+      "a": "JuvenileDermatomyositis",
+      "b": "AdultDermatomyositis",
+      "a_label": "Juvenile Dermatomyositis",
+      "b_label": "Adult Dermatomyositis",
+      "kind": "disjoint",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 2,
+      "b_participation": 1
+    },
+    {
+      "a": "CongenitalThrombocytosis",
+      "b": "AcquiredThrombocytosis",
+      "a_label": "Congenital Thrombocytosis",
+      "b_label": "Acquired Thrombocytosis",
+      "kind": "disjoint",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 1,
+      "b_participation": 2
+    },
+    {
+      "a": "MigraineWithoutAura",
+      "b": "TensionTypeHeadache",
+      "a_label": "Migraine without Aura",
+      "b_label": "Tension-Type Headache",
+      "kind": "disjoint+complement",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 2,
+      "b_participation": 1
+    },
+    {
+      "a": "BFO_0000016",
+      "b": "BFO_0000023",
+      "a_label": "BFO_0000016",
+      "b_label": "BFO_0000023",
+      "kind": "disjoint",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 1,
+      "b_participation": 2
+    },
+    {
+      "a": "TransientAbnormalMyelopoiesis",
+      "b": "MyelodysplasticSyndrome",
+      "a_label": "Transient Abnormal Myelopoiesis",
+      "b_label": "Myelodysplastic Syndrome",
+      "kind": "disjoint",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 2,
+      "b_participation": 1
+    },
+    {
+      "a": "RheumaticHeartDisease",
+      "b": "AcuteRheumaticPericarditis",
+      "a_label": "Rheumatic Heart Disease",
+      "b_label": "Acute Rheumatic Pericarditis",
+      "kind": "disjoint",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 1,
+      "b_participation": 2
+    },
+    {
+      "a": "BFO_0000023",
+      "b": "BFO_0000034",
+      "a_label": "BFO_0000023",
+      "b_label": "BFO_0000034",
+      "kind": "disjoint",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 2,
+      "b_participation": 1
+    },
+    {
+      "a": "RestrictedRepetitiveBehaviour",
+      "b": "HemichoreaMovement",
+      "a_label": "Restricted Repetitive Behaviour",
+      "b_label": "Hemichorea Movement Process",
+      "kind": "disjoint+complement",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 2,
+      "b_participation": 1
+    },
+    {
+      "a": "Urticaria",
+      "b": "AcquiredAngioedema",
+      "a_label": "Urticaria",
+      "b_label": "Acquired Angioedema",
+      "kind": "disjoint",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 1,
+      "b_participation": 2
+    },
+    {
+      "a": "SystemicSclerosis",
+      "b": "SingleOrganVasculitis",
+      "a_label": "Systemic Sclerosis",
+      "b_label": "Single Organ Vasculitis",
+      "kind": "disjoint",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 1,
+      "b_participation": 2
+    },
+    {
+      "a": "NonimmuneHaemolyticAnaemia",
+      "b": "AutoimmuneHaemolyticAnaemia",
+      "a_label": "Non-immune Acquired Haemolytic Anaemia",
+      "b_label": "Autoimmune Haemolytic Anaemia",
+      "kind": "disjoint+complement",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 2,
+      "b_participation": 1
+    },
+    {
+      "a": "PersonalityDisorder",
+      "b": "PersonalityTrait",
+      "a_label": "Personality Disorder",
+      "b_label": "Personality Trait",
+      "kind": "disjoint",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 2,
+      "b_participation": 1
+    },
+    {
+      "a": "CornealDegeneration",
+      "b": "CornealDystrophy",
+      "a_label": "Corneal Degeneration",
+      "b_label": "Corneal Dystrophy",
+      "kind": "disjoint+complement",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 1,
+      "b_participation": 2
+    },
+    {
+      "a": "StressRelatedDisorder",
+      "b": "StressPhysiologicalResponse",
+      "a_label": "Stress-Related Disorder",
+      "b_label": "Stress-Related Physiological Response",
+      "kind": "disjoint",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 2,
+      "b_participation": 1
+    },
+    {
+      "a": "SubstanceAction",
+      "b": "PersistenceBeyondAction",
+      "a_label": "Substance Action Process",
+      "b_label": "Persistence Beyond Substance Action",
+      "kind": "complement",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 1,
+      "b_participation": 2
+    },
+    {
+      "a": "PeripheralNervousSystem",
+      "b": "PrimaryAngiitis",
+      "a_label": "Peripheral Nervous System",
+      "b_label": "Primary Angiitis of the Central Nervous System",
+      "kind": "complement",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 2,
+      "b_participation": 1
+    },
+    {
+      "a": "DrugCytopenia",
+      "b": "NonimmuneHaemolyticAnaemia",
+      "a_label": "Drug-induced Cytopenia",
+      "b_label": "Non-immune Acquired Haemolytic Anaemia",
+      "kind": "complement",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 1,
+      "b_participation": 2
+    },
+    {
+      "a": "IntracranialHypotension",
+      "b": "IncreasedIntracranialPressure",
+      "a_label": "Intracranial Hypotension",
+      "b_label": "Increased Intracranial Pressure",
+      "kind": "disjoint",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 1,
+      "b_participation": 2
+    },
+    {
+      "a": "AlloimmuneThrombocytopenia",
+      "b": "ITP",
+      "a_label": "Alloimmune Thrombocytopenia",
+      "b_label": "Immune Thrombocytopenic Purpura",
+      "kind": "disjoint",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 1,
+      "b_participation": 2
+    },
+    {
+      "a": "CornealDystrophy",
+      "b": "InflammatoryDisorder",
+      "a_label": "Corneal Dystrophy",
+      "b_label": "Inflammatory Disorder",
+      "kind": "disjoint+complement",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 2,
+      "b_participation": 1
+    },
+    {
+      "a": "PersonalityDisorder",
+      "b": "CopingStyle",
+      "a_label": "Personality Disorder",
+      "b_label": "Coping Style",
+      "kind": "disjoint",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 2,
+      "b_participation": 1
+    },
+    {
+      "a": "HereditaryThrombocytopenia",
+      "b": "AcquiredThrombocytopenia",
+      "a_label": "Hereditary Thrombocytopenia",
+      "b_label": "Acquired Thrombocytopenia",
+      "kind": "disjoint",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 1,
+      "b_participation": 2
+    },
+    {
+      "a": "InfectiousParkinsonism",
+      "b": "FunctionalParkinsonism",
+      "a_label": "Infectious/Postinfectious Parkinsonism",
+      "b_label": "Functional Parkinsonism",
+      "kind": "disjoint",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 1,
+      "b_participation": 2
+    },
+    {
+      "a": "JuvenileDermatomyositis",
+      "b": "JuvenilePolymyositis",
+      "a_label": "Juvenile Dermatomyositis",
+      "b_label": "Juvenile Polymyositis",
+      "kind": "disjoint",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 2,
+      "b_participation": 1
+    },
+    {
+      "a": "FolateDeficiencyAnaemia",
+      "b": "B12DeficiencyAnaemia",
+      "a_label": "Folate Deficiency Anaemia due to Decreased Intestinal Absorption",
+      "b_label": "Vitamin B12 Deficiency Anaemia",
+      "kind": "disjoint+complement",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 1,
+      "b_participation": 2
+    },
+    {
+      "a": "AcuteInfarction",
+      "b": "TransientIschaemicAttack",
+      "a_label": "Acute Infarction Process",
+      "b_label": "Transient Ischaemic Attack",
+      "kind": "complement",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 2,
+      "b_participation": 1
+    },
+    {
+      "a": "CongenitalAtaxia",
+      "b": "AcquiredAtaxia",
+      "a_label": "Congenital Ataxia",
+      "b_label": "Acquired Ataxia",
+      "kind": "disjoint+complement",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 1,
+      "b_participation": 2
+    },
+    {
+      "a": "EosinophilicFasciitis",
+      "b": "EosinophilicGastroenteritis",
+      "a_label": "Eosinophilic Fasciitis",
+      "b_label": "Food-induced Eosinophilic Gastroenteritis",
+      "kind": "disjoint",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 1,
+      "b_participation": 2
+    },
+    {
+      "a": "SpeechDifficulty",
+      "b": "SpeechLoss",
+      "a_label": "Difficulty with Speaking",
+      "b_label": "Loss of Ability to Speak (Aphonia/Mutism)",
+      "kind": "disjoint",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 2,
+      "b_participation": 1
+    },
+    {
+      "a": "AcquiredThrombocytosis",
+      "b": "FamilialThrombocytosis",
+      "a_label": "Acquired Thrombocytosis",
+      "b_label": "Familial Thrombocytosis",
+      "kind": "disjoint",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 2,
+      "b_participation": 1
+    },
+    {
+      "a": "Polymyositis",
+      "b": "InclusionBodyMyopathy",
+      "a_label": "Polymyositis",
+      "b_label": "Inclusion Body Myopathy",
+      "kind": "disjoint+complement",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 1,
+      "b_participation": 2
+    },
+    {
+      "a": "BenignCutaneousNeoplasm",
+      "b": "OcularMalignancy",
+      "a_label": "Benign Cutaneous Neoplasm",
+      "b_label": "Malignant Neoplasm of Eye",
+      "kind": "disjoint",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 2,
+      "b_participation": 1
+    },
+    {
+      "a": "WithdrawalProcess",
+      "b": "PersistenceBeyondAction",
+      "a_label": "Withdrawal Process",
+      "b_label": "Persistence Beyond Substance Action",
+      "kind": "complement",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 1,
+      "b_participation": 2
+    },
+    {
+      "a": "TTP",
+      "b": "DIC",
+      "a_label": "Thrombotic Thrombocytopenic Purpura",
+      "b_label": "Disseminated Intravascular Coagulation",
+      "kind": "disjoint",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 2,
+      "b_participation": 1
+    },
+    {
+      "a": "PolyarteritisNodosa",
+      "b": "SingleOrganVasculitis",
+      "a_label": "Polyarteritis Nodosa",
+      "b_label": "Single Organ Vasculitis",
+      "kind": "disjoint",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 1,
+      "b_participation": 2
+    },
+    {
+      "a": "PeripheralNervousSystem",
+      "b": "CentralNervousSystem",
+      "a_label": "Peripheral Nervous System",
+      "b_label": "Central Nervous System",
+      "kind": "disjoint",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 2,
+      "b_participation": 1
+    },
+    {
+      "a": "CongenitalThrombocytopenia",
+      "b": "AcquiredThrombocytopenia",
+      "a_label": "Congenital Thrombocytopenia",
+      "b_label": "Acquired Thrombocytopenia",
+      "kind": "disjoint",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 1,
+      "b_participation": 2
+    },
+    {
+      "a": "AcuteProcess",
+      "b": "SilentCerebralMicrobleed",
+      "a_label": "Acute Process",
+      "b_label": "Silent Cerebral Microbleed",
+      "kind": "complement",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 1,
+      "b_participation": 2
+    },
+    {
+      "a": "MyeloidSarcoma",
+      "b": "ChronicMyelogenousLeukaemia",
+      "a_label": "Myeloid Sarcoma",
+      "b_label": "Chronic Myelogenous Leukaemia BCR-ABL1-positive",
+      "kind": "disjoint",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 2,
+      "b_participation": 1
+    },
+    {
+      "a": "Dermatomyositis",
+      "b": "InclusionBodyMyopathy",
+      "a_label": "Dermatomyositis",
+      "b_label": "Inclusion Body Myopathy",
+      "kind": "disjoint+complement",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 1,
+      "b_participation": 2
+    },
+    {
+      "a": "IncreasedIntracranialPressure",
+      "b": "ExVacuoHydrocephalus",
+      "a_label": "Increased Intracranial Pressure",
+      "b_label": "Ex-Vacuo Hydrocephalus",
+      "kind": "disjoint+complement",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 2,
+      "b_participation": 1
+    },
+    {
+      "a": "AcuteRheumaticFever",
+      "b": "AcuteRheumaticPericarditis",
+      "a_label": "Acute Rheumatic Fever",
+      "b_label": "Acute Rheumatic Pericarditis",
+      "kind": "disjoint+complement",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 1,
+      "b_participation": 2
+    },
+    {
+      "a": "UnclearArticulation",
+      "b": "SpeechDifficulty",
+      "a_label": "Unclear Articulation (Dysarthria)",
+      "b_label": "Difficulty with Speaking",
+      "kind": "disjoint",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 1,
+      "b_participation": 2
+    },
+    {
+      "a": "ExcessiveSleepiness",
+      "b": "SleepWakeDisorder",
+      "a_label": "Excessive Sleepiness",
+      "b_label": "Sleep-Wake Disorder",
+      "kind": "complement",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 1,
+      "b_participation": 1
+    },
+    {
+      "a": "IronDeficiency",
+      "b": "IronOverload",
+      "a_label": "Iron Deficiency",
+      "b_label": "Iron Overload",
+      "kind": "disjoint",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 1,
+      "b_participation": 1
+    },
+    {
+      "a": "TearProduction",
+      "b": "Hyperlacrimation",
+      "a_label": "Tear Production Disposition",
+      "b_label": "Hyperlacrimation",
+      "kind": "complement",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 1,
+      "b_participation": 1
+    },
+    {
+      "a": "LupusChorea",
+      "b": "SydenhamChorea",
+      "a_label": "SLE-Associated Chorea",
+      "b_label": "Sydenham Chorea",
+      "kind": "disjoint",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 1,
+      "b_participation": 1
+    },
+    {
+      "a": "Yaws",
+      "b": "CongenitalSyphilis",
+      "a_label": "Yaws",
+      "b_label": "Congenital Syphilis",
+      "kind": "disjoint",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 1,
+      "b_participation": 1
+    },
+    {
+      "a": "InjuryInduction",
+      "b": "FeigningProcess",
+      "a_label": "Injury Induction Process",
+      "b_label": "Feigning Process",
+      "kind": "disjoint",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 1,
+      "b_participation": 1
+    },
+    {
+      "a": "Skin",
+      "b": "FibrousTissue",
+      "a_label": "Skin",
+      "b_label": "Fibrous Tissue",
+      "kind": "disjoint+complement",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 1,
+      "b_participation": 1
+    },
+    {
+      "a": "ConjunctivalInvolvement",
+      "b": "ExtraconjunctivalInvolvement",
+      "a_label": "Conjunctival Involvement Process",
+      "b_label": "Extraconjunctival Involvement Process",
+      "kind": "disjoint+complement",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 1,
+      "b_participation": 1
+    },
+    {
+      "a": "Actinomycetoma",
+      "b": "CDiffDisease",
+      "a_label": "Actinomycetoma",
+      "b_label": "CDiff Disease",
+      "kind": "disjoint",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 1,
+      "b_participation": 1
+    },
+    {
+      "a": "AAAmyloidosis",
+      "b": "ALAmyloidosis",
+      "a_label": "AA Amyloidosis",
+      "b_label": "AL Amyloidosis",
+      "kind": "disjoint",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 1,
+      "b_participation": 1
+    },
+    {
+      "a": "HypoglossalNerve",
+      "b": "MixedNerveFunction",
+      "a_label": "Hypoglossal Nerve",
+      "b_label": "Mixed Nerve Function",
+      "kind": "complement",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 1,
+      "b_participation": 1
+    },
+    {
+      "a": "SystemicMastocytosis",
+      "b": "CutaneousMastocytosis",
+      "a_label": "Systemic Mastocytosis",
+      "b_label": "Cutaneous Mastocytosis",
+      "kind": "disjoint",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 1,
+      "b_participation": 1
+    },
+    {
+      "a": "PapulopustularRosacea",
+      "b": "ChronicBlepharitis",
+      "a_label": "Papulopustular Rosacea",
+      "b_label": "Chronic Blepharitis",
+      "kind": "disjoint",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 1,
+      "b_participation": 1
+    },
+    {
+      "a": "EndogenousFactor",
+      "b": "ExogenousFactor",
+      "a_label": "Endogenous Factor",
+      "b_label": "Exogenous Factor",
+      "kind": "disjoint",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 1,
+      "b_participation": 1
+    },
+    {
+      "a": "InvoluntaryMuscleContraction",
+      "b": "VoluntaryMuscleContraction",
+      "a_label": "Involuntary Muscle Contraction",
+      "b_label": "Voluntary Muscle Contraction",
+      "kind": "disjoint",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 1,
+      "b_participation": 1
+    },
+    {
+      "a": "CutaneousMyiasis",
+      "b": "OcularMyiasis",
+      "a_label": "Cutaneous Myiasis",
+      "b_label": "Ocular Myiasis",
+      "kind": "disjoint",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 1,
+      "b_participation": 1
+    },
+    {
+      "a": "AcquiredHypothyroidism",
+      "b": "CongenitalHypothyroidism",
+      "a_label": "Acquired Hypothyroidism",
+      "b_label": "Congenital Hypothyroidism",
+      "kind": "disjoint+complement",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 1,
+      "b_participation": 1
+    },
+    {
+      "a": "CentralSleepApnoea",
+      "b": "ObstructiveSleepApnoea",
+      "a_label": "Central Sleep Apnoea",
+      "b_label": "Obstructive Sleep Apnoea",
+      "kind": "disjoint",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 1,
+      "b_participation": 1
+    },
+    {
+      "a": "InflammatoryMyopathy",
+      "b": "CentronuclearMyopathy",
+      "a_label": "Inflammatory Myopathy",
+      "b_label": "Centronuclear Myopathy",
+      "kind": "complement",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 1,
+      "b_participation": 1
+    },
+    {
+      "a": "TyphusFever",
+      "b": "TyphoidFever",
+      "a_label": "Typhus Fever",
+      "b_label": "Typhoid Fever",
+      "kind": "disjoint",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 1,
+      "b_participation": 1
+    },
+    {
+      "a": "BFO_0000017",
+      "b": "BFO_0000019",
+      "a_label": "BFO_0000017",
+      "b_label": "BFO_0000019",
+      "kind": "disjoint",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 1,
+      "b_participation": 1
+    },
+    {
+      "a": "DemodexFolliculorum",
+      "b": "DemodexBrevis",
+      "a_label": "Demodex folliculorum",
+      "b_label": "Demodex brevis",
+      "kind": "disjoint",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 1,
+      "b_participation": 1
+    },
+    {
+      "a": "BFO_0000040",
+      "b": "BFO_0000141",
+      "a_label": "BFO_0000040",
+      "b_label": "BFO_0000141",
+      "kind": "disjoint",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 1,
+      "b_participation": 1
+    },
+    {
+      "a": "ActinomycetomInfection",
+      "b": "ActinomycosisInfection",
+      "a_label": "Actinomycetoma Infection Process",
+      "b_label": "Actinomycosis Infection Process",
+      "kind": "disjoint",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 1,
+      "b_participation": 1
+    },
+    {
+      "a": "LargeLocalReaction",
+      "b": "AnaphylaxisProcess",
+      "a_label": "Large Local Reaction",
+      "b_label": "Anaphylaxis Reaction Process",
+      "kind": "disjoint",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 1,
+      "b_participation": 1
+    },
+    {
+      "a": "GlucoseGalactoseMalabsorption",
+      "b": "AcquiredMonosaccharideMalabsorption",
+      "a_label": "Glucose-Galactose Malabsorption",
+      "b_label": "Acquired Monosaccharide Malabsorption",
+      "kind": "disjoint",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 1,
+      "b_participation": 1
+    },
+    {
+      "a": "MuscleInflammation",
+      "b": "MyocyteNecrosis",
+      "a_label": "Muscle Inflammation Process",
+      "b_label": "Myocyte Necrosis Process",
+      "kind": "disjoint+complement",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 1,
+      "b_participation": 1
+    },
+    {
+      "a": "InsulinAction",
+      "b": "InsulinProduction",
+      "a_label": "Insulin Action",
+      "b_label": "Insulin Production",
+      "kind": "disjoint+complement",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 1,
+      "b_participation": 1
+    },
+    {
+      "a": "GiantPapillaryConjunctivitis",
+      "b": "Allergy",
+      "a_label": "Giant Papillary Conjunctivitis",
+      "b_label": "Allergy",
+      "kind": "disjoint+complement",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 1,
+      "b_participation": 1
+    },
+    {
+      "a": "BaroreflexFailure",
+      "b": "BaroreflexMechanism",
+      "a_label": "Baroreflex Failure",
+      "b_label": "Baroreflex Mechanism",
+      "kind": "disjoint+complement",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 1,
+      "b_participation": 1
+    },
+    {
+      "a": "DiabetesMellitus",
+      "b": "Hypoglycaemia",
+      "a_label": "Diabetes Mellitus",
+      "b_label": "Hypoglycaemia",
+      "kind": "disjoint",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 1,
+      "b_participation": 1
+    },
+    {
+      "a": "AcquiredHaemolyticAnaemia",
+      "b": "CongenitalHaemolyticAnaemia",
+      "a_label": "Acquired Haemolytic Anaemia",
+      "b_label": "Congenital Haemolytic Anaemia",
+      "kind": "disjoint",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 1,
+      "b_participation": 1
+    },
+    {
+      "a": "AnteriorUveitis",
+      "b": "IntermediateUveitis",
+      "a_label": "Anterior Uveitis",
+      "b_label": "Intermediate Uveitis",
+      "kind": "disjoint",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 1,
+      "b_participation": 1
+    },
+    {
+      "a": "CerebralArteryDissection",
+      "b": "NonrupturedCerebralAneurysm",
+      "a_label": "Cerebral Artery Dissection",
+      "b_label": "Nonruptured Cerebral Aneurysm",
+      "kind": "disjoint",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 1,
+      "b_participation": 1
+    },
+    {
+      "a": "NonsteroidalAntiInflammatory",
+      "b": "SteroidalDrug",
+      "a_label": "Non-Steroidal Anti-Inflammatory Drug",
+      "b_label": "Steroidal Drug",
+      "kind": "disjoint",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 1,
+      "b_participation": 1
+    },
+    {
+      "a": "B12Deficiency",
+      "b": "FolateDeficiency",
+      "a_label": "Vitamin B12 Deficiency",
+      "b_label": "Folate Deficiency",
+      "kind": "disjoint",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 1,
+      "b_participation": 1
+    },
+    {
+      "a": "SyntheticCathinoneIntoxication",
+      "b": "SyntheticCathinoneDependence",
+      "a_label": "Synthetic Cathinone Intoxication",
+      "b_label": "Synthetic Cathinone Dependence",
+      "kind": "disjoint",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 1,
+      "b_participation": 1
+    },
+    {
+      "a": "PorencephalicCyst",
+      "b": "ArachnoidCyst",
+      "a_label": "Porencephalic Cyst",
+      "b_label": "Intracranial Arachnoid Cyst",
+      "kind": "disjoint",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 1,
+      "b_participation": 1
+    },
+    {
+      "a": "ExternalForce",
+      "b": "MyocyteContraction",
+      "a_label": "External Force",
+      "b_label": "Myocyte-Initiated Contraction",
+      "kind": "disjoint+complement",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 1,
+      "b_participation": 1
+    },
+    {
+      "a": "SystemicContactDermatitis",
+      "b": "CercarialDermatitis",
+      "a_label": "Systemic Contact Dermatitis",
+      "b_label": "Cercarial Dermatitis",
+      "kind": "disjoint",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 1,
+      "b_participation": 1
+    },
+    {
+      "a": "ImpairedIronAbsorption",
+      "b": "ImpairedIronUtilization",
+      "a_label": "Impaired Iron Absorption Process",
+      "b_label": "Impaired Iron Utilization Process",
+      "kind": "disjoint+complement",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 1,
+      "b_participation": 1
+    },
+    {
+      "a": "CryoglobulinaemicVasculitis",
+      "b": "MicroscopicPolyangiitis",
+      "a_label": "Cryoglobulinaemic Vasculitis",
+      "b_label": "Microscopic Polyangiitis",
+      "kind": "complement",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 1,
+      "b_participation": 1
+    },
+    {
+      "a": "SympatheticToneLoss",
+      "b": "IncreasedSympatheticTone",
+      "a_label": "Sympathetic Tone Loss",
+      "b_label": "Increased Sympathetic Response Process",
+      "kind": "disjoint",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 1,
+      "b_participation": 1
+    },
+    {
+      "a": "Keratoconus",
+      "b": "CornealInflammation",
+      "a_label": "Keratoconus",
+      "b_label": "Corneal Inflammation Process",
+      "kind": "disjoint+complement",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 1,
+      "b_participation": 1
+    },
+    {
+      "a": "AcquiredAplasticAnaemia",
+      "b": "CongenitalAplasticAnaemia",
+      "a_label": "Acquired Aplastic Anaemia",
+      "b_label": "Congenital Aplastic Anaemia",
+      "kind": "disjoint",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 1,
+      "b_participation": 1
+    },
+    {
+      "a": "InflammatoryResponse",
+      "b": "MyelinSheathDamage",
+      "a_label": "Inflammatory Response Process",
+      "b_label": "Myelin Sheath Damage Process",
+      "kind": "disjoint+complement",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 1,
+      "b_participation": 1
+    },
+    {
+      "a": "FocalAutonomicDisorder",
+      "b": "PureAutonomicFailure",
+      "a_label": "Focal Autonomic Disorder",
+      "b_label": "Pure Autonomic Failure",
+      "kind": "disjoint",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 1,
+      "b_participation": 1
+    },
+    {
+      "a": "SubstanceUseProcess",
+      "b": "AddictiveBehaviour",
+      "a_label": "Substance Use Process",
+      "b_label": "Addictive Behaviour Process",
+      "kind": "disjoint+complement",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 1,
+      "b_participation": 1
+    },
+    {
+      "a": "HypomanicEpisode",
+      "b": "ManicEpisode",
+      "a_label": "Hypomanic Episode",
+      "b_label": "Manic Episode",
+      "kind": "disjoint+complement",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 1,
+      "b_participation": 1
+    },
+    {
+      "a": "BFO_0000003",
+      "b": "BFO_0000002",
+      "a_label": "BFO_0000003",
+      "b_label": "BFO_0000002",
+      "kind": "disjoint",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 1,
+      "b_participation": 1
+    },
+    {
+      "a": "PsychoactiveQuality",
+      "b": "Intoxication",
+      "a_label": "Psychoactive Quality",
+      "b_label": "Intoxication",
+      "kind": "complement",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 1,
+      "b_participation": 1
+    },
+    {
+      "a": "ExtracellularCompartment",
+      "b": "IntracellularCompartment",
+      "a_label": "Extracellular Compartment",
+      "b_label": "Intracellular Compartment",
+      "kind": "disjoint",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 1,
+      "b_participation": 1
+    },
+    {
+      "a": "SubconjunctivalHaemorrhage",
+      "b": "OrbitalHaemorrhage",
+      "a_label": "Subconjunctival Haemorrhage",
+      "b_label": "Haemorrhage of Orbit",
+      "kind": "disjoint",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 1,
+      "b_participation": 1
+    },
+    {
+      "a": "SecondarySjogrenSyndrome",
+      "b": "PrimarySjogrenSyndrome",
+      "a_label": "Secondary Sj\u00f6gren Syndrome",
+      "b_label": "Primary Sj\u00f6gren Syndrome",
+      "kind": "disjoint+complement",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 1,
+      "b_participation": 1
+    },
+    {
+      "a": "CariesRisk",
+      "b": "DentalCaries",
+      "a_label": "Caries Risk",
+      "b_label": "Dental Caries",
+      "kind": "disjoint",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 1,
+      "b_participation": 1
+    },
+    {
+      "a": "GeneralizedMyoclonicSeizure",
+      "b": "GeneralizedTonicSeizure",
+      "a_label": "Generalized Myoclonic Seizure",
+      "b_label": "Generalized Tonic Seizure",
+      "kind": "disjoint",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 1,
+      "b_participation": 1
+    },
+    {
+      "a": "NonclassicalPKU",
+      "b": "ClassicalPKU",
+      "a_label": "Nonclassical Phenylketonuria",
+      "b_label": "Classical Phenylketonuria",
+      "kind": "disjoint",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 1,
+      "b_participation": 1
+    },
+    {
+      "a": "AcquiredThrombophilia",
+      "b": "HereditaryThrombophilia",
+      "a_label": "Acquired Thrombophilia",
+      "b_label": "Hereditary Thrombophilia",
+      "kind": "disjoint",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 1,
+      "b_participation": 1
+    },
+    {
+      "a": "BCellNeoplasm",
+      "b": "HodgkinLymphoma",
+      "a_label": "Mature B-Cell Neoplasm",
+      "b_label": "Hodgkin Lymphoma",
+      "kind": "disjoint+complement",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 1,
+      "b_participation": 1
+    },
+    {
+      "a": "NoninflammIBM",
+      "b": "InclusionBodyMyositis",
+      "a_label": "Noninflammatory Inclusion Body Myopathy",
+      "b_label": "Inclusion Body Myositis",
+      "kind": "disjoint",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 1,
+      "b_participation": 1
+    },
+    {
+      "a": "VaricellaInfection",
+      "b": "Zoster",
+      "a_label": "Varicella Infection Process",
+      "b_label": "Zoster",
+      "kind": "disjoint",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 1,
+      "b_participation": 1
+    },
+    {
+      "a": "DuchenneMuscularDystrophy",
+      "b": "BeckerMuscularDystrophy",
+      "a_label": "Duchenne Muscular Dystrophy",
+      "b_label": "Becker Muscular Dystrophy",
+      "kind": "disjoint",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 1,
+      "b_participation": 1
+    },
+    {
+      "a": "FungalMyelitis",
+      "b": "BacterialMyelitis",
+      "a_label": "Fungal Myelitis",
+      "b_label": "Bacterial Myelitis",
+      "kind": "disjoint",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 1,
+      "b_participation": 1
+    },
+    {
+      "a": "LeprosySequela",
+      "b": "Leprosy",
+      "a_label": "Leprosy Sequela",
+      "b_label": "Leprosy",
+      "kind": "disjoint+complement",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 1,
+      "b_participation": 1
+    },
+    {
+      "a": "SjogrenSyndrome",
+      "b": "SjogrenLarssonSyndrome",
+      "a_label": "Sj\u00f6gren Syndrome",
+      "b_label": "Sj\u00f6gren-Larsson Syndrome",
+      "kind": "disjoint",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 1,
+      "b_participation": 1
+    },
+    {
+      "a": "NormalAging",
+      "b": "CognitiveImpairment",
+      "a_label": "Normal Aging Process",
+      "b_label": "Cognitive Impairment Process",
+      "kind": "disjoint+complement",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 1,
+      "b_participation": 1
+    },
+    {
+      "a": "OphthalmicZoster",
+      "b": "DisseminatedZoster",
+      "a_label": "Ophthalmic Zoster",
+      "b_label": "Disseminated Zoster",
+      "kind": "disjoint",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 1,
+      "b_participation": 1
+    },
+    {
+      "a": "AcquiredFibrinolyticDefect",
+      "b": "InheritedFibrinolyticDefect",
+      "a_label": "Acquired Fibrinolytic Defect",
+      "b_label": "Inherited Fibrinolytic Defect",
+      "kind": "disjoint",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 1,
+      "b_participation": 1
+    },
+    {
+      "a": "PrimaryImmunodeficiency",
+      "b": "PrimaryAnteriorUveitis",
+      "a_label": "Primary Immunodeficiency Disease",
+      "b_label": "Primary Anterior Uveitis",
+      "kind": "disjoint",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 1,
+      "b_participation": 1
+    },
+    {
+      "a": "SleepBreathingDisorder",
+      "b": "SleepMovementDisorder",
+      "a_label": "Sleep-Related Breathing Disorder",
+      "b_label": "Sleep-Related Movement Disorder",
+      "kind": "disjoint",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 1,
+      "b_participation": 1
+    },
+    {
+      "a": "EpiduralAbscess",
+      "b": "EpiduralGranuloma",
+      "a_label": "Intraspinal Epidural Abscess",
+      "b_label": "Intraspinal Epidural Granuloma",
+      "kind": "disjoint",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 1,
+      "b_participation": 1
+    },
+    {
+      "a": "AdjustmentDisorder",
+      "b": "HypersensitivityReaction",
+      "a_label": "Adjustment Disorder",
+      "b_label": "Hypersensitivity Reaction",
+      "kind": "disjoint",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 1,
+      "b_participation": 1
+    },
+    {
+      "a": "AutonomicDisorder",
+      "b": "ReflexSyncope",
+      "a_label": "Autonomic Nervous System Disorder",
+      "b_label": "Reflex Syncope",
+      "kind": "disjoint+complement",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 1,
+      "b_participation": 1
+    },
+    {
+      "a": "DissociativeFugue",
+      "b": "DissociativeAmnesia",
+      "a_label": "Dissociative Fugue",
+      "b_label": "Dissociative Amnesia without Dissociative Fugue",
+      "kind": "complement",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 1,
+      "b_participation": 1
+    },
+    {
+      "a": "BenignOsteogenicTumor",
+      "b": "MetastaticNeoplasm",
+      "a_label": "Benign Osteogenic Tumor",
+      "b_label": "MetastaticNeoplasm",
+      "kind": "disjoint",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 1,
+      "b_participation": 1
+    },
+    {
+      "a": "B12AnaemiaIntestinal",
+      "b": "PerniciousAnaemia",
+      "a_label": "Vitamin B12 Deficiency Anaemia due to Intestinal Disease",
+      "b_label": "Pernicious Anaemia",
+      "kind": "disjoint+complement",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 1,
+      "b_participation": 1
+    },
+    {
+      "a": "EyelidFolding",
+      "b": "Ectropion",
+      "a_label": "Eyelid Inward Folding Process",
+      "b_label": "Ectropion",
+      "kind": "disjoint",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 1,
+      "b_participation": 1
+    },
+    {
+      "a": "CerebralCryptococcosis",
+      "b": "PulmonaryCryptococcosisInfection",
+      "a_label": "Cerebral Cryptococcosis",
+      "b_label": "Pulmonary Cryptococcosis Infection Process",
+      "kind": "complement",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 1,
+      "b_participation": 1
+    },
+    {
+      "a": "AddictiveBehaviourDisorder",
+      "b": "SubstanceUseDisorder",
+      "a_label": "Disorder Due to Addictive Behaviour",
+      "b_label": "Disorder Due to Substance Use",
+      "kind": "disjoint",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 1,
+      "b_participation": 1
+    },
+    {
+      "a": "DelusionProcess",
+      "b": "HallucinationProcess",
+      "a_label": "Delusion Process",
+      "b_label": "HallucinationProcess",
+      "kind": "disjoint",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 1,
+      "b_participation": 1
+    },
+    {
+      "a": "CoenzymeQ10",
+      "b": "VitaminK",
+      "a_label": "Coenzyme Q10",
+      "b_label": "Vitamin K",
+      "kind": "disjoint",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 1,
+      "b_participation": 1
+    },
+    {
+      "a": "PrescribedDrug",
+      "b": "IllicitDrug",
+      "a_label": "Prescribed Drug",
+      "b_label": "Illicit Drug",
+      "kind": "disjoint",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 1,
+      "b_participation": 1
+    },
+    {
+      "a": "NicotineIntoxication",
+      "b": "NicotineDependence",
+      "a_label": "Nicotine Intoxication",
+      "b_label": "Nicotine Dependence",
+      "kind": "disjoint",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 1,
+      "b_participation": 1
+    },
+    {
+      "a": "CornealAnaesthesia",
+      "b": "CornealHypoesthesia",
+      "a_label": "Corneal Anaesthesia",
+      "b_label": "Corneal Hypoesthesia",
+      "kind": "disjoint",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 1,
+      "b_participation": 1
+    },
+    {
+      "a": "Stroma",
+      "b": "Epithelium",
+      "a_label": "Stroma",
+      "b_label": "Epithelium",
+      "kind": "disjoint",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 1,
+      "b_participation": 1
+    },
+    {
+      "a": "RhodesienseTrypanosomiasis",
+      "b": "GambienseTrypanosomiasis",
+      "a_label": "Rhodesiense Trypanosomiasis",
+      "b_label": "Gambiense Trypanosomiasis",
+      "kind": "disjoint",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 1,
+      "b_participation": 1
+    },
+    {
+      "a": "MyotonicDisorder",
+      "b": "Pseudomyotonia",
+      "a_label": "Myotonic Disorder",
+      "b_label": "Pseudomyotonia",
+      "kind": "disjoint+complement",
+      "shared_criteria": [],
+      "n_shared": 0,
+      "a_participation": 1,
+      "b_participation": 1
+    }
+  ],
+  "named_pairs": [
+    {
+      "a": "CognitiveImpairment",
+      "b": "NormalAging",
+      "present": true,
+      "relation": "disjoint",
+      "shared_criteria": []
+    },
+    {
+      "a": "CornealDegeneration",
+      "b": "CornealDystrophy",
+      "present": true,
+      "relation": "disjoint",
+      "shared_criteria": []
+    },
+    {
+      "a": "Leprosy",
+      "b": "LeprosySequela",
+      "present": true,
+      "relation": "disjoint",
+      "shared_criteria": []
+    },
+    {
+      "a": "AcuteRheumaticPericarditis",
+      "b": "AcuteRheumaticFever",
+      "present": true,
+      "relation": "disjoint",
+      "shared_criteria": []
+    }
+  ],
+  "top_participation": [
+    {
+      "class": "OtherSpecifiedWithdrawal",
+      "n": 9
+    },
+    {
+      "class": "MalignantTumour",
+      "n": 6
+    },
+    {
+      "class": "PrimaryPsychoticDisorder",
+      "n": 5
+    },
+    {
+      "class": "AlcoholWithdrawal",
+      "n": 5
+    },
+    {
+      "class": "Type1DiabetesMellitus",
+      "n": 4
+    },
+    {
+      "class": "PostproceduralMeningitis",
+      "n": 4
+    },
+    {
+      "class": "InhaledAllergenAnaphylaxis",
+      "n": 4
+    },
+    {
+      "class": "ExerciseAnaphylaxis",
+      "n": 4
+    },
+    {
+      "class": "BenignNeoplasm",
+      "n": 4
+    },
+    {
+      "class": "AcuteCondition",
+      "n": 4
+    },
+    {
+      "class": "FeedingEatingDisorder",
+      "n": 4
+    },
+    {
+      "class": "Type2DiabetesMellitus",
+      "n": 3
+    },
+    {
+      "class": "StaphylococcalMeningitis",
+      "n": 3
+    },
+    {
+      "class": "TuberculousMeningitis",
+      "n": 3
+    },
+    {
+      "class": "StreptococcalMeningitis",
+      "n": 3
+    },
+    {
+      "class": "ConstitutionalHaemorrhagicCondition",
+      "n": 3
+    },
+    {
+      "class": "ViralAgent",
+      "n": 3
+    },
+    {
+      "class": "FungalAgent",
+      "n": 3
+    },
+    {
+      "class": "InsulinActionDiabetes",
+      "n": 3
+    },
+    {
+      "class": "AutoimmuneKeratitis",
+      "n": 3
+    },
+    {
+      "class": "MentalDisorderHypersomnia",
+      "n": 3
+    },
+    {
+      "class": "SubstanceHypersomnia",
+      "n": 3
+    },
+    {
+      "class": "PeripheralPrecociousPuberty",
+      "n": 3
+    },
+    {
+      "class": "ExocrinePancreaticDiabetes",
+      "n": 3
+    },
+    {
+      "class": "AcutePosthaemorrhagicAnaemia",
+      "n": 3
+    },
+    {
+      "class": "CannabisWithdrawal",
+      "n": 3
+    },
+    {
+      "class": "AcuteMyeloidLeukaemia",
+      "n": 3
+    },
+    {
+      "class": "BacterialAgent",
+      "n": 3
+    },
+    {
+      "class": "ParasiticAgent",
+      "n": 3
+    },
+    {
+      "class": "FoodAnaphylaxis",
+      "n": 3
+    }
+  ]
+}
