@@ -139,6 +139,19 @@ GATE_MAX_ATTEMPTS = int(os.getenv("GATE_MAX_ATTEMPTS", "2"))
 # pathological claim can't hang the reasoner for hours and pin the box's memory
 # cgroup, freezing the whole app (incident 2026-07-12). 0 disables the watchdog.
 REASONER_TIMEOUT_SECONDS = float(os.getenv("REASONER_TIMEOUT_SECONDS", "300"))
+# Hard per-request timeout on the LLM (proposer/extractor) client. Without it the
+# Anthropic SDK can block a feed's runner thread indefinitely on a stalled
+# connection, leaving the job silently "feeding" forever (stall incident
+# 2026-07-12). On timeout the SDK raises, which the feed loop handles as a claim
+# error (retry/backoff, then pause after MAX_CONSECUTIVE_ERRORS). 0 = SDK default.
+LLM_CALL_TIMEOUT_SECONDS = float(os.getenv("LLM_CALL_TIMEOUT_SECONDS", "180"))
+# Last-resort stall backstop for the server-side feed loop (job_runner). If a run
+# makes zero forward progress (no claim completes) for this many seconds -- a
+# reasoner watchdog kill-miss, a lock deadlock, or any unforeseen wedge -- the
+# monitor pauses the job and notifies instead of letting it sit silently
+# in-progress forever. Must exceed a legitimate slow claim (one LLM call +
+# reduced reasoning + an occasional checkpoint self-heal). 0 disables the monitor.
+FEED_STALL_TIMEOUT_SECONDS = float(os.getenv("FEED_STALL_TIMEOUT_SECONDS", "1800"))
 # Relation-aware scaffolding: when a dependent-continuant class is committed,
 # add the constraint its BFO category requires (inheres_in / realized_in).
 ENABLE_SCAFFOLDING = os.getenv("ENABLE_SCAFFOLDING", "true").lower() == "true"

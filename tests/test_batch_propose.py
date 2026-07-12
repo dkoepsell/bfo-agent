@@ -239,7 +239,7 @@ def test_live_propose_uses_the_shared_blocks(monkeypatch):
             return SimpleNamespace(content=[block], usage=None)
 
     class _FakeAnthropic:
-        def __init__(self, api_key=None):
+        def __init__(self, api_key=None, timeout=None):
             self.messages = _FakeMessages()
 
     monkeypatch.setattr(llm_proposer, "Anthropic", _FakeAnthropic)

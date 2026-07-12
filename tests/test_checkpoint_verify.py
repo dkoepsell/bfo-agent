@@ -67,6 +67,12 @@ class FakeManager:
         self.quarantine_calls.append(list(iris))
         return list(iris)
 
+    def isolate_inconsistency_culprits(self, max_reason_calls=None):
+        # Bare-inconsistency ABox self-heal probe. Default: nothing isolable,
+        # so an unhealable clash still pauses; a test can set _culprits to
+        # exercise the individual-quarantine path.
+        return list(getattr(self, "_culprits", []))
+
     def stats(self):
         return {"num_classes": 0, "num_individuals": 0}
 

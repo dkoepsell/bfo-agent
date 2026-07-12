@@ -26,7 +26,7 @@ from __future__ import annotations
 import os
 from dataclasses import dataclass
 
-from .config import ANTHROPIC_API_KEY, ANTHROPIC_MODEL
+from .config import ANTHROPIC_API_KEY, ANTHROPIC_MODEL, LLM_CALL_TIMEOUT_SECONDS
 
 DEFAULT_MODEL = ANTHROPIC_MODEL
 
@@ -147,7 +147,11 @@ class CachedAnthropic:
         self.system[-1]["cache_control"] = cache_control(ttl)  # the breakpoint
 
         import anthropic  # imported lazily so --selftest needs no SDK
-        self._client = anthropic.Anthropic(api_key=self._key)
+        self._client = anthropic.Anthropic(
+            api_key=self._key,
+            timeout=(LLM_CALL_TIMEOUT_SECONDS
+                     if LLM_CALL_TIMEOUT_SECONDS > 0 else None),
+        )
 
     def create(self, case_text: str):
         kwargs = dict(model=self.model, max_tokens=self.max_tokens,

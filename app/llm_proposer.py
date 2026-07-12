@@ -15,6 +15,7 @@ from .config import (
     ANTHROPIC_API_KEY,
     ANTHROPIC_MODEL,
     CACHE_TTL,
+    LLM_CALL_TIMEOUT_SECONDS,
     PROPOSER_TEMPERATURE,
     require_api_key,
 )
@@ -235,7 +236,11 @@ class LLMProposer:
         if api_key is None:
             require_api_key()
             api_key = ANTHROPIC_API_KEY
-        self.client = Anthropic(api_key=api_key)
+        self.client = Anthropic(
+            api_key=api_key,
+            timeout=(LLM_CALL_TIMEOUT_SECONDS
+                     if LLM_CALL_TIMEOUT_SECONDS > 0 else None),
+        )
         self.model = model
         self._on_usage = on_usage
         self.ttl = CACHE_TTL

@@ -145,6 +145,7 @@ def _run(job_id: str, feed_fn, auto_accept: bool, state: dict,
         job_name = job.get("name") or job_id
         log_event(session_id, "feed_run_start",
                   {"job_id": job_id, "auto_accept": auto_accept})
+        _start_stall_monitor(job_id, job_name, session_id, state)
 
         if resume_verify_fn is not None:
             # Boot-resume certificate (SPEC-bfo-agent-speed.md change 6):
@@ -295,6 +296,86 @@ def _fail(job_id: str, job_name: str, state: dict, reason: str) -> None:
         f"(committed {state['committed']}). Reason: {reason}. "
         f"Job is paused; hit Resume to retry.",
     )
+
+
+def _start_stall_monitor(job_id: str, job_name: str,
+                         session_id: str | None, state: dict) -> None:
+    """Spawn the last-resort stall backstop for this run (config-gated)."""
+    if not getattr(config, "FEED_STALL_TIMEOUT_SECONDS", 0):
+        return
+    t = threading.Thread(
+        target=_stall_monitor, args=(job_id, job_name, session_id, state),
+        name=f"stall-monitor-{job_id}", daemon=True,
+    )
+    t.start()
+
+
+def _stall_monitor(job_id: str, job_name: str,
+                   session_id: str | None, state: dict) -> None:
+    """Watch a live run for zero forward progress and pause+notify if it wedges.
+
+    The per-operation guards (reasoner watchdog, LLM client timeout) bound each
+    blocking call, but a kill-miss, a lock deadlock, or an unforeseen blocking
+    I/O could still leave the runner thread stuck mid-claim -- and because the
+    runner never reaches its ``finally``, the job sits silently "feeding"
+    forever. This monitor makes that impossible: if no claim completes for
+    config.FEED_STALL_TIMEOUT_SECONDS while the run is still active, it pauses
+    the job and notifies, so every run reaches a visible, resumable state.
+
+    ``state["last_activity_at"]`` advances after every claim (and starts at the
+    run's launch time), so ``now - last_activity_at`` is exactly how long the
+    current claim has been in flight. Fires at most once, then exits. Never
+    touches a job that is no longer "feeding" (already done/paused/failed), so a
+    long end-of-job audit or a legitimate resume certificate can't false-trip."""
+    ceiling = config.FEED_STALL_TIMEOUT_SECONDS
+    if not ceiling or ceiling <= 0:
+        return
+    tick = min(30.0, max(1.0, ceiling / 20.0))
+    while True:
+        time.sleep(tick)
+        if not state.get("running"):
+            return  # runner finished (completed/paused/failed) cleanly
+        last = state.get("last_activity_at")
+        try:
+            elapsed = (datetime.now(timezone.utc)
+                       - datetime.fromisoformat(last)).total_seconds()
+        except Exception:
+            continue
+        if elapsed < ceiling:
+            continue
+        # No forward progress for the full ceiling. Confirm the job is still
+        # meant to be feeding before intervening (guards the completion/audit
+        # and resume-verify windows, where status is already non-"feeding").
+        try:
+            job = jobs_store.load_job(job_id)
+        except Exception:
+            continue
+        if job.get("status") != "feeding":
+            return
+        cur = (state.get("current_claim") or {}).get("id")
+        state["outcome"] = "stalled"
+        state["last_error"] = (
+            f"stall backstop: no claim completed for {elapsed:.0f}s "
+            f"(>= FEED_STALL_TIMEOUT_SECONDS={ceiling:.0f}s)")
+        try:
+            jobs_store.set_job_status(job_id, "paused")
+        except Exception:
+            pass
+        try:
+            log_event(session_id, "feed_stall_paused", {
+                "job_id": job_id, "elapsed_seconds": round(elapsed, 1),
+                "current_claim": cur, "processed": state.get("processed"),
+            })
+        except Exception:
+            pass
+        _notify(
+            f"BFO job stalled: {job_name}",
+            f"No claim completed for {elapsed:.0f}s while the runner was still "
+            f"active (last claim in flight: {cur}). The stall backstop paused "
+            f"the job so it isn't stuck 'feeding' forever. Investigate the "
+            f"wedged claim, then hit Resume.",
+        )
+        return
 
 
 def _notify(title: str, message: str) -> None:
