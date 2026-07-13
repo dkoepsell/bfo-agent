@@ -95,6 +95,11 @@
 </div>
 
 <script>
+// Same API-base convention as the main app: behind Caddy, the backend lives
+// under /api; on the raw Flask port there is no prefix.
+const API = window.location.protocol === "file:"
+  ? "http://localhost:5000"
+  : window.location.port === "5000" ? "" : "/api";
 const SHAPE_LABEL = {1:"Shape 1 &middot; Coherence failure", 2:"Shape 2 &middot; Inconsistency"};
 function esc(s){return (s||"").replace(/[&<>]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));}
 
@@ -121,7 +126,7 @@ function renderFinding(f){
   </article>`;
 }
 
-fetch("/coverage/findings").then(r=>r.json()).then(d=>{
+fetch(API + "/coverage/findings").then(r=>r.json()).then(d=>{
   if(d.error){
     document.getElementById("findings").innerHTML =
       `<div class="err">${esc(d.error)}</div>`;
