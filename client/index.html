@@ -566,12 +566,27 @@
           <label for="audit-onto" class="muted" style="margin:0;">Ontology:</label>
           <select id="audit-onto" style="max-width:280px;"></select>
           <button class="secondary" id="audit-refresh" data-keep-enabled="1">Refresh</button>
+          <button class="secondary" id="coherence-run" data-keep-enabled="1">Run coherence check</button>
         </div>
         <div class="muted" style="margin-bottom:10px;">
           Audits are evidence about the <em>source text</em> each ontology
           faithfully represents; they never modify the ontology itself.
         </div>
         <div id="audit-body"><div class="muted">Select an ontology.</div></div>
+
+        <div id="ondemand-body" style="margin-top:14px;"></div>
+
+        <div class="row-flex" style="margin-top:14px; gap:8px; align-items:center; flex-wrap:wrap;">
+          <label class="muted" style="margin:0;">Fact-pattern test:</label>
+          <input id="factcheck-classes" placeholder="ClassA, ClassB" style="flex:1; min-width:220px;"/>
+          <button class="secondary" id="factcheck-run" data-keep-enabled="1">Test</button>
+        </div>
+        <div class="muted" style="margin-top:4px; font-size:12px;">
+          Assert one individual that is an instance of all the named classes, then
+          reason: is that fact pattern admissible, or does the ontology make it
+          contradictory? (comma-separated class names)
+        </div>
+        <div id="factcheck-body" style="margin-top:8px;"></div>
       </div>
 
       <div id="tab-live" class="tab-pane" style="display:none;">
@@ -1793,7 +1808,13 @@ async function initAuditsOnFirstView() {
   if (!_auditsInited) {
     _auditsInited = true;
     document.getElementById("audit-refresh").onclick = refreshAudits;
-    document.getElementById("audit-onto").onchange = refreshAudits;
+    document.getElementById("audit-onto").onchange = () => {
+      document.getElementById("ondemand-body").innerHTML = "";
+      document.getElementById("factcheck-body").innerHTML = "";
+      refreshAudits();
+    };
+    document.getElementById("coherence-run").onclick = runCoherenceCheck;
+    document.getElementById("factcheck-run").onclick = runFactCheck;
   }
   if (!currentOntologies.length) await refreshOntologies();
   const sel = document.getElementById("audit-onto");
@@ -1808,6 +1829,77 @@ async function initAuditsOnFirstView() {
   sel.value = prev && currentOntologies.some(o => o.name === prev)
     ? prev : (currentActive || (currentOntologies[0] || {}).name || "");
   refreshAudits();
+}
+
+async function runCoherenceCheck() {
+  const name = document.getElementById("audit-onto").value;
+  const box = document.getElementById("ondemand-body");
+  if (!name) { box.innerHTML = '<div class="muted">Select an ontology.</div>'; return; }
+  box.innerHTML = '<div class="muted">Running reasoner (serialised behind any active feed run)…</div>';
+  let d;
+  try {
+    const r = await fetch(API + "/ontologies/" + encodeURIComponent(name) + "/coherence-check", { method: "POST" });
+    d = await r.json();
+  } catch (e) { box.innerHTML = '<div class="audit-verdict v-inconclusive">check failed: ' + esc(String(e)) + '</div>'; return; }
+  if (d.error) { box.innerHTML = '<div class="audit-verdict v-inconclusive">' + esc(d.error) + '</div>'; return; }
+  let html = '<div style="border:1px solid var(--border,#333); border-radius:8px; padding:12px;">';
+  html += '<div style="margin-bottom:8px;"><strong>On-demand coherence check</strong> ';
+  if (d.inconsistent_ontology) {
+    html += _verdictBadge("inconsistent") + '</div><div class="muted">' + esc(d.detail || "") + '</div>';
+  } else {
+    html += _verdictBadge("consistent") + '</div>';
+    if (d.coherent) {
+      html += '<div class="muted">Consistent — and every class is satisfiable.</div>';
+    } else {
+      html += '<div class="muted" style="margin-bottom:6px;">Consistent ontology, but <strong>' + d.unsat_count +
+              '</strong> unsatisfiable class(es) — classes that can never have an instance:</div><ul style="margin:0;">';
+      (d.unsatisfiable_classes || []).forEach(u => {
+        let why = "";
+        if (u.disjoint_collisions && u.disjoint_collisions.length)
+          why = " — subclass of disjoint " + u.disjoint_collisions.map(p => esc(p.join(" ⊥ "))).join(", ");
+        else if (u.asserted_superclasses && u.asserted_superclasses.length)
+          why = " — subclass of " + u.asserted_superclasses.map(esc).join(", ");
+        html += '<li><code>' + esc(u.name) + '</code>' + why + '</li>';
+      });
+      html += '</ul>';
+    }
+  }
+  html += '</div>';
+  box.innerHTML = html;
+}
+
+async function runFactCheck() {
+  const name = document.getElementById("audit-onto").value;
+  const box = document.getElementById("factcheck-body");
+  const raw = document.getElementById("factcheck-classes").value || "";
+  const classes = raw.split(",").map(s => s.trim()).filter(Boolean);
+  if (!name) { box.innerHTML = '<div class="muted">Select an ontology.</div>'; return; }
+  if (!classes.length) { box.innerHTML = '<div class="muted">Enter one or more class names.</div>'; return; }
+  box.innerHTML = '<div class="muted">Reasoning…</div>';
+  let d;
+  try {
+    const r = await fetch(API + "/ontologies/" + encodeURIComponent(name) + "/fact-check",
+      { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ classes }) });
+    d = await r.json();
+  } catch (e) { box.innerHTML = '<div class="audit-verdict v-inconclusive">failed: ' + esc(String(e)) + '</div>'; return; }
+  if (d.error) { box.innerHTML = '<div class="audit-verdict v-inconclusive">' + esc(d.error) + '</div>'; return; }
+  if (d.well_formed === false) {
+    let msg = esc((d.errors || []).join("; "));
+    if (d.known_class_count) msg += ' (' + d.known_class_count + ' classes in this ontology)';
+    box.innerHTML = '<div class="muted">' + msg + '</div>'; return;
+  }
+  let html = '<div style="border:1px solid var(--border,#333); border-radius:8px; padding:12px;">';
+  if (!d.consistent) {
+    html += _verdictBadge("inconsistent") + '<div class="muted" style="margin-top:6px;">' + esc(d.detail || "") + '</div>';
+    if (d.colliding_classes && d.colliding_classes.length)
+      html += '<div style="margin-top:6px;">Colliding: ' + d.colliding_classes.map(p => '<code>' + esc(p.join(" ⊥ ")) + '</code>').join(", ") + '</div>';
+  } else {
+    html += _verdictBadge("consistent") + '<div class="muted" style="margin-top:6px;">' + esc(d.detail || "") + '</div>';
+    if (d.newly_entailed_classes && d.newly_entailed_classes.length)
+      html += '<div style="margin-top:6px;">Reasoner also infers it is: ' + d.newly_entailed_classes.map(c => '<code>' + esc(c) + '</code>').join(", ") + '</div>';
+  }
+  html += '</div>';
+  box.innerHTML = html;
 }
 
 function _verdictBadge(verdict) {
@@ -2378,6 +2470,114 @@ document.getElementById("modal-import-ontology").addEventListener("click", (e) =
   if (e.target.id === "modal-import-ontology") closeImportModal();
 });
 
+</script>
+
+<!-- ===== Coverage Coherence panel (additive, isolated) ===================== -->
+<style>
+  #cov-toggle{position:fixed;right:16px;bottom:16px;z-index:9998;
+    background:var(--accent);color:#062033;border:none;border-radius:22px;
+    padding:10px 16px;font-weight:600;cursor:pointer;box-shadow:0 4px 14px rgba(0,0,0,.4)}
+  #cov-panel{position:fixed;right:16px;bottom:64px;z-index:9999;width:430px;
+    max-width:calc(100vw - 32px);max-height:82vh;overflow:auto;display:none;
+    background:var(--panel);border:1px solid var(--border);border-radius:12px;
+    padding:16px;box-shadow:0 10px 40px rgba(0,0,0,.55);color:var(--text);
+    font-size:13.5px}
+  #cov-panel h3{margin:0 0 4px;font-size:16px}
+  #cov-panel .cov-sub{color:var(--muted);margin:0 0 12px;font-size:12px}
+  #cov-panel section{border-top:1px solid var(--border);padding:12px 0}
+  #cov-panel label{display:block;color:var(--muted);font-size:11px;
+    text-transform:uppercase;letter-spacing:.06em;margin:0 0 5px}
+  #cov-panel select,#cov-panel input,#cov-panel textarea{width:100%;
+    background:var(--panel-2);color:var(--text);border:1px solid var(--border);
+    border-radius:7px;padding:7px 9px;font-size:13px;font-family:inherit}
+  #cov-panel button.cov-act{margin-top:8px;background:var(--panel-2);
+    color:var(--accent);border:1px solid var(--border);border-radius:7px;
+    padding:7px 12px;cursor:pointer;font-weight:600}
+  #cov-panel .cov-chip{display:inline-block;padding:3px 9px;border-radius:999px;
+    font-size:11px;font-weight:600;margin:6px 6px 0 0}
+  .cov-green{background:#123524;color:#57d98e} .cov-amber{background:#3a2f12;color:#e6b34d}
+  .cov-red{background:#3a1414;color:#f08a8a}
+  #cov-panel .cov-out{margin-top:8px;font-size:12.5px;line-height:1.5}
+  #cov-panel .cov-clause{border-left:2px solid var(--accent);padding:5px 0 5px 10px;
+    margin:7px 0;color:var(--muted)}
+  #cov-panel .cov-clause b{color:var(--text)}
+  #cov-panel .cov-quote{font-style:italic}
+</style>
+<button id="cov-toggle">Coverage coherence</button>
+<div id="cov-panel">
+  <h3>Coverage coherence</h3>
+  <p class="cov-sub">Reasoner scoring, claim testing, and policy-wording analysis.</p>
+  <section>
+    <label>Coverage ontology</label>
+    <select id="cov-onto"></select>
+    <button class="cov-act" id="cov-score-btn">Score coherence</button>
+    <div class="cov-out" id="cov-score-out"></div>
+  </section>
+  <section>
+    <label>Test a claim / fact pattern (features, comma-separated)</label>
+    <input id="cov-claim" placeholder="Mudflow, SaturatedSoilMovement"/>
+    <button class="cov-act" id="cov-claim-btn">Check claim</button>
+    <div class="cov-out" id="cov-claim-out"></div>
+  </section>
+  <section>
+    <label>Analyze new policy wording</label>
+    <textarea id="cov-wording" rows="3" placeholder="Paste policy wording..."></textarea>
+    <button class="cov-act" id="cov-analyze-btn">Analyze wording</button>
+    <div class="cov-out" id="cov-analyze-out"></div>
+  </section>
+</div>
+<script>
+(function(){
+  const $=id=>document.getElementById(id);
+  const esc=s=>(s||"").replace(/[&<>]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));
+  const bandClass=b=>b==="coherent"?"cov-green":(b==="structural-warning"?"cov-amber":"cov-red");
+  function chip(b){return `<span class="cov-chip ${bandClass(b)}">${esc(b||"?")}</span>`;}
+  function clauses(list){return (list||[]).map(c=>
+    `<div class="cov-clause"><b>${esc(c.cfr_cite)}</b> &mdash; ${esc(c.sfip_section)}<br>
+     <span class="cov-quote">&ldquo;${esc((c.verbatim_text||"").slice(0,220))}${(c.verbatim_text||"").length>220?"...":""}&rdquo;</span></div>`).join("");}
+  $("cov-toggle").addEventListener("click",()=>{
+    const p=$("cov-panel"); const show=p.style.display!=="block";
+    p.style.display=show?"block":"none"; if(show) loadOntos();
+  });
+  function loadOntos(){
+    fetch("/coverage/ontologies").then(r=>r.json()).then(d=>{
+      const sel=$("cov-onto");
+      sel.innerHTML=(d.coverage_ontologies||[]).map(o=>`<option value="${esc(o.name)}">${esc(o.name)}</option>`).join("")
+        || '<option value="">(no coverage ontologies)</option>';
+    }).catch(()=>{});
+  }
+  function post(url,body){return fetch(url,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(body)}).then(r=>r.json());}
+  $("cov-score-btn").addEventListener("click",()=>{
+    $("cov-score-out").innerHTML="scoring...";
+    post("/coverage/score",{ontology:$("cov-onto").value}).then(d=>{
+      if(d.error){$("cov-score-out").innerHTML="Error: "+esc(d.error);return;}
+      let h=`${chip(d.band)} verdict: <b>${esc(d.verdict)}</b> &middot; contradiction debt: ${d.contradiction_debt}`;
+      (d.findings||[]).forEach(f=>{h+=`<div class="cov-out">Unsatisfiable coverage class <b>${esc(f.coverage_class)}</b> (Shape ${f.shape}) &mdash; a coverage that cannot pay:${clauses(f.colliding_clauses)}</div>`;});
+      $("cov-score-out").innerHTML=h;
+    });
+  });
+  $("cov-claim-btn").addEventListener("click",()=>{
+    const feats=$("cov-claim").value.split(",").map(s=>s.trim()).filter(Boolean);
+    $("cov-claim-out").innerHTML="checking...";
+    post("/coverage/check-claim",{ontology:$("cov-onto").value,claim:{exhibits:feats}}).then(d=>{
+      if(d.error){$("cov-claim-out").innerHTML="Error: "+esc(d.error);return;}
+      if(d.well_formed===false){$("cov-claim-out").innerHTML="Not well-formed: "+esc((d.errors||[]).join("; "))+
+        `<div class="cov-out">Known features: ${esc((d.known_features||[]).join(", "))}</div>`;return;}
+      let h=`${chip(d.band)} verdict: <b>${esc(d.verdict)}</b>`;
+      if(d.verdict!=="inconsistent") h+=` &middot; covered: ${d.covered} &middot; uncovered: ${d.uncovered}`;
+      h+=`<div class="cov-out">${esc(d.plain_english)}</div>`+clauses(d.colliding_clauses);
+      $("cov-claim-out").innerHTML=h;
+    });
+  });
+  $("cov-analyze-btn").addEventListener("click",()=>{
+    $("cov-analyze-out").innerHTML="analyzing...";
+    post("/coverage/analyze",{wording:$("cov-wording").value}).then(d=>{
+      if(d.error){$("cov-analyze-out").innerHTML="Error: "+esc(d.error);return;}
+      $("cov-analyze-out").innerHTML=`${chip(d.band)} verdict: <b>${esc(d.verdict)}</b> &middot; debt: ${d.contradiction_debt}`+
+        (d.unsat_coverage_classes&&d.unsat_coverage_classes.length?`<div class="cov-out">Unsatisfiable: ${esc(d.unsat_coverage_classes.join(", "))}</div>`:"");
+    });
+  });
+})();
 </script>
 </body>
 </html>

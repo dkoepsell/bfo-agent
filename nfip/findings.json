@@ -1,0 +1,116 @@
+{
+  "generated_utc": "2026-07-13T12:45:19.661655+00:00",
+  "form": "NFIP Standard Flood Insurance Policy - Dwelling Form (44 CFR Part 61, Appendix A(1))",
+  "source": "44CFR61NFIP.txt (eCFR, retrieved per file; public domain)",
+  "domain_source": "NFIP extraction corpus (working.owl), produced by the feed pipeline over 44CFR61NFIP.txt. The mudflow / earth-movement disjointness both findings turn on is the extraction's own rendering of II.C.20 -- not authored for this demo -- so every domain axiom is checkable in the fed corpus.",
+  "reasoner": "HermiT via owlready2",
+  "fidelity": "faithful (the text's structure is encoded as written; findings are evidence, never corrections)",
+  "sanity_gate_passed": true,
+  "regression": {
+    "all_pass": true,
+    "fixtures": [
+      {
+        "name": "kernel_bivalence",
+        "expect": "inconsistent",
+        "got": "inconsistent",
+        "pass": true
+      },
+      {
+        "name": "illusory_carveback",
+        "expect": "target unsatisfiable",
+        "got": "unsatisfiable",
+        "pass": true
+      },
+      {
+        "name": "same_term",
+        "expect": "inconsistent",
+        "got": "inconsistent",
+        "pass": true
+      }
+    ]
+  },
+  "raw_reasoner": {
+    "shape1": {
+      "shape": 1,
+      "verdict": "consistent",
+      "unsat_classes": [
+        "Nothing",
+        "CondominiumAssociation",
+        "RestoredFromEarthMovement"
+      ],
+      "target_unsat": true,
+      "perils_satisfiable": true
+    },
+    "shape2": {
+      "shape": 2,
+      "verdict": "inconsistent",
+      "loss": "saturated_debris_flow_loss"
+    }
+  },
+  "finding_count": 2,
+  "findings": [
+    {
+      "id": "NFIP-F1",
+      "shape": 2,
+      "shape_name": "Inconsistency (a fact pattern that is both)",
+      "title": "A saturated debris flow is both covered (mudflow) and excluded (earth movement)",
+      "verdict": "inconsistent ontology",
+      "reasoner_evidence": "HermiT: asserting a single loss that exhibits both the mudflow feature and the earth-movement feature makes the ontology inconsistent (the two are disjoint).",
+      "loss": "saturated_debris_flow_loss",
+      "responsible_clauses": [
+        {
+          "id": "SFIP-DW-II-B",
+          "cfr_cite": "44 CFR App. A(1) to Pt. 61, II.B",
+          "sfip_section": "II.B Definitions - Flood",
+          "verbatim_text": "B. Flood, as used in this flood insurance policy, means: 1. A general and temporary condition of partial or complete inundation of two or more acres of normally dry land area or of two or more properties (one of which is your property) from: a. Overflow of inland or tidal waters; b. Unusual and rapid accumulation or runoff of surface waters from any source; c. Mudflow. 2. Collapse or subsidence of land along the shore of a lake or similar body of water as a result of erosion or undermining caused by waves or currents of water exceeding anticipated cyclical levels that result in a flood as defined in B.1.a above."
+        },
+        {
+          "id": "SFIP-DW-II-C-20",
+          "cfr_cite": "44 CFR App. A(1) to Pt. 61, II.C.20",
+          "sfip_section": "II.C.20 Definitions - Mudflow",
+          "verbatim_text": "20. Mudflow. A river of liquid and flowing mud on the surface of normally dry land areas, as when earth is carried by a current of water. Other earth movements, such as landslide, slope failure, or a saturated soil mass moving by liquidity down a slope, are not mudflows."
+        },
+        {
+          "id": "SFIP-DW-V-C",
+          "cfr_cite": "44 CFR App. A(1) to Pt. 61, V.C",
+          "sfip_section": "V Exclusions - Earth Movement",
+          "verbatim_text": "C. We do not insure for loss to property caused directly by earth movement even if the earth movement is caused by flood. Some examples of earth movement that we do not cover are: 1. Earthquake; 2. Landslide; 3. Land subsidence; 4. Sinkholes; 5. Destabilization or movement of land that results from accumulation of water in subsurface land area; or 6. Gradual erosion."
+        }
+      ],
+      "plain_english": "Flood is defined to include mudflow (earth carried by a current of water), so a mudflow loss is covered. The earth-movement exclusion removes loss caused by earth movement even if caused by flood, listing landslide and a saturated soil mass moving down a slope. A real saturated debris flow answers to both descriptions at once, so the policy both covers and excludes the same loss. The wording does not determine the outcome of the claim -- exactly the ambiguity NFIP mudflow-versus-landslide disputes have turned on."
+    },
+    {
+      "id": "NFIP-F2",
+      "shape": 1,
+      "shape_name": "Coherence failure (an empty coverage class)",
+      "title": "The mudflow limb of the earth-movement carveback restores nothing from the exclusion it modifies",
+      "verdict": "unsatisfiable coverage class (RestoredFromEarthMovement)",
+      "reasoner_evidence": "HermiT: the class of losses the mudflow carveback restores FROM the earth-movement exclusion (mudflow AND earth movement) is unsatisfiable, while mudflow and earth movement are each individually satisfiable.",
+      "responsible_clauses": [
+        {
+          "id": "SFIP-DW-V-C-CB",
+          "cfr_cite": "44 CFR App. A(1) to Pt. 61, V.C",
+          "sfip_section": "V Exclusions - Earth Movement carveback",
+          "verbatim_text": "We do, however, pay for losses from mudflow and land subsidence as a result of erosion that are specifically insured under our definition of flood (see II.B.1.c and II.B.2)."
+        },
+        {
+          "id": "SFIP-DW-V-C",
+          "cfr_cite": "44 CFR App. A(1) to Pt. 61, V.C",
+          "sfip_section": "V Exclusions - Earth Movement",
+          "verbatim_text": "C. We do not insure for loss to property caused directly by earth movement even if the earth movement is caused by flood. Some examples of earth movement that we do not cover are: 1. Earthquake; 2. Landslide; 3. Land subsidence; 4. Sinkholes; 5. Destabilization or movement of land that results from accumulation of water in subsurface land area; or 6. Gradual erosion."
+        },
+        {
+          "id": "SFIP-DW-II-C-20",
+          "cfr_cite": "44 CFR App. A(1) to Pt. 61, II.C.20",
+          "sfip_section": "II.C.20 Definitions - Mudflow",
+          "verbatim_text": "20. Mudflow. A river of liquid and flowing mud on the surface of normally dry land areas, as when earth is carried by a current of water. Other earth movements, such as landslide, slope failure, or a saturated soil mass moving by liquidity down a slope, are not mudflows."
+        }
+      ],
+      "plain_english": "The earth-movement exclusion is followed by a carveback: 'We do, however, pay for losses from mudflow ... specifically insured under our definition of flood.' But the policy's own Mudflow definition says landslide, slope failure, and a saturated soil mass moving down a slope are NOT mudflows -- i.e. mudflow is disjoint from the forms of earth movement the exclusion removes. So the mudflow limb of the carveback restores nothing from that exclusion: it reads as a concession but, against the earth-movement exclusion, grants nothing. (The carveback's separate erosion-driven land subsidence limb is not implicated.)"
+    }
+  ],
+  "artifacts": {
+    "coverage_kernel_owl": "ontology/kernels/coverage-kernel.owl",
+    "nfip_sfip_owl": "ontology/library/NFIP_SFIP_v1/nfip_sfip.owl"
+  }
+}

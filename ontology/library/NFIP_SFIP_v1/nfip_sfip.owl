@@ -1,0 +1,106 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:owl="http://www.w3.org/2002/07/owl#"
+         xml:base="https://sool.tamu.edu/nfip/sfip-dwelling"
+         xmlns="https://sool.tamu.edu/nfip/sfip-dwelling#">
+
+<owl:Ontology rdf:about="https://sool.tamu.edu/nfip/sfip-dwelling">
+  <owl:imports rdf:resource="https://sool.tamu.edu/coverage-kernel"/>
+</owl:Ontology>
+
+<owl:Class rdf:about="#LossFeature">
+  <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+</owl:Class>
+
+<owl:Class rdf:about="#EarthMovementForm">
+  <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:unionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="http://davidkoepsell.com/bfo-agent/working#Landslide"/>
+        <rdf:Description rdf:about="http://davidkoepsell.com/bfo-agent/working#SlopeFailure"/>
+        <rdf:Description rdf:about="http://davidkoepsell.com/bfo-agent/working#SaturatedSoilMovement"/>
+      </owl:unionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+</owl:Class>
+
+<owl:Class rdf:about="#MudflowLoss">
+  <rdfs:subClassOf rdf:resource="https://sool.tamu.edu/coverage-kernel#Loss"/>
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="https://sool.tamu.edu/coverage-kernel#Loss"/>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="https://sool.tamu.edu/coverage-kernel#exhibits"/>
+          <owl:someValuesFrom rdf:resource="http://davidkoepsell.com/bfo-agent/working#Mudflow"/>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+  <rdfs:subClassOf rdf:resource="https://sool.tamu.edu/coverage-kernel#GrantedLoss"/>
+  <rdfs:subClassOf rdf:resource="https://sool.tamu.edu/coverage-kernel#RestoredLoss"/>
+</owl:Class>
+
+<owl:Class rdf:about="#EarthMovementLoss">
+  <rdfs:subClassOf rdf:resource="https://sool.tamu.edu/coverage-kernel#Loss"/>
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="https://sool.tamu.edu/coverage-kernel#Loss"/>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="https://sool.tamu.edu/coverage-kernel#exhibits"/>
+          <owl:someValuesFrom rdf:resource="#EarthMovementForm"/>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+  <rdfs:subClassOf rdf:resource="https://sool.tamu.edu/coverage-kernel#ExcludedLoss"/>
+</owl:Class>
+
+<owl:Class rdf:about="#RestoredFromEarthMovement">
+  <rdfs:subClassOf rdf:resource="https://sool.tamu.edu/coverage-kernel#Loss"/>
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="https://sool.tamu.edu/coverage-kernel#Loss"/>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="https://sool.tamu.edu/coverage-kernel#exhibits"/>
+          <owl:someValuesFrom>
+            <owl:Class>
+              <owl:intersectionOf rdf:parseType="Collection">
+                <rdf:Description rdf:about="http://davidkoepsell.com/bfo-agent/working#Mudflow"/>
+                <rdf:Description rdf:about="#EarthMovementForm"/>
+              </owl:intersectionOf>
+            </owl:Class>
+          </owl:someValuesFrom>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+</owl:Class>
+
+<rdf:Description rdf:about="http://davidkoepsell.com/bfo-agent/working#Flood">
+  <rdfs:subClassOf rdf:resource="#LossFeature"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://davidkoepsell.com/bfo-agent/working#Mudflow">
+  <rdfs:subClassOf rdf:resource="#LossFeature"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://davidkoepsell.com/bfo-agent/working#SaturatedSoilMovement">
+  <rdfs:subClassOf rdf:resource="#LossFeature"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://davidkoepsell.com/bfo-agent/working#Landslide">
+  <rdfs:subClassOf rdf:resource="#LossFeature"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://davidkoepsell.com/bfo-agent/working#SlopeFailure">
+  <rdfs:subClassOf rdf:resource="#LossFeature"/>
+</rdf:Description>
+
+
+</rdf:RDF>

@@ -172,6 +172,7 @@ def _run_coherence_gate(proposal, mgr, proposer, ctx, session_id, context=None,
                 working_classes=ctx["working_classes"],
                 known_individuals=ctx["known_individuals"],
                 relevant_classes=ctx.get("relevant_classes"),
+                extra_rules=_coverage_extra_rules(),
             )
         except Exception:
             return None
@@ -393,6 +394,22 @@ def _resolve_ontology_for_read(name: str | None):
 def _ontology_query_arg():
     """Read the ?ontology=NAME query string, or None."""
     return request.args.get("ontology", None)
+
+
+def _coverage_extra_rules() -> str:
+    """Coverage-aware proposer rules IFF the active ontology is coverage-profile.
+
+    Returns "" for every other ontology, so existing feeds' prompts stay
+    byte-identical (prompt-cache preserved). Any error -> "" (fail safe)."""
+    try:
+        from . import llm_proposer
+        name = Path(_get_manager().working_path).resolve().parent.name
+        man = _get_registry().manifest(name)
+        if man.get("kernel_profile") == "coverage":
+            return llm_proposer.coverage_rules()
+    except Exception:
+        pass
+    return ""
 
 
 def _not_found_response(name: str):
@@ -1096,6 +1113,7 @@ def _feed_one_core(job_id: str, auto_accept: bool = True) -> dict:
                         working_classes=ctx["working_classes"],
                         known_individuals=ctx["known_individuals"],
                         relevant_classes=ctx.get("relevant_classes"),
+                        extra_rules=_coverage_extra_rules(),
                     )
             except Exception as e:
                 jobs_store.update_claim_status(
@@ -1716,6 +1734,7 @@ def create_app() -> Flask:
                     working_classes=ctx["working_classes"],
                     known_individuals=ctx["known_individuals"],
                     relevant_classes=ctx.get("relevant_classes"),
+                    extra_rules=_coverage_extra_rules(),
                 )
             except Exception as e:
                 log_event(
@@ -2483,5 +2502,126 @@ def create_app() -> Flask:
                       f"{', '.join(resumed)}")
         except Exception as e:
             print(f"[job_runner] auto-resume failed: {e}")
+
+    # --- NFIP coverage coherence demonstrator ---------------------------------
+    # Public surface: findings only (verdict + verbatim clause + plain English).
+    # The coverage kernel, the clause typology, and the proof encodings are the
+    # asset; they stay server-side and are never served to the browser.
+    @app.get("/coverage")
+    def coverage_page():
+        from flask import send_from_directory
+        return send_from_directory(app.static_folder, "coverage.html")
+
+    @app.get("/coverage/findings")
+    def coverage_findings():
+        import json as _json
+        path = Path(__file__).resolve().parent.parent / "nfip" / "findings.json"
+        if not path.exists():
+            return jsonify({"error": "findings not generated; "
+                                     "run: python -m nfip.run_analysis"}), 404
+        rep = _json.loads(path.read_text(encoding="utf-8"))
+        meta = ("generated_utc", "form", "source", "domain_source", "reasoner",
+                "fidelity", "finding_count")
+        public = {k: rep.get(k) for k in meta}
+        keep = ("id", "shape", "shape_name", "title", "verdict",
+                "reasoner_evidence", "loss", "responsible_clauses",
+                "plain_english")
+        public["findings"] = [
+            {k: f.get(k) for k in keep if k in f}
+            for f in rep.get("findings", [])
+        ]
+        return jsonify(public)
+
+    def _coverage_working_path(name: str):
+        """Resolve a coverage-profile ontology's working.owl. Returns
+        (path_str, error_response)."""
+        reg = _get_registry()
+        try:
+            mgr = reg.get(name)
+        except Exception:
+            return None, (jsonify({"error": f"ontology {name!r} not found"}), 404)
+        return str(mgr.working_path), None
+
+    @app.get("/coverage/ontologies")
+    def coverage_ontologies():
+        """List ontologies with kernel_profile == 'coverage' (UI enablement)."""
+        reg = _get_registry()
+        out = []
+        for entry in reg.list_ontologies():
+            name = entry.get("name")
+            man = entry.get("manifest", {})
+            if man.get("kernel_profile") == "coverage":
+                out.append({"name": name,
+                            "description": man.get("description", ""),
+                            "fidelity": man.get("fidelity", "curated")})
+        return jsonify({"coverage_ontologies": out})
+
+    @app.post("/coverage/score")
+    def coverage_score():
+        from . import coverage_reason
+        body = request.get_json(silent=True) or {}
+        name = body.get("ontology") or "NFIP_SFIP_v1"
+        wp, err = _coverage_working_path(name)
+        if err:
+            return err
+        try:
+            return jsonify(coverage_reason.score(wp))
+        except Exception as e:
+            return jsonify({"error": f"scoring failed: {e}"}), 500
+
+    @app.post("/coverage/check-claim")
+    def coverage_check_claim():
+        from . import coverage_reason
+        body = request.get_json(silent=True) or {}
+        name = body.get("ontology") or "NFIP_SFIP_v1"
+        claim = body.get("claim") or {}
+        wp, err = _coverage_working_path(name)
+        if err:
+            return err
+        try:
+            return jsonify(coverage_reason.check_claim(wp, claim))
+        except Exception as e:
+            return jsonify({"error": f"claim check failed: {e}"}), 500
+
+    @app.post("/coverage/analyze")
+    def coverage_analyze():
+        """Analyze NEW policy wording (ephemeral extract + coherence check)."""
+        from . import coverage_reason
+        body = request.get_json(silent=True) or {}
+        wording = body.get("wording") or body.get("clauses")
+        if not wording:
+            return jsonify({"error": "provide 'wording' text or a 'clauses' list"}), 400
+        try:
+            return jsonify(coverage_reason.analyze_wording(wording))
+        except Exception as e:
+            return jsonify({"error": f"analysis failed: {e}"}), 500
+
+    # --- General on-demand coherence reasoning (ANY ontology) -----------------
+    # Live reasoner runs, serialised behind the feed via _REASONER_LOCK. Behind
+    # auth, so they expose the mechanism (unsatisfiable classes + why), not just
+    # a sanitized findings surface.
+    @app.post("/ontologies/<name>/coherence-check")
+    def ontology_coherence_check(name):
+        from . import coherence_reason
+        wp, err = _coverage_working_path(name)
+        if err:
+            return err
+        try:
+            return jsonify(coherence_reason.coherence_check(wp))
+        except Exception as e:
+            return jsonify({"error": f"coherence check failed: {e}"}), 500
+
+    @app.post("/ontologies/<name>/fact-check")
+    def ontology_fact_check(name):
+        from . import coherence_reason
+        body = request.get_json(silent=True) or {}
+        classes = body.get("classes") or []
+        wp, err = _coverage_working_path(name)
+        if err:
+            return err
+        try:
+            return jsonify(coherence_reason.fact_pattern_check(wp, classes))
+        except Exception as e:
+            return jsonify({"error": f"fact check failed: {e}"}), 500
 
     return app

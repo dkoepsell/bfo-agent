@@ -283,6 +283,7 @@ class LLMProposer:
         working_classes: list[dict],
         known_individuals: list[dict],
         relevant_classes: list[dict] | None = None,
+        extra_rules: str = "",
     ) -> Proposal:
         system, user_message = build_prompt_blocks(
             utterance=utterance,
@@ -290,6 +291,7 @@ class LLMProposer:
             known_individuals=known_individuals,
             relevant_classes=relevant_classes,
             ttl=self.ttl,
+            extra_rules=extra_rules,
         )
 
         resp = self.client.messages.create(
@@ -347,12 +349,34 @@ Return JSON only."""
         return _extract_json(text)
 
 
+COVERAGE_RULES = """COVERAGE-PROFILE RULES (this ontology models insurance policy wording):
+C-1 Type every clause as exactly one of: Grant, Exclusion, Carveback, Condition, Definition
+    (subclasses of the coverage kernel Clause; do not invent other clause types).
+C-2 A Carveback MUST carry `modifies` naming the Exclusion it modifies. If you cannot
+    determine which Exclusion, emit the clause as a FLAG, never guess.
+C-3 Model perils as loss-classes DEFINED by the physical features a loss exhibits
+    (`exhibits some <Feature>`); do not assert a peril as a bare atomic class.
+C-4 Preserve the policy's OWN disjointness claims as owl:disjointWith (e.g. "X are not Y").
+    These definitional axioms are what make coherence failures provable; never drop them.
+C-5 Wire perils to coverage: a granted peril is a GrantedLoss, an excluded peril an
+    ExcludedLoss, a restored peril a RestoredLoss. The kernel derives Covered/Uncovered.
+C-6 Bearer discipline: IndemnityObligation inheres in the Insurer role, never in the Policy
+    or the Loss. Quote the source clause text verbatim in annotations (public-domain source).
+"""
+
+
+def coverage_rules() -> str:
+    """Coverage-aware anchoring rules, appended only for coverage-profile feeds."""
+    return COVERAGE_RULES
+
+
 def build_prompt_blocks(
     utterance: str,
     working_classes: list[dict],
     known_individuals: list[dict],
     relevant_classes: list[dict] | None,
     ttl: str,
+    extra_rules: str = "",
 ) -> tuple[list[dict], str]:
     """Render the proposer prompt into ``(system_blocks, user_message)``.
 
@@ -377,6 +401,11 @@ def build_prompt_blocks(
         relevant_classes=_compact_lines(relevant_classes or []),
     )
     static_system, ontology_block, claim = _split_for_breakpoints(prompt)
+    # Coverage-profile feeds append clause-typology rules to the STATIC (cached)
+    # block. Default extra_rules="" -> byte-identical to every existing feed, so
+    # non-coverage prompt caches are untouched.
+    if extra_rules:
+        static_system = static_system + "\n\n" + extra_rules
     system = [{
         "type": "text",
         "text": static_system,
