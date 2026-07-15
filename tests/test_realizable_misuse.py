@@ -162,3 +162,27 @@ def test_gate_allows_correct_bearer_relation(tmp_path):
                                         o="working:MyRole", rationale="r")])
     clash, _ = structural_lint(prop, _mgr(tmp_path))
     assert clash is None
+
+
+# --- Criterion 6: attribution guardrail -- no auto-repaired class logged as -----
+#     source incoherence (§8).
+def test_ledger_attribution(tmp_path):
+    from app import incoherence_ledger as led
+    findings = [
+        {"class": "Creatine", "class_iri": "x#Creatine", "pattern": "P2",
+         "rule": "R2", "mups": [], "detail": "d"},
+        {"class": "CyclicDisposition", "class_iri": "x#Cyc", "pattern": "CONTRA",
+         "rule": "R4", "mups": [], "detail": "d"},
+        {"class": "Weird", "class_iri": "x#Weird", "pattern": "OTHER",
+         "rule": None, "mups": ["a"], "detail": "d"},
+    ]
+    work = tmp_path / "working.owl"
+    work.write_text("<x/>")
+    led.record_realizable_misuse(work, findings)
+    entries = {e["subjects"][0].split("#")[-1]: e for e in led.read_all(work)}
+    assert entries["Creatine"]["attribution"] == "translation"
+    assert entries["Cyc"]["attribution"] == "translation"
+    assert entries["Weird"]["attribution"] == "source"
+    # the auto-repaired translation defects are never a source-incoherence claim
+    assert all(e["attribution"] == "translation"
+               for e in led.read_all(work) if e["pattern"] in ("P1", "P2", "CONTRA"))

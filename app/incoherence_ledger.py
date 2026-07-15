@@ -22,6 +22,20 @@ from typing import Optional
 
 LEDGER_FILENAME = "incoherence_ledger.jsonl"
 
+# bfo-agent-realizable-misuse-fix-SPEC §8 (attribution guardrail): a P1/P2/CONTRA
+# finding is a TRANSLATION defect -- the extractor mis-encoded the source -- and
+# must NOT be written as "the source text is jointly inconsistent under BFO".
+# Only an OTHER core (faithfully-extracted source axioms with no realizable-as-
+# bearer, no filler/property mismatch, no self-contradictory placement) may be
+# logged as source incoherence, and only after manual confirmation.
+TRANSLATION_PATTERNS = frozenset({"P1", "P2", "CONTRA"})
+
+
+def attribution_for(pattern: Optional[str]) -> str:
+    """'translation' for the auto-repairable realizable-misuse patterns,
+    'source' for an OTHER core that a human must confirm tracks the text."""
+    return "translation" if pattern in TRANSLATION_PATTERNS else "source"
+
 
 def ledger_path(working_path: Path) -> Path:
     """The ledger lives next to the session logs of the owning ontology."""
@@ -109,3 +123,34 @@ def record_flag(
     if annotated:
         manager.save()
     return entry_id
+
+
+def record_realizable_misuse(working_path: Path, findings: list[dict],
+                             repaired: bool = True) -> list[str]:
+    """Ledger realizable-misuse findings with Section-8 attribution.
+
+    ``findings`` are :meth:`realizable_misuse.Finding.as_dict` results. P1/P2/
+    CONTRA are logged as **translation** defects (the extractor mis-encoded the
+    source; auto-repaired when ``repaired``), never as source incoherence. An
+    OTHER core is logged as a candidate **source** incoherence for a human to
+    confirm against the text. Returns the ledger entry ids.
+    """
+    ids: list[str] = []
+    for f in findings:
+        pattern = f.get("pattern")
+        if not (f.get("class") or f.get("class_iri")):
+            continue
+        attribution = attribution_for(pattern)
+        ids.append(append(working_path, {
+            "kind": "realizable_misuse",
+            "attribution": attribution,
+            "pattern": pattern,
+            "rule": f.get("rule"),
+            "subjects": [f.get("class_iri") or f.get("class")],
+            "mups": f.get("mups"),
+            "detail": f.get("detail"),
+            # a translation defect that was auto-repaired is resolved, not a
+            # standing source-incoherence claim
+            "repaired": bool(repaired and pattern in TRANSLATION_PATTERNS),
+        }))
+    return ids
