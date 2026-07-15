@@ -175,6 +175,17 @@ RULES:
     rejected. NEVER bake a relation word (Of, In, By, Due, Caused, Associated,
     Related) or a numeric/type qualifier suffix (`Type2`, `SubtypeB`) into the
     name; express those as separate classes or property assertions.
+16. A REALIZABLE IS NOT A BEARER. A class grounded as a disposition, role,
+    quality, or function (a specifically dependent continuant) must NOT also be
+    asserted to *bear* a realizable -- no `bearer of` (BFO_0000196),
+    `has disposition` (RO_0000091), `has role` (RO_0000087), or `has function`
+    (RO_0000085) with such a class as subject. It IS the realizable; a
+    realizable *inheres in* its bearer (`inheres in`, BFO_0000197), it does not
+    bear one. An independent continuant (e.g. a material entity) that bears a
+    realizable must relate to it with the relation whose range matches the
+    realizable's TYPE: `has role` for a role, `has disposition` for a
+    disposition, `has function` for a function -- never a mismatched one (a role
+    reached by `has disposition` is rejected).
 
 CURRENT WORKING ONTOLOGY CONTEXT:
 

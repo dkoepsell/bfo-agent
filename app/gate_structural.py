@@ -237,7 +237,101 @@ def structural_lint(proposal, manager) -> tuple[Optional[StructuralClash], bool]
         proposal, manager, proposed_types, proposed_ind_types
     )
     resolved_all = resolved_all and sig_resolved
+    if clash is not None:
+        return clash, resolved_all
+
+    # --- Realizable-as-bearer (bfo-agent-realizable-misuse-fix-SPEC §6.1).
+    clash, br_resolved = _realizable_bearer_check(
+        proposal, manager, proposed_types, proposed_ind_types
+    )
+    resolved_all = resolved_all and br_resolved
     return clash, resolved_all
+
+
+# "has X" relations: an independent continuant bearing a realizable. The filler's
+# realizable type fixes which relation is correct; an SDC can never be the bearer
+# (it IS the realizable). BFO_0000196 (bearer of) is already covered by
+# _signature_check via its canonical domain/range, so it is not repeated here.
+_BEARS_EXPECTED = {
+    "RO_0000087": bfo_catalog.ROLE,         # has role
+    "RO_0000091": bfo_catalog.DISPOSITION,  # has disposition
+    "RO_0000085": bfo_catalog.FUNCTION,     # has function
+}
+_REALIZABLE_TYPES = (bfo_catalog.ROLE, bfo_catalog.DISPOSITION, bfo_catalog.FUNCTION)
+
+
+def _realizable_type(anchors: set[str]) -> Optional[str]:
+    for a in anchors:
+        frag = bfo_catalog.normalize_fragment(a)
+        for rt in _REALIZABLE_TYPES:
+            if bfo_catalog.is_descendant_of(frag, rt):
+                return rt
+    return None
+
+
+def _realizable_bearer_check(
+    proposal, manager, proposed_types, proposed_ind_types
+) -> tuple[Optional[StructuralClash], bool]:
+    """Reject a proposal that makes a class *bear* a realizable it should *be*,
+    or that bears a realizable through a relation whose type mismatches the
+    filler. Two rules (§6.1):
+
+    * An SDC subject cannot bear a realizable -- it is one (P1 prevention).
+    * ``has role``/``has disposition``/``has function`` must match the filler's
+      realizable type; a role reached by ``has disposition`` (or vice versa) is
+      the ICD-11 error the gate must keep catching (P2 prevention).
+    """
+    resolved_all = True
+    for rel in proposal.relations:
+        frag = bfo_catalog.normalize_fragment(rel.p or "")
+        if frag not in _BEARS_EXPECTED:
+            continue
+        o_raw = (rel.o or "").strip()
+        if o_raw.startswith("_:") or owl_checks.parse_class_expression(o_raw):
+            resolved_all = False
+            continue
+        subj_anchors = _endpoint_anchors(rel.s, manager, proposed_types, proposed_ind_types)
+        obj_anchors = _endpoint_anchors(rel.o, manager, proposed_types, proposed_ind_types)
+        if not subj_anchors or not obj_anchors:
+            resolved_all = False
+
+        expected = _BEARS_EXPECTED[frag]
+        if subj_anchors and all(
+            bfo_catalog.is_descendant_of(bfo_catalog.normalize_fragment(a), bfo_catalog.SDC)
+            for a in subj_anchors
+        ):
+            return (
+                StructuralClash(
+                    reason=(
+                        f"realizable-as-bearer violation: {_local(rel.s)} is a "
+                        f"specifically dependent continuant, so it cannot bear a "
+                        f"realizable via '{frag}' -- it IS the realizable. A "
+                        f"realizable inheres in a bearer; it does not bear one."
+                    ),
+                    subject=_local(rel.s),
+                    clash_pair=(bfo_catalog.SDC, expected),
+                ),
+                resolved_all,
+            )
+
+        ft = _realizable_type(obj_anchors)
+        if ft and bfo_catalog.clash(expected, ft):
+            return (
+                StructuralClash(
+                    reason=(
+                        f"realizable-relation mismatch: '{frag}' ranges over "
+                        f"{bfo_catalog.BFO_LABEL.get(expected, expected)} "
+                        f"({expected}), but {_local(rel.o)} is anchored under "
+                        f"{bfo_catalog.BFO_LABEL.get(ft, ft)} ({ft}); use the "
+                        f"relation whose range matches the filler's realizable "
+                        f"type."
+                    ),
+                    subject=_local(rel.o),
+                    clash_pair=(expected, ft),
+                ),
+                resolved_all,
+            )
+    return None, resolved_all
 
 
 def _signature_check(

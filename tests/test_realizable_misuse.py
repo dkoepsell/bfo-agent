@@ -108,3 +108,57 @@ def test_repaired_passes_and_rebroken_fails(tmp_path):
     broken = tmp_path / "broken.owl"
     g.serialize(destination=str(broken), format="xml")
     assert any(f["pattern"] == "P2" for f in rm.detect_file(broken, BFO))
+
+
+# --- Prevention: the gate rejects realizable-as-bearer proposals (§6.1) --------
+def _mgr(tmp_path):
+    from app.ontology_manager import OntologyManager
+    work = tmp_path / "working.owl"
+    shutil.copy(FIX / "rm_p2.owl", work)
+    return OntologyManager(BFO, work)
+
+
+def _proposal(entities, relations):
+    from app.schema import Proposal
+    return Proposal(proposal_id="p", session_id="s", utterance="u",
+                    entities=entities, relations=relations, rationale_summary="r")
+
+
+def _ents():
+    from app.schema import Entity
+    return [
+        Entity(label="Widget", iri_suggestion="working:Widget",
+               bfo_type="BFO_0000040", bfo_label="material entity", rationale="r"),
+        Entity(label="MyRole", iri_suggestion="working:MyRole",
+               bfo_type="BFO_0000023", bfo_label="role", rationale="r"),
+    ]
+
+
+def test_gate_rejects_mismatched_bearer_relation(tmp_path):
+    from app.schema import Relation
+    from app.gate_structural import structural_lint
+    # Widget (material entity) has-disposition a Role -> relation/filler mismatch
+    prop = _proposal(_ents(), [Relation(s="working:Widget", p="RO_0000091",
+                                        o="working:MyRole", rationale="r")])
+    clash, _ = structural_lint(prop, _mgr(tmp_path))
+    assert clash is not None and "mismatch" in clash.reason
+
+
+def test_gate_rejects_sdc_bearing_realizable(tmp_path):
+    from app.schema import Relation
+    from app.gate_structural import structural_lint
+    # a Role (SDC) asserted to bear a role -> it IS the realizable
+    prop = _proposal(_ents(), [Relation(s="working:MyRole", p="RO_0000087",
+                                        o="working:MyRole", rationale="r")])
+    clash, _ = structural_lint(prop, _mgr(tmp_path))
+    assert clash is not None and "realizable-as-bearer" in clash.reason
+
+
+def test_gate_allows_correct_bearer_relation(tmp_path):
+    from app.schema import Relation
+    from app.gate_structural import structural_lint
+    # Widget (material entity) has-role a Role -> correct
+    prop = _proposal(_ents(), [Relation(s="working:Widget", p="RO_0000087",
+                                        o="working:MyRole", rationale="r")])
+    clash, _ = structural_lint(prop, _mgr(tmp_path))
+    assert clash is None
