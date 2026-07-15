@@ -2105,6 +2105,25 @@ class OntologyManager:
         ok, detail, unsat = self._scratch_verify_saved(
             exclude_axioms=exclude_axioms, phase="reason_full_verify"
         )
+        # §7 full-signature guardrail: owlready2's inconsistent_classes() (used by
+        # _scratch_verify_saved) silently omits some genuinely unsatisfiable
+        # classes on the ICD-11 artifact -- a reduced-world false-coherent
+        # certificate. Confirm with the clone-probe detector so the gate cannot
+        # pass an artifact that still carries a realizable-misuse unsat.
+        if config.FULL_SIGNATURE_REALIZABLE_CHECK and ok and not exclude_axioms:
+            try:
+                from . import realizable_misuse
+                extra = realizable_misuse.probe_confirmed_unsat_file(
+                    self.working_path, self.bfo_path)
+                if extra:
+                    ok = False
+                    unsat = sorted(set(unsat or []) | set(extra))
+                    detail = ("realizable-misuse unsatisfiable classes missed by "
+                              "the class certificate: "
+                              + ", ".join(_local_name(i) for i in extra[:12]))
+            except Exception:  # noqa: BLE001 -- never let the net crash a verify
+                log.warning("verify_full: realizable-misuse probe failed",
+                            exc_info=True)
         self.commits_since_full_verify = 0
         # Checkpoint boundary: rebuild the reduced-world indexes from scratch
         # so any drift the incremental appends missed is bounded to one

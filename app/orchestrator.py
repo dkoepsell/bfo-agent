@@ -563,6 +563,42 @@ def _self_heal_unsat(mgr, report: dict, job_id: str, session_id: str | None,
     removed: list[str] = []
     cur = report
     rounds = 0
+
+    # Content-preserving realizable-misuse repair FIRST (retype/re-relate/relax/
+    # drop-complement), so a translation defect is healed instead of quarantined.
+    # Only classes this cannot heal fall through to the destructive quarantine.
+    repaired: list[dict] = []
+    if config.CHECKPOINT_REALIZABLE_REPAIR and not cur.get("ok"):
+        try:
+            from . import realizable_misuse, incoherence_ledger
+            mgr.save()  # repair operates on the saved artifact
+            res = realizable_misuse.repair_file(mgr.working_path, mgr.bfo_path)
+            if res.transforms:
+                mgr._load()  # reload the content-preservingly repaired artifact
+                repaired = res.transforms
+                incoherence_ledger.record_realizable_misuse(
+                    mgr.working_path, res.transforms, repaired=True)
+                if res.remaining:
+                    incoherence_ledger.record_realizable_misuse(
+                        mgr.working_path, res.remaining, repaired=False)
+                names = ", ".join(t["class"] for t in res.transforms)
+                git_commit_working_ontology(
+                    session_id or f"self-heal-{job_id}", f"self-heal-{kind}",
+                    f"realizable-misuse repair ({kind}): "
+                    f"{len(res.transforms)} content-preserving transform(s) "
+                    f"[{names}]",
+                )
+                log_event(session_id, "checkpoint_realizable_repair", {
+                    "job_id": job_id, "kind": kind,
+                    "transforms": res.transforms,
+                    "before_unsat": res.before_unsat,
+                    "after_unsat": res.after_unsat,
+                })
+                cur = mgr.verify_full(exclude_axioms=None)
+        except Exception:  # noqa: BLE001 -- never let repair crash the checkpoint
+            log.warning("self-heal: realizable-misuse repair failed",
+                        exc_info=True)
+
     for _ in range(max(1, config.CHECKPOINT_SELF_HEAL_MAX_ROUNDS)):
         unsat = cur.get("unsat_classes") or []
         if not unsat:

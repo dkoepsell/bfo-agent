@@ -443,6 +443,28 @@ def _try_r3(g: Graph, mups: list[tuple]) -> Optional[tuple]:
 
 
 # ----------------------------------------------------------------------- public
+def probe_confirmed_unsat(work_graph: Graph, bfo_path: Path) -> Optional[list[str]]:
+    """Cheap, reliable full-signature unsatisfiable-class check for the gate's
+    coherence certificate (§7): structural candidates confirmed by a single
+    clone-probe reasoner run, unioned with anything the reasoner reports
+    directly. No MUPS/classification, so it adds only ~2 HermiT runs. Returns the
+    unsatisfiable IRIs, or ``None`` if the ontology is globally inconsistent."""
+    ok, reported = _run(work_graph, bfo_path)
+    if not ok:
+        return None
+    cands = _structural_candidates(work_graph)
+    if not cands:
+        return sorted(reported)
+    _, confirmed = _run(work_graph, bfo_path, probe_iris=sorted(cands))
+    return sorted(set(reported) | set(confirmed))
+
+
+def probe_confirmed_unsat_file(artifact_path, bfo_path) -> Optional[list[str]]:
+    g = Graph()
+    g.parse(str(artifact_path))
+    return probe_confirmed_unsat(g, Path(bfo_path))
+
+
 def detect_graph(work_graph: Graph, bfo_path: Path) -> list[Finding]:
     """Full-signature detect + classify. One Finding per unsatisfiable class,
     caught via structural scan + clone-probe confirmation (plus any class the

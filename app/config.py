@@ -261,6 +261,23 @@ CHECKPOINT_SELF_HEAL_MAX_ROUNDS = int(os.getenv("CHECKPOINT_SELF_HEAL_MAX_ROUNDS
 CHECKPOINT_SELF_HEAL_ABOX = os.getenv("CHECKPOINT_SELF_HEAL_ABOX", "true").lower() == "true"
 CHECKPOINT_SELF_HEAL_MAX_INDIVIDUALS = int(os.getenv("CHECKPOINT_SELF_HEAL_MAX_INDIVIDUALS", "400"))
 
+# ----- Realizable-misuse detect/repair (bfo-agent-realizable-misuse-fix-SPEC) --
+# §7 full-signature guardrail: owlready2's inconsistent_classes() (the scratch
+# certificate) silently omits some genuinely unsatisfiable classes on the ICD-11
+# artifact -- a reduced-world false-coherent commit. When on, verify_full also
+# confirms coherence with the clone-probe detector, so the gate cannot pass an
+# artifact that still carries a realizable-misuse unsat.
+FULL_SIGNATURE_REALIZABLE_CHECK = (
+    os.getenv("FULL_SIGNATURE_REALIZABLE_CHECK", "true").lower() == "true"
+)
+# When the self-heal finds unsatisfiable classes, attempt content-preserving
+# realizable-misuse repair (R1-R4: retype/re-relate/relax/drop-complement)
+# BEFORE the destructive class quarantine. P1/P2/CONTRA are ledgered as
+# translation defects (§8); classes it cannot heal fall through to quarantine.
+CHECKPOINT_REALIZABLE_REPAIR = (
+    os.getenv("CHECKPOINT_REALIZABLE_REPAIR", "true").lower() == "true"
+)
+
 # ----- Reduced reasoning world (SPEC-bfo-agent-speed.md change 1) -----
 # Dry-run reasoning over BFO + working TBox + only the proposal's touched
 # individuals instead of the full ABox. Sound for class satisfiability and
