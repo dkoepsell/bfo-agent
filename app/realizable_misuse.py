@@ -465,10 +465,16 @@ def probe_confirmed_unsat_file(artifact_path, bfo_path) -> Optional[list[str]]:
     return probe_confirmed_unsat(g, Path(bfo_path))
 
 
-def detect_graph(work_graph: Graph, bfo_path: Path) -> list[Finding]:
+def detect_graph(work_graph: Graph, bfo_path: Path,
+                 compute_mups: bool = True) -> list[Finding]:
     """Full-signature detect + classify. One Finding per unsatisfiable class,
     caught via structural scan + clone-probe confirmation (plus any class the
-    reasoner does report directly)."""
+    reasoner does report directly).
+
+    The repair transforms come from a cheap structural analysis; the QuickXplain
+    MUPS is only needed for the report justification (and the R3 fallback). Pass
+    ``compute_mups=False`` on the repair hot path to skip it -- many HermiT runs
+    on a large artifact -- and compute MUPS once for the final report."""
     ok, reported = _run(work_graph, bfo_path)
     if not ok:
         log.warning("realizable_misuse: ontology globally inconsistent")
@@ -478,7 +484,7 @@ def detect_graph(work_graph: Graph, bfo_path: Path) -> list[Finding]:
     unsat = sorted(set(reported) | set(confirmed))
     findings = []
     for iri in unsat:
-        mups = _mups(work_graph, bfo_path, URIRef(iri))
+        mups = _mups(work_graph, bfo_path, URIRef(iri)) if compute_mups else []
         findings.append(_analyze(work_graph, iri, mups))
     return findings
 
@@ -537,23 +543,29 @@ def repair_graph(work_graph: Graph, bfo_path: Path,
     the class heals), roots first so cascades heal, until zero unsatisfiable
     classes or no further progress. Never deletes source content. A class that
     does not fully heal is rolled back and left for a human (OTHER)."""
-    before = detect_graph(work_graph, bfo_path)
+    # The repair loop uses the cheap structural transforms (compute_mups=False)
+    # -- MUPS is many HermiT runs and is only needed for the report, computed
+    # once per applied class below and for the final OTHER remainder.
+    before = detect_graph(work_graph, bfo_path, compute_mups=False)
     before_n = len([f for f in before if f.class_iri])
     applied: list[dict] = []
     for _ in range(max_rounds):
-        findings = detect_graph(work_graph, bfo_path)
+        findings = detect_graph(work_graph, bfo_path, compute_mups=False)
         actionable = [f for f in findings if f.transforms and f.class_iri]
         if not actionable:
             break
         progress = False
         for f in actionable:
+            # the offending axioms are named in each transform target; that IS
+            # the justification, without the extra HermiT runs a full MUPS costs.
+            mups = [_axiom_str(work_graph, t["target"]) for t in f.transforms]
             tokens = [tok for t in f.transforms if (tok := _apply(work_graph, t))]
             healed = _class_sat(work_graph, bfo_path, URIRef(f.class_iri))
             ok, _ = _run(work_graph, bfo_path)
             if healed and ok:
                 applied.append({
                     "class": _frag(f.class_iri), "pattern": f.pattern,
-                    "rule": f.rule, "mups": f.mups, "detail": f.detail,
+                    "rule": f.rule, "mups": mups, "detail": f.detail,
                 })
                 progress = True
             else:
