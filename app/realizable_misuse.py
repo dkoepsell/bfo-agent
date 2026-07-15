@@ -598,7 +598,44 @@ def repair_report_md(res: RepairResult, artifact: str) -> str:
             lines.append(f"| `{t['class']}` | {t['pattern']} | {t['rule']} | {mups} |")
         lines.append("")
     if res.remaining:
-        lines += ["## Unrepaired (candidate source incoherence / OTHER)", ""]
+        lines += ["## Unrepaired (candidate source incoherence / OTHER)", "",
+                  "These are logged to the fidelity ledger for human review, not "
+                  "auto-repaired (§8).", ""]
         for r in res.remaining:
-            lines.append(f"- `{r['class']}` — {r['detail']}")
+            lines.append(f"- `{r['class']}` ({r['pattern']}) — {r['detail']}")
     return "\n".join(lines) + "\n"
+
+
+def _cli(argv=None) -> int:
+    """`python -m app.realizable_misuse <artifact.owl> [--repair] [--out F]
+    [--report REPAIR_REPORT.md] [--bfo ontology/bfo.owl]`.
+
+    Without --repair, prints the classified detector report (JSON). With
+    --repair, applies R1-R4 in place (or to --out), writes REPAIR_REPORT.md, and
+    prints the before/after unsatisfiable-class count."""
+    import argparse
+    import json
+    from . import config
+    ap = argparse.ArgumentParser(prog="realizable_misuse")
+    ap.add_argument("artifact")
+    ap.add_argument("--repair", action="store_true")
+    ap.add_argument("--out", default=None)
+    ap.add_argument("--report", default=None)
+    ap.add_argument("--bfo", default=str(config.BFO_PATH))
+    a = ap.parse_args(argv)
+    if not a.repair:
+        print(json.dumps(detect_file(a.artifact, a.bfo), indent=2))
+        return 0
+    res = repair_file(a.artifact, a.bfo, out_path=a.out)
+    report = repair_report_md(res, a.artifact)
+    if a.report:
+        Path(a.report).write_text(report, encoding="utf-8")
+    print(report)
+    print(f"unsatisfiable {res.before_unsat} -> {res.after_unsat}; "
+          f"{len(res.transforms)} transform(s), {len(res.remaining)} unrepaired")
+    return 0 if res.after_unsat == 0 else 1
+
+
+if __name__ == "__main__":
+    import sys
+    sys.exit(_cli())
