@@ -15,9 +15,13 @@ from __future__ import annotations
 
 import io
 import logging
+import os
+import signal
 import threading
+import time
 import types
 from contextlib import redirect_stderr, redirect_stdout
+from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Optional
 
@@ -26,13 +30,17 @@ from owlready2 import (
     Thing,
     Nothing,
     ObjectProperty,
+    PropertyClass,
+    destroy_entity,
     sync_reasoner,
     onto_path,
 )
 
 from . import bfo_catalog
 from . import config
+from . import owl_checks
 from . import stable_iri
+from . import timing
 
 log = logging.getLogger(__name__)
 
@@ -41,13 +49,132 @@ log = logging.getLogger(__name__)
 # whole box (incident 2026-07-02). Serialize them process-wide.
 _REASONER_LOCK = threading.Lock()
 
+
+class ReasonerTimeout(Exception):
+    """HermiT exceeded config.REASONER_TIMEOUT_SECONDS and was killed."""
+
+
+def _hermit_child_pids() -> list[int]:
+    """PIDs of java children of this process running HermiT (Linux /proc only).
+
+    HermiT is spawned by owlready2 as a direct child via subprocess, so we match
+    on ppid == our pid and 'HermiT' in the cmdline. Returns [] off Linux.
+    """
+    me = os.getpid()
+    pids: list[int] = []
+    proc = Path("/proc")
+    if not proc.is_dir():
+        return pids
+    for entry in proc.iterdir():
+        if not entry.name.isdigit():
+            continue
+        try:
+            stat = (entry / "stat").read_text()
+            # comm (field 2) may contain spaces/parens; ppid is the 2nd field
+            # after the final ')': "<pid> (comm) <state> <ppid> ...".
+            fields = stat[stat.rindex(")") + 1:].split()
+            if int(fields[1]) != me:
+                continue
+            if b"HermiT" in (entry / "cmdline").read_bytes():
+                pids.append(int(entry.name))
+        except (OSError, ValueError, IndexError):
+            continue
+    return pids
+
+
+def _kill_hermit_children() -> int:
+    killed = 0
+    for pid in _hermit_child_pids():
+        try:
+            os.kill(pid, signal.SIGKILL)
+            killed += 1
+        except OSError:
+            pass
+    return killed
+
+
+def _sync_reasoner_guarded(target, infer_property_values: bool = False) -> None:
+    """Run HermiT with a watchdog that SIGKILLs a runaway java child.
+
+    A single sync_reasoner() has hung for hours on a pathological ontology
+    (incident 2026-07-12), pinning the box's memory cgroup over MemoryHigh and
+    freezing the whole app. After config.REASONER_TIMEOUT_SECONDS we kill
+    HermiT's java child so owlready2's check_output() returns and this raises
+    ReasonerTimeout -- which every call site already handles as a reasoner error
+    (the claim is rejected/failed rather than blocking forever).
+
+    Callers must hold _REASONER_LOCK, so at kill time there is at most one
+    HermiT child belonging to us.
+    """
+    timeout = config.REASONER_TIMEOUT_SECONDS
+    if not timeout or timeout <= 0:
+        sync_reasoner(target, infer_property_values=infer_property_values)
+        return
+
+    fired = threading.Event()
+
+    def _watchdog():
+        fired.set()
+        killed = _kill_hermit_children()
+        log.error(
+            "Reasoner watchdog: HermiT exceeded %.0fs; killed %d java child(ren)",
+            timeout, killed,
+        )
+
+    timer = threading.Timer(timeout, _watchdog)
+    timer.daemon = True
+    timer.start()
+    try:
+        sync_reasoner(target, infer_property_values=infer_property_values)
+    except Exception:
+        # If the watchdog fired, the underlying error is just the killed java
+        # process; surface it as a timeout. Otherwise it's a real reasoner
+        # error (e.g. genuine inconsistency) and must propagate unchanged.
+        if fired.is_set():
+            raise ReasonerTimeout(
+                f"HermiT exceeded REASONER_TIMEOUT_SECONDS={timeout:.0f}s and was killed"
+            )
+        raise
+    finally:
+        timer.cancel()
+
 BFO_OBO_PREFIX = "http://purl.obolibrary.org/obo/"
 WORKING_IRI = "http://davidkoepsell.com/bfo-agent/working"
+
+# owlready2's Nothing is a per-World object; comparing scratch-world classes
+# against the module-level Nothing by identity silently fails. Compare by IRI.
+_NOTHING_IRI = "http://www.w3.org/2002/07/owl#Nothing"
+_OWL_DISJOINT_IRI = "http://www.w3.org/2002/07/owl#disjointWith"
+_RDFS_SUBCLASSOF_IRI = "http://www.w3.org/2000/01/rdf-schema#subClassOf"
 
 
 class CommitCoherenceError(Exception):
     """A commit was rolled back because it would leave the persisted ontology
     inconsistent or introduce an unsatisfiable class."""
+
+
+@dataclass
+class AppliedDelta:
+    """Exact record of every live-world mutation one apply performed, so
+    :meth:`OntologyManager.rollback` can undo it without a disk reload
+    (SPEC-bfo-agent-speed.md change 2). Rollback exactness is the safety
+    contract: a missed record silently corrupts the persistent ontology."""
+
+    # Full IRIs of entities CREATED by this apply (classes or individuals).
+    new_entities: list[str] = field(default_factory=list)
+    # (entity_full_iri, is_a member object) appended to a PRE-EXISTING entity.
+    is_a_added: list[tuple[str, object]] = field(default_factory=list)
+    # (entity_full_iri, label str) appended to a PRE-EXISTING entity.
+    label_added: list[tuple[str, str]] = field(default_factory=list)
+    # (entity_full_iri, label str) REMOVED from a pre-existing entity: reuse
+    # assigns ``.label = [new]``, which drops the old label; rollback must
+    # put it back or a rejected dry-run erases committed labels.
+    label_removed: list[tuple[str, str]] = field(default_factory=list)
+    # Plain (s, p, o) IRI triples added via the rdflib graph.
+    raw_triples: list[tuple[str, str, str]] = field(default_factory=list)
+    # (class_full_iri, parent_full_iri) subClassOf edges removed by
+    # _retract_axiom_triples (faithful-mode FM-9 exclusions) to restore.
+    retracted: list[tuple[str, str]] = field(default_factory=list)
 
 
 def _resolve_iri(iri_suggestion: str, working_base: str) -> str:
@@ -76,11 +203,55 @@ def _resolve_iri(iri_suggestion: str, working_base: str) -> str:
     if iri_suggestion.startswith("bfo:"):
         return BFO_OBO_PREFIX + iri_suggestion.split(":", 1)[1]
     if iri_suggestion.startswith("working:"):
-        return f"{working_base}#{iri_suggestion.split(':', 1)[1]}"
+        return f"{working_base}#{_working_fragment(iri_suggestion.split(':', 1)[1])}"
     if iri_suggestion.startswith("BFO_"):
         return BFO_OBO_PREFIX + iri_suggestion
     # Bare name defaults to working namespace
-    return f"{working_base}#{iri_suggestion}"
+    return f"{working_base}#{_working_fragment(iri_suggestion)}"
+
+
+_STOPWORDS = frozenset(
+    "the and with that this from have has for are was were will would other "
+    "such into over more most some each which their there been being does "
+    "disorder disorders symptom symptoms criteria criterion".split()
+)
+
+
+def _rank_by_overlap(classes: list[dict], utterance: str,
+                     limit: int = 50) -> list[dict]:
+    """Rank classes by token overlap between the utterance and the class's
+    name + label (CamelCase split). Returns only classes with a nonzero
+    score, best first, capped at ``limit``."""
+    import re as _re
+
+    def tokens(text: str) -> set[str]:
+        return {
+            t.lower()
+            for t in _re.findall(r"[A-Za-z][a-z0-9]+|[A-Z]+(?![a-z])", text or "")
+            if len(t) > 3 and t.lower() not in _STOPWORDS
+        }
+
+    utt = tokens(utterance)
+    if not utt:
+        return []
+    scored = []
+    for c in classes:
+        name = (c.get("iri") or "").rsplit("#", 1)[-1]
+        score = len(utt & tokens(name + " " + (c.get("label") or "")))
+        if score:
+            scored.append((score, c))
+    scored.sort(key=lambda x: -x[0])
+    return [c for _, c in scored[:limit]]
+
+
+def _working_fragment(frag: str) -> str:
+    """H-1: slugify a label-like working fragment ('Premenstrual Dysphoric
+    Disorder' -> 'PremenstrualDysphoricDisorder') so display text never leaks
+    into the IRI. A fragment that is neither valid nor label-like is returned
+    unchanged; the write-path guard in ``_add_entity`` / ``_add_relation``
+    refuses it (read paths must stay non-raising)."""
+    slug = owl_checks.slugify_fragment(frag)
+    return slug if slug is not None else frag
 
 
 def _local_name(iri: str) -> str:
@@ -109,32 +280,63 @@ class OntologyManager:
         # onto_path tells owlready2 where to find imported ontologies locally
         onto_path.append(str(self.bfo_path.parent))
 
+        # Commits applied with verify=False since the last full-graph
+        # certificate (SPEC-bfo-agent-speed.md change 6). Incremented by
+        # commit_proposal(verify=False), reset by verify_full(); the finalize
+        # guard and the job-completion pass consult it.
+        self.commits_since_full_verify = 0
+
+        # Commits applied without a disk write (SPEC-bfo-agent-speed.md
+        # change 7, SAVE_EVERY_COMMIT=false). Incremented by commit_proposal
+        # when it skips save(), reset by save(); the orchestrator's flush
+        # points (checkpoint, final pass, pause/runner exit, shutdown) and
+        # the crash-recovery reset consult it.
+        self.unsaved_commits = 0
+
         self._load()
 
     # ------------------------------------------------------------------ load
     def _load(self):
         """(Re)load BFO and working ontology from disk into a fresh World."""
-        for attr in ("_bfo_depth_cache", "_bfo_anchor_cache", "_working_depth_cache"):
-            self.__dict__.pop(attr, None)
-        self.world = World()
-        self.bfo = self.world.get_ontology(str(self.bfo_path)).load()
+        with timing.phase("reload"):
+            for attr in ("_bfo_depth_cache", "_bfo_anchor_cache", "_working_depth_cache"):
+                self.__dict__.pop(attr, None)
+            self.world = World()
+            self.bfo = self.world.get_ontology(str(self.bfo_path)).load()
 
-        if self.working_path.exists():
-            self.working = self.world.get_ontology(
-                self.working_path.as_uri()
-            ).load()
-        else:
-            self.working = self.world.get_ontology(WORKING_IRI)
-            # Import BFO by adding it to the imported_ontologies list
-            self.working.imported_ontologies.append(self.bfo)
-            if self.seed_path and self.seed_path.exists():
-                self._apply_seed()
-            self.save()
+            if self.working_path.exists():
+                self.working = self.world.get_ontology(
+                    self.working_path.as_uri()
+                ).load()
+            else:
+                self.working = self.world.get_ontology(WORKING_IRI)
+                # Import BFO by adding it to the imported_ontologies list
+                self.working.imported_ontologies.append(self.bfo)
+                if self.seed_path and self.seed_path.exists():
+                    self._apply_seed()
+                self.save()
 
-        self._sanitize_bfo_disjointness()
-        self._strip_subclass_of_property()
+            self._sanitize_bfo_disjointness()
+            self._strip_subclass_of_property()
 
-    def _strip_subclass_of_property(self):
+            # Reduced-world indexes (SPEC-bfo-agent-speed.md change 1): built
+            # eagerly only when the feature is live, lazily otherwise
+            # (_ensure_reduced_indexes), so the flag-off path pays nothing.
+            self._individual_iris: Optional[set[str]] = None
+            self._tbox_mirror = None
+            if config.REDUCED_REASONING_WORLD and config.INMEM_DRY_RUN:
+                self._rebuild_reduced_indexes()
+
+            # Commit-time IRI reservations (SPEC-bfo-agent-speed.md change 5):
+            # canonical label key -> existing IRI, so batched proposals that
+            # could not see classes minted by immediately-preceding commits
+            # reuse them instead of minting near-duplicates. Seeded lazily
+            # (None until first use) so the flag-off path pays nothing.
+            self._iri_reservations: Optional[dict[str, str]] = None
+            if config.IRI_RESERVATION_ENABLED:
+                self._seed_iri_reservations()
+
+    def _strip_subclass_of_property(self, world: Optional[World] = None):
         """Drop any ``rdfs:subClassOf`` whose object is a BFO/RO *property*.
 
         A class cannot be a subclass of a relation. owlready2 tries to build a
@@ -144,9 +346,12 @@ class OntologyManager:
         ``PropertyRight subClassOf BFO_0000054`` ("realized in" is a relation).
         We strip such axioms in-memory on every load so one bad committed axiom
         cannot brick the ontology; the gate also rejects them up front.
+
+        ``world`` defaults to the live ``self.world``; the in-memory verify
+        path passes its scratch world so the verdict matches a full reload.
         """
         from rdflib import RDF, RDFS, OWL, URIRef
-        g = self.world.as_rdflib_graph()
+        g = (world or self.world).as_rdflib_graph()
         # Every IRI typed as a property anywhere in the loaded world (BFO closure
         # included), so we catch part_of/realized_in etc. that the curated K_P
         # omits. Detecting from rdf:type is what makes this bulletproof.
@@ -169,7 +374,7 @@ class OntologyManager:
                 "(e.g. PropertyRight subClassOf BFO_0000054)", removed
             )
 
-    def _sanitize_bfo_disjointness(self):
+    def _sanitize_bfo_disjointness(self, world: Optional[World] = None):
         """Drop any owl:disjointWith between two BFO classes in a subclass
         relationship (BFO-correctness guard).
 
@@ -179,11 +384,12 @@ class OntologyManager:
         axiom makes Function (and every individual under it) inconsistent. This
         ran the whole feed to "inconsistent". We strip such axioms in-memory on
         every load, so no ontology -- however it was seeded or hand-edited -- can
-        carry a self-contradicting BFO disjointness. Operates on the live world;
-        the file on disk is untouched unless it is saved later.
+        carry a self-contradicting BFO disjointness. Operates on the live world
+        (or on ``world`` when given -- the in-memory verify path passes its
+        scratch world); the file on disk is untouched unless it is saved later.
         """
         from rdflib import OWL
-        g = self.world.as_rdflib_graph()
+        g = (world or self.world).as_rdflib_graph()
         removed = 0
         for s, o in list(g.subject_objects(OWL.disjointWith)):
             sf = bfo_catalog.normalize_fragment(str(s))
@@ -532,14 +738,134 @@ class OntologyManager:
                 return True
         return False
 
+    # ------------------------- IRI reservations (speed-spec change 5)
+    def _reservation_key(self, kind: str, label: str) -> Optional[str]:
+        body = stable_iri.canonical_key(label)
+        return f"{kind}|{body}" if body else None
+
+    def _seed_iri_reservations(self) -> None:
+        """Build the canonical-label -> IRI reservation map from the working
+        ontology's classes and individuals (first entity wins a collision)."""
+        res: dict[str, str] = {}
+        for kind, entities in (("class", self.working.classes()),
+                               ("individual", self.working.individuals())):
+            for ent in entities:
+                label = (str(ent.label.first()) if ent.label else "") or ent.name
+                key = self._reservation_key(kind, label)
+                if key is not None:
+                    res.setdefault(key, ent.iri)
+        self._iri_reservations = res
+
+    def _update_iri_reservations(self, delta: Optional[AppliedDelta]) -> None:
+        """Fold a successful commit's NEW entities into the reservation map,
+        so the next claim's :meth:`_reserve_iris` sees them. No-op unless
+        IRI_RESERVATION_ENABLED."""
+        if not config.IRI_RESERVATION_ENABLED:
+            return
+        if self._iri_reservations is None or delta is None:
+            # Legacy (no-delta) commits carry no new-entity record: re-walk.
+            # Also seeds on first use when the flag was flipped after load.
+            self._seed_iri_reservations()
+            return
+        for iri in delta.new_entities:
+            ent = self.world[iri]
+            if ent is None:
+                continue
+            kind = "class" if isinstance(ent, type) else "individual"
+            label = (str(ent.label.first()) if ent.label else "") or ent.name
+            key = self._reservation_key(kind, label)
+            if key is not None:
+                self._iri_reservations.setdefault(key, ent.iri)
+
+    def _reserve_iris(self, proposal):
+        """Rewrite NEW entities whose canonical label (stable_iri.canonical_key)
+        already names an EXISTING entity of the same kind to reference that IRI
+        instead of minting a near-duplicate, remapping relation endpoints in
+        lockstep (the same name_map mechanism as stable_iri.remap_proposal).
+
+        Pure: works on a copy; entities with an empty label, reused entities
+        (existing_iri set), and is_new=False entities are left untouched.
+        Batched proposals (SPEC-bfo-agent-speed.md change 5) cannot see classes
+        minted by claims committed just before them; this closes that gap at
+        apply time.
+        """
+        if self._iri_reservations is None:
+            self._seed_iri_reservations()
+        name_map: dict[str, str] = {}
+        changed = False
+        new_entities = []
+        for ent in proposal.entities:
+            label = (getattr(ent, "label", "") or "").strip()
+            reused = bool(getattr(ent, "existing_iri", None))
+            if not label or reused or not getattr(ent, "is_new", True):
+                new_entities.append(ent)
+                continue
+            kind = getattr(ent, "kind", "individual")
+            key = self._reservation_key(kind, label)
+            hit = self._iri_reservations.get(key) if key else None
+            if not hit or not self.iri_exists(hit):
+                new_entities.append(ent)
+                continue
+            old_ref = getattr(ent, "iri_suggestion", "") or label
+            old_local = _local_name(old_ref).split(":")[-1]
+            new_local = _local_name(hit)
+            if old_local and old_local != new_local:
+                name_map[old_local] = new_local
+            new_entities.append(ent.model_copy(update={
+                "iri_suggestion": f"working:{new_local}",
+                "is_new": False,
+                "existing_iri": hit,
+            }))
+            changed = True
+        if not changed:
+            return proposal
+
+        # Remap relation endpoints token-wise so compound objects
+        # ("not working:X", "PROP some working:X") keep their operators.
+        new_relations = []
+        for rel in proposal.relations:
+            upd = {}
+            for f in ("s", "o"):
+                val = getattr(rel, f, "") or ""
+                toks = val.split(" ")
+                hit_any = False
+                out_toks = []
+                for t in toks:
+                    loc = _local_name(t).split(":")[-1]
+                    if loc in name_map:
+                        out_toks.append(f"working:{name_map[loc]}")
+                        hit_any = True
+                    else:
+                        out_toks.append(t)
+                if hit_any:
+                    upd[f] = " ".join(out_toks)
+            new_relations.append(rel.model_copy(update=upd) if upd else rel)
+
+        return proposal.model_copy(
+            update={"entities": new_entities, "relations": new_relations}
+        )
+
     # -------------------------------------------------- apply a proposal
-    def apply_proposal(self, proposal) -> list[str]:
+    def apply_proposal(
+        self, proposal, delta: Optional[AppliedDelta] = None
+    ) -> list[str]:
         """Mutate the current world with entities/relations from a proposal.
 
         Returns a list of warning strings; raises on hard failures.
         Does NOT save to disk. Caller decides whether to save or reload.
+
+        ``delta`` (SPEC-bfo-agent-speed.md change 2): optional out-param that
+        records every mutation performed, so :meth:`rollback` can undo the
+        apply exactly without reloading from disk.
         """
         warnings: list[str] = []
+
+        # Commit-time IRI reservation (speed-spec change 5): rewrite new
+        # entities whose canonical label already names a committed entity of
+        # the same kind to reuse that IRI -- BEFORE the stable-IRI remap so
+        # reserved (now reused) entities are never re-hashed.
+        if config.IRI_RESERVATION_ENABLED:
+            proposal = self._reserve_iris(proposal)
 
         # FR-6: deterministic, diffable individual IRIs (opt-in). Relation
         # endpoints are remapped in lockstep, so this is verdict-neutral.
@@ -548,24 +874,44 @@ class OntologyManager:
                 proposal, source=getattr(proposal, "utterance", "") or ""
             )
 
-        with self.working:
+        with timing.phase("apply"), self.working:
             # Entities first so relations can reference them
             for ent in proposal.entities:
                 try:
-                    self._add_entity(ent)
+                    self._add_entity(ent, delta=delta)
                 except Exception as e:
                     warnings.append(f"Entity '{ent.label}' failed: {e}")
 
             for rel in proposal.relations:
                 try:
-                    self._add_relation(rel)
+                    self._add_relation(rel, delta=delta)
                 except Exception as e:
                     warnings.append(f"Relation {rel.s} {rel.p} {rel.o} failed: {e}")
 
         return warnings
 
-    def _add_entity(self, ent):
+    def _resolve_entity(self, iri: str, local: str):
+        """Resolve an existing entity by full IRI, then by local name over the
+        working ontology (same discipline as :meth:`iri_exists`: owlready2
+        sometimes serializes under a file:// base, so two IRIs can name the
+        same entity without being string-equal). Returns None when absent."""
+        ent = self.world[iri]
+        if ent is not None:
+            return ent
+        if not local:
+            return None
+        for e in list(self.working.classes()) + list(self.working.individuals()):
+            if e.name == local:
+                return e
+        return None
+
+    def _add_entity(self, ent, delta: Optional[AppliedDelta] = None):
         iri = _resolve_iri(ent.iri_suggestion, WORKING_IRI)
+        if owl_checks.iri_is_malformed(iri):
+            raise ValueError(
+                f"malformed IRI {iri!r} (H-1: fragment must be a valid token; "
+                f"put display text in the label)"
+            )
         name = _local_name(iri)
 
         # Resolve the BFO (or working) type class
@@ -574,6 +920,19 @@ class OntologyManager:
         if type_cls is None:
             raise ValueError(f"Type class not found: {ent.bfo_type} -> {type_full}")
 
+        # Delta capture: detect existence BEFORE creating. types.new_class /
+        # type_cls(name) REOPEN an existing entity with the same name rather
+        # than create one, so we must know up front whether this apply is a
+        # create (rollback: destroy) or a reuse (rollback: remove the diff).
+        existing = None
+        before_is_a: list = []
+        before_labels: list = []
+        if delta is not None:
+            existing = self._resolve_entity(iri, name)
+            if existing is not None:
+                before_is_a = list(existing.is_a)
+                before_labels = [str(l) for l in existing.label]
+
         if ent.kind == "class":
             parent_full = (
                 _resolve_iri(ent.parent_class, WORKING_IRI)
@@ -581,13 +940,31 @@ class OntologyManager:
                 else type_full
             )
             parent_cls = self.world[parent_full] or type_cls
-            new_cls = types.new_class(name, (parent_cls,))
-            new_cls.label = [ent.label]
+            obj = types.new_class(name, (parent_cls,))
+            obj.label = [ent.label]
         else:
-            ind = type_cls(name, namespace=self.working)
-            ind.label = [ent.label]
+            obj = type_cls(name, namespace=self.working)
+            obj.label = [ent.label]
 
-    def _add_relation(self, rel):
+        if delta is not None:
+            if existing is not None and obj is existing:
+                # Reused/reopened entity: record exactly what changed.
+                for m in obj.is_a:
+                    if not any(m is b for b in before_is_a):
+                        delta.is_a_added.append((obj.iri, m))
+                after_labels = [str(l) for l in obj.label]
+                for l in after_labels:
+                    if l not in before_labels:
+                        delta.label_added.append((obj.iri, l))
+                for l in before_labels:
+                    if l not in after_labels:
+                        delta.label_removed.append((obj.iri, l))
+            else:
+                # Genuinely new entity. Use the created object's .iri: it can
+                # differ from the resolved string (file:// serialization base).
+                delta.new_entities.append(obj.iri)
+
+    def _add_relation(self, rel, delta: Optional[AppliedDelta] = None):
         """Add a triple. Handles rdfs:subClassOf, rdf:type, and object properties.
 
         The proposer sometimes expresses an existential restriction as the
@@ -606,6 +983,32 @@ class OntologyManager:
         from rdflib import URIRef
 
         o_raw = (rel.o or "").strip()
+
+        # Sanctioned class-expression object on a subClassOf edge (FIX-1 /
+        # X-1..X-3): materialise via owlready2 as a real anonymous construct.
+        # This also recovers the 'owl:complementOf working:X' form the DSM run
+        # baked into fabricated IRIs.
+        expr = owl_checks.parse_class_expression(o_raw)
+        if expr is not None and "subClassOf" in (rel.p or ""):
+            # never mutate an imported BFO/RO/IAO kernel class
+            if "obolibrary.org/obo/" in _resolve_iri(rel.s, WORKING_IRI):
+                raise ValueError(
+                    f"refusing to add a class expression to kernel class "
+                    f"{rel.s}; anchor a SOoL subclass instead"
+                )
+            if self.add_class_expression(rel.s, expr, delta=delta):
+                return
+            if expr["op"] == "some":
+                raise ValueError(
+                    f"unresolvable restriction ({expr['prop']} some "
+                    f"{expr['filler']}) on {rel.s}; skipped rather than mint "
+                    f"a dangling IRI"
+                )
+            raise ValueError(
+                f"unresolvable class expression {o_raw!r} on {rel.s}; "
+                f"skipped rather than mint a malformed IRI"
+            )
+
         if o_raw.startswith("_:"):
             parts = o_raw.split()
             # "_:bnode PROP FILLER" on a subClassOf edge -> existential restriction
@@ -617,7 +1020,9 @@ class OntologyManager:
                         f"refusing to add a restriction to kernel class {rel.s}; "
                         f"anchor a SOoL subclass instead"
                     )
-                if self.add_existential_restriction(rel.s, prop_tok, filler_tok):
+                if self.add_existential_restriction(
+                    rel.s, prop_tok, filler_tok, delta=delta
+                ):
                     return
                 raise ValueError(
                     f"unresolvable restriction ({prop_tok} some {filler_tok}) "
@@ -633,11 +1038,72 @@ class OntologyManager:
         p_iri = _resolve_iri(rel.p, WORKING_IRI)
         o_iri = _resolve_iri(rel.o, WORKING_IRI)
 
+        # H-1 / X-1 write-path guard: never persist an IRI carrying whitespace
+        # or a templated OWL construct name. Reasoners silently drop such
+        # axioms, so writing them loses content while looking successful.
+        for iri in (s_iri, p_iri, o_iri):
+            if owl_checks.iri_is_malformed(iri):
+                raise ValueError(
+                    f"malformed IRI {iri!r}; skipped rather than persist an "
+                    f"axiom every reasoner would drop"
+                )
+
         g = self.world.as_rdflib_graph()
-        g.add((URIRef(s_iri), URIRef(p_iri), URIRef(o_iri)))
+        triple = (URIRef(s_iri), URIRef(p_iri), URIRef(o_iri))
+        # Record only triples that were genuinely NEW: rolling back a triple
+        # that already existed before this apply would erase committed content.
+        preexisting = delta is not None and triple in g
+        g.add(triple)
+        if delta is not None and not preexisting:
+            delta.raw_triples.append((s_iri, p_iri, o_iri))
 
     # --------------------------------------------------- consistency check
     def check_consistency_dry_run(self, proposal) -> tuple[bool, str]:
+        """Apply the proposal, reason, then discard. Returns (is_consistent,
+        message).
+
+        With INMEM_DRY_RUN (SPEC-bfo-agent-speed.md change 2): apply to the
+        live world under an :class:`AppliedDelta`, roll back exactly, and
+        reason in a disposable scratch world -- zero disk reads of
+        working.owl. Flag off: the legacy load-apply-reason-reload path,
+        byte-identical to before.
+        """
+        if not config.INMEM_DRY_RUN:
+            return self._check_consistency_dry_run_legacy(proposal)
+
+        delta = AppliedDelta()
+        try:
+            warnings = self.apply_proposal(proposal, delta=delta)
+            try:
+                self._proposal_guards(delta)
+            except ValueError as e:
+                return False, f"proposal guard: {e}"
+            # Snapshot INCLUDES the delta. Reduced world (speed change 1):
+            # BFO + TBox + touched individuals only; else the full graph.
+            if config.REDUCED_REASONING_WORLD:
+                w, _onto = self._reduced_world(proposal, delta)
+            else:
+                w, _onto = self._scratch_world()
+        finally:
+            self.rollback(delta)
+
+        buf = io.StringIO()
+        try:
+            with redirect_stdout(buf), redirect_stderr(buf):
+                with timing.phase("reason_dry_run"):
+                    with _REASONER_LOCK, w:
+                        _sync_reasoner_guarded(w)
+        except Exception as e:
+            return False, f"Reasoner error: {e}\n{buf.getvalue()}"
+
+        output = buf.getvalue()
+        inconsistent_markers = ["Inconsistent", "inconsistent", "UnsatisfiableClass"]
+        if any(m in output for m in inconsistent_markers):
+            return False, output
+        warn_prefix = ("Warnings: " + "; ".join(warnings)) if warnings else ""
+        return True, (warn_prefix + "\n" + output).strip()
+
+    def _check_consistency_dry_run_legacy(self, proposal) -> tuple[bool, str]:
         """Apply the proposal to a fresh copy, reason, then discard.
 
         Returns (is_consistent, message).
@@ -649,8 +1115,9 @@ class OntologyManager:
         buf = io.StringIO()
         try:
             with redirect_stdout(buf), redirect_stderr(buf):
-                with _REASONER_LOCK, self.world:
-                    sync_reasoner(self.world, infer_property_values=False)
+                with timing.phase("reason_dry_run"):
+                    with _REASONER_LOCK, self.world:
+                        _sync_reasoner_guarded(self.world)
         except Exception as e:
             # HermiT raises on inconsistency in some versions; in others it
             # just prints. We try to surface both.
@@ -667,7 +1134,524 @@ class OntologyManager:
         warn_prefix = ("Warnings: " + "; ".join(warnings)) if warnings else ""
         return True, (warn_prefix + "\n" + output).strip()
 
-    def check_coherence_dry_run(self, proposal) -> tuple[bool, list[str], str]:
+    def _retract_axiom_triples(
+        self,
+        triples: Optional[list[dict]],
+        delta: Optional[AppliedDelta] = None,
+        world: Optional[World] = None,
+        ontology=None,
+    ) -> int:
+        """Remove named-parent subClassOf edges from the IN-MEMORY world only.
+
+        Faithful-extraction support (fidelity-mode-spec.md FM-9): the ledgered
+        clash axioms are retracted on the dry-run/verify copy so reasoning
+        evaluates the coherent view. The persisted file is never touched --
+        legacy callers reload via :meth:`_load` afterwards; the in-memory
+        dry-run path passes ``delta`` so :meth:`rollback` restores the edges.
+        ``world``/``ontology`` (in-memory verify path) resolve classes in a
+        scratch world instead of the live one. Returns the number of edges
+        actually removed.
+        """
+        world = world if world is not None else self.world
+        ontology = ontology if ontology is not None else self.working
+        removed = 0
+        for t in triples or []:
+            if "subClassOf" not in (t.get("p") or ""):
+                continue
+            cls = world[_resolve_iri(t["s"], WORKING_IRI)]
+            if cls is None:
+                local = _local_name(t["s"])
+                cls = next(
+                    (c for c in ontology.classes() if c.name == local),
+                    None,
+                )
+            parent = world[_resolve_iri(t["o"], WORKING_IRI)]
+            if cls is None or parent is None:
+                continue
+            try:
+                if parent in cls.is_a:
+                    cls.is_a.remove(parent)
+                    removed += 1
+                    if delta is not None:
+                        delta.retracted.append((cls.iri, parent.iri))
+            except Exception:
+                continue
+        return removed
+
+    # -------------------------------------- in-memory dry-run (speed change 2)
+    def rollback(self, delta: AppliedDelta) -> None:
+        """Undo exactly the mutations recorded in ``delta`` on the live world.
+
+        Best-effort per item: a rollback must remove as much as it can and
+        never abort halfway, so each step is individually guarded and logged.
+        Order matters: destroying new entities first sweeps every triple that
+        references them (making later per-triple removals harmless no-ops),
+        and FM-9 retractions are restored last.
+        """
+        from rdflib import URIRef
+
+        with self.working:
+            # 1. New entities, reverse creation order. destroy_entity removes
+            #    ALL triples referencing the entity, including raw triples that
+            #    touch it -- later removals are then no-ops.
+            for iri in reversed(delta.new_entities):
+                try:
+                    ent = self._resolve_entity(iri, _local_name(iri))
+                    if ent is not None:
+                        destroy_entity(ent)
+                except Exception:
+                    log.warning("rollback: could not destroy %s", iri,
+                                exc_info=True)
+
+            # 2. is_a members appended to pre-existing entities.
+            for iri, obj in delta.is_a_added:
+                try:
+                    ent = self._resolve_entity(iri, _local_name(iri))
+                    if ent is not None and obj in ent.is_a:
+                        ent.is_a.remove(obj)
+                except Exception:
+                    log.warning("rollback: could not remove is_a %r from %s",
+                                obj, iri, exc_info=True)
+
+            # 3. Labels appended to / dropped from pre-existing entities.
+            for iri, lbl in delta.label_added:
+                try:
+                    ent = self._resolve_entity(iri, _local_name(iri))
+                    if ent is not None and lbl in ent.label:
+                        ent.label.remove(lbl)
+                except Exception:
+                    log.warning("rollback: could not remove label %r from %s",
+                                lbl, iri, exc_info=True)
+            for iri, lbl in delta.label_removed:
+                try:
+                    ent = self._resolve_entity(iri, _local_name(iri))
+                    if ent is not None and lbl not in ent.label:
+                        ent.label.append(lbl)
+                except Exception:
+                    log.warning("rollback: could not restore label %r on %s",
+                                lbl, iri, exc_info=True)
+
+            # 4. Raw triples (no-op if already swept by destroy_entity).
+            g = self.world.as_rdflib_graph()
+            for s, p, o in delta.raw_triples:
+                try:
+                    g.remove((URIRef(s), URIRef(p), URIRef(o)))
+                except Exception:
+                    log.warning("rollback: could not remove triple %s %s %s",
+                                s, p, o, exc_info=True)
+
+            # 5. Restore FM-9 exclusions retracted for this dry-run.
+            for cls_iri, parent_iri in delta.retracted:
+                try:
+                    cls = self._resolve_entity(cls_iri, _local_name(cls_iri))
+                    parent = self.world[parent_iri]
+                    if (cls is not None and parent is not None
+                            and parent not in cls.is_a):
+                        cls.is_a.append(parent)
+                except Exception:
+                    log.warning("rollback: could not restore %s subClassOf %s",
+                                cls_iri, parent_iri, exc_info=True)
+
+        # 6. The memoized maps may have been built while the delta was applied.
+        for attr in ("_bfo_depth_cache", "_bfo_anchor_cache",
+                     "_working_depth_cache"):
+            self.__dict__.pop(attr, None)
+
+    def _scratch_world(self) -> tuple:
+        """Disposable World for reasoning: BFO from disk + the CURRENT live
+        working graph serialized to an in-memory buffer. The live world is
+        already sanitized (startup _load); no re-sanitize, no disk read of
+        working.owl. HermiT inferences land in this world and die with it,
+        so the persistent world can never be polluted by reasoning."""
+        with timing.phase("scratch_build"):
+            w = World()
+            w.get_ontology(str(self.bfo_path)).load()
+            buf = io.BytesIO()
+            self.working.save(file=buf, format="rdfxml")
+            buf.seek(0)
+            onto = w.get_ontology(self.working_path.as_uri()).load(fileobj=buf)
+        return w, onto
+
+    def _proposal_guards(self, delta: AppliedDelta) -> None:
+        """Targeted per-proposal re-run of the two load-time sanitizer guards
+        over ONLY the delta (bounded by proposal size). The full-graph sweeps
+        still run at startup (:meth:`_load`) and on every scratch verify
+        world; this closes the gap for the in-memory dry-run path, which no
+        longer reloads. Raises ValueError on a violation.
+        """
+        for s, p, o in delta.raw_triples:
+            if p == _OWL_DISJOINT_IRI:
+                sf = bfo_catalog.normalize_fragment(s)
+                of = bfo_catalog.normalize_fragment(o)
+                if (sf in bfo_catalog.KERNEL_CLASSES
+                        and of in bfo_catalog.KERNEL_CLASSES
+                        and (bfo_catalog.is_descendant_of(sf, of)
+                             or bfo_catalog.is_descendant_of(of, sf))):
+                    raise ValueError(
+                        f"invalid BFO subclass-pair disjointness axiom "
+                        f"({sf} disjointWith {of}): a class disjoint with its "
+                        f"own ancestor/descendant is unsatisfiable"
+                    )
+            elif p == _RDFS_SUBCLASSOF_IRI:
+                if isinstance(self.world[o], PropertyClass):
+                    raise ValueError(
+                        f"subClassOf-a-property axiom ({s} subClassOf {o}): "
+                        f"a class cannot be a subclass of a relation"
+                    )
+        for iri, obj in delta.is_a_added:
+            if isinstance(obj, PropertyClass):
+                raise ValueError(
+                    f"subClassOf-a-property axiom ({iri} subClassOf "
+                    f"{getattr(obj, 'iri', obj)}): a class cannot be a "
+                    f"subclass of a relation"
+                )
+
+    # ------------------------------------ reduced world (speed change 1)
+    def _working_context(self):
+        """rdflib view restricted to EXACTLY the working ontology's triples.
+
+        owlready2's rdflib store exposes each loaded ontology as a named
+        context; ``get_context(self.working)`` therefore yields the working
+        ontology's content without any of BFO's triples (verified empirically
+        on owlready2 0.50: a fresh working ontology shows only its header +
+        imports triples while the world graph also holds BFO's ~1400).
+        Subject-keyed lookups on it are SQL-indexed, not full scans.
+        """
+        return self.world.as_rdflib_graph().get_context(self.working)
+
+    def _rebuild_reduced_indexes(self) -> None:
+        """(Re)build the persistent TBox mirror + individual index.
+
+        ``_individual_iris``: full IRIs of every working individual.
+        ``_tbox_mirror``: every working-ontology triple whose subject is NOT
+        an individual -- named classes, properties, blank-node restriction
+        clusters, and the ontology header (owl:Ontology + imports), which the
+        reduced buffer must carry so owlready2 recognizes the ontology.
+        Called from _load (feature on), lazily on first use, and at every
+        verify_full checkpoint (drift guard for the incremental appends).
+        """
+        import rdflib
+        from rdflib import URIRef
+
+        self._individual_iris = {i.iri for i in self.working.individuals()}
+        mirror = rdflib.Graph()
+        inds = self._individual_iris
+        for s, p, o in self._working_context():
+            if isinstance(s, URIRef) and str(s) in inds:
+                continue
+            mirror.add((s, p, o))
+        self._tbox_mirror = mirror
+
+    def _ensure_reduced_indexes(self) -> None:
+        if getattr(self, "_tbox_mirror", None) is None:
+            self._rebuild_reduced_indexes()
+
+    @staticmethod
+    def _copy_subject_closure(src, dst, subj) -> None:
+        """Copy all of ``subj``'s subject-triples from ``src`` to ``dst``,
+        following blank-node objects transitively so restriction/complement
+        clusters (and any rdf:List inside them) arrive whole. A dangling
+        bnode reference would silently drop the constraint on reparse."""
+        from rdflib import BNode
+
+        stack, seen = [subj], set()
+        while stack:
+            s = stack.pop()
+            if s in seen:
+                continue
+            seen.add(s)
+            for t in src.triples((s, None, None)):
+                dst.add(t)
+                if isinstance(t[2], BNode):
+                    stack.append(t[2])
+
+    def _refresh_mirror_subject(self, iri: str) -> None:
+        """Re-copy one non-individual subject from the live working graph
+        into the TBox mirror (incremental maintenance after a commit or a
+        scaffolding write). Old bnode clusters may be orphaned in the mirror
+        until the next checkpoint rebuild; a detached restriction bnode is
+        semantically inert, so that is drift-free for reasoning."""
+        from rdflib import URIRef
+
+        subj = URIRef(iri)
+        self._tbox_mirror.remove((subj, None, None))
+        self._copy_subject_closure(self._working_context(), self._tbox_mirror, subj)
+
+    def _delta_new_individuals(self, delta: AppliedDelta) -> set[str]:
+        """IRIs among delta.new_entities that resolve to individuals. Must be
+        called while the delta is still applied (entities exist in the world)."""
+        out: set[str] = set()
+        for iri in delta.new_entities:
+            ent = self._resolve_entity(iri, _local_name(iri))
+            if ent is not None and not isinstance(ent, type):
+                out.add(iri)
+        return out
+
+    def _delta_class_subjects(
+        self, delta: AppliedDelta, new_individuals: set[str]
+    ) -> set[str]:
+        """Non-individual subjects the delta touched: the class-level content
+        that is NOT in the TBox mirror yet (the mirror updates on commit)."""
+        inds = (self._individual_iris or set()) | new_individuals
+        subjects: set[str] = set()
+        for iri in delta.new_entities:
+            if iri not in new_individuals:
+                subjects.add(iri)
+        for iri, _obj in delta.is_a_added:
+            if iri not in inds:
+                subjects.add(iri)
+        for iri, _lbl in delta.label_added:
+            if iri not in inds:
+                subjects.add(iri)
+        for iri, _lbl in delta.label_removed:
+            if iri not in inds:
+                subjects.add(iri)
+        for s, _p, _o in delta.raw_triples:
+            if s not in inds:
+                subjects.add(s)
+        for cls_iri, _parent in delta.retracted:
+            if cls_iri not in inds:
+                subjects.add(cls_iri)
+        return subjects
+
+    def _update_reduced_indexes(self, delta: Optional[AppliedDelta]) -> None:
+        """Incrementally fold a COMMITTED delta into the persistent indexes.
+
+        New individuals extend ``_individual_iris``; every non-individual
+        subject the delta touched is re-copied from the live graph into the
+        TBox mirror (bnode closure included) -- copy-from-live rather than
+        manual triple construction, so restriction clusters and owlready2's
+        auto-materialized companions can never drift from the real graph.
+        Dry-run deltas never reach here (they roll back before commit).
+        """
+        if delta is None or getattr(self, "_tbox_mirror", None) is None:
+            return
+        new_inds = self._delta_new_individuals(delta)
+        subjects = self._delta_class_subjects(delta, new_inds)
+        self._individual_iris |= new_inds
+        for iri in subjects:
+            self._refresh_mirror_subject(iri)
+
+    def _touched_individual_iris(self, proposal, delta: AppliedDelta) -> set[str]:
+        """Full IRIs of every working individual this proposal touches.
+
+        Union of: delta-created individuals; delta mutations whose subject or
+        raw-triple endpoint is an individual (these carry the ACTUAL IRIs,
+        surviving stable-IRI remaps); proposal entities with kind != "class"
+        (existing_iri reuse included) and relation endpoints, resolved full-IRI
+        first then by local name. Must run while the delta is applied.
+        """
+        self._ensure_reduced_indexes()
+        new_inds = self._delta_new_individuals(delta)
+        known = self._individual_iris | new_inds
+        by_local = {_local_name(i): i for i in known}
+        touched: set[str] = set(new_inds)
+
+        def resolve(ref: Optional[str]) -> Optional[str]:
+            if not ref:
+                return None
+            full = _resolve_iri(ref, WORKING_IRI)
+            if full in known:
+                return full
+            return by_local.get(_local_name(ref))
+
+        for ent in proposal.entities:
+            if ent.kind != "class":
+                for ref in (getattr(ent, "existing_iri", None),
+                            ent.iri_suggestion):
+                    r = resolve(ref)
+                    if r:
+                        touched.add(r)
+        for rel in proposal.relations:
+            for ref in (rel.s, rel.o):
+                r = resolve(ref)
+                if r:
+                    touched.add(r)
+        for iri, _obj in delta.is_a_added:
+            if iri in known:
+                touched.add(iri)
+        for iri, _lbl in delta.label_added:
+            if iri in known:
+                touched.add(iri)
+        for iri, _lbl in delta.label_removed:
+            if iri in known:
+                touched.add(iri)
+        for s, _p, o in delta.raw_triples:
+            if s in known:
+                touched.add(s)
+            if o in known:
+                touched.add(o)
+        return touched
+
+    def _reduced_world(self, proposal, delta: AppliedDelta) -> tuple:
+        """Fresh World for dry-run reasoning: BFO + working TBox mirror + only
+        the individuals touched by this proposal (SPEC change 1). Sound for
+        class satisfiability and the proposal's own assertions; may miss a
+        new-axiom x distant-individual interaction -- the checkpoint/final
+        verify_full (change 6) closes that gap.
+
+        Must be called while the delta is still applied to the live world:
+        the proposal's own triples are then picked up naturally from the live
+        graph (the same content commit would write). Class-level delta content
+        is refreshed from the live graph explicitly because the mirror only
+        updates on commit; FM-9 retractions are dropped from the buffer (the
+        persistent mirror still carries them until the next rebuild).
+        """
+        import rdflib
+        from rdflib import RDFS, URIRef
+
+        with timing.phase("scratch_build"):
+            self._ensure_reduced_indexes()
+            live = self._working_context()
+            g = rdflib.Graph()
+            for t in self._tbox_mirror:
+                g.add(t)
+
+            # Delta's class-level content (new classes, restriction bnode
+            # clusters, raw class-level triples): refresh each touched
+            # non-individual subject from the live graph, dropping the
+            # mirror's (possibly stale, e.g. replaced-label) version first.
+            new_inds = self._delta_new_individuals(delta)
+            for iri in self._delta_class_subjects(delta, new_inds):
+                subj = URIRef(iri)
+                g.remove((subj, None, None))
+                self._copy_subject_closure(live, g, subj)
+            # FM-9 exclusions: retracted from the live graph already, but the
+            # persistent mirror may still carry the edge -- drop it here.
+            for cls_iri, parent_iri in delta.retracted:
+                g.remove((URIRef(cls_iri), RDFS.subClassOf, URIRef(parent_iri)))
+
+            # Touched individuals' assertions, plus depth-1 pull-in: any
+            # individual a touched one references gets its own subject
+            # triples too (one level, no recursion beyond that). Inverse
+            # assertions owlready2 auto-materializes ride along as the
+            # neighbour's subject-triples.
+            known = self._individual_iris | new_inds
+            touched = self._touched_individual_iris(proposal, delta)
+            neighbours: set[str] = set()
+            for iri in touched:
+                for _s, _p, o in live.triples((URIRef(iri), None, None)):
+                    if isinstance(o, URIRef) and str(o) in known:
+                        neighbours.add(str(o))
+                self._copy_subject_closure(live, g, URIRef(iri))
+            for iri in neighbours - touched:
+                self._copy_subject_closure(live, g, URIRef(iri))
+
+            # The delta's raw triples verbatim (idempotent for those already
+            # copied above; covers e.g. an assertion onto a BFO-side subject).
+            for s, p, o in delta.raw_triples:
+                g.add((URIRef(s), URIRef(p), URIRef(o)))
+
+            data = g.serialize(format="xml")
+            if isinstance(data, str):
+                data = data.encode("utf-8")
+            w = World()
+            w.get_ontology(str(self.bfo_path)).load()
+            onto = w.get_ontology(self.working_path.as_uri()).load(
+                fileobj=io.BytesIO(data)
+            )
+        return w, onto
+
+    def proposal_touched_iris(self, proposal) -> set[str]:
+        """Local-name fragments of every class a proposal ASSERTS an axiom
+        about: created/typed entities (and their parents) plus the subject and
+        object of every relation. Used by the reasoner tier to tell a class the
+        proposal made unsatisfiable from a pre-existing (already-committed)
+        unsatisfiable class it merely inherited into the world -- the latter
+        must not poison every later proposal (the incoherence-cascade bug).
+        Fragments, not full IRIs, because owlready2 may serialize under a
+        file:// base so two IRIs can name the same class without string-equal.
+        """
+        frags: set[str] = set()
+
+        def _add(ref: Optional[str]) -> None:
+            if not ref:
+                return
+            try:
+                full = _resolve_iri(ref, WORKING_IRI)
+            except Exception:
+                return
+            frags.add(_local_name(full))
+
+        for ent in getattr(proposal, "entities", None) or []:
+            _add(getattr(ent, "iri_suggestion", None))
+            _add(getattr(ent, "parent_class", None))
+        for rel in getattr(proposal, "relations", None) or []:
+            _add(getattr(rel, "s", None))
+            o_raw = (getattr(rel, "o", None) or "").strip()
+            # A class-expression / restriction object names its filler class;
+            # count that filler as touched too.
+            expr = owl_checks.parse_class_expression(o_raw)
+            if expr is not None:
+                _add(expr.get("filler"))
+            elif not o_raw.startswith("_:"):
+                _add(o_raw)
+        return frags
+
+    def check_coherence_dry_run(
+        self, proposal, exclude_axioms: Optional[list[dict]] = None
+    ) -> tuple[bool, list[str], str]:
+        """Apply the proposal, reason, and report COHERENCE.
+
+        Returns (is_coherent, unsatisfiable_class_iris, detail).
+
+        With INMEM_DRY_RUN (SPEC-bfo-agent-speed.md change 2): apply to the
+        live world under an :class:`AppliedDelta` (FM-9 exclusions retracted
+        under the same delta), run the targeted per-proposal sanitizer guards,
+        serialize the live graph to a disposable scratch world, roll the live
+        world back exactly, then reason in the scratch world only -- zero disk
+        reads of working.owl and no possibility of inference pollution. Flag
+        off: the legacy load-apply-reason-reload path, byte-identical.
+        """
+        if not config.INMEM_DRY_RUN:
+            return self._check_coherence_dry_run_legacy(proposal, exclude_axioms)
+
+        delta = AppliedDelta()
+        try:
+            self.apply_proposal(proposal, delta=delta)
+            if exclude_axioms:
+                self._retract_axiom_triples(exclude_axioms, delta=delta)
+            try:
+                self._proposal_guards(delta)
+            except ValueError as e:
+                return False, [], f"proposal guard: {e}"
+            # Snapshot INCLUDES the delta. Reduced world (speed change 1):
+            # BFO + TBox + touched individuals only; else the full graph.
+            if config.REDUCED_REASONING_WORLD:
+                w, _onto = self._reduced_world(proposal, delta)
+            else:
+                w, _onto = self._scratch_world()
+        finally:
+            self.rollback(delta)
+
+        buf = io.StringIO()
+        try:
+            with redirect_stdout(buf), redirect_stderr(buf):
+                with timing.phase("reason_dry_run"):
+                    with _REASONER_LOCK, w:
+                        _sync_reasoner_guarded(w)
+        except Exception as e:
+            # Reasoner exception == outright inconsistent (strictly worse than
+            # incoherent). Surface it as incoherent so the gate rejects.
+            return False, [], (
+                f"Reasoner error (inconsistent): {e}\n{buf.getvalue()}".strip()
+            )
+
+        # Nothing is per-world in owlready2: compare by IRI, not identity.
+        unsat = [
+            c.iri for c in w.inconsistent_classes() if c.iri != _NOTHING_IRI
+        ]
+        output = buf.getvalue().strip()
+        if unsat:
+            detail = "Unsatisfiable classes: " + ", ".join(unsat)
+            if output:
+                detail += "\n" + output
+            return False, unsat, detail
+        return True, [], output
+
+    def _check_coherence_dry_run_legacy(
+        self, proposal, exclude_axioms: Optional[list[dict]] = None
+    ) -> tuple[bool, list[str], str]:
         """Apply the proposal to a fresh copy, reason, and report COHERENCE.
 
         Coherence is distinct from consistency. HermiT does not raise or print
@@ -677,16 +1661,23 @@ class OntologyManager:
         ask owlready2 for the inferred unsatisfiable classes directly rather
         than grepping reasoner stdout.
 
+        ``exclude_axioms`` (faithful mode, FM-9): ledgered clash axioms to
+        retract from the dry-run copy so the candidate is judged against the
+        coherent view rather than against previously flagged incoherence.
+
         Returns (is_coherent, unsatisfiable_class_iris, detail).
         """
         self._load()
         self.apply_proposal(proposal)
+        if exclude_axioms:
+            self._retract_axiom_triples(exclude_axioms)
 
         buf = io.StringIO()
         try:
             with redirect_stdout(buf), redirect_stderr(buf):
-                with _REASONER_LOCK, self.world:
-                    sync_reasoner(self.world, infer_property_values=False)
+                with timing.phase("reason_dry_run"):
+                    with _REASONER_LOCK, self.world:
+                        _sync_reasoner_guarded(self.world)
         except Exception as e:
             # A reasoner exception means the ontology is outright inconsistent,
             # which is strictly worse than incoherent. Surface it as incoherent
@@ -737,8 +1728,47 @@ class OntologyManager:
             pass
         return anchors
 
+    def committed_individual_anchors(self, ref: str) -> set[str]:
+        """Return all BFO category fragments among an existing INDIVIDUAL's types.
+
+        Mirrors :meth:`committed_bfo_anchors` for the ABox
+        (SPEC-bfo-agent-speed.md change 3): resolve ``ref`` to an individual
+        (full IRI first, then local-name fallback), then collect the BFO
+        fragments among the ancestors of every asserted type. Used by the
+        gate's lint tier to fold an individual's already-committed types into
+        the straddle test. Returns an empty set for a reference that does not
+        resolve to an existing individual.
+        """
+        full = _resolve_iri(ref, WORKING_IRI)
+        ind = self.world[full]
+        if ind is None or isinstance(ind, type):
+            local = _local_name(ref)
+            try:
+                ind = next(
+                    (i for i in self.working.individuals() if i.name == local),
+                    None,
+                )
+            except Exception:
+                ind = None
+        if ind is None or isinstance(ind, type) or not hasattr(ind, "is_a"):
+            return set()
+        anchors: set[str] = set()
+        try:
+            for t in ind.is_a:
+                if not hasattr(t, "ancestors"):
+                    continue
+                for anc in t.ancestors():
+                    if hasattr(anc, "iri"):
+                        frag = _local_name(anc.iri)
+                        if frag.startswith("BFO_"):
+                            anchors.add(frag)
+        except Exception:
+            pass
+        return anchors
+
     def add_existential_restriction(
-        self, class_ref: str, prop_frag: str, filler_frag: str
+        self, class_ref: str, prop_frag: str, filler_frag: str,
+        delta: Optional[AppliedDelta] = None,
     ) -> bool:
         """Add `class_ref SubClassOf (prop some filler)` to the live world.
 
@@ -746,7 +1776,8 @@ class OntologyManager:
         under a dependent BFO category into an actual constraint (e.g. a
         quality that inheres_in some independent continuant). Returns True if
         applied, False if the class or property could not be resolved. Does
-        NOT save; the caller decides.
+        NOT save; the caller decides. ``delta`` records the appended is_a
+        member for exact rollback (scaffolding callers pass none).
         """
         cls = self.world[_resolve_iri(class_ref, WORKING_IRI)]
         if cls is None:
@@ -758,7 +1789,107 @@ class OntologyManager:
             return False
         with self.working:
             try:
-                cls.is_a.append(prop.some(filler))
+                restriction = prop.some(filler)
+                cls.is_a.append(restriction)
+            except Exception:
+                return False
+        if delta is not None:
+            delta.is_a_added.append((cls.iri, restriction))
+        elif getattr(self, "_tbox_mirror", None) is not None:
+            # Delta-less caller (scaffolding) writes for keeps: keep the
+            # reduced-world TBox mirror in step (speed change 1).
+            self._refresh_mirror_subject(cls.iri)
+        return True
+
+    def add_class_expression(
+        self, class_ref: str, expr: dict,
+        delta: Optional[AppliedDelta] = None,
+    ) -> bool:
+        """Materialise a parsed sanctioned expression (owl_checks.
+        parse_class_expression) as a real anonymous construct on class_ref:
+
+            {"op": "some", ...}      -> class_ref SubClassOf (prop some filler)
+            {"op": "not", ...}       -> class_ref SubClassOf Not(cls)
+            {"op": "not_some", ...}  -> class_ref SubClassOf Not(prop some filler)
+
+        Returns True if applied, False if any operand failed to resolve.
+        Does NOT save; the caller decides."""
+        from owlready2 import Not
+
+        op = expr.get("op")
+        if op == "some":
+            return self.add_existential_restriction(
+                class_ref, expr["prop"], expr["filler"], delta=delta
+            )
+
+        cls = self.world[_resolve_iri(class_ref, WORKING_IRI)]
+        if cls is None:
+            local = _local_name(class_ref)
+            cls = next((c for c in self.working.classes() if c.name == local), None)
+        if cls is None:
+            return False
+
+        if op == "not":
+            comp = self.world[_resolve_iri(expr["cls"], WORKING_IRI)]
+            if comp is None:
+                local = _local_name(expr["cls"])
+                comp = next(
+                    (c for c in self.working.classes() if c.name == local), None
+                )
+            if comp is None:
+                return False
+            target = Not(comp)
+        elif op == "not_some":
+            prop = self.world[_resolve_iri(expr["prop"], WORKING_IRI)]
+            filler = self.world[_resolve_iri(expr["filler"], WORKING_IRI)]
+            if prop is None or filler is None:
+                return False
+            target = Not(prop.some(filler))
+        else:
+            return False
+
+        with self.working:
+            try:
+                cls.is_a.append(target)
+            except Exception:
+                return False
+        if delta is not None:
+            delta.is_a_added.append((cls.iri, target))
+        elif getattr(self, "_tbox_mirror", None) is not None:
+            # Delta-less caller (scaffolding) writes for keeps: keep the
+            # reduced-world TBox mirror in step (speed change 1).
+            self._refresh_mirror_subject(cls.iri)
+        return True
+
+    def annotate_incoherence(self, class_ref: str, text: str) -> bool:
+        """Attach a ``working:incoherenceEvidence`` annotation to a class.
+
+        Fidelity-mode-spec.md FM-8: annotations are OWL-DL semantics-free, so
+        this is the one permitted category of write in faithful mode -- the
+        ontology's logical content (the text's content) is untouched. Full
+        detail lives in the incoherence ledger; the annotation carries the
+        human summary + ledger entry id. Does NOT save; the caller decides.
+        """
+        from owlready2 import AnnotationProperty
+
+        cls = self.world[_resolve_iri(class_ref, WORKING_IRI)]
+        if cls is None:
+            local = _local_name(class_ref)
+            cls = next(
+                (c for c in self.working.classes() if c.name == local), None
+            )
+        if cls is None:
+            return False
+        with self.working:
+            prop = self.world[WORKING_IRI + "#incoherenceEvidence"]
+            if prop is None:
+                import types as _types
+
+                prop = _types.new_class(
+                    "incoherenceEvidence", (AnnotationProperty,)
+                )
+            try:
+                getattr(cls, "incoherenceEvidence").append(text)
             except Exception:
                 return False
         return True
@@ -777,7 +1908,18 @@ class OntologyManager:
                 return True
         return False
 
-    def commit_proposal(self, proposal, verify: bool = True) -> list[str]:
+    # Set by commit_proposal in faithful mode when the post-commit verify
+    # found (new) incoherence that was recorded instead of rolled back
+    # (fidelity-mode-spec.md FM-6). None after every coherent commit.
+    last_commit_incoherence: Optional[dict] = None
+
+    def commit_proposal(
+        self,
+        proposal,
+        verify: bool = True,
+        faithful: bool = False,
+        exclude_axioms: Optional[list[dict]] = None,
+    ) -> list[str]:
         """Apply the proposal for real and save to disk.
 
         When ``verify`` is set (the default), the persisted ontology is
@@ -788,8 +1930,22 @@ class OntologyManager:
         guarantees a malformed ontology can never accumulate on disk even if an
         upstream gate tier was skipped, errored, or a scaffolding/ABox change
         clashed retroactively with previously-committed content.
+
+        ``faithful`` (fidelity-mode-spec.md FM-6): the extracted ontology must
+        stay true to the source text including its errors, so a coherence
+        failure is NOT rolled back -- the axioms stay committed as-asserted and
+        the verdict is recorded in :attr:`last_commit_incoherence` for the
+        caller to ledger. Rollback still applies to mechanical failures
+        (apply/serialization exceptions), which are pipeline bugs, not text
+        content. ``exclude_axioms`` makes the verify judge the file against
+        the coherent view (minus already-ledgered clashes) so only NEW
+        incoherence is reported.
         """
         import shutil
+
+        self.last_commit_incoherence = None
+        inmem = config.INMEM_DRY_RUN
+        delta = AppliedDelta() if inmem else None
 
         backup = None
         if verify and self.working_path.exists():
@@ -798,12 +1954,52 @@ class OntologyManager:
             )
             shutil.copy2(self.working_path, backup)
 
-        warnings = self.apply_proposal(proposal)
-        self.save()
+        # Amortized save (SPEC-bfo-agent-speed.md change 7): with
+        # SAVE_EVERY_COMMIT off (config guarantees verify-per-commit is off
+        # and INMEM_DRY_RUN is on), skip the O(N) per-claim serialization;
+        # the orchestrator's flush points write the file and the in-memory
+        # world stays the source of truth in between. The verify path always
+        # saves: _verify_saved_coherent judges what is on disk.
+        save_now = verify or config.SAVE_EVERY_COMMIT
+
+        try:
+            warnings = self.apply_proposal(proposal, delta=delta)
+            if save_now:
+                self.save()
+            else:
+                self.unsaved_commits += 1
+        except Exception:
+            # Mechanical failure: roll back in every mode (FM-6).
+            if backup is not None and backup.exists():
+                shutil.copy2(backup, self.working_path)
+                backup.unlink()
+            if inmem:
+                # In-memory rollback restores memory; the backup restore above
+                # fixed disk. No disk-heavy _load on this path.
+                self.rollback(delta)
+            else:
+                self._load()
+            raise
+
+        if inmem:
+            # Legacy commits resync the memo caches via the verify path's
+            # _load(); the in-memory path never reloads, so drop the caches
+            # that predate this apply.
+            for attr in ("_bfo_depth_cache", "_bfo_anchor_cache",
+                         "_working_depth_cache"):
+                self.__dict__.pop(attr, None)
 
         if verify:
-            ok, detail = self._verify_saved_coherent()
-            if not ok:
+            ok, detail = self._verify_saved_coherent(
+                exclude_axioms=exclude_axioms if faithful else None
+            )
+            if not ok and faithful:
+                # Evidence, not correction: keep the file, record the verdict.
+                # The commit stands, so the delta is NOT rolled back.
+                self.last_commit_incoherence = {"detail": detail}
+                if backup is not None and backup.exists():
+                    backup.unlink()
+            elif not ok:
                 # roll the persisted file back to its pre-commit state
                 if backup is not None and backup.exists():
                     shutil.copy2(backup, self.working_path)
@@ -811,14 +2007,282 @@ class OntologyManager:
                 elif backup is None:
                     # first-ever commit: no prior file to restore
                     self.working_path.unlink(missing_ok=True)
-                self._load()  # resync in-memory state with the restored file
+                if inmem:
+                    # save() already wrote; the file restore above fixed disk
+                    # and this puts memory back to the pre-commit state.
+                    self.rollback(delta)
+                else:
+                    self._load()  # resync in-memory state with restored file
                 raise CommitCoherenceError(detail)
-            if backup is not None and backup.exists():
+            elif backup is not None and backup.exists():
                 backup.unlink()
+        else:
+            # No full-graph pass covered this commit; the checkpoint /
+            # final-pass machinery (verify_full) owes it a certificate.
+            self.commits_since_full_verify += 1
+
+        # The commit stands (every failure path above raised): fold it into
+        # the reduced-world indexes (speed change 1). No-op unless built.
+        self._update_reduced_indexes(delta)
+
+        # Reserve the committed entities' canonical labels so later claims
+        # reuse them (speed change 5). No-op unless IRI_RESERVATION_ENABLED.
+        self._update_iri_reservations(delta)
 
         return warnings
 
-    def _verify_saved_coherent(self) -> tuple[bool, str]:
+    def _verify_saved_coherent(
+        self, exclude_axioms: Optional[list[dict]] = None
+    ) -> tuple[bool, str]:
+        """Reason over the just-saved working file; return ``(ok, detail)``.
+
+        With INMEM_DRY_RUN (SPEC-bfo-agent-speed.md change 2): build a scratch
+        world FROM THE SAVED FILE (the point is to verify what is on disk),
+        run the same two sanitizers :meth:`_load` runs so the verdict is
+        identical to a full reload, retract FM-9 exclusions in the scratch
+        world, and reason there. The live world is never touched -- no _load
+        calls at all. Flag off: the legacy triple-reload path, byte-identical.
+        """
+        if not config.INMEM_DRY_RUN:
+            return self._verify_saved_coherent_legacy(exclude_axioms)
+
+        ok, detail, _unsat = self._scratch_verify_saved(exclude_axioms)
+        return ok, detail
+
+    def _scratch_verify_saved(
+        self,
+        exclude_axioms: Optional[list[dict]] = None,
+        phase: str = "reason_verify",
+    ) -> tuple[bool, str, list[str]]:
+        """Reason over the SAVED working file in a disposable scratch world.
+
+        Shared machinery for the in-memory post-commit verify and for
+        :meth:`verify_full` (which uses it regardless of INMEM_DRY_RUN).
+        Applies the same two sanitizers :meth:`_load` runs so the verdict is
+        identical to a full reload, retracts FM-9 exclusions in the scratch
+        world, and reasons there. The live world is never touched. Returns
+        ``(ok, detail, unsat_class_iris)`` -- detail capped as legacy does,
+        ``unsat_class_iris`` the full list.
+        """
+        with timing.phase("scratch_build"):
+            w = World()
+            w.get_ontology(str(self.bfo_path)).load()
+            onto = w.get_ontology(self.working_path.as_uri()).load()
+        # Same sanitizers _load runs, applied to the scratch verify world so
+        # the verdict matches what the app would run with after a reload.
+        self._sanitize_bfo_disjointness(world=w)
+        self._strip_subclass_of_property(world=w)
+        if exclude_axioms:
+            self._retract_axiom_triples(exclude_axioms, world=w, ontology=onto)
+        buf = io.StringIO()
+        try:
+            with redirect_stdout(buf), redirect_stderr(buf):
+                with timing.phase(phase):
+                    with _REASONER_LOCK, w:
+                        _sync_reasoner_guarded(w)
+        except Exception as e:  # noqa: BLE001 — reasoner raises on inconsistency
+            return False, f"inconsistent ontology: {str(e)[:200]}", []
+        # Nothing is per-world in owlready2: compare by IRI, not identity.
+        unsat = [
+            c.iri for c in w.inconsistent_classes() if c.iri != _NOTHING_IRI
+        ]
+        if unsat:
+            return False, "unsatisfiable classes: " + ", ".join(unsat[:12]), unsat
+        return True, "", []
+
+    def verify_full(self, exclude_axioms: Optional[list[dict]] = None) -> dict:
+        """Full-graph HermiT certificate over the SAVED working file.
+
+        SPEC-bfo-agent-speed.md change 6: the per-claim gate is a sound
+        over-approximation; this is the periodic/final reconciliation that
+        certifies the artifact. Runs in a disposable scratch world (live world
+        untouched). Saves the live world first so the certificate covers every
+        in-memory commit. Returns {"ok", "unsat_classes", "detail",
+        "duration_ms", "classes", "individuals"}.
+        """
+        t0 = time.perf_counter()
+        self.save()
+        ok, detail, unsat = self._scratch_verify_saved(
+            exclude_axioms=exclude_axioms, phase="reason_full_verify"
+        )
+        # §7 full-signature guardrail: owlready2's inconsistent_classes() (used by
+        # _scratch_verify_saved) silently omits some genuinely unsatisfiable
+        # classes on the ICD-11 artifact -- a reduced-world false-coherent
+        # certificate. Confirm with the clone-probe detector so the gate cannot
+        # pass an artifact that still carries a realizable-misuse unsat.
+        if config.FULL_SIGNATURE_REALIZABLE_CHECK and ok and not exclude_axioms:
+            try:
+                from . import realizable_misuse
+                extra = realizable_misuse.probe_confirmed_unsat_file(
+                    self.working_path, self.bfo_path)
+                if extra:
+                    ok = False
+                    unsat = sorted(set(unsat or []) | set(extra))
+                    detail = ("realizable-misuse unsatisfiable classes missed by "
+                              "the class certificate: "
+                              + ", ".join(_local_name(i) for i in extra[:12]))
+            except Exception:  # noqa: BLE001 -- never let the net crash a verify
+                log.warning("verify_full: realizable-misuse probe failed",
+                            exc_info=True)
+        self.commits_since_full_verify = 0
+        # Checkpoint boundary: rebuild the reduced-world indexes from scratch
+        # so any drift the incremental appends missed is bounded to one
+        # checkpoint window (speed change 1). Cheap at this frequency.
+        if getattr(self, "_tbox_mirror", None) is not None:
+            self._rebuild_reduced_indexes()
+        return {
+            "ok": ok,
+            "unsat_classes": unsat,
+            "detail": detail,
+            "duration_ms": round((time.perf_counter() - t0) * 1000, 1),
+            "classes": len(list(self.working.classes())),
+            "individuals": len(list(self.working.individuals())),
+        }
+
+    def _scratch_consistent_dropping(self, drop_iris: set[str]) -> bool:
+        """Reason over the SAVED working file in a disposable scratch world
+        with the named INDIVIDUALS destroyed. Same sanitizers as
+        :meth:`_scratch_verify_saved`; the live world is never touched.
+        Returns True iff HermiT does not report the result inconsistent.
+
+        Used by :meth:`isolate_inconsistency_culprits` to test candidate
+        removals for the ABox self-heal (icd11bfo_v2 bare-inconsistency case).
+        """
+        with timing.phase("scratch_build"):
+            w = World()
+            w.get_ontology(str(self.bfo_path)).load()
+            onto = w.get_ontology(self.working_path.as_uri()).load()
+        self._sanitize_bfo_disjointness(world=w)
+        self._strip_subclass_of_property(world=w)
+        if drop_iris:
+            with onto:
+                for iri in drop_iris:
+                    ent = w[iri]
+                    if ent is not None:
+                        try:
+                            destroy_entity(ent)
+                        except Exception:
+                            log.warning("isolate: could not drop %s", iri,
+                                        exc_info=True)
+        buf = io.StringIO()
+        try:
+            with redirect_stdout(buf), redirect_stderr(buf):
+                with timing.phase("reason_isolate"):
+                    with _REASONER_LOCK, w:
+                        _sync_reasoner_guarded(w)
+            return True
+        except Exception:  # noqa: BLE001 — reasoner raises on inconsistency
+            return False
+
+    def isolate_inconsistency_culprits(
+        self, max_reason_calls: int = 400
+    ) -> Optional[list[str]]:
+        """Isolate the ABox individuals responsible for a BARE full-graph
+        inconsistency -- one HermiT reports by raising, before it can name any
+        unsatisfiable class, so the class-quarantine self-heal has nothing to
+        remove (the icd11bfo_v2 case: individuals whose types/relations clash
+        with BFO, e.g. a role instance realized inconsistently, admitted one at
+        a time by the reduced-world per-claim gate but contradictory in the
+        merged graph).
+
+        QuickXplain (Junker 2004): each round finds ONE minimal conflict -- a
+        minimal set of individuals that is inconsistent together with the TBox
+        -- in O(k log(n/k)) reasoner calls rather than the O(n) a linear scan
+        needs, then quarantines the newest member of that conflict and repeats
+        until the graph reasons consistent. Every test runs in a disposable
+        scratch world over the saved artifact (live world untouched); a
+        conflict of size one is a single self-inconsistent individual.
+
+        Returns the minimal culprit IRIs to quarantine (empty if the saved
+        graph is already consistent), or None when removing individuals cannot
+        restore consistency (a TBox-level cause) or the reasoner-call budget is
+        exhausted -- in which case the caller pauses, as before.
+        """
+        self.save()  # the certificate judges the saved artifact
+        inds = [i.iri for i in self.working.individuals()]
+        if not inds:
+            return None  # no ABox to blame -> not an ABox inconsistency
+        all_set = set(inds)
+        order = {iri: n for n, iri in enumerate(inds)}  # insertion order
+        calls = 0
+
+        def cons(keep: set[str]) -> bool:
+            """Consistent with ONLY ``keep`` individuals present (rest dropped)."""
+            nonlocal calls
+            calls += 1
+            return self._scratch_consistent_dropping(all_set - keep)
+
+        if cons(all_set):
+            return []  # already coherent (e.g. a prior class-heal fixed it)
+        if not cons(set()):
+            return None  # TBox-only is inconsistent -> not an ABox cause
+
+        def qx(bg: set[str], cand: set[str]) -> set[str]:
+            """Minimal subset of ``cand`` inconsistent together with ``bg``.
+            Precondition: cons(bg) and not cons(bg | cand)."""
+            c = list(cand)
+            if len(c) == 1:
+                return set(c)
+            mid = len(c) // 2
+            c1, c2 = set(c[:mid]), set(c[mid:])
+            if not cons(bg | c1):
+                return qx(bg, c1)
+            if not cons(bg | c2):
+                return qx(bg, c2)
+            d1 = qx(bg | c2, c1)
+            d2 = qx(bg | d1, c2)
+            return d1 | d2
+
+        culprits: list[str] = []
+        while calls < max_reason_calls:
+            keep = all_set - set(culprits)
+            if cons(keep):
+                return culprits
+            mus = qx(set(), keep)
+            # Quarantine the newest member of the conflict (bias toward the
+            # more recently admitted commit); any single member breaks it.
+            victim = max(mus, key=lambda x: order[x])
+            culprits.append(victim)
+            log.info("isolate: conflict %s -> quarantine %s (%d calls)",
+                     sorted(m.rsplit('#', 1)[-1] for m in mus),
+                     victim.rsplit('#', 1)[-1], calls)
+        log.warning("isolate: budget %d exhausted after %d culprits",
+                    max_reason_calls, len(culprits))
+        return None
+
+    def quarantine_classes(self, iris: list[str]) -> list[str]:
+        """Destroy the named classes -- and every triple that references them
+        -- from the live working world, then save.
+
+        Used by the self-healing checkpoint to remove reduced-world
+        false-coherent commits: classes the per-claim gate admitted but that
+        the full-graph HermiT certificate proves unsatisfiable. Mirrors
+        :meth:`rollback` step 1 (``destroy_entity`` sweeps all referencing
+        triples). Returns the IRIs actually removed; a no-op (empty return)
+        when none resolve. Best-effort per IRI -- one failure never aborts the
+        sweep, so a partial quarantine still makes progress.
+        """
+        removed: list[str] = []
+        with self.working:
+            for iri in iris:
+                try:
+                    ent = self._resolve_entity(iri, _local_name(iri))
+                    if ent is not None:
+                        destroy_entity(ent)
+                        removed.append(iri)
+                except Exception:
+                    log.warning("quarantine: could not destroy %s", iri,
+                                exc_info=True)
+        if removed:
+            for attr in ("_bfo_depth_cache", "_bfo_anchor_cache",
+                         "_working_depth_cache"):
+                self.__dict__.pop(attr, None)
+            self.save()
+        return removed
+
+    def _verify_saved_coherent_legacy(
+        self, exclude_axioms: Optional[list[dict]] = None
+    ) -> tuple[bool, str]:
         """Reason over the just-saved working file; return ``(ok, detail)``.
 
         ``ok`` is False if the reasoner reports the ontology inconsistent (it
@@ -827,13 +2291,20 @@ class OntologyManager:
         disjointness and property-stripping the app runs with, then reload once
         more so reasoner-inferred axioms never leak into the state the caller
         (scaffolding) keeps working on.
+
+        ``exclude_axioms`` (faithful mode, FM-9): retract the ledgered clash
+        axioms from the in-memory copy before reasoning, so the check reports
+        only incoherence NEW to this commit. The persisted file is untouched.
         """
         self._load()  # clean, sanitized load of the committed file
+        if exclude_axioms:
+            self._retract_axiom_triples(exclude_axioms)
         buf = io.StringIO()
         try:
             with redirect_stdout(buf), redirect_stderr(buf):
-                with _REASONER_LOCK, self.world:
-                    sync_reasoner(self.world, infer_property_values=False)
+                with timing.phase("reason_verify"):
+                    with _REASONER_LOCK, self.world:
+                        _sync_reasoner_guarded(self.world)
         except Exception as e:  # noqa: BLE001 — reasoner raises on inconsistency
             self._load()  # discard partial inference state
             return False, f"inconsistent ontology: {str(e)[:200]}"
@@ -847,8 +2318,10 @@ class OntologyManager:
 
     # ------------------------------------------------------- persistence
     def save(self):
-        self.working_path.parent.mkdir(parents=True, exist_ok=True)
-        self.working.save(file=str(self.working_path), format="rdfxml")
+        with timing.phase("save"):
+            self.working_path.parent.mkdir(parents=True, exist_ok=True)
+            self.working.save(file=str(self.working_path), format="rdfxml")
+            self.unsaved_commits = 0
 
     def stats(self) -> dict:
         return {
@@ -858,11 +2331,26 @@ class OntologyManager:
             "bfo_loaded": self.bfo is not None,
         }
 
-    def summary_for_proposer(self, max_items: int = 40) -> dict:
-        """Compact context block for the LLM proposer prompt."""
-        working_cls = self.list_working_classes()[:max_items]
+    def summary_for_proposer(self, max_items: int = 40,
+                             utterance: str | None = None) -> dict:
+        """Compact context block for the LLM proposer prompt.
+
+        With ``utterance``, also returns ``relevant_classes``: existing working
+        classes ranked by lexical overlap with the utterance (FIX-2 / S-1 —
+        the running vocabulary that lets the proposer reuse an already-minted
+        criterion class instead of re-minting it per disorder). Kept separate
+        from ``working_classes`` because it changes per claim and must land in
+        the UNCACHED prompt segment, not the cached ontology block."""
+        all_cls = self.list_working_classes()
         indivs = self.list_individuals()[:max_items]
-        return {
-            "working_classes": working_cls,
+        out = {
+            "working_classes": all_cls[:max_items],
             "known_individuals": indivs,
         }
+        if utterance:
+            head_iris = {c["iri"] for c in all_cls[:max_items]}
+            out["relevant_classes"] = _rank_by_overlap(
+                [c for c in all_cls if c["iri"] not in head_iris],
+                utterance,
+            )
+        return out

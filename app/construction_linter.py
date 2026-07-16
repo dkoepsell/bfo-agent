@@ -302,6 +302,11 @@ def _check_relation_class_target(rel) -> Optional[Violation]:
     if "subClassOf" not in p and "type" not in p:
         return None
     o = getattr(rel, "o", "") or ""
+    # A sanctioned class expression ("not X", "P some F") is a valid
+    # subClassOf target; lint its class operand instead of the raw string.
+    expr = owl_checks.parse_class_expression(o)
+    if expr is not None:
+        o = expr.get("cls") or expr.get("filler") or ""
     if _target_is_not_a_class(o):
         return Violation(
             rule="PC-5",

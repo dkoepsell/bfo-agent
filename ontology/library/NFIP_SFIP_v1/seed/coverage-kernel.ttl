@@ -1,0 +1,29 @@
+@prefix owl:  <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix obo:  <http://purl.obolibrary.org/obo/> .
+@prefix ck:   <https://sool.tamu.edu/coverage-kernel#> .
+@prefix nfip: <https://sool.tamu.edu/nfip/sfip-dwelling#> .
+
+# Coverage kernel: clause typology (BFO generically dependent continuant).
+ck:Policy      a owl:Class ; rdfs:subClassOf obo:BFO_0000031 .
+ck:Clause      a owl:Class ; rdfs:subClassOf obo:BFO_0000031 .
+ck:Grant       a owl:Class ; rdfs:subClassOf obo:BFO_0000031 .
+ck:Exclusion   a owl:Class ; rdfs:subClassOf obo:BFO_0000031 .
+ck:Carveback   a owl:Class ; rdfs:subClassOf obo:BFO_0000031 .
+ck:Condition   a owl:Class ; rdfs:subClassOf obo:BFO_0000031 .
+ck:Definition  a owl:Class ; rdfs:subClassOf obo:BFO_0000031 .
+ck:Insurer     a owl:Class ; rdfs:subClassOf obo:BFO_0000023 .
+ck:Insured     a owl:Class ; rdfs:subClassOf obo:BFO_0000023 .
+ck:IndemnityObligation a owl:Class ; rdfs:subClassOf obo:BFO_0000020 .
+ck:Loss        a owl:Class ; rdfs:subClassOf obo:BFO_0000015 .
+
+# Kernel relations the coverage feed must use.
+ck:modifies  a owl:ObjectProperty ; rdfs:domain ck:Carveback ; rdfs:range ck:Exclusion .
+ck:exhibits  a owl:ObjectProperty ; rdfs:domain ck:Loss .
+ck:inheresIn a owl:ObjectProperty ; rdfs:domain ck:IndemnityObligation ; rdfs:range ck:Insurer .
+
+# Non-negotiable definitional disjointness (II.C.20): mudflow is not earth movement.
+nfip:Mudflow       a owl:Class ; rdfs:subClassOf obo:BFO_0000015 .
+nfip:EarthMovement a owl:Class ; rdfs:subClassOf obo:BFO_0000015 .
+nfip:Mudflow owl:disjointWith nfip:EarthMovement .

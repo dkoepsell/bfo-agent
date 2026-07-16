@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+   xmlns:ns1="http://purl.obolibrary.org/obo/"
+   xmlns:owl="http://www.w3.org/2002/07/owl#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+>
+  <rdf:Description rdf:about="http://davidkoepsell.com/bfo-agent/working#Hydrolysis">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Hydrolysis Process</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://davidkoepsell.com/bfo-agent/fixtures/p2">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Ontology"/>
+    <owl:imports rdf:resource="http://purl.obolibrary.org/obo/bfo.owl"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N5f29eeb40ffb4cfa973964afbf74e0f2">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/BFO_0000054"/>
+    <owl:someValuesFrom rdf:resource="http://davidkoepsell.com/bfo-agent/working#Hydrolysis"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://davidkoepsell.com/bfo-agent/working#EnergyShuttling">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+    <ns1:BFO_0000057 rdf:resource="http://davidkoepsell.com/bfo-agent/working#Creatine"/>
+    <ns1:BFO_0000057 rdf:resource="http://davidkoepsell.com/bfo-agent/working#Mitochondrion"/>
+    <ns1:BFO_0000057 rdf:resource="http://davidkoepsell.com/bfo-agent/working#Cytosol"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Energy Shuttling Process</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://davidkoepsell.com/bfo-agent/working#CellularRespiration">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+    <ns1:BFO_0000057 rdf:resource="http://davidkoepsell.com/bfo-agent/working#Mitochondrion"/>
+    <ns1:BFO_0000057 rdf:resource="http://davidkoepsell.com/bfo-agent/working#ATP"/>
+    <ns1:BFO_0000066 rdf:resource="http://davidkoepsell.com/bfo-agent/working#Mitochondrion"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Aerobic Cellular Respiration</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://davidkoepsell.com/bfo-agent/working#ATP">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+    <ns1:BFO_0000196 rdf:resource="http://davidkoepsell.com/bfo-agent/working#EnergyStorageCapacity"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Adenosine Triphosphate (ATP)</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Ndac4fa0f6e574d73bef35cb9ff689c06">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/BFO_0000050"/>
+    <owl:someValuesFrom rdf:resource="http://davidkoepsell.com/bfo-agent/working#Cytosol"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://davidkoepsell.com/bfo-agent/working#Mitochondrion">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+    <rdfs:subClassOf rdf:nodeID="N9a0ced11543649ee9259bcac769e90e6"/>
+    <rdfs:subClassOf rdf:nodeID="N5cff925f77bc4b5988018e8211c5676f"/>
+    <rdfs:subClassOf rdf:nodeID="Ndac4fa0f6e574d73bef35cb9ff689c06"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Mitochondrion</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000050">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
+    <owl:inverseOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000051"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">part of</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A continuant part of its whole, or an occurrent part of its whole. Transitive.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://davidkoepsell.com/bfo-agent/working#Creatine">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+    <rdfs:subClassOf rdf:nodeID="N3d5a77a4b91e4f3a891a2ad471fc848b"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Creatine</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N3d5a77a4b91e4f3a891a2ad471fc848b">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/BFO_0000196"/>
+    <owl:someValuesFrom rdf:resource="http://davidkoepsell.com/bfo-agent/working#EnergyShuttleRole"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N9a0ced11543649ee9259bcac769e90e6">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/BFO_0000050"/>
+    <owl:someValuesFrom rdf:resource="http://davidkoepsell.com/bfo-agent/working#EukaryoticCell"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://davidkoepsell.com/bfo-agent/working#EukaryoticCell">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Eukaryotic Cell</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://davidkoepsell.com/bfo-agent/working#Cytosol">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Cytosol</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://davidkoepsell.com/bfo-agent/working#EnergyShuttleRole">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+    <rdfs:subClassOf rdf:nodeID="N64139750df354e56b1a2edcc31a98e54"/>
+    <ns1:BFO_0000197 rdf:resource="http://davidkoepsell.com/bfo-agent/working#Creatine"/>
+    <ns1:BFO_0000054 rdf:resource="http://davidkoepsell.com/bfo-agent/working#EnergyShuttling"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Energy Shuttle Role</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://davidkoepsell.com/bfo-agent/working#EnergyStorageCapacity">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+    <rdfs:subClassOf rdf:nodeID="N5f29eeb40ffb4cfa973964afbf74e0f2"/>
+    <ns1:BFO_0000197 rdf:resource="http://davidkoepsell.com/bfo-agent/working#ATP"/>
+    <ns1:BFO_0000054 rdf:resource="http://davidkoepsell.com/bfo-agent/working#CellularRespiration"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Chemical Energy Storage Capacity</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000023">
+    <owl:disjointWith rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+    <owl:disjointWith rdf:resource="http://purl.obolibrary.org/obo/BFO_0000034"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
+    <owl:inverseOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000055"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">realized in</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Realizable entity (role, disposition, function) -&gt; the process that realizes it.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N64139750df354e56b1a2edcc31a98e54">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/BFO_0000054"/>
+    <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N5cff925f77bc4b5988018e8211c5676f">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/BFO_0000055"/>
+    <owl:someValuesFrom rdf:resource="http://davidkoepsell.com/bfo-agent/working#CellularRespiration"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000055">
+    <owl:inverseOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000054"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">realizes</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000196">
+    <rdfs:domain rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
+    <rdfs:range rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">has disposition</rdfs:label>
+  </rdf:Description>
+</rdf:RDF>

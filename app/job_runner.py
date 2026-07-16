@@ -41,10 +41,31 @@ def _now() -> str:
 
 
 def start(job_id: str, feed_fn: Callable[[str, bool], dict],
-          auto_accept: bool = True) -> dict:
+          auto_accept: bool = True,
+          on_complete: Callable[[str, dict], str | None] | None = None,
+          resume_verify_fn: Callable[[str], bool] | None = None,
+          flush_fn: Callable[[str], bool] | None = None) -> dict:
     """Start the feeder thread for a job. Idempotent: if a runner is
     already alive for this job, return its status instead of starting a
-    second one."""
+    second one.
+
+    ``on_complete(job_id, state)`` runs best-effort after a job completes
+    (not on pause/fail) -- e.g. the end-of-job FOL audit (fol-gate-spec.md
+    FG-2). Whatever short string it returns is appended to the completion
+    notification. It must never raise into the runner; we guard anyway.
+
+    ``resume_verify_fn(job_id)`` (SPEC-bfo-agent-speed.md change 6) runs
+    once at the top of the runner thread, before the first claim -- the
+    boot-resume path passes the orchestrator's full-graph certificate here
+    so a job interrupted with unverified commits is re-certified before
+    feeding continues. Returning False stops the run: the job is paused
+    and the failure notification fires.
+
+    ``flush_fn(job_id)`` (SPEC-bfo-agent-speed.md change 7) runs best-effort
+    when the runner exits for any reason (pause, completion, failure) so
+    amortized-save mode persists its unsaved in-memory commits. It is a
+    no-op unless SAVE_EVERY_COMMIT is off and unsaved commits exist.
+    """
     with _registry_lock:
         t = _threads.get(job_id)
         if t is not None and t.is_alive():
@@ -59,6 +80,9 @@ def start(job_id: str, feed_fn: Callable[[str, bool], dict],
             "outcome": None,  # completed | paused | failed
             "processed": 0,
             "committed": 0,
+            # Faithful-mode claims committed as-asserted with an incoherence
+            # ledger entry (fidelity-mode-spec.md FM-11 visibility).
+            "flagged": 0,
             "inconsistent": 0,
             "needs_review": 0,
             "errors": 0,
@@ -69,7 +93,8 @@ def start(job_id: str, feed_fn: Callable[[str, bool], dict],
         }
         _runners[job_id] = state
         t = threading.Thread(
-            target=_run, args=(job_id, feed_fn, auto_accept, state),
+            target=_run, args=(job_id, feed_fn, auto_accept, state,
+                               on_complete, resume_verify_fn, flush_fn),
             name=f"job-runner-{job_id}", daemon=True,
         )
         _threads[job_id] = t
@@ -89,18 +114,27 @@ def status(job_id: str) -> dict | None:
     return out
 
 
-def resume_incomplete(feed_fn: Callable[[str, bool], dict]) -> list[str]:
+def resume_incomplete(feed_fn: Callable[[str, bool], dict],
+                      on_complete=None,
+                      resume_verify_fn=None,
+                      flush_fn=None) -> list[str]:
     """Restart runners for jobs left in status "feeding" (a run that a
-    server restart or crash interrupted). Returns the resumed job ids."""
+    server restart or crash interrupted). Returns the resumed job ids.
+
+    ``resume_verify_fn`` is threaded through to the runner thread so a job
+    with unverified commits gets one full-graph certificate before its feed
+    loop restarts (SPEC-bfo-agent-speed.md change 6)."""
     resumed = []
     for j in jobs_store.list_jobs():
         if j.get("status") == "feeding":
-            start(j["job_id"], feed_fn)
+            start(j["job_id"], feed_fn, on_complete=on_complete,
+                  resume_verify_fn=resume_verify_fn, flush_fn=flush_fn)
             resumed.append(j["job_id"])
     return resumed
 
 
-def _run(job_id: str, feed_fn, auto_accept: bool, state: dict) -> None:
+def _run(job_id: str, feed_fn, auto_accept: bool, state: dict,
+         on_complete=None, resume_verify_fn=None, flush_fn=None) -> None:
     session_id = None
     job_name = job_id
     consecutive_errors = 0
@@ -111,6 +145,24 @@ def _run(job_id: str, feed_fn, auto_accept: bool, state: dict) -> None:
         job_name = job.get("name") or job_id
         log_event(session_id, "feed_run_start",
                   {"job_id": job_id, "auto_accept": auto_accept})
+        _start_stall_monitor(job_id, job_name, session_id, state)
+
+        if resume_verify_fn is not None:
+            # Boot-resume certificate (SPEC-bfo-agent-speed.md change 6):
+            # runs in this thread so it never blocks server boot. The
+            # callback logs its own "resume_verify" event and decides the
+            # curated/faithful policy; False = do not resume.
+            try:
+                verified = resume_verify_fn(job_id)
+            except Exception as e:  # fail open; the final pass backstops
+                state["last_error"] = str(e)
+                verified = True
+            if not verified:
+                _fail(job_id, job_name, state,
+                      "resume verification failed: the persisted ontology "
+                      "did not pass the full-graph certificate (see the "
+                      "resume_verify event in the session log)")
+                return
 
         while True:
             # Reload status each iteration so POST /pause (or a status
@@ -145,14 +197,25 @@ def _run(job_id: str, feed_fn, auto_accept: bool, state: dict) -> None:
             if res.get("done"):
                 state["outcome"] = "completed"
                 state["remaining"] = 0
+                extra = ""
+                if on_complete is not None:
+                    try:
+                        extra = on_complete(job_id, state) or ""
+                    except Exception as e:  # never let the hook kill the run
+                        extra = f"(post-run hook failed: {e})"
+                flagged_note = (
+                    f"flagged {state['flagged']}, " if state["flagged"] else ""
+                )
                 _notify(
                     f"BFO job finished: {job_name}",
                     f"All approved claims processed. "
                     f"committed {state['committed']}, "
+                    f"{flagged_note}"
                     f"inconsistent {state['inconsistent']}, "
                     f"needs review {state['needs_review']}, "
                     f"errors {state['errors']} "
-                    f"({state['processed']} this run).",
+                    f"({state['processed']} this run)."
+                    + (f"\n{extra}" if extra else ""),
                 )
                 break
 
@@ -161,6 +224,8 @@ def _run(job_id: str, feed_fn, auto_accept: bool, state: dict) -> None:
             state["processed"] += 1
             if st == "committed":
                 state["committed"] += 1
+                if claim.get("verdict") == "flagged":
+                    state["flagged"] += 1
             elif st == "inconsistent":
                 state["inconsistent"] += 1
             elif st == "needs_review":
@@ -193,6 +258,13 @@ def _run(job_id: str, feed_fn, auto_accept: bool, state: dict) -> None:
         state["last_error"] = str(e)
         _fail(job_id, job_name, state, str(e))
     finally:
+        if flush_fn is not None:
+            # Amortized save: persist unsaved in-memory commits on any exit
+            # (pause, completion, failure). Never let it kill the cleanup.
+            try:
+                flush_fn(job_id)
+            except Exception:
+                pass
         state["running"] = False
         state["finished_at"] = _now()
         if session_id:
@@ -224,6 +296,86 @@ def _fail(job_id: str, job_name: str, state: dict, reason: str) -> None:
         f"(committed {state['committed']}). Reason: {reason}. "
         f"Job is paused; hit Resume to retry.",
     )
+
+
+def _start_stall_monitor(job_id: str, job_name: str,
+                         session_id: str | None, state: dict) -> None:
+    """Spawn the last-resort stall backstop for this run (config-gated)."""
+    if not getattr(config, "FEED_STALL_TIMEOUT_SECONDS", 0):
+        return
+    t = threading.Thread(
+        target=_stall_monitor, args=(job_id, job_name, session_id, state),
+        name=f"stall-monitor-{job_id}", daemon=True,
+    )
+    t.start()
+
+
+def _stall_monitor(job_id: str, job_name: str,
+                   session_id: str | None, state: dict) -> None:
+    """Watch a live run for zero forward progress and pause+notify if it wedges.
+
+    The per-operation guards (reasoner watchdog, LLM client timeout) bound each
+    blocking call, but a kill-miss, a lock deadlock, or an unforeseen blocking
+    I/O could still leave the runner thread stuck mid-claim -- and because the
+    runner never reaches its ``finally``, the job sits silently "feeding"
+    forever. This monitor makes that impossible: if no claim completes for
+    config.FEED_STALL_TIMEOUT_SECONDS while the run is still active, it pauses
+    the job and notifies, so every run reaches a visible, resumable state.
+
+    ``state["last_activity_at"]`` advances after every claim (and starts at the
+    run's launch time), so ``now - last_activity_at`` is exactly how long the
+    current claim has been in flight. Fires at most once, then exits. Never
+    touches a job that is no longer "feeding" (already done/paused/failed), so a
+    long end-of-job audit or a legitimate resume certificate can't false-trip."""
+    ceiling = config.FEED_STALL_TIMEOUT_SECONDS
+    if not ceiling or ceiling <= 0:
+        return
+    tick = min(30.0, max(1.0, ceiling / 20.0))
+    while True:
+        time.sleep(tick)
+        if not state.get("running"):
+            return  # runner finished (completed/paused/failed) cleanly
+        last = state.get("last_activity_at")
+        try:
+            elapsed = (datetime.now(timezone.utc)
+                       - datetime.fromisoformat(last)).total_seconds()
+        except Exception:
+            continue
+        if elapsed < ceiling:
+            continue
+        # No forward progress for the full ceiling. Confirm the job is still
+        # meant to be feeding before intervening (guards the completion/audit
+        # and resume-verify windows, where status is already non-"feeding").
+        try:
+            job = jobs_store.load_job(job_id)
+        except Exception:
+            continue
+        if job.get("status") != "feeding":
+            return
+        cur = (state.get("current_claim") or {}).get("id")
+        state["outcome"] = "stalled"
+        state["last_error"] = (
+            f"stall backstop: no claim completed for {elapsed:.0f}s "
+            f"(>= FEED_STALL_TIMEOUT_SECONDS={ceiling:.0f}s)")
+        try:
+            jobs_store.set_job_status(job_id, "paused")
+        except Exception:
+            pass
+        try:
+            log_event(session_id, "feed_stall_paused", {
+                "job_id": job_id, "elapsed_seconds": round(elapsed, 1),
+                "current_claim": cur, "processed": state.get("processed"),
+            })
+        except Exception:
+            pass
+        _notify(
+            f"BFO job stalled: {job_name}",
+            f"No claim completed for {elapsed:.0f}s while the runner was still "
+            f"active (last claim in flight: {cur}). The stall backstop paused "
+            f"the job so it isn't stuck 'feeding' forever. Investigate the "
+            f"wedged claim, then hit Resume.",
+        )
+        return
 
 
 def _notify(title: str, message: str) -> None:

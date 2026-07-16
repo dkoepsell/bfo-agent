@@ -278,6 +278,90 @@
     color: var(--warn);
   }
 
+/* ---------- Audits tab ---------- */
+.audit-card {
+  border: 1px solid var(--border); border-radius: 8px; background: var(--panel-2);
+  padding: 12px 14px; margin-bottom: 12px; color: var(--text);
+}
+.audit-card h3 { margin: 0 0 10px; font-size: 14px; color: var(--text); }
+.audit-kv { display: grid; grid-template-columns: 170px 1fr; gap: 4px 12px; font-size: 13px; margin: 0; }
+.audit-kv dt { color: var(--muted); }
+.audit-kv dd { margin: 0; color: var(--text); font-family: var(--font); font-size: 12.5px; }
+.audit-verdict {
+  display: inline-block; padding: 2px 10px; border-radius: 10px;
+  font-size: 12px; font-weight: 600; vertical-align: middle;
+}
+.audit-verdict.v-consistent { background: rgba(134,239,172,0.12); color: var(--good); }
+.audit-verdict.v-inconsistent { background: rgba(252,165,165,0.12); color: var(--bad); }
+.audit-verdict.v-inconclusive, .audit-verdict.v-partial { background: rgba(138,147,166,0.12); color: var(--muted); }
+.audit-verdict.v-flagged { background: rgba(252,211,77,0.12); color: var(--warn); }
+.audit-finding {
+  border-left: 3px solid var(--warn); background: var(--panel);
+  padding: 8px 10px; margin: 8px 0; border-radius: 0 6px 6px 0; font-size: 13px;
+}
+.audit-finding .src { font-style: italic; color: var(--text); margin: 4px 0; }
+.audit-finding .diag { color: var(--warn); }
+.audit-card a { color: var(--accent); }
+.audit-card details { margin-top: 8px; font-size: 12.5px; }
+.audit-card details summary { cursor: pointer; color: var(--muted); }
+.audit-card details summary:hover { color: var(--accent); }
+.audit-card details li { font-family: var(--font); font-size: 12px; color: var(--text); margin: 2px 0; }
+.audit-card .raw-link { font-size: 12px; }
+
+/* ---------- Live tab ---------- */
+.live-head {
+  display: flex; align-items: center; flex-wrap: wrap; gap: 10px;
+  margin-bottom: 10px;
+}
+.live-head select { max-width: 320px; }
+.live-status { font-size: 12px; color: var(--muted); font-family: var(--font); }
+.live-status.idle { color: var(--warn); }
+.live-status.live { color: var(--good); }
+.live-counters {
+  font-size: 12px; color: var(--muted); font-family: var(--font);
+  margin-left: auto; white-space: nowrap;
+}
+.live-counters b { color: var(--text); font-weight: 600; }
+.live-feed { display: flex; flex-direction: column; gap: 10px; }
+.live-card {
+  border: 1px solid var(--border); border-left: 3px solid var(--muted);
+  border-radius: 8px; background: var(--panel-2); padding: 10px 12px; color: var(--text);
+}
+.live-card.v-committed, .live-card.v-consistent { border-left-color: var(--good); }
+.live-card.v-inconsistent { border-left-color: var(--bad); }
+.live-card.v-flagged, .live-card.v-needs_review { border-left-color: var(--warn); }
+.live-card.v-error { border-left-color: var(--muted); }
+.live-card h4 {
+  margin: 0 0 6px; font-size: 13px; color: var(--text);
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+}
+.live-badge {
+  display: inline-block; padding: 1px 8px; border-radius: 10px;
+  font-size: 11px; font-weight: 600; font-family: var(--font);
+  background: rgba(138,147,166,0.15); color: var(--muted);
+}
+.live-badge.b-batch { background: rgba(125,211,252,0.15); color: var(--accent); }
+.live-badge.v-committed, .live-badge.v-consistent { background: rgba(134,239,172,0.12); color: var(--good); }
+.live-badge.v-inconsistent { background: rgba(252,165,165,0.12); color: var(--bad); }
+.live-badge.v-flagged, .live-badge.v-needs_review { background: rgba(252,211,77,0.12); color: var(--warn); }
+.live-badge.v-error { background: rgba(138,147,166,0.12); color: var(--muted); }
+.live-sec { margin: 6px 0 0; }
+.live-sec .lbl {
+  font-size: 11px; color: var(--muted); text-transform: uppercase;
+  letter-spacing: 0.04em; margin-bottom: 3px;
+}
+.live-tbl { width: 100%; border-collapse: collapse; font-size: 12px; font-family: var(--font); }
+.live-tbl td { padding: 1px 8px 1px 0; color: var(--text); vertical-align: top; }
+.live-tbl td.dim { color: var(--muted); }
+.live-gate-line { font-size: 12px; font-family: var(--font); margin: 2px 0; }
+.live-gate-line .g-pass { color: var(--good); }
+.live-gate-line .g-reject { color: var(--bad); }
+.live-gate-line .g-skip { color: var(--muted); }
+.live-gate-line .g-tier { color: var(--text); }
+.live-gate-line .g-reason { color: var(--muted); }
+.live-commit { font-size: 12px; font-family: var(--font); color: var(--muted); margin-top: 4px; }
+.live-timing { font-size: 11.5px; font-family: var(--font); color: var(--muted); margin-top: 4px; }
+.live-btype { color: var(--accent); }
 </style>
 </head>
 <body>
@@ -387,6 +471,8 @@
       <div class="tab" data-tab="graph">Graph</div>
       <div class="tab" data-tab="argmap">Argument Map</div>
       <div class="tab" data-tab="log">Session Log</div>
+      <div class="tab" data-tab="audits">Audits</div>
+      <div class="tab" data-tab="live">Live</div>
     </div>
     <div class="pane-body" id="right-body">
       <div id="tab-proposal" class="tab-pane">
@@ -401,6 +487,9 @@
           </select>
           <button class="secondary" id="btn-job-refresh" title="Refresh job list">↻</button>
           <button class="secondary" id="btn-job-new">New job...</button>
+          <button class="secondary" id="btn-job-export" title="Download this job's extracted claims for feeding on another deployment" disabled>Export claims</button>
+          <button class="secondary" id="btn-job-import" title="Create a new job from an exported claims file">Import claims</button>
+          <input type="file" id="job-import-file" accept=".json,application/json" style="display:none" />
           <button class="danger" id="btn-job-delete" disabled>Delete</button>
         </div>
         <div id="job-summary" class="muted" style="margin-bottom:12px;"></div>
@@ -470,6 +559,49 @@
 
       <div id="tab-log" class="tab-pane" style="display:none;">
         <div class="muted">Session events will appear here.</div>
+      </div>
+
+      <div id="tab-audits" class="tab-pane" style="display:none;">
+        <div class="row-flex" style="margin-bottom:10px; align-items:center; gap:8px;">
+          <label for="audit-onto" class="muted" style="margin:0;">Ontology:</label>
+          <select id="audit-onto" style="max-width:280px;"></select>
+          <button class="secondary" id="audit-refresh" data-keep-enabled="1">Refresh</button>
+          <button class="secondary" id="coherence-run" data-keep-enabled="1">Run coherence check</button>
+        </div>
+        <div class="muted" style="margin-bottom:10px;">
+          Audits are evidence about the <em>source text</em> each ontology
+          faithfully represents; they never modify the ontology itself.
+        </div>
+        <div id="audit-body"><div class="muted">Select an ontology.</div></div>
+
+        <div id="ondemand-body" style="margin-top:14px;"></div>
+
+        <div class="row-flex" style="margin-top:14px; gap:8px; align-items:center; flex-wrap:wrap;">
+          <label class="muted" style="margin:0;">Fact-pattern test:</label>
+          <input id="factcheck-classes" placeholder="ClassA, ClassB" style="flex:1; min-width:220px;"/>
+          <button class="secondary" id="factcheck-run" data-keep-enabled="1">Test</button>
+        </div>
+        <div class="muted" style="margin-top:4px; font-size:12px;">
+          Assert one individual that is an instance of all the named classes, then
+          reason: is that fact pattern admissible, or does the ontology make it
+          contradictory? (comma-separated class names)
+        </div>
+        <div id="factcheck-body" style="margin-top:8px;"></div>
+      </div>
+
+      <div id="tab-live" class="tab-pane" style="display:none;">
+        <div class="live-head">
+          <label for="live-job" class="muted" style="margin:0;">Job:</label>
+          <select id="live-job"></select>
+          <button class="secondary" id="live-toggle" data-keep-enabled="1">Pause</button>
+          <span id="live-status" class="live-status">idle</span>
+          <span id="live-counters" class="live-counters"></span>
+        </div>
+        <div class="muted" style="margin-bottom:10px;">
+          Read-only live trace of the running feed: propose &rarr; gate &rarr;
+          commit, newest on top. Tails the session logs; never touches the feed.
+        </div>
+        <div id="live-feed" class="live-feed"><div class="muted">No feeding job selected.</div></div>
       </div>
     </div>
   </section>
@@ -717,6 +849,7 @@ function setJobControlsEnabled(enabled) {
   const has = !!currentJob;
   document.getElementById("btn-extract").disabled = !has;
   document.getElementById("btn-job-delete").disabled = !has;
+  document.getElementById("btn-job-export").disabled = !has;
   document.getElementById("btn-select-high").disabled = !has;
   document.getElementById("btn-select-high-med").disabled = !has;
   document.getElementById("btn-select-none").disabled = !has;
@@ -1058,6 +1191,34 @@ document.getElementById("btn-job-delete").onclick = deleteCurrentJob;
 document.getElementById("btn-job-refresh").onclick = () => refreshJobList();
 document.getElementById("job-select").addEventListener("change", (ev) => loadJob(ev.target.value));
 
+// Export the current job's extracted claims (plain navigation; the server's
+// Content-Disposition triggers the download). Feed them on another deployment.
+document.getElementById("btn-job-export").onclick = () => {
+  if (!currentJob) return;
+  window.open(API + "/jobs/" + encodeURIComponent(currentJob.job_id) + "/export", "_blank");
+};
+
+// Import a claims file as a new, feedable job.
+document.getElementById("btn-job-import").onclick = () =>
+  document.getElementById("job-import-file").click();
+document.getElementById("job-import-file").addEventListener("change", async (ev) => {
+  const f = ev.target.files[0];
+  if (!f) return;
+  try {
+    const envelope = JSON.parse(await f.text());
+    const summary = await api("/jobs/import", {
+      method: "POST",
+      body: JSON.stringify(envelope),
+    });
+    await refreshJobList(summary.job_id);
+    extractStatus(`imported ${summary.counts.total} claims into "${summary.name}"`);
+  } catch (e) {
+    alert("import failed: " + e.message);
+  } finally {
+    ev.target.value = "";
+  }
+});
+
 // Initial job list load when the extract tab is first shown
 let _jobsInited = false;
 async function initJobsOnFirstView() {
@@ -1302,9 +1463,572 @@ function switchTab(name) {
   if (name === "argmap") refreshArgmap();
   if (name === "log") refreshLog();
   if (name === "extract") initJobsOnFirstView();
+  if (name === "audits") initAuditsOnFirstView();
+  if (name === "live") { liveEnter(); } else { liveLeave(); }
 }
 
 document.querySelectorAll(".tab").forEach(t => t.onclick = () => switchTab(t.dataset.tab));
+
+// ---------- live tab ----------
+// Read-only SSE panel: tails GET /jobs/<id>/stream and correlates the main +
+// gate events into one card per claim (keyed by proposal_id). Zero contact
+// with the feed hot path -- it only reads the logs the feed already writes.
+const BFO_LABELS = {
+  "BFO_0000001": "entity",
+  "BFO_0000002": "continuant",
+  "BFO_0000003": "occurrent",
+  "BFO_0000004": "independent continuant",
+  "BFO_0000008": "temporal region",
+  "BFO_0000011": "spatiotemporal region",
+  "BFO_0000015": "process",
+  "BFO_0000016": "disposition",
+  "BFO_0000017": "realizable entity",
+  "BFO_0000019": "quality",
+  "BFO_0000020": "specifically dependent continuant",
+  "BFO_0000023": "role",
+  "BFO_0000024": "fiat object part",
+  "BFO_0000027": "object aggregate",
+  "BFO_0000030": "object",
+  "BFO_0000031": "generically dependent continuant",
+  "BFO_0000034": "function",
+  "BFO_0000035": "process boundary",
+  "BFO_0000038": "one-dimensional temporal region",
+  "BFO_0000040": "material entity",
+  "BFO_0000141": "immaterial entity",
+  "BFO_0000145": "relational quality",
+  "BFO_0000148": "zero-dimensional temporal region",
+  "BFO_0000182": "history",
+  "BFO_0000202": "temporal interval",
+};
+function bfoLabel(iri) {
+  if (!iri) return "";
+  const frag = String(iri).split(/[#/]/).pop();
+  return BFO_LABELS[frag] || frag;
+}
+
+const LIVE = {
+  es: null,          // EventSource
+  jobId: null,       // job currently streamed
+  paused: false,     // user hit Pause (stream closed but tab stays)
+  active: false,     // Live tab is the visible one
+  cards: new Map(),  // proposal_id/claim_id -> { el, sections }
+  order: [],         // insertion order of card keys (for DOM cap)
+  seen: { committed: 0, inconsistent: 0, flagged: 0 },
+  msTotal: 0, msCount: 0,
+};
+const LIVE_MAX_CARDS = 200;
+
+function liveEl(id) { return document.getElementById(id); }
+
+async function liveEnter() {
+  LIVE.active = true;
+  await livePopulateJobs();
+  liveResetView();
+  if (!LIVE.paused) liveOpen();
+  else liveSetStatus("paused", "idle");
+}
+
+function liveLeave() {
+  LIVE.active = false;
+  liveClose();
+}
+
+function liveClose() {
+  if (LIVE.es) { try { LIVE.es.close(); } catch (e) {} LIVE.es = null; }
+}
+
+function liveSetStatus(text, cls) {
+  const s = liveEl("live-status");
+  if (!s) return;
+  s.textContent = text;
+  s.className = "live-status" + (cls ? " " + cls : "");
+}
+
+function liveResetView() {
+  LIVE.cards.clear();
+  LIVE.order = [];
+  LIVE.seen = { committed: 0, inconsistent: 0, flagged: 0 };
+  LIVE.msTotal = 0; LIVE.msCount = 0;
+  const feed = liveEl("live-feed");
+  if (feed) feed.innerHTML = '<div class="muted">Waiting for feed activity…</div>';
+  liveRenderCounters();
+}
+
+function liveRenderCounters() {
+  const c = liveEl("live-counters");
+  if (!c) return;
+  const avg = LIVE.msCount ? Math.round(LIVE.msTotal / LIVE.msCount) : 0;
+  c.innerHTML = `committed <b>${LIVE.seen.committed}</b> · ` +
+    `inconsistent <b>${LIVE.seen.inconsistent}</b> · ` +
+    `flagged <b>${LIVE.seen.flagged}</b> · avg <b>${avg}</b> ms`;
+}
+
+async function livePopulateJobs() {
+  const sel = liveEl("live-job");
+  if (!sel) return;
+  let jobs = [];
+  try { jobs = await api("/jobs"); } catch (e) { jobs = []; }
+  if (!Array.isArray(jobs)) jobs = (jobs && jobs.jobs) || [];
+  const feeding = jobs.filter(j => j.status === "feeding");
+  // Prefer the Extract-tab's current job if it is feeding; else first feeding.
+  let target = LIVE.jobId;
+  if (currentJob && feeding.some(j => j.job_id === currentJob.job_id)) {
+    target = currentJob.job_id;
+  }
+  if (!target || !feeding.some(j => j.job_id === target)) {
+    target = feeding.length ? feeding[0].job_id : (LIVE.jobId || null);
+  }
+  const opts = (feeding.length ? feeding : jobs);
+  sel.innerHTML = "";
+  if (!opts.length) {
+    sel.innerHTML = '<option value="">(no jobs)</option>';
+    LIVE.jobId = null;
+    return;
+  }
+  for (const j of opts) {
+    const o = document.createElement("option");
+    o.value = j.job_id;
+    o.textContent = `${j.name || j.job_id} [${j.status}]`;
+    sel.appendChild(o);
+  }
+  if (target) sel.value = target;
+  LIVE.jobId = sel.value || null;
+}
+
+function liveOpen() {
+  liveClose();
+  if (!LIVE.jobId) { liveSetStatus("no feeding job", "idle"); return; }
+  LIVE.paused = false;
+  const btn = liveEl("live-toggle");
+  if (btn) btn.textContent = "Pause";
+  liveSetStatus("connecting…", "");
+  const es = new EventSource(API + "/jobs/" + LIVE.jobId + "/stream");
+  LIVE.es = es;
+  es.addEventListener("hello", () => liveSetStatus("live", "live"));
+  es.onmessage = (e) => {
+    let obj;
+    try { obj = JSON.parse(e.data); } catch (err) { return; }
+    liveSetStatus("live", "live");
+    liveHandle(obj);
+  };
+  es.onerror = () => {
+    // EventSource auto-reconnects; surface an idle hint meanwhile.
+    if (LIVE.es === es && !LIVE.paused) liveSetStatus("reconnecting / idle", "idle");
+  };
+}
+
+function liveToggle() {
+  if (LIVE.paused) { liveOpen(); }
+  else {
+    LIVE.paused = true;
+    liveClose();
+    const btn = liveEl("live-toggle");
+    if (btn) btn.textContent = "Resume";
+    liveSetStatus("paused", "idle");
+  }
+}
+
+function liveKeyOf(rec) {
+  const p = rec && rec.payload || {};
+  return p.proposal_id || (p.proposal && p.proposal.proposal_id) ||
+         rec.proposal_id || p.claim_id || rec.claim_id || null;
+}
+
+function liveCard(key) {
+  let card = LIVE.cards.get(key);
+  if (card) return card;
+  const feed = liveEl("live-feed");
+  if (feed && feed.querySelector(".muted")) feed.innerHTML = "";
+  const root = el(
+    '<div class="live-card">' +
+    '<h4><span class="live-title">claim</span></h4>' +
+    '<div class="live-proposal"></div>' +
+    '<div class="live-gate live-sec" style="display:none;"><div class="lbl">gate</div><div class="live-gate-lines"></div></div>' +
+    '<div class="live-commit" style="display:none;"></div>' +
+    '<div class="live-timing" style="display:none;"></div>' +
+    '</div>');
+  card = { el: root, verdict: null };
+  LIVE.cards.set(key, card);
+  LIVE.order.push(key);
+  if (feed) feed.insertBefore(root, feed.firstChild);
+  // Cap the DOM: drop the oldest cards beyond the limit.
+  while (LIVE.order.length > LIVE_MAX_CARDS) {
+    const old = LIVE.order.shift();
+    const oc = LIVE.cards.get(old);
+    if (oc && oc.el && oc.el.parentNode) oc.el.parentNode.removeChild(oc.el);
+    LIVE.cards.delete(old);
+  }
+  return card;
+}
+
+function liveEntitiesTable(entities) {
+  if (!entities || !entities.length) return "";
+  let rows = "";
+  for (const en of entities) {
+    const bt = en.bfo_type ? bfoLabel(en.bfo_type) : "";
+    const parent = en.parent_class ? bfoLabel(en.parent_class) : "";
+    rows += "<tr>" +
+      `<td>${esc(en.label || "")}</td>` +
+      `<td class="dim">${esc(en.kind || "")}</td>` +
+      `<td><span class="live-btype">${esc(bt)}</span></td>` +
+      `<td class="dim">${esc(parent)}</td>` +
+      "</tr>";
+  }
+  return `<div class="live-sec"><div class="lbl">entities</div>` +
+    `<table class="live-tbl">${rows}</table></div>`;
+}
+
+function liveRelationsTable(relations) {
+  if (!relations || !relations.length) return "";
+  let rows = "";
+  for (const r of relations) {
+    rows += "<tr>" +
+      `<td>${esc(bfoLabel(r.s))}</td>` +
+      `<td class="dim">${esc(bfoLabel(r.p))}</td>` +
+      `<td>${esc(bfoLabel(r.o))}</td>` +
+      "</tr>";
+  }
+  return `<div class="live-sec"><div class="lbl">relations</div>` +
+    `<table class="live-tbl">${rows}</table></div>`;
+}
+
+function liveHandle(obj) {
+  const src = obj.src, rec = obj.event;
+  if (!rec) return;
+  if (src === "main") {
+    const et = rec.event_type;
+    if (et === "propose") return liveOnPropose(rec);
+    if (et === "commit") return liveOnCommit(rec);
+    if (et === "claim_timing") return liveOnTiming(rec);
+    return;
+  }
+  if (src === "gate") return liveOnGate(rec);
+}
+
+function liveOnPropose(rec) {
+  const key = liveKeyOf(rec);
+  if (!key) return;
+  const card = liveCard(key);
+  const p = rec.payload || {};
+  const prop = p.proposal || {};
+  const title = prop.utterance || prop.term || p.claim_id || key;
+  const batch = p.proposal_source === "batch";
+  const h = card.el.querySelector("h4");
+  h.innerHTML = `<span class="live-title">${esc(title)}</span>` +
+    (batch ? '<span class="live-badge b-batch">batch</span>' : "") +
+    '<span class="live-verdict"></span>';
+  const body = card.el.querySelector(".live-proposal");
+  body.innerHTML = liveEntitiesTable(prop.entities) + liveRelationsTable(prop.relations);
+}
+
+function liveOnGate(rec) {
+  const key = liveKeyOf(rec);
+  if (!key) return;
+  const card = liveCard(key);
+  const sec = card.el.querySelector(".live-gate");
+  const lines = card.el.querySelector(".live-gate-lines");
+  sec.style.display = "";
+  const tier = rec.tier || "?";
+  const outcome = String(rec.outcome || "").toUpperCase();
+  const attempt = rec.attempt != null ? ` #${rec.attempt}` : "";
+  let cls = "g-skip", verb = outcome;
+  if (rec.reasoner_skipped && tier === "reasoner") { cls = "g-skip"; verb = "skipped"; }
+  else if (outcome === "ACCEPT") { cls = "g-pass"; verb = "PASS"; }
+  else if (outcome === "REJECT") { cls = "g-reject"; verb = "REJECT"; }
+  const reason = rec.reason ? ` — <span class="g-reason">${esc(rec.reason)}</span>` : "";
+  const line = el('<div class="live-gate-line"></div>');
+  line.innerHTML = `<span class="g-tier">${esc(tier)}${attempt}</span> ` +
+    `<span class="${cls}">${esc(verb)}</span>${reason}`;
+  lines.appendChild(line);
+}
+
+function liveOnCommit(rec) {
+  const key = liveKeyOf(rec);
+  if (!key) return;
+  const card = liveCard(key);
+  const p = rec.payload || {};
+  const warns = (p.warnings || []).length;
+  const c = card.el.querySelector(".live-commit");
+  c.style.display = "";
+  c.textContent = warns ? `commit ok · ${warns} warning(s)` : "commit ok";
+}
+
+function liveOnTiming(rec) {
+  const key = liveKeyOf(rec);
+  if (!key) return;
+  const card = liveCard(key);
+  const p = rec.payload || {};
+  const committed = !!p.committed;
+  let verdict = p.verdict || "";
+  if (committed) verdict = "committed";
+  card.verdict = verdict;
+  card.el.className = "live-card v-" + (verdict || "unknown");
+  const vspan = card.el.querySelector(".live-verdict");
+  if (vspan) vspan.innerHTML = `<span class="live-badge v-${esc(verdict)}">${esc(verdict || "?")}</span>`;
+
+  const ms = p.ms || {};
+  const parts = [];
+  const add = (label, key2) => { const v = ms[key2]; if (v) parts.push(`${label} ${Math.round(v)}`); };
+  add("propose", "propose");
+  add("gate", "gate_total");
+  add("reason", "reason_verify");
+  add("total", "total");
+  const t = card.el.querySelector(".live-timing");
+  if (parts.length) {
+    t.style.display = "";
+    let statsTxt = "";
+    if (p.stats) statsTxt = ` · classes ${p.stats.classes ?? "?"} · individuals ${p.stats.individuals ?? "?"}`;
+    t.textContent = parts.join(" / ") + " ms" + statsTxt;
+  }
+
+  // Counters
+  if (committed) LIVE.seen.committed++;
+  else if (verdict === "inconsistent") LIVE.seen.inconsistent++;
+  else if (verdict === "flagged" || verdict === "needs_review") LIVE.seen.flagged++;
+  if (ms.total) { LIVE.msTotal += ms.total; LIVE.msCount++; }
+  liveRenderCounters();
+}
+
+liveEl("live-toggle").addEventListener("click", liveToggle);
+liveEl("live-job").addEventListener("change", (ev) => {
+  LIVE.jobId = ev.target.value || null;
+  liveResetView();
+  if (LIVE.active && !LIVE.paused) liveOpen();
+});
+window.addEventListener("beforeunload", liveClose);
+
+// ---------- audits tab ----------
+// Read-only report over GET /ontologies/<n>/fol_audit (latest Prover9/Mace4
+// record) and GET /ontologies/<n>/incoherence (faithful-mode ledger). The
+// audits are evidence about the source text; nothing here can modify an
+// ontology.
+let _auditsInited = false;
+
+async function initAuditsOnFirstView() {
+  if (!_auditsInited) {
+    _auditsInited = true;
+    document.getElementById("audit-refresh").onclick = refreshAudits;
+    document.getElementById("audit-onto").onchange = () => {
+      document.getElementById("ondemand-body").innerHTML = "";
+      document.getElementById("factcheck-body").innerHTML = "";
+      refreshAudits();
+    };
+    document.getElementById("coherence-run").onclick = runCoherenceCheck;
+    document.getElementById("factcheck-run").onclick = runFactCheck;
+  }
+  if (!currentOntologies.length) await refreshOntologies();
+  const sel = document.getElementById("audit-onto");
+  const prev = sel.value;
+  sel.innerHTML = "";
+  currentOntologies.forEach(o => {
+    const opt = document.createElement("option");
+    opt.value = o.name;
+    opt.textContent = o.name + (o.active ? " (active)" : "");
+    sel.appendChild(opt);
+  });
+  sel.value = prev && currentOntologies.some(o => o.name === prev)
+    ? prev : (currentActive || (currentOntologies[0] || {}).name || "");
+  refreshAudits();
+}
+
+async function runCoherenceCheck() {
+  const name = document.getElementById("audit-onto").value;
+  const box = document.getElementById("ondemand-body");
+  if (!name) { box.innerHTML = '<div class="muted">Select an ontology.</div>'; return; }
+  box.innerHTML = '<div class="muted">Running reasoner (serialised behind any active feed run)…</div>';
+  let d;
+  try {
+    const r = await fetch(API + "/ontologies/" + encodeURIComponent(name) + "/coherence-check", { method: "POST" });
+    d = await r.json();
+  } catch (e) { box.innerHTML = '<div class="audit-verdict v-inconclusive">check failed: ' + esc(String(e)) + '</div>'; return; }
+  if (d.error) { box.innerHTML = '<div class="audit-verdict v-inconclusive">' + esc(d.error) + '</div>'; return; }
+  let html = '<div style="border:1px solid var(--border,#333); border-radius:8px; padding:12px;">';
+  html += '<div style="margin-bottom:8px;"><strong>On-demand coherence check</strong> ';
+  if (d.inconsistent_ontology) {
+    html += _verdictBadge("inconsistent") + '</div><div class="muted">' + esc(d.detail || "") + '</div>';
+  } else {
+    html += _verdictBadge("consistent") + '</div>';
+    if (d.coherent) {
+      html += '<div class="muted">Consistent — and every class is satisfiable.</div>';
+    } else {
+      html += '<div class="muted" style="margin-bottom:6px;">Consistent ontology, but <strong>' + d.unsat_count +
+              '</strong> unsatisfiable class(es) — classes that can never have an instance:</div><ul style="margin:0;">';
+      (d.unsatisfiable_classes || []).forEach(u => {
+        let why = "";
+        if (u.disjoint_collisions && u.disjoint_collisions.length)
+          why = " — subclass of disjoint " + u.disjoint_collisions.map(p => esc(p.join(" ⊥ "))).join(", ");
+        else if (u.asserted_superclasses && u.asserted_superclasses.length)
+          why = " — subclass of " + u.asserted_superclasses.map(esc).join(", ");
+        html += '<li><code>' + esc(u.name) + '</code>' + why + '</li>';
+      });
+      html += '</ul>';
+    }
+  }
+  html += '</div>';
+  box.innerHTML = html;
+}
+
+async function runFactCheck() {
+  const name = document.getElementById("audit-onto").value;
+  const box = document.getElementById("factcheck-body");
+  const raw = document.getElementById("factcheck-classes").value || "";
+  const classes = raw.split(",").map(s => s.trim()).filter(Boolean);
+  if (!name) { box.innerHTML = '<div class="muted">Select an ontology.</div>'; return; }
+  if (!classes.length) { box.innerHTML = '<div class="muted">Enter one or more class names.</div>'; return; }
+  box.innerHTML = '<div class="muted">Reasoning…</div>';
+  let d;
+  try {
+    const r = await fetch(API + "/ontologies/" + encodeURIComponent(name) + "/fact-check",
+      { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ classes }) });
+    d = await r.json();
+  } catch (e) { box.innerHTML = '<div class="audit-verdict v-inconclusive">failed: ' + esc(String(e)) + '</div>'; return; }
+  if (d.error) { box.innerHTML = '<div class="audit-verdict v-inconclusive">' + esc(d.error) + '</div>'; return; }
+  if (d.well_formed === false) {
+    let msg = esc((d.errors || []).join("; "));
+    if (d.known_class_count) msg += ' (' + d.known_class_count + ' classes in this ontology)';
+    box.innerHTML = '<div class="muted">' + msg + '</div>'; return;
+  }
+  let html = '<div style="border:1px solid var(--border,#333); border-radius:8px; padding:12px;">';
+  if (!d.consistent) {
+    html += _verdictBadge("inconsistent") + '<div class="muted" style="margin-top:6px;">' + esc(d.detail || "") + '</div>';
+    if (d.colliding_classes && d.colliding_classes.length)
+      html += '<div style="margin-top:6px;">Colliding: ' + d.colliding_classes.map(p => '<code>' + esc(p.join(" ⊥ ")) + '</code>').join(", ") + '</div>';
+  } else {
+    html += _verdictBadge("consistent") + '<div class="muted" style="margin-top:6px;">' + esc(d.detail || "") + '</div>';
+    if (d.newly_entailed_classes && d.newly_entailed_classes.length)
+      html += '<div style="margin-top:6px;">Reasoner also infers it is: ' + d.newly_entailed_classes.map(c => '<code>' + esc(c) + '</code>').join(", ") + '</div>';
+  }
+  html += '</div>';
+  box.innerHTML = html;
+}
+
+function _verdictBadge(verdict) {
+  const map = {
+    consistent: ["v-consistent", "consistent"],
+    inconsistent: ["v-inconsistent", "INCONSISTENT"],
+    consistent_partial_translation: ["v-partial", "consistent (partial translation)"],
+    inconclusive: ["v-inconclusive", "inconclusive"],
+  };
+  const [cls, label] = map[verdict] || ["v-inconclusive", verdict || "?"];
+  return `<span class="audit-verdict ${cls}">${esc(label)}</span>`;
+}
+
+async function refreshAudits() {
+  const name = document.getElementById("audit-onto").value;
+  const body = document.getElementById("audit-body");
+  if (!name) { body.innerHTML = '<div class="muted">No ontologies in the library.</div>'; return; }
+  body.innerHTML = '<div class="muted">Loading audits…</div>';
+  const [folRes, incRes] = await Promise.all([
+    fetch(API + "/ontologies/" + encodeURIComponent(name) + "/fol_audit").then(r => r.json().then(d => ({ ok: r.ok, d }))).catch(e => ({ ok: false, d: { error: String(e) } })),
+    fetch(API + "/ontologies/" + encodeURIComponent(name) + "/incoherence").then(r => r.json().then(d => ({ ok: r.ok, d }))).catch(e => ({ ok: false, d: { error: String(e) } })),
+  ]);
+  body.innerHTML = "";
+  body.appendChild(_renderFolCard(name, folRes));
+  body.appendChild(_renderIncoherenceCard(name, incRes));
+}
+
+function _renderFolCard(name, res) {
+  const rawUrl = API + "/ontologies/" + encodeURIComponent(name) + "/fol_audit";
+  if (!res.ok || !res.d.record) {
+    const d = res.d || {};
+    const why = d.status === "no_audit"
+      ? "No FOL audit has been run for this ontology yet. Run one with " +
+        "<code>python -m app.fol_gate ontology/library/" + esc(name) +
+        "/working.owl --mode B --probes</code> on the server" +
+        (d.enabled ? "" : ", or set <code>FOL_GATE_ENABLED=true</code> for automatic end-of-job audits") + "."
+      : "Could not load the audit record: " + esc(d.error || d.detail || "unknown error");
+    return el(`<div class="audit-card"><h3>FOL audit (Prover9 / Mace4)</h3>
+      <div class="muted">${why}</div></div>`);
+  }
+  const r = res.d.record;
+  const mace = r.mace4 || {};
+  const p9 = r.prover9_refutation || {};
+  const skipped = r.skipped_axioms || [];
+  const probesProved = (r.probes || []).filter(p => p.outcome === "proved");
+  const culprits = p9.culprit_axioms || [];
+  const card = el(`<div class="audit-card">
+    <h3>FOL audit (Prover9 / Mace4) ${_verdictBadge(r.verdict)}</h3>
+    <dl class="audit-kv">
+      <dt>Mode</dt><dd>${esc(r.mode)}${r.axiom_profile ? " · ISO 21838-2 profile: " + esc(r.axiom_profile) : " (self-contained cross-check)"}</dd>
+      <dt>Mace4 (model finder)</dt><dd>${esc(mace.outcome || "?")}${mace.domain_size ? " — finite model, domain " + mace.domain_size + " (positive consistency evidence)" : ""}</dd>
+      <dt>Prover9 (refutation)</dt><dd>${esc(p9.outcome || "?")}${p9.outcome === "proved" ? " — definite inconsistency, proof object in the record" : ""}</dd>
+      <dt>Formulas translated</dt><dd>${r.formula_count ?? "?"}</dd>
+      <dt>Axioms skipped</dt><dd>${skipped.length}${skipped.length ? " (translation is partial; see below)" : ""}</dd>
+      ${r.probes ? `<dt>Probes proved</dt><dd>${probesProved.length} of ${(r.probes || []).filter(p => p.kind !== "cap_notice").length}</dd>` : ""}
+      <dt>Finished</dt><dd>${esc(r.finished || "?")}</dd>
+      <dt>Ontology untouched</dt><dd>${r.file_unchanged ? "yes — hash-verified" : "NOT VERIFIED"}</dd>
+    </dl>
+    <div class="raw-link" style="margin-top:8px;">
+      <a href="${rawUrl}" target="_blank" rel="noopener">Raw record (JSON)</a>
+      <span class="muted"> · ${esc(r.record_path || "")}</span>
+    </div>
+  </div>`);
+  if (culprits.length) {
+    const det = el(`<details open><summary>Culprit axioms from the proof (${culprits.length})</summary><ul></ul></details>`);
+    culprits.forEach(c => det.querySelector("ul").appendChild(el(`<li>${esc(c)}</li>`)));
+    card.appendChild(det);
+  }
+  if (probesProved.length) {
+    const det = el(`<details open><summary>Probes proved (${probesProved.length})</summary><ul></ul></details>`);
+    probesProved.forEach(p => det.querySelector("ul").appendChild(
+      el(`<li>${esc(p.kind)}: ${esc(p.class || (p.pair || []).join(" / "))}</li>`)));
+    card.appendChild(det);
+  }
+  if (skipped.length) {
+    const det = el(`<details><summary>Skipped axioms (${skipped.length})</summary><ul></ul></details>`);
+    skipped.slice(0, 200).forEach(s => det.querySelector("ul").appendChild(
+      el(`<li>${esc(s.axiom)} — ${esc(s.reason)}</li>`)));
+    if (skipped.length > 200) det.querySelector("ul").appendChild(
+      el(`<li class="muted">… ${skipped.length - 200} more in the raw record</li>`));
+    card.appendChild(det);
+  }
+  return card;
+}
+
+function _renderIncoherenceCard(name, res) {
+  const rawUrl = API + "/ontologies/" + encodeURIComponent(name) + "/incoherence";
+  if (!res.ok) {
+    return el(`<div class="audit-card"><h3>Incoherence findings (fidelity ledger)</h3>
+      <div class="muted">Could not load: ${esc((res.d || {}).error || "unknown error")}</div></div>`);
+  }
+  const d = res.d;
+  const entries = d.entries || [];
+  const card = el(`<div class="audit-card">
+    <h3>Incoherence findings (fidelity ledger)
+      <span class="audit-verdict ${entries.length ? "v-flagged" : "v-consistent"}">${entries.length} finding${entries.length === 1 ? "" : "s"}</span>
+      <span class="os-badge ${d.fidelity === "faithful" ? "finalized" : "inactive"}" title="Extraction fidelity mode">${esc(d.fidelity || "curated")}</span>
+    </h3>
+    <div id="inc-list"></div>
+    <div class="raw-link" style="margin-top:8px;">
+      <a href="${rawUrl}" target="_blank" rel="noopener">Raw ledger (JSON)</a>
+    </div>
+  </div>`);
+  const list = card.querySelector("#inc-list");
+  if (!entries.length) {
+    list.appendChild(el(`<div class="muted">No flagged claims. ${d.fidelity === "faithful"
+      ? "Nothing the text asserted has clashed under BFO so far."
+      : "This ontology runs in curated mode: clashes are rejected or repaired in-loop rather than committed and flagged."}</div>`));
+    return card;
+  }
+  list.appendChild(el(`<div class="muted" style="margin-bottom:6px;">${esc(d.framing || "")}</div>`));
+  entries.forEach(e2 => {
+    const g = e2.gate_result || {};
+    const src = (e2.provenance || {}).source_text || e2.utterance || "";
+    const axioms = (e2.exclude_axioms || []).map(t => `${t.s} ${t.p} ${t.o}`);
+    const item = el(`<div class="audit-finding">
+      <div class="diag"><strong>${esc((e2.subjects || []).join(", ") || "?")}</strong> — ${esc(g.reason || "incoherent under BFO")}</div>
+      ${src ? `<div class="src">Text: “${esc(src)}”</div>` : ""}
+      <div class="muted">${esc(e2.tier || "?")} tier · ${esc(e2.id || "")} · ${esc((e2.ts || "").slice(0, 19))}</div>
+    </div>`);
+    if (axioms.length) {
+      const det = el(`<details><summary>Committed clash axioms (${axioms.length})</summary><ul></ul></details>`);
+      axioms.forEach(a => det.querySelector("ul").appendChild(el(`<li>${esc(a)}</li>`)));
+      item.appendChild(det);
+    }
+    list.appendChild(item);
+  });
+  return card;
+}
 
 // ---------- misc ----------
 function setBusy(busy) {
@@ -1746,6 +2470,114 @@ document.getElementById("modal-import-ontology").addEventListener("click", (e) =
   if (e.target.id === "modal-import-ontology") closeImportModal();
 });
 
+</script>
+
+<!-- ===== Coverage Coherence panel (additive, isolated) ===================== -->
+<style>
+  #cov-toggle{position:fixed;right:16px;bottom:16px;z-index:9998;
+    background:var(--accent);color:#062033;border:none;border-radius:22px;
+    padding:10px 16px;font-weight:600;cursor:pointer;box-shadow:0 4px 14px rgba(0,0,0,.4)}
+  #cov-panel{position:fixed;right:16px;bottom:64px;z-index:9999;width:430px;
+    max-width:calc(100vw - 32px);max-height:82vh;overflow:auto;display:none;
+    background:var(--panel);border:1px solid var(--border);border-radius:12px;
+    padding:16px;box-shadow:0 10px 40px rgba(0,0,0,.55);color:var(--text);
+    font-size:13.5px}
+  #cov-panel h3{margin:0 0 4px;font-size:16px}
+  #cov-panel .cov-sub{color:var(--muted);margin:0 0 12px;font-size:12px}
+  #cov-panel section{border-top:1px solid var(--border);padding:12px 0}
+  #cov-panel label{display:block;color:var(--muted);font-size:11px;
+    text-transform:uppercase;letter-spacing:.06em;margin:0 0 5px}
+  #cov-panel select,#cov-panel input,#cov-panel textarea{width:100%;
+    background:var(--panel-2);color:var(--text);border:1px solid var(--border);
+    border-radius:7px;padding:7px 9px;font-size:13px;font-family:inherit}
+  #cov-panel button.cov-act{margin-top:8px;background:var(--panel-2);
+    color:var(--accent);border:1px solid var(--border);border-radius:7px;
+    padding:7px 12px;cursor:pointer;font-weight:600}
+  #cov-panel .cov-chip{display:inline-block;padding:3px 9px;border-radius:999px;
+    font-size:11px;font-weight:600;margin:6px 6px 0 0}
+  .cov-green{background:#123524;color:#57d98e} .cov-amber{background:#3a2f12;color:#e6b34d}
+  .cov-red{background:#3a1414;color:#f08a8a}
+  #cov-panel .cov-out{margin-top:8px;font-size:12.5px;line-height:1.5}
+  #cov-panel .cov-clause{border-left:2px solid var(--accent);padding:5px 0 5px 10px;
+    margin:7px 0;color:var(--muted)}
+  #cov-panel .cov-clause b{color:var(--text)}
+  #cov-panel .cov-quote{font-style:italic}
+</style>
+<button id="cov-toggle">Coverage coherence</button>
+<div id="cov-panel">
+  <h3>Coverage coherence</h3>
+  <p class="cov-sub">Reasoner scoring, claim testing, and policy-wording analysis.</p>
+  <section>
+    <label>Coverage ontology</label>
+    <select id="cov-onto"></select>
+    <button class="cov-act" id="cov-score-btn">Score coherence</button>
+    <div class="cov-out" id="cov-score-out"></div>
+  </section>
+  <section>
+    <label>Test a claim / fact pattern (features, comma-separated)</label>
+    <input id="cov-claim" placeholder="Mudflow, SaturatedSoilMovement"/>
+    <button class="cov-act" id="cov-claim-btn">Check claim</button>
+    <div class="cov-out" id="cov-claim-out"></div>
+  </section>
+  <section>
+    <label>Analyze new policy wording</label>
+    <textarea id="cov-wording" rows="3" placeholder="Paste policy wording..."></textarea>
+    <button class="cov-act" id="cov-analyze-btn">Analyze wording</button>
+    <div class="cov-out" id="cov-analyze-out"></div>
+  </section>
+</div>
+<script>
+(function(){
+  const $=id=>document.getElementById(id);
+  const esc=s=>(s||"").replace(/[&<>]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));
+  const bandClass=b=>b==="coherent"?"cov-green":(b==="structural-warning"?"cov-amber":"cov-red");
+  function chip(b){return `<span class="cov-chip ${bandClass(b)}">${esc(b||"?")}</span>`;}
+  function clauses(list){return (list||[]).map(c=>
+    `<div class="cov-clause"><b>${esc(c.cfr_cite)}</b> &mdash; ${esc(c.sfip_section)}<br>
+     <span class="cov-quote">&ldquo;${esc((c.verbatim_text||"").slice(0,220))}${(c.verbatim_text||"").length>220?"...":""}&rdquo;</span></div>`).join("");}
+  $("cov-toggle").addEventListener("click",()=>{
+    const p=$("cov-panel"); const show=p.style.display!=="block";
+    p.style.display=show?"block":"none"; if(show) loadOntos();
+  });
+  function loadOntos(){
+    fetch("/coverage/ontologies").then(r=>r.json()).then(d=>{
+      const sel=$("cov-onto");
+      sel.innerHTML=(d.coverage_ontologies||[]).map(o=>`<option value="${esc(o.name)}">${esc(o.name)}</option>`).join("")
+        || '<option value="">(no coverage ontologies)</option>';
+    }).catch(()=>{});
+  }
+  function post(url,body){return fetch(url,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(body)}).then(r=>r.json());}
+  $("cov-score-btn").addEventListener("click",()=>{
+    $("cov-score-out").innerHTML="scoring...";
+    post("/coverage/score",{ontology:$("cov-onto").value}).then(d=>{
+      if(d.error){$("cov-score-out").innerHTML="Error: "+esc(d.error);return;}
+      let h=`${chip(d.band)} verdict: <b>${esc(d.verdict)}</b> &middot; contradiction debt: ${d.contradiction_debt}`;
+      (d.findings||[]).forEach(f=>{h+=`<div class="cov-out">Unsatisfiable coverage class <b>${esc(f.coverage_class)}</b> (Shape ${f.shape}) &mdash; a coverage that cannot pay:${clauses(f.colliding_clauses)}</div>`;});
+      $("cov-score-out").innerHTML=h;
+    });
+  });
+  $("cov-claim-btn").addEventListener("click",()=>{
+    const feats=$("cov-claim").value.split(",").map(s=>s.trim()).filter(Boolean);
+    $("cov-claim-out").innerHTML="checking...";
+    post("/coverage/check-claim",{ontology:$("cov-onto").value,claim:{exhibits:feats}}).then(d=>{
+      if(d.error){$("cov-claim-out").innerHTML="Error: "+esc(d.error);return;}
+      if(d.well_formed===false){$("cov-claim-out").innerHTML="Not well-formed: "+esc((d.errors||[]).join("; "))+
+        `<div class="cov-out">Known features: ${esc((d.known_features||[]).join(", "))}</div>`;return;}
+      let h=`${chip(d.band)} verdict: <b>${esc(d.verdict)}</b>`;
+      if(d.verdict!=="inconsistent") h+=` &middot; covered: ${d.covered} &middot; uncovered: ${d.uncovered}`;
+      h+=`<div class="cov-out">${esc(d.plain_english)}</div>`+clauses(d.colliding_clauses);
+      $("cov-claim-out").innerHTML=h;
+    });
+  });
+  $("cov-analyze-btn").addEventListener("click",()=>{
+    $("cov-analyze-out").innerHTML="analyzing...";
+    post("/coverage/analyze",{wording:$("cov-wording").value}).then(d=>{
+      if(d.error){$("cov-analyze-out").innerHTML="Error: "+esc(d.error);return;}
+      $("cov-analyze-out").innerHTML=`${chip(d.band)} verdict: <b>${esc(d.verdict)}</b> &middot; debt: ${d.contradiction_debt}`+
+        (d.unsat_coverage_classes&&d.unsat_coverage_classes.length?`<div class="cov-out">Unsatisfiable: ${esc(d.unsat_coverage_classes.join(", "))}</div>`:"");
+    });
+  });
+})();
 </script>
 </body>
 </html>

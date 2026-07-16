@@ -32,6 +32,14 @@ ANTHROPIC_EXTRACTOR_MODEL = os.getenv(
     "claude-haiku-4-5-20251001",
 )
 
+# Sampling temperature for the proposer. BFO typing is a near-deterministic
+# task -- a term has one correct top-level category -- so the default is 0.
+# At the API default (1.0) the proposer stochastically assigns a class two
+# disjoint BFO types (e.g. a disease as both process and disposition), which
+# the construction linter rejects; that straddle-reject churn dominated the
+# ICD-11 feed. Raise only if deterministic output collapses into a rut.
+PROPOSER_TEMPERATURE = float(os.getenv("PROPOSER_TEMPERATURE", "0"))
+
 # ----- Kernel identity (bfo-agent-spec.md FR-1/§8) -----
 # The dominant kernel is BFO 2020. Its versionIRI stamps emitted fragments and
 # kernel-extension-requests so provenance is unambiguous.
@@ -127,6 +135,23 @@ GATE_POLICY = os.getenv("GATE_POLICY", "reject_resample")
 GATE_RUN_REASONER = os.getenv("GATE_RUN_REASONER", "true").lower() == "true"
 # Max resample/reground attempts before giving up and flagging for review.
 GATE_MAX_ATTEMPTS = int(os.getenv("GATE_MAX_ATTEMPTS", "2"))
+# Watchdog: SIGKILL a HermiT run that exceeds this many seconds so a single
+# pathological claim can't hang the reasoner for hours and pin the box's memory
+# cgroup, freezing the whole app (incident 2026-07-12). 0 disables the watchdog.
+REASONER_TIMEOUT_SECONDS = float(os.getenv("REASONER_TIMEOUT_SECONDS", "300"))
+# Hard per-request timeout on the LLM (proposer/extractor) client. Without it the
+# Anthropic SDK can block a feed's runner thread indefinitely on a stalled
+# connection, leaving the job silently "feeding" forever (stall incident
+# 2026-07-12). On timeout the SDK raises, which the feed loop handles as a claim
+# error (retry/backoff, then pause after MAX_CONSECUTIVE_ERRORS). 0 = SDK default.
+LLM_CALL_TIMEOUT_SECONDS = float(os.getenv("LLM_CALL_TIMEOUT_SECONDS", "180"))
+# Last-resort stall backstop for the server-side feed loop (job_runner). If a run
+# makes zero forward progress (no claim completes) for this many seconds -- a
+# reasoner watchdog kill-miss, a lock deadlock, or any unforeseen wedge -- the
+# monitor pauses the job and notifies instead of letting it sit silently
+# in-progress forever. Must exceed a legitimate slow claim (one LLM call +
+# reduced reasoning + an occasional checkpoint self-heal). 0 disables the monitor.
+FEED_STALL_TIMEOUT_SECONDS = float(os.getenv("FEED_STALL_TIMEOUT_SECONDS", "1800"))
 # Relation-aware scaffolding: when a dependent-continuant class is committed,
 # add the constraint its BFO category requires (inheres_in / realized_in).
 ENABLE_SCAFFOLDING = os.getenv("ENABLE_SCAFFOLDING", "true").lower() == "true"
@@ -145,6 +170,170 @@ ENABLE_CONSTRUCTION_LINTER = (
 # classes on top of BFO.
 STRICT_CLOSED_VOCAB = (
     os.getenv("STRICT_CLOSED_VOCAB", "false").lower() == "true"
+)
+
+# ----- Extraction fidelity (fidelity-mode-spec.md FM-1) -----
+# Default fidelity stamped into NEWLY created ontologies only; an existing
+# manifest without a "fidelity" field always means "curated" (FM-1).
+#   curated  -- today's behavior: gate rejects/repairs, commit backstop rolls back.
+#   faithful -- annotate, don't repair: the extracted ontology stays true to the
+#              source text including its errors; incoherence is evidence, not a
+#              defect to fix.
+FIDELITY_DEFAULT = os.getenv("FIDELITY_DEFAULT", "curated")
+
+# ----- FOL gate (fol-gate-spec.md) -----
+# Out-of-loop Prover9/Mace4 audit of committed ontologies against the BFO 2020
+# first-order axioms. Evidence-only (FG-0): never blocks, never writes to the
+# ontology. Soft-disabled when the binaries are absent.
+FOL_GATE_ENABLED = os.getenv("FOL_GATE_ENABLED", "false").lower() == "true"
+FOL_PROVER9_BIN = os.getenv("FOL_PROVER9_BIN", "prover9")
+FOL_MACE4_BIN = os.getenv("FOL_MACE4_BIN", "mace4")
+FOL_TIMEOUT_SECS = int(os.getenv("FOL_TIMEOUT_SECS", "60"))
+FOL_PROBE_TIMEOUT_SECS = int(os.getenv("FOL_PROBE_TIMEOUT_SECS", "10"))
+FOL_MACE4_MAX_DOMAIN = int(os.getenv("FOL_MACE4_MAX_DOMAIN", "8"))
+FOL_AXIOMS_DIR = ROOT / os.getenv("FOL_AXIOMS_DIR", "ontology/bfo-2020-fol")
+# Sub-theory profile: "default" (declaration/instantiation/mereology/dependence/
+# participation/temporalized-relations) or "full" (adds spatial, temporal,
+# material-entity, history, order, occurrent-mereology, spatiotemporal).
+FOL_AXIOM_PROFILE = os.getenv("FOL_AXIOM_PROFILE", "default")
+# Cap on per-class unsatisfiability probes per audit (P-2; cap is logged).
+FOL_PROBES_MAX_CLASSES = int(os.getenv("FOL_PROBES_MAX_CLASSES", "25"))
+
+# ----- Speed instrumentation (SPEC-bfo-agent-speed.md Step 0) -----
+# Per-claim phase timings logged as "claim_timing" events in the session log.
+TIMING_INSTRUMENTATION = os.getenv("TIMING_INSTRUMENTATION", "true").lower() == "true"
+
+# ----- Structural reasoner skip (SPEC-bfo-agent-speed.md change 3) -----
+# When the construction+lint tiers fully resolve every touched entity's BFO
+# anchors and the proposal introduces nothing structure cannot decide (no
+# class expressions, restrictions, negations, equivalence/disjointness),
+# skip the per-claim HermiT tier. The commit-time / checkpoint full pass
+# remains the backstop; this changes when the JVM runs, not whether.
+GATE_REASONER_STRUCTURAL_SKIP = (
+    os.getenv("GATE_REASONER_STRUCTURAL_SKIP", "false").lower() == "true"
+)
+
+# ----- In-memory dry-run (SPEC-bfo-agent-speed.md change 2) -----
+# Apply-and-rollback proposals against the live in-memory world and reason in
+# a disposable scratch world serialized from memory, instead of reloading the
+# working file from disk 2-5x per claim. The load-time sanitizer guards run
+# once at startup plus a targeted per-proposal check (_proposal_guards); the
+# guarantee is unchanged.
+INMEM_DRY_RUN = os.getenv("INMEM_DRY_RUN", "false").lower() == "true"
+
+# ----- Checkpointed full verification (SPEC-bfo-agent-speed.md change 6) -----
+# When VERIFY_EVERY_COMMIT is false, the per-claim commit skips the full-graph
+# post-commit reasoner pass; instead a full HermiT certificate runs every
+# FULL_VERIFY_EVERY_K commits and, mandatorily, once at job completion before
+# the job is marked completed. The artifact's final state is always fully
+# certified; only the timing of the full check changes.
+VERIFY_EVERY_COMMIT = os.getenv("VERIFY_EVERY_COMMIT", "true").lower() == "true"
+FULL_VERIFY_EVERY_K = int(os.getenv("FULL_VERIFY_EVERY_K", "250"))
+FINALIZE_REQUIRES_FULL_VERIFY = os.getenv("FINALIZE_REQUIRES_FULL_VERIFY", "true").lower() == "true"
+# On checkpoint failure (curated mode), also flip the suspect window's claims
+# from committed to needs_review. Off by default: evidence-first, the git
+# per-commit history of working.owl makes bisection tractable.
+CHECKPOINT_FAIL_MARK_REVIEW = os.getenv("CHECKPOINT_FAIL_MARK_REVIEW", "false").lower() == "true"
+# Self-healing checkpoint (curated mode). When on, a failed full-graph
+# certificate does not pause the run: the exact classes the certificate names
+# unsatisfiable are quarantined (destroyed with their referencing triples),
+# recorded in the incoherence ledger as evidence, and the artifact is
+# re-certified before feeding continues. These are reduced-world
+# false-coherent commits -- classes the per-claim gate admitted but that the
+# full graph proves unsatisfiable -- so removal restores the gate's intended
+# admission rather than corrupting a good artifact. A bare inconsistency with
+# no named unsatisfiable class is handled by the ABox self-heal below. Off by
+# default; an unattended long regate run turns it on so a lone poison class
+# cannot stall the whole job.
+CHECKPOINT_SELF_HEAL = os.getenv("CHECKPOINT_SELF_HEAL", "false").lower() == "true"
+CHECKPOINT_SELF_HEAL_MAX_ROUNDS = int(os.getenv("CHECKPOINT_SELF_HEAL_MAX_ROUNDS", "6"))
+# ABox extension of the self-heal. A BARE inconsistency (HermiT reports the
+# ontology inconsistent and raises before naming any unsatisfiable class -- the
+# icd11bfo_v2 case, where the reduced-world per-claim gate admits two
+# individuals whose combined types/relations clash) names no class to
+# quarantine, so the class sweep above cannot touch it and the run would pause
+# forever. When on, the self-heal isolates the culprit individuals
+# (OntologyManager.isolate_inconsistency_culprits, QuickXplain over the saved
+# graph) and quarantines those instead, then re-certifies. Bounded by
+# MAX_INDIVIDUALS reasoner calls; past that (or if removing individuals cannot
+# restore consistency, i.e. a TBox cause) it still pauses. Gated under
+# CHECKPOINT_SELF_HEAL; on by default when that is on.
+CHECKPOINT_SELF_HEAL_ABOX = os.getenv("CHECKPOINT_SELF_HEAL_ABOX", "true").lower() == "true"
+CHECKPOINT_SELF_HEAL_MAX_INDIVIDUALS = int(os.getenv("CHECKPOINT_SELF_HEAL_MAX_INDIVIDUALS", "400"))
+
+# ----- Realizable-misuse detect/repair (bfo-agent-realizable-misuse-fix-SPEC) --
+# §7 full-signature guardrail: owlready2's inconsistent_classes() (the scratch
+# certificate) silently omits some genuinely unsatisfiable classes on the ICD-11
+# artifact -- a reduced-world false-coherent commit. When on, verify_full also
+# confirms coherence with the clone-probe detector, so the gate cannot pass an
+# artifact that still carries a realizable-misuse unsat.
+FULL_SIGNATURE_REALIZABLE_CHECK = (
+    os.getenv("FULL_SIGNATURE_REALIZABLE_CHECK", "true").lower() == "true"
+)
+# When the self-heal finds unsatisfiable classes, attempt content-preserving
+# realizable-misuse repair (R1-R4: retype/re-relate/relax/drop-complement)
+# BEFORE the destructive class quarantine. P1/P2/CONTRA are ledgered as
+# translation defects (§8); classes it cannot heal fall through to quarantine.
+CHECKPOINT_REALIZABLE_REPAIR = (
+    os.getenv("CHECKPOINT_REALIZABLE_REPAIR", "true").lower() == "true"
+)
+
+# ----- Reduced reasoning world (SPEC-bfo-agent-speed.md change 1) -----
+# Dry-run reasoning over BFO + working TBox + only the proposal's touched
+# individuals instead of the full ABox. Sound for class satisfiability and
+# the proposal's own assertions; the checkpoint/final full pass (change 6)
+# reconciles cross-individual interactions. Requires INMEM_DRY_RUN.
+REDUCED_REASONING_WORLD = os.getenv("REDUCED_REASONING_WORLD", "false").lower() == "true"
+
+# ----- Batch propose (SPEC-bfo-agent-speed.md change 5) -----
+# Decouple propose from commit: a prepare pass (app/batch_propose.py) submits
+# all pending+approved claims to the Anthropic Message Batches API (~50%
+# cheaper) against one context snapshot and persists the parsed proposals in
+# the job file; the feed then consumes a stored proposal (consume-once)
+# instead of calling the API inline. Every precomputed proposal still passes
+# the full gate, and gate resamples always re-propose live. This feature is
+# Anthropic/Hetzner-only and is never merged to the DGX fork.
+BATCH_PROPOSE_ENABLED = os.getenv("BATCH_PROPOSE_ENABLED", "false").lower() == "true"
+# Poll interval (seconds) while waiting for a submitted batch to end.
+BATCH_PROPOSE_POLL_SECS = float(os.getenv("BATCH_PROPOSE_POLL_SECS", "20"))
+# Commit-time IRI reservation: batched proposals cannot see classes minted by
+# claims committed just before them, so at apply time each NEW entity's label
+# is canonicalized (stable_iri.canonical_key) and, on a key hit against an
+# already-committed entity of the same kind, the entity is rewritten to reuse
+# that IRI (relations remapped in lockstep) instead of minting a
+# near-duplicate.
+IRI_RESERVATION_ENABLED = os.getenv("IRI_RESERVATION_ENABLED", "false").lower() == "true"
+
+# ----- Amortized save (SPEC-bfo-agent-speed.md change 7) -----
+# When false, the per-claim commit skips the O(N) RDF/XML serialization (and
+# the per-claim git commit of working.owl); the file is written at checkpoint
+# boundaries, the final pass, pause/runner exit, and graceful shutdown.
+# Between saves the source of truth is the in-memory world; crash recovery
+# resets claims committed after the last save back to pending so they re-feed
+# (bounded to <= FULL_VERIFY_EVERY_K re-proposals; stable IRIs converge).
+# Requires VERIFY_EVERY_COMMIT=false (the per-commit verify reasons over the
+# saved file) and INMEM_DRY_RUN=true (the legacy dry-run reloads from disk,
+# which would silently drop unsaved in-memory commits); refused otherwise.
+def _sanitize_save_every_commit(save_every: bool, verify_every: bool,
+                                inmem: bool) -> bool:
+    """Refuse SAVE_EVERY_COMMIT=false unless its prerequisites hold."""
+    if save_every:
+        return True
+    if verify_every or not inmem:
+        import logging
+        logging.getLogger(__name__).warning(
+            "SAVE_EVERY_COMMIT=false requires VERIFY_EVERY_COMMIT=false and "
+            "INMEM_DRY_RUN=true (got VERIFY_EVERY_COMMIT=%s, INMEM_DRY_RUN=%s)"
+            "; forcing SAVE_EVERY_COMMIT=true", verify_every, inmem,
+        )
+        return True
+    return False
+
+
+SAVE_EVERY_COMMIT = _sanitize_save_every_commit(
+    os.getenv("SAVE_EVERY_COMMIT", "true").lower() == "true",
+    VERIFY_EVERY_COMMIT,
+    INMEM_DRY_RUN,
 )
 
 # ----- Class-count budget (bfo-agent-spec.md FR-7) -----
@@ -192,3 +381,24 @@ def require_secret():
         raise RuntimeError(
             "SECRET_KEY not set. Set a strong random value in .env for production."
         )
+
+
+def _warn_contradictory_flags():
+    """Log (never raise) when flag combinations are inert or self-defeating."""
+    import logging
+
+    _log = logging.getLogger(__name__)
+    if REDUCED_REASONING_WORLD and not INMEM_DRY_RUN:
+        _log.warning(
+            "REDUCED_REASONING_WORLD is set but INMEM_DRY_RUN is off: the "
+            "reduced world requires INMEM_DRY_RUN; flag has no effect"
+        )
+    if REDUCED_REASONING_WORLD and VERIFY_EVERY_COMMIT:
+        _log.warning(
+            "REDUCED_REASONING_WORLD with VERIFY_EVERY_COMMIT=true: the "
+            "reduced dry-run world still pays a full reasoner pass per "
+            "commit; set VERIFY_EVERY_COMMIT=false to realize the savings"
+        )
+
+
+_warn_contradictory_flags()

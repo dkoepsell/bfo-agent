@@ -103,6 +103,22 @@ def test_pc5_bfo_property_ok():
     assert "PC-5" not in _rules(L.lint(p))
 
 
+def test_pc5_disjoint_with_predicate_ok():
+    # Regression: owl:disjointWith is the structural axiom rule 14 tells the
+    # proposer to emit between a disposition and its realizing process. The
+    # construction linter previously flagged it as an invented predicate
+    # (PC-5), rejecting every correct disease proposal.
+    p = _prop({
+        "entities": [_cls("Cholera", bfo="BFO_0000016"),
+                     _cls("CholeraProcess", bfo="BFO_0000015")],
+        "relations": [
+            Relation(s="working:Cholera", p="owl:disjointWith",
+                     o="working:CholeraProcess", rationale="disposition != process"),
+        ],
+    })
+    assert "PC-5" not in _rules(L.lint(p))
+
+
 # --- PC-6: continuant/occurrent conflation --------------------------------
 def test_pc6_conflation_rejected():
     # process (occurrent) typed under a continuant parent.

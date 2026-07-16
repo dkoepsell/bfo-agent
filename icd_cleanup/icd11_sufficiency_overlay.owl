@@ -1,0 +1,113 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:owl="http://www.w3.org/2002/07/owl#"
+         xml:base="http://davidkoepsell.com/bfo-agent/icd11_sufficiency_overlay"
+         xmlns="http://davidkoepsell.com/bfo-agent/icd11_sufficiency_overlay#">
+
+<owl:Ontology rdf:about="http://davidkoepsell.com/bfo-agent/icd11_sufficiency_overlay">
+  <owl:imports rdf:resource="http://davidkoepsell.com/bfo-agent/working"/>
+</owl:Ontology>
+
+<rdf:Description rdf:about="http://davidkoepsell.com/bfo-agent/working#OphthalmicDivision">
+  <owl:equivalentClass>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/BFO_0000050"/>
+      <owl:someValuesFrom rdf:resource="http://davidkoepsell.com/bfo-agent/working#TrigeminalNerve"/>
+    </owl:Restriction>
+  </owl:equivalentClass>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://davidkoepsell.com/bfo-agent/working#MaxillaryDivision">
+  <owl:equivalentClass>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/BFO_0000050"/>
+      <owl:someValuesFrom rdf:resource="http://davidkoepsell.com/bfo-agent/working#TrigeminalNerve"/>
+    </owl:Restriction>
+  </owl:equivalentClass>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://davidkoepsell.com/bfo-agent/working#MandibularDivision">
+  <owl:equivalentClass>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/BFO_0000050"/>
+      <owl:someValuesFrom rdf:resource="http://davidkoepsell.com/bfo-agent/working#TrigeminalNerve"/>
+    </owl:Restriction>
+  </owl:equivalentClass>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://davidkoepsell.com/bfo-agent/working#Dermis">
+  <owl:equivalentClass>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/BFO_0000050"/>
+      <owl:someValuesFrom rdf:resource="http://davidkoepsell.com/bfo-agent/working#Skin"/>
+    </owl:Restriction>
+  </owl:equivalentClass>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://davidkoepsell.com/bfo-agent/working#Epidermis">
+  <owl:equivalentClass>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/BFO_0000050"/>
+      <owl:someValuesFrom rdf:resource="http://davidkoepsell.com/bfo-agent/working#Skin"/>
+    </owl:Restriction>
+  </owl:equivalentClass>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://davidkoepsell.com/bfo-agent/working#ConstitutionalHaemorrhagicCondition">
+  <owl:equivalentClass>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/BFO_0000054"/>
+      <owl:someValuesFrom rdf:resource="http://davidkoepsell.com/bfo-agent/working#HaemorrhagicProcess"/>
+    </owl:Restriction>
+  </owl:equivalentClass>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://davidkoepsell.com/bfo-agent/working#AnticoagulantHaemorrhagicDisorder">
+  <owl:equivalentClass>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/BFO_0000054"/>
+      <owl:someValuesFrom rdf:resource="http://davidkoepsell.com/bfo-agent/working#HaemorrhagicProcess"/>
+    </owl:Restriction>
+  </owl:equivalentClass>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://davidkoepsell.com/bfo-agent/working#FoodAnaphylaxis">
+  <owl:equivalentClass>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/BFO_0000054"/>
+      <owl:someValuesFrom rdf:resource="http://davidkoepsell.com/bfo-agent/working#AnaphylaxisProcess"/>
+    </owl:Restriction>
+  </owl:equivalentClass>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://davidkoepsell.com/bfo-agent/working#InhaledAllergenAnaphylaxis">
+  <owl:equivalentClass>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/BFO_0000054"/>
+      <owl:someValuesFrom rdf:resource="http://davidkoepsell.com/bfo-agent/working#AnaphylaxisProcess"/>
+    </owl:Restriction>
+  </owl:equivalentClass>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://davidkoepsell.com/bfo-agent/working#FriedreichAtaxia">
+  <owl:equivalentClass>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/BFO_0000054"/>
+      <owl:someValuesFrom rdf:resource="http://davidkoepsell.com/bfo-agent/working#Ataxia"/>
+    </owl:Restriction>
+  </owl:equivalentClass>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://davidkoepsell.com/bfo-agent/working#SpinocerebellarAtaxia">
+  <owl:equivalentClass>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/BFO_0000054"/>
+      <owl:someValuesFrom rdf:resource="http://davidkoepsell.com/bfo-agent/working#Ataxia"/>
+    </owl:Restriction>
+  </owl:equivalentClass>
+</rdf:Description>
+
+
+</rdf:RDF>

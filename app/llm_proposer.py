@@ -11,7 +11,14 @@ from typing import Optional
 
 from anthropic import Anthropic
 
-from .config import ANTHROPIC_API_KEY, ANTHROPIC_MODEL, CACHE_TTL, require_api_key
+from .config import (
+    ANTHROPIC_API_KEY,
+    ANTHROPIC_MODEL,
+    CACHE_TTL,
+    LLM_CALL_TIMEOUT_SECONDS,
+    PROPOSER_TEMPERATURE,
+    require_api_key,
+)
 from .cached_client import Usage, cache_control, summarize
 
 log = logging.getLogger(__name__)
@@ -119,6 +126,66 @@ RULES:
     expression covers, DO NOT mint it. Note it in `open_questions` prefixed
     with "KEXT:" (a kernel-extension request for human review) and proceed
     without it.
+12. DIFFERENTIAL EXCLUSION. When the source asserts that A is not a B, that A
+    excludes B, or that A is "not better explained by" B, emit
+    `{{"s": "working:A", "p": "rdfs:subClassOf", "o": "not working:B"}}`.
+    When the exclusion is mutual, also emit
+    `{{"s": "working:A", "p": "owl:disjointWith", "o": "working:B"}}`.
+    The `o` value `"not working:B"` is the ONLY sanctioned negation syntax:
+    NEVER write `owl:complementOf`, brackets, or any boolean operator as part
+    of an IRI or class name.
+13. SHARED CRITERIA. A symptom, criterion, or manifestation that can occur in
+    more than one condition (fatigue, insomnia, poor concentration, sleep
+    disturbance, psychomotor change, ...) is ONE class: mint it once with a
+    general name and REUSE it (`is_new=false` + `existing_iri`) in every later
+    condition that references it -- check REUSE CANDIDATES below first. A
+    condition is NEVER `subClassOf` its symptom (that says the condition IS
+    the symptom). Type the manifestation as a process (BFO_0000015) and link
+    the condition to it with an existential restriction:
+    `{{"s": "working:MajorDepressiveDisorder", "p": "rdfs:subClassOf",
+    "o": "bfo:BFO_0000054 some working:Fatigue"}}` (the disposition is
+    realized in such a process). The `o` form `"PROP some FILLER"` is the
+    sanctioned restriction syntax.
+14. DISEASE / DISORDER / CONDITION ANCHORING (OGMS-under-BFO). A disease,
+    disorder, syndrome, or pathological condition is a DISPOSITION
+    (BFO_0000016) borne by an organism, realized in pathological processes.
+    Type it `BFO_0000016` and NEVER also as a material entity (BFO_0000040)
+    or a process (BFO_0000015) -- those BFO categories are pairwise disjoint,
+    so a class carrying two of them is rejected outright. One class, one
+    top-level BFO category. Separate the three senses a disease term blurs,
+    each its OWN class with its OWN single type:
+      - the CONDITION itself ("hepatitis E", "tuberculosis" as the disorder)
+        -> disposition (BFO_0000016);
+      - the pathological/infectious PROCESS ("the infection", "the acute
+        episode", inflammation) -> process (BFO_0000015);
+      - the causal AGENT / pathogen ("Mycobacterium tuberculosis", a virus,
+        a parasite) -> material entity (BFO_0000040).
+    If you relate them, use ONLY the restriction syntax from rule 13
+    (`"o": "bfo:BFO_0000054 some working:TheProcess"`) -- NEVER subclass a
+    class directly to a bare property id like `bfo:BFO_0000054` (that is
+    rejected). Relating the three is optional; typing each with one correct
+    category is what matters. An anatomical structure or whole organism is a
+    material entity (BFO_0000040).
+15. CLASS NAMES ARE SHORT ATOMS. A class name (the IRI local part) is a
+    single concept in CamelCase, ideally 2 and at most 3 meaningful tokens:
+    `Smallpox`, `HepatitisE`, `VariolaVirus`, `CommonWart`. Put the full
+    verbatim source term in `rdfs:label`, NOT in the name. NEVER fuse a
+    description into the name: no `HumanPapillomavirusInfectionOfEpidermis`,
+    no `AcuteHepatitisEVirusInfection` -- names with 4+ fused tokens are
+    rejected. NEVER bake a relation word (Of, In, By, Due, Caused, Associated,
+    Related) or a numeric/type qualifier suffix (`Type2`, `SubtypeB`) into the
+    name; express those as separate classes or property assertions.
+16. A REALIZABLE IS NOT A BEARER. A class grounded as a disposition, role,
+    quality, or function (a specifically dependent continuant) must NOT also be
+    asserted to *bear* a realizable -- no `bearer of` (BFO_0000196),
+    `has disposition` (RO_0000091), `has role` (RO_0000087), or `has function`
+    (RO_0000085) with such a class as subject. It IS the realizable; a
+    realizable *inheres in* its bearer (`inheres in`, BFO_0000197), it does not
+    bear one. An independent continuant (e.g. a material entity) that bears a
+    realizable must relate to it with the relation whose range matches the
+    realizable's TYPE: `has role` for a role, `has disposition` for a
+    disposition, `has function` for a function -- never a mismatched one (a role
+    reached by `has disposition` is rejected).
 
 CURRENT WORKING ONTOLOGY CONTEXT:
 
@@ -130,6 +197,10 @@ Known individuals:
 
 USER UTTERANCE:
 \"\"\"{utterance}\"\"\"
+
+REUSE CANDIDATES (existing classes lexically matching this utterance; reuse
+these with is_new=false instead of minting a near-duplicate):
+{relevant_classes}
 
 Respond with ONLY a JSON object matching this schema:
 
@@ -150,8 +221,8 @@ Respond with ONLY a JSON object matching this schema:
   "relations": [
     {{
       "s": "working:...",
-      "p": "bfo:BFO_... or rdfs:subClassOf or rdf:type",
-      "o": "working:... or bfo:BFO_...",
+      "p": "bfo:BFO_... or rdfs:subClassOf or rdf:type or owl:disjointWith",
+      "o": "working:... or bfo:BFO_... -- or, on a subClassOf edge only, 'not working:X' or 'bfo:BFO_xxx some working:X'",
       "rationale": "..."
     }}
   ],
@@ -176,7 +247,11 @@ class LLMProposer:
         if api_key is None:
             require_api_key()
             api_key = ANTHROPIC_API_KEY
-        self.client = Anthropic(api_key=api_key)
+        self.client = Anthropic(
+            api_key=api_key,
+            timeout=(LLM_CALL_TIMEOUT_SECONDS
+                     if LLM_CALL_TIMEOUT_SECONDS > 0 else None),
+        )
         self.model = model
         self._on_usage = on_usage
         self.ttl = CACHE_TTL
@@ -218,55 +293,31 @@ class LLMProposer:
         session_id: str,
         working_classes: list[dict],
         known_individuals: list[dict],
+        relevant_classes: list[dict] | None = None,
+        extra_rules: str = "",
     ) -> Proposal:
-        prompt = PROMPT_TEMPLATE.format(
-            bfo_primer=BFO_PRIMER,
-            working_classes=_compact_lines(working_classes),
-            known_individuals=_compact_lines(known_individuals),
+        system, user_message = build_prompt_blocks(
             utterance=utterance,
+            working_classes=working_classes,
+            known_individuals=known_individuals,
+            relevant_classes=relevant_classes,
+            ttl=self.ttl,
+            extra_rules=extra_rules,
         )
-
-        # Two cache breakpoints + compact context. The ontology snapshot (now
-        # one compact line per term, ~3-4x fewer tokens than indented JSON) is the
-        # dominant per-call input cost on a feed, so we (a) shrink it and (b) give
-        # it its own breakpoint so it is a cache READ between commits. The static
-        # block is instructions + the JSON schema (lifted out of the dynamic tail,
-        # where it was being re-sent uncached every call). Only the per-claim
-        # utterance is uncached.
-        static_system, ontology_block, claim = _split_for_breakpoints(prompt)
-        system = [{
-            "type": "text",
-            "text": static_system,
-            "cache_control": cache_control(self.ttl),
-        }]
-        if ontology_block:
-            system.append({
-                "type": "text",
-                "text": ontology_block,
-                "cache_control": cache_control(self.ttl),
-            })
 
         resp = self.client.messages.create(
             model=self.model,
             max_tokens=4000,
+            temperature=PROPOSER_TEMPERATURE,
             system=system,
-            messages=[{"role": "user", "content": claim or prompt}],
+            messages=[{"role": "user", "content": user_message}],
         )
         self._record_usage(resp)
 
         text = "".join(
             block.text for block in resp.content if getattr(block, "text", None)
         )
-        data = _extract_json(text)
-
-        return Proposal(
-            session_id=session_id,
-            utterance=utterance,
-            entities=data.get("entities", []),
-            relations=data.get("relations", []),
-            open_questions=data.get("open_questions", []),
-            rationale_summary=data.get("rationale_summary", ""),
-        )
+        return parse_proposal_response(text, session_id, utterance)
 
     def answer_grounded(
         self,
@@ -299,6 +350,7 @@ Return JSON only."""
         resp = self.client.messages.create(
             model=self.model,
             max_tokens=2000,
+            temperature=PROPOSER_TEMPERATURE,
             messages=[{"role": "user", "content": prompt}],
         )
         self._record_usage(resp)
@@ -306,6 +358,94 @@ Return JSON only."""
             block.text for block in resp.content if getattr(block, "text", None)
         )
         return _extract_json(text)
+
+
+COVERAGE_RULES = """COVERAGE-PROFILE RULES (this ontology models insurance policy wording):
+C-1 Type every clause as exactly one of: Grant, Exclusion, Carveback, Condition, Definition
+    (subclasses of the coverage kernel Clause; do not invent other clause types).
+C-2 A Carveback MUST carry `modifies` naming the Exclusion it modifies. If you cannot
+    determine which Exclusion, emit the clause as a FLAG, never guess.
+C-3 Model perils as loss-classes DEFINED by the physical features a loss exhibits
+    (`exhibits some <Feature>`); do not assert a peril as a bare atomic class.
+C-4 Preserve the policy's OWN disjointness claims as owl:disjointWith (e.g. "X are not Y").
+    These definitional axioms are what make coherence failures provable; never drop them.
+C-5 Wire perils to coverage: a granted peril is a GrantedLoss, an excluded peril an
+    ExcludedLoss, a restored peril a RestoredLoss. The kernel derives Covered/Uncovered.
+C-6 Bearer discipline: IndemnityObligation inheres in the Insurer role, never in the Policy
+    or the Loss. Quote the source clause text verbatim in annotations (public-domain source).
+"""
+
+
+def coverage_rules() -> str:
+    """Coverage-aware anchoring rules, appended only for coverage-profile feeds."""
+    return COVERAGE_RULES
+
+
+def build_prompt_blocks(
+    utterance: str,
+    working_classes: list[dict],
+    known_individuals: list[dict],
+    relevant_classes: list[dict] | None,
+    ttl: str,
+    extra_rules: str = "",
+) -> tuple[list[dict], str]:
+    """Render the proposer prompt into ``(system_blocks, user_message)``.
+
+    Two cache breakpoints + compact context. The ontology snapshot (one
+    compact line per term, ~3-4x fewer tokens than indented JSON) is the
+    dominant per-call input cost on a feed, so we (a) shrink it and (b) give
+    it its own breakpoint so it is a cache READ between commits. The static
+    block is instructions + the JSON schema (lifted out of the dynamic tail,
+    where it was being re-sent uncached every call). Only the per-claim
+    utterance is uncached.
+
+    Shared by the live :meth:`LLMProposer.propose` call and the batch prepare
+    pass (``app/batch_propose.py``, SPEC-bfo-agent-speed.md change 5) so both
+    produce byte-identical blocks -- batched entries then share the live
+    path's prompt-cache prefix (best-effort).
+    """
+    prompt = PROMPT_TEMPLATE.format(
+        bfo_primer=BFO_PRIMER,
+        working_classes=_compact_lines(working_classes),
+        known_individuals=_compact_lines(known_individuals),
+        utterance=utterance,
+        relevant_classes=_compact_lines(relevant_classes or []),
+    )
+    static_system, ontology_block, claim = _split_for_breakpoints(prompt)
+    # Coverage-profile feeds append clause-typology rules to the STATIC (cached)
+    # block. Default extra_rules="" -> byte-identical to every existing feed, so
+    # non-coverage prompt caches are untouched.
+    if extra_rules:
+        static_system = static_system + "\n\n" + extra_rules
+    system = [{
+        "type": "text",
+        "text": static_system,
+        "cache_control": cache_control(ttl),
+    }]
+    if ontology_block:
+        system.append({
+            "type": "text",
+            "text": ontology_block,
+            "cache_control": cache_control(ttl),
+        })
+    return system, (claim or prompt)
+
+
+def parse_proposal_response(text: str, session_id: str, utterance: str) -> Proposal:
+    """Parse a proposer completion into a :class:`Proposal`.
+
+    Factored out of :meth:`LLMProposer.propose` so the batch prepare pass
+    (``app/batch_propose.py``) parses batched results through the exact same
+    path as live calls."""
+    data = _extract_json(text)
+    return Proposal(
+        session_id=session_id,
+        utterance=utterance,
+        entities=data.get("entities", []),
+        relations=data.get("relations", []),
+        open_questions=data.get("open_questions", []),
+        rationale_summary=data.get("rationale_summary", ""),
+    )
 
 
 def _extract_json(text: str) -> dict:

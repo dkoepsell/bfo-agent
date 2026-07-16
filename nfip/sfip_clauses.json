@@ -1,0 +1,61 @@
+{
+  "form": "SFIP Dwelling Form (44 CFR Part 61, Appendix A(1))",
+  "source": "44CFR61NFIP.txt",
+  "clause_count": 6,
+  "clauses": [
+    {
+      "id": "SFIP-DW-II-B",
+      "cfr_cite": "44 CFR App. A(1) to Pt. 61, II.B",
+      "sfip_section": "II.B Definitions - Flood",
+      "clause_type": "Definition",
+      "verbatim_text": "B. Flood, as used in this flood insurance policy, means: 1. A general and temporary condition of partial or complete inundation of two or more acres of normally dry land area or of two or more properties (one of which is your property) from: a. Overflow of inland or tidal waters; b. Unusual and rapid accumulation or runoff of surface waters from any source; c. Mudflow. 2. Collapse or subsidence of land along the shore of a lake or similar body of water as a result of erosion or undermining caused by waves or currents of water exceeding anticipated cyclical levels that result in a flood as defined in B.1.a above.",
+      "source_lines": "L455-467",
+      "note": "Flood is defined to include Mudflow (II.B.1.c)."
+    },
+    {
+      "id": "SFIP-DW-II-C-20",
+      "cfr_cite": "44 CFR App. A(1) to Pt. 61, II.C.20",
+      "sfip_section": "II.C.20 Definitions - Mudflow",
+      "clause_type": "Definition",
+      "verbatim_text": "20. Mudflow. A river of liquid and flowing mud on the surface of normally dry land areas, as when earth is carried by a current of water. Other earth movements, such as landslide, slope failure, or a saturated soil mass moving by liquidity down a slope, are not mudflows.",
+      "source_lines": "L525-528",
+      "note": "Defines mudflow as earth carried by a current of water; explicitly says landslide/slope failure/saturated soil mass moving down a slope are NOT mudflows."
+    },
+    {
+      "id": "SFIP-DW-III-A",
+      "cfr_cite": "44 CFR App. A(1) to Pt. 61, III.A",
+      "sfip_section": "III Coverage A - Building Property",
+      "clause_type": "Grant",
+      "verbatim_text": "16. Personal property you own in common with other unit owners comprising the membership of a condominium association. A. We only pay for direct physical loss by or from flood, which means that we do not pay you for: 1. Loss of revenue or profits; 2. Loss of access to the insured property or described location; 3. Loss of use of the insured property or described location;",
+      "source_lines": "L946-952",
+      "note": "Primary insuring grant: direct physical loss by or from flood."
+    },
+    {
+      "id": "SFIP-DW-III-D",
+      "cfr_cite": "44 CFR App. A(1) to Pt. 61, III Coverage D",
+      "sfip_section": "III Coverage D - Increased Cost of Compliance",
+      "clause_type": "Grant",
+      "verbatim_text": "flood elevation where elevation data is obtained from a Federal, State, or other source. Such compliance activities are eligible for Coverage D. d. Coverage D will pay for the incremental cost, after demolition or relocation, of elevating or floodproofing a building during its rebuilding at the same or another site to meet State or local floodplain management laws or ordinances, subject to Coverage D Exclusion 5.g below.",
+      "source_lines": "L845-851",
+      "note": "Grant conditioned on an exclusion by explicit cross-reference ('subject to Coverage D Exclusion 5.g')."
+    },
+    {
+      "id": "SFIP-DW-V-C",
+      "cfr_cite": "44 CFR App. A(1) to Pt. 61, V.C",
+      "sfip_section": "V Exclusions - Earth Movement",
+      "clause_type": "Exclusion",
+      "verbatim_text": "C. We do not insure for loss to property caused directly by earth movement even if the earth movement is caused by flood. Some examples of earth movement that we do not cover are: 1. Earthquake; 2. Landslide; 3. Land subsidence; 4. Sinkholes; 5. Destabilization or movement of land that results from accumulation of water in subsurface land area; or 6. Gradual erosion.",
+      "source_lines": "L966-978",
+      "note": "Excludes earth movement even if caused by flood; examples include earthquake, landslide, land subsidence, sinkholes, gradual erosion."
+    },
+    {
+      "id": "SFIP-DW-V-C-CB",
+      "cfr_cite": "44 CFR App. A(1) to Pt. 61, V.C",
+      "sfip_section": "V Exclusions - Earth Movement carveback",
+      "clause_type": "Carveback",
+      "verbatim_text": "We do, however, pay for losses from mudflow and land subsidence as a result of erosion that are specifically insured under our definition of flood (see II.B.1.c and II.B.2).",
+      "source_lines": "L978-980",
+      "note": "Carveback to the earth-movement exclusion: restores mudflow and erosion-driven land subsidence 'specifically insured under our definition of flood'. modifies -> SFIP-DW-V-C."
+    }
+  ]
+}

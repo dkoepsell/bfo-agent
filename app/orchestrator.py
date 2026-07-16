@@ -12,25 +12,35 @@ Endpoints:
 """
 from __future__ import annotations
 
+import atexit
+import json
+import logging
 import threading
+import time
+from datetime import datetime, timezone
 from pathlib import Path
 from uuid import uuid4
 
-from flask import Flask, jsonify, request
+log = logging.getLogger(__name__)
+
+from flask import Flask, Response, jsonify, request
 from flask_cors import CORS
 from pydantic import ValidationError
 
 from . import config
 from . import coherence_gate as gate_mod
 from . import gate_client
+from . import incoherence_ledger as ledger_mod
 from . import kext as kext_mod
 from . import job_runner
+from . import job_transfer
 from . import jobs as jobs_store
+from . import timing
 from .coherence_gate import GateOutcome, GatePolicy
 from .extractor import ClaimExtractor, chunk_text
 from .llm_proposer import LLMProposer
 from .ontology_manager import CommitCoherenceError, OntologyManager
-from .registry import OntologyRegistry
+from .registry import FinalizeVerificationError, OntologyRegistry
 from .schema import (
     CommitRequest,
     Proposal,
@@ -39,12 +49,14 @@ from .schema import (
     QueryResponse,
 )
 from .storage import (
+    gate_log_path,
     git_commit_library_change,
     git_commit_working_ontology,
     load_session,
     log_event,
     log_gate_events,
     recent_commits,
+    session_path,
 )
 
 
@@ -98,14 +110,28 @@ def _get_extractor() -> ClaimExtractor:
     return _extractor
 
 
-def _gate_policy() -> GatePolicy:
+def _gate_policy(faithful: bool = False) -> GatePolicy:
+    # fidelity-mode-spec.md FM-4: faithful extraction forces annotate --
+    # lint/reasoner clashes are flagged and committed as-asserted, never
+    # repaired or content-resampled, regardless of GATE_POLICY.
+    if faithful:
+        return GatePolicy.ANNOTATE
     try:
         return GatePolicy(config.GATE_POLICY)
     except ValueError:
         return GatePolicy.REJECT_RESAMPLE
 
 
-def _run_coherence_gate(proposal, mgr, proposer, ctx, session_id, context=None):
+def _active_fidelity() -> str:
+    """Fidelity mode of the active ontology (FM-1/FM-2); curated on any error."""
+    try:
+        return _get_registry().fidelity()
+    except Exception:
+        return "curated"
+
+
+def _run_coherence_gate(proposal, mgr, proposer, ctx, session_id, context=None,
+                        faithful=False, exclude_axioms=None):
     """Run the coherence gate under the configured policy and log the events.
 
     Returns the GateRun. The caller decides what to do with GateRun.outcome and
@@ -145,6 +171,8 @@ def _run_coherence_gate(proposal, mgr, proposer, ctx, session_id, context=None):
                 session_id=session_id,
                 working_classes=ctx["working_classes"],
                 known_individuals=ctx["known_individuals"],
+                relevant_classes=ctx.get("relevant_classes"),
+                extra_rules=_coverage_extra_rules(),
             )
         except Exception:
             return None
@@ -152,13 +180,22 @@ def _run_coherence_gate(proposal, mgr, proposer, ctx, session_id, context=None):
     run = gate_mod.run_with_policy(
         proposal,
         mgr,
-        policy=_gate_policy(),
+        policy=_gate_policy(faithful),
         resample_fn=resample_fn,
         run_reasoner=config.GATE_RUN_REASONER,
         max_attempts=config.GATE_MAX_ATTEMPTS,
         run_construction=config.ENABLE_CONSTRUCTION_LINTER,
         strict_closed_vocab=config.STRICT_CLOSED_VOCAB,
+        exclude_axioms=exclude_axioms,
     )
+
+    if run.result.degraded:
+        # FM-10: reasoner tier was skipped because the coherent view itself
+        # is incoherent (ledger reconstruction incomplete). Log loudly.
+        log.warning(
+            "Coherence gate DEGRADED for session %s: %s",
+            session_id, run.result.reason,
+        )
 
     # Stamp the (possibly rewritten) proposal with the gate verdict.
     final = run.proposal
@@ -232,6 +269,13 @@ def _apply_scaffolding(proposal, mgr, session_id) -> list[dict]:
     if not directives:
         return []
 
+    # Amortized save (change 7): the backup/rollback below works on disk
+    # bytes and _load()s on rollback, so the file must reflect the in-memory
+    # world (including this claim's just-applied commit) before scaffolding
+    # touches it — else a rollback would silently drop the unsaved window.
+    if not config.SAVE_EVERY_COMMIT and getattr(mgr, "unsaved_commits", 0) > 0:
+        mgr.save()
+
     backup = mgr.working_path.read_bytes() if mgr.working_path.exists() else None
     applied = gate_mod.apply_scaffolding(directives, mgr)
     if not applied:
@@ -251,6 +295,83 @@ def _apply_scaffolding(proposal, mgr, session_id) -> list[dict]:
 
     log_event(session_id, "scaffold", {"applied": applied})
     return applied
+
+
+def _ledger_faithful_commit(mgr, proposal, gate_run, session_id,
+                            provenance) -> str | None:
+    """Record evidence after a faithful-mode commit (FM-7/FM-8).
+
+    Two sources, mutually exclusive by construction (a FLAGged commit skips
+    the post-commit verify): a gate FLAG carrying the pre-commit diagnosis,
+    or a post-commit verify that found NEW incoherence (retroactive ABox
+    clash). Returns the ledger entry id, or None when the commit was coherent.
+    Never raises -- evidence recording must not fail a commit that fidelity
+    says stands.
+    """
+    try:
+        if gate_run is not None and gate_run.outcome == GateOutcome.FLAG:
+            result = gate_run.result
+        elif getattr(mgr, "last_commit_incoherence", None):
+            detail = mgr.last_commit_incoherence.get("detail", "")
+            unsat = []
+            if "unsatisfiable classes:" in detail:
+                unsat = [
+                    s.strip() for s in
+                    detail.split("unsatisfiable classes:", 1)[1].split("\n")[0].split(",")
+                    if s.strip()
+                ]
+            result = gate_mod.GateResult(
+                outcome=gate_mod.GateOutcome.FLAG,
+                tier=gate_mod.GateTier.REASONER,
+                reason=f"post-commit incoherence: {detail}",
+                unsat_classes=unsat,
+            )
+        else:
+            return None
+
+        subjects = [result.subject] if result.subject else []
+        subjects += [iri for iri in result.unsat_classes if iri not in subjects]
+        exclude = gate_mod.clash_exclusion_triples(proposal, result)
+        entry_id = ledger_mod.record_flag(
+            mgr, proposal, result.to_dict(), exclude, subjects,
+            provenance=provenance,
+        )
+        log_event(session_id, "incoherence_flagged", {
+            "ledger_id": entry_id,
+            "subjects": subjects,
+            "reason": result.reason,
+            "exclude_axioms": exclude,
+            **{k: v for k, v in (provenance or {}).items()
+               if k in ("job_id", "claim_id")},
+        })
+        return entry_id
+    except Exception:
+        log.exception("Failed to record incoherence ledger entry")
+        return None
+
+
+def _fol_audit_on_complete(job_id: str, state: dict) -> str | None:
+    """End-of-job FOL audit hook (fol-gate-spec.md FG-2.2).
+
+    Evidence-only and best-effort: runs once after a feed job completes,
+    writes the R-1 record under the ontology's sessions/ directory, and
+    returns a one-line summary for the completion notification. Never blocks
+    or fails the job; disabled unless FOL_GATE_ENABLED and the prover9/mace4
+    binaries are present.
+    """
+    if not config.FOL_GATE_ENABLED:
+        return None
+    try:
+        from . import fol_gate
+
+        if not fol_gate.binaries_available():
+            return None
+        mgr = _get_manager()
+        record = fol_gate.audit(mgr.working_path, mode="B", probes=True)
+        return fol_gate.summarize(record)
+    except Exception as e:
+        log.exception("FOL audit failed for job %s", job_id)
+        return f"FOL audit failed: {e}"
 
 
 # ---------------------------------------------------------------------------
@@ -273,6 +394,22 @@ def _resolve_ontology_for_read(name: str | None):
 def _ontology_query_arg():
     """Read the ?ontology=NAME query string, or None."""
     return request.args.get("ontology", None)
+
+
+def _coverage_extra_rules() -> str:
+    """Coverage-aware proposer rules IFF the active ontology is coverage-profile.
+
+    Returns "" for every other ontology, so existing feeds' prompts stay
+    byte-identical (prompt-cache preserved). Any error -> "" (fail safe)."""
+    try:
+        from . import llm_proposer
+        name = Path(_get_manager().working_path).resolve().parent.name
+        man = _get_registry().manifest(name)
+        if man.get("kernel_profile") == "coverage":
+            return llm_proposer.coverage_rules()
+    except Exception:
+        pass
+    return ""
 
 
 def _not_found_response(name: str):
@@ -313,6 +450,618 @@ def _count_pending(job_id: str) -> int:
                if c["status"] == "pending" and c.get("approved"))
 
 
+def _emit_claim_timing(session_id: str, job_id: str, claim_id,
+                       proposal_id, verdict, committed: bool,
+                       gate_attempts, mgr, t_claim: float) -> None:
+    """Emit one "claim_timing" event (SPEC-bfo-agent-speed.md Step 0).
+
+    ``ms`` carries the per-phase timings accumulated in :mod:`app.timing`
+    plus a wall-clock ``total`` measured from claim selection. Pure
+    instrumentation: guarded by TIMING_INSTRUMENTATION and wrapped so a
+    telemetry failure can never break the feed.
+    """
+    if not config.TIMING_INSTRUMENTATION:
+        return
+    try:
+        ms = timing.snapshot()
+        ms["total"] = round((time.perf_counter() - t_claim) * 1000, 1)
+        st = mgr.stats()
+        log_event(session_id, "claim_timing", {
+            "job_id": job_id,
+            "claim_id": claim_id,
+            "proposal_id": proposal_id,
+            "verdict": verdict,
+            "committed": committed,
+            "gate_attempts": gate_attempts,
+            "ms": ms,
+            "stats": {"classes": st.get("num_classes"),
+                      "individuals": st.get("num_individuals")},
+        })
+    except Exception as e:  # noqa: BLE001 — never break the feed for telemetry
+        log.warning("claim_timing emission failed: %s", e)
+
+
+def _utcnow_iso() -> str:
+    return datetime.now(timezone.utc).isoformat()
+
+
+def _ledger_checkpoint_incoherence(mgr, report: dict, job_id: str,
+                                   suspect_from, suspect_to,
+                                   kind: str = "checkpoint") -> str | None:
+    """Faithful mode: a failed full-graph certificate is evidence, not a
+    defect to fix (extraction-fidelity principle). One incoherence-ledger
+    entry records the finding with checkpoint provenance; feeding continues.
+    Never raises -- evidence recording must not stop a faithful run."""
+    try:
+        return ledger_mod.append(mgr.working_path, {
+            "mode": "faithful",
+            "subjects": report.get("unsat_classes") or [],
+            "tier": kind,
+            "gate_result": {"reason": report.get("detail")},
+            "exclude_axioms": [],
+            "provenance": {
+                "checkpoint": True,
+                "kind": kind,
+                "job_id": job_id,
+                "claim_window": [suspect_from, suspect_to],
+            },
+        })
+    except Exception:
+        log.exception("Failed to ledger %s-verify incoherence", kind)
+        return None
+
+
+def _ledger_quarantine(mgr, removed: list[str], job_id: str,
+                       suspect_from, suspect_to,
+                       kind: str = "checkpoint") -> str | None:
+    """Curated self-heal: record the classes a failed certificate named
+    unsatisfiable and that the checkpoint then quarantined. Distinct ledger
+    mode ("curated_quarantine") from the faithful evidence path so an audit
+    can tell "left in place, flagged" (faithful) from "removed to keep the
+    artifact coherent" (curated). Never raises."""
+    try:
+        return ledger_mod.append(mgr.working_path, {
+            "mode": "curated_quarantine",
+            "subjects": removed,
+            "tier": kind,
+            "gate_result": {
+                "reason": "reduced-world false-coherent commit removed by "
+                          "self-healing checkpoint",
+            },
+            "exclude_axioms": [],
+            "provenance": {
+                "self_heal": True,
+                "kind": kind,
+                "job_id": job_id,
+                "claim_window": [suspect_from, suspect_to],
+            },
+        })
+    except Exception:
+        log.exception("Failed to ledger %s self-heal quarantine", kind)
+        return None
+
+
+def _self_heal_unsat(mgr, report: dict, job_id: str, session_id: str | None,
+                     suspect_from, suspect_to, kind: str) -> dict:
+    """Curated self-heal for a failed full-graph certificate (opt-in via
+    config.CHECKPOINT_SELF_HEAL). Quarantine the classes the certificate names
+    unsatisfiable, git-commit + ledger the removal, and re-certify; repeat up
+    to CHECKPOINT_SELF_HEAL_MAX_ROUNDS to absorb any cascade the first sweep
+    exposes.
+
+    A BARE inconsistency (HermiT reports the ontology inconsistent and raises
+    before naming any unsatisfiable class -- the icd11bfo_v2 ABox case) leaves
+    the class loop with nothing to quarantine. When CHECKPOINT_SELF_HEAL_ABOX
+    is set we then isolate the individuals responsible (mgr
+    .isolate_inconsistency_culprits) and quarantine those instead, so an ABox
+    clash no longer pauses the run forever. If isolation still cannot restore
+    consistency the caller pauses, as before.
+
+    Caller must hold the module _lock (mutates and saves the working world).
+    Returns {"ok", "removed", "report"} where report is the final certificate.
+    """
+    removed: list[str] = []
+    cur = report
+    rounds = 0
+
+    # Content-preserving realizable-misuse repair FIRST (retype/re-relate/relax/
+    # drop-complement), so a translation defect is healed instead of quarantined.
+    # Only classes this cannot heal fall through to the destructive quarantine.
+    repaired: list[dict] = []
+    if config.CHECKPOINT_REALIZABLE_REPAIR and not cur.get("ok"):
+        try:
+            from . import realizable_misuse, incoherence_ledger
+            mgr.save()  # repair operates on the saved artifact
+            res = realizable_misuse.repair_file(mgr.working_path, mgr.bfo_path)
+            if res.transforms:
+                mgr._load()  # reload the content-preservingly repaired artifact
+                repaired = res.transforms
+                incoherence_ledger.record_realizable_misuse(
+                    mgr.working_path, res.transforms, repaired=True)
+                if res.remaining:
+                    incoherence_ledger.record_realizable_misuse(
+                        mgr.working_path, res.remaining, repaired=False)
+                names = ", ".join(t["class"] for t in res.transforms)
+                git_commit_working_ontology(
+                    session_id or f"self-heal-{job_id}", f"self-heal-{kind}",
+                    f"realizable-misuse repair ({kind}): "
+                    f"{len(res.transforms)} content-preserving transform(s) "
+                    f"[{names}]",
+                )
+                log_event(session_id, "checkpoint_realizable_repair", {
+                    "job_id": job_id, "kind": kind,
+                    "transforms": res.transforms,
+                    "before_unsat": res.before_unsat,
+                    "after_unsat": res.after_unsat,
+                })
+                cur = mgr.verify_full(exclude_axioms=None)
+        except Exception:  # noqa: BLE001 -- never let repair crash the checkpoint
+            log.warning("self-heal: realizable-misuse repair failed",
+                        exc_info=True)
+
+    for _ in range(max(1, config.CHECKPOINT_SELF_HEAL_MAX_ROUNDS)):
+        unsat = cur.get("unsat_classes") or []
+        if not unsat:
+            break  # inconsistent with no named class -> unhealable
+        gone = mgr.quarantine_classes(unsat)
+        if not gone:
+            break  # nothing resolvable -> give up, let caller pause
+        rounds += 1
+        removed.extend(gone)
+        names = ", ".join(i.rsplit("#", 1)[-1].rsplit("/", 1)[-1]
+                          for i in gone)
+        git_commit_working_ontology(
+            session_id or f"self-heal-{job_id}", f"self-heal-{kind}",
+            f"quarantine {len(gone)} unsatisfiable class(es) "
+            f"({kind} self-heal): {names}",
+        )
+        cur = mgr.verify_full(exclude_axioms=None)  # curated: no exclusions
+        if cur["ok"]:
+            break
+
+    # ABox self-heal (icd11bfo_v2 case): a BARE inconsistency leaves the class
+    # loop above with nothing to quarantine (HermiT raises before naming an
+    # unsatisfiable class). Isolate the individuals responsible and quarantine
+    # those instead. Runs only when class quarantine did not already clear the
+    # artifact, so the per-individual reasoning stays off the happy path.
+    if (not cur["ok"] and not (cur.get("unsat_classes") or [])
+            and config.CHECKPOINT_SELF_HEAL_ABOX):
+        culprits = mgr.isolate_inconsistency_culprits(
+            max_reason_calls=config.CHECKPOINT_SELF_HEAL_MAX_INDIVIDUALS
+        )
+        if culprits:
+            gone = mgr.quarantine_classes(culprits)  # generic destroy-by-IRI
+            if gone:
+                rounds += 1
+                removed.extend(gone)
+                names = ", ".join(i.rsplit("#", 1)[-1].rsplit("/", 1)[-1]
+                                  for i in gone)
+                git_commit_working_ontology(
+                    session_id or f"self-heal-{job_id}", f"self-heal-{kind}",
+                    f"quarantine {len(gone)} inconsistency-culprit "
+                    f"individual(s) ({kind} ABox self-heal): {names}",
+                )
+                cur = mgr.verify_full(exclude_axioms=None)
+
+    if removed:
+        _ledger_quarantine(mgr, removed, job_id, suspect_from, suspect_to,
+                           kind)
+        log_event(session_id, "checkpoint_self_heal", {
+            "job_id": job_id,
+            "kind": kind,
+            "removed": removed,
+            "rounds": rounds,
+            "ok": cur["ok"],
+            "detail": cur.get("detail"),
+            "claim_window": [suspect_from, suspect_to],
+        })
+        job_runner._notify(
+            f"BFO self-heal ({kind}): quarantined "
+            f"{len(removed)} unsat class(es)",
+            f"job {job_id}: removed {removed}; "
+            f"artifact {'coherent again' if cur['ok'] else 'STILL failing'}",
+        )
+    return {"ok": cur["ok"], "removed": removed, "report": cur}
+
+
+def _flush_unsaved_locked(mgr, job_id: str | None, session_id: str | None,
+                          watermark_claim_id: int | None,
+                          reason: str) -> bool:
+    """Persist unsaved in-memory commits (SPEC-bfo-agent-speed.md change 7).
+
+    Caller must hold the module _lock. Saves the working file, git-commits
+    it, and advances the job's last_saved_claim_id watermark so crash
+    recovery never resets claims that are actually on disk. No-op when
+    nothing is unsaved.
+    """
+    if getattr(mgr, "unsaved_commits", 0) <= 0:
+        return False
+    unsaved = mgr.unsaved_commits
+    mgr.save()
+    git_commit_working_ontology(
+        session_id or "amortized-save", f"flush-{reason}",
+        f"amortized save flush ({reason}, {unsaved} commit(s))",
+    )
+    if job_id is not None:
+        if watermark_claim_id is None:
+            job = jobs_store.load_job(job_id)
+            committed = [c["id"] for c in job.get("claims", [])
+                         if c.get("status") == "committed"]
+            watermark_claim_id = max(committed) if committed else 0
+        jobs_store.bump_feed_state(
+            job_id, last_saved_claim_id=watermark_claim_id
+        )
+    if session_id:
+        log_event(session_id, "amortized_save", {
+            "reason": reason,
+            "unsaved_commits": unsaved,
+            "job_id": job_id,
+            "last_saved_claim_id": watermark_claim_id,
+        })
+    return True
+
+
+def flush_working_ontology(job_id: str | None = None,
+                           reason: str = "flush") -> bool:
+    """Public flush point for amortized save: pause/runner exit and graceful
+    shutdown. With no job_id, every job currently marked feeding gets its
+    watermark advanced (single-writer in practice). No-op unless
+    SAVE_EVERY_COMMIT is off and unsaved commits exist.
+    """
+    if config.SAVE_EVERY_COMMIT:
+        return False
+    with _lock:
+        try:
+            mgr = _get_manager()
+        except Exception:
+            return False  # no active ontology yet; nothing to flush
+        if getattr(mgr, "unsaved_commits", 0) <= 0:
+            return False
+        if job_id is not None:
+            job_ids = [job_id]
+        else:
+            job_ids = [j["job_id"] for j in jobs_store.list_jobs()
+                       if j.get("status") == "feeding"]
+        session_id = None
+        if job_ids:
+            try:
+                session_id = jobs_store.load_job(job_ids[0]).get("session_id")
+            except Exception:  # noqa: BLE001 — flush must not raise
+                pass
+        flushed = _flush_unsaved_locked(
+            mgr, job_ids[0] if job_ids else None, session_id, None, reason
+        )
+        # Multi-job edge: advance the remaining feeding jobs' watermarks too.
+        for extra in job_ids[1:]:
+            try:
+                job = jobs_store.load_job(extra)
+                committed = [c["id"] for c in job.get("claims", [])
+                             if c.get("status") == "committed"]
+                jobs_store.bump_feed_state(
+                    extra,
+                    last_saved_claim_id=max(committed) if committed else 0,
+                )
+            except Exception:  # noqa: BLE001
+                pass
+        return flushed
+
+
+def _flush_at_exit() -> None:
+    """Graceful-shutdown backstop (atexit): a clean SIGTERM/exit persists
+    whatever the amortized-save mode is still holding in memory."""
+    if _registry is None:
+        return  # nothing was ever loaded, so nothing can be unsaved
+    try:
+        flush_working_ontology(reason="shutdown")
+    except Exception:  # noqa: BLE001 — never raise during interpreter exit
+        pass
+
+
+atexit.register(_flush_at_exit)
+
+
+def _prepare_amortized_resume(job_id: str) -> list[int]:
+    """Crash recovery for amortized save (SPEC-bfo-agent-speed.md change 7),
+    run before a job's feed loop (re)starts.
+
+    A crash between saves loses the in-memory commits, so claims recorded
+    committed after the last on-disk save watermark are reset to pending and
+    re-feed through the full path (bounded to <= FULL_VERIFY_EVERY_K
+    re-proposals; stable IRIs plus the reservation map converge on the same
+    entities). When the live process still holds the unsaved commits
+    (plain pause/resume, no restart), nothing was lost and nothing is reset.
+    A None watermark means this is the job's first run under amortized save:
+    memory equals disk right now, so the current committed set becomes the
+    saved baseline. Returns the reset claim ids.
+    """
+    if config.SAVE_EVERY_COMMIT:
+        return []
+    with _lock:
+        try:
+            mgr = _get_manager()
+        except Exception:
+            return []
+        if getattr(mgr, "unsaved_commits", 0) > 0:
+            return []  # live memory still holds them; flush will persist
+        job = jobs_store.load_job(job_id)
+        fs = jobs_store.get_feed_state(job)
+        last_saved = fs.get("last_saved_claim_id")
+        committed_ids = [c["id"] for c in job.get("claims", [])
+                         if c.get("status") == "committed"]
+        if last_saved is None:
+            jobs_store.bump_feed_state(
+                job_id,
+                last_saved_claim_id=max(committed_ids) if committed_ids
+                else 0,
+            )
+            return []
+        stale = [cid for cid in committed_ids if cid > last_saved]
+        if not stale:
+            return []
+        reset = jobs_store.reset_claims_pending(job_id, stale)
+        log_event(job.get("session_id"), "resume_replay_reset", {
+            "job_id": job_id,
+            "claim_ids": reset,
+            "last_saved_claim_id": last_saved,
+            "reason": "committed after last on-disk save; memory lost",
+        })
+        return reset
+
+
+def _maybe_checkpoint_verify(job_id: str, claim: dict, session_id: str,
+                             mgr, faithful: bool,
+                             exclusions) -> dict | None:
+    """Bump the persisted commit counter and, every FULL_VERIFY_EVERY_K
+    commits, run the full-graph HermiT certificate over the saved artifact
+    (SPEC-bfo-agent-speed.md change 6). Called from _feed_one_core inside the
+    module _lock, only when VERIFY_EVERY_COMMIT is off.
+
+    Returns None to keep feeding, or a fatal-shaped dict when a curated
+    checkpoint failed: the job is paused here and job_runner._run reads the
+    "fatal" key as stop-the-loop-and-notify.
+    """
+    # With per-commit save still on, the just-committed claim is on disk, so
+    # keep the save watermark fresh (protects against a later flip to
+    # amortized save wrongly resetting these claims on crash recovery).
+    extra = (
+        {"last_saved_claim_id": claim["id"]}
+        if config.SAVE_EVERY_COMMIT else {}
+    )
+    fs = jobs_store.bump_feed_state(
+        job_id, increment={"commits_since_checkpoint": 1}, **extra
+    )
+    if fs["commits_since_checkpoint"] < config.FULL_VERIFY_EVERY_K:
+        return None
+
+    # Amortized save (change 7): the certificate judges the saved artifact,
+    # so persist the unsaved window first. The checkpoint is the natural
+    # save boundary.
+    if not config.SAVE_EVERY_COMMIT:
+        _flush_unsaved_locked(
+            mgr, job_id, session_id, claim["id"], "checkpoint"
+        )
+
+    suspect_from = fs.get("last_verified_claim_id")
+    report = mgr.verify_full(exclude_axioms=exclusions if faithful else None)
+    log_event(session_id, "checkpoint_verify", {
+        **report,
+        "job_id": job_id,
+        "suspect_from": suspect_from,
+        "suspect_to": claim["id"],
+    })
+
+    if report["ok"] or faithful:
+        if not report["ok"]:
+            _ledger_checkpoint_incoherence(
+                mgr, report, job_id, suspect_from, claim["id"]
+            )
+        jobs_store.bump_feed_state(
+            job_id, commits_since_checkpoint=0,
+            last_checkpoint_at=_utcnow_iso(),
+            last_checkpoint_ok=report["ok"],
+            last_verified_claim_id=claim["id"],
+        )
+        return None
+
+    # Curated failure. Self-heal first (opt-in): the certificate names the
+    # unsatisfiable classes, which are reduced-world false-coherent commits;
+    # quarantine them and re-certify rather than stall the run.
+    if config.CHECKPOINT_SELF_HEAL:
+        healed = _self_heal_unsat(
+            mgr, report, job_id, session_id, suspect_from, claim["id"],
+            "checkpoint",
+        )
+        if healed["ok"]:
+            jobs_store.bump_feed_state(
+                job_id, commits_since_checkpoint=0,
+                last_checkpoint_at=_utcnow_iso(), last_checkpoint_ok=True,
+                last_verified_claim_id=claim["id"],
+            )
+            return None
+        report = healed["report"]  # pause below with the post-heal detail
+
+    # Pause with a <=K-claim suspect window. The counter and
+    # last_verified_claim_id are left untouched so a resume re-runs the
+    # certificate with the same bisection bounds. No auto-rollback:
+    # evidence-first, the per-commit git history of working.owl makes
+    # bisection tractable.
+    jobs_store.bump_feed_state(
+        job_id, last_checkpoint_at=_utcnow_iso(), last_checkpoint_ok=False
+    )
+    flipped: list[int] = []
+    if config.CHECKPOINT_FAIL_MARK_REVIEW:
+        flipped = jobs_store.mark_window_needs_review(
+            job_id, suspect_from, claim["id"]
+        )
+    jobs_store.set_job_status(job_id, "paused")
+    return {
+        "fatal": "checkpoint_verify_failed",
+        "error": (
+            f"full-graph checkpoint failed after claim {claim['id']} "
+            f"(suspect window {suspect_from}..{claim['id']}"
+            + (f"; {len(flipped)} claim(s) flipped to needs_review"
+               if flipped else "")
+            + f"): {report['detail']}"
+        ),
+    }
+
+
+def _final_verify_before_complete(job_id: str, session_id: str) -> dict | None:
+    """Mandatory full-graph certificate before a job is marked completed
+    (SPEC-bfo-agent-speed.md change 6). Called from _feed_one_core's
+    no-pending branch inside the module _lock, so both the server-side
+    runner and manual stepping get it.
+
+    Returns None when completion may proceed, or a fatal-shaped dict when a
+    curated final pass failed (the job is paused instead of completed).
+    """
+    if not config.FINALIZE_REQUIRES_FULL_VERIFY:
+        return None
+    job = jobs_store.load_job(job_id)
+    fs = jobs_store.get_feed_state(job)
+    mgr = _get_manager()
+    if (
+        config.VERIFY_EVERY_COMMIT
+        and fs.get("commits_since_checkpoint", 0) <= 0
+        and getattr(mgr, "commits_since_full_verify", 0) <= 0
+    ):
+        return None  # every commit already carried the full certificate
+
+    faithful = _active_fidelity() == "faithful"
+    exclusions = (
+        ledger_mod.exclusion_triples(mgr.working_path) if faithful else None
+    )
+
+    committed_ids = [c["id"] for c in job.get("claims", [])
+                     if c.get("status") == "committed"]
+    last_claim_id = max(committed_ids) if committed_ids else None
+
+    # Amortized save (change 7): persist the tail window before the
+    # certificate and advance the watermark — completion is a save boundary.
+    if not config.SAVE_EVERY_COMMIT:
+        _flush_unsaved_locked(
+            mgr, job_id, session_id, last_claim_id or 0, "final"
+        )
+
+    report = mgr.verify_full(exclude_axioms=exclusions)
+    log_event(session_id, "final_verify", {**report, "job_id": job_id})
+
+    if report["ok"] or faithful:
+        if not report["ok"]:
+            _ledger_checkpoint_incoherence(
+                mgr, report, job_id,
+                fs.get("last_verified_claim_id"), last_claim_id,
+                kind="final",
+            )
+        jobs_store.bump_feed_state(
+            job_id, commits_since_checkpoint=0,
+            last_checkpoint_at=_utcnow_iso(),
+            last_checkpoint_ok=report["ok"],
+            last_verified_claim_id=last_claim_id,
+        )
+        return None
+
+    # Curated failure. Self-heal first (opt-in) so a lone poison class does
+    # not block completion of an otherwise-finished run.
+    if config.CHECKPOINT_SELF_HEAL:
+        healed = _self_heal_unsat(
+            mgr, report, job_id, session_id,
+            fs.get("last_verified_claim_id"), last_claim_id, "final",
+        )
+        if healed["ok"]:
+            jobs_store.bump_feed_state(
+                job_id, commits_since_checkpoint=0,
+                last_checkpoint_at=_utcnow_iso(), last_checkpoint_ok=True,
+                last_verified_claim_id=last_claim_id,
+            )
+            return None
+        report = healed["report"]
+
+    # Pause instead of completing. job_runner._fail notifies; the job stays
+    # resumable once the operator bisects the offending commit out of
+    # working.owl's git history.
+    jobs_store.bump_feed_state(
+        job_id, last_checkpoint_at=_utcnow_iso(), last_checkpoint_ok=False
+    )
+    jobs_store.set_job_status(job_id, "paused")
+    return {
+        "fatal": "final_verify_failed",
+        "error": f"final full verification failed: {report['detail']}",
+    }
+
+
+def _resume_verify(job_id: str) -> bool:
+    """Boot-resume certificate (SPEC-bfo-agent-speed.md change 6): a job
+    interrupted with unverified commits gets one verify_full before its feed
+    loop restarts. Passed to job_runner.resume_incomplete; runs inside the
+    runner thread so boot is never blocked.
+
+    Returns True to resume feeding. False (curated failure) makes the runner
+    pause the job and notify instead of resuming. Fails open on mechanical
+    errors -- the mandatory completion pass remains the backstop.
+    """
+    try:
+        # Amortized-save crash recovery (change 7) runs first: claims
+        # committed after the last on-disk save are reset to pending before
+        # the certificate judges (and before feeding trusts) the disk state.
+        _prepare_amortized_resume(job_id)
+        job = jobs_store.load_job(job_id)
+        fs = jobs_store.get_feed_state(job)
+        if fs.get("commits_since_checkpoint", 0) <= 0:
+            return True
+        session_id = job.get("session_id")
+        with _lock:
+            mgr = _get_manager()
+            faithful = _active_fidelity() == "faithful"
+            exclusions = (
+                ledger_mod.exclusion_triples(mgr.working_path)
+                if faithful else None
+            )
+            report = mgr.verify_full(exclude_axioms=exclusions)
+        log_event(session_id, "resume_verify", {**report, "job_id": job_id})
+        committed_ids = [c["id"] for c in job.get("claims", [])
+                         if c.get("status") == "committed"]
+        last_claim_id = max(committed_ids) if committed_ids else None
+        if report["ok"] or faithful:
+            if not report["ok"]:
+                _ledger_checkpoint_incoherence(
+                    mgr, report, job_id,
+                    fs.get("last_verified_claim_id"), last_claim_id,
+                    kind="resume",
+                )
+            jobs_store.bump_feed_state(
+                job_id, commits_since_checkpoint=0,
+                last_checkpoint_at=_utcnow_iso(),
+                last_checkpoint_ok=report["ok"],
+                last_verified_claim_id=last_claim_id,
+            )
+            return True
+        # Curated failure. Self-heal first (opt-in): quarantine the named
+        # unsatisfiable classes and re-certify so a resume clears standing
+        # poison instead of refusing to restart the feed.
+        if config.CHECKPOINT_SELF_HEAL and not faithful:
+            with _lock:
+                healed = _self_heal_unsat(
+                    mgr, report, job_id, session_id,
+                    fs.get("last_verified_claim_id"), last_claim_id, "resume",
+                )
+            if healed["ok"]:
+                jobs_store.bump_feed_state(
+                    job_id, commits_since_checkpoint=0,
+                    last_checkpoint_at=_utcnow_iso(), last_checkpoint_ok=True,
+                    last_verified_claim_id=last_claim_id,
+                )
+                return True
+        jobs_store.bump_feed_state(
+            job_id, last_checkpoint_at=_utcnow_iso(),
+            last_checkpoint_ok=False,
+        )
+        return False
+    except Exception as e:  # noqa: BLE001 — never brick boot-resume
+        log.warning("resume_verify failed open (%s); resuming feed", e)
+        return True
+
+
 def _feed_one_core(job_id: str, auto_accept: bool = True) -> dict:
     """Feed the next pending+approved claim in the job.
 
@@ -348,55 +1097,117 @@ def _feed_one_core(job_id: str, auto_accept: bool = True) -> dict:
         # server-side runner) cannot grab the same claim.
         pending = jobs_store.next_pending(job_id, limit=1)
         if not pending:
+            # Mandatory final pass (SPEC-bfo-agent-speed.md change 6): any
+            # commit that skipped the per-claim full verify gets certified
+            # here, before the job may be marked completed.
+            final_fatal = _final_verify_before_complete(job_id, session_id)
+            if final_fatal is not None:
+                return final_fatal
             jobs_store.set_job_status(job_id, "completed")
             return {"done": True, "remaining": 0}
         claim = pending[0]
 
+        # Per-claim phase timers (SPEC-bfo-agent-speed.md Step 0).
+        timing.start_claim()
+        t_claim = time.perf_counter()
+
         mgr = _get_manager()
         proposer = _get_proposer()
-        ctx = mgr.summary_for_proposer()
+        ctx = mgr.summary_for_proposer(utterance=claim["claim"])
 
-        try:
-            proposal = proposer.propose(
-                utterance=claim["claim"],
-                session_id=session_id,
-                working_classes=ctx["working_classes"],
-                known_individuals=ctx["known_individuals"],
-            )
-        except Exception as e:
-            jobs_store.update_claim_status(
-                job_id, claim["id"], "error", verdict="error"
-            )
-            log_event(session_id, "propose_error",
-                      {"utterance": claim["claim"], "error": str(e),
-                       "job_id": job_id, "claim_id": claim["id"]})
-            remaining = _count_pending(job_id)
-            return {
-                "claim": claim,
-                "proposal": None,
-                "error": str(e),
-                "committed": False,
-                "remaining": remaining,
-            }
+        # Batch propose (SPEC-bfo-agent-speed.md change 5): a prepare pass
+        # (app/batch_propose.py) may have already run this claim through the
+        # LLM against a context snapshot. Consume the stored proposal instead
+        # of calling the API inline -- keeping the stored proposal_id for
+        # determinism -- and clear it (consume-once) in the same write that
+        # records the claim's outcome below. The gate + commit path is
+        # untouched, and any gate resample still re-proposes live.
+        proposal = None
+        used_stored_proposal = False
+        pre = claim.get("proposal") if config.BATCH_PROPOSE_ENABLED else None
+        if pre:
+            try:
+                with timing.phase("propose"):  # near-zero; keeps the key
+                    data = dict(pre)
+                    data["session_id"] = session_id
+                    data.setdefault("utterance", claim["claim"])
+                    proposal = Proposal.model_validate(data)
+                used_stored_proposal = True
+            except Exception as e:
+                # Malformed stored proposal: fall back to live propose.
+                log_event(session_id, "batch_proposal_invalid",
+                          {"error": str(e), "job_id": job_id,
+                           "claim_id": claim["id"]})
+                proposal = None
+
+        if proposal is None:
+            try:
+                with timing.phase("propose"):
+                    proposal = proposer.propose(
+                        utterance=claim["claim"],
+                        session_id=session_id,
+                        working_classes=ctx["working_classes"],
+                        known_individuals=ctx["known_individuals"],
+                        relevant_classes=ctx.get("relevant_classes"),
+                        extra_rules=_coverage_extra_rules(),
+                    )
+            except Exception as e:
+                jobs_store.update_claim_status(
+                    job_id, claim["id"], "error", verdict="error"
+                )
+                log_event(session_id, "propose_error",
+                          {"utterance": claim["claim"], "error": str(e),
+                           "job_id": job_id, "claim_id": claim["id"]})
+                _emit_claim_timing(session_id, job_id, claim["id"], None,
+                                   "error", False, None, mgr, t_claim)
+                remaining = _count_pending(job_id)
+                return {
+                    "claim": claim,
+                    "proposal": None,
+                    "error": str(e),
+                    "committed": False,
+                    "remaining": remaining,
+                }
+
+        # Extraction fidelity (fidelity-mode-spec.md): in faithful mode the
+        # ontology must stay true to the text including its errors -- clashes
+        # are flagged and committed as-asserted, with the ledgered clash
+        # axioms excluded from dry-runs so each claim is judged on its own
+        # merits (FM-9).
+        faithful = _active_fidelity() == "faithful"
+        exclusions = (
+            ledger_mod.exclusion_triples(mgr.working_path) if faithful else None
+        )
 
         # Coherence gate under the configured policy. This is the
         # load-bearing check: it may rewrite the proposal (repair/resample)
         # before it becomes eligible to commit, and it catches the
         # consistent-but-incoherent straddles the legacy check missed.
+        gate_run = None
         if config.ENABLE_COHERENCE_GATE:
-            run = _run_coherence_gate(
-                proposal, mgr, proposer, ctx, session_id,
-                context={"job_id": job_id, "claim_id": claim["id"],
-                         "proposal_id": proposal.proposal_id},
-            )
+            with timing.phase("gate_total"):
+                run = _run_coherence_gate(
+                    proposal, mgr, proposer, ctx, session_id,
+                    context={"job_id": job_id, "claim_id": claim["id"],
+                             "proposal_id": proposal.proposal_id},
+                    faithful=faithful, exclude_axioms=exclusions,
+                )
+            gate_run = run
             proposal = run.proposal
-            gate_accepted = run.outcome == GateOutcome.ACCEPT
-            verdict = "consistent" if gate_accepted else "inconsistent"
+            gate_accepted = run.outcome in (GateOutcome.ACCEPT,
+                                            GateOutcome.FLAG)
+            if run.outcome == GateOutcome.ACCEPT:
+                verdict = "consistent"
+            elif run.outcome == GateOutcome.FLAG:
+                verdict = "flagged"
+            else:
+                verdict = "inconsistent"
             proposal.reasoner_verdict = verdict
             proposal.reasoner_detail = run.result.reason or run.result.justification
         else:
             try:
-                ok, detail = mgr.check_consistency_dry_run(proposal)
+                with timing.phase("gate_total"):
+                    ok, detail = mgr.check_consistency_dry_run(proposal)
                 proposal.reasoner_verdict = "consistent" if ok else "inconsistent"
                 proposal.reasoner_detail = detail
             except Exception as e:
@@ -406,11 +1217,14 @@ def _feed_one_core(job_id: str, auto_accept: bool = True) -> dict:
             verdict = proposal.reasoner_verdict
 
         _proposal_cache[proposal.proposal_id] = proposal
-        log_event(session_id, "propose", {
+        propose_payload = {
             "proposal": proposal.model_dump(),
             "job_id": job_id,
             "claim_id": claim["id"],
-        })
+        }
+        if used_stored_proposal:
+            propose_payload["proposal_source"] = "batch"
+        log_event(session_id, "propose", propose_payload)
 
         committed = False
         warnings: list[str] = []
@@ -419,7 +1233,24 @@ def _feed_one_core(job_id: str, auto_accept: bool = True) -> dict:
             new_status = "inconsistent"
         elif auto_accept:
             try:
-                warnings = mgr.commit_proposal(proposal)
+                # Faithful mode (FM-6): a gate FLAG already carries the
+                # incoherence verdict, so skip the redundant post-commit
+                # reasoner pass; an ACCEPTed claim is verified against the
+                # coherent view so only NEW incoherence is reported.
+                flagged = gate_run is not None and \
+                    gate_run.outcome == GateOutcome.FLAG
+                # SPEC-bfo-agent-speed.md change 6: with VERIFY_EVERY_COMMIT
+                # off, the per-claim commit never runs the full-graph verify;
+                # the checkpoint/final-pass certificate covers it instead.
+                # Default (on) keeps today's behavior exactly.
+                with timing.phase("commit_total"):
+                    warnings = mgr.commit_proposal(
+                        proposal,
+                        verify=(not flagged) if config.VERIFY_EVERY_COMMIT
+                        else False,
+                        faithful=faithful,
+                        exclude_axioms=exclusions,
+                    )
             except CommitCoherenceError as e:
                 # commit-time backstop rolled the ontology back: the
                 # proposal would have made the base incoherent. Treat it
@@ -441,17 +1272,55 @@ def _feed_one_core(job_id: str, auto_accept: bool = True) -> dict:
                 })
                 new_status = "error"
             else:
+                if faithful:
+                    entry_id = _ledger_faithful_commit(
+                        mgr, proposal, gate_run, session_id,
+                        {"session_id": session_id, "job_id": job_id,
+                         "claim_id": claim["id"],
+                         "source_text": claim["claim"]},
+                    )
+                    if entry_id:
+                        verdict = "flagged"
+                        warnings = (warnings or []) + [
+                            f"incoherence-flagged [{entry_id}]: committed "
+                            f"as-asserted; see incoherence ledger"
+                        ]
                 warnings = (warnings or []) + _budget_and_kext_notes(
                     proposal, mgr
                 )
-                scaffolded = _apply_scaffolding(proposal, mgr, session_id)
-                git_commit_working_ontology(
-                    session_id, proposal.proposal_id,
-                    claim["claim"][:80]
-                )
+                # FM-5: in faithful mode scaffolding is advisory -- the BFO
+                # constraint a category requires becomes an open question,
+                # never a committed axiom the text did not assert.
+                if faithful:
+                    scaffolded = []
+                    directives = gate_mod.scaffolding_directives(proposal, mgr)
+                    if directives:
+                        for d in directives:
+                            if d.get("question"):
+                                proposal.open_questions.append(d["question"])
+                        log_event(session_id, "scaffold_advisory", {
+                            "directives": directives,
+                            "job_id": job_id,
+                            "claim_id": claim["id"],
+                        })
+                else:
+                    with timing.phase("scaffolding"):
+                        scaffolded = _apply_scaffolding(
+                            proposal, mgr, session_id
+                        )
+                # Amortized save (change 7): nothing new reached disk on
+                # this claim, so there is nothing for git to record; the
+                # flush points commit the batched window instead.
+                if config.SAVE_EVERY_COMMIT:
+                    with timing.phase("git"):
+                        git_commit_working_ontology(
+                            session_id, proposal.proposal_id,
+                            claim["claim"][:80]
+                        )
                 log_event(session_id, "commit", {
                     "proposal_id": proposal.proposal_id,
                     "decision": "accept",
+                    "fidelity": "faithful" if faithful else "curated",
                     "warnings": warnings,
                     "scaffolded": scaffolded,
                     "proposal": proposal.model_dump(),
@@ -468,7 +1337,30 @@ def _feed_one_core(job_id: str, auto_accept: bool = True) -> dict:
             job_id, claim["id"], new_status,
             proposal_id=proposal.proposal_id,
             verdict=verdict,
+            clear_proposal=used_stored_proposal,
         )
+
+        # Checkpointed full verification (SPEC-bfo-agent-speed.md change 6):
+        # only when the per-claim full verify is off. Runs after the claim's
+        # status is persisted so a failed checkpoint's suspect window is
+        # bounded by claims actually recorded as committed.
+        checkpoint_fatal = None
+        if committed and not config.VERIFY_EVERY_COMMIT:
+            checkpoint_fatal = _maybe_checkpoint_verify(
+                job_id, claim, session_id, mgr, faithful, exclusions
+            )
+
+        _emit_claim_timing(
+            session_id, job_id, claim["id"], proposal.proposal_id,
+            verdict, committed,
+            gate_run.attempts if gate_run is not None else None,
+            mgr, t_claim,
+        )
+
+    if checkpoint_fatal is not None:
+        # Curated checkpoint failure: the job was paused inside the lock;
+        # the fatal shape stops job_runner._run and fires its notification.
+        return checkpoint_fatal
 
     remaining = _count_pending(job_id)
     return {
@@ -627,6 +1519,15 @@ def create_app() -> Flask:
                     manifest = reg.finalize(name)
                 except KeyError:
                     return _not_found_response(name)
+                except FinalizeVerificationError as e:
+                    # SPEC-bfo-agent-speed.md change 6: unverified commits
+                    # failed the fresh full-graph certificate; refuse to
+                    # freeze an uncertified artifact.
+                    return jsonify({
+                        "status": "error",
+                        "error": str(e),
+                        "report": e.report,
+                    }), 409
 
                 manifest_path = config.LIBRARY_ROOT / name / "manifest.json"
                 git_commit_library_change(
@@ -668,7 +1569,63 @@ def create_app() -> Flask:
         except Exception as e:
             return jsonify({"status": "error", "error": str(e)}), 500
 
+    @app.get("/ontologies/<name>/incoherence")
+    def ontology_incoherence(name):
+        """Incoherence-findings report (fidelity-mode-spec.md FM-11).
 
+        Renders the ledger: findings about the extracted TEXT (the ontology
+        faithfully represents it; these claims are jointly incoherent under
+        BFO), each with provenance back to the source passage. Empty for
+        curated ontologies.
+        """
+        try:
+            reg = _get_registry()
+            try:
+                mgr = reg.get(name)
+            except KeyError:
+                return _not_found_response(name)
+            entries = ledger_mod.read_all(mgr.working_path)
+            return jsonify({
+                "ontology": name,
+                "fidelity": reg.fidelity(name),
+                "framing": (
+                    "The ontology faithfully represents its source text; "
+                    "each finding below is evidence that claims OF THE TEXT "
+                    "are jointly inconsistent or incoherent under BFO."
+                ),
+                "count": len(entries),
+                "entries": entries,
+            })
+        except Exception as e:
+            return jsonify({"status": "error", "error": str(e)}), 500
+
+    @app.get("/ontologies/<name>/fol_audit")
+    def ontology_fol_audit(name):
+        """Latest FOL audit record for an ontology (fol-gate-spec.md R-1/R-2).
+
+        Read-only: reports the most recent Prover9/Mace4 audit; POST-free by
+        design -- audits run at end-of-job or via the CLI, never from here.
+        """
+        try:
+            reg = _get_registry()
+            try:
+                mgr = reg.get(name)
+            except KeyError:
+                return _not_found_response(name)
+            from . import fol_gate
+
+            record = fol_gate.latest_record(mgr.working_path)
+            if record is None:
+                return jsonify({
+                    "ontology": name,
+                    "status": "no_audit",
+                    "detail": "no FOL audit has been run for this ontology",
+                    "enabled": config.FOL_GATE_ENABLED,
+                    "binaries_available": fol_gate.binaries_available(),
+                }), 404
+            return jsonify({"ontology": name, "record": record})
+        except Exception as e:
+            return jsonify({"status": "error", "error": str(e)}), 500
 
     @app.post("/ontologies/preview-import")
     def preview_import_ontology():
@@ -804,7 +1761,7 @@ def create_app() -> Flask:
         with _lock:
             mgr = _get_manager()
             proposer = _get_proposer()
-            ctx = mgr.summary_for_proposer()
+            ctx = mgr.summary_for_proposer(utterance=body.utterance)
 
             try:
                 proposal = proposer.propose(
@@ -812,6 +1769,8 @@ def create_app() -> Flask:
                     session_id=session_id,
                     working_classes=ctx["working_classes"],
                     known_individuals=ctx["known_individuals"],
+                    relevant_classes=ctx.get("relevant_classes"),
+                    extra_rules=_coverage_extra_rules(),
                 )
             except Exception as e:
                 log_event(
@@ -892,6 +1851,13 @@ def create_app() -> Flask:
                 _proposal_cache.pop(body.proposal_id, None)
                 return jsonify({"status": "rejected"})
 
+            faithful = _active_fidelity() == "faithful"
+            exclusions = (
+                ledger_mod.exclusion_triples(mgr.working_path)
+                if faithful else None
+            )
+            flag_result = None
+
             # Defensive gate: a user-edited proposal must not bypass coherence.
             if config.ENABLE_COHERENCE_GATE:
                 try:
@@ -900,6 +1866,7 @@ def create_app() -> Flask:
                         run_reasoner=config.GATE_RUN_REASONER,
                         run_construction=config.ENABLE_CONSTRUCTION_LINTER,
                         strict_closed_vocab=config.STRICT_CLOSED_VOCAB,
+                        exclude_axioms=exclusions,
                     )
                 except Exception as e:
                     result = None
@@ -912,21 +1879,35 @@ def create_app() -> Flask:
                                  "proposal_id": body.proposal_id},
                     )
                     if not result.accepted:
-                        log_event(body.session_id, "gate_reject", {
-                            "proposal_id": body.proposal_id,
-                            "reason": result.reason,
-                            "tier": result.tier.value,
-                        })
-                        return jsonify({
-                            "status": "rejected_by_gate",
-                            "tier": result.tier.value,
-                            "reason": result.reason,
-                            "justification": result.justification,
-                            "unsat_classes": result.unsat_classes,
-                        }), 409
+                        # FM-4: in faithful mode a lint/reasoner clash is
+                        # evidence about the text, not grounds to refuse the
+                        # commit. Construction violations still reject -- a
+                        # malformed rendering is the proposer's error.
+                        if faithful and result.tier in (
+                            gate_mod.GateTier.LINT, gate_mod.GateTier.REASONER
+                        ):
+                            flag_result = result
+                        else:
+                            log_event(body.session_id, "gate_reject", {
+                                "proposal_id": body.proposal_id,
+                                "reason": result.reason,
+                                "tier": result.tier.value,
+                            })
+                            return jsonify({
+                                "status": "rejected_by_gate",
+                                "tier": result.tier.value,
+                                "reason": result.reason,
+                                "justification": result.justification,
+                                "unsat_classes": result.unsat_classes,
+                            }), 409
 
             try:
-                warnings = mgr.commit_proposal(body.proposal)
+                warnings = mgr.commit_proposal(
+                    body.proposal,
+                    verify=flag_result is None,
+                    faithful=faithful,
+                    exclude_axioms=exclusions,
+                )
             except CommitCoherenceError as e:
                 # backstop rolled the ontology back; the base is intact, so
                 # report a rejection (like the gate does), not a server error
@@ -947,6 +1928,22 @@ def create_app() -> Flask:
                 )
                 return jsonify({"error": f"Commit error: {e}"}), 500
 
+            if faithful:
+                shim = None
+                if flag_result is not None:
+                    from types import SimpleNamespace
+                    shim = SimpleNamespace(outcome=GateOutcome.FLAG,
+                                           result=flag_result)
+                entry_id = _ledger_faithful_commit(
+                    mgr, body.proposal, shim, body.session_id,
+                    {"session_id": body.session_id, "endpoint": "commit",
+                     "source_text": body.proposal.utterance},
+                )
+                if entry_id:
+                    warnings = (warnings or []) + [
+                        f"incoherence-flagged [{entry_id}]: committed "
+                        f"as-asserted; see incoherence ledger"
+                    ]
             warnings = (warnings or []) + _budget_and_kext_notes(
                 body.proposal, mgr
             )
@@ -1196,6 +2193,41 @@ def create_app() -> Flask:
         ok = jobs_store.delete_job(job_id)
         return jsonify({"deleted": ok})
 
+    @app.get("/jobs/<job_id>/export")
+    def jobs_export(job_id):
+        """Download a job's extracted claims as a portable JSON envelope, so
+        another deployment can import and feed them without re-extracting."""
+        try:
+            job = jobs_store.load_job(job_id)
+        except FileNotFoundError as e:
+            return jsonify({"error": str(e)}), 404
+        envelope = job_transfer.build_export_envelope(job)
+        data = json.dumps(envelope, indent=2, ensure_ascii=False).encode("utf-8")
+        resp = app.response_class(data, mimetype="application/json")
+        resp.headers["Content-Disposition"] = (
+            f'attachment; filename="{job_transfer.export_filename(job)}"'
+        )
+        return resp
+
+    @app.post("/jobs/import")
+    def jobs_import():
+        """Create a new, feedable job from an exported claims envelope. Claims
+        arrive reset to pending (append_claims re-inits feed state), so the
+        expensive feed runs here while extraction happened elsewhere."""
+        # Phase 3: refuse writes against a finalized ontology.
+        if _active_is_finalized():
+            return _finalized_guard_response()
+        payload = request.get_json(force=True, silent=True)
+        if payload is None:
+            return jsonify({"error": "invalid or missing JSON body"}), 400
+        try:
+            name, meta, claims = job_transfer.parse_import_envelope(payload)
+        except ValueError as e:
+            return jsonify({"error": str(e)}), 400
+        job = jobs_store.create_job(name, meta=meta)
+        job = jobs_store.append_claims(job["job_id"], claims)
+        return jsonify(jobs_store._job_summary(job)), 201
+
     @app.post("/jobs/<job_id>/append_claims")
     def jobs_append_claims(job_id):
         # Phase 3: refuse writes against a finalized ontology.
@@ -1263,6 +2295,42 @@ def create_app() -> Flask:
 
         return jsonify(_feed_one_core(job_id, auto_accept))
 
+    @app.post("/jobs/<job_id>/prepare_proposals")
+    def jobs_prepare_proposals(job_id):
+        """Kick a batch prepare pass (SPEC-bfo-agent-speed.md change 5):
+        submit every pending+approved claim without a stored proposal to the
+        Anthropic Message Batches API and persist the parsed proposals into
+        the job file, so the feed consumes them instead of calling the API
+        inline. Runs on a daemon thread; poll GET /jobs/<id> and read
+        meta.batch_propose for progress. 409 while a batch is running."""
+        # Phase 3: refuse writes against a finalized ontology.
+        if _active_is_finalized():
+            return _finalized_guard_response()
+        try:
+            job = jobs_store.load_job(job_id)
+        except FileNotFoundError as e:
+            return jsonify({"error": str(e)}), 404
+        bp = (job.get("meta") or {}).get("batch_propose") or {}
+        if bp.get("status") in ("submitted", "processing"):
+            return jsonify({
+                "error": "a proposal batch is already running for this job",
+                "batch_propose": bp,
+            }), 409
+
+        # Anthropic-only module; imported lazily so the DGX fork (local LLM,
+        # no Batches API) never loads it.
+        from . import batch_propose
+
+        def _run():
+            try:
+                batch_propose.prepare_job_proposals(job_id)
+            except Exception:
+                log.exception("prepare_proposals failed for job %s", job_id)
+
+        threading.Thread(target=_run, daemon=True,
+                         name=f"prepare-proposals-{job_id}").start()
+        return jsonify({"started": True, "job_id": job_id})
+
     @app.post("/jobs/<job_id>/pause")
     def jobs_pause(job_id):
         """Pause feeding. The server-side runner notices between claims
@@ -1288,7 +2356,16 @@ def create_app() -> Flask:
             job = jobs_store.set_job_status(job_id, "feeding")
         except FileNotFoundError as e:
             return jsonify({"error": str(e)}), 404
-        runner = job_runner.start(job_id, _feed_one_core, auto_accept)
+        try:
+            # Amortized-save crash recovery (change 7): a manual resume
+            # after a process death must not trust claim statuses beyond
+            # the last on-disk save.
+            _prepare_amortized_resume(job_id)
+        except Exception:  # noqa: BLE001 — never brick resume
+            log.exception("amortized-save resume preparation failed")
+        runner = job_runner.start(job_id, _feed_one_core, auto_accept,
+                                  on_complete=_fol_audit_on_complete,
+                                  flush_fn=flush_working_ontology)
         out = jobs_store._job_summary(job)
         out["runner"] = runner
         return jsonify(out)
@@ -1316,15 +2393,271 @@ def create_app() -> Flask:
     def session_log(session_id):
         return jsonify(load_session(session_id))
 
+    @app.get("/jobs/<job_id>/stream")
+    def jobs_stream(job_id):
+        """Read-only Server-Sent Events tail of a job's live feed.
+
+        Streams the per-claim trace by tailing the two on-disk logs the feed
+        already writes -- the main session log and the coherence-gate log --
+        so a browser panel can watch propose -> gate -> commit as it happens.
+        Pure log tailing: never touches the feed/gate/runner hot path.
+        """
+        try:
+            job = jobs_store.load_job(job_id)
+        except FileNotFoundError as e:
+            return jsonify({"error": str(e)}), 404
+        session_id = job["session_id"]
+        main_path = session_path(session_id)
+        gate_path = gate_log_path(session_id)
+
+        backlog_lines = 150
+        max_tail_bytes = 1_000_000  # cap initial backlog read at ~1MB/file
+        heartbeat_after = 15.0      # seconds of silence before a ping comment
+        poll_interval = 0.5
+
+        def _sse(obj) -> str:
+            return f"data: {json.dumps(obj)}\n\n"
+
+        def _tail_lines(path: Path) -> list[str]:
+            """Last ~backlog_lines complete lines, reading at most the final
+            ~max_tail_bytes so a huge log never loads whole into memory."""
+            try:
+                size = path.stat().st_size
+            except OSError:
+                return []
+            start = max(0, size - max_tail_bytes)
+            try:
+                with path.open("rb") as f:
+                    f.seek(start)
+                    data = f.read()
+            except OSError:
+                return []
+            if start > 0:
+                # Drop the partial first line produced by the mid-file seek.
+                nl = data.find(b"\n")
+                data = data[nl + 1:] if nl != -1 else b""
+            text = data.decode("utf-8", errors="replace")
+            lines = [ln for ln in text.split("\n") if ln.strip()]
+            return lines[-backlog_lines:]
+
+        def _emit_line(src: str, line: str) -> str | None:
+            try:
+                record = json.loads(line)
+            except (ValueError, TypeError):
+                return None
+            return _sse({"src": src, "event": record})
+
+        def gen():
+            try:
+                yield f"event: hello\ndata: {json.dumps({'session_id': session_id, 'job_id': job_id})}\n\n"
+
+                # Backlog: merge the tails of both files (best-effort file
+                # order), so a freshly-opened panel shows recent context.
+                for src, path in (("main", main_path), ("gate", gate_path)):
+                    if path.exists():
+                        for line in _tail_lines(path):
+                            chunk = _emit_line(src, line)
+                            if chunk:
+                                yield chunk
+
+                # Tail loop: track byte offsets and stream new complete lines.
+                offsets: dict[str, int] = {}
+                buffers: dict[str, bytes] = {"main": b"", "gate": b""}
+                for src, path in (("main", main_path), ("gate", gate_path)):
+                    try:
+                        offsets[src] = path.stat().st_size
+                    except OSError:
+                        offsets[src] = 0
+
+                last_data = time.monotonic()
+                while True:
+                    sent = False
+                    for src, path in (("main", main_path), ("gate", gate_path)):
+                        try:
+                            size = path.stat().st_size
+                        except OSError:
+                            continue  # file not created yet -- keep polling
+                        if size < offsets[src]:
+                            # Truncated/rotated: restart from the top.
+                            offsets[src] = 0
+                            buffers[src] = b""
+                        if size <= offsets[src]:
+                            continue
+                        try:
+                            with path.open("rb") as f:
+                                f.seek(offsets[src])
+                                chunk = f.read()
+                        except OSError:
+                            continue
+                        offsets[src] = size
+                        buffers[src] += chunk
+                        *complete, buffers[src] = buffers[src].split(b"\n")
+                        for raw in complete:
+                            line = raw.decode("utf-8", errors="replace")
+                            if not line.strip():
+                                continue
+                            out = _emit_line(src, line)
+                            if out:
+                                yield out
+                                sent = True
+
+                    now = time.monotonic()
+                    if sent:
+                        last_data = now
+                    elif now - last_data >= heartbeat_after:
+                        yield ": ping\n\n"
+                        last_data = now
+                    time.sleep(poll_interval)
+            except GeneratorExit:
+                # Client disconnected -- stop cleanly, no spin, no raise.
+                return
+            except Exception as e:  # noqa: BLE001 -- a stream must not 500 mid-flight
+                log.warning("jobs_stream generator error: %s", e)
+                return
+
+        return Response(
+            gen(),
+            mimetype="text/event-stream",
+            headers={
+                "Cache-Control": "no-cache",
+                "X-Accel-Buffering": "no",
+                "Connection": "keep-alive",
+            },
+        )
+
     # A restart (deploy, crash, OOM) interrupts any server-side feed run.
     # Per-claim state is on disk, so pick those jobs up where they left off.
     if config.AUTORESUME_JOBS:
         try:
-            resumed = job_runner.resume_incomplete(_feed_one_core)
+            resumed = job_runner.resume_incomplete(
+                _feed_one_core, on_complete=_fol_audit_on_complete,
+                resume_verify_fn=_resume_verify,
+                flush_fn=flush_working_ontology)
             if resumed:
                 print(f"[job_runner] auto-resumed feeding jobs: "
                       f"{', '.join(resumed)}")
         except Exception as e:
             print(f"[job_runner] auto-resume failed: {e}")
+
+    # --- NFIP coverage coherence demonstrator ---------------------------------
+    # Public surface: findings only (verdict + verbatim clause + plain English).
+    # The coverage kernel, the clause typology, and the proof encodings are the
+    # asset; they stay server-side and are never served to the browser.
+    @app.get("/coverage")
+    def coverage_page():
+        from flask import send_from_directory
+        return send_from_directory(app.static_folder, "coverage.html")
+
+    @app.get("/coverage/findings")
+    def coverage_findings():
+        import json as _json
+        path = Path(__file__).resolve().parent.parent / "nfip" / "findings.json"
+        if not path.exists():
+            return jsonify({"error": "findings not generated; "
+                                     "run: python -m nfip.run_analysis"}), 404
+        rep = _json.loads(path.read_text(encoding="utf-8"))
+        meta = ("generated_utc", "form", "source", "domain_source", "reasoner",
+                "fidelity", "finding_count")
+        public = {k: rep.get(k) for k in meta}
+        keep = ("id", "shape", "shape_name", "title", "verdict",
+                "reasoner_evidence", "loss", "responsible_clauses",
+                "plain_english")
+        public["findings"] = [
+            {k: f.get(k) for k in keep if k in f}
+            for f in rep.get("findings", [])
+        ]
+        return jsonify(public)
+
+    def _coverage_working_path(name: str):
+        """Resolve a coverage-profile ontology's working.owl. Returns
+        (path_str, error_response)."""
+        reg = _get_registry()
+        try:
+            mgr = reg.get(name)
+        except Exception:
+            return None, (jsonify({"error": f"ontology {name!r} not found"}), 404)
+        return str(mgr.working_path), None
+
+    @app.get("/coverage/ontologies")
+    def coverage_ontologies():
+        """List ontologies with kernel_profile == 'coverage' (UI enablement)."""
+        reg = _get_registry()
+        out = []
+        for entry in reg.list_ontologies():
+            name = entry.get("name")
+            man = entry.get("manifest", {})
+            if man.get("kernel_profile") == "coverage":
+                out.append({"name": name,
+                            "description": man.get("description", ""),
+                            "fidelity": man.get("fidelity", "curated")})
+        return jsonify({"coverage_ontologies": out})
+
+    @app.post("/coverage/score")
+    def coverage_score():
+        from . import coverage_reason
+        body = request.get_json(silent=True) or {}
+        name = body.get("ontology") or "NFIP_SFIP_v1"
+        wp, err = _coverage_working_path(name)
+        if err:
+            return err
+        try:
+            return jsonify(coverage_reason.score(wp))
+        except Exception as e:
+            return jsonify({"error": f"scoring failed: {e}"}), 500
+
+    @app.post("/coverage/check-claim")
+    def coverage_check_claim():
+        from . import coverage_reason
+        body = request.get_json(silent=True) or {}
+        name = body.get("ontology") or "NFIP_SFIP_v1"
+        claim = body.get("claim") or {}
+        wp, err = _coverage_working_path(name)
+        if err:
+            return err
+        try:
+            return jsonify(coverage_reason.check_claim(wp, claim))
+        except Exception as e:
+            return jsonify({"error": f"claim check failed: {e}"}), 500
+
+    @app.post("/coverage/analyze")
+    def coverage_analyze():
+        """Analyze NEW policy wording (ephemeral extract + coherence check)."""
+        from . import coverage_reason
+        body = request.get_json(silent=True) or {}
+        wording = body.get("wording") or body.get("clauses")
+        if not wording:
+            return jsonify({"error": "provide 'wording' text or a 'clauses' list"}), 400
+        try:
+            return jsonify(coverage_reason.analyze_wording(wording))
+        except Exception as e:
+            return jsonify({"error": f"analysis failed: {e}"}), 500
+
+    # --- General on-demand coherence reasoning (ANY ontology) -----------------
+    # Live reasoner runs, serialised behind the feed via _REASONER_LOCK. Behind
+    # auth, so they expose the mechanism (unsatisfiable classes + why), not just
+    # a sanitized findings surface.
+    @app.post("/ontologies/<name>/coherence-check")
+    def ontology_coherence_check(name):
+        from . import coherence_reason
+        wp, err = _coverage_working_path(name)
+        if err:
+            return err
+        try:
+            return jsonify(coherence_reason.coherence_check(wp))
+        except Exception as e:
+            return jsonify({"error": f"coherence check failed: {e}"}), 500
+
+    @app.post("/ontologies/<name>/fact-check")
+    def ontology_fact_check(name):
+        from . import coherence_reason
+        body = request.get_json(silent=True) or {}
+        classes = body.get("classes") or []
+        wp, err = _coverage_working_path(name)
+        if err:
+            return err
+        try:
+            return jsonify(coherence_reason.fact_pattern_check(wp, classes))
+        except Exception as e:
+            return jsonify({"error": f"fact check failed: {e}"}), 500
 
     return app

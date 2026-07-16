@@ -1,4 +1,35 @@
-# DGX migration — ontology-quality changes (2026-06-30 session)
+# DGX migration — ontology-quality changes
+
+> **2026-07-07 extractor parity (claim-yield fix): DONE.** DGX was extracting far
+> fewer claims than Hetzner for two reasons, both now fixed on `dgx:~/research/bfo-agent`:
+> (1) the extractor ran the **old pre-fidelity prompt** (no ATOMICITY-SPLIT / COHERENCE
+> rules) — ported the current `app/extractor.py` prompt strings surgically, keeping
+> DGX's `llm_client.chat()` ollama wiring untouched (backup: `app/extractor.py.bak-2026-07-07`);
+> (2) extraction ran on **qwen2.5:14b** — switched `.env` `OLLAMA_EXTRACTOR_MODEL` to
+> `qwen2.5:72b-instruct-q4_K_M` (already pulled for the proposer). Smoke test: a bundled
+> "depends on X but retains integrity" sentence now splits into 3 atomic claims and drops
+> the contradictory independence half, matching mainline behavior. Restart the service to
+> pick up both changes. Note: 72b extraction is slower per chunk than 14b — expected tradeoff.
+
+> **2026-07-07 migration (fidelity mode + FOL gate, commits e22591e1..4e89e750): DONE.**
+> Shipped surgically per the method below. Wholesale copies: `coherence_gate.py`,
+> `registry.py` (base-identical) + new `incoherence_ledger.py`, `fol_translate.py`,
+> `fol_gate.py`, `ontology/bfo-2020-fol/` (15 files), `tests/test_fidelity_mode.py`,
+> `tests/test_fol_gate.py`. Patched with hand-merged rejects: `config.py` (append),
+> `gate_client.py`, `orchestrator.py` (DGX's inline feed_one — no job_runner there,
+> so the end-of-job audit hook is present but unwired), `ontology_manager.py`
+> (grafted the commit backstop + `_verify_saved_coherent` + `_REASONER_LOCK` +
+> `CommitCoherenceError`, which the fork never had), `client/index.html` (Audits
+> tab). **DGX behavior preserved:** curated commits stay no-verify (`verify` only
+> engages in faithful mode) so ollama feed throughput is unchanged; LLM_BACKEND=
+> ollama/qwen2.5 untouched. LADR built on-box (mace4 needs `CC="gcc -std=gnu89"`
+> and the `-lm`-after-objects Makefile fix in BOTH `provers.src/` and `mace4.src/`);
+> binaries in `~/.local/bin`, paths in `.env`. Tests: **86 passed / 0 failed**
+> (one DGX-local scorer test updated to `verify=False`, matching mainline).
+> Smoke: Mode A audit of AristotleCategories → `consistent`, mace4 model domain 2.
+> App intentionally NOT started (GPU/72B policy).
+
+## 2026-06-30 session
 
 > **STATUS: DONE (2026-06-30).** Applied to `dgx:~/research/bfo-agent` (repo lives
 > at `~/research/bfo-agent`, venv `venv/`, launch `./start.sh`). All 6 new modules
@@ -130,3 +161,43 @@ diverged versions, fix the seed `bfo_relations.ttl` files, run the migrated test
 under the DGX `venv/`, restart via `./start.sh`. Verify a SOoL baseline is
 `coherent=True` (the Function fix) and feed one claim that would have hit a
 subClassOf-property crash.
+
+---
+
+# 2026-07-08 — SPEC-bfo-agent-speed stages 0–5 (staged bundle)
+
+DGX was offline (ssh timeout via tailscale) on 2026-07-07/08, so this round
+is **staged, not applied**: everything needed lives in
+[`deploy/dgx_staging/`](dgx_staging/APPLY_CHECKLIST.md) — `wholesale/` files
+to copy verbatim, `patches/` (`git diff 800dc0a5..7afb022a`) for the three
+diverged modules to hand-apply, and `APPLY_CHECKLIST.md` with the ordered
+on-box steps, `.env` flag block, and test/verify gates.
+
+## ✅ MIGRATE (quality + speed, Anthropic-free)
+
+- Step-0 timing instrumentation (`app/timing.py`, `claim_timing` events,
+  `scripts/timing_report.py`) — read the split on the DGX box before
+  flipping anything (its bottleneck may differ: local LLM is slower, so
+  propose may dominate even more than on Hetzner).
+- Structural straddle gate (`app/gate_structural.py`,
+  `GATE_REASONER_STRUCTURAL_SKIP`) — rejected-by-straddle claims stop
+  spawning a JVM.
+- In-memory dry-run (`AppliedDelta`, `_scratch_world`, `_proposal_guards`,
+  `INMEM_DRY_RUN`) — kills the 2–5 reparse-per-claim disk round-trip.
+- Checkpoint + mandatory final full verify (`verify_full`,
+  `VERIFY_EVERY_COMMIT=false` + `FULL_VERIFY_EVERY_K`) — a quality
+  **upgrade** for DGX, which currently runs no-verify with no certificate;
+  counter re-homed onto the manager (no `job_runner` on the fork).
+- Reduced reasoning world (`REDUCED_REASONING_WORLD`) — dry-run reasons
+  over TBox + touched individuals; checkpoint/final pass reconciles.
+- Amortized save (`SAVE_EVERY_COMMIT`, manager `unsaved_commits`) — flip
+  only if DGX timings show the O(N) per-claim save matters.
+
+## ❌ SKIP (Anthropic-only / Hetzner infra)
+
+`app/batch_propose.py` + Message Batches, `BATCH_PROPOSE_*` /
+`IRI_RESERVATION_ENABLED` flags, `jobs.py` proposal field +
+`reset_claims_pending`, `job_runner.py` flush/verify plumbing,
+`client/index.html` Live SSE tab, all cache-savings telemetry.
+
+Method as always: surgical merge per the checklist, never blanket rsync.

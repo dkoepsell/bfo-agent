@@ -4,14 +4,21 @@ This sits between "LLM proposes axioms" and "commit to the working ontology".
 It holds the global BFO constraint that the proposer, emitting locally-plausible
 single axioms, cannot. Two tiers, cheap first:
 
-  1. Lint tier (no reasoner): for each newly proposed class, fold its proposed
-     BFO parents together with its already-committed BFO parents and test the
-     resulting set for a disjoint-parent straddle via bfo_catalog.straddles.
-     This catches the classic "Force is a Quality and Force is a Disposition"
-     family instantly with a localized reason.
+  1. Lint tier (no reasoner): structural checks over BFO anchors
+     (app/gate_structural.py, SPEC-bfo-agent-speed.md change 3). For each
+     newly proposed class, fold its proposed BFO parents together with its
+     already-committed BFO parents and test the resulting set for a
+     disjoint-parent straddle via bfo_catalog.straddles; same fold for each
+     proposed/typed individual's types; plus a domain/range clash test
+     against bfo_catalog.relation_signatures(). This catches the classic
+     "Force is a Quality and Force is a Disposition" family instantly with a
+     localized reason and no JVM.
   2. Reasoner tier (HermiT): run the coherence-correct dry-run on the candidate
      ontology and reject if any class becomes unsatisfiable. Catches clashes
-     mediated by restrictions or relation signatures that the lint cannot see.
+     mediated by restrictions or class expressions that the lint cannot see.
+     When GATE_REASONER_STRUCTURAL_SKIP is on and the lint resolved every
+     touched reference with nothing structure cannot decide, this tier is
+     skipped (the commit/checkpoint full pass remains the certificate).
 
 The gate returns a GateResult (ACCEPT, REPAIR, or REJECT). Policy handling
 (reject-resample, repair, reground) is dispatched by apply_policy; the gate
@@ -20,17 +27,34 @@ itself only decides coherence.
 from __future__ import annotations
 
 import enum
+import logging
 from dataclasses import dataclass, field
 from typing import Optional
 
 from . import bfo_catalog
+from . import config
 from . import construction_linter
+from . import gate_structural
+from .gate_structural import (  # noqa: F401  (re-exported; scaffolding/repair use them)
+    _collect_class_parents,
+    _is_subclass_predicate,
+    _local,
+    _proposed_class_types,
+    _ref_anchors,
+    proposal_needs_reasoner,
+)
+
+log = logging.getLogger(__name__)
 
 
 class GateOutcome(str, enum.Enum):
     ACCEPT = "accept"
     REPAIR = "repair"
     REJECT = "reject"
+    # Faithful-extraction mode (fidelity-mode-spec.md FM-4): the claim clashes,
+    # but it is what the text asserts -- commit it unmodified and record the
+    # clash as evidence instead of rejecting or repairing it.
+    FLAG = "flag"
 
 
 class GateTier(str, enum.Enum):
@@ -45,6 +69,11 @@ class GatePolicy(str, enum.Enum):
     REJECT_RESAMPLE = "reject_resample"
     REPAIR = "repair"
     REGROUND = "reground"
+    # fidelity-mode-spec.md FM-4: lint/reasoner clashes become FLAG (commit
+    # as-asserted, evidence recorded by the caller); no repair, no content
+    # resample. Construction violations still resample (FM-3): they are the
+    # proposer's rendering errors, never the text's claims.
+    ANNOTATE = "annotate"
 
 
 @dataclass
@@ -62,13 +91,23 @@ class GateResult:
     # Prohibited-construction violations, when known (construction tier). Each
     # is {rule, offending_term, suggested_rewrite, detail}.
     violations: list[dict] = field(default_factory=list)
+    # FM-10: True when the reasoner tier was skipped because the coherent
+    # view itself was incoherent (faithful mode only). Logged loudly by the
+    # caller; construction+lint verdicts still stand.
+    degraded: bool = False
+    # SPEC-bfo-agent-speed.md change 3: True when the reasoner tier was
+    # skipped because the lint fully resolved every touched reference and the
+    # proposal introduces nothing structure cannot decide. Lets telemetry
+    # count JVM avoidance. Only serialized when True so flag-off event dicts
+    # stay byte-identical to before.
+    reasoner_skipped: bool = False
 
     @property
     def accepted(self) -> bool:
         return self.outcome == GateOutcome.ACCEPT
 
     def to_dict(self) -> dict:
-        return {
+        d = {
             "outcome": self.outcome.value,
             "tier": self.tier.value,
             "reason": self.reason,
@@ -77,74 +116,11 @@ class GateResult:
             "unsat_classes": self.unsat_classes,
             "subject": self.subject,
             "violations": self.violations,
+            "degraded": self.degraded,
         }
-
-
-def _is_subclass_predicate(p: str) -> bool:
-    return "subClassOf" in p
-
-
-def _local(ref: str) -> str:
-    s = ref.split("#")[-1]
-    s = s.split("/")[-1]
-    return s.split(":")[-1]
-
-
-def _collect_class_parents(proposal) -> dict[str, set[str]]:
-    """Map each subject class reference to the set of parent references it gains.
-
-    Sources merged: class entities (their bfo_type and parent_class) and any
-    rdfs:subClassOf relations in the proposal.
-    """
-    parents: dict[str, set[str]] = {}
-
-    for ent in proposal.entities:
-        if getattr(ent, "kind", None) != "class":
-            continue
-        subj = ent.iri_suggestion or ent.label
-        bucket = parents.setdefault(subj, set())
-        if getattr(ent, "bfo_type", None):
-            bucket.add(ent.bfo_type)
-        if getattr(ent, "parent_class", None):
-            bucket.add(ent.parent_class)
-
-    for rel in proposal.relations:
-        if _is_subclass_predicate(rel.p):
-            parents.setdefault(rel.s, set()).add(rel.o)
-
-    return parents
-
-
-def _proposed_class_types(proposal) -> dict[str, str]:
-    """Map local class name -> its proposed BFO type fragment."""
-    out: dict[str, str] = {}
-    for ent in proposal.entities:
-        if getattr(ent, "kind", None) == "class" and getattr(ent, "bfo_type", None):
-            out[_local(ent.iri_suggestion or ent.label)] = ent.bfo_type
-    return out
-
-
-def _ref_anchors(ref: str, manager, proposed_types: dict[str, str]) -> set[str]:
-    """Resolve a parent reference to its BFO category anchor(s).
-
-    A BFO fragment resolves to itself; a committed working class resolves to
-    its BFO ancestors; an as-yet-uncommitted class proposed in the same turn
-    resolves to its proposed bfo_type.
-    """
-    frag = bfo_catalog.normalize_fragment(ref)
-    if frag in bfo_catalog.BFO_PARENT:
-        return {frag}
-
-    committed = manager.committed_bfo_anchors(ref)
-    if committed:
-        return committed
-
-    local = _local(ref)
-    if local in proposed_types:
-        t = bfo_catalog.normalize_fragment(proposed_types[local])
-        if t in bfo_catalog.BFO_PARENT:
-            return {t}
-    return set()
+        if self.reasoner_skipped:
+            d["reasoner_skipped"] = True
+        return d
 
 
 def construction_check(
@@ -177,46 +153,97 @@ def construction_check(
 
 
 def lint_check(proposal, manager) -> Optional[GateResult]:
-    """Lint tier: detect disjoint-parent straddles without a reasoner.
+    """Lint tier: structural checks, no reasoner (speed-spec change 3).
 
-    Returns a REJECT GateResult on the first straddle found, else None.
+    Detects disjoint-parent straddles on proposed classes, disjoint-type
+    straddles on proposed individuals (including rdf:type edges onto existing
+    individuals), and BFO relation-signature (domain/range) clashes. Returns
+    a REJECT GateResult on the first clash found, else None.
     """
-    proposed_types = _proposed_class_types(proposal)
-    class_parents = _collect_class_parents(proposal)
-
-    for subject, parent_refs in class_parents.items():
-        anchors: set[str] = set()
-        # Already-committed BFO parents of this class (cross-turn straddles).
-        anchors |= manager.committed_bfo_anchors(subject)
-        # Newly proposed parents this turn.
-        for ref in parent_refs:
-            anchors |= _ref_anchors(ref, manager, proposed_types)
-
-        hit, pair = bfo_catalog.straddles(anchors)
-        if hit and pair is not None:
-            return GateResult(
-                outcome=GateOutcome.REJECT,
-                tier=GateTier.LINT,
-                reason=bfo_catalog.describe_clash(*pair),
-                clash_pair=pair,
-                subject=_local(subject),
-            )
-    return None
+    result, _resolved_all = _lint_check_with_resolution(proposal, manager)
+    return result
 
 
-def reasoner_check(proposal, manager) -> Optional[GateResult]:
-    """Reasoner tier: reject if the candidate ontology has unsatisfiable classes."""
-    coherent, unsat, detail = manager.check_coherence_dry_run(proposal)
-    if not coherent:
+def _lint_check_with_resolution(
+    proposal, manager
+) -> tuple[Optional[GateResult], bool]:
+    """lint_check plus whether every touched reference resolved to anchors.
+
+    The resolution bit feeds proposal_needs_reasoner: an unresolvable anchor
+    means the structure could not see the whole proposal, so the reasoner
+    tier must not be skipped.
+    """
+    clash, resolved_all = gate_structural.structural_lint(proposal, manager)
+    if clash is None:
+        return None, resolved_all
+    return (
+        GateResult(
+            outcome=GateOutcome.REJECT,
+            tier=GateTier.LINT,
+            reason=clash.reason,
+            clash_pair=clash.clash_pair,
+            subject=clash.subject,
+        ),
+        resolved_all,
+    )
+
+
+def reasoner_check(
+    proposal, manager, exclude_axioms: Optional[list[dict]] = None
+) -> Optional[GateResult]:
+    """Reasoner tier: reject if the candidate ontology has unsatisfiable classes.
+
+    ``exclude_axioms`` (faithful mode, FM-9) is the ledgered clash-axiom set;
+    the dry-run evaluates the candidate against the coherent view (working
+    minus those axioms) so each new claim is judged on its own merits instead
+    of drowning in previously flagged incoherence.
+    """
+    coherent, unsat, detail = manager.check_coherence_dry_run(
+        proposal, exclude_axioms=exclude_axioms
+    )
+    if coherent:
+        return None
+
+    # Outright inconsistent (reasoner error): unsat is empty but the ontology
+    # is unusable -- always reject.
+    if not unsat:
         return GateResult(
             outcome=GateOutcome.REJECT,
             tier=GateTier.REASONER,
-            reason="Reasoner found unsatisfiable class(es); the proposal makes "
-                   "one or more classes incoherent under BFO.",
+            reason="Reasoner error: the proposal makes the ontology "
+                   "inconsistent under BFO.",
             justification=detail,
-            unsat_classes=unsat,
+            unsat_classes=[],
         )
-    return None
+
+    # Baseline-aware rejection (incoherence-cascade fix): reject only for
+    # classes THIS proposal asserts an axiom about. A class that was already
+    # unsatisfiable in the committed ontology (a poisoned earlier commit) is
+    # surfaced by every dry-run but was not caused by this claim -- letting it
+    # reject here turns one bad commit into a wall of false "inconsistent"
+    # verdicts for every subsequent, unrelated claim.
+    try:
+        touched = manager.proposal_touched_iris(proposal)
+    except Exception:  # noqa: BLE001 -- never let the guard brick the tier
+        touched = set()
+    new_unsat = [u for u in unsat
+                 if u.rsplit("#", 1)[-1].rsplit("/", 1)[-1] in touched]
+    if not new_unsat:
+        # Pure pre-existing poison: accept on this claim's own merits.
+        log.warning(
+            "reasoner tier: ignoring %d pre-existing unsatisfiable class(es) "
+            "not touched by this proposal: %s",
+            len(unsat), unsat,
+        )
+        return None
+    return GateResult(
+        outcome=GateOutcome.REJECT,
+        tier=GateTier.REASONER,
+        reason="Reasoner found unsatisfiable class(es); the proposal makes "
+               "one or more classes incoherent under BFO.",
+        justification=detail,
+        unsat_classes=new_unsat,
+    )
 
 
 def gate(
@@ -225,6 +252,7 @@ def gate(
     run_reasoner: bool = True,
     run_construction: bool = True,
     strict_closed_vocab: bool = False,
+    exclude_axioms: Optional[list[dict]] = None,
 ) -> GateResult:
     """Run the gate. Construction first (cheapest), then lint, then reasoner.
 
@@ -237,12 +265,28 @@ def gate(
         if construction is not None:
             return construction
 
-    lint = lint_check(proposal, manager)
+    lint, lint_resolved_all = _lint_check_with_resolution(proposal, manager)
     if lint is not None:
         return lint
 
     if run_reasoner:
-        reasoner = reasoner_check(proposal, manager)
+        # SPEC-bfo-agent-speed.md change 3: when every touched reference
+        # resolved to BFO anchors and the proposal introduces nothing
+        # structure cannot decide, skip the JVM. Default off; the
+        # commit-time / checkpoint full pass remains the backstop.
+        if config.GATE_REASONER_STRUCTURAL_SKIP:
+            needed, why = proposal_needs_reasoner(
+                proposal, manager, lint_resolved_all
+            )
+            if not needed:
+                return GateResult(
+                    outcome=GateOutcome.ACCEPT,
+                    tier=GateTier.LINT,
+                    reason=f"reasoner skipped (structural): {why}",
+                    reasoner_skipped=True,
+                )
+        reasoner = reasoner_check(proposal, manager,
+                                  exclude_axioms=exclude_axioms)
         if reasoner is not None:
             return reasoner
 
@@ -338,6 +382,37 @@ def repair_proposal(proposal, result: GateResult):
     return repaired, action
 
 
+def clash_exclusion_triples(proposal, result: GateResult) -> list[dict]:
+    """The subClassOf axioms this proposal adds to the flagged subject(s).
+
+    This is the minimal set whose removal restores the prior coherent typing
+    (fidelity-mode-spec.md FM-7/FM-9): the coherent-view dry-run retracts
+    exactly these on a scratch copy. Entity-level bfo_type edges are kept --
+    removing them would orphan the class rather than resolve the straddle.
+    """
+    subjects: set[str] = set()
+    if result.subject:
+        subjects.add(result.subject)
+    for iri in result.unsat_classes:
+        subjects.add(_local(iri))
+    triples: list[dict] = []
+    for rel in proposal.relations:
+        if _is_subclass_predicate(rel.p) and _local(rel.s) in subjects:
+            triples.append({"s": rel.s, "p": rel.p, "o": rel.o})
+    for ent in proposal.entities:
+        if getattr(ent, "kind", None) != "class":
+            continue
+        if not getattr(ent, "parent_class", None):
+            continue
+        if _local(ent.iri_suggestion or ent.label) in subjects:
+            triples.append({
+                "s": ent.iri_suggestion or ent.label,
+                "p": "rdfs:subClassOf",
+                "o": ent.parent_class,
+            })
+    return triples
+
+
 # ---------------------------------------------------------------------------
 # Relation-aware scaffolding at emission (SPEC Task 4).
 # ---------------------------------------------------------------------------
@@ -419,6 +494,23 @@ def apply_scaffolding(directives: list[dict], manager) -> list[dict]:
     return applied
 
 
+def _base_view_coherent(manager, proposal, exclude_axioms) -> bool:
+    """FM-10 probe: is the coherent view (working minus ledgered clash axioms)
+    itself coherent, before this proposal? Used only after a reasoner-tier
+    failure in faithful mode, to tell "this claim clashes" apart from "the
+    view reconstruction is incomplete and everything would flag"."""
+    from .schema import Proposal
+
+    empty = Proposal(session_id=proposal.session_id, utterance="")
+    try:
+        ok, _unsat, _detail = manager.check_coherence_dry_run(
+            empty, exclude_axioms=exclude_axioms
+        )
+    except Exception:
+        return False
+    return ok
+
+
 def run_with_policy(
     proposal,
     manager,
@@ -428,6 +520,7 @@ def run_with_policy(
     max_attempts: int = 2,
     run_construction: bool = True,
     strict_closed_vocab: bool = False,
+    exclude_axioms: Optional[list[dict]] = None,
 ) -> GateRun:
     """Run the gate and apply the configured policy on a clash.
 
@@ -445,6 +538,7 @@ def run_with_policy(
             run_reasoner=run_reasoner,
             run_construction=run_construction,
             strict_closed_vocab=strict_closed_vocab,
+            exclude_axioms=exclude_axioms,
         )
         events.append({
             "attempt": attempt,
@@ -468,6 +562,44 @@ def run_with_policy(
             return GateRun(GateOutcome.REJECT, current, result, events, attempt)
 
         # The gate fired. React per policy.
+        if policy == GatePolicy.ANNOTATE:
+            # fidelity-mode-spec.md FM-4: the claim stands as the text
+            # asserted it. A lint/reasoner clash becomes FLAG -- the caller
+            # commits the proposal unmodified and records the evidence.
+            # Never repair, never content-resample, no retry loop.
+            import dataclasses
+
+            if result.tier == GateTier.REASONER and not _base_view_coherent(
+                manager, current, exclude_axioms
+            ):
+                # FM-10: the coherent view is itself incoherent, so this
+                # reasoner verdict says nothing about the current claim.
+                # Degrade (construction+lint already passed) rather than
+                # flag every subsequent claim with someone else's clash.
+                degraded = GateResult(
+                    outcome=GateOutcome.ACCEPT,
+                    tier=GateTier.REASONER,
+                    reason=(
+                        "reasoner tier degraded: the coherent view (working "
+                        "minus ledgered clash axioms) is itself incoherent; "
+                        "claim accepted on construction+lint tiers only"
+                    ),
+                    degraded=True,
+                )
+                events[-1]["policy_action"] = "degrade_reasoner"
+                events.append({
+                    "attempt": attempt,
+                    "policy": policy.value,
+                    **degraded.to_dict(),
+                })
+                return GateRun(GateOutcome.ACCEPT, current, degraded,
+                               events, attempt)
+
+            flagged = dataclasses.replace(result, outcome=GateOutcome.FLAG)
+            events[-1]["outcome"] = GateOutcome.FLAG.value
+            events[-1]["policy_action"] = "flag"
+            return GateRun(GateOutcome.FLAG, current, flagged, events, attempt)
+
         if policy == GatePolicy.REPAIR:
             repaired, action = repair_proposal(current, result)
             events[-1]["policy_action"] = action

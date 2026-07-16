@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+   xmlns:owl="http://www.w3.org/2002/07/owl#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+>
+  <rdf:Description rdf:nodeID="N8b2e411f99cc4b1f9c39bc8776e95a9e">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <owl:complementOf rdf:nodeID="N552ce9f83637441ebc7c41cab4814720"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N552ce9f83637441ebc7c41cab4814720">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/BFO_0000054"/>
+    <owl:someValuesFrom rdf:resource="http://davidkoepsell.com/bfo-agent/working#MenstrualProcess"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Naa9eba47b9fb492cadaf7dc66f7f7020">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/BFO_0000054"/>
+    <owl:someValuesFrom rdf:resource="http://davidkoepsell.com/bfo-agent/working#MenstrualProcess"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000023">
+    <owl:disjointWith rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+    <owl:disjointWith rdf:resource="http://purl.obolibrary.org/obo/BFO_0000034"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://davidkoepsell.com/bfo-agent/working#CyclicDisposition">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+    <rdfs:subClassOf rdf:nodeID="Naa9eba47b9fb492cadaf7dc66f7f7020"/>
+    <rdfs:subClassOf rdf:nodeID="N8b2e411f99cc4b1f9c39bc8776e95a9e"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://davidkoepsell.com/bfo-agent/fixtures/contra">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Ontology"/>
+    <owl:imports rdf:resource="http://purl.obolibrary.org/obo/bfo.owl"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000054">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://davidkoepsell.com/bfo-agent/working#MenstrualProcess">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000016">
+    <owl:disjointWith rdf:resource="http://purl.obolibrary.org/obo/BFO_0000034"/>
+  </rdf:Description>
+</rdf:RDF>

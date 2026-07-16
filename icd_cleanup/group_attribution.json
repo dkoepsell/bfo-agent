@@ -1,0 +1,159 @@
+{
+  "trigeminal_divisions": {
+    "promoted": [
+      "OphthalmicDivision",
+      "MaxillaryDivision",
+      "MandibularDivision"
+    ],
+    "n_unsat": 46,
+    "direct_unsat": [
+      "OphthalmicDivision",
+      "MaxillaryDivision",
+      "MandibularDivision"
+    ],
+    "cascade": [
+      "Aura",
+      "ChronicMigraine",
+      "DepersonalizationDerealizationDisorder",
+      "DissociativeAmnesia",
+      "DissociativeChoreaDisorder",
+      "DissociativeCognitiveDisorder",
+      "DissociativeDisorder",
+      "DissociativeDisruption",
+      "DissociativeDystoniaDisorder",
+      "DissociativeFacialSpasm",
+      "DissociativeFugue",
+      "DissociativeGaitDisorder",
+      "DissociativeIdentityDisorder",
+      "DissociativeMovementDisorder",
+      "DissociativeMyoclonusDisorder",
+      "DissociativeNeurologicalDisorder",
+      "DissociativeParesisDisorder",
+      "DissociativeParkinsonismDisorder",
+      "DissociativeSpeechDisorder",
+      "DissociativeTremorDisorder",
+      "GlossopharyngealSensoryFunction",
+      "HemifacialSpasm",
+      "HemifacialSpasmProcess",
+      "HemiplegicMigraine",
+      "MigraineAttack",
+      "MigraineAura",
+      "MigraineWithoutAura",
+      "MixedNerveFunction",
+      "NerveRootCompression",
+      "OphthalmicZoster",
+      "OphthalmicZosterInfection",
+      "PossessionTranceDisorder",
+      "SensoryInnervation",
+      "SensoryIntegration",
+      "StatusMigrainosus",
+      "StatusMigrainosusAttack",
+      "TraumaVulnerability",
+      "TrigeminalNerveRoot",
+      "TrigeminalNeuralgia",
+      "TrigeminalNeuralgiaPain",
+      "VascularCompression",
+      "VentralRamus",
+      "ViralLatency"
+    ]
+  },
+  "skin_layers": {
+    "promoted": [
+      "Epidermis",
+      "Dermis"
+    ],
+    "n_unsat": 33,
+    "direct_unsat": [
+      "Epidermis",
+      "Dermis"
+    ],
+    "cascade": [
+      "ActinomycetomInfection",
+      "Actinomycetoma",
+      "AcuteRheumaticFever",
+      "AcuteRheumaticMyocarditis",
+      "BuruliUlcer",
+      "BuruliUlcerInfection",
+      "Chromoblastomycosis",
+      "ChromoblastomycosisInfection",
+      "CongenitalMelanocyticNaevus",
+      "Conidiobolomycosis",
+      "ConidiobolomycosisInfection",
+      "DeepUlceration",
+      "DermalInflammation",
+      "DermalPapule",
+      "Dermatofibroma",
+      "HereditaryAngioedema",
+      "Keratinocyte",
+      "LipidDeposit",
+      "LipidDeposition",
+      "MelanocyteProliferation",
+      "MycetomInfection",
+      "Mycetoma",
+      "NecrotizingFasciitisInfection",
+      "NeonatalNecrotizingFasciitis",
+      "OrbitalCellulitis",
+      "SeborrhoeicKeratosis",
+      "SubcutaneousNodule",
+      "SubcutaneousOedema",
+      "SubcutaneousTissue",
+      "SydenhamChorea",
+      "Xanthelasma"
+    ]
+  },
+  "ataxia": {
+    "promoted": [
+      "FriedreichAtaxia",
+      "SpinocerebellarAtaxia"
+    ],
+    "n_unsat": 5,
+    "direct_unsat": [
+      "FriedreichAtaxia",
+      "SpinocerebellarAtaxia"
+    ],
+    "cascade": [
+      "AcquiredAtaxia",
+      "DegenerativeAtaxia",
+      "HereditaryAtaxia"
+    ]
+  },
+  "anaphylaxis": {
+    "promoted": [
+      "FoodAnaphylaxis",
+      "InhaledAllergenAnaphylaxis"
+    ],
+    "n_unsat": 7,
+    "direct_unsat": [
+      "FoodAnaphylaxis",
+      "InhaledAllergenAnaphylaxis"
+    ],
+    "cascade": [
+      "Anaphylaxis",
+      "ContactAnaphylaxis",
+      "DrugAnaphylaxis",
+      "ExerciseAnaphylaxis",
+      "InsectVenomAnaphylaxis"
+    ]
+  },
+  "haemorrhagic": {
+    "promoted": [
+      "AnticoagulantHaemorrhagicDisorder",
+      "ConstitutionalHaemorrhagicCondition"
+    ],
+    "n_unsat": 10,
+    "direct_unsat": [
+      "AnticoagulantHaemorrhagicDisorder",
+      "ConstitutionalHaemorrhagicCondition"
+    ],
+    "cascade": [
+      "AcquiredHaemophilia",
+      "CongenitalFibrinogenDeficiency",
+      "CongenitalThrombocytopenia",
+      "Haemophilia",
+      "HaemophiliaA",
+      "HaemophiliaB",
+      "HaemophiliaC",
+      "HaemorrhagicDisease"
+    ]
+  }
+}

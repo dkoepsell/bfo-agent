@@ -19,6 +19,20 @@ def _now() -> str:
     return datetime.now(timezone.utc).isoformat()
 
 
+def session_path(session_id: str) -> Path:
+    """Filesystem path of the main per-session event log (`<session>.jsonl`).
+
+    Single source of truth for the main log location, shared by the loader
+    (:func:`load_session`) and the SSE streamer so they never disagree.
+    """
+    return SESSIONS_DIR / f"{session_id}.jsonl"
+
+
+def gate_log_path(session_id: str) -> Path:
+    """Filesystem path of the per-session gate log (`<session>.gate.jsonl`)."""
+    return SESSIONS_DIR / f"{session_id}.gate.jsonl"
+
+
 def log_gate_events(session_id: str, events: list[dict], context: dict | None = None):
     """Append coherence-gate events to a dedicated per-session gate log.
 
@@ -26,7 +40,7 @@ def log_gate_events(session_id: str, events: list[dict], context: dict | None = 
     the experimental record cleanly: proposal, tier that fired, policy action,
     outcome.
     """
-    path = SESSIONS_DIR / f"{session_id}.gate.jsonl"
+    path = gate_log_path(session_id)
     with path.open("a", encoding="utf-8") as f:
         for ev in events:
             record = {"ts": _now(), "session_id": session_id, **(context or {}), **ev}
@@ -34,7 +48,7 @@ def log_gate_events(session_id: str, events: list[dict], context: dict | None = 
 
 
 def load_gate_log(session_id: str) -> list[dict]:
-    path = SESSIONS_DIR / f"{session_id}.gate.jsonl"
+    path = gate_log_path(session_id)
     if not path.exists():
         return []
     with path.open("r", encoding="utf-8") as f:
@@ -42,7 +56,7 @@ def load_gate_log(session_id: str) -> list[dict]:
 
 
 def log_event(session_id: str, event_type: str, payload: dict[str, Any]):
-    path = SESSIONS_DIR / f"{session_id}.jsonl"
+    path = session_path(session_id)
     record = {
         "ts": _now(),
         "session_id": session_id,
@@ -54,7 +68,7 @@ def log_event(session_id: str, event_type: str, payload: dict[str, Any]):
 
 
 def load_session(session_id: str) -> list[dict]:
-    path = SESSIONS_DIR / f"{session_id}.jsonl"
+    path = session_path(session_id)
     if not path.exists():
         return []
     with path.open("r", encoding="utf-8") as f:

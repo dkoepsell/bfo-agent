@@ -34,14 +34,31 @@ Design notes:
 from __future__ import annotations
 
 import json
+import logging
 from pathlib import Path
 from typing import Optional
 
+from . import config
 from .ontology_manager import OntologyManager
+
+log = logging.getLogger(__name__)
 
 
 class OntologyNotFoundError(KeyError):
     """Raised when a lookup for an ontology name fails."""
+
+
+class FinalizeVerificationError(RuntimeError):
+    """finalize() refused: the ontology carries commits that skipped the
+    per-claim full verify and the fresh full-graph certificate failed
+    (SPEC-bfo-agent-speed.md change 6). Carries the verify_full report."""
+
+    def __init__(self, name: str, report: dict):
+        self.report = report
+        super().__init__(
+            f"cannot finalize {name!r}: full-graph verification failed: "
+            f"{report.get('detail')}"
+        )
 
 
 class OntologyRegistry:
@@ -139,6 +156,26 @@ class OntologyRegistry:
             raise OntologyNotFoundError(name)
         return self._managers[name]
 
+    def fidelity(self, name: str | None = None) -> str:
+        """Resolve the extraction-fidelity mode for an ontology (FM-1/FM-2).
+
+        Reads the ``"fidelity"`` field of the manifest; an absent or invalid
+        value always means ``"curated"`` (today's behavior). ``name=None``
+        resolves the active ontology.
+        """
+        if name is None:
+            name = self._active_name
+        manifest = self._manifests.get(name) or {}
+        value = manifest.get("fidelity")
+        if value in ("faithful", "curated"):
+            return value
+        if value is not None:
+            log.warning(
+                "Ontology %s has invalid fidelity %r; treating as curated.",
+                name, value,
+            )
+        return "curated"
+
     def manifest(self, name: str) -> dict:
         if name not in self._manifests:
             raise OntologyNotFoundError(name)
@@ -234,6 +271,13 @@ class OntologyRegistry:
             "created_at": datetime.now(timezone.utc).isoformat(),
             "status": "inactive",
             "seeded_from": seed_source_name,
+            # FM-1: FIDELITY_DEFAULT applies to new ontologies only; existing
+            # manifests without the field always resolve to "curated".
+            "fidelity": (
+                config.FIDELITY_DEFAULT
+                if config.FIDELITY_DEFAULT in ("faithful", "curated")
+                else "curated"
+            ),
             "stats": {"note": "bootstrapped from seeds only"},
         }
         (target / "manifest.json").write_text(json.dumps(manifest, indent=2))
@@ -271,6 +315,14 @@ class OntologyRegistry:
     def finalize(self, name: str) -> dict:
         """Set manifest status to 'finalized'. Idempotent.
 
+        SPEC-bfo-agent-speed.md change 6: a curated ontology carrying
+        commits that skipped the per-claim full verify must pass a fresh
+        full-graph certificate before it freezes; on failure
+        FinalizeVerificationError is raised (the route surfaces it as 409).
+        Faithful ontologies finalize with the incoherence ledger as their
+        annotation -- their divergence from coherence is recorded evidence,
+        not a defect blocking finalization.
+
         Raises KeyError if name is unknown.
         """
         import json
@@ -279,6 +331,18 @@ class OntologyRegistry:
             raise OntologyNotFoundError(name)
 
         manifest = dict(self._manifests[name])
+
+        if (
+            config.FINALIZE_REQUIRES_FULL_VERIFY
+            and manifest.get("status") != "finalized"
+            and self.fidelity(name) != "faithful"
+        ):
+            mgr = self._managers[name]
+            if getattr(mgr, "commits_since_full_verify", 0) > 0:
+                report = mgr.verify_full()
+                if not report["ok"]:
+                    raise FinalizeVerificationError(name, report)
+
         manifest["status"] = "finalized"
         from datetime import datetime, timezone
         manifest["finalized_at"] = datetime.now(timezone.utc).isoformat()

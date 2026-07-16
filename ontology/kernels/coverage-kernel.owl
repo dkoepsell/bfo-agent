@@ -1,0 +1,138 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:owl="http://www.w3.org/2002/07/owl#"
+         xml:base="https://sool.tamu.edu/coverage-kernel"
+         xmlns="https://sool.tamu.edu/coverage-kernel#">
+
+<owl:Ontology rdf:about="https://sool.tamu.edu/coverage-kernel"/>
+
+<owl:ObjectProperty rdf:about="#inheresIn">
+  <rdfs:domain rdf:resource="#IndemnityObligation"/>
+  <rdfs:range rdf:resource="#Insurer"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#realizedBy">
+  <rdfs:domain rdf:resource="#IndemnityObligation"/>
+  <rdfs:range rdf:resource="#PaymentProcess"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#modifies">
+  <rdfs:domain rdf:resource="#Carveback"/>
+  <rdfs:range rdf:resource="#Exclusion"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#exhibits">
+  <rdfs:domain rdf:resource="#Loss"/>
+</owl:ObjectProperty>
+
+<owl:Class rdf:about="#Policy">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Clause">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Grant">
+  <rdfs:subClassOf rdf:resource="#Clause"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Exclusion">
+  <rdfs:subClassOf rdf:resource="#Clause"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Carveback">
+  <rdfs:subClassOf rdf:resource="#Clause"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Condition">
+  <rdfs:subClassOf rdf:resource="#Clause"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Definition">
+  <rdfs:subClassOf rdf:resource="#Clause"/>
+</owl:Class>
+
+<owl:Class rdf:about="#DefinedTerm">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Insurer">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Insured">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+</owl:Class>
+
+<owl:Class rdf:about="#IndemnityObligation">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000020"/>
+</owl:Class>
+
+<owl:Class rdf:about="#PaymentProcess">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Loss">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+</owl:Class>
+
+<owl:Class rdf:about="#GrantedLoss">
+  <rdfs:subClassOf rdf:resource="#Loss"/>
+</owl:Class>
+
+<owl:Class rdf:about="#ExcludedLoss">
+  <rdfs:subClassOf rdf:resource="#Loss"/>
+</owl:Class>
+
+<owl:Class rdf:about="#RestoredLoss">
+  <rdfs:subClassOf rdf:resource="#Loss"/>
+</owl:Class>
+
+<owl:Class rdf:about="#EffectivelyExcludedLoss">
+  <rdfs:subClassOf rdf:resource="#Loss"/>
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#Loss"/>
+        <rdf:Description rdf:about="#ExcludedLoss"/>
+        <owl:Class>
+          <owl:complementOf rdf:resource="#RestoredLoss"/>
+        </owl:Class>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+</owl:Class>
+
+<owl:Class rdf:about="#CoveredLoss">
+  <rdfs:subClassOf rdf:resource="#Loss"/>
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#Loss"/>
+        <rdf:Description rdf:about="#GrantedLoss"/>
+        <owl:Class>
+          <owl:complementOf rdf:resource="#EffectivelyExcludedLoss"/>
+        </owl:Class>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+  <owl:disjointWith rdf:resource="#UncoveredLoss"/>
+</owl:Class>
+
+<owl:Class rdf:about="#UncoveredLoss">
+  <rdfs:subClassOf rdf:resource="#Loss"/>
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#Loss"/>
+        <rdf:Description rdf:about="#EffectivelyExcludedLoss"/>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+</owl:Class>
+
+
+</rdf:RDF>

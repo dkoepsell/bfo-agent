@@ -83,6 +83,88 @@ def _job_path(job_id: str) -> Path:
     return JOBS_DIR / f"{job_id}.json"
 
 
+# Persisted checkpoint bookkeeping (SPEC-bfo-agent-speed.md change 6). Jobs
+# written before this field existed read as these defaults (get_feed_state).
+_FEED_STATE_DEFAULTS = {
+    "commits_since_checkpoint": 0,
+    "last_checkpoint_at": None,
+    "last_checkpoint_ok": None,
+    "last_verified_claim_id": None,
+    "last_saved_claim_id": None,
+}
+
+
+def get_feed_state(job: dict) -> dict:
+    """The job's feed_state, with defaults filled in for pre-existing job
+    files that lack the field (or lack newer keys)."""
+    fs = dict(_FEED_STATE_DEFAULTS)
+    fs.update(job.get("feed_state") or {})
+    return fs
+
+
+def bump_feed_state(job_id: str, increment: Optional[dict] = None,
+                    **updates) -> dict:
+    """Read-modify-write the job's persisted feed_state.
+
+    ``increment`` adds to numeric counters (e.g.
+    ``increment={"commits_since_checkpoint": 1}``); keyword arguments set
+    absolute values. Returns the updated feed_state. Follows the module's
+    load/modify/save pattern; the atomic write in save_job keeps a crash
+    mid-update from corrupting the record.
+    """
+    job = load_job(job_id)
+    fs = get_feed_state(job)
+    for key, delta in (increment or {}).items():
+        fs[key] = (fs.get(key) or 0) + delta
+    fs.update(updates)
+    job["feed_state"] = fs
+    save_job(job)
+    return fs
+
+
+def mark_window_needs_review(job_id: str, from_id: Optional[int],
+                             to_id: int) -> list[int]:
+    """Flip committed claims in the suspect window ``(from_id, to_id]`` to
+    needs_review after a failed full-graph checkpoint
+    (CHECKPOINT_FAIL_MARK_REVIEW). ``from_id`` None means from the start.
+    Returns the flipped claim ids."""
+    job = load_job(job_id)
+    flipped = []
+    for c in job["claims"]:
+        if c.get("status") != "committed":
+            continue
+        if from_id is not None and c["id"] <= from_id:
+            continue
+        if c["id"] > to_id:
+            continue
+        c["status"] = "needs_review"
+        c["updated_at"] = _now()
+        flipped.append(c["id"])
+    if flipped:
+        save_job(job)
+    return flipped
+
+
+def reset_claims_pending(job_id: str, claim_ids: list[int]) -> list[int]:
+    """Flip the given committed claims back to pending (amortized-save crash
+    recovery, SPEC-bfo-agent-speed.md change 7): their axioms were recorded
+    committed but never reached disk before the process died, so they must
+    re-feed through the full path. Only claims currently committed are
+    touched. Returns the reset claim ids."""
+    wanted = set(claim_ids)
+    job = load_job(job_id)
+    reset = []
+    for c in job["claims"]:
+        if c["id"] in wanted and c.get("status") == "committed":
+            c["status"] = "pending"
+            c["verdict"] = None
+            c["updated_at"] = _now()
+            reset.append(c["id"])
+    if reset:
+        save_job(job)
+    return reset
+
+
 # -------------------------------------------------------------- CRUD
 def create_job(name: str, meta: Optional[dict] = None) -> dict:
     """Create a new empty job."""
@@ -97,6 +179,7 @@ def create_job(name: str, meta: Optional[dict] = None) -> dict:
             "status": "draft",
             "meta": meta or {},
             "claims": [],
+            "feed_state": dict(_FEED_STATE_DEFAULTS),
         }
         _atomic_write(_job_path(job_id), job)
     return job
@@ -176,22 +259,27 @@ def append_claims(job_id: str, new_claims: Iterable[dict]) -> dict:
         # Default approve = True for high, False otherwise. Caller can
         # still override via set_approval before feeding.
         default_approved = conf == "high"
-        existing.append(
-            {
-                "id": next_id,
-                "claim": (c.get("claim") or "").strip(),
-                "source_quote": (c.get("source_quote") or "").strip(),
-                "confidence": conf,
-                "note": (c.get("note") or "").strip(),
-                "section": c.get("section", ""),
-                "chunk_index": c.get("chunk_index", 0),
-                "approved": bool(c.get("approved", default_approved)),
-                "status": "pending",
-                "proposal_id": None,
-                "verdict": None,
-                "updated_at": _now(),
-            }
-        )
+        entry = {
+            "id": next_id,
+            "claim": (c.get("claim") or "").strip(),
+            "source_quote": (c.get("source_quote") or "").strip(),
+            "confidence": conf,
+            "note": (c.get("note") or "").strip(),
+            "section": c.get("section", ""),
+            "chunk_index": c.get("chunk_index", 0),
+            "approved": bool(c.get("approved", default_approved)),
+            "status": "pending",
+            "proposal_id": None,
+            "verdict": None,
+            "updated_at": _now(),
+        }
+        # Precomputed proposal (batch propose, SPEC-bfo-agent-speed.md
+        # change 5) carried in an imported envelope: preserved when present
+        # so the target can consume it; the gate re-validates at feed time.
+        if c.get("proposal") is not None:
+            entry["proposal"] = c["proposal"]
+            entry["proposal_source"] = c.get("proposal_source") or "batch"
+        existing.append(entry)
         next_id += 1
 
     job["claims"] = existing
@@ -219,8 +307,14 @@ def update_claim_status(
     status: str,
     proposal_id: Optional[str] = None,
     verdict: Optional[str] = None,
+    clear_proposal: bool = False,
 ) -> dict:
-    """Called by the feeder after each claim is attempted."""
+    """Called by the feeder after each claim is attempted.
+
+    ``clear_proposal`` drops a consumed precomputed proposal (batch propose,
+    SPEC-bfo-agent-speed.md change 5) in the SAME atomic write that records
+    the claim's outcome, so consume-once costs no extra file round-trip.
+    """
     job = load_job(job_id)
     for c in job["claims"]:
         if c["id"] == claim_id:
@@ -229,8 +323,40 @@ def update_claim_status(
                 c["proposal_id"] = proposal_id
             if verdict is not None:
                 c["verdict"] = verdict
+            if clear_proposal:
+                c.pop("proposal", None)
             c["updated_at"] = _now()
             break
+    return save_job(job)
+
+
+def set_claim_proposals(job_id: str, proposals: dict) -> dict:
+    """Attach precomputed proposals (batch propose, SPEC-bfo-agent-speed.md
+    change 5) to claims in ONE atomic read-modify-write.
+
+    ``proposals`` maps claim_id -> ``{"proposal": <Proposal dump>,
+    "proposal_source": "batch"}``. Only still-pending claims are touched; the
+    feeder consumes (and clears) the stored proposal via
+    ``update_claim_status(clear_proposal=True)``.
+    """
+    job = load_job(job_id)
+    for c in job["claims"]:
+        entry = proposals.get(c["id"])
+        if entry is None or c.get("status") != "pending":
+            continue
+        c["proposal"] = entry.get("proposal")
+        c["proposal_source"] = entry.get("proposal_source") or "batch"
+        c["updated_at"] = _now()
+    return save_job(job)
+
+
+def set_job_meta(job_id: str, key: str, value: Any) -> dict:
+    """Set one ``meta`` field via the module's atomic read-modify-write
+    (used for batch-propose progress bookkeeping)."""
+    job = load_job(job_id)
+    meta = job.get("meta") or {}
+    meta[key] = value
+    job["meta"] = meta
     return save_job(job)
 
 

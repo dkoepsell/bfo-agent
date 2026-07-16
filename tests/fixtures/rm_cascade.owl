@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+   xmlns:owl="http://www.w3.org/2002/07/owl#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+>
+  <rdf:Description rdf:nodeID="N27b789030d4e43f08a0b582cbf83b0b6">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/BFO_0000178"/>
+    <owl:someValuesFrom rdf:resource="http://davidkoepsell.com/bfo-agent/working#EnzymeCofactor"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://davidkoepsell.com/bfo-agent/working#EnzymeCofactor">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+    <rdfs:subClassOf rdf:nodeID="Nb20fb2a3e63c4c41832ccbe841771b03"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://davidkoepsell.com/bfo-agent/fixtures/cascade">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Ontology"/>
+    <owl:imports rdf:resource="http://purl.obolibrary.org/obo/bfo.owl"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://davidkoepsell.com/bfo-agent/working#CatalyticRole">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://davidkoepsell.com/bfo-agent/working#CofactorComplex">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+    <rdfs:subClassOf rdf:nodeID="N27b789030d4e43f08a0b582cbf83b0b6"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000023">
+    <owl:disjointWith rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+    <owl:disjointWith rdf:resource="http://purl.obolibrary.org/obo/BFO_0000034"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000016">
+    <owl:disjointWith rdf:resource="http://purl.obolibrary.org/obo/BFO_0000034"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000196">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:range rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Nb20fb2a3e63c4c41832ccbe841771b03">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/BFO_0000196"/>
+    <owl:someValuesFrom rdf:resource="http://davidkoepsell.com/bfo-agent/working#CatalyticRole"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.obolibrary.org/obo/BFO_0000178">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </rdf:Description>
+</rdf:RDF>

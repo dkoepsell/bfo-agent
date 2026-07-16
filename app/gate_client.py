@@ -48,10 +48,26 @@ def _resolve_iri(ref: str) -> str:
         return ""
     if ref.startswith("http://") or ref.startswith("https://"):
         return ref
+    # Standard vocabulary prefixes -- without these, 'owl:disjointWith' /
+    # 'rdfs:subClassOf' fall through to the working namespace and the emitted
+    # triple is silently mis-namespaced (parity with OntologyManager).
+    _STD = {
+        "rdf:": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+        "rdfs:": "http://www.w3.org/2000/01/rdf-schema#",
+        "owl:": "http://www.w3.org/2002/07/owl#",
+        "obo:": _OBO,
+    }
+    for prefix, base in _STD.items():
+        if ref.startswith(prefix):
+            return base + ref.split(":", 1)[1]
     frag = _local(ref)
     if frag.split("_")[0] in ("BFO", "RO", "IAO"):
         return _OBO + frag
-    return _WORKING_NS + frag
+    # H-1 parity with the commit path: a label-like fragment is slugified the
+    # same way OntologyManager._resolve_iri does; anything else stays literal
+    # so the file-level checks (E_BAD_IRI / E_EXPR_IRI) catch it.
+    slug = owl_checks.slugify_fragment(frag)
+    return _WORKING_NS + (slug if slug is not None else frag)
 
 
 def serialize_fragment(proposal) -> str:
@@ -81,12 +97,38 @@ def serialize_fragment(proposal) -> str:
             g.add((s, RDFS.subClassOf, URIRef(_resolve_iri(parent))))
     for rel in proposal.relations:
         s = URIRef(_resolve_iri(getattr(rel, "s", "")))
-        p = URIRef(_resolve_iri(getattr(rel, "p", "")))
+        p_ref = getattr(rel, "p", "") or ""
+        p = URIRef(_resolve_iri(p_ref))
         o_ref = getattr(rel, "o", "")
+        # A sanctioned class expression on a subClassOf edge serializes as the
+        # same real anonymous construct the commit path materialises (X-1) --
+        # gate parity. Unparseable strings stay literal so the checks fire.
+        expr = owl_checks.parse_class_expression(o_ref or "")
+        if expr is not None and "subClassOf" in p_ref:
+            g.add((s, RDFS.subClassOf, _expression_node(g, expr)))
+            continue
         o = URIRef(_resolve_iri(o_ref)) if o_ref else None
         if o is not None:
             g.add((s, p, o))
     return g.serialize(format="xml")
+
+
+def _expression_node(g, expr: dict):
+    """Build the anonymous construct for a parsed expression via the
+    owl_checks emitters (never by templating an IRI)."""
+    from rdflib import URIRef
+
+    if expr["op"] == "some":
+        return owl_checks.some_values_from(
+            g, URIRef(_resolve_iri(expr["prop"])),
+            URIRef(_resolve_iri(expr["filler"])))
+    if expr["op"] == "not":
+        return owl_checks.complement_of(g, URIRef(_resolve_iri(expr["cls"])))
+    # not_some
+    return owl_checks.complement_of(
+        g, owl_checks.some_values_from(
+            g, URIRef(_resolve_iri(expr["prop"])),
+            URIRef(_resolve_iri(expr["filler"]))))
 
 
 def _file_level_findings(fragment_xml: str) -> list[dict]:
@@ -95,8 +137,9 @@ def _file_level_findings(fragment_xml: str) -> list[dict]:
     rep = owl_checks.Report()
     rep.findings.extend(owl_checks.check_expression_iris(fragment_xml).findings)
     rep.findings.extend(owl_checks.check_antipatterns_all(fragment_xml).findings)
+    rep.findings.extend(owl_checks.check_bad_iris(fragment_xml).findings)
     code_to_rule = {"E_EXPR_IRI": "PC-7", "E_ANTIPATTERN": "PC-8",
-                    "E_BFO_REMINT": "PC-4"}
+                    "E_BFO_REMINT": "PC-4", "E_BAD_IRI": "H-1"}
     return [
         {
             "rule": code_to_rule.get(f.code, f.code),
@@ -127,6 +170,7 @@ class GateClient:
         run_reasoner: bool = True,
         run_construction: bool = True,
         strict_closed_vocab: bool = False,
+        exclude_axioms: Optional[list] = None,
     ) -> GateResult:
         """Validate a proposal. Returns a GateResult (ACCEPT only if it passes)."""
         if self.url:
@@ -136,17 +180,19 @@ class GateClient:
             log.warning("owltesterservice unreachable at %s; falling back to "
                         "local gate", self.url)
         return self._evaluate_local(
-            proposal, manager, run_reasoner, run_construction, strict_closed_vocab
+            proposal, manager, run_reasoner, run_construction,
+            strict_closed_vocab, exclude_axioms
         )
 
     # ----- local backend --------------------------------------------------
     def _evaluate_local(self, proposal, manager, run_reasoner, run_construction,
-                        strict_closed_vocab) -> GateResult:
+                        strict_closed_vocab, exclude_axioms=None) -> GateResult:
         result = coherence_gate.gate(
             proposal, manager,
             run_reasoner=run_reasoner,
             run_construction=run_construction,
             strict_closed_vocab=strict_closed_vocab,
+            exclude_axioms=exclude_axioms,
         )
         if not result.accepted:
             return result

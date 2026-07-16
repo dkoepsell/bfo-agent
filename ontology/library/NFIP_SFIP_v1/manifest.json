@@ -1,0 +1,14 @@
+{
+  "name": "NFIP_SFIP_v1",
+  "description": "NFIP Standard Flood Insurance Policy, Dwelling Form (44 CFR Part 61, Appendix A(1)), encoded against the coverage kernel. Public-domain federal regulation.",
+  "source_text": "44 CFR Part 61, Appendix A(1) (eCFR; public domain)",
+  "author": "SEAL Lab, Texas A&M / SOoL (Koepsell)",
+  "created_at": "2026-07-13T12:45:19.798768+00:00",
+  "status": "active",
+  "fidelity": "faithful",
+  "kernel_profile": "coverage",
+  "stats": {
+    "classes": 5,
+    "object_properties": 0
+  }
+}
