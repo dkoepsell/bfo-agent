@@ -171,8 +171,15 @@ class GateClient:
         run_construction: bool = True,
         strict_closed_vocab: bool = False,
         exclude_axioms: Optional[list] = None,
+        chain_active: bool = False,
+        findings_out: Optional[list] = None,
     ) -> GateResult:
-        """Validate a proposal. Returns a GateResult (ACCEPT only if it passes)."""
+        """Validate a proposal. Returns a GateResult (ACCEPT only if it passes).
+
+        ``chain_active`` / ``findings_out`` carry the recognition-chain rules
+        (SPEC P4) through to the local gate. The remote owltesterservice does
+        not run them, so a remote gate leaves ``findings_out`` untouched.
+        """
         if self.url:
             remote = self._evaluate_remote(proposal)
             if remote is not None:
@@ -181,18 +188,21 @@ class GateClient:
                         "local gate", self.url)
         return self._evaluate_local(
             proposal, manager, run_reasoner, run_construction,
-            strict_closed_vocab, exclude_axioms
+            strict_closed_vocab, exclude_axioms, chain_active, findings_out
         )
 
     # ----- local backend --------------------------------------------------
     def _evaluate_local(self, proposal, manager, run_reasoner, run_construction,
-                        strict_closed_vocab, exclude_axioms=None) -> GateResult:
+                        strict_closed_vocab, exclude_axioms=None,
+                        chain_active=False, findings_out=None) -> GateResult:
         result = coherence_gate.gate(
             proposal, manager,
             run_reasoner=run_reasoner,
             run_construction=run_construction,
             strict_closed_vocab=strict_closed_vocab,
             exclude_axioms=exclude_axioms,
+            chain_active=chain_active,
+            findings_out=findings_out,
         )
         if not result.accepted:
             return result

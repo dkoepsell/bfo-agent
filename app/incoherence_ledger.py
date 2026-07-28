@@ -154,3 +154,37 @@ def record_realizable_misuse(working_path: Path, findings: list[dict],
             "repaired": bool(repaired and pattern in TRANSLATION_PATTERNS),
         }))
     return ids
+
+
+def record_kernel_findings(working_path: Path, findings: list[dict],
+                           source: str = "construction") -> list[str]:
+    """Ledger typed recognition-layer findings (SPEC P5).
+
+    Each entry is a ``(kernel_code, locus, attribution)`` triple. Attribution
+    defaults to ``"undetermined"``: the artifact-versus-source discipline
+    (Recognition Layer §10) forbids defaulting to "source", because a defect we
+    detect may belong to our translation rather than to the institution. Only
+    an analyst -- or a detector that knows it inspects our own construction --
+    may assert otherwise.
+    """
+    ids: list[str] = []
+    for f in findings or ():
+        code = (f.get("kernel_code") or "").strip()
+        if not code:
+            continue
+        ids.append(append(working_path, {
+            "kind": "kernel_finding",
+            "kernel_code": code,
+            "locus": f.get("locus"),
+            "rule": f.get("rule"),
+            "attribution": f.get("attribution") or "undetermined",
+            "subjects": [f.get("term")] if f.get("term") else [],
+            "detail": f.get("detail"),
+            "source": source,
+        }))
+    return ids
+
+
+def kernel_findings(working_path: Path) -> list[dict]:
+    """All ledgered recognition-layer findings, newest last."""
+    return [e for e in read_all(working_path) if e.get("kind") == "kernel_finding"]

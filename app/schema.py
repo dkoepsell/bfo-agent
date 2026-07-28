@@ -39,6 +39,17 @@ class Entity(BaseModel):
     rationale: str = Field(..., description="Why this BFO typing was chosen")
     is_new: bool = True
     existing_iri: Optional[str] = None
+    recognition_locus: Optional[
+        Literal["authority", "criteria", "assessor", "facts", "act",
+                "effect", "remedy", "none"]
+    ] = Field(
+        None,
+        description=(
+            "Link of the recognition chain this term occupies, for ontologies "
+            "with a declared institutional profile. 'none' means the term is "
+            "not part of the chain. Absent for scientific-reference ontologies."
+        ),
+    )
 
 
 class Relation(BaseModel):

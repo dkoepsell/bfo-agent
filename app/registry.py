@@ -176,6 +176,87 @@ class OntologyRegistry:
             )
         return "curated"
 
+    def recognition_profile(self, name: str | None = None) -> dict:
+        """Resolve the recognition profile for an ontology (SPEC P2).
+
+        Reads the ``"recognition"`` block of the manifest. An absent or unknown
+        domain resolves to the scientific-reference control: no chain, strata
+        A-C only, Stratum D off. We never infer an institutional profile from
+        the source -- that would smuggle in acts the artifact does not have.
+        """
+        from . import recognition as rec
+
+        if name is None:
+            name = self._active_name
+        elif name not in self._manifests:
+            raise OntologyNotFoundError(name)
+        manifest = self._manifests.get(name) or {}
+        block = manifest.get("recognition") or {}
+        domain = block.get("domain")
+        profile = rec.profile_for(domain)
+        if domain and profile.key != str(domain).strip().lower():
+            log.warning(
+                "Ontology %s declares unknown recognition domain %r; "
+                "treating as %s.", name, domain, profile.key,
+            )
+        act = block.get("act_thickness") or profile.act_thickness
+        repair = block.get("repair") or profile.repair
+        if act != profile.act_thickness or repair != profile.repair:
+            # Operator override of the failure geometry (5.3).
+            from dataclasses import replace
+            profile = replace(profile, act_thickness=act, repair=repair)
+        return {
+            "domain": profile.key,
+            "name": profile.name,
+            "authority": block.get("authority") or profile.authority,
+            "act_thickness": profile.act_thickness,
+            "repair": profile.repair,
+            "system_class": profile.system_class,
+            "has_chain": profile.has_chain,
+            "active_strata": list(profile.active_strata),
+            "stratum_d_thin": profile.stratum_d_thin,
+            "active_primitives": list(rec.active_primitives(profile)),
+            "declared": bool(block),
+        }
+
+    def set_recognition_profile(self, name: str, domain: str,
+                                authority: str | None = None,
+                                act_thickness: str | None = None,
+                                repair: str | None = None) -> dict:
+        """Declare the recognition profile of an ontology and persist it.
+
+        The domain is operator-declared, chosen from the twelve rows of Table 1
+        (plus the scientific-reference control); inference is deliberately not
+        offered here.
+        """
+        from . import recognition as rec
+
+        if name not in self._managers:
+            raise OntologyNotFoundError(name)
+        key = str(domain or "").strip().lower()
+        if key not in rec.DOMAIN_PROFILES:
+            raise ValueError(f"unknown recognition domain: {domain!r}")
+        if act_thickness is not None and act_thickness not in ("none", "thin", "thick"):
+            raise ValueError(f"invalid act_thickness: {act_thickness!r}")
+        if repair is not None and repair not in ("none", "external", "internal"):
+            raise ValueError(f"invalid repair: {repair!r}")
+
+        manifest = dict(self._manifests[name])
+        block = dict(manifest.get("recognition") or {})
+        block["domain"] = key
+        if authority is not None:
+            block["authority"] = authority
+        if act_thickness is not None:
+            block["act_thickness"] = act_thickness
+        if repair is not None:
+            block["repair"] = repair
+        manifest["recognition"] = block
+
+        manifest_path = self._library_root / name / "manifest.json"
+        manifest_path.write_text(json.dumps(manifest, indent=2))
+        self._manifests[name] = manifest
+        return self.recognition_profile(name)
+
     def manifest(self, name: str) -> dict:
         if name not in self._manifests:
             raise OntologyNotFoundError(name)
@@ -219,6 +300,7 @@ class OntologyRegistry:
         source_text: str | None = None,
         author: str | None = None,
         clone_seeds_from: str | None = None,
+        recognition_domain: str | None = None,
     ) -> dict:
         """Create a new ontology directory with seeds and manifest.
 
@@ -280,6 +362,15 @@ class OntologyRegistry:
             ),
             "stats": {"note": "bootstrapped from seeds only"},
         }
+        if recognition_domain:
+            from . import recognition as rec
+            key = str(recognition_domain).strip().lower()
+            if key not in rec.DOMAIN_PROFILES:
+                raise ValueError(
+                    f"unknown recognition domain: {recognition_domain!r}")
+            # Declared profiles only. An absent block means the scientific-
+            # reference control, which is what an undeclared ontology is.
+            manifest["recognition"] = {"domain": key}
         (target / "manifest.json").write_text(json.dumps(manifest, indent=2))
 
         # Instantiate a manager, which will bootstrap working.owl from

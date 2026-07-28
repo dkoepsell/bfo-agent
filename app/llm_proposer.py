@@ -381,6 +381,58 @@ def coverage_rules() -> str:
     return COVERAGE_RULES
 
 
+RECOGNITION_RULES_HEADER = """RECOGNITION-CHAIN RULES (this ontology models a {name}: \
+authority={authority}, criteria={criteria}, assessor={assessor}, act={act}, \
+effect={effect}, remedy={remedy}):
+17. Every entity you propose carries ONE EXTRA FIELD beyond the schema above:
+      "recognition_locus": "authority" | "criteria" | "assessor" | "facts"
+                         | "act" | "effect" | "remedy" | "none"
+    Use "none" for terms that are not links of this institution's chain
+    (background biology, geography, artifacts). Never omit the field.
+18. Anchor each locus to its BFO category. A term whose locus and BFO type
+    disagree is rejected before it reaches the reasoner:
+{anchors}
+19. The chain itself is NOT a set of classes to mint. Do not create classes
+    named "Authority", "Criteria", "Recognition Act", "Remedy" or the like:
+    the locus is an annotation on the domain terms the source actually names.
+20. A conferred status is a realizable dependent continuant borne by the
+    entity that receives it -- never a quality of that entity, and never the
+    act that confers it. Keep the act (a process) and the effect (a
+    realizable) as distinct terms, related, not merged.
+"""
+
+
+def recognition_rules(profile: dict) -> str:
+    """Chain-aware anchoring rules, appended only for institutional feeds.
+
+    ``profile`` is a registry recognition-profile mapping. Returns "" when the
+    ontology has no chain, so scientific-reference feeds keep byte-identical
+    prompts (prompt cache preserved).
+    """
+    from . import recognition as rec
+
+    if not profile or not profile.get("has_chain"):
+        return ""
+    dom = rec.DOMAIN_PROFILES.get(profile.get("domain") or "")
+    if dom is None or not dom.has_chain:
+        return ""
+    anchors = "\n".join(
+        f"    - {spec.locus.value}: {spec.anchor_gloss} "
+        f"({', '.join(spec.anchors)})"
+        for spec in rec.CHAIN
+    )
+    return RECOGNITION_RULES_HEADER.format(
+        name=dom.name.lower(),
+        authority=profile.get("authority") or dom.authority,
+        criteria=dom.criteria,
+        assessor=dom.assessor,
+        act=dom.act,
+        effect=dom.effect,
+        remedy=dom.remedy,
+        anchors=anchors,
+    )
+
+
 def build_prompt_blocks(
     utterance: str,
     working_classes: list[dict],

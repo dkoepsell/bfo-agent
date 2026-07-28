@@ -172,11 +172,12 @@ def _run_coherence_gate(proposal, mgr, proposer, ctx, session_id, context=None,
                 working_classes=ctx["working_classes"],
                 known_individuals=ctx["known_individuals"],
                 relevant_classes=ctx.get("relevant_classes"),
-                extra_rules=_coverage_extra_rules(),
+                extra_rules=_proposer_extra_rules(),
             )
         except Exception:
             return None
 
+    chain_findings: list = []
     run = gate_mod.run_with_policy(
         proposal,
         mgr,
@@ -187,7 +188,10 @@ def _run_coherence_gate(proposal, mgr, proposer, ctx, session_id, context=None,
         run_construction=config.ENABLE_CONSTRUCTION_LINTER,
         strict_closed_vocab=config.STRICT_CLOSED_VOCAB,
         exclude_axioms=exclude_axioms,
+        chain_active=_chain_active(mgr),
+        findings_out=chain_findings,
     )
+    _record_chain_findings(mgr, chain_findings)
 
     if run.result.degraded:
         # FM-10: reasoner tier was skipped because the coherent view itself
@@ -410,6 +414,55 @@ def _coverage_extra_rules() -> str:
     except Exception:
         pass
     return ""
+
+
+def _recognition_extra_rules() -> str:
+    """Chain-aware proposer rules IFF the active ontology declares an
+    institutional recognition profile (SPEC P3).
+
+    Returns "" for scientific-reference ontologies, so existing feeds' prompts
+    stay byte-identical (prompt-cache preserved). Any error -> "" (fail safe)."""
+    try:
+        from . import llm_proposer
+        name = Path(_get_manager().working_path).resolve().parent.name
+        profile = _get_registry().recognition_profile(name)
+        return llm_proposer.recognition_rules(profile)
+    except Exception:
+        return ""
+
+
+def _proposer_extra_rules() -> str:
+    """All profile-conditional proposer rules for the active ontology."""
+    return "".join(
+        block for block in (_coverage_extra_rules(), _recognition_extra_rules())
+        if block
+    )
+
+
+def _chain_active(mgr=None) -> bool:
+    """True when the active ontology declares an institutional recognition
+    profile, so the PC-9..PC-13 chain rules apply (SPEC P4)."""
+    try:
+        mgr = mgr or _get_manager()
+        name = Path(mgr.working_path).resolve().parent.name
+        return bool(_get_registry().recognition_profile(name).get("has_chain"))
+    except Exception:
+        return False
+
+
+def _record_chain_findings(mgr, findings: list) -> None:
+    """Ledger the typed source findings the chain rules recorded (SPEC P5).
+
+    Never raises: a ledger write must not fail a proposal.
+    """
+    if not findings:
+        return
+    try:
+        ledger_mod.record_kernel_findings(
+            Path(mgr.working_path), findings, source="construction"
+        )
+    except Exception as e:
+        log.warning("kernel finding ledger write skipped: %s", e)
 
 
 def _not_found_response(name: str):
@@ -1149,7 +1202,7 @@ def _feed_one_core(job_id: str, auto_accept: bool = True) -> dict:
                         working_classes=ctx["working_classes"],
                         known_individuals=ctx["known_individuals"],
                         relevant_classes=ctx.get("relevant_classes"),
-                        extra_rules=_coverage_extra_rules(),
+                        extra_rules=_proposer_extra_rules(),
                     )
             except Exception as e:
                 jobs_store.update_claim_status(
@@ -1770,7 +1823,7 @@ def create_app() -> Flask:
                     working_classes=ctx["working_classes"],
                     known_individuals=ctx["known_individuals"],
                     relevant_classes=ctx.get("relevant_classes"),
-                    extra_rules=_coverage_extra_rules(),
+                    extra_rules=_proposer_extra_rules(),
                 )
             except Exception as e:
                 log_event(
@@ -1783,13 +1836,17 @@ def create_app() -> Flask:
             # Coherence gate (lint + reasoner). Reports the verdict for human
             # review; it does not auto-resample on the interactive path.
             if config.ENABLE_COHERENCE_GATE:
+                chain_findings: list = []
                 try:
                     result = gate_client.evaluate(
                         proposal, mgr,
                         run_reasoner=config.GATE_RUN_REASONER,
                         run_construction=config.ENABLE_CONSTRUCTION_LINTER,
                         strict_closed_vocab=config.STRICT_CLOSED_VOCAB,
+                        chain_active=_chain_active(mgr),
+                        findings_out=chain_findings,
                     )
+                    _record_chain_findings(mgr, chain_findings)
                     proposal.gate_outcome = result.outcome.value
                     proposal.gate_tier = result.tier.value
                     proposal.gate_reason = result.reason or None
@@ -1860,6 +1917,7 @@ def create_app() -> Flask:
 
             # Defensive gate: a user-edited proposal must not bypass coherence.
             if config.ENABLE_COHERENCE_GATE:
+                chain_findings: list = []
                 try:
                     result = gate_client.evaluate(
                         body.proposal, mgr,
@@ -1867,7 +1925,10 @@ def create_app() -> Flask:
                         run_construction=config.ENABLE_CONSTRUCTION_LINTER,
                         strict_closed_vocab=config.STRICT_CLOSED_VOCAB,
                         exclude_axioms=exclusions,
+                        chain_active=_chain_active(mgr),
+                        findings_out=chain_findings,
                     )
+                    _record_chain_findings(mgr, chain_findings)
                 except Exception as e:
                     result = None
                     log_event(body.session_id, "gate_error",
@@ -2659,5 +2720,119 @@ def create_app() -> Flask:
             return jsonify(coherence_reason.fact_pattern_check(wp, classes))
         except Exception as e:
             return jsonify({"error": f"fact check failed: {e}"}), 500
+
+    # --- Recognition layer (SPEC-recognition-layer.md P8) ---------------------
+    # The chain and the kernel are declared, not inferred: an ontology says
+    # which institution it models, and that declaration fixes which of the
+    # twelve primitives can fire on it at all.
+    @app.get("/recognition/domains")
+    def recognition_domains():
+        from . import recognition as rec
+        return jsonify({
+            "domains": [
+                {
+                    "key": p.key, "name": p.name, "authority": p.authority,
+                    "criteria": p.criteria, "assessor": p.assessor,
+                    "act": p.act, "effect": p.effect, "remedy": p.remedy,
+                    "act_thickness": p.act_thickness, "repair": p.repair,
+                    "system_class": p.system_class,
+                    "active_strata": list(p.active_strata),
+                }
+                for p in rec.DOMAIN_PROFILES.values()
+            ],
+            "chain": [
+                {"locus": s.locus.value, "name": s.name, "gloss": s.gloss,
+                 "anchors": list(s.anchors), "anchor_gloss": s.anchor_gloss}
+                for s in rec.CHAIN
+            ],
+            "kernel": [
+                {"code": p.code, "name": p.name, "stratum": p.stratum,
+                 "definition": p.definition, "signature": p.signature,
+                 "instruments": [i.value for i in p.instruments]}
+                for p in rec.KERNEL.values()
+            ],
+        })
+
+    @app.get("/ontologies/<name>/recognition-profile")
+    def get_recognition_profile(name):
+        try:
+            return jsonify(_get_registry().recognition_profile(name))
+        except Exception as e:
+            return jsonify({"error": str(e)}), 404
+
+    @app.put("/ontologies/<name>/recognition-profile")
+    def put_recognition_profile(name):
+        body = request.get_json(silent=True) or {}
+        domain = body.get("domain")
+        if not domain:
+            return jsonify({"error": "domain is required"}), 400
+        try:
+            return jsonify(_get_registry().set_recognition_profile(
+                name, domain,
+                authority=body.get("authority"),
+                act_thickness=body.get("act_thickness"),
+                repair=body.get("repair"),
+            ))
+        except ValueError as e:
+            return jsonify({"error": str(e)}), 400
+        except Exception as e:
+            return jsonify({"error": str(e)}), 404
+
+    @app.post("/ontologies/<name>/kernel-audit")
+    def ontology_kernel_audit(name):
+        from . import recognition as rec, recognition_audit
+        body = request.get_json(silent=True) or {}
+        wp, err = _coverage_working_path(name)
+        if err:
+            return err
+        try:
+            declared = _get_registry().recognition_profile(name)
+            profile = rec.profile_for(declared.get("domain"))
+            if (declared.get("act_thickness") != profile.act_thickness
+                    or declared.get("repair") != profile.repair):
+                from dataclasses import replace
+                profile = replace(
+                    profile,
+                    act_thickness=declared.get("act_thickness"),
+                    repair=declared.get("repair"),
+                )
+            report = recognition_audit.audit(
+                wp, profile,
+                bfo_path=str(config.BFO_PATH),
+                run_reasoner=bool(body.get("run_reasoner", True)),
+                sample=int(body.get("sample") or 25),
+            )
+            report["declared"] = declared.get("declared", False)
+            return jsonify(report)
+        except Exception as e:
+            log.exception("kernel audit failed")
+            return jsonify({"error": f"kernel audit failed: {e}"}), 500
+
+    @app.get("/ontologies/<name>/kernel-findings")
+    def ontology_kernel_findings(name):
+        """Findings the in-loop chain rules ledgered during construction."""
+        try:
+            mgr = _get_registry().get(name)
+        except Exception as e:
+            return jsonify({"error": str(e)}), 404
+        try:
+            entries = ledger_mod.kernel_findings(Path(mgr.working_path))
+        except Exception as e:
+            return jsonify({"error": f"ledger read failed: {e}"}), 500
+        by_type: dict = {}
+        by_locus: dict = {}
+        for e in entries:
+            by_type[e.get("kernel_code")] = by_type.get(e.get("kernel_code"), 0) + 1
+            if e.get("locus"):
+                by_locus[e["locus"]] = by_locus.get(e["locus"], 0) + 1
+        return jsonify({
+            "count": len(entries),
+            "by_type": by_type,
+            "by_locus": by_locus,
+            "findings": entries[-200:],
+            "note": ("Attribution is 'undetermined' until an analyst decides "
+                     "whether a defect belongs to the source or to our "
+                     "translation of it."),
+        })
 
     return app

@@ -76,8 +76,40 @@ class Violation:
 
 
 @dataclass
+class Finding:
+    """A typed defect *recorded*, not rejected.
+
+    Findings carry a kernel code and a chain locus (SPEC P4). They describe the
+    source, not our construction, so under faithful fidelity they must never
+    cause a rewrite: the extracted ontology keeps the source's errors and the
+    defect is evidence.
+    """
+
+    rule: str                 # e.g. "PC-10"
+    kernel_code: str          # e.g. "K-B3"
+    locus: str                # recognition-chain locus
+    term: str
+    detail: str = ""
+    # Never default to "source": what we see is our proposal, and the defect may
+    # belong to our translation of the source rather than to the institution
+    # (Recognition Layer §10). Attribution is an analyst's call.
+    attribution: str = "undetermined"
+
+    def to_dict(self) -> dict:
+        return {
+            "rule": self.rule,
+            "kernel_code": self.kernel_code,
+            "locus": self.locus,
+            "term": self.term,
+            "detail": self.detail,
+            "attribution": self.attribution,
+        }
+
+
+@dataclass
 class LintReport:
     violations: list[Violation] = field(default_factory=list)
+    findings: list["Finding"] = field(default_factory=list)
 
     @property
     def ok(self) -> bool:
@@ -92,6 +124,9 @@ class LintReport:
 
     def to_dicts(self) -> list[dict]:
         return [v.to_dict() for v in self.violations]
+
+    def finding_dicts(self) -> list[dict]:
+        return [f.to_dict() for f in self.findings]
 
 
 def _local(ref: str) -> str:
@@ -340,6 +375,215 @@ def _check_off_vocabulary(ent) -> Optional[Violation]:
 
 
 # ---------------------------------------------------------------------------
+# PC-9..PC-13: recognition-chain checks (SPEC-recognition-layer.md P4).
+#
+# These run only for ontologies with a declared institutional profile, and they
+# split two ways on the artifact-versus-source discipline (Recognition Layer 10):
+#
+#   * PC-9, PC-11, PC-12 are defects of OUR construction -> Violations, rejected
+#     and rewritten, attributed to the translation.
+#   * PC-10, PC-13 are defects of the SOURCE -> Findings, recorded and preserved.
+#     Under faithful fidelity the extraction keeps them.
+# ---------------------------------------------------------------------------
+_RESIDUAL_PATTERNS = (
+    "other specified", "otherspecified",
+    "unspecified", "not otherwise specified", "nototherwisespecified",
+    "nos", "unclassified", "unclassifiable", "residual",
+    "other disorders of", "otherdisordersof",
+)
+
+_EXCLUSION_MARKERS = ("exclusion", "excludes", "notincluded", "not included")
+_INCLUSION_MARKERS = ("inclusion", "includes", "criterion", "criteria")
+
+
+def _entity_locus(ent) -> Optional[str]:
+    loc = getattr(ent, "recognition_locus", None)
+    if not loc or loc == "none":
+        return None
+    return str(loc)
+
+
+def _check_locus_anchor(ent) -> Optional[Violation]:
+    """PC-9 (K-C1 at a chain locus): the locus and the BFO anchor disagree.
+
+    Rejected, not recorded: a status modelled as a quality, or an act modelled
+    as a realizable, is a mistake in our translation, not in the institution.
+    """
+    from . import recognition as rec
+
+    locus = _entity_locus(ent)
+    if not locus:
+        return None
+    bfo_type = getattr(ent, "bfo_type", None) or getattr(ent, "bfo_class", None)
+    if not bfo_type:
+        return None
+    if rec.anchor_ok(locus, bfo_type):
+        return None
+    spec = rec.CHAIN_BY_LOCUS.get(rec.Locus(locus))
+    allowed = ", ".join(spec.anchors) if spec else ""
+    return Violation(
+        rule="PC-9",
+        offending_term=_local(getattr(ent, "iri_suggestion", "") or ent.label),
+        suggested_rewrite=(
+            f"A term at the '{locus}' locus must be anchored under "
+            f"{allowed} ({spec.anchor_gloss if spec else ''}). Re-anchor the "
+            f"term, or set recognition_locus to the link it actually occupies "
+            f"(or 'none' if it is not part of the chain)."
+        ),
+        detail=f"locus '{locus}' anchored to {_local(str(bfo_type))}",
+    )
+
+
+def _check_chain_class(ent) -> Optional[Violation]:
+    """PC-12 (K-C2 level confusion): the chain itself minted as a class.
+
+    The loci are annotations on the source's own terms. A class literally named
+    for a link of the chain conflates the framework with the domain.
+    """
+    if not _is_new_class(ent):
+        return None
+    name = _local(getattr(ent, "iri_suggestion", "") or ent.label)
+    tokens = [t.lower() for t in _camel_tokens(name)] or [name.lower()]
+    joined = "".join(tokens)
+    bare = {
+        "authority", "criteria", "criterion", "assessor", "recognitionact",
+        "recognitionchain", "remedy", "presentingfacts", "sourceofauthority",
+    }
+    if joined in bare:
+        return Violation(
+            rule="PC-12",
+            offending_term=name,
+            suggested_rewrite=(
+                "Do not mint the recognition chain as classes. The locus is an "
+                "annotation (recognition_locus) on the terms the source names; "
+                "emit the source's own term and tag its locus instead."
+            ),
+            detail=f"class name '{name}' names a chain link, not a domain term",
+        )
+    return None
+
+
+def _check_residual_definition(ent) -> Optional[Finding]:
+    """PC-10 / CT-5 (K-B3): the 'other specified / unspecified' pattern.
+
+    Recorded, never rejected: residual categories are a real and load-bearing
+    feature of the source classification. Flagging one is evidence about the
+    institution; rewriting it would falsify the extraction.
+    """
+    name = _local(getattr(ent, "iri_suggestion", "") or ent.label)
+    hay = " ".join(filter(None, [
+        str(getattr(ent, "label", "") or ""), name,
+    ])).lower()
+    squashed = hay.replace(" ", "").replace("_", "").replace("-", "")
+    hit = next(
+        (p for p in _RESIDUAL_PATTERNS
+         if p in hay or p.replace(" ", "") in squashed),
+        None,
+    )
+    if hit is None:
+        return None
+    locus = _entity_locus(ent) or "criteria"
+    return Finding(
+        rule="PC-10",
+        kernel_code="K-B3",
+        locus=locus,
+        term=name,
+        detail=(
+            f"residual marker '{hit}': membership fixed only negatively, as "
+            f"what remains once the positive categories are exhausted"
+        ),
+    )
+
+
+def _check_criterion_double_duty(proposal) -> list[Finding]:
+    """PC-11 / CT-4 (K-B2): one criterion bound to conflicting inclusion and
+    exclusion roles for the same category.
+
+    Detected over the proposal's relations: the same (subject, object) pair
+    asserted through both an inclusion-flavoured and an exclusion-flavoured
+    predicate. Recorded as a source finding -- the double duty is in the text.
+    """
+    seen: dict[tuple[str, str], set[str]] = {}
+    for rel in getattr(proposal, "relations", ()) or ():
+        subj = _local(str(getattr(rel, "s", "") or ""))
+        obj = _local(str(getattr(rel, "o", "") or ""))
+        pred = _local(str(getattr(rel, "p", "") or "")).lower()
+        if not subj or not obj:
+            continue
+        role = None
+        if any(m in pred for m in _EXCLUSION_MARKERS):
+            role = "exclusion"
+        elif any(m in pred for m in _INCLUSION_MARKERS):
+            role = "inclusion"
+        if role is None:
+            continue
+        seen.setdefault((subj, obj), set()).add(role)
+    out: list[Finding] = []
+    for (subj, obj), roles in seen.items():
+        if len(roles) > 1:
+            out.append(Finding(
+                rule="PC-11",
+                kernel_code="K-B2",
+                locus="criteria",
+                term=f"{subj} -> {obj}",
+                detail=("one condition bound to both inclusion and exclusion "
+                        "roles for the same category"),
+            ))
+    return out
+
+
+def _check_unasserted_disjointness(proposal) -> list[Finding]:
+    """PC-13 / CT-1 (K-A1 latent): sibling categories the source treats as
+    exclusive, with no disjointness asserted between them.
+
+    Flagged, never repaired: asserting the disjointness ourselves would be our
+    claim, not the source's. The formal signature of artifactual comorbidity.
+    """
+    parents: dict[str, list[str]] = {}
+    for rel in getattr(proposal, "relations", ()) or ():
+        pred = _local(str(getattr(rel, "p", "") or "")).lower()
+        if pred not in ("subclassof", "rdfs:subclassof", "is_a", "isa"):
+            continue
+        subj = _local(str(getattr(rel, "s", "") or ""))
+        obj = _local(str(getattr(rel, "o", "") or ""))
+        if subj and obj:
+            parents.setdefault(obj, []).append(subj)
+
+    disjoint_pairs: set[frozenset[str]] = set()
+    for rel in getattr(proposal, "relations", ()) or ():
+        pred = _local(str(getattr(rel, "p", "") or "")).lower()
+        if "disjoint" not in pred:
+            continue
+        subj = _local(str(getattr(rel, "s", "") or ""))
+        obj = _local(str(getattr(rel, "o", "") or ""))
+        if subj and obj:
+            disjoint_pairs.add(frozenset((subj, obj)))
+
+    out: list[Finding] = []
+    for parent, kids in parents.items():
+        kids = sorted(set(kids))
+        if len(kids) < 2:
+            continue
+        undeclared = [
+            (a, b)
+            for i, a in enumerate(kids) for b in kids[i + 1:]
+            if frozenset((a, b)) not in disjoint_pairs
+        ]
+        if len(undeclared) == len(kids) * (len(kids) - 1) // 2:
+            out.append(Finding(
+                rule="PC-13",
+                kernel_code="K-A1",
+                locus="criteria",
+                term=parent,
+                detail=(
+                    f"{len(kids)} siblings under '{parent}' with no "
+                    f"disjointness asserted: jointly satisfiable models survive"
+                ),
+            ))
+    return out
+
+
+# ---------------------------------------------------------------------------
 # PC-7 / PC-8: lexical IRI checks, delegated to owl_checks so the agent's
 # self-lint uses the exact validators the gate runs on the emitted fragment.
 # ---------------------------------------------------------------------------
@@ -393,11 +637,16 @@ def _check_iris(proposal) -> list[Violation]:
 # ---------------------------------------------------------------------------
 # Top-level entry point.
 # ---------------------------------------------------------------------------
-def lint(proposal, strict_closed_vocab: bool = False) -> LintReport:
-    """Run PC-1..PC-8 over a proposal draft. Returns a LintReport.
+def lint(proposal, strict_closed_vocab: bool = False,
+         chain_active: bool = False) -> LintReport:
+    """Run PC-1..PC-13 over a proposal draft. Returns a LintReport.
 
     PC-1/PC-2/PC-3/PC-5/PC-6/PC-7/PC-8 always run. PC-4 runs only when
-    ``strict_closed_vocab`` is set (the spec's case-fragment mode).
+    ``strict_closed_vocab`` is set (the spec's case-fragment mode). PC-9..PC-13
+    run only when ``chain_active`` -- i.e. the ontology declares an
+    institutional recognition profile -- and split between violations (defects
+    of our construction, rejected) and findings (defects of the source,
+    recorded and preserved).
     """
     report = LintReport()
 
@@ -424,6 +673,16 @@ def lint(proposal, strict_closed_vocab: bool = False) -> LintReport:
             if v is not None:
                 report.violations.append(v)
 
+        # PC-9..PC-12: chain checks, only for institutional profiles.
+        if chain_active:
+            for check in (_check_locus_anchor, _check_chain_class):
+                v = check(ent)
+                if v is not None:
+                    report.violations.append(v)
+            f = _check_residual_definition(ent)
+            if f is not None:
+                report.findings.append(f)
+
     for rel in proposal.relations:
         # subClassOf / type predicates are fine; only non-meta predicates that
         # are not BFO object properties are string-baked relations.
@@ -434,5 +693,10 @@ def lint(proposal, strict_closed_vocab: bool = False) -> LintReport:
         v = _check_relation_class_target(rel)
         if v is not None:
             report.violations.append(v)
+
+    # PC-11 / PC-13: proposal-level source findings, recorded not rejected.
+    if chain_active:
+        report.findings.extend(_check_criterion_double_duty(proposal))
+        report.findings.extend(_check_unasserted_disjointness(proposal))
 
     return report

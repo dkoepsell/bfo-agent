@@ -124,19 +124,28 @@ class GateResult:
 
 
 def construction_check(
-    proposal, strict_closed_vocab: bool = False
+    proposal, strict_closed_vocab: bool = False,
+    chain_active: bool = False, findings_out: Optional[list] = None,
 ) -> Optional[GateResult]:
-    """Construction tier: run the PC-1..PC-6 prohibited-construction linter.
+    """Construction tier: run the PC-1..PC-13 prohibited-construction linter.
 
     This is the cheapest tier and runs first. It catches the privation
     primitives, relation-baked names, untyped entities, invented predicates,
     and continuant/occurrent conflations that drive class proliferation
     (bfo-agent-spec.md §6). Returns a REJECT GateResult carrying every
     violation, or None when the draft is clean.
+
+    With ``chain_active`` the recognition-chain rules run too (SPEC P4). Their
+    *findings* -- typed defects of the source, which must be preserved rather
+    than rewritten -- are appended to ``findings_out`` and never affect the
+    outcome; only their violations reject.
     """
     report = construction_linter.lint(
-        proposal, strict_closed_vocab=strict_closed_vocab
+        proposal, strict_closed_vocab=strict_closed_vocab,
+        chain_active=chain_active,
     )
+    if findings_out is not None and report.findings:
+        findings_out.extend(report.finding_dicts())
     if report.ok:
         return None
     rules = ", ".join(sorted({v["rule"] for v in report.to_dicts()}))
@@ -253,14 +262,21 @@ def gate(
     run_construction: bool = True,
     strict_closed_vocab: bool = False,
     exclude_axioms: Optional[list[dict]] = None,
+    chain_active: bool = False,
+    findings_out: Optional[list] = None,
 ) -> GateResult:
     """Run the gate. Construction first (cheapest), then lint, then reasoner.
 
     Returns ACCEPT only if every enabled tier passes.
+
+    ``chain_active`` enables the recognition-chain rules (SPEC P4); source
+    findings they record are appended to ``findings_out`` without affecting the
+    outcome.
     """
     if run_construction:
         construction = construction_check(
-            proposal, strict_closed_vocab=strict_closed_vocab
+            proposal, strict_closed_vocab=strict_closed_vocab,
+            chain_active=chain_active, findings_out=findings_out,
         )
         if construction is not None:
             return construction
@@ -521,6 +537,8 @@ def run_with_policy(
     run_construction: bool = True,
     strict_closed_vocab: bool = False,
     exclude_axioms: Optional[list[dict]] = None,
+    chain_active: bool = False,
+    findings_out: Optional[list] = None,
 ) -> GateRun:
     """Run the gate and apply the configured policy on a clash.
 
@@ -532,6 +550,7 @@ def run_with_policy(
     current = proposal
 
     for attempt in range(max_attempts + 1):
+        attempt_findings: list = []
         result = gate(
             current,
             manager,
@@ -539,6 +558,10 @@ def run_with_policy(
             run_construction=run_construction,
             strict_closed_vocab=strict_closed_vocab,
             exclude_axioms=exclude_axioms,
+            chain_active=chain_active,
+            # Record chain findings from the ACCEPTED attempt only: a rejected
+            # draft's findings describe a construction we threw away.
+            findings_out=attempt_findings,
         )
         events.append({
             "attempt": attempt,
@@ -547,6 +570,8 @@ def run_with_policy(
         })
 
         if result.accepted:
+            if findings_out is not None:
+                findings_out.extend(attempt_findings)
             return GateRun(GateOutcome.ACCEPT, current, result, events, attempt)
 
         # Construction-tier violations cannot be programmatically repaired by
@@ -592,12 +617,18 @@ def run_with_policy(
                     "policy": policy.value,
                     **degraded.to_dict(),
                 })
+                if findings_out is not None:
+                    findings_out.extend(attempt_findings)
                 return GateRun(GateOutcome.ACCEPT, current, degraded,
                                events, attempt)
 
             flagged = dataclasses.replace(result, outcome=GateOutcome.FLAG)
             events[-1]["outcome"] = GateOutcome.FLAG.value
             events[-1]["policy_action"] = "flag"
+            # A flagged claim is committed unmodified, so its chain findings
+            # describe the artifact we keep: record them.
+            if findings_out is not None:
+                findings_out.extend(attempt_findings)
             return GateRun(GateOutcome.FLAG, current, flagged, events, attempt)
 
         if policy == GatePolicy.REPAIR:

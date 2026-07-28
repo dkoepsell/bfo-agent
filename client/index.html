@@ -587,6 +587,22 @@
           contradictory? (comma-separated class names)
         </div>
         <div id="factcheck-body" style="margin-top:8px;"></div>
+
+        <hr style="margin:18px 0; border:none; border-top:1px solid var(--border,#333);"/>
+        <div class="row-flex" style="gap:8px; align-items:center; flex-wrap:wrap;">
+          <strong style="margin-right:4px;">Recognition layer</strong>
+          <label for="rec-domain" class="muted" style="margin:0;">Institution:</label>
+          <select id="rec-domain" style="max-width:260px;"></select>
+          <button class="secondary" id="rec-save" data-keep-enabled="1">Declare</button>
+          <button class="secondary" id="rec-audit" data-keep-enabled="1">Run kernel audit</button>
+        </div>
+        <div class="muted" style="margin-top:4px; font-size:12px;">
+          The institution an ontology models is <em>declared</em>, not inferred:
+          it fixes the recognition chain, and so which of the twelve
+          contradiction primitives can fire on the artifact at all. A
+          scientific reference ontology has no chain, and Stratum D is off.
+        </div>
+        <div id="rec-body" style="margin-top:10px;"></div>
       </div>
 
       <div id="tab-live" class="tab-pane" style="display:none;">
@@ -1811,10 +1827,15 @@ async function initAuditsOnFirstView() {
     document.getElementById("audit-onto").onchange = () => {
       document.getElementById("ondemand-body").innerHTML = "";
       document.getElementById("factcheck-body").innerHTML = "";
+      document.getElementById("rec-body").innerHTML = "";
       refreshAudits();
+      showRecognitionProfile();
     };
     document.getElementById("coherence-run").onclick = runCoherenceCheck;
     document.getElementById("factcheck-run").onclick = runFactCheck;
+    document.getElementById("rec-save").onclick = saveRecognitionProfile;
+    document.getElementById("rec-audit").onclick = runKernelAudit;
+    loadRecognitionDomains();
   }
   if (!currentOntologies.length) await refreshOntologies();
   const sel = document.getElementById("audit-onto");
@@ -1829,6 +1850,129 @@ async function initAuditsOnFirstView() {
   sel.value = prev && currentOntologies.some(o => o.name === prev)
     ? prev : (currentActive || (currentOntologies[0] || {}).name || "");
   refreshAudits();
+}
+
+/* ---------- Recognition layer (SPEC-recognition-layer.md P8) ---------- */
+let _recDomains = null;
+
+async function loadRecognitionDomains() {
+  if (_recDomains) return _recDomains;
+  try {
+    const r = await fetch(API + "/recognition/domains");
+    _recDomains = await r.json();
+  } catch (e) { return null; }
+  const sel = document.getElementById("rec-domain");
+  sel.innerHTML = "";
+  (_recDomains.domains || []).forEach(d => {
+    const o = document.createElement("option");
+    o.value = d.key;
+    o.textContent = d.name + (d.act_thickness === "none" ? " (no chain)" : "");
+    sel.appendChild(o);
+  });
+  showRecognitionProfile();
+  return _recDomains;
+}
+
+async function showRecognitionProfile() {
+  const name = document.getElementById("audit-onto").value;
+  if (!name) return;
+  try {
+    const r = await fetch(API + "/ontologies/" + encodeURIComponent(name) + "/recognition-profile");
+    const p = await r.json();
+    if (p.domain) document.getElementById("rec-domain").value = p.domain;
+    const box = document.getElementById("rec-body");
+    box.innerHTML =
+      '<div class="muted" style="font-size:12px;">' +
+      (p.declared ? "Declared as " : "Undeclared — treated as ") +
+      '<strong>' + esc(p.name || p.domain) + '</strong> · ' +
+      esc(p.system_class || "") + ' · acts ' + esc(p.act_thickness) +
+      ', repair ' + esc(p.repair) + ' · active strata ' +
+      esc((p.active_strata || []).join(", ")) + '</div>';
+  } catch (e) { /* panel is informational; never break the tab */ }
+}
+
+async function saveRecognitionProfile() {
+  const name = document.getElementById("audit-onto").value;
+  const domain = document.getElementById("rec-domain").value;
+  const box = document.getElementById("rec-body");
+  if (!name || !domain) return;
+  try {
+    const r = await fetch(API + "/ontologies/" + encodeURIComponent(name) + "/recognition-profile",
+      { method: "PUT", headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ domain }) });
+    const d = await r.json();
+    if (d.error) { box.innerHTML = '<div class="audit-verdict v-inconclusive">' + esc(d.error) + '</div>'; return; }
+    showRecognitionProfile();
+  } catch (e) {
+    box.innerHTML = '<div class="audit-verdict v-inconclusive">' + esc(String(e)) + '</div>';
+  }
+}
+
+function _recChainStrip(byLocus) {
+  const loci = (_recDomains && _recDomains.chain) || [];
+  if (!loci.length) return "";
+  let html = '<div style="display:flex; flex-wrap:wrap; gap:6px; margin:10px 0;">';
+  loci.forEach((l, i) => {
+    const n = byLocus[l.locus] || 0;
+    html += '<div title="' + esc(l.gloss) + '" style="border:1px solid var(--border,#333);' +
+            'border-radius:6px; padding:6px 9px; min-width:96px;">' +
+            '<div style="font-size:11px; opacity:.75;">' + esc(l.name) + '</div>' +
+            '<div style="font-size:17px;' + (n ? '' : ' opacity:.4;') + '">' + n + '</div></div>';
+    if (i < loci.length - 1)
+      html += '<div style="align-self:center; opacity:.4;">→</div>';
+  });
+  return html + '</div>';
+}
+
+function _recCompletenessTable(rows) {
+  let html = '<table style="width:100%; border-collapse:collapse; font-size:12px;">' +
+    '<tr style="text-align:left; opacity:.75;"><th>Primitive</th><th>Stratum</th>' +
+    '<th>Status</th><th>Why</th></tr>';
+  (rows || []).forEach(r => {
+    const colour = r.status === "instrumented" ? "" :
+      (r.status === "not_applicable" ? "opacity:.45;" : "opacity:.75;");
+    const label = r.status === "instrumented" ? "instrumented" :
+      (r.status === "not_applicable" ? "n/a for this profile" : "SILENT — not measured");
+    html += '<tr style="' + colour + '"><td><code>' + esc(r.code) + '</code> ' + esc(r.name) +
+      '</td><td>' + esc(r.stratum) + '</td><td>' + esc(label) + '</td><td>' + esc(r.note || "") + '</td></tr>';
+  });
+  return html + '</table>';
+}
+
+async function runKernelAudit() {
+  const name = document.getElementById("audit-onto").value;
+  const box = document.getElementById("rec-body");
+  if (!name) { box.innerHTML = '<div class="muted">Select an ontology.</div>'; return; }
+  box.innerHTML = '<div class="muted">Running the kernel (reasoner serialised behind any active feed run)…</div>';
+  let d;
+  try {
+    const r = await fetch(API + "/ontologies/" + encodeURIComponent(name) + "/kernel-audit",
+      { method: "POST", headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ run_reasoner: true, sample: 10 }) });
+    d = await r.json();
+  } catch (e) { box.innerHTML = '<div class="audit-verdict v-inconclusive">audit failed: ' + esc(String(e)) + '</div>'; return; }
+  if (d.error) { box.innerHTML = '<div class="audit-verdict v-inconclusive">' + esc(d.error) + '</div>'; return; }
+
+  const cd = d.contradiction_debt || {};
+  let html = '<div style="border:1px solid var(--border,#333); border-radius:8px; padding:12px;">';
+  html += '<div><strong>' + esc(d.system_class || d.domain) + '</strong> · active strata ' +
+          esc((d.active_strata || []).join(", ")) + '</div>';
+  html += _recChainStrip(d.by_locus || {});
+  html += '<div style="margin:6px 0;"><strong>Contradiction debt: ' + esc(String(cd.cd)) +
+          '</strong> <span class="muted">(lower bound; uniform, uncalibrated weights)</span></div>';
+  const perType = Object.entries(cd.per_type || {});
+  if (perType.length)
+    html += '<div class="muted" style="font-size:12px; margin-bottom:8px;">' +
+            perType.map(([k, v]) => esc(k) + ": " + v).join(" · ") + '</div>';
+  /* The reporting invariant: never a score without what it could not see. */
+  html += '<div style="margin-top:10px;"><strong>Stratum completeness</strong></div>';
+  html += _recCompletenessTable(cd.completeness);
+  html += '<div class="muted" style="font-size:12px; margin-top:8px;">' + esc(d.note || "") + '</div>';
+  if ((d.errors || []).length)
+    html += '<div class="muted" style="font-size:12px; margin-top:6px;">' +
+            d.errors.map(esc).join("<br/>") + '</div>';
+  html += '</div>';
+  box.innerHTML = html;
 }
 
 async function runCoherenceCheck() {

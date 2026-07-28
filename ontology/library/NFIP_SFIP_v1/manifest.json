@@ -10,5 +10,8 @@
   "stats": {
     "classes": 5,
     "object_properties": 0
+  },
+  "recognition": {
+    "domain": "technical_certification"
   }
 }
