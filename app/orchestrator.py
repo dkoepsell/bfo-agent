@@ -2757,8 +2757,8 @@ def create_app() -> Flask:
     def get_recognition_profile(name):
         try:
             return jsonify(_get_registry().recognition_profile(name))
-        except Exception as e:
-            return jsonify({"error": str(e)}), 404
+        except Exception:
+            return jsonify({"error": f"no such ontology: {name}"}), 404
 
     @app.put("/ontologies/<name>/recognition-profile")
     def put_recognition_profile(name):
@@ -2775,8 +2775,8 @@ def create_app() -> Flask:
             ))
         except ValueError as e:
             return jsonify({"error": str(e)}), 400
-        except Exception as e:
-            return jsonify({"error": str(e)}), 404
+        except Exception:
+            return jsonify({"error": f"no such ontology: {name}"}), 404
 
     @app.post("/ontologies/<name>/kernel-audit")
     def ontology_kernel_audit(name):
@@ -2813,8 +2813,8 @@ def create_app() -> Flask:
         """Findings the in-loop chain rules ledgered during construction."""
         try:
             mgr = _get_registry().get(name)
-        except Exception as e:
-            return jsonify({"error": str(e)}), 404
+        except Exception:
+            return jsonify({"error": f"no such ontology: {name}"}), 404
         try:
             entries = ledger_mod.kernel_findings(Path(mgr.working_path))
         except Exception as e:
