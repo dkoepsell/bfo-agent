@@ -1,0 +1,12 @@
+{
+  "chunk_id": "404.1642",
+  "section": "404.1642",
+  "subpart": "Q",
+  "heading": "Processing time standards.",
+  "text": "(a) General. Title II processing time refers to the average number of days, including Saturdays, Sundays, and holidays, it takes a State agency to process an initial disability claim from the day the case folder is received in the State agency until the day it is released to us by the State agency. Title XVI processing time refers to the average number of days, including Saturdays, Sundays, and holidays, from the day of receipt of the initial disability claim in the State agency until systems input of a presumptive disability decision or the day the case folder is released to us by the State agency, whichever is earlier.\n(b) Target levels. The processing time target levels are:\n(1) 37 days for title II initial claims.\n(2) 43 days for title XVI initial claims.\n(c) Threshold levels. The processing time threshold levels are:\n(1) 49.5 days for title II initial claims.\n(2) 57.9 days for title XVI initial claims.",
+  "chars": 920,
+  "source_file": "corpus/raw/title20-part404-subpartQ-2026-07-28.xml",
+  "source_sha256": "6fac1f7f522a960b7cde8437fbbc3aaa9e255b65871a9eda6383825bc7df0f3a",
+  "source_url": "https://www.ecfr.gov/api/versioner/v1/full/2026-07-28/title-20.xml?chapter=III&part=404&subpart=Q",
+  "chunk_sha256": "0a3c176ded2205ed91ecf7d7a435ee1e506f3157a46fbcde6f0041c2174a918e"
+}

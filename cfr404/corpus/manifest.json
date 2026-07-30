@@ -1,0 +1,2225 @@
+{
+  "source": "eCFR versioner API (https://www.ecfr.gov/api/versioner/v1)",
+  "title": 20,
+  "chapter": "III",
+  "part": "404",
+  "as_of": "2026-07-28",
+  "subparts": {
+    "H": "Evidence (L4 presenting facts)",
+    "J": "Determinations, Administrative Review Process, and Reopening (L5 acts, L7 remedy)",
+    "P": "Determining Disability and Blindness (L2 criteria, L3 assessor, L6 effect)",
+    "Q": "Determinations of Disability (L1 authority delegation to State agencies, L3 assessor)"
+  },
+  "generated_utc": "2026-07-30T16:04:55.626876+00:00",
+  "license_note": "Federal regulations are public domain under the edicts-of-government doctrine. No Westlaw, Lexis, or other commercial database text enters this pipeline.",
+  "raw": [
+    {
+      "file": "corpus/raw/structure-title20-part404-2026-07-28.json",
+      "url": "https://www.ecfr.gov/api/versioner/v1/structure/2026-07-28/title-20.json?chapter=III&part=404",
+      "kind": "structure",
+      "sha256": "2c739e9e9698536fa29f2d39da18d30c1eb8a6005e0586b58c799e7d3493ace4",
+      "bytes": 289439,
+      "retrieved_utc": "2026-07-30T15:56:21.711732+00:00"
+    },
+    {
+      "file": "corpus/raw/title20-part404-subpartH-2026-07-28.xml",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-07-28/title-20.xml?chapter=III&part=404&subpart=H",
+      "kind": "subpart",
+      "subpart": "H",
+      "rationale": "Evidence (L4 presenting facts)",
+      "sha256": "00842b57d6cd869dea16452544d2cc8bf0e3b17b789f9e7e0300ddbbeec4bebb",
+      "bytes": 45041,
+      "retrieved_utc": "2026-07-30T15:56:22.952808+00:00"
+    },
+    {
+      "file": "corpus/raw/title20-part404-subpartJ-2026-07-28.xml",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-07-28/title-20.xml?chapter=III&part=404&subpart=J",
+      "kind": "subpart",
+      "subpart": "J",
+      "rationale": "Determinations, Administrative Review Process, and Reopening (L5 acts, L7 remedy)",
+      "sha256": "137c0b4e9782a5af2fe77c96e15801ab83db07e2628a3414f89c2881c4fc10cb",
+      "bytes": 193907,
+      "retrieved_utc": "2026-07-30T15:56:24.978796+00:00"
+    },
+    {
+      "file": "corpus/raw/title20-part404-subpartP-2026-07-28.xml",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-07-28/title-20.xml?chapter=III&part=404&subpart=P",
+      "kind": "subpart",
+      "subpart": "P",
+      "rationale": "Determining Disability and Blindness (L2 criteria, L3 assessor, L6 effect)",
+      "sha256": "7295280a63aa1972d60dd5bdd93a5c8277f345a600260b484b77179c848c245e",
+      "bytes": 1600560,
+      "retrieved_utc": "2026-07-30T15:56:28.636592+00:00"
+    },
+    {
+      "file": "corpus/raw/title20-part404-subpartQ-2026-07-28.xml",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-07-28/title-20.xml?chapter=III&part=404&subpart=Q",
+      "kind": "subpart",
+      "subpart": "Q",
+      "rationale": "Determinations of Disability (L1 authority delegation to State agencies, L3 assessor)",
+      "sha256": "6fac1f7f522a960b7cde8437fbbc3aaa9e255b65871a9eda6383825bc7df0f3a",
+      "bytes": 72925,
+      "retrieved_utc": "2026-07-30T15:56:30.423895+00:00"
+    },
+    {
+      "file": "corpus/raw/title20-part404-appendix1-2026-07-28.xml",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-07-28/title-20.xml?chapter=III&part=404&subpart=P&appendix=Appendix%201%20to%20Subpart%20P%20of%20Part%20404",
+      "kind": "subpart",
+      "subpart": "P",
+      "appendix": "Appendix 1 to Subpart P of Part 404",
+      "rationale": "Listing of Impairments (L2 criteria)",
+      "sha256": "2c849619743adbf586e4d377e3e425a71fa4782fe558692474b703d9b80f9bdb",
+      "bytes": 1072086,
+      "retrieved_utc": "2026-07-30T15:56:34.900823+00:00"
+    },
+    {
+      "file": "corpus/raw/title20-part404-appendix2-2026-07-28.xml",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-07-28/title-20.xml?chapter=III&part=404&subpart=P&appendix=Appendix%202%20to%20Subpart%20P%20of%20Part%20404",
+      "kind": "subpart",
+      "subpart": "P",
+      "appendix": "Appendix 2 to Subpart P of Part 404",
+      "rationale": "Medical-Vocational Guidelines (L2 criteria)",
+      "sha256": "ecbdc8d21c1f00e69002c6903f29f995147d7d6580a9404cbda7cc27b451a221",
+      "bytes": 49821,
+      "retrieved_utc": "2026-07-30T15:56:39.735935+00:00"
+    }
+  ],
+  "chunk_count": 305,
+  "chunks": {
+    "404.1501": {
+      "file": "corpus/chunks/404.1501.json",
+      "subpart": "P",
+      "heading": "Scope of subpart.",
+      "chars": 3831,
+      "chunk_sha256": "b74558a3011ec0be71e03bfcb8ef3568a01c1137fa83a02a3349022643803f85"
+    },
+    "404.1502": {
+      "file": "corpus/chunks/404.1502.json",
+      "subpart": "P",
+      "heading": "Definitions for this subpart.",
+      "chars": 4515,
+      "chunk_sha256": "0405152121eb0ab6f15dc441ba95d75b8d68ba44b7319397e80a454b540d8bbb"
+    },
+    "404.1503": {
+      "file": "corpus/chunks/404.1503.json",
+      "subpart": "P",
+      "heading": "Who makes disability and blindness determinations.",
+      "chars": 1929,
+      "chunk_sha256": "42b2d44d3e685842b8aa049eb04744288861f154ae1783c23728453052626b2b"
+    },
+    "404.1503a": {
+      "file": "corpus/chunks/404.1503a.json",
+      "subpart": "P",
+      "heading": "Program integrity.",
+      "chars": 851,
+      "chunk_sha256": "20580cb0773a01c63fb9ca9fa8e5174ac33590f5179622028f6813d0738294ca"
+    },
+    "404.1503b": {
+      "file": "corpus/chunks/404.1503b.json",
+      "subpart": "P",
+      "heading": "Evidence from excluded medical sources of evidence.",
+      "chars": 3912,
+      "chunk_sha256": "e501e2e9dd4f62e9ab437ae95a5034e4f03742e288b5ed2671cd8609f26bac10"
+    },
+    "404.1504": {
+      "file": "corpus/chunks/404.1504.json",
+      "subpart": "P",
+      "heading": "Decisions by other governmental agencies and nongovernmental entities.",
+      "chars": 1190,
+      "chunk_sha256": "714f7d9cc25b101c410cb0813fe7f5920124583d26472dbc92c64e9978331728"
+    },
+    "404.1505": {
+      "file": "corpus/chunks/404.1505.json",
+      "subpart": "P",
+      "heading": "Basic definition of disability.",
+      "chars": 1854,
+      "chunk_sha256": "b4c5f8ccdce2e8a5e8da040f8bea5a6593a12a2dad6aaf4378451cf8a28a23a1"
+    },
+    "404.1506": {
+      "file": "corpus/chunks/404.1506.json",
+      "subpart": "P",
+      "heading": "When we will not consider your impairment.",
+      "chars": 2212,
+      "chunk_sha256": "7e4283196b6b90c890c9d840d67a3f422118bda03c30fe30de601fef1c94b73e"
+    },
+    "404.1508": {
+      "file": "corpus/chunks/404.1508.json",
+      "subpart": "P",
+      "heading": "[Reserved]",
+      "chars": 0,
+      "chunk_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "404.1509": {
+      "file": "corpus/chunks/404.1509.json",
+      "subpart": "P",
+      "heading": "How long the impairment must last.",
+      "chars": 188,
+      "chunk_sha256": "0cb614ae93895c19c28769a48a222f6cad17abfdc28173f5502d7588c14b5352"
+    },
+    "404.1510": {
+      "file": "corpus/chunks/404.1510.json",
+      "subpart": "P",
+      "heading": "Meaning of substantial gainful activity.",
+      "chars": 256,
+      "chunk_sha256": "c5af9e9ec347f97f401484c6c83c6ddb5c9dc2482086abf53bb1d2307c68534a"
+    },
+    "404.1511": {
+      "file": "corpus/chunks/404.1511.json",
+      "subpart": "P",
+      "heading": "Definition of a disabling impairment.",
+      "chars": 1484,
+      "chunk_sha256": "1a408ec20a7658113ed260007276fe2962aca4aed6c816541d341312d7823691"
+    },
+    "404.1512": {
+      "file": "corpus/chunks/404.1512.json",
+      "subpart": "P",
+      "heading": "Responsibility for evidence.",
+      "chars": 5086,
+      "chunk_sha256": "9991d077d9e3ed520bf06abbbb5ffc5e897113d07d317b3a53f5f5b4296898cd"
+    },
+    "404.1513": {
+      "file": "corpus/chunks/404.1513.json",
+      "subpart": "P",
+      "heading": "Categories of evidence.",
+      "chars": 5719,
+      "chunk_sha256": "a776fa18148c316307c75ea50950de8f5b1318d4cf34f929c3b26e650789ed9f"
+    },
+    "404.1513a": {
+      "file": "corpus/chunks/404.1513a.json",
+      "subpart": "P",
+      "heading": "Evidence from our Federal or State agency medical or psychological consultants.",
+      "chars": 3566,
+      "chunk_sha256": "77264cdf05b462111d7dbda42a5af75f61c57e38c3770292aeb158f230155521"
+    },
+    "404.1514": {
+      "file": "corpus/chunks/404.1514.json",
+      "subpart": "P",
+      "heading": "When we will purchase existing evidence.",
+      "chars": 374,
+      "chunk_sha256": "9ef17aa0dcf3861e1251b4dd8351b6eebe864a52b002f221b3ce383a1375e03f"
+    },
+    "404.1515": {
+      "file": "corpus/chunks/404.1515.json",
+      "subpart": "P",
+      "heading": "Where and how to submit evidence.",
+      "chars": 311,
+      "chunk_sha256": "f4182a8b95b75be64c8aeda0f0aa6363d24386a1c9238af7444c1066bcd184a9"
+    },
+    "404.1516": {
+      "file": "corpus/chunks/404.1516.json",
+      "subpart": "P",
+      "heading": "If you fail to submit medical and other evidence.",
+      "chars": 300,
+      "chunk_sha256": "cd8e0a7ba3e2d2b276382f69589219b6af3de6230cdce0b5a04f4644c8e0f9c6"
+    },
+    "404.1517": {
+      "file": "corpus/chunks/404.1517.json",
+      "subpart": "P",
+      "heading": "Consultative examination at our expense.",
+      "chars": 681,
+      "chunk_sha256": "951a5ca91dcd03bc2597bb697081af546e11420357fa26c0eb601cbb338c2bc9"
+    },
+    "404.1518": {
+      "file": "corpus/chunks/404.1518.json",
+      "subpart": "P",
+      "heading": "If you do not appear at a consultative examination.",
+      "chars": 1904,
+      "chunk_sha256": "5f0d349852a181f6cc65475aa71b884efa6e8bed773dc005a97cab31a7b97552"
+    },
+    "404.1519": {
+      "file": "corpus/chunks/404.1519.json",
+      "subpart": "P",
+      "heading": "The consultative examination.",
+      "chars": 725,
+      "chunk_sha256": "18b3970c5df17c41f70f9adbd9570dca03f8b7ab398998cb616b7d6d64c6633d"
+    },
+    "404.1519a": {
+      "file": "corpus/chunks/404.1519a.json",
+      "subpart": "P",
+      "heading": "When we will purchase a consultative examination and how we will use it.",
+      "chars": 1547,
+      "chunk_sha256": "e0aa234ab15d4dc55a5d1ceb56935703b8c92b21a037c28be145636408b63392"
+    },
+    "404.1519b": {
+      "file": "corpus/chunks/404.1519b.json",
+      "subpart": "P",
+      "heading": "When we will not purchase a consultative examination.",
+      "chars": 1654,
+      "chunk_sha256": "0111a66d448f94acdd7b8b2d7e8dffb1cfbbddeb95b5c3f2a9218153a846f2b4"
+    },
+    "404.1519f": {
+      "file": "corpus/chunks/404.1519f.json",
+      "subpart": "P",
+      "heading": "Type of purchased examinations.",
+      "chars": 283,
+      "chunk_sha256": "74059995cb69a3c51d34ee11b57bcff977db2452fad9b945598f1b100b268f25"
+    },
+    "404.1519g": {
+      "file": "corpus/chunks/404.1519g.json",
+      "subpart": "P",
+      "heading": "Who we will select to perform a consultative examination.",
+      "chars": 952,
+      "chunk_sha256": "ff7f211710f94905c948f1a634635437c61136662c5f397c5a818558b5318457"
+    },
+    "404.1519h": {
+      "file": "corpus/chunks/404.1519h.json",
+      "subpart": "P",
+      "heading": "Your medical source.",
+      "chars": 301,
+      "chunk_sha256": "51e2e3485f9cb1c7ea3b846a3a411c9ccf5a0a0860392db4ead61b848ee5bd41"
+    },
+    "404.1519i": {
+      "file": "corpus/chunks/404.1519i.json",
+      "subpart": "P",
+      "heading": "Other sources for consultative examinations.",
+      "chars": 776,
+      "chunk_sha256": "5aa0685221031c577af0e80581aa3ef7e96edec37db21e6e7e86fc9dcc04c59c"
+    },
+    "404.1519j": {
+      "file": "corpus/chunks/404.1519j.json",
+      "subpart": "P",
+      "heading": "Objections to the medical source designated to perform the consultative examination.",
+      "chars": 1452,
+      "chunk_sha256": "1a4cae2963213743a86b1ceb3132290753dd8ccf206ee7f8ac4a5cd9167962ba"
+    },
+    "404.1519k": {
+      "file": "corpus/chunks/404.1519k.json",
+      "subpart": "P",
+      "heading": "Purchase of medical examinations, laboratory tests, and other services.",
+      "chars": 2037,
+      "chunk_sha256": "3fc90b71d9aa70f8a79d285440d67220ac5b1699e60ddc516196bee12d559800"
+    },
+    "404.1519m": {
+      "file": "corpus/chunks/404.1519m.json",
+      "subpart": "P",
+      "heading": "Diagnostic tests or procedures.",
+      "chars": 764,
+      "chunk_sha256": "0fb7946cdd6d01aa9cfee09d39fad688b0fda3a6239bcb16e50ea12548cfe8c1"
+    },
+    "404.1519n": {
+      "file": "corpus/chunks/404.1519n.json",
+      "subpart": "P",
+      "heading": "Informing the medical source of examination scheduling, report content, and signature requirements.",
+      "chars": 5948,
+      "chunk_sha256": "5709c92d8ea241026d3230d876db9b14039b169fb971d36c2188225610b809cd"
+    },
+    "404.1519o": {
+      "file": "corpus/chunks/404.1519o.json",
+      "subpart": "P",
+      "heading": "When a properly signed consultative examination report has not been received.",
+      "chars": 1631,
+      "chunk_sha256": "656b89e8e3fd0a08f7410b7112c55e32a9d0d39dea0f679ab30ecf2aef4f3458"
+    },
+    "404.1519p": {
+      "file": "corpus/chunks/404.1519p.json",
+      "subpart": "P",
+      "heading": "Reviewing reports of consultative examinations.",
+      "chars": 2278,
+      "chunk_sha256": "52706dbcc17cdaa74cbfe65653b301c6eb5153bbaa6ed521e41c286db67f9a4d"
+    },
+    "404.1519q": {
+      "file": "corpus/chunks/404.1519q.json",
+      "subpart": "P",
+      "heading": "Conflict of interest.",
+      "chars": 1437,
+      "chunk_sha256": "0ad8af36492cf0e527cea9a785c8b5f50dd5d2a5c4b28332d5596ae801271d7e"
+    },
+    "404.1519s": {
+      "file": "corpus/chunks/404.1519s.json",
+      "subpart": "P",
+      "heading": "Authorizing and monitoring the consultative examination.",
+      "chars": 3418,
+      "chunk_sha256": "2b48086fa16ceb3c8d13c15ddc316d0782b0e39e6687ad2eb1a27096707a20c7"
+    },
+    "404.1519t": {
+      "file": "corpus/chunks/404.1519t.json",
+      "subpart": "P",
+      "heading": "Consultative examination oversight.",
+      "chars": 979,
+      "chunk_sha256": "ece032fa0f7120b612ee0a4afffb5e96a716845ccc948a7efce49103f0456a90"
+    },
+    "404.1520": {
+      "file": "corpus/chunks/404.1520.json",
+      "subpart": "P",
+      "heading": "Evaluation of disability in general.",
+      "chars": 7167,
+      "chunk_sha256": "bca535bf145b619b9ce4ac4542c380ffd63826c709eca6bb33de1f06b2d69f84"
+    },
+    "404.1520a": {
+      "file": "corpus/chunks/404.1520a.json",
+      "subpart": "P",
+      "heading": "Evaluation of mental impairments.",
+      "chars": 7953,
+      "chunk_sha256": "b701dd9d84b3e89ef026108a5253697924efe780a5c3b3260e3f6984d793f353"
+    },
+    "404.1520b": {
+      "file": "corpus/chunks/404.1520b.json",
+      "subpart": "P",
+      "heading": "How we consider evidence.",
+      "chars": 5204,
+      "chunk_sha256": "2a7fb42fd80f39ac5b74341cecf45b16bf7e15608180ce59287efdd6281d2679"
+    },
+    "404.1520c": {
+      "file": "corpus/chunks/404.1520c.json",
+      "subpart": "P",
+      "heading": "How we consider and articulate medical opinions and prior administrative medical findings for claims filed on or after March 27, 2017.",
+      "chars": 6919,
+      "chunk_sha256": "a02a612ff9ee95e8a308fae77d7ef53c39bde4b7d00e8bac4d07fefc59bde481"
+    },
+    "404.1521": {
+      "file": "corpus/chunks/404.1521.json",
+      "subpart": "P",
+      "heading": "Establishing that you have a medically determinable impairment(s).",
+      "chars": 742,
+      "chunk_sha256": "31382533e0951b51e537fe3d37ff939d12cd39d3f45f578a17c955a4224919ca"
+    },
+    "404.1522": {
+      "file": "corpus/chunks/404.1522.json",
+      "subpart": "P",
+      "heading": "What we mean by an impairment(s) that is not severe.",
+      "chars": 741,
+      "chunk_sha256": "3ddbca109f1fb3927a08dff07e1b73904af9380aea1c74a2c7ddab4f161c3c4f"
+    },
+    "404.1523": {
+      "file": "corpus/chunks/404.1523.json",
+      "subpart": "P",
+      "heading": "Multiple impairments.",
+      "chars": 1535,
+      "chunk_sha256": "fc7771eb61171d920fb3c2266f46d1502189b490368705061c7829c6528083db"
+    },
+    "404.1525": {
+      "file": "corpus/chunks/404.1525.json",
+      "subpart": "P",
+      "heading": "Listing of Impairments in appendix 1.",
+      "chars": 3849,
+      "chunk_sha256": "d82cc40b22196f51c760ae5a65bc3eb79bedc67abbbaa08a6d834621268e16ba"
+    },
+    "404.1526": {
+      "file": "corpus/chunks/404.1526.json",
+      "subpart": "P",
+      "heading": "Medical equivalence.",
+      "chars": 3654,
+      "chunk_sha256": "5387633334a39f1006836efa6fe579360a99f4a773068d4f7296abaa2aa08ba7"
+    },
+    "404.1527": {
+      "file": "corpus/chunks/404.1527.json",
+      "subpart": "P",
+      "heading": "Evaluating opinion evidence for claims filed before March 27, 2017.",
+      "chars": 10869,
+      "chunk_sha256": "28afa7359bccd6c266a9475cf6f11d2355ac8dcc058c25d34181d2bbf0cfe460"
+    },
+    "404.1528": {
+      "file": "corpus/chunks/404.1528.json",
+      "subpart": "P",
+      "heading": "[Reserved]",
+      "chars": 0,
+      "chunk_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "404.1529": {
+      "file": "corpus/chunks/404.1529.json",
+      "subpart": "P",
+      "heading": "How we evaluate symptoms, including pain.",
+      "chars": 12695,
+      "chunk_sha256": "3b919373207ac909e45664262cbaace6fb4120c1866baba4dbf4102ccdf42d43"
+    },
+    "404.1530": {
+      "file": "corpus/chunks/404.1530.json",
+      "subpart": "P",
+      "heading": "Need to follow prescribed treatment.",
+      "chars": 1470,
+      "chunk_sha256": "a2d50347c594788501970ce26244681872b76b832d4d5f12081edba858d6c572"
+    },
+    "404.1535": {
+      "file": "corpus/chunks/404.1535.json",
+      "subpart": "P",
+      "heading": "How we will determine whether your drug addiction or alcoholism is a contributing factor material to the determination of disability.",
+      "chars": 1338,
+      "chunk_sha256": "0a0ddbd4909a1a2041dd5ecf160d3caa771f19ebed503611ef6adfcd779120f5"
+    },
+    "404.1545": {
+      "file": "corpus/chunks/404.1545.json",
+      "subpart": "P",
+      "heading": "Your residual functional capacity.",
+      "chars": 6028,
+      "chunk_sha256": "3af9a1749efe144db3c73e2abb54622a31cd15375f347f16947444a95429ab13"
+    },
+    "404.1546": {
+      "file": "corpus/chunks/404.1546.json",
+      "subpart": "P",
+      "heading": "Responsibility for assessing your residual functional capacity.",
+      "chars": 1510,
+      "chunk_sha256": "4609f7f683ac38499e18d51af9a3fd9b7d3aea8c2a368aa11c25b1774a5bd232"
+    },
+    "404.1560": {
+      "file": "corpus/chunks/404.1560.json",
+      "subpart": "P",
+      "heading": "When we will consider your vocational background.",
+      "chars": 5150,
+      "chunk_sha256": "0a010a4138bad6a6272d74e70813018d70c14ee95d196cfeb7b9111c5943dac1"
+    },
+    "404.1562": {
+      "file": "corpus/chunks/404.1562.json",
+      "subpart": "P",
+      "heading": "Medical-vocational profiles showing an inability to make an adjustment to other work.",
+      "chars": 1028,
+      "chunk_sha256": "975b319f96bdd6c6a2cd6e3e8fea45138c20c33957e64eb0ec7ce544debf80f3"
+    },
+    "404.1563": {
+      "file": "corpus/chunks/404.1563.json",
+      "subpart": "P",
+      "heading": "Your age as a vocational factor.",
+      "chars": 2777,
+      "chunk_sha256": "4017e06f87e24274a5abd91f5f4171cc71346b0bb8113ce9af26bfd5e9632956"
+    },
+    "404.1564": {
+      "file": "corpus/chunks/404.1564.json",
+      "subpart": "P",
+      "heading": "Your education as a vocational factor.",
+      "chars": 3205,
+      "chunk_sha256": "831d0e0daabfee16d6797536fcfdee72e9cb95f71a848c78b781a0b95e2f022b"
+    },
+    "404.1565": {
+      "file": "corpus/chunks/404.1565.json",
+      "subpart": "P",
+      "heading": "Your work experience as a vocational factor.",
+      "chars": 2631,
+      "chunk_sha256": "1ada37968ca6735c97cadafc1f9697e348e1ac09af8186e41c6b5de2123cf991"
+    },
+    "404.1566": {
+      "file": "corpus/chunks/404.1566.json",
+      "subpart": "P",
+      "heading": "Work which exists in the national economy.",
+      "chars": 2939,
+      "chunk_sha256": "fd1decfa644004c8ce7f0a969be28ff7d7d46323145d5cd296a27c851230466f"
+    },
+    "404.1567": {
+      "file": "corpus/chunks/404.1567.json",
+      "subpart": "P",
+      "heading": "Physical exertion requirements.",
+      "chars": 2326,
+      "chunk_sha256": "c9e20b8da33d71c203686e99662cf424e5d923368ecee4e00f3813fa03f94396"
+    },
+    "404.1568": {
+      "file": "corpus/chunks/404.1568.json",
+      "subpart": "P",
+      "heading": "Skill requirements.",
+      "chars": 5412,
+      "chunk_sha256": "4d1982466daa401c4ecfe8729f84ea6301f9094e5db3feed08c2f56a84494191"
+    },
+    "404.1569": {
+      "file": "corpus/chunks/404.1569.json",
+      "subpart": "P",
+      "heading": "Listing of Medical-Vocational Guidelines in appendix 2.",
+      "chars": 1101,
+      "chunk_sha256": "2d81db77d2725a98771c7c0bfa6c7cf11e8392f7336604161fed08a59a88714a"
+    },
+    "404.1569a": {
+      "file": "corpus/chunks/404.1569a.json",
+      "subpart": "P",
+      "heading": "Exertional and nonexertional limitations.",
+      "chars": 4739,
+      "chunk_sha256": "2269a20886a0a151f328d87a4ae7fadae591657fd7554a83a1c21bcd3032b1ef"
+    },
+    "404.1571": {
+      "file": "corpus/chunks/404.1571.json",
+      "subpart": "P",
+      "heading": "General.",
+      "chars": 665,
+      "chunk_sha256": "7679514af7138f5ebb66a633bc91838290fd502efb82fa03c1108dbf9b0fc548"
+    },
+    "404.1572": {
+      "file": "corpus/chunks/404.1572.json",
+      "subpart": "P",
+      "heading": "What we mean by substantial gainful activity.",
+      "chars": 821,
+      "chunk_sha256": "13e82f54cad0351937ea02a04591795b700316643d47c3ef702960468952be5b"
+    },
+    "404.1573": {
+      "file": "corpus/chunks/404.1573.json",
+      "subpart": "P",
+      "heading": "General information about work activity.",
+      "chars": 3331,
+      "chunk_sha256": "755bdd12b94e0337ec790866f72b50731a7db1517247dce7f73cb7510075b462"
+    },
+    "404.1574": {
+      "file": "corpus/chunks/404.1574.json",
+      "subpart": "P",
+      "heading": "Evaluation guides if you are an employee.",
+      "chars": 15353,
+      "chunk_sha256": "85cec8b82e4ed4b6ae10af0deafbeaae862aba04aac3df23044b2f3f585c253f"
+    },
+    "404.1574a": {
+      "file": "corpus/chunks/404.1574a.json",
+      "subpart": "P",
+      "heading": "When and how we will average your earnings.",
+      "chars": 1414,
+      "chunk_sha256": "7944f9d1704b43e4849aa847cbdc19f1be235b70367a5153baf5dd937f77b655"
+    },
+    "404.1575": {
+      "file": "corpus/chunks/404.1575.json",
+      "subpart": "P",
+      "heading": "Evaluation guides if you are self-employed.",
+      "chars": 14208,
+      "chunk_sha256": "9070800e368baf531221c053f0eff4612d2507fbe376d77078127fdcb29895e5"
+    },
+    "404.1576": {
+      "file": "corpus/chunks/404.1576.json",
+      "subpart": "P",
+      "heading": "Impairment-related work expenses.",
+      "chars": 19927,
+      "chunk_sha256": "aceba880c7bc24c11b344603220bdc823543d6cd38a8538ce7689cff95953abb"
+    },
+    "404.1577": {
+      "file": "corpus/chunks/404.1577.json",
+      "subpart": "P",
+      "heading": "Disability defined for widows, widowers, and surviving divorced spouses for monthly benefits payable for months prior to January 1991.",
+      "chars": 851,
+      "chunk_sha256": "87a4c5d7172923e7bbfff6e9d201c5ebc7e447770f10d58703afefdf5a1e49fd"
+    },
+    "404.1578": {
+      "file": "corpus/chunks/404.1578.json",
+      "subpart": "P",
+      "heading": "How we determine disability for widows, widowers, and surviving divorced spouses for monthly benefits payable for months prior to January 1991.",
+      "chars": 653,
+      "chunk_sha256": "0ac841d768f63a9742694b3bd6a1356954e8a4ec1edd2e15fff2a6f44e633853"
+    },
+    "404.1579": {
+      "file": "corpus/chunks/404.1579.json",
+      "subpart": "P",
+      "heading": "How we will determine whether your disability continues or ends.",
+      "chars": 25172,
+      "chunk_sha256": "650f74e64285b2370c24919e216b9b20429253e954054a586ce51e37f8299aad"
+    },
+    "404.1581": {
+      "file": "corpus/chunks/404.1581.json",
+      "subpart": "P",
+      "heading": "Meaning of blindness as defined in the law.",
+      "chars": 678,
+      "chunk_sha256": "3c5ffcdab58c643258f3d9368f36d39684b58fbc42a2cdce30f2ddb7026a0c2e"
+    },
+    "404.1582": {
+      "file": "corpus/chunks/404.1582.json",
+      "subpart": "P",
+      "heading": "A period of disability based on blindness.",
+      "chars": 707,
+      "chunk_sha256": "faadec220e89a23b071ba5fddb4b1dc46d610669df0a7b0f679f9d1ebda3c0bd"
+    },
+    "404.1583": {
+      "file": "corpus/chunks/404.1583.json",
+      "subpart": "P",
+      "heading": "How we determine disability for blind persons who are age 55 or older.",
+      "chars": 480,
+      "chunk_sha256": "43947dfabf7cf4151cd4dd3de8780c72dfcfb164cbfaa86d6e9a04ea01006bd5"
+    },
+    "404.1584": {
+      "file": "corpus/chunks/404.1584.json",
+      "subpart": "P",
+      "heading": "Evaluation of work activity of blind people.",
+      "chars": 3137,
+      "chunk_sha256": "40d65651cf7ef0245dc98909eff0b5de86c1f3d4af5a20d9f4177896b41bd984"
+    },
+    "404.1585": {
+      "file": "corpus/chunks/404.1585.json",
+      "subpart": "P",
+      "heading": "Trial work period for persons age 55 or older who are blind.",
+      "chars": 532,
+      "chunk_sha256": "db3082fa9f6e592311a0eca578a0b403c4fe364894994375b4510a243185cf8c"
+    },
+    "404.1586": {
+      "file": "corpus/chunks/404.1586.json",
+      "subpart": "P",
+      "heading": "Why and when we will stop your cash benefits.",
+      "chars": 5147,
+      "chunk_sha256": "ce02674f097ba4f96d9adc17fe7e5880793ae9d50a5ac74d1672f13dc004f0f8"
+    },
+    "404.1587": {
+      "file": "corpus/chunks/404.1587.json",
+      "subpart": "P",
+      "heading": "Circumstances under which we may suspend and terminate your benefits before we make a determination.",
+      "chars": 1488,
+      "chunk_sha256": "f57bb1538ccc84fcb094978973c5b10a1fa961722149b9ecdf24b9251c00ab52"
+    },
+    "404.1588": {
+      "file": "corpus/chunks/404.1588.json",
+      "subpart": "P",
+      "heading": "Your responsibility to tell us of events that may change your disability status.",
+      "chars": 3211,
+      "chunk_sha256": "efd01c5c51c0aa961802504dd863e0f66924fad6b8ce0b502e3e3277ed64e8eb"
+    },
+    "404.1589": {
+      "file": "corpus/chunks/404.1589.json",
+      "subpart": "P",
+      "heading": "We may conduct a review to find out whether you continue to be disabled.",
+      "chars": 1238,
+      "chunk_sha256": "9fbfaae82e172a45e67a6c51ffc0e0ae67bd5140c29135386beb1caaf76e63fd"
+    },
+    "404.1590": {
+      "file": "corpus/chunks/404.1590.json",
+      "subpart": "P",
+      "heading": "When and how often we will conduct a continuing disability review.",
+      "chars": 13476,
+      "chunk_sha256": "9b127ee31fc1529972931d53e2b7e96db98aeaa389e6c6fdb2550c0508eab802"
+    },
+    "404.1591": {
+      "file": "corpus/chunks/404.1591.json",
+      "subpart": "P",
+      "heading": "If your medical recovery was expected and you returned to work.",
+      "chars": 664,
+      "chunk_sha256": "e1184b1c96d8e921bd40a70c7bb8dead106db5490adf24ab0afaa5c7d5be926e"
+    },
+    "404.1592": {
+      "file": "corpus/chunks/404.1592.json",
+      "subpart": "P",
+      "heading": "The trial work period.",
+      "chars": 6426,
+      "chunk_sha256": "6d546721dc4cdf42482ee62284b34ef86d3aaa23de607540b6965ae51bd0ea4c"
+    },
+    "404.1592a": {
+      "file": "corpus/chunks/404.1592a.json",
+      "subpart": "P",
+      "heading": "The reentitlement period.",
+      "chars": 6739,
+      "chunk_sha256": "14ae8de8f97b5eaab6c16a688901127570d5ca73d4a8e251eaf270c90c7c3fd1"
+    },
+    "404.1592b": {
+      "file": "corpus/chunks/404.1592b.json",
+      "subpart": "P",
+      "heading": "What is expedited reinstatement?",
+      "chars": 1262,
+      "chunk_sha256": "657a89ccaee7351f1335f96ce2f23a8311b466bf504d6f9216bf4e7ef60b45bc"
+    },
+    "404.1592c": {
+      "file": "corpus/chunks/404.1592c.json",
+      "subpart": "P",
+      "heading": "Who is entitled to expedited reinstatement?",
+      "chars": 2325,
+      "chunk_sha256": "c58b0f42d5b88a0f60cdd4e5b93d754c2da21c73c360db4f8a7102065b550f88"
+    },
+    "404.1592d": {
+      "file": "corpus/chunks/404.1592d.json",
+      "subpart": "P",
+      "heading": "How do I request reinstatement?",
+      "chars": 1010,
+      "chunk_sha256": "8a1570f14adcdb813679a7268f1ab91097530dc4e763abba1468574983ec7157"
+    },
+    "404.1592e": {
+      "file": "corpus/chunks/404.1592e.json",
+      "subpart": "P",
+      "heading": "How do we determine provisional benefits?",
+      "chars": 4797,
+      "chunk_sha256": "bfa1dbfbb3db8d6ee3c33c20315799fe34f4a95602cd85a6449f38adc90291ac"
+    },
+    "404.1592f": {
+      "file": "corpus/chunks/404.1592f.json",
+      "subpart": "P",
+      "heading": "How do we determine reinstated benefits?",
+      "chars": 3892,
+      "chunk_sha256": "db4363e725ef0ce113df32ef124a07bd0f8d40f80ba311ca0f4a18b4d634cdc3"
+    },
+    "404.1593": {
+      "file": "corpus/chunks/404.1593.json",
+      "subpart": "P",
+      "heading": "Medical evidence in continuing disability review cases.",
+      "chars": 2240,
+      "chunk_sha256": "87fb047c0cf308cae1ccf9520e0155521e56e70bf28b91affc23dce65a835f34"
+    },
+    "404.1594": {
+      "file": "corpus/chunks/404.1594.json",
+      "subpart": "P",
+      "heading": "How we will determine whether your disability continues or ends.",
+      "chars": 37928,
+      "chunk_sha256": "e75e2b9b7b3ac73a80b9fec26770ede654dd3bfb5aa2cc50365f027773850868"
+    },
+    "404.1595": {
+      "file": "corpus/chunks/404.1595.json",
+      "subpart": "P",
+      "heading": "When we determine that you are not now disabled.",
+      "chars": 2616,
+      "chunk_sha256": "5de830d40c090dffeb39302d4784b9af21562386ad3f4dbf5757c3a49b561b86"
+    },
+    "404.1596": {
+      "file": "corpus/chunks/404.1596.json",
+      "subpart": "P",
+      "heading": "Circumstances under which we may suspend and terminate your benefits before we make a determination.",
+      "chars": 3887,
+      "chunk_sha256": "4777c180fd1b6e68c7e4351b656a3f33766fdc3e5276f347cc2b11771d52fbab"
+    },
+    "404.1597": {
+      "file": "corpus/chunks/404.1597.json",
+      "subpart": "P",
+      "heading": "After we make a determination that you are not now disabled.",
+      "chars": 2765,
+      "chunk_sha256": "31db4a004afb8ce9b646b72d93b2d556663b4cf9d308daf91bfa8904fa553b98"
+    },
+    "404.1597a": {
+      "file": "corpus/chunks/404.1597a.json",
+      "subpart": "P",
+      "heading": "Continued benefits pending appeal of a medical cessation determination.",
+      "chars": 20304,
+      "chunk_sha256": "0db988862ad548c448b9f69eb3e9366150390ca76d1f758e5582230e3f1eb598"
+    },
+    "404.1598": {
+      "file": "corpus/chunks/404.1598.json",
+      "subpart": "P",
+      "heading": "If you become disabled by another impairment(s).",
+      "chars": 379,
+      "chunk_sha256": "d880ce365306e5fd0b3f12a86a31c794ee5b63beea176a15994acf6abecbd9aa"
+    },
+    "404.1599": {
+      "file": "corpus/chunks/404.1599.json",
+      "subpart": "P",
+      "heading": "Work incentive experiments and rehabilitation demonstration projects in the disability program.",
+      "chars": 4485,
+      "chunk_sha256": "562df1265d0940f85047f0c62d57c617628c1293e670f487dab1e0ee59ae6aaf"
+    },
+    "404.1601": {
+      "file": "corpus/chunks/404.1601.json",
+      "subpart": "Q",
+      "heading": "Purpose and scope.",
+      "chars": 1931,
+      "chunk_sha256": "0f51cd080289350b3c53f8ef487eb6ff90f194fb0564e2b892ab5029190efff6"
+    },
+    "404.1602": {
+      "file": "corpus/chunks/404.1602.json",
+      "subpart": "Q",
+      "heading": "Definitions.",
+      "chars": 2835,
+      "chunk_sha256": "a7c2f8bf8d160a9badf2afe55a400d21095eeb7faed6ba5028cd18b41599497c"
+    },
+    "404.1603": {
+      "file": "corpus/chunks/404.1603.json",
+      "subpart": "Q",
+      "heading": "Basic responsibilities for us and the State.",
+      "chars": 2978,
+      "chunk_sha256": "029bec8b8e810b78fead82ab6b8e89be3dae42efb605967f97f7b039c33b0a68"
+    },
+    "404.1610": {
+      "file": "corpus/chunks/404.1610.json",
+      "subpart": "Q",
+      "heading": "How a State notifies us that it wishes to perform the disability determination function.",
+      "chars": 725,
+      "chunk_sha256": "2a174dbda7534f0edfed78c2a91dc521f519672932ea0e02a7233bb66f51fe17"
+    },
+    "404.1611": {
+      "file": "corpus/chunks/404.1611.json",
+      "subpart": "Q",
+      "heading": "How we notify a State whether it may perform the disability determination function.",
+      "chars": 791,
+      "chunk_sha256": "95ee6326d462db230d6f9e77fa2124e3a108ae47d3f807260c0c5b6f85a95a3f"
+    },
+    "404.1613": {
+      "file": "corpus/chunks/404.1613.json",
+      "subpart": "Q",
+      "heading": "Disability determinations the State makes.",
+      "chars": 988,
+      "chunk_sha256": "1976d22aea8b05493ba995b06bad63be2a62882f28065ac968ff2bbba11e280a"
+    },
+    "404.1614": {
+      "file": "corpus/chunks/404.1614.json",
+      "subpart": "Q",
+      "heading": "Responsibilities for obtaining evidence to make disability determinations.",
+      "chars": 713,
+      "chunk_sha256": "4201c2b7c7c265efccf0c20207120e4d86d23ac5f86c328a41fe741493f06148"
+    },
+    "404.1615": {
+      "file": "corpus/chunks/404.1615.json",
+      "subpart": "Q",
+      "heading": "Making disability determinations.",
+      "chars": 2067,
+      "chunk_sha256": "177b2dd72f6c32aea6f0704aeb66ae59fd74691082db9fefe0e9d2efc0863ca2"
+    },
+    "404.1616": {
+      "file": "corpus/chunks/404.1616.json",
+      "subpart": "Q",
+      "heading": "Medical consultants and psychological consultants.",
+      "chars": 2539,
+      "chunk_sha256": "c5f87086f7d4cbcbfe32fed8ad3c520286ea26351fcc70a7c80cddd58bc9b3fa"
+    },
+    "404.1617": {
+      "file": "corpus/chunks/404.1617.json",
+      "subpart": "Q",
+      "heading": "Reasonable efforts to obtain review by a physician, psychiatrist, and psychologist.",
+      "chars": 2323,
+      "chunk_sha256": "96c1cce2829f51769e0506a9bd6a7b7101c48efe29fa5faed6cd08069919b8a6"
+    },
+    "404.1618": {
+      "file": "corpus/chunks/404.1618.json",
+      "subpart": "Q",
+      "heading": "Notifying claimants of the disability determination.",
+      "chars": 188,
+      "chunk_sha256": "9eed25ee58239c5c9bb90f368f9859d971a01f7b8500e28be67e82c726ebb410"
+    },
+    "404.1619": {
+      "file": "corpus/chunks/404.1619.json",
+      "subpart": "Q",
+      "heading": "Quick disability determination process.",
+      "chars": 1622,
+      "chunk_sha256": "7382f333cbbf1c9ad770c1c406357a7a480d0d5deead13330562f8a43a0c86e6"
+    },
+    "404.1620": {
+      "file": "corpus/chunks/404.1620.json",
+      "subpart": "Q",
+      "heading": "General administrative requirements.",
+      "chars": 1378,
+      "chunk_sha256": "cb89055eb79abe740d6a4c54de60624bbb5f5b33bf235047114fde9414feb62d"
+    },
+    "404.1621": {
+      "file": "corpus/chunks/404.1621.json",
+      "subpart": "Q",
+      "heading": "Personnel.",
+      "chars": 893,
+      "chunk_sha256": "c6d05e99a7c1fa94ca434439e0345a830bceda6076ed5509d42a0853f045cdad"
+    },
+    "404.1622": {
+      "file": "corpus/chunks/404.1622.json",
+      "subpart": "Q",
+      "heading": "Training.",
+      "chars": 609,
+      "chunk_sha256": "2dbe0d2cead46d1d89c99ac2e93f77febcfdd66ed5d19e77e9e2705d5c43f3c6"
+    },
+    "404.1623": {
+      "file": "corpus/chunks/404.1623.json",
+      "subpart": "Q",
+      "heading": "Facilities.",
+      "chars": 1074,
+      "chunk_sha256": "1609870c8f8329fffedfa83372e1a479d8fa323e0d82b3655cacf27c84a99dce"
+    },
+    "404.1624": {
+      "file": "corpus/chunks/404.1624.json",
+      "subpart": "Q",
+      "heading": "Medical and other purchased services.",
+      "chars": 343,
+      "chunk_sha256": "2bfcbc22e99da7f6a2724d86a7ce20e90e8eb82d1615371ad15cf3bcd5fafd69"
+    },
+    "404.1625": {
+      "file": "corpus/chunks/404.1625.json",
+      "subpart": "Q",
+      "heading": "Records and reports.",
+      "chars": 591,
+      "chunk_sha256": "b4a4b2ce23e0576ee813843c7171517bf4f87a7d92078077b8ff1cf6886c24e5"
+    },
+    "404.1626": {
+      "file": "corpus/chunks/404.1626.json",
+      "subpart": "Q",
+      "heading": "Fiscal.",
+      "chars": 1998,
+      "chunk_sha256": "a70fc8d9172b6150fba0565b79f92808f05300a59766e60512331a82f1adb5f2"
+    },
+    "404.1627": {
+      "file": "corpus/chunks/404.1627.json",
+      "subpart": "Q",
+      "heading": "Audits.",
+      "chars": 4213,
+      "chunk_sha256": "45c901843532adcb959175d2b5071decb55d0573e28a8485875edaeb16828caa"
+    },
+    "404.1628": {
+      "file": "corpus/chunks/404.1628.json",
+      "subpart": "Q",
+      "heading": "Property.",
+      "chars": 715,
+      "chunk_sha256": "73e58a49b89805e4b3c57532c697a177cf6e4051dfdd0e5155bb009ff9a18544"
+    },
+    "404.1629": {
+      "file": "corpus/chunks/404.1629.json",
+      "subpart": "Q",
+      "heading": "Participation in research and demonstration projects.",
+      "chars": 387,
+      "chunk_sha256": "f21c41a6d9b798f5e47fce2e001df7486ca10e35d2fcbb52e8cd6c4f673914ad"
+    },
+    "404.1630": {
+      "file": "corpus/chunks/404.1630.json",
+      "subpart": "Q",
+      "heading": "Coordination with other agencies.",
+      "chars": 600,
+      "chunk_sha256": "dc621630f99038909707bdea0934c819fa5dcb866759faed35938a330af9c8a3"
+    },
+    "404.1631": {
+      "file": "corpus/chunks/404.1631.json",
+      "subpart": "Q",
+      "heading": "Confidentiality of information and records.",
+      "chars": 202,
+      "chunk_sha256": "3c773862db31dde89d366dee99a6eb76814db43a3b801a986812cd9ae5e92a3f"
+    },
+    "404.1632": {
+      "file": "corpus/chunks/404.1632.json",
+      "subpart": "Q",
+      "heading": "Other Federal laws and regulations.",
+      "chars": 261,
+      "chunk_sha256": "dc585f2babb349f136e1a4af3a7f5dbfa045a82373229ef9897b369e5dae1bbf"
+    },
+    "404.1633": {
+      "file": "corpus/chunks/404.1633.json",
+      "subpart": "Q",
+      "heading": "Policies and operating instructions.",
+      "chars": 766,
+      "chunk_sha256": "860f54fb64cb6a1d8eee510b7e3657c4fdd16e668e3b6101cc73abc83cb5f5fc"
+    },
+    "404.1640": {
+      "file": "corpus/chunks/404.1640.json",
+      "subpart": "Q",
+      "heading": "General.",
+      "chars": 918,
+      "chunk_sha256": "e2e456bcf2f6b8a68c05d665eb3c320761a4634affb23badee71040ec8ce3fba"
+    },
+    "404.1641": {
+      "file": "corpus/chunks/404.1641.json",
+      "subpart": "Q",
+      "heading": "Standards of performance.",
+      "chars": 1803,
+      "chunk_sha256": "408b8cf1f1274d7d542702d0448d13607c3abc2f389dc78ae78e28617745c3c6"
+    },
+    "404.1642": {
+      "file": "corpus/chunks/404.1642.json",
+      "subpart": "Q",
+      "heading": "Processing time standards.",
+      "chars": 920,
+      "chunk_sha256": "0a3c176ded2205ed91ecf7d7a435ee1e506f3157a46fbcde6f0041c2174a918e"
+    },
+    "404.1643": {
+      "file": "corpus/chunks/404.1643.json",
+      "subpart": "Q",
+      "heading": "Performance accuracy standard.",
+      "chars": 1433,
+      "chunk_sha256": "274e1bd40903530b37cdc70513639dd376db751cbec73110e3842cf3b978cfa2"
+    },
+    "404.1644": {
+      "file": "corpus/chunks/404.1644.json",
+      "subpart": "Q",
+      "heading": "How and when we determine whether the processing time standards are met.",
+      "chars": 982,
+      "chunk_sha256": "a7d8357c09698cf943b80ee880c19385904d4e9bea4b16b562c55816fd31a0ed"
+    },
+    "404.1645": {
+      "file": "corpus/chunks/404.1645.json",
+      "subpart": "Q",
+      "heading": "How and when we determine whether the performance accuracy standard is met.",
+      "chars": 561,
+      "chunk_sha256": "2ab7deab457249afebd3aff29d88a57c0b9b0f1b3e09ba10d8777012af4a4bbe"
+    },
+    "404.1650": {
+      "file": "corpus/chunks/404.1650.json",
+      "subpart": "Q",
+      "heading": "Action we will take if a State agency does not meet the standards.",
+      "chars": 423,
+      "chunk_sha256": "216f5030493d219379afe7b680aa2df0a0a57135ccd82a4e725f23c8ffef8ab4"
+    },
+    "404.1660": {
+      "file": "corpus/chunks/404.1660.json",
+      "subpart": "Q",
+      "heading": "How we will monitor.",
+      "chars": 759,
+      "chunk_sha256": "20c5c8838007e3d71ae20073569797d7643bd596b57338e694b9ca8c01d8ea23"
+    },
+    "404.1661": {
+      "file": "corpus/chunks/404.1661.json",
+      "subpart": "Q",
+      "heading": "When we will provide performance support.",
+      "chars": 1141,
+      "chunk_sha256": "a64aa5dd274ef4f6d63224500e4dd57fbedd96ee07a4a759c405e37f6fccc512"
+    },
+    "404.1662": {
+      "file": "corpus/chunks/404.1662.json",
+      "subpart": "Q",
+      "heading": "What support we will provide.",
+      "chars": 617,
+      "chunk_sha256": "837235b587a6e8eee12947e806e9189c5c0d7149a45d68337418a814e3ea48d1"
+    },
+    "404.1670": {
+      "file": "corpus/chunks/404.1670.json",
+      "subpart": "Q",
+      "heading": "General.",
+      "chars": 1100,
+      "chunk_sha256": "83a70555added717e6f859a06af4d7d9c426c8e415f178ee070e317e17a1686f"
+    },
+    "404.1671": {
+      "file": "corpus/chunks/404.1671.json",
+      "subpart": "Q",
+      "heading": "Good cause for not following the Act, our regulations, or other written guidelines.",
+      "chars": 941,
+      "chunk_sha256": "d5888e68ffc7168eaee9f779f10b44b910b390d7c834299e36c2887a6c081286"
+    },
+    "404.1675": {
+      "file": "corpus/chunks/404.1675.json",
+      "subpart": "Q",
+      "heading": "Finding of substantial failure.",
+      "chars": 141,
+      "chunk_sha256": "3baf3505f385c0ad71f24664b7b187886a0bfdb3448baa3b5c27d7fd8f2bb2a1"
+    },
+    "404.1680": {
+      "file": "corpus/chunks/404.1680.json",
+      "subpart": "Q",
+      "heading": "Notice of right to hearing on proposed finding of substantial failure.",
+      "chars": 967,
+      "chunk_sha256": "671d471eb11bb53fbe8b6e1e1339765eeb312e1557c6ec517bef862105c83ead"
+    },
+    "404.1681": {
+      "file": "corpus/chunks/404.1681.json",
+      "subpart": "Q",
+      "heading": "Disputes on matters other than substantial failure.",
+      "chars": 381,
+      "chunk_sha256": "b4ced8fd00a2367f457c61e375c52bd6b8cd2fbac5679bdc56cc889d30a96e31"
+    },
+    "404.1682": {
+      "file": "corpus/chunks/404.1682.json",
+      "subpart": "Q",
+      "heading": "Who conducts the hearings.",
+      "chars": 127,
+      "chunk_sha256": "8c9c8000724c4cc506dbf2f1e0ee828d8ba129cf65ab0ebe25f141da5d69e227"
+    },
+    "404.1683": {
+      "file": "corpus/chunks/404.1683.json",
+      "subpart": "Q",
+      "heading": "Hearings and appeals process.",
+      "chars": 201,
+      "chunk_sha256": "1a60f7adefaf54baff5556ecdb1b0fc80cbaae1fa7db1ccd4300e52017ca206e"
+    },
+    "404.1690": {
+      "file": "corpus/chunks/404.1690.json",
+      "subpart": "Q",
+      "heading": "Assumption when we make a finding of substantial failure.",
+      "chars": 601,
+      "chunk_sha256": "da965a085d1fd8f8c6eab0f866e02636ddf9b0bd3576613387894ed862d6bbba"
+    },
+    "404.1691": {
+      "file": "corpus/chunks/404.1691.json",
+      "subpart": "Q",
+      "heading": "Assumption when State no longer wishes to perform the disability determination function.",
+      "chars": 1130,
+      "chunk_sha256": "c93e1e1414d3d59acc451ba4505bca85ac41eaa7b133edaeca742f21410c19cd"
+    },
+    "404.1692": {
+      "file": "corpus/chunks/404.1692.json",
+      "subpart": "Q",
+      "heading": "Protection of State employees.",
+      "chars": 1278,
+      "chunk_sha256": "2a747296105094131a834c9b69b48ccc7b6f23a282274e3cbf6fc90624be090f"
+    },
+    "404.1693": {
+      "file": "corpus/chunks/404.1693.json",
+      "subpart": "Q",
+      "heading": "Limitation on State expenditures after notice.",
+      "chars": 460,
+      "chunk_sha256": "fc80c5b0f86f389894d793a58cbe94c2f56f31302147a43b6fea9a6cc953a971"
+    },
+    "404.1694": {
+      "file": "corpus/chunks/404.1694.json",
+      "subpart": "Q",
+      "heading": "Final accounting by the State.",
+      "chars": 674,
+      "chunk_sha256": "8afb01e4905695e480071694af80632df5aac30862b8a538d79a8683aa8148f2"
+    },
+    "404.701": {
+      "file": "corpus/chunks/404.701.json",
+      "subpart": "H",
+      "heading": "Introduction.",
+      "chars": 584,
+      "chunk_sha256": "52805f3a3e42c2fc1c45a19e97345b2ad51088db2da3411b56a6ea2709ef0847"
+    },
+    "404.702": {
+      "file": "corpus/chunks/404.702.json",
+      "subpart": "H",
+      "heading": "Definitions.",
+      "chars": 1694,
+      "chunk_sha256": "96b1b5d01dcad8eaa5feca55ca9b9d6dd8a115d1ae67afa28f128ffbd0402783"
+    },
+    "404.703": {
+      "file": "corpus/chunks/404.703.json",
+      "subpart": "H",
+      "heading": "When evidence is needed.",
+      "chars": 2214,
+      "chunk_sha256": "1737f98f97d338d955439a2af35f2e9838864ec5594624a2dacfd03163b7da83"
+    },
+    "404.704": {
+      "file": "corpus/chunks/404.704.json",
+      "subpart": "H",
+      "heading": "Your responsibility for giving evidence.",
+      "chars": 727,
+      "chunk_sha256": "8d862247621b22d4be69eb1ca6e1d02041da2e298f0cda53793c65432371af38"
+    },
+    "404.705": {
+      "file": "corpus/chunks/404.705.json",
+      "subpart": "H",
+      "heading": "Failure to give requested evidence.",
+      "chars": 979,
+      "chunk_sha256": "bdf2598efa5533be7c34632c228797720afb50db71bef1d7821a47515c72e7ab"
+    },
+    "404.706": {
+      "file": "corpus/chunks/404.706.json",
+      "subpart": "H",
+      "heading": "Where to give evidence.",
+      "chars": 307,
+      "chunk_sha256": "8760c07a341734530861aa3973ee2dde727152c482380b8136fd8d26007384d7"
+    },
+    "404.707": {
+      "file": "corpus/chunks/404.707.json",
+      "subpart": "H",
+      "heading": "Original records or copies as evidence.",
+      "chars": 1289,
+      "chunk_sha256": "2416d36a23eca96361f83be525ec264342b9444ddeb48646ace234eb17bab822"
+    },
+    "404.708": {
+      "file": "corpus/chunks/404.708.json",
+      "subpart": "H",
+      "heading": "How we decide what is enough evidence.",
+      "chars": 771,
+      "chunk_sha256": "52eeb9701d47ed8e0e373d7d12a2cc14b9dac47f044b22f377290e54e0f8e5e2"
+    },
+    "404.709": {
+      "file": "corpus/chunks/404.709.json",
+      "subpart": "H",
+      "heading": "Preferred evidence and other evidence.",
+      "chars": 980,
+      "chunk_sha256": "8b5a30c55d35cc257d67f3fa87dfbae350a8d04cdd29e1390bbeb042639f10d5"
+    },
+    "404.715": {
+      "file": "corpus/chunks/404.715.json",
+      "subpart": "H",
+      "heading": "When evidence of age is needed.",
+      "chars": 845,
+      "chunk_sha256": "3a3be906304c27ba952f90c9a2ba9b01e777e4e29cb10c263cc316c01f2cfe87"
+    },
+    "404.716": {
+      "file": "corpus/chunks/404.716.json",
+      "subpart": "H",
+      "heading": "Type of evidence of age to be given.",
+      "chars": 766,
+      "chunk_sha256": "d9f9b361413b8aaa13f554c972a126a23b99c6f42fcfdf4743b87ce51674c393"
+    },
+    "404.720": {
+      "file": "corpus/chunks/404.720.json",
+      "subpart": "H",
+      "heading": "Evidence of a person's death.",
+      "chars": 1306,
+      "chunk_sha256": "43442fa1ca24d53e65d514e917a2ca42dccc0bbbb33ef5da2bfd80f679c68152"
+    },
+    "404.721": {
+      "file": "corpus/chunks/404.721.json",
+      "subpart": "H",
+      "heading": "Evidence to presume a person is dead.",
+      "chars": 1210,
+      "chunk_sha256": "6e409a361d6e90236ba8d30cf75322be5ee87e94cba55f227d35b1a00120812e"
+    },
+    "404.722": {
+      "file": "corpus/chunks/404.722.json",
+      "subpart": "H",
+      "heading": "Rebuttal of a presumption of death.",
+      "chars": 224,
+      "chunk_sha256": "930f5ee516f82683135f3c82f497cc6e18b33c6d5804c705d026640b7b6bf45f"
+    },
+    "404.723": {
+      "file": "corpus/chunks/404.723.json",
+      "subpart": "H",
+      "heading": "When evidence of marriage is required.",
+      "chars": 1014,
+      "chunk_sha256": "9034ebcc6116d921168beda4cd8f625e8b58c69f34923d31f0c5621b49a315bb"
+    },
+    "404.725": {
+      "file": "corpus/chunks/404.725.json",
+      "subpart": "H",
+      "heading": "Evidence of a valid ceremonial marriage.",
+      "chars": 1443,
+      "chunk_sha256": "9db79dfe7057b6947378148fdc1daacda6b77a0858a1062d83b1f01385105f1c"
+    },
+    "404.726": {
+      "file": "corpus/chunks/404.726.json",
+      "subpart": "H",
+      "heading": "Evidence of common-law marriage.",
+      "chars": 1326,
+      "chunk_sha256": "08b7abd5f93dcee92afe21141f39f27348d519c42c491bb630c3e189cc995319"
+    },
+    "404.727": {
+      "file": "corpus/chunks/404.727.json",
+      "subpart": "H",
+      "heading": "Evidence of a deemed valid marriage.",
+      "chars": 1427,
+      "chunk_sha256": "62930be69022d93bf7d69164f34ef233c40472b0cde54d82b1d5a22bd32b9977"
+    },
+    "404.728": {
+      "file": "corpus/chunks/404.728.json",
+      "subpart": "H",
+      "heading": "Evidence a marriage has ended.",
+      "chars": 1087,
+      "chunk_sha256": "565589883aba57e75823cd00858b137c9e7516f1bc874fa1f16e3a44d6cd4895"
+    },
+    "404.730": {
+      "file": "corpus/chunks/404.730.json",
+      "subpart": "H",
+      "heading": "When evidence of a parent or child relationship is needed.",
+      "chars": 331,
+      "chunk_sha256": "ba902e2815b38711a73929bbcd808f0f3bc3545f1855faceb0e75fa94f28bf42"
+    },
+    "404.731": {
+      "file": "corpus/chunks/404.731.json",
+      "subpart": "H",
+      "heading": "Evidence you are a natural parent or child.",
+      "chars": 1267,
+      "chunk_sha256": "3de7bd9acd74ad0d11ede463003dad3d1f9bb57c3e111817d875caa80463ccee"
+    },
+    "404.732": {
+      "file": "corpus/chunks/404.732.json",
+      "subpart": "H",
+      "heading": "Evidence you are a stepparent or stepchild.",
+      "chars": 363,
+      "chunk_sha256": "db42d32e557e9cda7a3728b478f765d8205cfda2ecad4c60d652fad1f4529fac"
+    },
+    "404.733": {
+      "file": "corpus/chunks/404.733.json",
+      "subpart": "H",
+      "heading": "Evidence you are the legally adopting parent or legally adopted child.",
+      "chars": 934,
+      "chunk_sha256": "b754b02c414d0054c6e391c5e4d995d855d6ec3e86e176a256094a33d38fe173"
+    },
+    "404.734": {
+      "file": "corpus/chunks/404.734.json",
+      "subpart": "H",
+      "heading": "Evidence you are an equitably adopted child.",
+      "chars": 752,
+      "chunk_sha256": "d580fbf399d9b279db1d8d8651d00b6239f5afc5b6218b318df7cce359760495"
+    },
+    "404.735": {
+      "file": "corpus/chunks/404.735.json",
+      "subpart": "H",
+      "heading": "Evidence you are the grandchild or stepgrandchild.",
+      "chars": 238,
+      "chunk_sha256": "209f604c4f834071a49eb5a41d61053559c690a4dff467858071dfb69fa44b41"
+    },
+    "404.736": {
+      "file": "corpus/chunks/404.736.json",
+      "subpart": "H",
+      "heading": "Evidence of a child's dependency.",
+      "chars": 2062,
+      "chunk_sha256": "9647436833db6f1b70fd18eafd827f7519499cb3568568e9d730c6b8ac9d71bc"
+    },
+    "404.745": {
+      "file": "corpus/chunks/404.745.json",
+      "subpart": "H",
+      "heading": "Evidence of school attendance for child age 18 or older.",
+      "chars": 587,
+      "chunk_sha256": "06c34c38fc07265b14cc31b91fecf0ce6ac05a4626df1af3bf8053b2f6c1822b"
+    },
+    "404.750": {
+      "file": "corpus/chunks/404.750.json",
+      "subpart": "H",
+      "heading": "Evidence of a parent's support.",
+      "chars": 693,
+      "chunk_sha256": "a2253fb95dc8b52602eb50505be5427b4a79cb20b07bf8892a9f0ffe56c36062"
+    },
+    "404.760": {
+      "file": "corpus/chunks/404.760.json",
+      "subpart": "H",
+      "heading": "Evidence of living in the same household with insured person.",
+      "chars": 1088,
+      "chunk_sha256": "0e3c73640e2b7d235675910da518f236b32b9ea67e5b912a36345671e1b1acd1"
+    },
+    "404.762": {
+      "file": "corpus/chunks/404.762.json",
+      "subpart": "H",
+      "heading": "What is acceptable evidence of having a child in my care?",
+      "chars": 1132,
+      "chunk_sha256": "7bba636d10f02cd04f2278097aaa444deb3accebdedf83cb887d5670ea48dc4b"
+    },
+    "404.770": {
+      "file": "corpus/chunks/404.770.json",
+      "subpart": "H",
+      "heading": "Evidence of where the insured person had a permanent home.",
+      "chars": 1000,
+      "chunk_sha256": "498855a8822e9e65d63e6f93927a63b0af7fb013e19432db3d4462ed58677a43"
+    },
+    "404.780": {
+      "file": "corpus/chunks/404.780.json",
+      "subpart": "H",
+      "heading": "Evidence of \u201cgood cause\u201d for exceeding time limits on accepting proof of support or application for a lump-sum death payment.",
+      "chars": 1070,
+      "chunk_sha256": "510bbdfaba298a403a9b9f7a1b6b30e2a681102c0fe83609bd3e60372ea725b7"
+    },
+    "404.900": {
+      "file": "corpus/chunks/404.900.json",
+      "subpart": "J",
+      "heading": "Introduction.",
+      "chars": 2835,
+      "chunk_sha256": "3261689a5ff0133e298060fe8f928bb991de642d0b651d82870d4d2db8ee54da"
+    },
+    "404.901": {
+      "file": "corpus/chunks/404.901.json",
+      "subpart": "J",
+      "heading": "Definitions.",
+      "chars": 942,
+      "chunk_sha256": "c73aa73f3663731ec597a6e494eede210ef00a098e60402d448373ca341b07bc"
+    },
+    "404.902": {
+      "file": "corpus/chunks/404.902.json",
+      "subpart": "J",
+      "heading": "Administrative actions that are initial determinations.",
+      "chars": 2694,
+      "chunk_sha256": "180265e54768b4fea60f283015c33553923e8755e33d29e2d0265c9ae1a6daaa"
+    },
+    "404.903": {
+      "file": "corpus/chunks/404.903.json",
+      "subpart": "J",
+      "heading": "Administrative actions that are not initial determinations.",
+      "chars": 3503,
+      "chunk_sha256": "63cb63331ba5cb40f6bebc417be9e76b72c6837c547f2504fcb8840cee9156a3"
+    },
+    "404.904": {
+      "file": "corpus/chunks/404.904.json",
+      "subpart": "J",
+      "heading": "Notice of the initial determination.",
+      "chars": 671,
+      "chunk_sha256": "5d5feb05d4086b9135bff32c14142facef4922a061f34442ed26466f2fb6645f"
+    },
+    "404.905": {
+      "file": "corpus/chunks/404.905.json",
+      "subpart": "J",
+      "heading": "Effect of an initial determination.",
+      "chars": 143,
+      "chunk_sha256": "94764007989e721ee865c540a64c3f0a78c5a86b83e95aeda9de1b09455d8962"
+    },
+    "404.906": {
+      "file": "corpus/chunks/404.906.json",
+      "subpart": "J",
+      "heading": "Testing modifications to the disability determination procedures.",
+      "chars": 7313,
+      "chunk_sha256": "f93ffc4c84e8960eda5f246088287ce628fc305f5ea289defa7ea3ec381ae899"
+    },
+    "404.907": {
+      "file": "corpus/chunks/404.907.json",
+      "subpart": "J",
+      "heading": "Reconsideration\u2014general.",
+      "chars": 571,
+      "chunk_sha256": "4a3169410324baaea85a10eef1fb757ff4fc2146768daf5a404f31d1bfef061b"
+    },
+    "404.908": {
+      "file": "corpus/chunks/404.908.json",
+      "subpart": "J",
+      "heading": "Parties to a reconsideration.",
+      "chars": 523,
+      "chunk_sha256": "1eab173fde6cd7c5ccdacf0a023b9158b8110db33ca8877b234462773cab4136"
+    },
+    "404.909": {
+      "file": "corpus/chunks/404.909.json",
+      "subpart": "J",
+      "heading": "How to request reconsideration.",
+      "chars": 1060,
+      "chunk_sha256": "fb7fa7059165748b6a653a1b9e81fc86c1ecf3621e7fe3110301349a8f72ee29"
+    },
+    "404.911": {
+      "file": "corpus/chunks/404.911.json",
+      "subpart": "J",
+      "heading": "Good cause for missing the deadline to request review.",
+      "chars": 2066,
+      "chunk_sha256": "1fbb58ab729dd5042fe9b18cc85610b74cec934805ba190fa6568135a58dea1e"
+    },
+    "404.913": {
+      "file": "corpus/chunks/404.913.json",
+      "subpart": "J",
+      "heading": "Reconsideration procedures.",
+      "chars": 756,
+      "chunk_sha256": "02544a57bed54ec64b2b1bd8abf7f469ee9d162532e6c0d9ff265c5322b54bfa"
+    },
+    "404.914": {
+      "file": "corpus/chunks/404.914.json",
+      "subpart": "J",
+      "heading": "Disability hearing\u2014general.",
+      "chars": 2232,
+      "chunk_sha256": "52eb795d7347eebe1655124a2b47f160ac6874e51695a93f93656efc4ff30cbf"
+    },
+    "404.915": {
+      "file": "corpus/chunks/404.915.json",
+      "subpart": "J",
+      "heading": "Disability hearing\u2014disability hearing officers.",
+      "chars": 1529,
+      "chunk_sha256": "e4e397256e3adf605c438ad3957157946f99ad02021d38a73e49136f35e94302"
+    },
+    "404.916": {
+      "file": "corpus/chunks/404.916.json",
+      "subpart": "J",
+      "heading": "Disability hearing\u2014procedures.",
+      "chars": 4310,
+      "chunk_sha256": "bfbcba2d790abff501f702dd928b58d66544e31947feb7b9282f0359a02a9b78"
+    },
+    "404.917": {
+      "file": "corpus/chunks/404.917.json",
+      "subpart": "J",
+      "heading": "Disability hearing\u2014disability hearing officer's reconsidered determination.",
+      "chars": 1402,
+      "chunk_sha256": "061c6094514bc13ade52dcb4856c8d97095b334cd2b04c24d9ddbef610d62e0b"
+    },
+    "404.918": {
+      "file": "corpus/chunks/404.918.json",
+      "subpart": "J",
+      "heading": "Disability hearing\u2014review of the disability hearing officer's reconsidered determination before it is issued.",
+      "chars": 4082,
+      "chunk_sha256": "77733f56aafbf2d9e2abe858446343056aaa0b10487b1208eab423c08109c8e4"
+    },
+    "404.919": {
+      "file": "corpus/chunks/404.919.json",
+      "subpart": "J",
+      "heading": "Notice of another person's request for reconsideration.",
+      "chars": 308,
+      "chunk_sha256": "524e2ace3869ac8c948469dad951353d5cfad7c66a7ace4691d0c41922516f05"
+    },
+    "404.920": {
+      "file": "corpus/chunks/404.920.json",
+      "subpart": "J",
+      "heading": "Reconsidered determination.",
+      "chars": 243,
+      "chunk_sha256": "9a6331d87c57d20cc9297c15babd8a6dedb318bbcf7cb6a9a588a717f78acf76"
+    },
+    "404.921": {
+      "file": "corpus/chunks/404.921.json",
+      "subpart": "J",
+      "heading": "Effect of a reconsidered determination.",
+      "chars": 300,
+      "chunk_sha256": "ea95f23f24011aeb1454f6b3c6f5fd7fbffe05c3cbd65c5bf47ecbee0acf79e9"
+    },
+    "404.922": {
+      "file": "corpus/chunks/404.922.json",
+      "subpart": "J",
+      "heading": "Notice of a reconsidered determination.",
+      "chars": 336,
+      "chunk_sha256": "0c0bb67ad3f83debad8cdf779101beffe4ee4ceda06c2d9bff0b40506b2ff624"
+    },
+    "404.923": {
+      "file": "corpus/chunks/404.923.json",
+      "subpart": "J",
+      "heading": "Expedited appeals process\u2014general.",
+      "chars": 210,
+      "chunk_sha256": "59dbf126c5a73e9208aaee5798ecd41d2e0d035b802865bf471989044906060b"
+    },
+    "404.924": {
+      "file": "corpus/chunks/404.924.json",
+      "subpart": "J",
+      "heading": "When the expedited appeals process may be used.",
+      "chars": 747,
+      "chunk_sha256": "d37d881a44cce1a0c8c3048842ccbc321b00122c5eeb45b93e33e2c814c3981c"
+    },
+    "404.925": {
+      "file": "corpus/chunks/404.925.json",
+      "subpart": "J",
+      "heading": "How to request expedited appeals process.",
+      "chars": 1636,
+      "chunk_sha256": "9ef485f56365c3bb6efd04a92fea19d184732642fab7631c728bcd9feb65a065"
+    },
+    "404.926": {
+      "file": "corpus/chunks/404.926.json",
+      "subpart": "J",
+      "heading": "Agreement in expedited appeals process.",
+      "chars": 813,
+      "chunk_sha256": "2d23afda0e803bdee7ca94a45b094879175a9b359d106f7158eb2de110be3fa7"
+    },
+    "404.927": {
+      "file": "corpus/chunks/404.927.json",
+      "subpart": "J",
+      "heading": "Effect of expedited appeals process agreement.",
+      "chars": 403,
+      "chunk_sha256": "f977112910fc6104fec296b9c8d3221d2446d73bccca1e987939d14858cb5294"
+    },
+    "404.928": {
+      "file": "corpus/chunks/404.928.json",
+      "subpart": "J",
+      "heading": "Expedited appeals process request that does not result in agreement.",
+      "chars": 277,
+      "chunk_sha256": "160ff44cd31951a302c4b6448b745976f21621cdf2c07e74f88b4d6756817360"
+    },
+    "404.929": {
+      "file": "corpus/chunks/404.929.json",
+      "subpart": "J",
+      "heading": "Hearing before an administrative law judge\u2014general.",
+      "chars": 1605,
+      "chunk_sha256": "22d95fce3f8005160c6677ca1d72f95f0ac5b5024fccd762fd3dc9d0573ffe81"
+    },
+    "404.930": {
+      "file": "corpus/chunks/404.930.json",
+      "subpart": "J",
+      "heading": "Availability of a hearing before an administrative law judge.",
+      "chars": 1178,
+      "chunk_sha256": "df787d6c63c45760845d0874da055e1c9bb0bb454a1070090c2264e0958c4331"
+    },
+    "404.932": {
+      "file": "corpus/chunks/404.932.json",
+      "subpart": "J",
+      "heading": "Parties to a hearing before an administrative law judge.",
+      "chars": 751,
+      "chunk_sha256": "ebcbcdefce18cf1a58cfb5c37723730d77d85f302418c7dd6260b79e8e3ee8fe"
+    },
+    "404.933": {
+      "file": "corpus/chunks/404.933.json",
+      "subpart": "J",
+      "heading": "How to request a hearing before an administrative law judge.",
+      "chars": 1433,
+      "chunk_sha256": "344cf8edffdefacfd7c40a00736ae0578ca9052875b608db8893f2b1b38d60a1"
+    },
+    "404.935": {
+      "file": "corpus/chunks/404.935.json",
+      "subpart": "J",
+      "heading": "Submitting written evidence to an administrative law judge.",
+      "chars": 1798,
+      "chunk_sha256": "a27f1425220b12d02c3aa6df3cdc4c73f9f45743f23f35f891f7e1f14613edab"
+    },
+    "404.936": {
+      "file": "corpus/chunks/404.936.json",
+      "subpart": "J",
+      "heading": "Time, place, and manner of appearance for a hearing before an administrative law judge.",
+      "chars": 10208,
+      "chunk_sha256": "72335fa77b1d902b3f61511be40f2f33ed5b0e4e23378ca6d3f4d282a6df0d98"
+    },
+    "404.937": {
+      "file": "corpus/chunks/404.937.json",
+      "subpart": "J",
+      "heading": "Protecting the safety of the public and our employees in our hearing process.",
+      "chars": 2244,
+      "chunk_sha256": "de4bc17372f49c2ac9b68850585fa55063b739dbaf0198429f4399c20efebbc2"
+    },
+    "404.938": {
+      "file": "corpus/chunks/404.938.json",
+      "subpart": "J",
+      "heading": "Notice of a hearing before an administrative law judge.",
+      "chars": 2202,
+      "chunk_sha256": "f3e7e40cb4f2e789f697bd3c9366d8da4c5c015adf89d53e6e2bba62d7eec509"
+    },
+    "404.939": {
+      "file": "corpus/chunks/404.939.json",
+      "subpart": "J",
+      "heading": "Objections to the issues.",
+      "chars": 488,
+      "chunk_sha256": "f5423794af473c3b4c0fafb69bb3bd3ba295efabc977d452ca8040ef76e100b8"
+    },
+    "404.940": {
+      "file": "corpus/chunks/404.940.json",
+      "subpart": "J",
+      "heading": "Disqualification of the administrative law judge.",
+      "chars": 866,
+      "chunk_sha256": "5f1c154062312fda62a4adcf15e83cde0d46df803e1e42a95b4aa3099eac4209"
+    },
+    "404.941": {
+      "file": "corpus/chunks/404.941.json",
+      "subpart": "J",
+      "heading": "Prehearing case review.",
+      "chars": 3198,
+      "chunk_sha256": "80d425c528e7877a88b4a8ef2e42bac988160885acacef08d9f0970c4dde2de5"
+    },
+    "404.942": {
+      "file": "corpus/chunks/404.942.json",
+      "subpart": "J",
+      "heading": "Prehearing proceedings and decisions by attorney advisors.",
+      "chars": 3899,
+      "chunk_sha256": "97e132755e8b0034e25044f494b64648f2e4866e68fa17e8394de4ffa5419f94"
+    },
+    "404.943": {
+      "file": "corpus/chunks/404.943.json",
+      "subpart": "J",
+      "heading": "Responsibilities of the adjudication officer.",
+      "chars": 8707,
+      "chunk_sha256": "72a639749dc51e9d691a3f46795a57cc697971ab9fb9d52a17f16ca8895a1acd"
+    },
+    "404.944": {
+      "file": "corpus/chunks/404.944.json",
+      "subpart": "J",
+      "heading": "Administrative law judge hearing procedures\u2014general.",
+      "chars": 979,
+      "chunk_sha256": "c56e136a9ee269833d4ffa1a31b61a8ebae0d43bd52dc5c26b1d891d9e6c1f2b"
+    },
+    "404.946": {
+      "file": "corpus/chunks/404.946.json",
+      "subpart": "J",
+      "heading": "Issues before an administrative law judge.",
+      "chars": 1404,
+      "chunk_sha256": "9b6b81ddd38e32a9c5cdae06a1c8a964fde6a524d6134c8e4fc073058d93d5f2"
+    },
+    "404.948": {
+      "file": "corpus/chunks/404.948.json",
+      "subpart": "J",
+      "heading": "Deciding a case without an oral hearing before an administrative law judge.",
+      "chars": 2123,
+      "chunk_sha256": "315d32db20eb3bb57ade998d3911279dbef9856388060eab7c5b684701d05821"
+    },
+    "404.949": {
+      "file": "corpus/chunks/404.949.json",
+      "subpart": "J",
+      "heading": "Presenting written statements and oral arguments.",
+      "chars": 526,
+      "chunk_sha256": "b235433098679fea8b8936a275e703ca57410196c8d9c139f0e60988e0d1cd9a"
+    },
+    "404.950": {
+      "file": "corpus/chunks/404.950.json",
+      "subpart": "J",
+      "heading": "Presenting evidence at a hearing before an administrative law judge.",
+      "chars": 3653,
+      "chunk_sha256": "05671a447c529497959db9254c40f0a533e6141463667726aa8065ca1e7093e8"
+    },
+    "404.951": {
+      "file": "corpus/chunks/404.951.json",
+      "subpart": "J",
+      "heading": "Official record.",
+      "chars": 1380,
+      "chunk_sha256": "bdd00ca5b9b4865316315454462201a83d2c6029ab80571ec1fd4d7317d32ec5"
+    },
+    "404.952": {
+      "file": "corpus/chunks/404.952.json",
+      "subpart": "J",
+      "heading": "Consolidated hearing before an administrative law judge.",
+      "chars": 863,
+      "chunk_sha256": "b4ddac2e66af992d9753367f135fa5c05a5343cb3232124f9037bfb0be2be6cc"
+    },
+    "404.953": {
+      "file": "corpus/chunks/404.953.json",
+      "subpart": "J",
+      "heading": "The decision of an administrative law judge.",
+      "chars": 2178,
+      "chunk_sha256": "c49f0def26e4295e5af058f2654862be64ea0e282ef6e510e3ae0b3b9db80e3c"
+    },
+    "404.955": {
+      "file": "corpus/chunks/404.955.json",
+      "subpart": "J",
+      "heading": "The effect of a hearing decision.",
+      "chars": 980,
+      "chunk_sha256": "50c806a7dc2eaa0eeb8d9b247bf4d66719fb1db61d821f2bdfa68b1e854b53a8"
+    },
+    "404.956": {
+      "file": "corpus/chunks/404.956.json",
+      "subpart": "J",
+      "heading": "Removal of a hearing request(s) to the Appeals Council.",
+      "chars": 1497,
+      "chunk_sha256": "d3f406f221c82a31e12bde7645b8a9da21b92fa134bf8e125645d8a9978cb477"
+    },
+    "404.957": {
+      "file": "corpus/chunks/404.957.json",
+      "subpart": "J",
+      "heading": "Dismissal of a request for a hearing before an administrative law judge.",
+      "chars": 2430,
+      "chunk_sha256": "f2f059e6a9698fa8c3431fd1477209959c8ac307f3984303ff03c8b78869478a"
+    },
+    "404.958": {
+      "file": "corpus/chunks/404.958.json",
+      "subpart": "J",
+      "heading": "Notice of dismissal of a request for a hearing before an administrative law judge.",
+      "chars": 223,
+      "chunk_sha256": "27a58f27508f1b7f1d89db9faf7cca6c9b404261eca6815cbe9aac5b4845b0a6"
+    },
+    "404.959": {
+      "file": "corpus/chunks/404.959.json",
+      "subpart": "J",
+      "heading": "Effect of dismissal of a request for a hearing before an administrative law judge.",
+      "chars": 128,
+      "chunk_sha256": "b4fe5780583ab4d4f16d5ab7af155ef6f3c43e301a3077ded40a444d514a89f7"
+    },
+    "404.960": {
+      "file": "corpus/chunks/404.960.json",
+      "subpart": "J",
+      "heading": "Vacating a dismissal of a request for a hearing before an administrative law judge.",
+      "chars": 1137,
+      "chunk_sha256": "ee71ca89a9a042604b07ba91f512417947551d571455a9a95ed45821f6b0c999"
+    },
+    "404.961": {
+      "file": "corpus/chunks/404.961.json",
+      "subpart": "J",
+      "heading": "Prehearing and posthearing conferences.",
+      "chars": 893,
+      "chunk_sha256": "439aab580c8d50f490c186316e4dd56649103b76cc7c74f075502c2a25052448"
+    },
+    "404.965": {
+      "file": "corpus/chunks/404.965.json",
+      "subpart": "J",
+      "heading": "[Reserved]",
+      "chars": 0,
+      "chunk_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "404.966": {
+      "file": "corpus/chunks/404.966.json",
+      "subpart": "J",
+      "heading": "[Reserved]",
+      "chars": 0,
+      "chunk_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "404.967": {
+      "file": "corpus/chunks/404.967.json",
+      "subpart": "J",
+      "heading": "Appeals Council review\u2014general.",
+      "chars": 440,
+      "chunk_sha256": "5d9d9c7bd5f4be0e3793df92d43ee2e283cdf05b8646871e1a4ff8c19a58ba02"
+    },
+    "404.968": {
+      "file": "corpus/chunks/404.968.json",
+      "subpart": "J",
+      "heading": "How to request Appeals Council review.",
+      "chars": 1272,
+      "chunk_sha256": "7dd3f3553b7458c4811be2275e9bb6086589a641ccc0f5fbf17c3eaa38f0cc1a"
+    },
+    "404.969": {
+      "file": "corpus/chunks/404.969.json",
+      "subpart": "J",
+      "heading": "Appeals Council initiates review.",
+      "chars": 4001,
+      "chunk_sha256": "66107bea52d1024fd8f16cfa06cea431537c9cb9bc9e0956aa638000f802c839"
+    },
+    "404.970": {
+      "file": "corpus/chunks/404.970.json",
+      "subpart": "J",
+      "heading": "Cases the Appeals Council will review.",
+      "chars": 2837,
+      "chunk_sha256": "a00ed63dd6de271877809b98cbe11777f38c74119613a5277b8bd7d33bd4c76a"
+    },
+    "404.971": {
+      "file": "corpus/chunks/404.971.json",
+      "subpart": "J",
+      "heading": "Dismissal by Appeals Council.",
+      "chars": 498,
+      "chunk_sha256": "56d8bdc53643c4be24be1d22d0baf5de731c4453b7af30bb73d75cbf7cd22007"
+    },
+    "404.972": {
+      "file": "corpus/chunks/404.972.json",
+      "subpart": "J",
+      "heading": "Effect of dismissal of request for Appeals Council review.",
+      "chars": 99,
+      "chunk_sha256": "31aeeee468aa460f7c263c3dbfd39afdc1fda04192608e7ff27c911aab14d759"
+    },
+    "404.973": {
+      "file": "corpus/chunks/404.973.json",
+      "subpart": "J",
+      "heading": "Notice of Appeals Council review.",
+      "chars": 551,
+      "chunk_sha256": "fa15308615896c689d413f21d1b3039f1050ef4f4fa45739f09457acfaf894fa"
+    },
+    "404.974": {
+      "file": "corpus/chunks/404.974.json",
+      "subpart": "J",
+      "heading": "Obtaining evidence from Appeals Council.",
+      "chars": 329,
+      "chunk_sha256": "dd2faa802e3da06141e5b262322f10f7248c837d5097c4bc142cfc17c9924875"
+    },
+    "404.975": {
+      "file": "corpus/chunks/404.975.json",
+      "subpart": "J",
+      "heading": "Filing briefs with the Appeals Council.",
+      "chars": 250,
+      "chunk_sha256": "3d41bb5bf036c6c1f4c3afe4dc6a66f7ee85578555780a3a53fd01dea6642422"
+    },
+    "404.976": {
+      "file": "corpus/chunks/404.976.json",
+      "subpart": "J",
+      "heading": "Procedures before the Appeals Council.",
+      "chars": 1555,
+      "chunk_sha256": "b5ab167a752382ac8302cf3c716fdecb51f8da2b093ba881e18f1b37fe15bbde"
+    },
+    "404.977": {
+      "file": "corpus/chunks/404.977.json",
+      "subpart": "J",
+      "heading": "Case remanded by Appeals Council.",
+      "chars": 2232,
+      "chunk_sha256": "2f006e9a8aeb177f172836f7247a7f77199f2969ed8a910466b912e6cedf862b"
+    },
+    "404.979": {
+      "file": "corpus/chunks/404.979.json",
+      "subpart": "J",
+      "heading": "Decision of Appeals Council.",
+      "chars": 678,
+      "chunk_sha256": "d03f00fa3d2acdcd3dcaa547f3d3973a731201c458ad4152da487ba7de7fb924"
+    },
+    "404.981": {
+      "file": "corpus/chunks/404.981.json",
+      "subpart": "J",
+      "heading": "Effect of Appeals Council's decision or denial of review.",
+      "chars": 471,
+      "chunk_sha256": "8993b429bf549dd8cf9ea378ffbbc9dbab5b5babceec704186c7adcbd5e7772b"
+    },
+    "404.982": {
+      "file": "corpus/chunks/404.982.json",
+      "subpart": "J",
+      "heading": "Extension of time to file action in Federal district court.",
+      "chars": 634,
+      "chunk_sha256": "3bff04d7b2c93a5d9e5bac166764a1d69dc62681bddc4e3be690fe043af321cc"
+    },
+    "404.983": {
+      "file": "corpus/chunks/404.983.json",
+      "subpart": "J",
+      "heading": "Case remanded by a Federal court.",
+      "chars": 1992,
+      "chunk_sha256": "4c891e0000f21010148e61a28982cbd1909f23f0587325547322f7fa68e0a30a"
+    },
+    "404.984": {
+      "file": "corpus/chunks/404.984.json",
+      "subpart": "J",
+      "heading": "Appeals Council review of hearing decision in a case remanded by a Federal court.",
+      "chars": 4563,
+      "chunk_sha256": "706ab7498ab4a8318fe27427ba3d8c096393c0f1ea67b5fd12d4755dc51f88aa"
+    },
+    "404.985": {
+      "file": "corpus/chunks/404.985.json",
+      "subpart": "J",
+      "heading": "Application of circuit court law.",
+      "chars": 8418,
+      "chunk_sha256": "77bf175ac6bc24c47a66b07d2694beb134a6a6efb59c973e3415f09f62774fcf"
+    },
+    "404.987": {
+      "file": "corpus/chunks/404.987.json",
+      "subpart": "J",
+      "heading": "Reopening and revising determinations and decisions.",
+      "chars": 879,
+      "chunk_sha256": "a90c2deae661375120776e5ba36d3114e5d4191fc9c8f0dc9faab62d2f03bc95"
+    },
+    "404.988": {
+      "file": "corpus/chunks/404.988.json",
+      "subpart": "J",
+      "heading": "Conditions for reopening.",
+      "chars": 4274,
+      "chunk_sha256": "11180a85e3c31ba86f09bacac256b01d9ad72a3b2643f7bb085c6c89ed9139d1"
+    },
+    "404.989": {
+      "file": "corpus/chunks/404.989.json",
+      "subpart": "J",
+      "heading": "Good cause for reopening.",
+      "chars": 533,
+      "chunk_sha256": "2f31373d0900249902f334f9e53596b8f93938b39d97db3da084b8f2f06b8d5f"
+    },
+    "404.990": {
+      "file": "corpus/chunks/404.990.json",
+      "subpart": "J",
+      "heading": "Finality of determinations and decisions on revision of an earnings record.",
+      "chars": 290,
+      "chunk_sha256": "7a3c754f9ad95b3fb4cbb026e4d5308d0ed6d8cf4a01a9c7b56379adbfe58d4d"
+    },
+    "404.991": {
+      "file": "corpus/chunks/404.991.json",
+      "subpart": "J",
+      "heading": "Finality of determinations and decisions to suspend benefit payments for entire taxable year because of earnings.",
+      "chars": 216,
+      "chunk_sha256": "0b7dce013e0482a6a48aec2d8d5350a0e185cf9ddda514ecce651dd48715312f"
+    },
+    "404.991a": {
+      "file": "corpus/chunks/404.991a.json",
+      "subpart": "J",
+      "heading": "Late completion of timely investigation.",
+      "chars": 1332,
+      "chunk_sha256": "8abacfb302ce078ca3555bdfea34509254fdaa88faba6195505deda76e192d9a"
+    },
+    "404.992": {
+      "file": "corpus/chunks/404.992.json",
+      "subpart": "J",
+      "heading": "Notice of revised determination or decision.",
+      "chars": 1835,
+      "chunk_sha256": "ad2193d3616759d1be6d2b21474c2e384a0677ae105ba63077188665d7a2c8a7"
+    },
+    "404.993": {
+      "file": "corpus/chunks/404.993.json",
+      "subpart": "J",
+      "heading": "Effect of revised determination or decision.",
+      "chars": 499,
+      "chunk_sha256": "ae489d31f1c6f9c034854d842f322366c44ff1a31da91eb16a6ed910b054e5cc"
+    },
+    "404.994": {
+      "file": "corpus/chunks/404.994.json",
+      "subpart": "J",
+      "heading": "Time and place to request a hearing on revised determination or decision.",
+      "chars": 348,
+      "chunk_sha256": "3a55ae15fd2d79803072f5070b99f017cee146d1d4efd84ebbf1f468e3192941"
+    },
+    "404.995": {
+      "file": "corpus/chunks/404.995.json",
+      "subpart": "J",
+      "heading": "Finality of findings when later claim is filed on same earnings record.",
+      "chars": 517,
+      "chunk_sha256": "d4b892e90ba82ac0449ad8a1c41b443e2d3e77b18dc39befd2b13d8416848f21"
+    },
+    "404.996": {
+      "file": "corpus/chunks/404.996.json",
+      "subpart": "J",
+      "heading": "Increase in future benefits where time period for reopening expires.",
+      "chars": 602,
+      "chunk_sha256": "ce7d5e9276c87a87a1fd29d317c2d5e32e5cefd6c52039062596e7b0f556dbb2"
+    },
+    "404.999a": {
+      "file": "corpus/chunks/404.999a.json",
+      "subpart": "J",
+      "heading": "Payment of certain travel expenses\u2014general.",
+      "chars": 686,
+      "chunk_sha256": "020c63dfec855ac707f90a0bc357a62dcdb99c14ea876937debaa40cd2c5c537"
+    },
+    "404.999b": {
+      "file": "corpus/chunks/404.999b.json",
+      "subpart": "J",
+      "heading": "Who may be reimbursed.",
+      "chars": 903,
+      "chunk_sha256": "154563ae91bb2dd503a43410e791aac187a2526bedd215dd6f4e3d4623a52d99"
+    },
+    "404.999c": {
+      "file": "corpus/chunks/404.999c.json",
+      "subpart": "J",
+      "heading": "What travel expenses are reimbursable.",
+      "chars": 6406,
+      "chunk_sha256": "dd8c800fcc9cf7aa6e8f7288ed1aaec1170e88f3f0d80d32d4637cd42bfe1b77"
+    },
+    "404.999d": {
+      "file": "corpus/chunks/404.999d.json",
+      "subpart": "J",
+      "heading": "When and how to claim reimbursement.",
+      "chars": 1495,
+      "chunk_sha256": "c6e2662e8062c607d0099eb85b7b383dbe0b0e821660a7f903df94aea899af9a"
+    },
+    "App1-1.00": {
+      "file": "corpus/chunks/App1-1.00.json",
+      "subpart": "P",
+      "heading": "1.00 Musculoskeletal Disorders",
+      "chars": 40183,
+      "chunk_sha256": "0010468509da656f55d304f1bc4126dddb8749892c4b00cf989de84f15abf7dc"
+    },
+    "App1-1.01": {
+      "file": "corpus/chunks/App1-1.01.json",
+      "subpart": "P",
+      "heading": "1.01 Category of Impairments, Musculoskeletal Disorders",
+      "chars": 10421,
+      "chunk_sha256": "49cb097a87fe8bf11ba8e6938f3ecbeaa88991b62b8cf7f4f539fe3a09224ef3"
+    },
+    "App1-10.00": {
+      "file": "corpus/chunks/App1-10.00.json",
+      "subpart": "P",
+      "heading": "10.00 Congenital Disorders that Affect Multiple Body Systems",
+      "chars": 6067,
+      "chunk_sha256": "2f6c16de8421edc129bb8eb2cc16ec65863b8961dcca8516572dce319619d340"
+    },
+    "App1-10.01": {
+      "file": "corpus/chunks/App1-10.01.json",
+      "subpart": "P",
+      "heading": "10.01 Category of Impairments, Congenital Disorders That Affect Multiple Body Systems",
+      "chars": 781,
+      "chunk_sha256": "9bc7ea45f13ba0d487db4979b2eb32bb894547dcbf9fade09d8999f9cb3c92d2"
+    },
+    "App1-100.00": {
+      "file": "corpus/chunks/App1-100.00.json",
+      "subpart": "P",
+      "heading": "100.00 Low Birth Weight and Failure to Thrive",
+      "chars": 8351,
+      "chunk_sha256": "33a6cf0d19b4455219ab63997e25a8c1389212554bdec89c38a68723b00e5035"
+    },
+    "App1-101.00": {
+      "file": "corpus/chunks/App1-101.00.json",
+      "subpart": "P",
+      "heading": "101.00 Musculoskeletal Disorders",
+      "chars": 41568,
+      "chunk_sha256": "b8b0277cd89253db2b5719dc3aa202434ee0c70ffe9ba7a6cc53b12693dc7ee7"
+    },
+    "App1-101.01": {
+      "file": "corpus/chunks/App1-101.01.json",
+      "subpart": "P",
+      "heading": "101.01 Category of Impairments, Musculoskeletal Disorders",
+      "chars": 11211,
+      "chunk_sha256": "4f51eca36c97ecc86e0f9e51620209d1df0b2e43c0723d9e99b26e9cf05d36e2"
+    },
+    "App1-102.00": {
+      "file": "corpus/chunks/App1-102.00.json",
+      "subpart": "P",
+      "heading": "102.00 Special Senses and Speech",
+      "chars": 32490,
+      "chunk_sha256": "61f29778068a1e557d936823ea4b1c38a6d0c044a4b0a84d646caa23d15a0593"
+    },
+    "App1-103.00": {
+      "file": "corpus/chunks/App1-103.00.json",
+      "subpart": "P",
+      "heading": "103.00 Respiratory Disorders",
+      "chars": 26167,
+      "chunk_sha256": "ff202048fa8f37bc40d5147ef43370f0a400d3de7e29d7edb241de28d1752d31"
+    },
+    "App1-104.00": {
+      "file": "corpus/chunks/App1-104.00.json",
+      "subpart": "P",
+      "heading": "104.00 Cardiovascular System",
+      "chars": 30454,
+      "chunk_sha256": "0f1ce35b5329768490aba57909aebc813bc63427dc8a71eda7bbd5e0bfdc566a"
+    },
+    "App1-104.01": {
+      "file": "corpus/chunks/App1-104.01.json",
+      "subpart": "P",
+      "heading": "104.01 Category of Impairments, Cardiovascular System",
+      "chars": 3683,
+      "chunk_sha256": "1268e3b00156dccee2442a847004a631f76d6b75e6e2f093ebc29f285cb1ffdd"
+    },
+    "App1-105.00": {
+      "file": "corpus/chunks/App1-105.00.json",
+      "subpart": "P",
+      "heading": "105.00 Digestive Disorders",
+      "chars": 38385,
+      "chunk_sha256": "630abf1d3fe9a118eb68b6876881a20202955e4a7dacf2b9069fb7a9f28445d9"
+    },
+    "App1-106.00": {
+      "file": "corpus/chunks/App1-106.00.json",
+      "subpart": "P",
+      "heading": "106.00 Genitourinary Disorders",
+      "chars": 9075,
+      "chunk_sha256": "72e2a99c1fa3872e0e78c70db7083a5d230a1c54986cac6bdf252bee1c9d7363"
+    },
+    "App1-107.00": {
+      "file": "corpus/chunks/App1-107.00.json",
+      "subpart": "P",
+      "heading": "107.00 Hematological Disorders",
+      "chars": 14235,
+      "chunk_sha256": "9b69ce5340987c838eb22af9812cdc7cb3603c415ad549ed22a87065a48f3483"
+    },
+    "App1-108.00": {
+      "file": "corpus/chunks/App1-108.00.json",
+      "subpart": "P",
+      "heading": "108.00 Skin Disorders",
+      "chars": 26190,
+      "chunk_sha256": "b4e750f347153f6c72cf1193873793b7bc26905e05d9eb50fe827737841020cb"
+    },
+    "App1-109.00": {
+      "file": "corpus/chunks/App1-109.00.json",
+      "subpart": "P",
+      "heading": "109.00 Endocrine Disorders",
+      "chars": 7952,
+      "chunk_sha256": "4c6d28f4b01fbd9d04f87a573200a48cb70e714afaf781be4651a46e03f91695"
+    },
+    "App1-11.00": {
+      "file": "corpus/chunks/App1-11.00.json",
+      "subpart": "P",
+      "heading": "11.00 Neurological Disorders",
+      "chars": 48259,
+      "chunk_sha256": "81e215a131e0b316d718bf4c88d03b1d2409832989f975d56986efa4f6972e96"
+    },
+    "App1-110.00": {
+      "file": "corpus/chunks/App1-110.00.json",
+      "subpart": "P",
+      "heading": "110.00 Congenital Disorders That Affect Multiple Body Systems",
+      "chars": 8087,
+      "chunk_sha256": "a4f3734ebc1316aa1cc1763e540bfd97c2369511a1eb7c9d5a74d37f75e9c18c"
+    },
+    "App1-110.01": {
+      "file": "corpus/chunks/App1-110.01.json",
+      "subpart": "P",
+      "heading": "110.01 Category of Impairments, Congenital Disorders That Affect Multiple Body Systems",
+      "chars": 1006,
+      "chunk_sha256": "267455fa0e6a93c45d6d6cfba96c8b14cbd8f50ed9b83bbbba865b2f9af43b96"
+    },
+    "App1-111.00": {
+      "file": "corpus/chunks/App1-111.00.json",
+      "subpart": "P",
+      "heading": "111.00 Neurological Disorders",
+      "chars": 28853,
+      "chunk_sha256": "4e399538288fcaf94c4e7b65d0e6ea2f605640cd82565ee527beaf2aa3124f5c"
+    },
+    "App1-112.00": {
+      "file": "corpus/chunks/App1-112.00.json",
+      "subpart": "P",
+      "heading": "112.00 Mental Disorders",
+      "chars": 64437,
+      "chunk_sha256": "41a7f7afd679659579922f08f2c01c7a2d4cfd12a77e48b5c19f2c9341568030"
+    },
+    "App1-112.01": {
+      "file": "corpus/chunks/App1-112.01.json",
+      "subpart": "P",
+      "heading": "112.01 Category of Impairments, Mental Disorders",
+      "chars": 14905,
+      "chunk_sha256": "2586049826823fdcb4e55ad1a657190913f00600238d8338be5376eab1cdc626"
+    },
+    "App1-113.00": {
+      "file": "corpus/chunks/App1-113.00.json",
+      "subpart": "P",
+      "heading": "113.00 Cancer (Malignant Neoplastic Diseases)",
+      "chars": 20291,
+      "chunk_sha256": "d8980e053f5fe839620f781ebd1cec212db0a52bb164840e62536283a097f735"
+    },
+    "App1-114.00": {
+      "file": "corpus/chunks/App1-114.00.json",
+      "subpart": "P",
+      "heading": "114.00 Immune System Disorders",
+      "chars": 59855,
+      "chunk_sha256": "c97fc5dfc09471738572db64e07e1173eeb6d3937ecb13c2e8c0f4494b564134"
+    },
+    "App1-12.00": {
+      "file": "corpus/chunks/App1-12.00.json",
+      "subpart": "P",
+      "heading": "12.00 Mental Disorders",
+      "chars": 52312,
+      "chunk_sha256": "27240900bc2a928a1083e32bc87741bfa34859af68056846f9fba7af3939c779"
+    },
+    "App1-12.01": {
+      "file": "corpus/chunks/App1-12.01.json",
+      "subpart": "P",
+      "heading": "12.01 Category of Impairments, Mental Disorders",
+      "chars": 13328,
+      "chunk_sha256": "b0283b78ed62e40dc2c4bcaf1d4092abdb994ab996da961d52343b40524dc608"
+    },
+    "App1-13.00": {
+      "file": "corpus/chunks/App1-13.00.json",
+      "subpart": "P",
+      "heading": "13.00 Cancer (Malignant Neoplastic Diseases)",
+      "chars": 32850,
+      "chunk_sha256": "04baa1850c6bbc8b37532234cd1b5bd61208ab641b6b91b91dce25d2f926474c"
+    },
+    "App1-14.00": {
+      "file": "corpus/chunks/App1-14.00.json",
+      "subpart": "P",
+      "heading": "14.00 Immune System Disorders",
+      "chars": 64702,
+      "chunk_sha256": "5db559fef7698e386d20458e1305471afee1e74fad4386dda42929cba3cd1a8a"
+    },
+    "App1-2.00": {
+      "file": "corpus/chunks/App1-2.00.json",
+      "subpart": "P",
+      "heading": "2.00 Special Senses and Speech",
+      "chars": 30205,
+      "chunk_sha256": "4eb3b154e777ab01891d7eb5d8c14538dd890af979f7ed8ddf5634abdffc3e0e"
+    },
+    "App1-3.00": {
+      "file": "corpus/chunks/App1-3.00.json",
+      "subpart": "P",
+      "heading": "3.00 Respiratory Disorders",
+      "chars": 38361,
+      "chunk_sha256": "de3a8c88dd5b7a2cb6cb5fd6cb30edc9e23f8504a73f938ff8e807ebae432d7c"
+    },
+    "App1-4.00": {
+      "file": "corpus/chunks/App1-4.00.json",
+      "subpart": "P",
+      "heading": "4.00 Cardiovascular System",
+      "chars": 66405,
+      "chunk_sha256": "e7ebb117f6fe6342b3a13188037d3d92eb5527891444c3ff97284aed0253f101"
+    },
+    "App1-4.01": {
+      "file": "corpus/chunks/App1-4.01.json",
+      "subpart": "P",
+      "heading": "4.01 Category of Impairments, Cardiovascular System",
+      "chars": 7789,
+      "chunk_sha256": "4e8dcb4e82665b6237913e738b7b38d407405cdde8f31258d3babc9e8aabfd7a"
+    },
+    "App1-5.00": {
+      "file": "corpus/chunks/App1-5.00.json",
+      "subpart": "P",
+      "heading": "5.00 Digestive Disorders",
+      "chars": 32308,
+      "chunk_sha256": "4693b45ed4a373b082b667c2f9aa062062dabe1ebd19c2dd621f835daea61eef"
+    },
+    "App1-6.00": {
+      "file": "corpus/chunks/App1-6.00.json",
+      "subpart": "P",
+      "heading": "6.00 Genitourinary disorders",
+      "chars": 9909,
+      "chunk_sha256": "e94d388a1f004d0820fdb7d17591ce3db6ffc4341c2c3eff0460c6d7c3fef28c"
+    },
+    "App1-7.00": {
+      "file": "corpus/chunks/App1-7.00.json",
+      "subpart": "P",
+      "heading": "7.00 Hematological Disorders",
+      "chars": 20957,
+      "chunk_sha256": "06a546b3feb7255b0c3034cdb472842601bd8a31f7cba27c8fb8970ebc4e50d5"
+    },
+    "App1-8.00": {
+      "file": "corpus/chunks/App1-8.00.json",
+      "subpart": "P",
+      "heading": "8.00 Skin Disorders",
+      "chars": 26331,
+      "chunk_sha256": "9cd6bdbcdb53856c1647f4640ddc2497d327bce42efe92ac8f394a631e613f98"
+    },
+    "App1-9.00": {
+      "file": "corpus/chunks/App1-9.00.json",
+      "subpart": "P",
+      "heading": "9.00 Endocrine Disorders",
+      "chars": 6878,
+      "chunk_sha256": "2e4d23f9382e295415ad10b233a4bbe1f209232cfb48a140dad5cafd5873f3f0"
+    },
+    "App2-all": {
+      "file": "corpus/chunks/App2-all.json",
+      "subpart": "P",
+      "heading": "Appendix 2 to Subpart P of Part 404\u2014Medical-Vocational Guidelines",
+      "chars": 29782,
+      "chunk_sha256": "e43ad3cd09713039fdc104810da05f2e84b9532c25d47787c56651b432298e3c"
+    }
+  }
+}

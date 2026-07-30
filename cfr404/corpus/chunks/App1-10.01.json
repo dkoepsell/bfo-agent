@@ -1,0 +1,13 @@
+{
+  "chunk_id": "App1-10.01",
+  "section": "App1-10.01",
+  "subpart": "P",
+  "appendix": "Appendix 1 to Subpart P of Part 404",
+  "heading": "10.01 Category of Impairments, Congenital Disorders That Affect Multiple Body Systems",
+  "text": "10.06 Non-mosaic Down syndrome (chromosome 21 trisomy or chromosome 21 translocation), documented by:\nA. A laboratory report of karyotype analysis signed by a physician, or both a laboratory report of karyotype analysis not signed by a physician and a statement by a physician that you have Down syndrome (see 10.00C1), or\nB. A physician's report stating that you have chromosome 21 trisomy or chromosome 21 translocation consistent with prior karyotype analysis with the distinctive facial or other physical features of Down syndrome (see 10.00C2a), or\nC. A physician's report stating that you have Down syndrome with the distinctive facial or other physical features and evidence demonstrating that you function at a level consistent with non-mosaic Down syndrome (see 10.00C2b).",
+  "chars": 781,
+  "source_file": "corpus/raw/title20-part404-appendix1-2026-07-28.xml",
+  "source_sha256": "2c849619743adbf586e4d377e3e425a71fa4782fe558692474b703d9b80f9bdb",
+  "source_url": "https://www.ecfr.gov/api/versioner/v1/full/2026-07-28/title-20.xml?chapter=III&part=404&subpart=P&appendix=Appendix%201%20to%20Subpart%20P%20of%20Part%20404",
+  "chunk_sha256": "9bc7ea45f13ba0d487db4979b2eb32bb894547dcbf9fade09d8999f9cb3c92d2"
+}

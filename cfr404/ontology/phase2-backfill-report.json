@@ -1,0 +1,349 @@
+{
+  "phase": 2,
+  "input_classes": 1008,
+  "traced_to_a_section": 902,
+  "coverage_rate": 0.8948,
+  "approved": 465,
+  "approval_rate": 0.4613,
+  "confidence": {
+    "medium": 402,
+    "low": 543,
+    "high": 63
+  },
+  "chain_locus": {
+    "L0": 979,
+    "L3": 11,
+    "L2": 10,
+    "L5": 4,
+    "L7": 4
+  },
+  "trace_tier": {
+    "verbatim": 590,
+    "subphrase": 312,
+    "none": 106,
+    "verbatim_rate": 0.5853
+  },
+  "finding": "590 of 1008 baseline classes (58.5%) have a label the regulation actually uses. 312 more are traceable only through a sub-phrase, meaning the rest of the class name is the extractor's coinage. 106 have no verbatim basis in the corpus at all. This is a measurement of translation-artifact load in the baseline, not a limitation of the matcher: terms like 'Ascites Realization Process' or 'Hyperglycemic Disruption' are BFO scaffolding the extractor minted to hang restrictions on, and 20 CFR Part 404 does not contain them.",
+  "method": "Tier 1 (approvable): the class rdfs:label, or its plural/singular variant, occurs verbatim in a section's normalized text. Tier 2 (never approved): the longest contentful contiguous sub-phrase of the label occurs verbatim. Heading matches count triple. Ties break toward the smaller chunk as the more specific attribution. No synonym expansion, no embedding similarity, no LLM: every stamp has to be checkable by a reader with the corpus in hand.",
+  "sentinel": {
+    "value": "UNATTRIBUTED",
+    "meaning": "no verbatim trace found; confidence low, approved false",
+    "count": 106
+  },
+  "top_sections": [
+    [
+      "UNATTRIBUTED",
+      106
+    ],
+    [
+      "App1-114.00",
+      75
+    ],
+    [
+      "App1-4.00",
+      67
+    ],
+    [
+      "App1-1.00",
+      64
+    ],
+    [
+      "App1-5.00",
+      57
+    ],
+    [
+      "App1-11.00",
+      50
+    ],
+    [
+      "App1-12.00",
+      45
+    ],
+    [
+      "App1-111.00",
+      44
+    ],
+    [
+      "App1-104.00",
+      43
+    ],
+    [
+      "App1-9.00",
+      42
+    ],
+    [
+      "App1-107.00",
+      36
+    ],
+    [
+      "App1-108.00",
+      25
+    ],
+    [
+      "App1-14.00",
+      23
+    ],
+    [
+      "App1-13.00",
+      21
+    ],
+    [
+      "App1-103.00",
+      19
+    ],
+    [
+      "App1-112.00",
+      19
+    ],
+    [
+      "App1-10.00",
+      18
+    ],
+    [
+      "App1-3.00",
+      16
+    ],
+    [
+      "App1-6.00",
+      15
+    ],
+    [
+      "404.1594",
+      14
+    ],
+    [
+      "App1-113.00",
+      14
+    ],
+    [
+      "App1-106.00",
+      14
+    ],
+    [
+      "App1-2.00",
+      13
+    ],
+    [
+      "App1-105.00",
+      11
+    ],
+    [
+      "404.1568",
+      10
+    ]
+  ],
+  "ambiguous_examples": [
+    {
+      "class": "ALS",
+      "label": "Amyotrophic Lateral Sclerosis",
+      "candidates": [
+        "App1-11.00",
+        "404.1590"
+      ]
+    },
+    {
+      "class": "AbnormalBehavior",
+      "label": "Abnormal Behavior",
+      "candidates": [
+        "App1-5.00",
+        "App1-105.00"
+      ]
+    },
+    {
+      "class": "Adaptation",
+      "label": "Adaptation",
+      "candidates": [
+        "App1-12.00",
+        "App1-112.00"
+      ]
+    },
+    {
+      "class": "Adapting",
+      "label": "Adapting",
+      "candidates": [
+        "App1-11.00",
+        "App1-12.00",
+        "App1-112.00"
+      ]
+    },
+    {
+      "class": "AdaptiveFunctioning",
+      "label": "Adaptive Functioning",
+      "candidates": [
+        "App1-12.00",
+        "App1-112.00",
+        "App1-12.01",
+        "App1-112.01"
+      ]
+    },
+    {
+      "class": "AdrenalDisorder",
+      "label": "Adrenal Gland Disorder",
+      "candidates": [
+        "App1-9.00",
+        "App1-109.00"
+      ]
+    },
+    {
+      "class": "AdrenalGland",
+      "label": "Adrenal Gland",
+      "candidates": [
+        "App1-9.00",
+        "App1-109.00"
+      ]
+    },
+    {
+      "class": "Airway",
+      "label": "Airway",
+      "candidates": [
+        "App1-3.00",
+        "App1-103.00",
+        "App1-11.00"
+      ]
+    },
+    {
+      "class": "AlteredConsciousness",
+      "label": "Altered Consciousness",
+      "candidates": [
+        "App1-104.00",
+        "App1-4.00"
+      ]
+    },
+    {
+      "class": "Anasarca",
+      "label": "Anasarca",
+      "candidates": [
+        "App1-6.00",
+        "App1-106.00"
+      ]
+    },
+    {
+      "class": "AnatomicalAbnormality",
+      "label": "Anatomical Abnormality",
+      "candidates": [
+        "App1-1.01",
+        "App1-101.01",
+        "App1-1.00",
+        "App1-101.00"
+      ]
+    },
+    {
+      "class": "Anhedonia",
+      "label": "Loss of Interest or Pleasure",
+      "candidates": [
+        "App1-12.00",
+        "App1-112.00"
+      ]
+    },
+    {
+      "class": "Anorexia",
+      "label": "Anorexia",
+      "candidates": [
+        "App1-6.00",
+        "App1-12.00",
+        "App1-112.00"
+      ]
+    },
+    {
+      "class": "AnorexiaNervosa",
+      "label": "Anorexia Nervosa",
+      "candidates": [
+        "App1-12.00",
+        "App1-112.00"
+      ]
+    },
+    {
+      "class": "AntibodyProduction",
+      "label": "Antibody Production",
+      "candidates": [
+        "App1-114.00",
+        "App1-14.00"
+      ]
+    },
+    {
+      "class": "AnticancerTherapy",
+      "label": "Anticancer Therapy",
+      "candidates": [
+        "App1-13.00",
+        "App1-113.00"
+      ]
+    },
+    {
+      "class": "AntiretroviralDrug",
+      "label": "Antiretroviral Drug",
+      "candidates": [
+        "App1-114.00",
+        "App1-14.00"
+      ]
+    },
+    {
+      "class": "AnxietyDisorder",
+      "label": "Anxiety Disorder",
+      "candidates": [
+        "App1-112.00",
+        "App1-12.00",
+        "App1-12.01",
+        "App1-112.01"
+      ]
+    },
+    {
+      "class": "AorticDilation",
+      "label": "Aortic Dilation",
+      "candidates": [
+        "App1-104.00",
+        "App1-4.00"
+      ]
+    },
+    {
+      "class": "AplasticAnemia",
+      "label": "Aplastic Anemia",
+      "candidates": [
+        "App1-107.00",
+        "App1-7.00"
+      ]
+    },
+    {
+      "class": "Apprehension",
+      "label": "Apprehension",
+      "candidates": [
+        "App1-12.00",
+        "App1-112.00",
+        "App1-4.00"
+      ]
+    },
+    {
+      "class": "Arousal",
+      "label": "Arousal",
+      "candidates": [
+        "App1-12.01",
+        "App1-112.01",
+        "App1-111.00",
+        "App1-11.00"
+      ]
+    },
+    {
+      "class": "Arrhythmia",
+      "label": "Arrhythmia",
+      "candidates": [
+        "App1-4.00",
+        "App1-104.00"
+      ]
+    },
+    {
+      "class": "ArterialDeoxygenation",
+      "label": "Arterial Deoxygenation",
+      "candidates": [
+        "App1-5.00",
+        "App1-105.00"
+      ]
+    },
+    {
+      "class": "ArteriovenousShunting",
+      "label": "Arteriovenous Shunting",
+      "candidates": [
+        "App1-5.00",
+        "App1-105.00"
+      ]
+    }
+  ]
+}

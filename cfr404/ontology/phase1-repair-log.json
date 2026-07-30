@@ -1,0 +1,70 @@
+{
+  "generated": "2026-07-30",
+  "source": "CFR-DisabilityRegs.owl",
+  "steps": [
+    {
+      "step": 1,
+      "name": "namespace rewrite",
+      "detail": "5798 triples moved from the shared scratch namespaces ['http://davidkoepsell.com/bfo-agent/working#', 'http://davidkoepsell.com/bfo-agent/seed#'] into http://davidkoepsell.com/cfr404#",
+      "ontology_iri": "http://davidkoepsell.com/cfr404",
+      "version_iri": "http://davidkoepsell.com/cfr404/2026-07-30",
+      "note": "the six bfo-agent/seed# terms were label-only orphan stubs whose local names collided with working# classes of the same name; the rewrite merges them onto their counterparts and no class is lost"
+    },
+    {
+      "step": 2,
+      "name": "delete SimpleMessage",
+      "detail": "11 triples removed",
+      "host_axioms_dropped": [
+        "Reading",
+        "Writing"
+      ],
+      "justification": "SimpleMessage was grounded as a generically dependent continuant and sat as a sibling of Evidence. Nothing in 20 CFR Part 404 introduces it; it is contamination carried in from another project's scratch namespace. Its only other use was as the filler of 'has participant some SimpleMessage' on ['Reading', 'Writing'], which is itself a relation misuse (a process cannot have a generically dependent continuant as a participant), so the host axioms go too."
+    },
+    {
+      "step": 3,
+      "name": "ground Exertional Limitation",
+      "chosen": "disposition (BFO_0000016), via subClassOf Limitation",
+      "evidence": [
+        "404.1567 defines the exertional levels (sedentary, light, medium, heavy, very heavy) by what a claimant retains the capacity to do, not by a measured magnitude of an inhering quality. That is a dispositional reading.",
+        "The baseline already asserts 'ExertionalLimitation realized in some WorkPerformance'. Only a realizable entity can be realized in a process, so grounding as quality (BFO_0000019) would make the class incoherent.",
+        "Its asserted disjoint sibling NonexertionalLimitation is already subClassOf Limitation subClassOf disposition; grounding it anywhere else would split a stated disjoint pair across BFO branches."
+      ],
+      "rejected": "quality (BFO_0000019) - rejected on the realized-in evidence above"
+    },
+    {
+      "step": 4,
+      "name": "resolve UCTD anonymous parent",
+      "resolution": "dropped as extraction noise",
+      "dropped": [
+        {
+          "predicate": "type",
+          "shape": "complementOf DiagnosticCriterion"
+        }
+      ],
+      "justification": "UCTD is a named individual already typed as a disposition and as Connective Tissue Disorder and Autoimmune Disorder. The anonymous parent was a class assertion into 'complementOf DiagnosticCriterion' - a negative type assertion that follows already from the disposition/GDC split and that no CFR section states. It is the complement-noise pattern seen elsewhere in this codebase, not an intended restriction, so it is dropped rather than named."
+    },
+    {
+      "step": 5,
+      "name": "orphan restriction sweep",
+      "triples_removed": 20,
+      "restrictions_swept": [
+        "someValuesFrom: BFO_0000197 -> Brain",
+        "someValuesFrom: BFO_0000054 -> MotorDeficit",
+        "someValuesFrom: BFO_0000054 -> WorkPerformance",
+        "someValuesFrom: BFO_0000054 -> MovementDisorder",
+        "someValuesFrom: BFO_0000054 -> BFO_0000015",
+        "complementOf:  -> DiagnosticCriterion",
+        "someValuesFrom: BFO_0000051 -> BrainAbnormality"
+      ],
+      "note": "These blank nodes were already dangling in the input: restriction bodies referenced by no class, i.e. axioms whose subject was lost during the original extraction. They are reported rather than silently collected because each one is a restriction the baseline was supposed to carry and does not. Counting them keeps the restriction-predicate census honest."
+    }
+  ],
+  "acceptance": {
+    "named_classes_before": 1009,
+    "named_classes_after": 1008,
+    "triples_before": 8180,
+    "triples_after": 8147,
+    "straddles": [],
+    "unanchored": []
+  }
+}

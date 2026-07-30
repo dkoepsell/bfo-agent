@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:dcterms="http://purl.org/dc/terms/"
+  xmlns:ck="http://davidkoepsell.com/cfr404/kernel#"
+  xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+>
+  <owl:AnnotationProperty rdf:about="http://davidkoepsell.com/cfr404#extractionConfidence">
+    <rdfs:label>cfr:extractionConfidence</rdfs:label>
+    <rdfs:comment>One of high | medium | low.</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <skos:editorialNote>required on: every extracted class</skos:editorialNote>
+  </owl:AnnotationProperty>
+  <owl:NamedIndividual rdf:about="http://davidkoepsell.com/cfr404/kernel#K_D1">
+    <rdf:type rdf:resource="http://davidkoepsell.com/cfr404/kernel#KernelPrimitive"/>
+    <rdfs:label>K-D1</rdfs:label>
+    <rdfs:comment>Structural capacity granted but not available in practice</rdfs:comment>
+    <ck:stratum>D</ck:stratum>
+    <ck:instrument>world-facing data</ck:instrument>
+  </owl:NamedIndividual>
+  <owl:NamedIndividual rdf:about="http://davidkoepsell.com/cfr404/kernel#K_C3">
+    <rdf:type rdf:resource="http://davidkoepsell.com/cfr404/kernel#KernelPrimitive"/>
+    <rdfs:label>K-C3</rdfs:label>
+    <rdfs:comment>Relation misuse against domain, range, or cardinality</rdfs:comment>
+    <ck:stratum>C</ck:stratum>
+    <ck:instrument>description-logic reasoner</ck:instrument>
+  </owl:NamedIndividual>
+  <owl:AnnotationProperty rdf:about="http://davidkoepsell.com/cfr404/kernel#hasContradictionCandidate">
+    <rdfs:label>ck:hasContradictionCandidate</rdfs:label>
+    <rdfs:comment>Links a flagged term to a ck:ContradictionCandidate individual. A candidate is the detector's suspicion, NOT a reasoner-confirmed contradiction.</rdfs:comment>
+  </owl:AnnotationProperty>
+  <owl:NamedIndividual rdf:about="http://davidkoepsell.com/cfr404/kernel#L4">
+    <rdf:type rdf:resource="http://davidkoepsell.com/cfr404/kernel#ChainLocus"/>
+    <rdfs:label>L4</rdfs:label>
+    <skos:prefLabel>presenting facts</skos:prefLabel>
+  </owl:NamedIndividual>
+  <owl:AnnotationProperty rdf:about="http://davidkoepsell.com/cfr404/kernel#stratum">
+    <rdfs:label>ck:stratum</rdfs:label>
+    <rdfs:comment>Kernel stratum, A | B | C | D.</rdfs:comment>
+  </owl:AnnotationProperty>
+  <owl:NamedIndividual rdf:about="http://davidkoepsell.com/cfr404/kernel#L5">
+    <rdf:type rdf:resource="http://davidkoepsell.com/cfr404/kernel#ChainLocus"/>
+    <rdfs:label>L5</rdfs:label>
+    <skos:prefLabel>recognition act</skos:prefLabel>
+  </owl:NamedIndividual>
+  <owl:AnnotationProperty rdf:about="http://davidkoepsell.com/cfr404#chunkId">
+    <rdfs:label>cfr:chunkId</rdfs:label>
+    <rdfs:comment>Stable corpus chunk id the term was extracted from.</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <skos:editorialNote>required on: every extracted class</skos:editorialNote>
+  </owl:AnnotationProperty>
+  <owl:AnnotationProperty rdf:about="http://davidkoepsell.com/cfr404#sourceQuote">
+    <rdfs:label>cfr:sourceQuote</rdfs:label>
+    <rdfs:comment>Verbatim regulation text supporting the term, under 40 words.</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <skos:editorialNote>required on: every extracted class</skos:editorialNote>
+  </owl:AnnotationProperty>
+  <owl:AnnotationProperty rdf:about="http://davidkoepsell.com/cfr404/kernel#blanketFlag">
+    <rdfs:label>ck:blanketFlag</rdfs:label>
+    <rdfs:comment>True when the flag was applied to a whole class family rather than term by term. Blanket flags must be reported and removable separately.</rdfs:comment>
+  </owl:AnnotationProperty>
+  <owl:NamedIndividual rdf:about="http://davidkoepsell.com/cfr404/kernel#K_A1">
+    <rdf:type rdf:resource="http://davidkoepsell.com/cfr404/kernel#KernelPrimitive"/>
+    <rdfs:label>K-A1</rdfs:label>
+    <rdfs:comment>Direct logical contradiction (class both asserted and excluded)</rdfs:comment>
+    <ck:stratum>A</ck:stratum>
+    <ck:instrument>description-logic reasoner</ck:instrument>
+  </owl:NamedIndividual>
+  <owl:NamedIndividual rdf:about="http://davidkoepsell.com/cfr404/kernel#K_B2">
+    <rdf:type rdf:resource="http://davidkoepsell.com/cfr404/kernel#KernelPrimitive"/>
+    <rdfs:label>K-B2</rdfs:label>
+    <rdfs:comment>Authority inflation: capacity exercised beyond its grant</rdfs:comment>
+    <ck:stratum>B</ck:stratum>
+    <ck:instrument>structural analysis of axioms</ck:instrument>
+  </owl:NamedIndividual>
+  <owl:NamedIndividual rdf:about="http://davidkoepsell.com/cfr404/kernel#K_D3">
+    <rdf:type rdf:resource="http://davidkoepsell.com/cfr404/kernel#KernelPrimitive"/>
+    <rdfs:label>K-D3</rdfs:label>
+    <rdfs:comment>Repair-path failure: competing remedies jointly unsatisfiable</rdfs:comment>
+    <ck:stratum>D</ck:stratum>
+    <ck:instrument>process-level modelling</ck:instrument>
+  </owl:NamedIndividual>
+  <owl:NamedIndividual rdf:about="http://davidkoepsell.com/cfr404/kernel#K_A3">
+    <rdf:type rdf:resource="http://davidkoepsell.com/cfr404/kernel#KernelPrimitive"/>
+    <rdfs:label>K-A3</rdfs:label>
+    <rdfs:comment>Definitional circularity / vacuous definition</rdfs:comment>
+    <ck:stratum>A</ck:stratum>
+    <ck:instrument>structural analysis of axioms</ck:instrument>
+  </owl:NamedIndividual>
+  <owl:AnnotationProperty rdf:about="http://davidkoepsell.com/cfr404/kernel#instrument">
+    <rdfs:label>ck:instrument</rdfs:label>
+    <rdfs:comment>Detecting instrument, per Table 7.</rdfs:comment>
+  </owl:AnnotationProperty>
+  <owl:AnnotationProperty rdf:about="http://davidkoepsell.com/cfr404#reviewNote">
+    <rdfs:label>cfr:reviewNote</rdfs:label>
+    <rdfs:comment>Free-text adjudication note.</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <skos:editorialNote>required on: optional</skos:editorialNote>
+  </owl:AnnotationProperty>
+  <owl:Ontology rdf:about="http://davidkoepsell.com/cfr404/kernel">
+    <owl:versionIRI rdf:resource="http://davidkoepsell.com/cfr404/kernel/2026-07-30"/>
+    <rdfs:label>cfr404 provenance and contradiction-kernel vocabulary</rdfs:label>
+    <dcterms:license rdf:resource="https://creativecommons.org/licenses/by/4.0/"/>
+    <rdfs:comment>Provenance properties are minted in the cfr: namespace because they describe the artifact's own terms. Audit vocabulary is minted in ck: because it describes findings about the artifact, which are not part of it.</rdfs:comment>
+  </owl:Ontology>
+  <owl:NamedIndividual rdf:about="http://davidkoepsell.com/cfr404/kernel#K_C1">
+    <rdf:type rdf:resource="http://davidkoepsell.com/cfr404/kernel#KernelPrimitive"/>
+    <rdfs:label>K-C1</rdfs:label>
+    <rdfs:comment>Continuant/occurrent straddle</rdfs:comment>
+    <ck:stratum>C</ck:stratum>
+    <ck:instrument>description-logic reasoner</ck:instrument>
+  </owl:NamedIndividual>
+  <owl:NamedIndividual rdf:about="http://davidkoepsell.com/cfr404/kernel#K_B3">
+    <rdf:type rdf:resource="http://davidkoepsell.com/cfr404/kernel#KernelPrimitive"/>
+    <rdfs:label>K-B3</rdfs:label>
+    <rdfs:comment>Category straddle within the institutional layer</rdfs:comment>
+    <ck:stratum>B</ck:stratum>
+    <ck:instrument>structural analysis of axioms</ck:instrument>
+  </owl:NamedIndividual>
+  <owl:AnnotationProperty rdf:about="http://davidkoepsell.com/cfr404#approved">
+    <rdfs:label>cfr:approved</rdfs:label>
+    <rdfs:comment>Whether the assertion passed review. Untraced terms are false.</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    <skos:editorialNote>required on: every extracted class</skos:editorialNote>
+  </owl:AnnotationProperty>
+  <owl:NamedIndividual rdf:about="http://davidkoepsell.com/cfr404/kernel#K_C2">
+    <rdf:type rdf:resource="http://davidkoepsell.com/cfr404/kernel#KernelPrimitive"/>
+    <rdfs:label>K-C2</rdfs:label>
+    <rdfs:comment>Realizable misuse (role/disposition/function confusion)</rdfs:comment>
+    <ck:stratum>C</ck:stratum>
+    <ck:instrument>structural analysis of axioms</ck:instrument>
+  </owl:NamedIndividual>
+  <owl:AnnotationProperty rdf:about="http://davidkoepsell.com/cfr404#sourceSection">
+    <rdfs:label>cfr:sourceSection</rdfs:label>
+    <rdfs:comment>CFR section or appendix sub-unit this term is traced to, e.g. '404.1546' or 'App1-1.00'. The sentinel 'UNATTRIBUTED' means no verbatim trace was found; it is not a section and must be excluded from any locus count.</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <skos:editorialNote>required on: every class and axiom</skos:editorialNote>
+  </owl:AnnotationProperty>
+  <owl:AnnotationProperty rdf:about="http://davidkoepsell.com/cfr404/kernel#evidence">
+    <rdfs:label>ck:evidence</rdfs:label>
+    <rdfs:comment>What the detector actually observed.</rdfs:comment>
+  </owl:AnnotationProperty>
+  <owl:NamedIndividual rdf:about="http://davidkoepsell.com/cfr404/kernel#L0">
+    <rdf:type rdf:resource="http://davidkoepsell.com/cfr404/kernel#ChainLocus"/>
+    <rdfs:label>L0</rdfs:label>
+    <skos:prefLabel>outside the recognition chain (substrate, not institutional)</skos:prefLabel>
+  </owl:NamedIndividual>
+  <owl:NamedIndividual rdf:about="http://davidkoepsell.com/cfr404/kernel#K_A2">
+    <rdf:type rdf:resource="http://davidkoepsell.com/cfr404/kernel#KernelPrimitive"/>
+    <rdfs:label>K-A2</rdfs:label>
+    <rdfs:comment>Unsatisfiable class under the criteria</rdfs:comment>
+    <ck:stratum>A</ck:stratum>
+    <ck:instrument>description-logic reasoner</ck:instrument>
+  </owl:NamedIndividual>
+  <owl:NamedIndividual rdf:about="http://davidkoepsell.com/cfr404/kernel#K_B1">
+    <rdf:type rdf:resource="http://davidkoepsell.com/cfr404/kernel#KernelPrimitive"/>
+    <rdfs:label>K-B1</rdfs:label>
+    <rdfs:comment>Grounding cycle, cyclic subsumption, or temporal inversion</rdfs:comment>
+    <ck:stratum>B</ck:stratum>
+    <ck:instrument>structural analysis of axioms</ck:instrument>
+  </owl:NamedIndividual>
+  <owl:AnnotationProperty rdf:about="http://davidkoepsell.com/cfr404/kernel#detector">
+    <rdfs:label>ck:detector</rdfs:label>
+    <rdfs:comment>Detector module that raised the flag.</rdfs:comment>
+  </owl:AnnotationProperty>
+  <owl:NamedIndividual rdf:about="http://davidkoepsell.com/cfr404/kernel#K_D2">
+    <rdf:type rdf:resource="http://davidkoepsell.com/cfr404/kernel#KernelPrimitive"/>
+    <rdfs:label>K-D2</rdfs:label>
+    <rdfs:comment>Performative self-defeat</rdfs:comment>
+    <ck:stratum>D</ck:stratum>
+    <ck:instrument>process-level modelling</ck:instrument>
+  </owl:NamedIndividual>
+  <owl:NamedIndividual rdf:about="http://davidkoepsell.com/cfr404/kernel#L2">
+    <rdf:type rdf:resource="http://davidkoepsell.com/cfr404/kernel#ChainLocus"/>
+    <rdfs:label>L2</rdfs:label>
+    <skos:prefLabel>criteria</skos:prefLabel>
+  </owl:NamedIndividual>
+  <owl:AnnotationProperty rdf:about="http://davidkoepsell.com/cfr404/kernel#locus">
+    <rdfs:label>ck:locus</rdfs:label>
+    <rdfs:comment>Recognition-chain locus the flag is attributed to, L1..L7.</rdfs:comment>
+  </owl:AnnotationProperty>
+  <owl:NamedIndividual rdf:about="http://davidkoepsell.com/cfr404/kernel#L7">
+    <rdf:type rdf:resource="http://davidkoepsell.com/cfr404/kernel#ChainLocus"/>
+    <rdfs:label>L7</rdfs:label>
+    <skos:prefLabel>remedy</skos:prefLabel>
+  </owl:NamedIndividual>
+  <owl:Class rdf:about="http://davidkoepsell.com/cfr404/kernel#ContradictionCandidate">
+    <rdfs:label>contradiction candidate</rdfs:label>
+    <rdfs:comment>A detector's suspicion about a term or an edge. Candidates are not confirmed contradictions: they are the input to hand adjudication, and their precision is reported, never assumed.</rdfs:comment>
+  </owl:Class>
+  <owl:NamedIndividual rdf:about="http://davidkoepsell.com/cfr404/kernel#L1">
+    <rdf:type rdf:resource="http://davidkoepsell.com/cfr404/kernel#ChainLocus"/>
+    <rdfs:label>L1</rdfs:label>
+    <skos:prefLabel>source of authority</skos:prefLabel>
+  </owl:NamedIndividual>
+  <owl:NamedIndividual rdf:about="http://davidkoepsell.com/cfr404/kernel#L6">
+    <rdf:type rdf:resource="http://davidkoepsell.com/cfr404/kernel#ChainLocus"/>
+    <rdfs:label>L6</rdfs:label>
+    <skos:prefLabel>effect</skos:prefLabel>
+  </owl:NamedIndividual>
+  <owl:AnnotationProperty rdf:about="http://davidkoepsell.com/cfr404/kernel#edge">
+    <rdfs:label>ck:edge</rdfs:label>
+    <rdfs:comment>For relational primitives, the chain edge flagged, e.g. 'L5-&gt;L6'.</rdfs:comment>
+  </owl:AnnotationProperty>
+  <owl:NamedIndividual rdf:about="http://davidkoepsell.com/cfr404/kernel#L3">
+    <rdf:type rdf:resource="http://davidkoepsell.com/cfr404/kernel#ChainLocus"/>
+    <rdfs:label>L3</rdfs:label>
+    <skos:prefLabel>assessor in role</skos:prefLabel>
+  </owl:NamedIndividual>
+  <owl:AnnotationProperty rdf:about="http://davidkoepsell.com/cfr404#chainLocus">
+    <rdfs:label>cfr:chainLocus</rdfs:label>
+    <rdfs:comment>One of L1..L7, or L0 for terms outside the recognition chain.</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <skos:editorialNote>required on: every institutional class</skos:editorialNote>
+  </owl:AnnotationProperty>
+  <owl:AnnotationProperty rdf:about="http://davidkoepsell.com/cfr404/kernel#primitive">
+    <rdfs:label>ck:primitive</rdfs:label>
+    <rdfs:comment>Kernel primitive id, K-A1 .. K-D3.</rdfs:comment>
+  </owl:AnnotationProperty>
+  <owl:Class rdf:about="http://davidkoepsell.com/cfr404/kernel#KernelPrimitive">
+    <rdfs:label>contradiction kernel primitive</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:about="http://davidkoepsell.com/cfr404/kernel#ChainLocus">
+    <rdfs:label>recognition chain locus</rdfs:label>
+    <rdfs:comment>L1..L7 are the seven links. L0 is a sentinel for terms that are not institutional at all - the medical and biological substrate the regulation refers to but does not constitute. L0 is excluded from every locus density in Table 13.</rdfs:comment>
+  </owl:Class>
+</rdf:RDF>

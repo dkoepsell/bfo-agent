@@ -1,0 +1,13 @@
+{
+  "chunk_id": "App1-110.01",
+  "section": "App1-110.01",
+  "subpart": "P",
+  "appendix": "Appendix 1 to Subpart P of Part 404",
+  "heading": "110.01 Category of Impairments, Congenital Disorders That Affect Multiple Body Systems",
+  "text": "110.06 Non-mosaic Down syndrome (chromosome 21 trisomy or chromosome 21 translocation), documented by:\nA. A laboratory report of karyotype analysis signed by a physician, or both a laboratory report of karyotype analysis not signed by a physician and a statement by a physician that the child has Down syndrome (see 110.00C1), or\nB. A physician's report stating that the child has chromosome 21 trisomy or chromosome 21 translocation consistent with karyotype analysis with the distinctive facial or other physical features of Down syndrome (see 110.00C2a), or\nC. A physician's report stating that the child has Down syndrome with the distinctive facial or other physical features and evidence demonstrating that the child is functioning at the level of a child with non-mosaic Down syndrome (see 110.00C2b).\n110.08 A catastrophic congenital disorder (see 110.00D and 110.00E) with:\nA. Death usually expected within the first months of life, or\nB. Very serious interference with development or functioning.",
+  "chars": 1006,
+  "source_file": "corpus/raw/title20-part404-appendix1-2026-07-28.xml",
+  "source_sha256": "2c849619743adbf586e4d377e3e425a71fa4782fe558692474b703d9b80f9bdb",
+  "source_url": "https://www.ecfr.gov/api/versioner/v1/full/2026-07-28/title-20.xml?chapter=III&part=404&subpart=P&appendix=Appendix%201%20to%20Subpart%20P%20of%20Part%20404",
+  "chunk_sha256": "267455fa0e6a93c45d6d6cfba96c8b14cbd8f50ed9b83bbbba865b2f9af43b96"
+}

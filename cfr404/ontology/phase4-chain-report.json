@@ -1,0 +1,95 @@
+{
+  "phase": 4,
+  "terms": 52,
+  "object_properties": 8,
+  "by_locus": {
+    "L1": [
+      "AppealsCouncilAuthorityRole",
+      "AuthorityRole",
+      "CommissionerAuthorityRole",
+      "CommissionerOfSocialSecurity",
+      "StateAgencyAuthorityRole"
+    ],
+    "L2": [
+      "ConsistencyFactor",
+      "GoodCauseForReopening",
+      "InstitutionalCriterion",
+      "ListingOfImpairments",
+      "MedicalImprovementReviewStandard",
+      "MedicalVocationalGuideline",
+      "ReopeningTimeCondition",
+      "ResJudicataBar",
+      "ResidualFunctionalCapacityCriteria",
+      "SequentialEvaluationCriteria",
+      "SupportabilityFactor"
+    ],
+    "L3": [
+      "AdministrativeAppealsJudgeRole",
+      "AdministrativeLawJudgeRole",
+      "AppealsCouncilMemberRole",
+      "AssessorRole",
+      "AssociateCommissionerForDisabilityDeterminationsRole",
+      "DisabilityHearingOfficerRole",
+      "StateAgencyDisabilityExaminerRole",
+      "StateAgencyMedicalConsultantRole",
+      "StateAgencyPsychologicalConsultantRole"
+    ],
+    "L4": [
+      "EvidenceOfRecord",
+      "MedicalOpinion",
+      "NonmedicalEvidence",
+      "PresentedFact",
+      "PriorAdministrativeMedicalFinding"
+    ],
+    "L5": [
+      "AdministrativeLawJudgeDecision",
+      "AppealsCouncilDecision",
+      "AssessorRoleDesignation",
+      "DisabilityHearingDecision",
+      "InitialDetermination",
+      "RecognitionAct",
+      "ReconsideredDetermination",
+      "ResidualFunctionalCapacityAssessment"
+    ],
+    "L6": [
+      "CessationOfDisability",
+      "DisabilityStatusEffect",
+      "EntitlementToBenefits",
+      "InstitutionalEffect",
+      "MedicareEligibility"
+    ],
+    "L7": [
+      "AdministrativeLawJudgeHearing",
+      "AppealsCouncilReview",
+      "ContinuingDisabilityReview",
+      "JudicialReview",
+      "Reconsideration",
+      "RemedyProcess",
+      "Reopening",
+      "ResJudicataDismissal",
+      "Revision"
+    ]
+  },
+  "locus_counts": {
+    "L1": 5,
+    "L2": 11,
+    "L3": 9,
+    "L4": 5,
+    "L5": 8,
+    "L6": 5,
+    "L7": 9
+  },
+  "person_borne_L3_roles": [
+    "AdministrativeAppealsJudgeRole",
+    "AdministrativeLawJudgeRole",
+    "AppealsCouncilMemberRole",
+    "AssociateCommissionerForDisabilityDeterminationsRole",
+    "DisabilityHearingOfficerRole",
+    "StateAgencyDisabilityExaminerRole",
+    "StateAgencyMedicalConsultantRole",
+    "StateAgencyPsychologicalConsultantRole"
+  ],
+  "person_borne_L3_role_count": 8,
+  "authority_separated_from_assessor": true,
+  "anchor_failures": 0
+}

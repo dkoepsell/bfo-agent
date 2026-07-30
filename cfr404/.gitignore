@@ -1,0 +1,3 @@
+# Raw eCFR XML is large and reproducible from corpus/manifest.json via
+# scripts/fetch_corpus.py; hashes in the manifest pin exactly what was fetched.
+corpus/raw/*.xml

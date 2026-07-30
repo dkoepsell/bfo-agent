@@ -1,0 +1,12 @@
+{
+  "chunk_id": "404.721",
+  "section": "404.721",
+  "subpart": "H",
+  "heading": "Evidence to presume a person is dead.",
+  "text": "If you cannot prove the person is dead but evidence of death is needed, we will presume he or she died at a certain time if you give us the following evidence:\n(a) A certified copy of, or extract from, an official report or finding by an agency or department of the United States that a missing person is presumed to be dead as set out in Federal law (5 U.S.C. 5565). Unless we have other evidence showing an actual date of death, we will use the date he or she was reported missing as the date of death.\n(b) Signed statements by those in a position to know and other records which show that the person has been absent from his or her residence and has not been heard from for at least 7 years. If the presumption of death is not rebutted pursuant to \u00a7 404.722, we will use as the person's date of death either the date he or she left home, the date ending the 7 year period, or some other date depending upon what the evidence shows is the most likely date of death.\n(c) If you are applying for benefits as the insured person's grandchild or stepgrandchild but the evidence does not identify a parent, we will presume the parent died in the first month in which the insured person became entitled to benefits.",
+  "chars": 1210,
+  "source_file": "corpus/raw/title20-part404-subpartH-2026-07-28.xml",
+  "source_sha256": "00842b57d6cd869dea16452544d2cc8bf0e3b17b789f9e7e0300ddbbeec4bebb",
+  "source_url": "https://www.ecfr.gov/api/versioner/v1/full/2026-07-28/title-20.xml?chapter=III&part=404&subpart=H",
+  "chunk_sha256": "6e409a361d6e90236ba8d30cf75322be5ee87e94cba55f227d35b1a00120812e"
+}

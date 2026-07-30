@@ -1,0 +1,12 @@
+{
+  "chunk_id": "404.1643",
+  "section": "404.1643",
+  "subpart": "Q",
+  "heading": "Performance accuracy standard.",
+  "text": "(a) General. Performance accuracy refers to the percentage of cases that do not have to be returned to State agencies for further development or correction of decisions based on evidence in the files and as such represents the reliability of State agency adjudication. The definition of performance accuracy includes the measurement of factors that have a potential for affecting a decision, as well as the correctness of the decision. For example, if a particular item of medical evidence should have been in the file but was not included, even though its inclusion does not change the result in the case, that is a performance error. Performance accuracy, therefore, is a higher standard than decisional accuracy. As a result, the percentage of correct decisions is significantly higher than what is reflected in the error rate established by SSA's quality assurance system.\n(b) Target level. The State agency initial performance accuracy target level for combined title II and title XVI cases is 97 percent with a corresponding decision accuracy rate of 99 percent.\n(c) Intermediate goals. These goals will be established annually by SSA's regional commissioner after negotiation with the State and should be used as stepping stones to progress towards our targeted level of performance.\n(d) Threshold levels. The State agency initial performance accuracy threshold level for combined title II and title XVI cases is 90.6 percent.",
+  "chars": 1433,
+  "source_file": "corpus/raw/title20-part404-subpartQ-2026-07-28.xml",
+  "source_sha256": "6fac1f7f522a960b7cde8437fbbc3aaa9e255b65871a9eda6383825bc7df0f3a",
+  "source_url": "https://www.ecfr.gov/api/versioner/v1/full/2026-07-28/title-20.xml?chapter=III&part=404&subpart=Q",
+  "chunk_sha256": "274e1bd40903530b37cdc70513639dd376db751cbec73110e3842cf3b978cfa2"
+}

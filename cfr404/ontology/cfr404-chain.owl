@@ -1,0 +1,1019 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:cfr="http://davidkoepsell.com/cfr404#"
+  xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:dcterms="http://purl.org/dc/terms/"
+>
+  <owl:Class rdf:about="http://davidkoepsell.com/cfr404#JudicialReview">
+    <rdfs:label>judicial review</rdfs:label>
+    <rdfs:comment>Review in federal district court after the Council acts.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://davidkoepsell.com/cfr404#RemedyProcess"/>
+    <rdfs:subClassOf>
+      <owl:Restriction rdf:nodeID="N6c0c49ffe6644664aacc120798249b67">
+        <owl:onProperty rdf:resource="http://davidkoepsell.com/cfr404#repairPathFor"/>
+        <owl:someValuesFrom rdf:resource="http://davidkoepsell.com/cfr404#AppealsCouncilDecision"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <cfr:chainLocus>L7</cfr:chainLocus>
+    <cfr:sourceSection>404.981</cfr:sourceSection>
+    <cfr:chunkId>404.981</cfr:chunkId>
+    <cfr:sourceQuote>cision, or the decision of the administrative law judge if the request for review is denied, is binding unless you or another party file an action in Federal district court, or the decision is revised. You may file</cfr:sourceQuote>
+    <cfr:extractionConfidence>high</cfr:extractionConfidence>
+    <cfr:approved rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</cfr:approved>
+    <cfr:reviewNote>hand-authored chain scaffold; anchored on 'Federal district court' in 404.981</cfr:reviewNote>
+    <skos:editorialNote>Phase 4 scaffold term</skos:editorialNote>
+  </owl:Class>
+  <owl:Class rdf:about="http://davidkoepsell.com/cfr404#SupportabilityFactor">
+    <rdfs:label>supportability factor</rdfs:label>
+    <rdfs:comment>How well a medical opinion is supported by its own objective evidence.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://davidkoepsell.com/cfr404#InstitutionalCriterion"/>
+    <cfr:chainLocus>L2</cfr:chainLocus>
+    <cfr:sourceSection>404.1520c</cfr:sourceSection>
+    <cfr:chunkId>404.1520c</cfr:chunkId>
+    <cfr:sourceQuote>priate. The most important factors we consider when we evaluate the persuasiveness of medical opinions and prior administrative medical findings are supportability (paragraph (c)(1) of this section) and consistency (paragraph (c)(2) of this section). We will articulate how</cfr:sourceQuote>
+    <cfr:extractionConfidence>high</cfr:extractionConfidence>
+    <cfr:approved rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</cfr:approved>
+    <cfr:reviewNote>hand-authored chain scaffold; anchored on 'upportability' in 404.1520c</cfr:reviewNote>
+    <skos:editorialNote>Phase 4 scaffold term</skos:editorialNote>
+  </owl:Class>
+  <owl:Class rdf:about="http://davidkoepsell.com/cfr404#PriorAdministrativeMedicalFinding">
+    <rdfs:label>prior administrative medical finding</rdfs:label>
+    <rdfs:comment>A finding by a prior State agency consultant at an earlier level.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://davidkoepsell.com/cfr404#PresentedFact"/>
+    <cfr:chainLocus>L4</cfr:chainLocus>
+    <cfr:sourceSection>404.1513</cfr:sourceSection>
+    <cfr:chunkId>404.1513</cfr:chunkId>
+    <cfr:sourceQuote>e from nonmedical sources either directly from the nonmedical source or indirectly, such as from forms we receive and our administrative records. (5) Prior administrative medical finding. A prior administrative medical finding is a finding, other than the</cfr:sourceQuote>
+    <cfr:extractionConfidence>high</cfr:extractionConfidence>
+    <cfr:approved rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</cfr:approved>
+    <cfr:reviewNote>hand-authored chain scaffold; anchored on 'prior administrative medical finding' in 404.1513</cfr:reviewNote>
+    <skos:editorialNote>Phase 4 scaffold term</skos:editorialNote>
+  </owl:Class>
+  <owl:Class rdf:about="http://davidkoepsell.com/cfr404#CommissionerOfSocialSecurity">
+    <rdfs:label>Commissioner of Social Security</rdfs:label>
+    <rdfs:comment>The federal officer in whom the Act vests the determination power.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000030"/>
+    <rdfs:subClassOf>
+      <owl:Restriction rdf:nodeID="N6263e23badb346189d2dbceb67a32126">
+        <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/BFO_0000196"/>
+        <owl:someValuesFrom rdf:resource="http://davidkoepsell.com/cfr404#CommissionerAuthorityRole"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <cfr:chainLocus>L1</cfr:chainLocus>
+    <cfr:sourceSection>404.1503</cfr:sourceSection>
+    <cfr:chunkId>404.1503</cfr:chunkId>
+    <cfr:sourceQuote>(a) State agencies. State agencies make disability and blindness determinations for the Commissioner for most persons living in the State. State agencies make these disability and blindness determinations under regulations containing performance stan</cfr:sourceQuote>
+    <cfr:extractionConfidence>high</cfr:extractionConfidence>
+    <cfr:approved rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</cfr:approved>
+    <cfr:reviewNote>hand-authored chain scaffold; anchored on 'Commissioner' in 404.1503</cfr:reviewNote>
+    <skos:editorialNote>Phase 4 scaffold term</skos:editorialNote>
+  </owl:Class>
+  <owl:Class rdf:about="http://davidkoepsell.com/cfr404#ResJudicataBar">
+    <rdfs:label>res judicata bar</rdfs:label>
+    <rdfs:comment>The condition under which a claim may not be adjudicated again.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://davidkoepsell.com/cfr404#InstitutionalCriterion"/>
+    <cfr:chainLocus>L2</cfr:chainLocus>
+    <cfr:sourceSection>404.957</cfr:sourceSection>
+    <cfr:chunkId>404.957</cfr:chunkId>
+    <cfr:sourceQuote>decides that there is cause to dismiss a hearing request entirely or to refuse to consider any one or more of the issues because— (1) The doctrine of res judicata applies in that we have made a previous</cfr:sourceQuote>
+    <cfr:extractionConfidence>high</cfr:extractionConfidence>
+    <cfr:approved rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</cfr:approved>
+    <cfr:reviewNote>hand-authored chain scaffold; anchored on 'res judicata' in 404.957</cfr:reviewNote>
+    <skos:editorialNote>Phase 4 scaffold term</skos:editorialNote>
+  </owl:Class>
+  <owl:Class rdf:about="http://davidkoepsell.com/cfr404#AppealsCouncilReview">
+    <rdfs:label>Appeals Council review</rdfs:label>
+    <rdfs:comment>The third level of administrative review.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://davidkoepsell.com/cfr404#RemedyProcess"/>
+    <rdfs:subClassOf>
+      <owl:Restriction rdf:nodeID="N4b3cedafdd034d9290c426fb236b46c8">
+        <owl:onProperty rdf:resource="http://davidkoepsell.com/cfr404#repairPathFor"/>
+        <owl:someValuesFrom rdf:resource="http://davidkoepsell.com/cfr404#AdministrativeLawJudgeDecision"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <cfr:chainLocus>L7</cfr:chainLocus>
+    <cfr:sourceSection>404.967</cfr:sourceSection>
+    <cfr:chunkId>404.967</cfr:chunkId>
+    <cfr:sourceQuote>If you or any other party is dissatisfied with the hearing decision or with the dismissal of a hearing request, you may request that the Appeals Council review that action. The Appeals Council may deny or dismiss the</cfr:sourceQuote>
+    <cfr:extractionConfidence>high</cfr:extractionConfidence>
+    <cfr:approved rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</cfr:approved>
+    <cfr:reviewNote>hand-authored chain scaffold; anchored on 'Appeals Council' in 404.967</cfr:reviewNote>
+    <skos:editorialNote>Phase 4 scaffold term</skos:editorialNote>
+  </owl:Class>
+  <owl:Class rdf:about="http://davidkoepsell.com/cfr404#ListingOfImpairments">
+    <rdfs:label>Listing of Impairments</rdfs:label>
+    <rdfs:comment>The catalogue of impairments severe enough to preclude gainful activity.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://davidkoepsell.com/cfr404#InstitutionalCriterion"/>
+    <cfr:chainLocus>L2</cfr:chainLocus>
+    <cfr:sourceSection>404.1525</cfr:sourceSection>
+    <cfr:chunkId>404.1525</cfr:chunkId>
+    <cfr:sourceQuote>(a) What is the purpose of the Listing of Impairments? The Listing of Impairments (the listings) is in appendix 1 of this subpart. It describes for each of the major body systems impairments that we cons</cfr:sourceQuote>
+    <cfr:extractionConfidence>high</cfr:extractionConfidence>
+    <cfr:approved rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</cfr:approved>
+    <cfr:reviewNote>hand-authored chain scaffold; anchored on 'Listing of Impairments' in 404.1525</cfr:reviewNote>
+    <skos:editorialNote>Phase 4 scaffold term</skos:editorialNote>
+  </owl:Class>
+  <owl:Class rdf:about="http://davidkoepsell.com/cfr404#DisabilityHearingDecision">
+    <rdfs:label>disability hearing officer's reconsidered determination</rdfs:label>
+    <rdfs:comment>The determination issued after a disability hearing.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://davidkoepsell.com/cfr404#RecognitionAct"/>
+    <rdfs:subClassOf>
+      <owl:Restriction rdf:nodeID="N96fac467c70b4e75becd45f663f8ddb0">
+        <owl:onProperty rdf:resource="http://davidkoepsell.com/cfr404#assessedBy"/>
+        <owl:someValuesFrom rdf:resource="http://davidkoepsell.com/cfr404#DisabilityHearingOfficerRole"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <cfr:chainLocus>L5</cfr:chainLocus>
+    <cfr:sourceSection>404.918</cfr:sourceSection>
+    <cfr:chunkId>404.918</cfr:chunkId>
+    <cfr:sourceQuote>(a) General. The Associate Commissioner for Disability Determinations or his or her delegate may select a sample of disability hearing officers' reconsidered determinations, before they are issued, and review any such case to determine its correctness on any</cfr:sourceQuote>
+    <cfr:extractionConfidence>high</cfr:extractionConfidence>
+    <cfr:approved rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</cfr:approved>
+    <cfr:reviewNote>hand-authored chain scaffold; anchored on 'disability hearing officer' in 404.918</cfr:reviewNote>
+    <skos:editorialNote>Phase 4 scaffold term</skos:editorialNote>
+  </owl:Class>
+  <owl:Class rdf:about="http://davidkoepsell.com/cfr404#ResJudicataDismissal">
+    <rdfs:label>dismissal on res judicata</rdfs:label>
+    <rdfs:comment>Dismissal of a request for hearing because the same claim has already been decided. It bars the very revisiting that reopening allows.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://davidkoepsell.com/cfr404#RemedyProcess"/>
+    <rdfs:subClassOf>
+      <owl:Restriction rdf:nodeID="N9c3a2ca765414ec2931d4bb956ad395e">
+        <owl:onProperty rdf:resource="http://davidkoepsell.com/cfr404#repairPathFor"/>
+        <owl:someValuesFrom rdf:resource="http://davidkoepsell.com/cfr404#InitialDetermination"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction rdf:nodeID="N21fb6421fb854a0f98b38d5dd866fbbf">
+        <owl:onProperty rdf:resource="http://davidkoepsell.com/cfr404#excludesPath"/>
+        <owl:someValuesFrom rdf:resource="http://davidkoepsell.com/cfr404#AdministrativeLawJudgeHearing"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <cfr:chainLocus>L7</cfr:chainLocus>
+    <cfr:sourceSection>404.957</cfr:sourceSection>
+    <cfr:chunkId>404.957</cfr:chunkId>
+    <cfr:sourceQuote>decides that there is cause to dismiss a hearing request entirely or to refuse to consider any one or more of the issues because— (1) The doctrine of res judicata applies in that we have made a previous</cfr:sourceQuote>
+    <cfr:extractionConfidence>high</cfr:extractionConfidence>
+    <cfr:approved rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</cfr:approved>
+    <cfr:reviewNote>hand-authored chain scaffold; anchored on 'res judicata' in 404.957</cfr:reviewNote>
+    <skos:editorialNote>Phase 4 scaffold term</skos:editorialNote>
+  </owl:Class>
+  <owl:Class rdf:about="http://davidkoepsell.com/cfr404#MedicalVocationalGuideline">
+    <rdfs:label>medical-vocational guideline</rdfs:label>
+    <rdfs:comment>The grid rules directing a conclusion from age, education and work experience.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://davidkoepsell.com/cfr404#InstitutionalCriterion"/>
+    <cfr:chainLocus>L2</cfr:chainLocus>
+    <cfr:sourceSection>App2-all</cfr:sourceSection>
+    <cfr:chunkId>App2-all</cfr:chunkId>
+    <cfr:sourceQuote>Sec. 200.00 Introduction. 201.00 Maximum sustained work capability limited to sedentary work as a result of severe medically determinable impairment(s). 202.00 Maximum sustained work capability limited to light work</cfr:sourceQuote>
+    <cfr:extractionConfidence>high</cfr:extractionConfidence>
+    <cfr:approved rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</cfr:approved>
+    <cfr:reviewNote>hand-authored chain scaffold; anchored on 'sustained work capability' in App2-all</cfr:reviewNote>
+    <skos:editorialNote>Phase 4 scaffold term</skos:editorialNote>
+  </owl:Class>
+  <owl:Class rdf:about="http://davidkoepsell.com/cfr404#Reconsideration">
+    <rdfs:label>reconsideration</rdfs:label>
+    <rdfs:comment>The first level of administrative review.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://davidkoepsell.com/cfr404#RemedyProcess"/>
+    <rdfs:subClassOf>
+      <owl:Restriction rdf:nodeID="N774d26886f7e4740a27c3a8193fbfd72">
+        <owl:onProperty rdf:resource="http://davidkoepsell.com/cfr404#repairPathFor"/>
+        <owl:someValuesFrom rdf:resource="http://davidkoepsell.com/cfr404#InitialDetermination"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <cfr:chainLocus>L7</cfr:chainLocus>
+    <cfr:sourceSection>404.907</cfr:sourceSection>
+    <cfr:chunkId>404.907</cfr:chunkId>
+    <cfr:sourceQuote>If you are dissatisfied with the initial determination, reconsideration is the first step in the administrative review process that we provide, except that we provide the opportunity for a hearing before an administrative</cfr:sourceQuote>
+    <cfr:extractionConfidence>high</cfr:extractionConfidence>
+    <cfr:approved rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</cfr:approved>
+    <cfr:reviewNote>hand-authored chain scaffold; anchored on 'reconsideration' in 404.907</cfr:reviewNote>
+    <skos:editorialNote>Phase 4 scaffold term</skos:editorialNote>
+  </owl:Class>
+  <rdf:Description rdf:about="http://davidkoepsell.com/cfr404#DeterminingAgencyRole">
+    <owl:deprecated rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:deprecated>
+    <rdfs:comment>Deprecated by the Phase 4 scaffold: it collapsed the L1 grant of authority and the L3 assessment role into one term. Replaced by cfr:AuthorityRole (L1) and cfr:AssessorRole (L3), which are asserted disjoint.</rdfs:comment>
+    <skos:editorialNote>replaced by cfr:AuthorityRole + cfr:AssessorRole</skos:editorialNote>
+  </rdf:Description>
+  <owl:Class rdf:about="http://davidkoepsell.com/cfr404#Revision">
+    <rdfs:label>revision</rdfs:label>
+    <rdfs:comment>The change made to a determination that has been reopened.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://davidkoepsell.com/cfr404#RemedyProcess"/>
+    <rdfs:subClassOf>
+      <owl:Restriction rdf:nodeID="N680d28fdac9140ce87e6c3d12ffffb39">
+        <owl:onProperty rdf:resource="http://davidkoepsell.com/cfr404#repairPathFor"/>
+        <owl:someValuesFrom rdf:resource="http://davidkoepsell.com/cfr404#InitialDetermination"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <cfr:chainLocus>L7</cfr:chainLocus>
+    <cfr:sourceSection>404.987</cfr:sourceSection>
+    <cfr:chunkId>404.987</cfr:chunkId>
+    <cfr:sourceQuote>mination or decision becomes final. However, a determination or a decision made in your case which is otherwise final and binding may be reopened and revised by us. (b) Procedure for reopening and revision. We may reopen a</cfr:sourceQuote>
+    <cfr:extractionConfidence>high</cfr:extractionConfidence>
+    <cfr:approved rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</cfr:approved>
+    <cfr:reviewNote>hand-authored chain scaffold; anchored on 'revised' in 404.987</cfr:reviewNote>
+    <skos:editorialNote>Phase 4 scaffold term</skos:editorialNote>
+  </owl:Class>
+  <owl:Class rdf:about="http://davidkoepsell.com/cfr404#ResidualFunctionalCapacityAssessment">
+    <rdfs:label>residual functional capacity assessment</rdfs:label>
+    <rdfs:comment>404.1546 assigns this single assessment to occupants at every level of the system. It is the densest assessor locus in the corpus and the site prediction 4 names for K-B2.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://davidkoepsell.com/cfr404#RecognitionAct"/>
+    <rdfs:subClassOf>
+      <owl:Restriction rdf:nodeID="N095508d420a54e6c9f4d71f9edd94509">
+        <owl:onProperty rdf:resource="http://davidkoepsell.com/cfr404#appliesCriteria"/>
+        <owl:someValuesFrom rdf:resource="http://davidkoepsell.com/cfr404#ResidualFunctionalCapacityCriteria"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction rdf:nodeID="Nf4ffc21e9c03411d8402f266aa5c40a8">
+        <owl:onProperty rdf:resource="http://davidkoepsell.com/cfr404#assessedBy"/>
+        <owl:someValuesFrom rdf:resource="http://davidkoepsell.com/cfr404#StateAgencyDisabilityExaminerRole"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction rdf:nodeID="N0cb4175183604d7bbf08cd0b316c051c">
+        <owl:onProperty rdf:resource="http://davidkoepsell.com/cfr404#assessedBy"/>
+        <owl:someValuesFrom rdf:resource="http://davidkoepsell.com/cfr404#StateAgencyMedicalConsultantRole"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction rdf:nodeID="N8976d5bde8f844ddab875558ddcec3e5">
+        <owl:onProperty rdf:resource="http://davidkoepsell.com/cfr404#assessedBy"/>
+        <owl:someValuesFrom rdf:resource="http://davidkoepsell.com/cfr404#StateAgencyPsychologicalConsultantRole"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction rdf:nodeID="N5bebe9c002aa406a814ce61852fe7844">
+        <owl:onProperty rdf:resource="http://davidkoepsell.com/cfr404#assessedBy"/>
+        <owl:someValuesFrom rdf:resource="http://davidkoepsell.com/cfr404#DisabilityHearingOfficerRole"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction rdf:nodeID="N8bd80c7f115248fd9767509d3f58bc12">
+        <owl:onProperty rdf:resource="http://davidkoepsell.com/cfr404#assessedBy"/>
+        <owl:someValuesFrom rdf:resource="http://davidkoepsell.com/cfr404#AssociateCommissionerForDisabilityDeterminationsRole"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction rdf:nodeID="Nc02ee36a5c744f198eeca89fdf4085fc">
+        <owl:onProperty rdf:resource="http://davidkoepsell.com/cfr404#assessedBy"/>
+        <owl:someValuesFrom rdf:resource="http://davidkoepsell.com/cfr404#AdministrativeLawJudgeRole"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction rdf:nodeID="N56cc58af74a84601bffc602b7b81d224">
+        <owl:onProperty rdf:resource="http://davidkoepsell.com/cfr404#assessedBy"/>
+        <owl:someValuesFrom rdf:resource="http://davidkoepsell.com/cfr404#AdministrativeAppealsJudgeRole"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <cfr:chainLocus>L5</cfr:chainLocus>
+    <cfr:sourceSection>404.1546</cfr:sourceSection>
+    <cfr:chunkId>404.1546</cfr:chunkId>
+    <cfr:sourceQuote>(a) Responsibility for assessing residual functional capacity at the State agency. When a State agency medical or psychological consultant and a State agency disability examiner make the disability determination</cfr:sourceQuote>
+    <cfr:extractionConfidence>high</cfr:extractionConfidence>
+    <cfr:approved rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</cfr:approved>
+    <cfr:reviewNote>hand-authored chain scaffold; anchored on 'residual functional capacity' in 404.1546</cfr:reviewNote>
+    <skos:editorialNote>Phase 4 scaffold term</skos:editorialNote>
+  </owl:Class>
+  <owl:Class rdf:about="http://davidkoepsell.com/cfr404#EvidenceOfRecord">
+    <rdfs:label>evidence of record</rdfs:label>
+    <rdfs:comment>Everything received into the claim file.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://davidkoepsell.com/cfr404#PresentedFact"/>
+    <cfr:chainLocus>L4</cfr:chainLocus>
+    <cfr:sourceSection>404.1512</cfr:sourceSection>
+    <cfr:chunkId>404.1512</cfr:chunkId>
+    <cfr:sourceQuote>(a) Your responsibility—(1) General. In general, you have to prove to us that you are blind or disabled. You must inform us about or submit all evidence known to you that relates to whether or not you are</cfr:sourceQuote>
+    <cfr:extractionConfidence>high</cfr:extractionConfidence>
+    <cfr:approved rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</cfr:approved>
+    <cfr:reviewNote>hand-authored chain scaffold; anchored on 'evidence' in 404.1512</cfr:reviewNote>
+    <skos:editorialNote>Phase 4 scaffold term</skos:editorialNote>
+  </owl:Class>
+  <owl:Class rdf:about="http://davidkoepsell.com/cfr404#Reopening">
+    <rdfs:label>reopening</rdfs:label>
+    <rdfs:comment>Revisiting a final determination outside the ordinary appeal sequence.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://davidkoepsell.com/cfr404#RemedyProcess"/>
+    <rdfs:subClassOf>
+      <owl:Restriction rdf:nodeID="N1ad516366121486d87236d403d291a2b">
+        <owl:onProperty rdf:resource="http://davidkoepsell.com/cfr404#repairPathFor"/>
+        <owl:someValuesFrom rdf:resource="http://davidkoepsell.com/cfr404#InitialDetermination"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction rdf:nodeID="N0b4099035254401493800f8a2ea81ee5">
+        <owl:onProperty rdf:resource="http://davidkoepsell.com/cfr404#hasPrecondition"/>
+        <owl:someValuesFrom rdf:resource="http://davidkoepsell.com/cfr404#ReopeningTimeCondition"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <cfr:chainLocus>L7</cfr:chainLocus>
+    <cfr:sourceSection>404.987</cfr:sourceSection>
+    <cfr:chunkId>404.987</cfr:chunkId>
+    <cfr:sourceQuote>nd that determination or decision becomes final. However, a determination or a decision made in your case which is otherwise final and binding may be reopened and revised by us. (b) Procedure for reopening and revision. We may</cfr:sourceQuote>
+    <cfr:extractionConfidence>high</cfr:extractionConfidence>
+    <cfr:approved rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</cfr:approved>
+    <cfr:reviewNote>hand-authored chain scaffold; anchored on 'reopen' in 404.987</cfr:reviewNote>
+    <skos:editorialNote>Phase 4 scaffold term</skos:editorialNote>
+  </owl:Class>
+  <owl:Class rdf:about="http://davidkoepsell.com/cfr404#GoodCauseForReopening">
+    <rdfs:label>good cause for reopening</rdfs:label>
+    <rdfs:comment>What must be shown to reopen after the shortest window has closed.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://davidkoepsell.com/cfr404#InstitutionalCriterion"/>
+    <cfr:chainLocus>L2</cfr:chainLocus>
+    <cfr:sourceSection>404.989</cfr:sourceSection>
+    <cfr:chunkId>404.989</cfr:chunkId>
+    <cfr:sourceQuote>(a) We will find that there is good cause to reopen a determination or decision if— (1) New and material evidence is furnished; (2) A clerical error in the computation or recomputation of ben</cfr:sourceQuote>
+    <cfr:extractionConfidence>high</cfr:extractionConfidence>
+    <cfr:approved rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</cfr:approved>
+    <cfr:reviewNote>hand-authored chain scaffold; anchored on 'good cause' in 404.989</cfr:reviewNote>
+    <skos:editorialNote>Phase 4 scaffold term</skos:editorialNote>
+  </owl:Class>
+  <owl:Class rdf:about="http://davidkoepsell.com/cfr404#CessationOfDisability">
+    <rdfs:label>cessation of disability</rdfs:label>
+    <rdfs:comment>The withdrawal of disability status by a later act.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://davidkoepsell.com/cfr404#InstitutionalEffect"/>
+    <cfr:chainLocus>L6</cfr:chainLocus>
+    <cfr:sourceSection>404.1594</cfr:sourceSection>
+    <cfr:chunkId>404.1594</cfr:chunkId>
+    <cfr:sourceQuote>this section for exceptions), we must also show that you are currently able to engage in substantial gainful activity before we can find that you are no longer disabled. (b) Terms and definitions. There are several terms and</cfr:sourceQuote>
+    <cfr:extractionConfidence>high</cfr:extractionConfidence>
+    <cfr:approved rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</cfr:approved>
+    <cfr:reviewNote>hand-authored chain scaffold; anchored on 'no longer' in 404.1594</cfr:reviewNote>
+    <skos:editorialNote>Phase 4 scaffold term</skos:editorialNote>
+  </owl:Class>
+  <owl:Class rdf:about="http://davidkoepsell.com/cfr404#AssessorRoleDesignation">
+    <rdfs:label>assessor role designation</rdfs:label>
+    <rdfs:comment>The act by which an assessor role is conferred. Its effect is the existence of an L3 role, which is why the role is not treated as a brute institutional fact.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://davidkoepsell.com/cfr404#RecognitionAct"/>
+    <rdfs:subClassOf>
+      <owl:Restriction rdf:nodeID="N8d43d01c3fdd483fa4f6bfc8eee0cfb4">
+        <owl:onProperty rdf:resource="http://davidkoepsell.com/cfr404#grantsRole"/>
+        <owl:someValuesFrom rdf:resource="http://davidkoepsell.com/cfr404#AssessorRole"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <cfr:chainLocus>L5</cfr:chainLocus>
+    <cfr:sourceSection>404.1615</cfr:sourceSection>
+    <cfr:chunkId>404.1615</cfr:chunkId>
+    <cfr:sourceQuote>(a) When making a disability determination, the State agency will apply subpart P, part 404, of our regulations. (b) The State agency will make disability determinations based only on the medical and nonmedical evidence in its files. (c)</cfr:sourceQuote>
+    <cfr:extractionConfidence>high</cfr:extractionConfidence>
+    <cfr:approved rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</cfr:approved>
+    <cfr:reviewNote>hand-authored chain scaffold; anchored on 'disability determinations' in 404.1615</cfr:reviewNote>
+    <skos:editorialNote>Phase 4 scaffold term</skos:editorialNote>
+  </owl:Class>
+  <owl:Class rdf:about="http://davidkoepsell.com/cfr404#ContinuingDisabilityReview">
+    <rdfs:label>continuing disability review</rdfs:label>
+    <rdfs:comment>Periodic review of whether an existing disability continues.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://davidkoepsell.com/cfr404#RemedyProcess"/>
+    <rdfs:subClassOf>
+      <owl:Restriction rdf:nodeID="N94be65d4fb74487e9beabfc51b3442da">
+        <owl:onProperty rdf:resource="http://davidkoepsell.com/cfr404#repairPathFor"/>
+        <owl:someValuesFrom rdf:resource="http://davidkoepsell.com/cfr404#InitialDetermination"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction rdf:nodeID="Nafd1529b00734fe9b0d69130e214e1f2">
+        <owl:onProperty rdf:resource="http://davidkoepsell.com/cfr404#appliesCriteria"/>
+        <owl:someValuesFrom rdf:resource="http://davidkoepsell.com/cfr404#MedicalImprovementReviewStandard"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <cfr:chainLocus>L7</cfr:chainLocus>
+    <cfr:sourceSection>404.1589</cfr:sourceSection>
+    <cfr:chunkId>404.1589</cfr:chunkId>
+    <cfr:sourceQuote>impairment(s) from time to time to determine if you are still eligible for disability cash benefits. We call this evaluation a continuing disability review. We may begin a continuing disability review for any number of reasons including your</cfr:sourceQuote>
+    <cfr:extractionConfidence>high</cfr:extractionConfidence>
+    <cfr:approved rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</cfr:approved>
+    <cfr:reviewNote>hand-authored chain scaffold; anchored on 'review' in 404.1589</cfr:reviewNote>
+    <skos:editorialNote>Phase 4 scaffold term</skos:editorialNote>
+  </owl:Class>
+  <owl:Class rdf:about="http://davidkoepsell.com/cfr404#MedicalOpinion">
+    <rdfs:label>medical opinion</rdfs:label>
+    <rdfs:comment>A medical source's statement about what a claimant can still do.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://davidkoepsell.com/cfr404#PresentedFact"/>
+    <cfr:chainLocus>L4</cfr:chainLocus>
+    <cfr:sourceSection>404.1513</cfr:sourceSection>
+    <cfr:chunkId>404.1513</cfr:chunkId>
+    <cfr:sourceQuote>ence are: (1) Objective medical evidence. Objective medical evidence is medical signs, laboratory findings, or both, as defined in § 404.1502(f). (2) Medical opinion. A medical opinion is a statement from a medical source about what you can</cfr:sourceQuote>
+    <cfr:extractionConfidence>high</cfr:extractionConfidence>
+    <cfr:approved rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</cfr:approved>
+    <cfr:reviewNote>hand-authored chain scaffold; anchored on 'medical opinion' in 404.1513</cfr:reviewNote>
+    <skos:editorialNote>Phase 4 scaffold term</skos:editorialNote>
+  </owl:Class>
+  <owl:Class rdf:about="http://davidkoepsell.com/cfr404#MedicareEligibility">
+    <rdfs:label>Medicare eligibility</rdfs:label>
+    <rdfs:comment>Eligibility under title XVIII following from entitlement.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://davidkoepsell.com/cfr404#InstitutionalEffect"/>
+    <cfr:chainLocus>L6</cfr:chainLocus>
+    <cfr:sourceSection>404.900</cfr:sourceSection>
+    <cfr:chunkId>404.900</cfr:chunkId>
+    <cfr:sourceQuote>you have taken all the necessary administrative steps. These procedures apply also to persons claiming certain benefits under title XVIII of the Act (Medicare); see 42 CFR 405.904(a)(1). The administrative review process consists of several steps, which usually</cfr:sourceQuote>
+    <cfr:extractionConfidence>high</cfr:extractionConfidence>
+    <cfr:approved rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</cfr:approved>
+    <cfr:reviewNote>hand-authored chain scaffold; anchored on 'Medicare' in 404.900</cfr:reviewNote>
+    <skos:editorialNote>Phase 4 scaffold term</skos:editorialNote>
+  </owl:Class>
+  <owl:Class rdf:about="http://davidkoepsell.com/cfr404#ConsistencyFactor">
+    <rdfs:label>consistency factor</rdfs:label>
+    <rdfs:comment>How consistent a medical opinion is with the rest of the record.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://davidkoepsell.com/cfr404#InstitutionalCriterion"/>
+    <cfr:chainLocus>L2</cfr:chainLocus>
+    <cfr:sourceSection>404.1520c</cfr:sourceSection>
+    <cfr:chunkId>404.1520c</cfr:chunkId>
+    <cfr:sourceQuote>evaluate the persuasiveness of medical opinions and prior administrative medical findings are supportability (paragraph (c)(1) of this section) and consistency (paragraph (c)(2) of this section). We will articulate how we considered the medical opinions and prior administrative medical</cfr:sourceQuote>
+    <cfr:extractionConfidence>high</cfr:extractionConfidence>
+    <cfr:approved rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</cfr:approved>
+    <cfr:reviewNote>hand-authored chain scaffold; anchored on 'onsistency' in 404.1520c</cfr:reviewNote>
+    <skos:editorialNote>Phase 4 scaffold term</skos:editorialNote>
+  </owl:Class>
+  <owl:Class rdf:about="http://davidkoepsell.com/cfr404#EntitlementToBenefits">
+    <rdfs:label>entitlement to benefits</rdfs:label>
+    <rdfs:comment>The claim on payment that a favourable act creates.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://davidkoepsell.com/cfr404#InstitutionalEffect"/>
+    <cfr:chainLocus>L6</cfr:chainLocus>
+    <cfr:sourceSection>404.900</cfr:sourceSection>
+    <cfr:chunkId>404.900</cfr:chunkId>
+    <cfr:sourceQuote>in your right to judicial review after you have taken all the necessary administrative steps. These procedures apply also to persons claiming certain benefits under title XVIII of the Act (Medicare); see 42 CFR 405.904(a)(1). The administrative review</cfr:sourceQuote>
+    <cfr:extractionConfidence>high</cfr:extractionConfidence>
+    <cfr:approved rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</cfr:approved>
+    <cfr:reviewNote>hand-authored chain scaffold; anchored on 'benefits' in 404.900</cfr:reviewNote>
+    <skos:editorialNote>Phase 4 scaffold term</skos:editorialNote>
+  </owl:Class>
+  <owl:Class rdf:about="http://davidkoepsell.com/cfr404#NonmedicalEvidence">
+    <rdfs:label>nonmedical evidence</rdfs:label>
+    <rdfs:comment>Evidence from sources who are not medical sources.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://davidkoepsell.com/cfr404#PresentedFact"/>
+    <cfr:chainLocus>L4</cfr:chainLocus>
+    <cfr:sourceSection>404.1513</cfr:sourceSection>
+    <cfr:chunkId>404.1513</cfr:chunkId>
+    <cfr:sourceQuote>ot include a diagnosis, prognosis, or a statement that reflects a judgment(s) about the nature and severity of your impairment(s)). (4) Evidence from nonmedical sources. Evidence from nonmedical sources is any information or statement(s) from a nonmedical source</cfr:sourceQuote>
+    <cfr:extractionConfidence>high</cfr:extractionConfidence>
+    <cfr:approved rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</cfr:approved>
+    <cfr:reviewNote>hand-authored chain scaffold; anchored on 'nonmedical source' in 404.1513</cfr:reviewNote>
+    <skos:editorialNote>Phase 4 scaffold term</skos:editorialNote>
+  </owl:Class>
+  <owl:Ontology rdf:about="http://davidkoepsell.com/cfr404/chain">
+    <owl:versionIRI rdf:resource="http://davidkoepsell.com/cfr404/chain/2026-07-30"/>
+    <owl:imports rdf:resource="http://davidkoepsell.com/cfr404/kernel"/>
+    <owl:imports rdf:resource="http://purl.obolibrary.org/obo/bfo.owl"/>
+    <rdfs:label>cfr404 recognition-chain scaffold (L1-L7)</rdfs:label>
+    <dcterms:license rdf:resource="https://creativecommons.org/licenses/by/4.0/"/>
+    <rdfs:comment>Hand-authored before extraction. Every term is anchored to a verbatim phrase in a named section of the acquired corpus; the build refuses to emit a term whose anchor cannot be found.</rdfs:comment>
+  </owl:Ontology>
+  <owl:Class rdf:about="http://davidkoepsell.com/cfr404#AdministrativeLawJudgeHearing">
+    <rdfs:label>hearing before an administrative law judge</rdfs:label>
+    <rdfs:comment>The second level of administrative review.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://davidkoepsell.com/cfr404#RemedyProcess"/>
+    <rdfs:subClassOf>
+      <owl:Restriction rdf:nodeID="Ndaf0728489dd41efa56eec974c68f3d3">
+        <owl:onProperty rdf:resource="http://davidkoepsell.com/cfr404#repairPathFor"/>
+        <owl:someValuesFrom rdf:resource="http://davidkoepsell.com/cfr404#ReconsideredDetermination"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <cfr:chainLocus>L7</cfr:chainLocus>
+    <cfr:sourceSection>404.929</cfr:sourceSection>
+    <cfr:chunkId>404.929</cfr:chunkId>
+    <cfr:sourceQuote>ed in § 404.930, you may request a hearing. Subject to § 404.956, the Deputy Commissioner for Hearings Operations, or their delegate, will appoint an administrative law judge to conduct the hearing. If circumstances warrant, the Deputy Commissioner</cfr:sourceQuote>
+    <cfr:extractionConfidence>high</cfr:extractionConfidence>
+    <cfr:approved rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</cfr:approved>
+    <cfr:reviewNote>hand-authored chain scaffold; anchored on 'administrative law judge' in 404.929</cfr:reviewNote>
+    <skos:editorialNote>Phase 4 scaffold term</skos:editorialNote>
+  </owl:Class>
+  <owl:Class rdf:about="http://davidkoepsell.com/cfr404#StateAgencyMedicalConsultantRole">
+    <rdfs:label>State agency medical consultant role</rdfs:label>
+    <rdfs:comment>A physician who joins the State agency determination.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://davidkoepsell.com/cfr404#AssessorRole"/>
+    <rdfs:subClassOf>
+      <owl:Restriction rdf:nodeID="N0077ae83bd8e4add9b7676c42f81e9aa">
+        <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/BFO_0000197"/>
+        <owl:someValuesFrom rdf:resource="http://davidkoepsell.com/cfr404#Person"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction rdf:nodeID="N0bb972fbc947496eb19d66a98e0e47f8">
+        <owl:onProperty rdf:resource="http://davidkoepsell.com/cfr404#derivesAuthorityFrom"/>
+        <owl:someValuesFrom rdf:resource="http://davidkoepsell.com/cfr404#StateAgencyAuthorityRole"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <cfr:chainLocus>L3</cfr:chainLocus>
+    <cfr:sourceSection>404.1616</cfr:sourceSection>
+    <cfr:chunkId>404.1616</cfr:chunkId>
+    <cfr:sourceQuote>(a) What is a medical consultant? A medical consultant is a member of a team that makes disability determinations in a State agency (see § 404.1615), or who is a member of a team tha</cfr:sourceQuote>
+    <cfr:extractionConfidence>high</cfr:extractionConfidence>
+    <cfr:approved rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</cfr:approved>
+    <cfr:reviewNote>hand-authored chain scaffold; anchored on 'medical consultant' in 404.1616</cfr:reviewNote>
+    <skos:editorialNote>Phase 4 scaffold term</skos:editorialNote>
+  </owl:Class>
+  <owl:Class rdf:about="http://davidkoepsell.com/cfr404#MedicalImprovementReviewStandard">
+    <rdfs:label>medical improvement review standard</rdfs:label>
+    <rdfs:comment>The standard governing whether an existing disability finding may be ended. The spec names this the highest-probability K-D3 site in the corpus.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://davidkoepsell.com/cfr404#InstitutionalCriterion"/>
+    <cfr:chainLocus>L2</cfr:chainLocus>
+    <cfr:sourceSection>404.1594</cfr:sourceSection>
+    <cfr:chunkId>404.1594</cfr:chunkId>
+    <cfr:sourceQuote>ing divorced spouse, there are a number of factors we consider in deciding whether your disability continues. We must determine if there has been any medical improvement in your impairment(s) and, if so, whether this medical improvement is</cfr:sourceQuote>
+    <cfr:extractionConfidence>high</cfr:extractionConfidence>
+    <cfr:approved rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</cfr:approved>
+    <cfr:reviewNote>hand-authored chain scaffold; anchored on 'medical improvement' in 404.1594</cfr:reviewNote>
+    <skos:editorialNote>Phase 4 scaffold term</skos:editorialNote>
+  </owl:Class>
+  <owl:Class rdf:about="http://davidkoepsell.com/cfr404#StateAgencyAuthorityRole">
+    <rdfs:label>State agency authority role</rdfs:label>
+    <rdfs:comment>The grant under which a State agency makes disability determinations for the Commissioner. It is delegated, not original.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://davidkoepsell.com/cfr404#AuthorityRole"/>
+    <rdfs:subClassOf>
+      <owl:Restriction rdf:nodeID="Ne900dfbc5e354f2d8ba9eb66389f76d0">
+        <owl:onProperty rdf:resource="http://davidkoepsell.com/cfr404#derivesAuthorityFrom"/>
+        <owl:someValuesFrom rdf:resource="http://davidkoepsell.com/cfr404#CommissionerAuthorityRole"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <cfr:chainLocus>L1</cfr:chainLocus>
+    <cfr:sourceSection>404.1503</cfr:sourceSection>
+    <cfr:chunkId>404.1503</cfr:chunkId>
+    <cfr:sourceQuote>(a) State agencies. State agencies make disability and blindness determinations for the Commissioner for most persons living in the State. State agencies make</cfr:sourceQuote>
+    <cfr:extractionConfidence>high</cfr:extractionConfidence>
+    <cfr:approved rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</cfr:approved>
+    <cfr:reviewNote>hand-authored chain scaffold; anchored on 'State' in 404.1503</cfr:reviewNote>
+    <skos:editorialNote>Phase 4 scaffold term</skos:editorialNote>
+  </owl:Class>
+  <owl:Class rdf:about="http://davidkoepsell.com/cfr404#SequentialEvaluationCriteria">
+    <rdfs:label>sequential evaluation criteria</rdfs:label>
+    <rdfs:comment>The ordered steps an adjudicator must follow.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://davidkoepsell.com/cfr404#InstitutionalCriterion"/>
+    <cfr:chainLocus>L2</cfr:chainLocus>
+    <cfr:sourceSection>404.1520</cfr:sourceSection>
+    <cfr:chunkId>404.1520</cfr:chunkId>
+    <cfr:sourceQuote>(a) General—(1) Purpose of this section. This section explains the five-step sequential evaluation process we use to decide whether you are disabled, as defined in § 404.1505. (2) Applicability of these rules. These rules apply to you if</cfr:sourceQuote>
+    <cfr:extractionConfidence>high</cfr:extractionConfidence>
+    <cfr:approved rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</cfr:approved>
+    <cfr:reviewNote>hand-authored chain scaffold; anchored on 'five-step sequential evaluation process' in 404.1520</cfr:reviewNote>
+    <skos:editorialNote>Phase 4 scaffold term</skos:editorialNote>
+  </owl:Class>
+  <owl:ObjectProperty rdf:about="http://davidkoepsell.com/cfr404#derivesAuthorityFrom">
+    <rdfs:label>derives authority from</rdfs:label>
+    <rdfs:domain rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+    <rdfs:range rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+    <rdfs:comment>Links an L3 assessor role to the L1 authority role that grants it. This is the edge K-B2 is computed over: an assessor role whose grant does not reach the function it is assigned is authority inflation.</rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:Class rdf:about="http://davidkoepsell.com/cfr404#AuthorityRole">
+    <rdfs:label>authority role</rdfs:label>
+    <rdfs:comment>A role borne by an institution that holds a grant of decisional power. Kept strictly apart from AssessorRole: the Commissioner holds authority; an administrative law judge holds an assessment role granted under it.</rdfs:comment>
+    <rdfs:comment>Asserted disjoint from AssessorRole. The baseline's DeterminingAgencyRole merged the two; under that model an occupant could never be assigned a function exceeding its grant, because grant and function were the same entity. K-B2 would then be undetectable by construction rather than absent from the regulation.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+    <cfr:chainLocus>L1</cfr:chainLocus>
+    <cfr:sourceSection>404.1503</cfr:sourceSection>
+    <cfr:chunkId>404.1503</cfr:chunkId>
+    <cfr:sourceQuote>(a) State agencies. State agencies make disability and blindness determinations for the Commissioner for most persons living in the State. State agencies make these disability and blindness determinations under regulations containing performance stan</cfr:sourceQuote>
+    <cfr:extractionConfidence>high</cfr:extractionConfidence>
+    <cfr:approved rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</cfr:approved>
+    <cfr:reviewNote>hand-authored chain scaffold; anchored on 'Commissioner' in 404.1503</cfr:reviewNote>
+    <skos:editorialNote>Phase 4 scaffold term</skos:editorialNote>
+    <owl:disjointWith rdf:resource="http://davidkoepsell.com/cfr404#AssessorRole"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://davidkoepsell.com/cfr404#AppealsCouncilMemberRole">
+    <rdfs:label>Appeals Council member role</rdfs:label>
+    <rdfs:comment>Reviews hearing decisions on request or own motion.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://davidkoepsell.com/cfr404#AssessorRole"/>
+    <rdfs:subClassOf>
+      <owl:Restriction rdf:nodeID="N6edf5ecd47304c0a9660675a61bcf002">
+        <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/BFO_0000197"/>
+        <owl:someValuesFrom rdf:resource="http://davidkoepsell.com/cfr404#Person"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction rdf:nodeID="Nfb072c72456d43418eecc9d5c7cd2957">
+        <owl:onProperty rdf:resource="http://davidkoepsell.com/cfr404#derivesAuthorityFrom"/>
+        <owl:someValuesFrom rdf:resource="http://davidkoepsell.com/cfr404#AppealsCouncilAuthorityRole"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <cfr:chainLocus>L3</cfr:chainLocus>
+    <cfr:sourceSection>404.967</cfr:sourceSection>
+    <cfr:chunkId>404.967</cfr:chunkId>
+    <cfr:sourceQuote>If you or any other party is dissatisfied with the hearing decision or with the dismissal of a hearing request, you may request that the Appeals Council review that action. The Appeals Council may deny or dismiss the</cfr:sourceQuote>
+    <cfr:extractionConfidence>high</cfr:extractionConfidence>
+    <cfr:approved rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</cfr:approved>
+    <cfr:reviewNote>hand-authored chain scaffold; anchored on 'Appeals Council' in 404.967</cfr:reviewNote>
+    <skos:editorialNote>Phase 4 scaffold term</skos:editorialNote>
+  </owl:Class>
+  <owl:Class rdf:about="http://davidkoepsell.com/cfr404#AdministrativeLawJudgeRole">
+    <rdfs:label>administrative law judge role</rdfs:label>
+    <rdfs:comment>Assesses residual functional capacity at the hearing level.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://davidkoepsell.com/cfr404#AssessorRole"/>
+    <rdfs:subClassOf>
+      <owl:Restriction rdf:nodeID="N087020acc0ae4653b53e0ff4f843d9f5">
+        <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/BFO_0000197"/>
+        <owl:someValuesFrom rdf:resource="http://davidkoepsell.com/cfr404#Person"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction rdf:nodeID="Ncfe130bb42a64ae28915b09816651186">
+        <owl:onProperty rdf:resource="http://davidkoepsell.com/cfr404#derivesAuthorityFrom"/>
+        <owl:someValuesFrom rdf:resource="http://davidkoepsell.com/cfr404#CommissionerAuthorityRole"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <cfr:chainLocus>L3</cfr:chainLocus>
+    <cfr:sourceSection>404.1546</cfr:sourceSection>
+    <cfr:chunkId>404.1546</cfr:chunkId>
+    <cfr:sourceQuote>or her delegate is responsible for assessing your residual functional capacity. (c) Responsibility for assessing residual functional capacity at the administrative law judge hearing or Appeals Council level. If your case is at the administrative law judge hearing</cfr:sourceQuote>
+    <cfr:extractionConfidence>high</cfr:extractionConfidence>
+    <cfr:approved rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</cfr:approved>
+    <cfr:reviewNote>hand-authored chain scaffold; anchored on 'administrative law judge' in 404.1546</cfr:reviewNote>
+    <skos:editorialNote>Phase 4 scaffold term</skos:editorialNote>
+  </owl:Class>
+  <owl:Class rdf:about="http://davidkoepsell.com/cfr404#CommissionerAuthorityRole">
+    <rdfs:label>Commissioner authority role</rdfs:label>
+    <rdfs:comment>The grant of decisional power held by the Commissioner.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://davidkoepsell.com/cfr404#AuthorityRole"/>
+    <cfr:chainLocus>L1</cfr:chainLocus>
+    <cfr:sourceSection>404.1503</cfr:sourceSection>
+    <cfr:chunkId>404.1503</cfr:chunkId>
+    <cfr:sourceQuote>(a) State agencies. State agencies make disability and blindness determinations for the Commissioner for most persons living in the State. State agencies make these disability and blindness determinations under regulations containing performance stan</cfr:sourceQuote>
+    <cfr:extractionConfidence>high</cfr:extractionConfidence>
+    <cfr:approved rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</cfr:approved>
+    <cfr:reviewNote>hand-authored chain scaffold; anchored on 'Commissioner' in 404.1503</cfr:reviewNote>
+    <skos:editorialNote>Phase 4 scaffold term</skos:editorialNote>
+  </owl:Class>
+  <owl:Class rdf:about="http://davidkoepsell.com/cfr404#StateAgencyPsychologicalConsultantRole">
+    <rdfs:label>State agency psychological consultant role</rdfs:label>
+    <rdfs:comment>A psychologist who joins the State agency determination.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://davidkoepsell.com/cfr404#AssessorRole"/>
+    <rdfs:subClassOf>
+      <owl:Restriction rdf:nodeID="N3dbc87fcce2b4b31af0fa3eeb6860789">
+        <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/BFO_0000197"/>
+        <owl:someValuesFrom rdf:resource="http://davidkoepsell.com/cfr404#Person"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction rdf:nodeID="Na44d46bfb8ff4412884d1d37f4ba26e1">
+        <owl:onProperty rdf:resource="http://davidkoepsell.com/cfr404#derivesAuthorityFrom"/>
+        <owl:someValuesFrom rdf:resource="http://davidkoepsell.com/cfr404#StateAgencyAuthorityRole"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <cfr:chainLocus>L3</cfr:chainLocus>
+    <cfr:sourceSection>404.1616</cfr:sourceSection>
+    <cfr:chunkId>404.1616</cfr:chunkId>
+    <cfr:sourceQuote>. (b) What qualifications must a medical consultant have? A medical consultant is a licensed physician, as defined in § 404.1502(a)(1). (c) What is a psychological consultant? A psychological consultant is a member of a team that makes</cfr:sourceQuote>
+    <cfr:extractionConfidence>high</cfr:extractionConfidence>
+    <cfr:approved rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</cfr:approved>
+    <cfr:reviewNote>hand-authored chain scaffold; anchored on 'psychological consultant' in 404.1616</cfr:reviewNote>
+    <skos:editorialNote>Phase 4 scaffold term</skos:editorialNote>
+  </owl:Class>
+  <owl:Class rdf:about="http://davidkoepsell.com/cfr404#DisabilityStatusEffect">
+    <rdfs:label>disability status</rdfs:label>
+    <rdfs:comment>The status of being disabled for purposes of the Act. It obtains because an act declared it, not because of the impairment alone.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://davidkoepsell.com/cfr404#InstitutionalEffect"/>
+    <cfr:chainLocus>L6</cfr:chainLocus>
+    <cfr:sourceSection>404.1505</cfr:sourceSection>
+    <cfr:chunkId>404.1505</cfr:chunkId>
+    <cfr:sourceQuote>(a) The law defines disability as the inability to do any substantial gainful activity by reason of any medically determinable physical or mental impairment which can be expected t</cfr:sourceQuote>
+    <cfr:extractionConfidence>high</cfr:extractionConfidence>
+    <cfr:approved rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</cfr:approved>
+    <cfr:reviewNote>hand-authored chain scaffold; anchored on 'disability' in 404.1505</cfr:reviewNote>
+    <skos:editorialNote>Phase 4 scaffold term</skos:editorialNote>
+  </owl:Class>
+  <owl:Class rdf:about="http://davidkoepsell.com/cfr404#PresentedFact">
+    <rdfs:label>presented fact</rdfs:label>
+    <rdfs:comment>A generically dependent continuant offered to an assessor as input to an act.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+    <cfr:chainLocus>L4</cfr:chainLocus>
+    <cfr:sourceSection>404.1512</cfr:sourceSection>
+    <cfr:chunkId>404.1512</cfr:chunkId>
+    <cfr:sourceQuote>(a) Your responsibility—(1) General. In general, you have to prove to us that you are blind or disabled. You must inform us about or submit all evidence known to you that relates to whether or not you are</cfr:sourceQuote>
+    <cfr:extractionConfidence>high</cfr:extractionConfidence>
+    <cfr:approved rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</cfr:approved>
+    <cfr:reviewNote>hand-authored chain scaffold; anchored on 'evidence' in 404.1512</cfr:reviewNote>
+    <skos:editorialNote>Phase 4 scaffold term</skos:editorialNote>
+  </owl:Class>
+  <owl:Class rdf:about="http://davidkoepsell.com/cfr404#ReopeningTimeCondition">
+    <rdfs:label>reopening time condition</rdfs:label>
+    <rdfs:comment>The time limits within which a determination may be reopened.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://davidkoepsell.com/cfr404#InstitutionalCriterion"/>
+    <cfr:chainLocus>L2</cfr:chainLocus>
+    <cfr:sourceSection>404.988</cfr:sourceSection>
+    <cfr:chunkId>404.988</cfr:chunkId>
+    <cfr:sourceQuote>A determination, revised determination, decision, or revised decision may be reopened— (a) Within 12 months of the date of the notice of the initial determination, for any reason; (b) Within four years of the date of the notice</cfr:sourceQuote>
+    <cfr:extractionConfidence>high</cfr:extractionConfidence>
+    <cfr:approved rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</cfr:approved>
+    <cfr:reviewNote>hand-authored chain scaffold; anchored on '12 months' in 404.988</cfr:reviewNote>
+    <skos:editorialNote>Phase 4 scaffold term</skos:editorialNote>
+  </owl:Class>
+  <owl:ObjectProperty rdf:about="http://davidkoepsell.com/cfr404#hasPrecondition">
+    <rdfs:label>has precondition</rdfs:label>
+    <rdfs:domain rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+    <rdfs:range rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+    <rdfs:comment>A condition that must hold before a repair path is available.</rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://davidkoepsell.com/cfr404#producesEffect">
+    <rdfs:label>produces effect</rdfs:label>
+    <rdfs:domain rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+    <rdfs:range rdf:resource="http://purl.obolibrary.org/obo/BFO_0000017"/>
+    <rdfs:comment>L5 act to the L6 status or entitlement it brings about.</rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:Class rdf:about="http://davidkoepsell.com/cfr404#InstitutionalEffect">
+    <rdfs:label>institutional effect</rdfs:label>
+    <rdfs:comment>A realizable entity that exists only because a recognition act occurred.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000017"/>
+    <cfr:chainLocus>L6</cfr:chainLocus>
+    <cfr:sourceSection>404.1505</cfr:sourceSection>
+    <cfr:chunkId>404.1505</cfr:chunkId>
+    <cfr:sourceQuote>(a) The law defines disability as the inability to do any substantial gainful activity by reason of any medically determinable physical or mental impairment which can be expected t</cfr:sourceQuote>
+    <cfr:extractionConfidence>high</cfr:extractionConfidence>
+    <cfr:approved rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</cfr:approved>
+    <cfr:reviewNote>hand-authored chain scaffold; anchored on 'disability' in 404.1505</cfr:reviewNote>
+    <skos:editorialNote>Phase 4 scaffold term</skos:editorialNote>
+  </owl:Class>
+  <owl:Class rdf:about="http://davidkoepsell.com/cfr404#ResidualFunctionalCapacityCriteria">
+    <rdfs:label>residual functional capacity criteria</rdfs:label>
+    <rdfs:comment>What a claimant can still do despite limitations.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://davidkoepsell.com/cfr404#InstitutionalCriterion"/>
+    <cfr:chainLocus>L2</cfr:chainLocus>
+    <cfr:sourceSection>404.1545</cfr:sourceSection>
+    <cfr:chunkId>404.1545</cfr:chunkId>
+    <cfr:sourceQuote>(a) General—(1) Residual functional capacity assessment. Your impairment(s), and any related symptoms, such as pain, may cause physical and mental limitations that affect what you can do in a wo</cfr:sourceQuote>
+    <cfr:extractionConfidence>high</cfr:extractionConfidence>
+    <cfr:approved rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</cfr:approved>
+    <cfr:reviewNote>hand-authored chain scaffold; anchored on 'residual functional capacity' in 404.1545</cfr:reviewNote>
+    <skos:editorialNote>Phase 4 scaffold term</skos:editorialNote>
+  </owl:Class>
+  <owl:Class rdf:about="http://davidkoepsell.com/cfr404#AppealsCouncilDecision">
+    <rdfs:label>Appeals Council decision</rdfs:label>
+    <rdfs:comment>The decision issued on Appeals Council review.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://davidkoepsell.com/cfr404#RecognitionAct"/>
+    <rdfs:subClassOf>
+      <owl:Restriction rdf:nodeID="N24d6dd23212a47d191afbfd9c1080f15">
+        <owl:onProperty rdf:resource="http://davidkoepsell.com/cfr404#assessedBy"/>
+        <owl:someValuesFrom rdf:resource="http://davidkoepsell.com/cfr404#AppealsCouncilMemberRole"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <cfr:chainLocus>L5</cfr:chainLocus>
+    <cfr:sourceSection>404.979</cfr:sourceSection>
+    <cfr:chunkId>404.979</cfr:chunkId>
+    <cfr:sourceQuote>l evidence received, subject to the limitations on Appeals Council consideration of additional evidence in § 404.970, the Appeals Council will make a decision or remand the case to an administrative law judge. The Appeals Council may affirm,</cfr:sourceQuote>
+    <cfr:extractionConfidence>high</cfr:extractionConfidence>
+    <cfr:approved rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</cfr:approved>
+    <cfr:reviewNote>hand-authored chain scaffold; anchored on 'decision' in 404.979</cfr:reviewNote>
+    <skos:editorialNote>Phase 4 scaffold term</skos:editorialNote>
+  </owl:Class>
+  <owl:Class rdf:about="http://davidkoepsell.com/cfr404#AppealsCouncilAuthorityRole">
+    <rdfs:label>Appeals Council authority role</rdfs:label>
+    <rdfs:comment>The grant under which the Appeals Council reviews hearing decisions.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://davidkoepsell.com/cfr404#AuthorityRole"/>
+    <rdfs:subClassOf>
+      <owl:Restriction rdf:nodeID="N8e7b6f059adb4074bf9e243f5d514199">
+        <owl:onProperty rdf:resource="http://davidkoepsell.com/cfr404#derivesAuthorityFrom"/>
+        <owl:someValuesFrom rdf:resource="http://davidkoepsell.com/cfr404#CommissionerAuthorityRole"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <cfr:chainLocus>L1</cfr:chainLocus>
+    <cfr:sourceSection>404.967</cfr:sourceSection>
+    <cfr:chunkId>404.967</cfr:chunkId>
+    <cfr:sourceQuote>If you or any other party is dissatisfied with the hearing decision or with the dismissal of a hearing request, you may request that the Appeals Council review that action. The Appeals Council may deny or dismiss the</cfr:sourceQuote>
+    <cfr:extractionConfidence>high</cfr:extractionConfidence>
+    <cfr:approved rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</cfr:approved>
+    <cfr:reviewNote>hand-authored chain scaffold; anchored on 'Appeals Council' in 404.967</cfr:reviewNote>
+    <skos:editorialNote>Phase 4 scaffold term</skos:editorialNote>
+  </owl:Class>
+  <owl:Class rdf:about="http://davidkoepsell.com/cfr404#ReconsideredDetermination">
+    <rdfs:label>reconsidered determination</rdfs:label>
+    <rdfs:comment>The determination made on reconsideration.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://davidkoepsell.com/cfr404#RecognitionAct"/>
+    <cfr:chainLocus>L5</cfr:chainLocus>
+    <cfr:sourceSection>404.907</cfr:sourceSection>
+    <cfr:chunkId>404.907</cfr:chunkId>
+    <cfr:sourceQuote>If you are dissatisfied with the initial determination, reconsideration is the first step in the administrative review process that we provide, except that we provide the opportunity for a hearing before an administrative</cfr:sourceQuote>
+    <cfr:extractionConfidence>high</cfr:extractionConfidence>
+    <cfr:approved rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</cfr:approved>
+    <cfr:reviewNote>hand-authored chain scaffold; anchored on 'reconsideration' in 404.907</cfr:reviewNote>
+    <skos:editorialNote>Phase 4 scaffold term</skos:editorialNote>
+  </owl:Class>
+  <owl:Class rdf:about="http://davidkoepsell.com/cfr404#AssociateCommissionerForDisabilityDeterminationsRole">
+    <rdfs:label>Associate Commissioner for Disability Determinations role</rdfs:label>
+    <rdfs:comment>Or a delegate; assesses residual functional capacity when the disability hearing officer's determination is changed.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://davidkoepsell.com/cfr404#AssessorRole"/>
+    <rdfs:subClassOf>
+      <owl:Restriction rdf:nodeID="N0c270fe657cb43be8edfc22519035658">
+        <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/BFO_0000197"/>
+        <owl:someValuesFrom rdf:resource="http://davidkoepsell.com/cfr404#Person"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction rdf:nodeID="Ncdae5628a05d463db5135dab79bf80cb">
+        <owl:onProperty rdf:resource="http://davidkoepsell.com/cfr404#derivesAuthorityFrom"/>
+        <owl:someValuesFrom rdf:resource="http://davidkoepsell.com/cfr404#CommissionerAuthorityRole"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <cfr:chainLocus>L3</cfr:chainLocus>
+    <cfr:sourceSection>404.1546</cfr:sourceSection>
+    <cfr:chunkId>404.1546</cfr:chunkId>
+    <cfr:sourceQuote>assessing your residual functional capacity. However, if the disability hearing officer's reconsidered determination is changed under § 404.918, the Associate Commissioner for the Office of Disability Determinations or his or her delegate is responsible for assessing your residual</cfr:sourceQuote>
+    <cfr:extractionConfidence>high</cfr:extractionConfidence>
+    <cfr:approved rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</cfr:approved>
+    <cfr:reviewNote>hand-authored chain scaffold; anchored on 'Associate Commissioner' in 404.1546</cfr:reviewNote>
+    <skos:editorialNote>Phase 4 scaffold term</skos:editorialNote>
+  </owl:Class>
+  <owl:Class rdf:about="http://davidkoepsell.com/cfr404#AdministrativeAppealsJudgeRole">
+    <rdfs:label>administrative appeals judge role</rdfs:label>
+    <rdfs:comment>Assesses residual functional capacity at the Appeals Council level.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://davidkoepsell.com/cfr404#AssessorRole"/>
+    <rdfs:subClassOf>
+      <owl:Restriction rdf:nodeID="N369178c598104a7fbd2e7cb0fda9d9ed">
+        <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/BFO_0000197"/>
+        <owl:someValuesFrom rdf:resource="http://davidkoepsell.com/cfr404#Person"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction rdf:nodeID="Ne0ae2541b5f142708e6fefeb2f10de8b">
+        <owl:onProperty rdf:resource="http://davidkoepsell.com/cfr404#derivesAuthorityFrom"/>
+        <owl:someValuesFrom rdf:resource="http://davidkoepsell.com/cfr404#AppealsCouncilAuthorityRole"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <cfr:chainLocus>L3</cfr:chainLocus>
+    <cfr:sourceSection>404.1546</cfr:sourceSection>
+    <cfr:chunkId>404.1546</cfr:chunkId>
+    <cfr:sourceQuote>ncil level. If your case is at the administrative law judge hearing level or at the Appeals Council review level, the administrative law judge or the administrative appeals judge at the Appeals Council (when the Appeals Council makes</cfr:sourceQuote>
+    <cfr:extractionConfidence>high</cfr:extractionConfidence>
+    <cfr:approved rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</cfr:approved>
+    <cfr:reviewNote>hand-authored chain scaffold; anchored on 'administrative appeals judge' in 404.1546</cfr:reviewNote>
+    <skos:editorialNote>Phase 4 scaffold term</skos:editorialNote>
+  </owl:Class>
+  <owl:ObjectProperty rdf:about="http://davidkoepsell.com/cfr404#grantsRole">
+    <rdfs:label>grants role</rdfs:label>
+    <rdfs:domain rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+    <rdfs:range rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+    <rdfs:comment>A recognition act that brings an assessor role into existence. Granting an assessor role is itself an act, not a brute fact about an office.</rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://davidkoepsell.com/cfr404#excludesPath">
+    <rdfs:label>excludes path</rdfs:label>
+    <rdfs:domain rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+    <rdfs:range rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+    <rdfs:comment>One repair path barring another. Jointly unsatisfiable exclusion cycles are the K-D3 signal.</rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:Class rdf:about="http://davidkoepsell.com/cfr404#RemedyProcess">
+    <rdfs:label>remedy process</rdfs:label>
+    <rdfs:comment>A process by which a completed recognition act can be revisited.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+    <cfr:chainLocus>L7</cfr:chainLocus>
+    <cfr:sourceSection>404.900</cfr:sourceSection>
+    <cfr:chunkId>404.900</cfr:chunkId>
+    <cfr:sourceQuote>titlement to benefits or about any other matter, as discussed in § 404.902, that gives you a right to further review. (2) Reconsideration. If you are dissatisfied with an initial determination, you may ask us to reconsider it.</cfr:sourceQuote>
+    <cfr:extractionConfidence>high</cfr:extractionConfidence>
+    <cfr:approved rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</cfr:approved>
+    <cfr:reviewNote>hand-authored chain scaffold; anchored on 'dissatisfied' in 404.900</cfr:reviewNote>
+    <skos:editorialNote>Phase 4 scaffold term</skos:editorialNote>
+  </owl:Class>
+  <owl:Class rdf:about="http://davidkoepsell.com/cfr404#DisabilityHearingOfficerRole">
+    <rdfs:label>disability hearing officer role</rdfs:label>
+    <rdfs:comment>Assesses residual functional capacity at the disability hearing stage.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://davidkoepsell.com/cfr404#AssessorRole"/>
+    <rdfs:subClassOf>
+      <owl:Restriction rdf:nodeID="Nd8e7c31c92fa4a6889370f3a1dfab25e">
+        <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/BFO_0000197"/>
+        <owl:someValuesFrom rdf:resource="http://davidkoepsell.com/cfr404#Person"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction rdf:nodeID="N513dfa3716af438a8c61f642e59cec13">
+        <owl:onProperty rdf:resource="http://davidkoepsell.com/cfr404#derivesAuthorityFrom"/>
+        <owl:someValuesFrom rdf:resource="http://davidkoepsell.com/cfr404#CommissionerAuthorityRole"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <cfr:chainLocus>L3</cfr:chainLocus>
+    <cfr:sourceSection>404.1546</cfr:sourceSection>
+    <cfr:chunkId>404.1546</cfr:chunkId>
+    <cfr:sourceQuote>sibility for assessing residual functional capacity in the disability hearings process. If your case involves a disability hearing under § 404.914, a disability hearing officer is responsible for assessing your residual functional capacity. However, if the disability hearing</cfr:sourceQuote>
+    <cfr:extractionConfidence>high</cfr:extractionConfidence>
+    <cfr:approved rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</cfr:approved>
+    <cfr:reviewNote>hand-authored chain scaffold; anchored on 'disability hearing officer' in 404.1546</cfr:reviewNote>
+    <skos:editorialNote>Phase 4 scaffold term</skos:editorialNote>
+  </owl:Class>
+  <owl:Class rdf:about="http://davidkoepsell.com/cfr404#AdministrativeLawJudgeDecision">
+    <rdfs:label>administrative law judge decision</rdfs:label>
+    <rdfs:comment>The decision issued after a hearing.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://davidkoepsell.com/cfr404#RecognitionAct"/>
+    <rdfs:subClassOf>
+      <owl:Restriction rdf:nodeID="N0439cca948aa45af98120156899a114f">
+        <owl:onProperty rdf:resource="http://davidkoepsell.com/cfr404#assessedBy"/>
+        <owl:someValuesFrom rdf:resource="http://davidkoepsell.com/cfr404#AdministrativeLawJudgeRole"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <cfr:chainLocus>L5</cfr:chainLocus>
+    <cfr:sourceSection>404.953</cfr:sourceSection>
+    <cfr:chunkId>404.953</cfr:chunkId>
+    <cfr:sourceQuote>(a) General. The administrative law judge shall issue a written decision that gives the findings of fact and the reasons for the decision. The administrative law judge must base the decision on the preponderance of the evi</cfr:sourceQuote>
+    <cfr:extractionConfidence>high</cfr:extractionConfidence>
+    <cfr:approved rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</cfr:approved>
+    <cfr:reviewNote>hand-authored chain scaffold; anchored on 'decision' in 404.953</cfr:reviewNote>
+    <skos:editorialNote>Phase 4 scaffold term</skos:editorialNote>
+  </owl:Class>
+  <owl:Class rdf:about="http://davidkoepsell.com/cfr404#AssessorRole">
+    <rdfs:label>assessor role</rdfs:label>
+    <rdfs:comment>A role borne by a person who is made responsible for an assessment. Disjoint from AuthorityRole by assertion, which is what makes authority inflation expressible rather than definitionally impossible.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+    <rdfs:subClassOf>
+      <owl:Restriction rdf:nodeID="N7810a4d112484042b537eb57399814cf">
+        <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/BFO_0000197"/>
+        <owl:someValuesFrom rdf:resource="http://davidkoepsell.com/cfr404#Person"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <cfr:chainLocus>L3</cfr:chainLocus>
+    <cfr:sourceSection>404.1546</cfr:sourceSection>
+    <cfr:chunkId>404.1546</cfr:chunkId>
+    <cfr:sourceQuote>(a) Responsibility for assessing residual functional capacity at the State agency. When a State agency medical or psychological consultant and a State agency disability examiner make the disability determination</cfr:sourceQuote>
+    <cfr:extractionConfidence>high</cfr:extractionConfidence>
+    <cfr:approved rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</cfr:approved>
+    <cfr:reviewNote>hand-authored chain scaffold; anchored on 'residual functional capacity' in 404.1546</cfr:reviewNote>
+    <skos:editorialNote>Phase 4 scaffold term</skos:editorialNote>
+  </owl:Class>
+  <owl:Class rdf:about="http://davidkoepsell.com/cfr404#InstitutionalCriterion">
+    <rdfs:label>institutional criterion</rdfs:label>
+    <rdfs:comment>A generically dependent continuant that fixes what an act must find.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+    <cfr:chainLocus>L2</cfr:chainLocus>
+    <cfr:sourceSection>404.1520</cfr:sourceSection>
+    <cfr:chunkId>404.1520</cfr:chunkId>
+    <cfr:sourceQuote>(a) General—(1) Purpose of this section. This section explains the five-step sequential evaluation process we use to decide whether you are disabled, as defined in § 404.1505. (2) Applicability of these rules. These rules apply to you if</cfr:sourceQuote>
+    <cfr:extractionConfidence>high</cfr:extractionConfidence>
+    <cfr:approved rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</cfr:approved>
+    <cfr:reviewNote>hand-authored chain scaffold; anchored on 'five-step sequential evaluation process' in 404.1520</cfr:reviewNote>
+    <skos:editorialNote>Phase 4 scaffold term</skos:editorialNote>
+  </owl:Class>
+  <owl:Class rdf:about="http://davidkoepsell.com/cfr404#RecognitionAct">
+    <rdfs:label>recognition act</rdfs:label>
+    <rdfs:comment>A process in which an institution declares a status that did not obtain before the declaration.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+    <cfr:chainLocus>L5</cfr:chainLocus>
+    <cfr:sourceSection>404.900</cfr:sourceSection>
+    <cfr:chunkId>404.900</cfr:chunkId>
+    <cfr:sourceQuote>(a) Explanation of the administrative review process. This subpart explains the procedures we follow in determining your rights under title II of the Social Security Act. The regulations describe the pr</cfr:sourceQuote>
+    <cfr:extractionConfidence>high</cfr:extractionConfidence>
+    <cfr:approved rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</cfr:approved>
+    <cfr:reviewNote>hand-authored chain scaffold; anchored on 'administrative review process' in 404.900</cfr:reviewNote>
+    <skos:editorialNote>Phase 4 scaffold term</skos:editorialNote>
+  </owl:Class>
+  <owl:ObjectProperty rdf:about="http://davidkoepsell.com/cfr404#repairPathFor">
+    <rdfs:label>repair path for</rdfs:label>
+    <rdfs:domain rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+    <rdfs:range rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+    <rdfs:comment>L7 remedy to the L5 act it can revisit.</rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:Class rdf:about="http://davidkoepsell.com/cfr404#InitialDetermination">
+    <rdfs:label>initial determination</rdfs:label>
+    <rdfs:comment>The first determination on a claim; the act every repair path aims at.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://davidkoepsell.com/cfr404#RecognitionAct"/>
+    <rdfs:subClassOf>
+      <owl:Restriction rdf:nodeID="N2a7818468c444ecda3637f7e95db2d55">
+        <owl:onProperty rdf:resource="http://davidkoepsell.com/cfr404#appliesCriteria"/>
+        <owl:someValuesFrom rdf:resource="http://davidkoepsell.com/cfr404#SequentialEvaluationCriteria"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction rdf:nodeID="N3a6ff5dcb8aa49f2a9e307026306c30d">
+        <owl:onProperty rdf:resource="http://davidkoepsell.com/cfr404#producesEffect"/>
+        <owl:someValuesFrom rdf:resource="http://davidkoepsell.com/cfr404#DisabilityStatusEffect"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <cfr:chainLocus>L5</cfr:chainLocus>
+    <cfr:sourceSection>404.902</cfr:sourceSection>
+    <cfr:chunkId>404.902</cfr:chunkId>
+    <cfr:sourceQuote>Initial determinations are the determinations we make that are subject to administrative and judicial review. We will base our initial determination on the preponderance o</cfr:sourceQuote>
+    <cfr:extractionConfidence>high</cfr:extractionConfidence>
+    <cfr:approved rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</cfr:approved>
+    <cfr:reviewNote>hand-authored chain scaffold; anchored on 'initial determination' in 404.902</cfr:reviewNote>
+    <skos:editorialNote>Phase 4 scaffold term</skos:editorialNote>
+  </owl:Class>
+  <owl:ObjectProperty rdf:about="http://davidkoepsell.com/cfr404#appliesCriteria">
+    <rdfs:label>applies criteria</rdfs:label>
+    <rdfs:domain rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+    <rdfs:range rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+    <rdfs:comment>L5 act to the L2 criteria it is required to apply.</rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://davidkoepsell.com/cfr404#assessedBy">
+    <rdfs:label>assessed by</rdfs:label>
+    <rdfs:domain rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+    <rdfs:range rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+    <rdfs:comment>L5 act to the L3 role responsible for performing it.</rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:Class rdf:about="http://davidkoepsell.com/cfr404#StateAgencyDisabilityExaminerRole">
+    <rdfs:label>State agency disability examiner role</rdfs:label>
+    <rdfs:comment>Makes the disability determination in the State agency, alone in the cases 404.1615(c)(3) allows.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://davidkoepsell.com/cfr404#AssessorRole"/>
+    <rdfs:subClassOf>
+      <owl:Restriction rdf:nodeID="Nb094712fc63a47519a3a5b603e8f6fcb">
+        <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/BFO_0000197"/>
+        <owl:someValuesFrom rdf:resource="http://davidkoepsell.com/cfr404#Person"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction rdf:nodeID="N7265257ef9be4c99bf0329170e61cdb3">
+        <owl:onProperty rdf:resource="http://davidkoepsell.com/cfr404#derivesAuthorityFrom"/>
+        <owl:someValuesFrom rdf:resource="http://davidkoepsell.com/cfr404#StateAgencyAuthorityRole"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <cfr:chainLocus>L3</cfr:chainLocus>
+    <cfr:sourceSection>404.1615</cfr:sourceSection>
+    <cfr:chunkId>404.1615</cfr:chunkId>
+    <cfr:sourceQuote>dical evidence in its files. (c) Disability determinations will be made by: (1) A State agency medical or psychological consultant and a State agency disability examiner; (2) A State agency disability examiner alone when there is no medical</cfr:sourceQuote>
+    <cfr:extractionConfidence>high</cfr:extractionConfidence>
+    <cfr:approved rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</cfr:approved>
+    <cfr:reviewNote>hand-authored chain scaffold; anchored on 'disability examiner' in 404.1615</cfr:reviewNote>
+    <skos:editorialNote>Phase 4 scaffold term</skos:editorialNote>
+  </owl:Class>
+</rdf:RDF>
