@@ -1,6 +1,6 @@
 {
   "phase": 4,
-  "terms": 52,
+  "terms": 54,
   "object_properties": 8,
   "by_locus": {
     "L1": [
@@ -12,11 +12,13 @@
     ],
     "L2": [
       "ConsistencyFactor",
+      "DurationRequirement",
       "GoodCauseForReopening",
       "InstitutionalCriterion",
       "ListingOfImpairments",
       "MedicalImprovementReviewStandard",
       "MedicalVocationalGuideline",
+      "PriorFinalDetermination",
       "ReopeningTimeCondition",
       "ResJudicataBar",
       "ResidualFunctionalCapacityCriteria",
@@ -72,7 +74,7 @@
   },
   "locus_counts": {
     "L1": 5,
-    "L2": 11,
+    "L2": 13,
     "L3": 9,
     "L4": 5,
     "L5": 8,

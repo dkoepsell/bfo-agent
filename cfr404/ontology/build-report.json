@@ -1,0 +1,66 @@
+{
+  "generated": "2026-07-30",
+  "merge_order": [
+    "base",
+    "chain",
+    "adjudication"
+  ],
+  "classes_per_module_before_merge": {
+    "base": 1008,
+    "chain": 54,
+    "adjudication": 1456
+  },
+  "named_classes_merged": 2494,
+  "triples": 36802,
+  "size_target": "2,000 to 2,500 named classes after merge",
+  "size_target_met": true,
+  "straddles": [],
+  "straddle_count": 0,
+  "unanchored_count": 0,
+  "unanchored": [],
+  "chain_locus_distribution": {
+    "L0": 1004,
+    "L1": 82,
+    "L2": 524,
+    "L3": 65,
+    "L4": 368,
+    "L5": 207,
+    "L6": 150,
+    "L7": 94
+  },
+  "locus_precedence": "chain > adjudication > base",
+  "locus_conflicts": [],
+  "grounding_collisions_repaired": [
+    {
+      "term": "DurationRequirement",
+      "kept_category": "generically dependent continuant",
+      "removed_parent": "Impairment",
+      "removed_category": "specifically dependent continuant",
+      "removed_from_module": "base",
+      "why": "merge-time collision across BFO's disjoint top-level categories; the more authoritative module's grounding is kept and the other edge dropped"
+    },
+    {
+      "term": "DurationRequirement",
+      "kept_category": "generically dependent continuant",
+      "removed_parent": "BFO_0000016",
+      "removed_category": "specifically dependent continuant",
+      "removed_from_module": "base",
+      "why": "merge-time collision across BFO's disjoint top-level categories; the more authoritative module's grounding is kept and the other edge dropped"
+    }
+  ],
+  "grounding_collision_count": 2,
+  "individual_type_collisions_repaired": [
+    {
+      "individual": "TwelveMonthDurationRequirement",
+      "kept_category": "generically dependent continuant",
+      "kept_via": [
+        "DurationRequirement"
+      ],
+      "removed_type": "BFO_0000016",
+      "removed_category": "specifically dependent continuant",
+      "why": "the individual instantiated two of BFO's disjoint top-level categories, which makes the ontology inconsistent rather than merely incoherent; the redundant direct BFO type assertion was dropped in favour of its class membership"
+    }
+  ],
+  "individual_type_collision_count": 1,
+  "stamp_gaps": {}
+}

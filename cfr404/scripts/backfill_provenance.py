@@ -118,23 +118,34 @@ def quote_for(chunk: dict, needle: str, max_words: int = 38) -> str:
 
 
 def locus_for(g, cls, section: str, anc: set) -> tuple[str, str]:
-    """Assign a chain locus by grounding + traced section. Returns (locus, why)."""
+    """Assign a chain locus by grounding *and* traced section.
+
+    The grounding gates the locus: a locus commits a term to a kind of entity, so
+    placing a material entity at L7 because it happens to be mentioned in Subpart J
+    would assert that an agency is a process. Where the section's subject matter and
+    the term's grounding disagree, the grounding wins and the term falls to L0 or to
+    the locus its kind actually fits.
+    """
     if BFO["role"] in anc:
         return "L3", "grounded as a BFO role, so it is an assessor-side institutional term"
     if section != UNATTRIBUTED:
-        if REOPENING.search(section):
-            return "L7", f"traced to {section}, a reopening/res-judicata repair path"
-        if REMEDY_SECTIONS.search(section):
-            if BFO["process"] in anc:
+        if BFO["process"] in anc:
+            if REOPENING.search(section):
+                return "L7", (f"traced to {section}, a reopening or res-judicata repair "
+                              "path, and grounded as a process")
+            if REMEDY_SECTIONS.search(section):
                 return "L5", f"traced to {section} (Subpart J) and grounded as a process"
-            return "L7", f"traced to {section}, Subpart J administrative review machinery"
         if CRITERIA_SECTIONS.search(section) and BFO["gdc"] in anc:
             return "L2", (f"traced to {section} and grounded as a generically dependent "
                           "continuant, which is the L2 grounding")
+        if REMEDY_SECTIONS.search(section) and (
+                BFO["material_entity"] in anc or BFO["object"] in anc):
+            return "L1", (f"traced to {section} (Subpart J) and grounded as a material "
+                          "entity, so it is an authority-bearing body rather than an act")
     if BFO["gdc"] in anc:
         return "L2", "grounded as a generically dependent continuant (criteria grounding)"
-    return "L0", ("medical or biological substrate: the regulation refers to it but does "
-                  "not constitute it, so it occupies no link of the recognition chain")
+    return "L0", ("medical or biological substrate, or an entity whose grounding fits no "
+                  "link: the regulation refers to it but does not constitute it")
 
 
 def main() -> int:

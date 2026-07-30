@@ -1,0 +1,105 @@
+{
+  "phase": 5,
+  "generated": "2026-07-30",
+  "backend": "rules",
+  "ruleset_version": "cfr404-rules-1.0",
+  "ruleset_sha256_16": "2e8049765f3d3165",
+  "backend_meta": {
+    "deontic_guard_suppressions": 967,
+    "deontic_guard_by_head": {
+      "test": 214,
+      "rules": 161,
+      "form": 150,
+      "level": 94,
+      "file": 77,
+      "party": 60,
+      "tests": 48,
+      "rule": 41,
+      "step": 35,
+      "limit": 29,
+      "court": 20,
+      "forms": 17,
+      "steps": 12,
+      "board": 9
+    },
+    "section_mapping_overrode_head_noun": 2366,
+    "coverage_cap": {
+      "rule": "term-of-art test: kept if the phrase heads a section, occurs >= 2 times, recurs across >= 2 sections, or is a multi-word phrase of >= 12 characters; max phrase length 4 words",
+      "candidates_before_cap": 1500,
+      "dropped_as_prose": 44,
+      "dropped_by_category": {
+        "criterion": 21,
+        "fact": 7,
+        "act": 4,
+        "assessor": 3,
+        "remedy": 3,
+        "effect": 3,
+        "party": 2,
+        "authority": 1
+      },
+      "dropped_examples": [
+        "ABG tests",
+        "Adjudicators",
+        "assessments",
+        "beneficiaries",
+        "both step",
+        "cannot test",
+        "certification",
+        "day appeal",
+        "ECG reports",
+        "expert",
+        "experts",
+        "f test",
+        "final rule",
+        "final step",
+        "first level",
+        "five steps",
+        "II benefits",
+        "last review",
+        "last step",
+        "later step",
+        "letter test",
+        "mail notice",
+        "nor benefit",
+        "only factor",
+        "only party"
+      ],
+      "note": "This cap bounds coverage. It is reported so that a locus density computed from this artifact is not mistaken for exhaustive coverage of the corpus."
+    }
+  },
+  "corpus_chunks": 305,
+  "classes_minted": 1456,
+  "by_locus": {
+    "L0": 28,
+    "L1": 76,
+    "L2": 505,
+    "L3": 46,
+    "L4": 366,
+    "L5": 199,
+    "L6": 145,
+    "L7": 91
+  },
+  "by_category": {
+    "criterion": 505,
+    "fact": 366,
+    "act": 199,
+    "effect": 145,
+    "remedy": 91,
+    "authority": 76,
+    "assessor": 46,
+    "party": 28
+  },
+  "by_confidence": {
+    "low": 974,
+    "medium": 398,
+    "high": 84
+  },
+  "approved": 482,
+  "guards": {
+    "deontic_inflation": "No class is minted from a phrase containing a modal or a bare deontic noun. Legal text is saturated with these and an extractor that mints one class per modal manufactures institutional structure out of grammar.",
+    "single_bfo_parent": "Each class receives exactly one BFO parent, fixed by its head-noun category, so extraction cannot introduce a continuant/occurrent straddle.",
+    "locus_not_inferred_from_branch": "chainLocus comes from the Phase 3 section-to-link mapping, with the head-noun category used only to choose within a section's admissible set. It is never read off the class tree."
+  },
+  "output": "ontology/cfr404-adjudication.owl",
+  "is_release_provenance": true
+}

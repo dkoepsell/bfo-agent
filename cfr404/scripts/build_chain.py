@@ -137,6 +137,14 @@ term("SupportabilityFactor", "supportability factor", "L2", [], ["InstitutionalC
 term("ConsistencyFactor", "consistency factor", "L2", [], ["InstitutionalCriterion"],
      "404.1520c", "onsistency",
      "How consistent a medical opinion is with the rest of the record.")
+term("DurationRequirement", "duration requirement", "L2", [],
+     ["InstitutionalCriterion"], "404.1509", "duration requirement",
+     "The 12-month continuous-period condition. Grounded here as a generically "
+     "dependent continuant, which overrides the baseline's grounding of the same term "
+     "as an Impairment and a disposition. The baseline reading is wrong on the text: "
+     "404.1509 states a condition a claim must satisfy, not a capacity a claimant "
+     "bears, and BFO makes specifically and generically dependent continuants disjoint, "
+     "so the two groundings cannot both stand.")
 term("MedicalVocationalGuideline", "medical-vocational guideline", "L2", [],
      ["InstitutionalCriterion"], "App2-all", "sustained work capability",
      "The grid rules directing a conclusion from age, education and work experience.")
@@ -248,15 +256,19 @@ term("JudicialReview", "judicial review", "L7", [], ["RemedyProcess"], "404.981"
 term("Reopening", "reopening", "L7", [], ["RemedyProcess"], "404.987", "reopen",
      "Revisiting a final determination outside the ordinary appeal sequence.",
      [(CFR["repairPathFor"], "InitialDetermination"),
-      (CFR["hasPrecondition"], "ReopeningTimeCondition")])
+      (CFR["hasPrecondition"], "ReopeningTimeCondition"),
+      (CFR["hasPrecondition"], "PriorFinalDetermination")])
 term("Revision", "revision", "L7", [], ["RemedyProcess"], "404.987", "revised",
      "The change made to a determination that has been reopened.",
      [(CFR["repairPathFor"], "InitialDetermination")])
 term("ResJudicataDismissal", "dismissal on res judicata", "L7", [], ["RemedyProcess"],
      "404.957", "res judicata",
      "Dismissal of a request for hearing because the same claim has already been "
-     "decided. It bars the very revisiting that reopening allows.",
-     [(CFR["repairPathFor"], "InitialDetermination"),
+     "decided. 404.957 dismisses a request for a hearing, and 404.929 makes the "
+     "hearing the repair path over the reconsidered determination, so the dismissal and "
+     "the hearing are competing paths over the same act.",
+     [(CFR["repairPathFor"], "ReconsideredDetermination"),
+      (CFR["hasPrecondition"], "PriorFinalDetermination"),
       (CFR["excludesPath"], "AdministrativeLawJudgeHearing")])
 term("ContinuingDisabilityReview", "continuing disability review", "L7", [],
      ["RemedyProcess"], "404.1589", "review",
@@ -269,6 +281,11 @@ term("ReopeningTimeCondition", "reopening time condition", "L2", [],
 term("GoodCauseForReopening", "good cause for reopening", "L2", [],
      ["InstitutionalCriterion"], "404.989", "good cause",
      "What must be shown to reopen after the shortest window has closed.")
+term("PriorFinalDetermination", "prior final determination", "L2", [],
+     ["InstitutionalCriterion"], "404.957", "become final",
+     "That an earlier determination on the same facts and issues has become final. "
+     "404.957(c)(1) makes finality the trigger for barring a further hearing; 404.988 "
+     "makes the same finality the thing a reopening acts upon.")
 term("ResJudicataBar", "res judicata bar", "L2", [], ["InstitutionalCriterion"],
      "404.957", "res judicata",
      "The condition under which a claim may not be adjudicated again.")

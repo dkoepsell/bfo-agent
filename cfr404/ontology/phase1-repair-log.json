@@ -45,15 +45,31 @@
     },
     {
       "step": 5,
+      "name": "correct mis-declared relation domains and ranges",
+      "fixes": [
+        {
+          "property": "BFO_0000196",
+          "axiom": "range",
+          "was": [
+            "BFO_0000016"
+          ],
+          "now": "BFO_0000020",
+          "why": "a bearer bears any specifically dependent continuant, not only dispositions"
+        }
+      ],
+      "note": "BFO_0000196 and BFO_0000197 are BFO 2.0 IRIs and are not declared by BFO 2020, whose corresponding relations are RO_0000053 (bearer of) and RO_0000052 (inheres in). They are retained here, declared locally with BFO-consistent domains and ranges, because renaming 31 restrictions would diverge from the baseline this phase is meant to repair rather than rewrite. The vintage mismatch is carried in the known-defect inventory."
+    },
+    {
+      "step": 6,
       "name": "orphan restriction sweep",
       "triples_removed": 20,
       "restrictions_swept": [
-        "someValuesFrom: BFO_0000197 -> Brain",
         "someValuesFrom: BFO_0000054 -> MotorDeficit",
-        "someValuesFrom: BFO_0000054 -> WorkPerformance",
+        "someValuesFrom: BFO_0000197 -> Brain",
         "someValuesFrom: BFO_0000054 -> MovementDisorder",
-        "someValuesFrom: BFO_0000054 -> BFO_0000015",
+        "someValuesFrom: BFO_0000054 -> WorkPerformance",
         "complementOf:  -> DiagnosticCriterion",
+        "someValuesFrom: BFO_0000054 -> BFO_0000015",
         "someValuesFrom: BFO_0000051 -> BrainAbnormality"
       ],
       "note": "These blank nodes were already dangling in the input: restriction bodies referenced by no class, i.e. axioms whose subject was lost during the original extraction. They are reported rather than silently collected because each one is a restriction the baseline was supposed to carry and does not. Counting them keeps the restriction-predicate census honest."
@@ -63,7 +79,7 @@
     "named_classes_before": 1009,
     "named_classes_after": 1008,
     "triples_before": 8180,
-    "triples_after": 8147,
+    "triples_after": 8151,
     "straddles": [],
     "unanchored": []
   }

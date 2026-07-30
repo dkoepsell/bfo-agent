@@ -1,0 +1,16 @@
+{
+  "verdict": "consistent",
+  "consistent": true,
+  "coherent": false,
+  "unsatisfiable_classes": [
+    "http://davidkoepsell.com/cfr404#CardiacLaboratoryFinding",
+    "http://davidkoepsell.com/cfr404#CardiacStructuralAbnormality"
+  ],
+  "unsatisfiable_count": 2,
+  "seconds": 5.0,
+  "reason": null,
+  "artifact": "cfr404.owl",
+  "budget_seconds": 1800,
+  "generated": "2026-07-30",
+  "reasoner": "HermiT via owlready2"
+}

@@ -1270,7 +1270,7 @@
   },
   "CardiacContraction": {
     "label": "Cardiac Contraction",
-    "section": "App1-4.00",
+    "section": "App1-1.00",
     "confidence": "low",
     "approved": false,
     "locus": "L0",
@@ -2593,7 +2593,7 @@
   },
   "DisabledStatus": {
     "label": "Disabled",
-    "section": "404.1594",
+    "section": "App2-all",
     "confidence": "low",
     "approved": false,
     "locus": "L3",
@@ -3044,7 +3044,7 @@
   "ExertionalLimitation": {
     "label": "Exertional Limitation",
     "section": "404.1569a",
-    "confidence": "high",
+    "confidence": "medium",
     "approved": true,
     "locus": "L0",
     "tier": "verbatim",
@@ -3649,7 +3649,7 @@
     "section": "404.911",
     "confidence": "medium",
     "approved": true,
-    "locus": "L7",
+    "locus": "L1",
     "tier": "verbatim",
     "matched_on": "Government Agency"
   },
@@ -3980,7 +3980,7 @@
   "HighSchoolEducation": {
     "label": "High School Education",
     "section": "404.1564",
-    "confidence": "high",
+    "confidence": "medium",
     "approved": true,
     "locus": "L0",
     "tier": "verbatim",
@@ -4222,8 +4222,8 @@
   },
   "Illiteracy": {
     "label": "Illiteracy",
-    "section": "404.1564",
-    "confidence": "high",
+    "section": "App2-all",
+    "confidence": "medium",
     "approved": true,
     "locus": "L0",
     "tier": "verbatim",
@@ -4366,7 +4366,7 @@
   },
   "IndividualNeed": {
     "label": "Individual Need",
-    "section": "404.1597a",
+    "section": "App2-all",
     "confidence": "low",
     "approved": false,
     "locus": "L0",
@@ -4447,7 +4447,7 @@
   },
   "InsulinResistance": {
     "label": "Insulin Resistance",
-    "section": "App1-108.00",
+    "section": "App1-1.00",
     "confidence": "low",
     "approved": false,
     "locus": "L0",
@@ -4693,7 +4693,7 @@
     "section": "404.984",
     "confidence": "low",
     "approved": false,
-    "locus": "L7",
+    "locus": "L0",
     "tier": "verbatim",
     "matched_on": "Jurisdiction"
   },
@@ -4834,7 +4834,7 @@
   },
   "LightWork": {
     "label": "Light Work",
-    "section": "404.1568",
+    "section": "App2-all",
     "confidence": "medium",
     "approved": true,
     "locus": "L0",
@@ -5356,7 +5356,7 @@
   },
   "MedicallyDeterminableImpairment": {
     "label": "Medically Determinable Impairment",
-    "section": "404.1529",
+    "section": "App2-all",
     "confidence": "low",
     "approved": false,
     "locus": "L0",
@@ -6176,7 +6176,7 @@
   "NonexertionalLimitation": {
     "label": "Nonexertional Limitation",
     "section": "404.1569a",
-    "confidence": "high",
+    "confidence": "medium",
     "approved": true,
     "locus": "L0",
     "tier": "verbatim",
@@ -6673,7 +6673,7 @@
     "section": "404.936",
     "confidence": "low",
     "approved": false,
-    "locus": "L7",
+    "locus": "L1",
     "tier": "verbatim",
     "matched_on": "Person"
   },
@@ -7687,7 +7687,7 @@
   },
   "Skill": {
     "label": "Skill",
-    "section": "404.1568",
+    "section": "App2-all",
     "confidence": "medium",
     "approved": true,
     "locus": "L0",
@@ -7723,7 +7723,7 @@
   },
   "SkilledWork": {
     "label": "Skilled Work",
-    "section": "404.1568",
+    "section": "App2-all",
     "confidence": "medium",
     "approved": true,
     "locus": "L0",
@@ -8497,8 +8497,8 @@
   },
   "TransferableSkill": {
     "label": "Transferable Skill",
-    "section": "404.1568",
-    "confidence": "high",
+    "section": "App2-all",
+    "confidence": "medium",
     "approved": true,
     "locus": "L0",
     "tier": "verbatim",
@@ -8686,7 +8686,7 @@
   },
   "UnskilledWork": {
     "label": "Unskilled Work",
-    "section": "404.1568",
+    "section": "App2-all",
     "confidence": "medium",
     "approved": true,
     "locus": "L0",
@@ -8857,7 +8857,7 @@
   },
   "VisualAcuity": {
     "label": "Visual Acuity",
-    "section": "App1-102.00",
+    "section": "App1-2.00",
     "confidence": "medium",
     "approved": true,
     "locus": "L0",
@@ -8977,7 +8977,7 @@
     "section": "404.930",
     "confidence": "low",
     "approved": false,
-    "locus": "L7",
+    "locus": "L0",
     "tier": "subphrase",
     "matched_on": "Availability"
   },
@@ -9001,7 +9001,7 @@
   },
   "WorkExperience": {
     "label": "Work Experience",
-    "section": "404.1565",
+    "section": "App2-all",
     "confidence": "low",
     "approved": false,
     "locus": "L0",

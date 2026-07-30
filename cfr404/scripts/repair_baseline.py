@@ -27,7 +27,7 @@ from rdflib.namespace import DCTERMS, OWL, RDF, RDFS, XSD
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from cfrlib import (  # noqa: E402
-    BFO, BFO_IMPORT, CFR, CFR_BASE_IRI, CFR_VERSION_IRI, LEGACY_NS, LEGACY_ONTOLOGY_IRIS,
+    BFO, BFO_IMPORT, REL, CFR, CFR_BASE_IRI, CFR_VERSION_IRI, LEGACY_NS, LEGACY_ONTOLOGY_IRIS,
     ROOT, local, named_classes, straddles, unanchored,
 )
 
@@ -216,9 +216,47 @@ def main() -> int:
                          "intended restriction, so it is dropped rather than named.",
     })
 
+    # ---- 5. correct the mis-declared relation ranges ----------------------------
+    # The baseline declares 'bearer of' with range disposition. A bearer bears any
+    # specifically dependent continuant, so under that declaration every class that
+    # bears a quality or a role - including the Commissioner, who bears an authority
+    # role - comes out unsatisfiable. This is the single defect responsible for every
+    # unsatisfiable class in the merged artifact.
+    rel_fixes = []
+    for prop, want_dom, want_rng, why in (
+        (REL["bearer_of"], BFO["ic"], BFO["sdc"],
+         "a bearer bears any specifically dependent continuant, not only dispositions"),
+        (REL["inheres_in"], BFO["sdc"], BFO["ic"],
+         "a specifically dependent continuant inheres in an independent continuant"),
+    ):
+        for pred, want in ((RDFS.domain, want_dom), (RDFS.range, want_rng)):
+            had = [o for o in g.objects(prop, pred)]
+            if had == [want]:
+                continue
+            for o in had:
+                g.remove((prop, pred, o))
+            g.add((prop, pred, want))
+            if had:
+                rel_fixes.append({
+                    "property": local(prop), "axiom": local(pred),
+                    "was": [local(x) for x in had], "now": local(want), "why": why,
+                })
+        g.add((prop, RDF.type, OWL.ObjectProperty))
+    log["steps"].append({
+        "step": 5, "name": "correct mis-declared relation domains and ranges",
+        "fixes": rel_fixes,
+        "note": "BFO_0000196 and BFO_0000197 are BFO 2.0 IRIs and are not declared by "
+                "BFO 2020, whose corresponding relations are RO_0000053 (bearer of) and "
+                "RO_0000052 (inheres in). They are retained here, declared locally with "
+                "BFO-consistent domains and ranges, because renaming 31 restrictions "
+                "would diverge from the baseline this phase is meant to repair rather "
+                "than rewrite. The vintage mismatch is carried in the known-defect "
+                "inventory.",
+    })
+
     gc, swept = gc_bnodes(g)
     log["steps"].append({
-        "step": 5, "name": "orphan restriction sweep",
+        "step": 6, "name": "orphan restriction sweep",
         "triples_removed": gc,
         "restrictions_swept": swept,
         "note": "These blank nodes were already dangling in the input: restriction bodies "

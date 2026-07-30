@@ -78,6 +78,29 @@ OCCURRENT_ROOTS = {
     BFO["process_boundary"], BFO["history"],
 }
 
+# BFO's four top-level categories are pairwise disjoint. The artifact only *imports*
+# bfo.owl, so BFO's own subsumptions are not in the merged graph and cannot be walked;
+# the members of each category are therefore enumerated here, exactly as the
+# continuant/occurrent roots above are. A term reachable into two of these is
+# unsatisfiable, and inconsistent as soon as anything instantiates it.
+TOP_CATEGORIES = {
+    "independent continuant": {
+        OBO.BFO_0000004, OBO.BFO_0000030, OBO.BFO_0000040, OBO.BFO_0000029,
+        OBO.BFO_0000027, OBO.BFO_0000024, OBO.BFO_0000140, OBO.BFO_0000006,
+        OBO.BFO_0000141, OBO.BFO_0000142, OBO.BFO_0000146, OBO.BFO_0000147,
+    },
+    "specifically dependent continuant": {
+        OBO.BFO_0000020, OBO.BFO_0000019, OBO.BFO_0000017, OBO.BFO_0000016,
+        OBO.BFO_0000023, OBO.BFO_0000034, OBO.BFO_0000145,
+    },
+    "generically dependent continuant": {OBO.BFO_0000031},
+    "occurrent": {
+        OBO.BFO_0000003, OBO.BFO_0000015, OBO.BFO_0000035, OBO.BFO_0000008,
+        OBO.BFO_0000182, OBO.BFO_0000011, OBO.BFO_0000038, OBO.BFO_0000148,
+        OBO.BFO_0000202, OBO.BFO_0000203,
+    },
+}
+
 # The seven recognition-chain loci (Phase 4).
 LOCI = ["L1", "L2", "L3", "L4", "L5", "L6", "L7"]
 LOCUS_NAME = {
