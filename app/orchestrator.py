@@ -2736,6 +2736,13 @@ def create_app() -> Flask:
     from .aperture import service as aperture_service
     aperture_service.register(app)
 
+    # --- Full report ----------------------------------------------------------
+    # Every audit and statistic for one ontology, plus a loadable variant of the
+    # OWL. The variant is a separate artifact: no audit result is computed from
+    # it, which is why the repair is limited to changes that add no claims.
+    from .report import service as report_service
+    report_service.register(app)
+
     # --- Recognition layer (SPEC-recognition-layer.md P8) ---------------------
     # The chain and the kernel are declared, not inferred: an ontology says
     # which institution it models, and that declaration fixes which of the

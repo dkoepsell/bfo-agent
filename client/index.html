@@ -662,6 +662,25 @@
           <span id="ap-chain-note" class="muted" style="font-size:12px;"></span>
         </div>
 
+        <hr style="margin:18px 0; border:none; border-top:1px solid var(--border,#333);"/>
+        <div class="row-flex" style="gap:8px; align-items:center; flex-wrap:wrap;">
+          <strong style="margin-right:4px;">Full report</strong>
+          <button id="ap-report" data-keep-enabled="1">Download report bundle</button>
+          <label class="muted" style="margin:0; font-size:12px;">
+            <input type="checkbox" id="ap-report-reasoner" checked/> run the reasoner
+          </label>
+          <span id="ap-report-note" class="muted" style="font-size:12px;"></span>
+        </div>
+        <div class="muted" style="margin-top:4px; font-size:12px;">
+          A zip carrying every audit and statistic as JSON and as prose, the
+          coverage table, and a loadable variant of the OWL.
+          <strong>The variant is a separate artifact</strong>: it is the delivered
+          ontology made loadable, with no claim added and no axiom removed, and
+          no audit result in the bundle was computed from it. What it does
+          <em>not</em> repair, and why, is listed in <code>repairs.json</code>.
+          Running the reasoner on a large ontology can take a few minutes.
+        </div>
+
         <h3 style="margin:18px 0 6px;">3. Resolution</h3>
         <div id="ap-resolution"><div class="muted">Declare a chain, then resolve.</div></div>
         <div id="ap-advisories" style="margin-top:12px;"></div>
@@ -2765,6 +2784,49 @@ document.getElementById("ap-resolve").addEventListener("click", apResolve);
 document.getElementById("ap-profile").addEventListener("change", apResolve);
 document.getElementById("ap-copy").addEventListener("click", () => {
   if (apScopeMarkdown) navigator.clipboard.writeText(apScopeMarkdown);
+});
+
+/* The bundle is a file download rather than an api() call, so it goes through
+   fetch directly and streams to a blob. It can take minutes on a large
+   ontology with the reasoner on, so the button reports progress rather than
+   appearing to hang. */
+document.getElementById("ap-report").addEventListener("click", async () => {
+  const name = apOnto();
+  if (!name) return;
+  const button = document.getElementById("ap-report");
+  const note = document.getElementById("ap-report-note");
+  const reasoner = document.getElementById("ap-report-reasoner").checked;
+  button.disabled = true;
+  note.textContent = reasoner
+    ? "building, the reasoner pass can take a few minutes..."
+    : "building...";
+  const started = Date.now();
+  try {
+    const url = `${API}/ontologies/${encodeURIComponent(name)}/report.zip`
+      + `?reasoner=${reasoner ? "1" : "0"}&profile=${apProfile()}`;
+    const response = await fetch(url);
+    if (!response.ok) {
+      let message = response.statusText;
+      try { message = (await response.json()).error || message; } catch (e) {}
+      throw new Error(message);
+    }
+    const blob = await response.blob();
+    const href = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = href;
+    link.download = `${name}-report.zip`;
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+    URL.revokeObjectURL(href);
+    const seconds = Math.round((Date.now() - started) / 1000);
+    note.innerHTML = `<span style="color:#2e7d32;">downloaded `
+      + `${Math.round(blob.size / 1024)} KB in ${seconds}s</span>`;
+  } catch (e) {
+    note.innerHTML = `<span style="color:#c62828;">${esc(e.message)}</span>`;
+  } finally {
+    button.disabled = false;
+  }
 });
 document.querySelectorAll('.tab[data-tab="aperture"]').forEach(t =>
   t.addEventListener("click", apRefresh));
