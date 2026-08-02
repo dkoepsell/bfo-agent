@@ -1,0 +1,221 @@
+# Aperture kernel manifest.
+#
+# The twelve domain-neutral contradiction primitives, expressed as the resolver
+# needs to see them. This file is the asset: app/aperture/loader.py reads it and
+# no module embeds a second copy.
+#
+# It is deliberately plaintext. The same kernel content (codes, definitions,
+# signatures, instruments) is already served publicly by GET /recognition/domains
+# and lives in app/recognition.py, so encrypting this file would protect nothing.
+# What this file does buy is the removal of drift: tests/test_aperture_manifest.py
+# pins every row against app.recognition.KERNEL and fails if the two disagree.
+#
+# Field notes:
+#
+#   loci      The chain loci at which this primitive can fire. Derived, not
+#             invented: the union of the primitive's default locus in
+#             app/recognition_audit.py (_DEFAULT_LOCUS) with every locus and
+#             locus_to it carries in the CT_TYPES and FR5_ALIASES tables of
+#             app/recognition.py. The derivation is recorded per entry below so
+#             it can be re-checked when those tables change.
+#
+#   instrument
+#             The principled primary instrument, mirroring the first entry of
+#             app.recognition.KERNEL[code].instruments. This is what it takes to
+#             see the primitive at all, which is a matter of principle rather
+#             than of tooling maturity.
+#
+#   detectors What this system actually runs, each with the instrument it uses.
+#             An empty list means human judgment: the resolver sends it to
+#             IN_SCOPE_HUMAN and never to out of scope.
+#
+#   requires  Preconditions beyond the cumulative stratum defaults. Only two
+#             primitives need one, and they are exactly the two probe values
+#             that have no stratum of their own: complement_available and
+#             bearer_relations.
+#
+# Twelve against thirteen (spec section 4.2) is already settled in this
+# codebase, and differently from either option the spec offers. KERNEL is
+# twelve primitives; FR5_ALIASES is thirteen legal contradiction types
+# expressed as views of those twelve, and recognition.self_check() already
+# enforces that every alias references a real kernel code. The manifest carries
+# the twelve. The aliases stay derived.
+
+version: "1.0.0"
+
+# Strata are cumulative and ordered. A failure at stratum N requires every
+# precondition of the strata below N; the loader computes that closure so this
+# file does not restate it.
+#
+# A, B and C fire wherever the artifact exists, because their preconditions are
+# rules, definitions and top-level kinds, all of which live inside the document.
+# D needs acts, so it is gated by the declared chain.
+strata:
+  - id: A
+    precondition: formal_theory
+    gated_by_chain: false
+  - id: B
+    precondition: definitions
+    gated_by_chain: false
+  - id: C
+    precondition: upper_ontology
+    gated_by_chain: false
+  - id: D
+    precondition: acts
+    gated_by_chain: true
+
+failures:
+
+  # ---- Stratum A: failures of a theory relative to its models --------------
+
+  # loci: default criteria; CT-1 (criteria -> act); LC-3, LC-10 (criteria);
+  #       LC-6 (act).
+  - id: K-A1
+    stratum: A
+    loci: [criteria, act]
+    instrument: dl_reasoner
+    detectors:
+      - path: app.coherence_reason.coherence_check
+        instrument: dl_reasoner
+      - path: app.kernel_audit.audit
+        instrument: structural
+    requires: []
+    client_label: "Rules that cannot all be satisfied at once"
+
+  # loci: default criteria; absent from both typology tables. Left at the
+  #       default rather than widened: recognition_audit reads an unsatisfiable
+  #       class as term incoherence at criteria, and gives the same class its
+  #       act-locus reading under the pragmatic primitive instead.
+  - id: K-A2
+    stratum: A
+    loci: [criteria]
+    instrument: dl_reasoner
+    detectors:
+      - path: app.coherence_reason.coherence_check
+        instrument: dl_reasoner
+    requires: []
+    client_label: "A category that nothing could ever belong to"
+
+  # loci: default criteria; CT-3 (criteria); LC-5 (facts -> act).
+  - id: K-A3
+    stratum: A
+    loci: [criteria, facts, act]
+    instrument: structural
+    detectors:
+      - path: app.kernel_audit.audit
+        instrument: structural
+    requires: []
+    client_label: "Categories whose boundaries are left undecided"
+
+  # ---- Stratum B: definitional failures ------------------------------------
+
+  # loci: default criteria; CT-2 (criteria); LC-9 (authority).
+  - id: K-B1
+    stratum: B
+    loci: [criteria, authority]
+    instrument: dl_reasoner
+    instrument_partial: true
+    detectors:
+      - path: app.kernel_audit.audit
+        instrument: structural
+    requires: []
+    client_label: "Definitions that depend on themselves"
+
+  # loci: default criteria; CT-4 (criteria).
+  # No detector anywhere in this system: equivocation is a reading of what a
+  # term is doing, not a pattern in the axioms. Human judgment, in scope.
+  - id: K-B2
+    stratum: B
+    loci: [criteria]
+    instrument: structural
+    detectors: []
+    requires: []
+    client_label: "One term used in two incompatible senses"
+
+  # loci: default criteria; CT-5 (criteria).
+  # requires complement_available: a category defined only by what it excludes
+  # cannot be found where complements are not expressible in the first place.
+  - id: K-B3
+    stratum: B
+    loci: [criteria]
+    instrument: structural
+    detectors:
+      - path: app.kernel_audit.audit
+        instrument: structural
+    requires: [complement_available]
+    client_label: "Categories defined only as what is left over"
+
+  # ---- Stratum C: meta-ontological failures --------------------------------
+
+  # loci: default effect; CT-7 (effect); LC-11 (effect).
+  - id: K-C1
+    stratum: C
+    loci: [effect]
+    instrument: dl_reasoner
+    detectors:
+      - path: app.kernel_audit.audit
+        instrument: structural
+    requires: []
+    client_label: "An entity placed in two incompatible top-level kinds"
+
+  # loci: default criteria; absent from both typology tables.
+  - id: K-C2
+    stratum: C
+    loci: [criteria]
+    instrument: structural
+    detectors:
+      - path: app.kernel_audit.audit
+        instrument: structural
+    requires: []
+    client_label: "A kind and an individual instance treated as the same thing"
+
+  # loci: default effect; CT-6 (criteria -> act); LC-1, LC-13 (criteria ->
+  #       authority); LC-2 (effect -> act); LC-7 (effect -> criteria);
+  #       LC-8 (remedy -> effect); LC-12 (facts). Every locus but assessor.
+  # requires bearer_relations: a severed dependence cannot be seen where no
+  # dependence or inherence relation is asserted at all.
+  - id: K-C3
+    stratum: C
+    loci: [authority, criteria, facts, act, effect, remedy]
+    instrument: dl_reasoner
+    instrument_partial: true
+    detectors:
+      - path: app.kernel_audit.audit
+        instrument: structural
+    requires: [bearer_relations]
+    client_label: "Something dependent recorded without what it depends on"
+
+  # ---- Stratum D: pragmatic failures, available only where there are acts ---
+
+  # loci: default facts; absent from both typology tables.
+  # No detector by construction, not by omission: falsification needs
+  # world-facing evidence the artifact does not contain. Human judgment.
+  - id: K-D1
+    stratum: D
+    loci: [facts]
+    instrument: world_evidence
+    detectors: []
+    requires: []
+    client_label: "Recorded conditions that do not match the world"
+
+  # loci: default act; absent from both typology tables.
+  - id: K-D2
+    stratum: D
+    loci: [act]
+    instrument: process_model
+    detectors:
+      - path: app.recognition_audit._stratum_d
+        instrument: process_model
+    requires: []
+    client_label: "A requirement that its own performance defeats"
+
+  # loci: default effect; LC-4 (assessor -> criteria).
+  - id: K-D3
+    stratum: D
+    loci: [assessor, criteria, effect]
+    instrument: process_model
+    detectors:
+      - path: app.recognition_audit._stratum_d
+        instrument: process_model
+    requires: []
+    client_label: "A capacity the rules allow but practice blocks"

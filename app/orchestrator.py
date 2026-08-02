@@ -2721,6 +2721,21 @@ def create_app() -> Flask:
         except Exception as e:
             return jsonify({"error": f"fact check failed: {e}"}), 500
 
+    # --- Coverage Kernel (separate repository, see CK_HOME) --------------------
+    # The kernel is its own artifact and is not part of this application. The
+    # static half of the page is precomputed; the live assessment takes the same
+    # reasoner lock as the feed, without blocking on it.
+    from . import ck_service
+    ck_service.register(app)
+
+    # --- Aperture (APERTURE-SPEC.md) ------------------------------------------
+    # What a review of an artifact can establish, computed before any detector
+    # runs. A check that could not have fired is reported as untested, never as
+    # clean. The phases live in the aperture package; the routes are the thin
+    # part, so they are registered rather than written out here.
+    from .aperture import service as aperture_service
+    aperture_service.register(app)
+
     # --- Recognition layer (SPEC-recognition-layer.md P8) ---------------------
     # The chain and the kernel are declared, not inferred: an ontology says
     # which institution it models, and that declaration fixes which of the

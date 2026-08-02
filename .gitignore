@@ -24,3 +24,12 @@ app/*.pre_phase*
 client/*.pre_phase*
 scripts/phase*_patch.py.bak
 backup_pre_phase*/
+
+# Aperture: proprietary spec, never publish to this repo (it is public and the
+# document names a client and describes that client's artifact).
+APERTURE-SPEC.md
+
+# Aperture working output: the disclosure log is a business record kept on the
+# host that produced it, not in version control.
+out/
+aperture-preconditions.json

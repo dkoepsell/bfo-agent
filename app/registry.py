@@ -257,6 +257,84 @@ class OntologyRegistry:
         self._manifests[name] = manifest
         return self.recognition_profile(name)
 
+    # --- Aperture chain declaration (APERTURE-SPEC.md section 6) ------------
+    # Stored inside the same "recognition" block, because the chain and the
+    # institution it belongs to are one declaration and must not drift apart.
+
+    def chain_block(self, name: str) -> dict:
+        """The raw stored chain block, or an empty dict. Never validates."""
+        if name not in self._manifests:
+            raise OntologyNotFoundError(name)
+        block = (self._manifests[name].get("recognition") or {}).get("chain")
+        return dict(block or {})
+
+    def chain_status(self, name: str) -> dict:
+        """The chain declaration if it is usable, or the reason it is not."""
+        from . import recognition as rec
+        from .aperture import chain as chain_mod
+
+        declared = self.recognition_profile(name)
+        profile = rec.profile_for(declared.get("domain"))
+        if (declared.get("act_thickness") != profile.act_thickness
+                or declared.get("repair") != profile.repair):
+            from dataclasses import replace
+            profile = replace(
+                profile,
+                act_thickness=declared.get("act_thickness"),
+                repair=declared.get("repair"),
+            )
+        return chain_mod.status(
+            self.chain_block(name),
+            engagement=name,
+            domain=profile.key,
+            profile=profile,
+        )
+
+    def set_chain_declaration(self, name: str, links: dict, basis: str,
+                              declared_by: str | None = None,
+                              declared_on: str | None = None,
+                              artifact_sha256: str | None = None) -> dict:
+        """Declare where each chain link sits, and persist it.
+
+        Validates before writing. A declaration that could not be resolved
+        against is not worth storing, and storing it would let a later run pick
+        up something no one could act on.
+        """
+        from . import recognition as rec
+        from .aperture import chain as chain_mod
+
+        if name not in self._managers:
+            raise OntologyNotFoundError(name)
+
+        declared = self.recognition_profile(name)
+        profile = rec.profile_for(declared.get("domain"))
+
+        block = {
+            "links": links or {},
+            "basis": basis,
+            "declared_by": declared_by or "",
+            "declared_on": declared_on or "",
+            "artifact_sha256": artifact_sha256 or "",
+        }
+        # Raises ChainError / IncompleteChain / ThicknessContradiction.
+        chain_mod.validate(
+            block,
+            engagement=name,
+            domain=profile.key,
+            declared_act_thickness=declared.get("act_thickness"),
+            declared_repair=declared.get("repair"),
+        )
+
+        manifest = dict(self._manifests[name])
+        recognition_block = dict(manifest.get("recognition") or {})
+        recognition_block["chain"] = block
+        manifest["recognition"] = recognition_block
+
+        manifest_path = self._library_root / name / "manifest.json"
+        manifest_path.write_text(json.dumps(manifest, indent=2))
+        self._manifests[name] = manifest
+        return self.chain_status(name)
+
     def manifest(self, name: str) -> dict:
         if name not in self._manifests:
             raise OntologyNotFoundError(name)

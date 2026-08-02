@@ -482,6 +482,7 @@
       <div class="tab" data-tab="argmap">Argument Map</div>
       <div class="tab" data-tab="log">Session Log</div>
       <div class="tab" data-tab="audits">Audits</div>
+      <div class="tab" data-tab="aperture">Scope</div>
       <div class="tab" data-tab="live">Live</div>
     </div>
     <div class="pane-body" id="right-body">
@@ -613,6 +614,58 @@
           scientific reference ontology has no chain, and Stratum D is off.
         </div>
         <div id="rec-body" style="margin-top:10px;"></div>
+      </div>
+
+      <div id="tab-aperture" class="tab-pane" style="display:none;">
+        <div class="row-flex" style="margin-bottom:10px; align-items:center; gap:8px;">
+          <label for="ap-onto" class="muted" style="margin:0;">Ontology:</label>
+          <select id="ap-onto" style="max-width:280px;"></select>
+          <button class="secondary" id="ap-refresh" data-keep-enabled="1">Refresh</button>
+          <span style="flex:1;"></span>
+          <label for="ap-profile" class="muted" style="margin:0;">Render as:</label>
+          <select id="ap-profile" style="max-width:150px;" data-keep-enabled="1">
+            <option value="internal">internal</option>
+            <option value="client">client</option>
+          </select>
+        </div>
+        <div class="muted" style="margin-bottom:12px;">
+          What a review of this artifact <em>could</em> establish, worked out
+          before any check runs. A row that could not have fired is reported as
+          untested, never as clean. Nothing here reports a finding.
+        </div>
+
+        <h3 style="margin:14px 0 6px;">1. Preconditions</h3>
+        <div class="muted" style="font-size:12px; margin-bottom:6px;">
+          Measured from the artifact. Each carries the evidence that produced it.
+        </div>
+        <div id="ap-preconditions"><div class="muted">Select an ontology.</div></div>
+
+        <h3 style="margin:18px 0 6px;">2. Chain declaration</h3>
+        <div class="muted" style="font-size:12px; margin-bottom:8px;">
+          Declared, never inferred. Each link says where it sits relative to
+          <em>this system</em>: the system performs it, it is performed outside
+          the system, or the system has no such link. An undeclared link is not
+          &ldquo;absent&rdquo;, so all seven are required.
+        </div>
+        <div id="ap-links" class="row-flex" style="gap:10px; flex-wrap:wrap;"></div>
+        <div style="margin-top:10px;">
+          <label for="ap-basis" class="muted" style="display:block; margin-bottom:4px;">
+            Basis (required): where in the record this declaration comes from
+          </label>
+          <textarea id="ap-basis" rows="2" style="width:100%;"
+            placeholder="e.g. Scope and Technical Guide, sections 2 and 4; entry file annotations"></textarea>
+        </div>
+        <div class="row-flex" style="gap:8px; margin-top:8px; align-items:center;">
+          <button class="secondary" id="ap-declare" data-keep-enabled="1" disabled>Declare chain</button>
+          <button class="secondary" id="ap-resolve" data-keep-enabled="1">Resolve</button>
+          <button class="secondary" id="ap-copy" data-keep-enabled="1">Copy scope statement</button>
+          <span id="ap-chain-note" class="muted" style="font-size:12px;"></span>
+        </div>
+
+        <h3 style="margin:18px 0 6px;">3. Resolution</h3>
+        <div id="ap-resolution"><div class="muted">Declare a chain, then resolve.</div></div>
+        <div id="ap-advisories" style="margin-top:12px;"></div>
+        <div id="ap-scope" style="margin-top:16px;"></div>
       </div>
 
       <div id="tab-live" class="tab-pane" style="display:none;">
@@ -2466,6 +2519,255 @@ function selectTab(name) {
   document.querySelectorAll(".tab").forEach(t => t.classList.toggle("active", t.dataset.tab === name));
   document.querySelectorAll(".tab-pane").forEach(p => p.style.display = p.id === `tab-${name}` ? "block" : "none");
 }
+
+/* ---------------------------------------------------------------------------
+   Scope tab (Aperture)
+
+   Says what a review of an artifact could establish, before any check runs.
+   Deliberately dumb: it renders whatever the server resolved and never decides
+   anything itself. In particular the profile toggle re-fetches rather than
+   hiding rows, because the client view is built at the server boundary and a
+   client-side filter would be exactly the leak the boundary exists to prevent.
+--------------------------------------------------------------------------- */
+const AP_LOCI = ["authority", "criteria", "assessor", "facts", "act", "effect", "remedy"];
+const AP_LINK_STATES = ["performed", "external", "absent"];
+const AP_VERDICT_STYLE = {
+  IN_SCOPE_MECHANICAL: ["In scope, automated", "#2e7d32"],
+  IN_SCOPE_HUMAN:      ["In scope, by review", "#1565c0"],
+  GATED_RARE:          ["Rare",                "#ef6c00"],
+  OUT_CHAIN:           ["Not reachable",       "#616161"],
+  OUT_PRECONDITION:    ["Not reachable",       "#616161"],
+};
+
+let apScopeMarkdown = "";
+
+function apOnto() { return document.getElementById("ap-onto").value; }
+function apProfile() { return document.getElementById("ap-profile").value; }
+
+function apRenderLinkEditor(status) {
+  const host = document.getElementById("ap-links");
+  const declared = (status && status.usable && status.chain && status.chain.links)
+    || (status && status.links) || {};
+  const suggested = (status && status.suggested_links) || {};
+  host.innerHTML = AP_LOCI.map(locus => {
+    const current = declared[locus] || "";
+    const hint = (!current && suggested[locus]) ? suggested[locus] : "";
+    const options = ['<option value="">not declared</option>']
+      .concat(AP_LINK_STATES.map(s =>
+        `<option value="${s}"${s === current ? " selected" : ""}>${s}</option>`))
+      .join("");
+    return `<div style="min-width:150px;">
+      <label class="muted" style="display:block; font-size:12px;">${esc(locus)}</label>
+      <select class="ap-link" data-locus="${esc(locus)}" style="width:100%;">${options}</select>
+      ${hint ? `<div class="muted" style="font-size:11px;">suggested: ${esc(hint)}</div>` : ""}
+    </div>`;
+  }).join("");
+  host.querySelectorAll(".ap-link").forEach(s =>
+    s.addEventListener("change", apUpdateDeclareState));
+}
+
+function apCollectLinks() {
+  const links = {};
+  document.querySelectorAll("#ap-links .ap-link").forEach(s => {
+    if (s.value) links[s.dataset.locus] = s.value;
+  });
+  return links;
+}
+
+function apUpdateDeclareState() {
+  const links = apCollectLinks();
+  const basis = document.getElementById("ap-basis").value.trim();
+  const complete = AP_LOCI.every(l => links[l]);
+  const button = document.getElementById("ap-declare");
+  button.disabled = !(complete && basis.length >= 8);
+  const note = document.getElementById("ap-chain-note");
+  if (!complete) {
+    const missing = AP_LOCI.filter(l => !links[l]);
+    note.textContent = `undeclared: ${missing.join(", ")}`;
+  } else if (basis.length < 8) {
+    note.textContent = "a basis is required";
+  } else {
+    note.textContent = "";
+  }
+}
+
+async function apLoadChain() {
+  const name = apOnto();
+  if (!name) return;
+  const status = await api(`/ontologies/${encodeURIComponent(name)}/aperture/chain`);
+  apRenderLinkEditor(status);
+  const basis = (status.usable && status.chain ? status.chain.basis : status.basis) || "";
+  document.getElementById("ap-basis").value = basis;
+  apUpdateDeclareState();
+  if (status.reason === "thickness_contradiction") {
+    document.getElementById("ap-chain-note").innerHTML =
+      `<span style="color:#c62828;">${esc(status.message)}</span>`;
+  }
+}
+
+async function apLoadPreconditions() {
+  const name = apOnto();
+  const host = document.getElementById("ap-preconditions");
+  if (!name) { host.innerHTML = '<div class="muted">Select an ontology.</div>'; return; }
+  host.innerHTML = '<div class="muted">Probing...</div>';
+  try {
+    const body = await api(`/ontologies/${encodeURIComponent(name)}/aperture/preconditions`);
+    const rows = body.order.map(pid => {
+      const r = body.preconditions[pid];
+      const value = r.satisfied === true ? "yes"
+                  : r.satisfied === false ? "no" : "unverified";
+      const colour = r.satisfied === true ? "#2e7d32"
+                   : r.satisfied === false ? "#c62828" : "#ef6c00";
+      return `<tr>
+        <td><code>${esc(pid)}</code></td>
+        <td style="color:${colour}; font-weight:600;">${value}</td>
+        <td class="muted" style="font-size:12px;">${esc(r.note || "")}</td>
+        <td><details><summary class="muted" style="font-size:12px;">evidence</summary>
+          <pre style="font-size:11px; white-space:pre-wrap;">${esc(JSON.stringify(r.evidence, null, 2))}</pre>
+        </details></td>
+      </tr>`;
+    }).join("");
+    host.innerHTML = `<table style="width:100%;">
+      <thead><tr><th>Precondition</th><th>Satisfied</th><th>Note</th><th></th></tr></thead>
+      <tbody>${rows}</tbody></table>
+      <div class="muted" style="font-size:11px; margin-top:4px;">
+        formal_theory reading: ${esc(body.formal_theory_strict ? "strict" : "permissive")}
+        &middot; artifact ${esc((body.artifact_sha256 || "").slice(0, 12))}
+      </div>`;
+  } catch (e) {
+    host.innerHTML = `<div style="color:#c62828;">${esc(e.message)}</div>`;
+  }
+}
+
+function apRenderInternalResolution(body) {
+  const groups = {};
+  body.rows.forEach(r => { (groups[r.stratum] = groups[r.stratum] || []).push(r); });
+  return Object.keys(groups).sort().map(stratum => {
+    const rows = groups[stratum].map(r => {
+      const [label, colour] = AP_VERDICT_STYLE[r.verdict] || [r.verdict, "#616161"];
+      return `<tr>
+        <td><code>${esc(r.failure_id)}</code></td>
+        <td style="color:${colour}; font-weight:600;">${esc(label)}</td>
+        <td class="muted" style="font-size:12px;">${esc(r.reason_detail)}</td>
+        <td class="muted" style="font-size:12px;">${esc(r.basis)}</td>
+        <td class="muted" style="font-size:11px;">${esc(r.detectors.join(", ") || "human judgment")}</td>
+      </tr>`;
+    }).join("");
+    return `<h4 style="margin:12px 0 4px;">Stratum ${esc(stratum)}</h4>
+      <table style="width:100%;">
+        <thead><tr><th>Failure</th><th>Verdict</th><th>Reason</th><th>Basis</th><th>Checks</th></tr></thead>
+        <tbody>${rows}</tbody></table>`;
+  }).join("");
+}
+
+function apRenderClientResolution(body) {
+  const rows = body.rows.map(r => `<tr>
+      <td>${esc(r.defect_class)}</td>
+      <td>${esc(r.reachable)}</td>
+      <td class="muted" style="font-size:12px;">${esc(r.result_or_reason)}</td>
+      <td class="muted" style="font-size:12px;">${esc(r.basis)}</td>
+    </tr>`).join("");
+  return `<div class="muted" style="font-size:12px; margin-bottom:6px;">
+      ${body.reachable_count} of ${body.total_count} defect classes were reachable
+      on this artifact.
+    </div>
+    <table style="width:100%;">
+      <thead><tr><th>Defect class</th><th>Reachable</th><th>Result or reason</th><th>Basis</th></tr></thead>
+      <tbody>${rows}</tbody></table>`;
+}
+
+async function apResolve() {
+  const name = apOnto();
+  const host = document.getElementById("ap-resolution");
+  const advisoryHost = document.getElementById("ap-advisories");
+  if (!name) return;
+  host.innerHTML = '<div class="muted">Resolving...</div>';
+  advisoryHost.innerHTML = "";
+  document.getElementById("ap-scope").innerHTML = "";
+  try {
+    const profile = apProfile();
+    const body = await api(
+      `/ontologies/${encodeURIComponent(name)}/aperture/resolve?profile=${profile}`,
+      { method: "POST" });
+    host.innerHTML = profile === "client"
+      ? apRenderClientResolution(body)
+      : apRenderInternalResolution(body);
+
+    if (profile !== "client" && body.advisories && body.advisories.length) {
+      advisoryHost.innerHTML = `<h4 style="margin:0 0 4px;">Advisories</h4>
+        <div class="muted" style="font-size:12px; margin-bottom:4px;">
+          Warnings only. None of these overrides the declaration.
+        </div>
+        <ul style="margin:0; padding-left:18px;">${
+          body.advisories.map(a =>
+            `<li class="muted" style="font-size:12px;">${esc(a.message)}</li>`).join("")
+        }</ul>`;
+    }
+
+    const scope = await api(
+      `/ontologies/${encodeURIComponent(name)}/aperture/scope?profile=${profile}`);
+    apScopeMarkdown = scope.markdown || "";
+    document.getElementById("ap-scope").innerHTML =
+      `<details><summary>Scope statement (${esc(profile)})</summary>
+        <pre style="white-space:pre-wrap; font-size:12px;">${esc(apScopeMarkdown)}</pre>
+      </details>`;
+  } catch (e) {
+    host.innerHTML = `<div style="color:#c62828;">${esc(e.message)}</div>`;
+  }
+}
+
+async function apDeclare() {
+  const name = apOnto();
+  if (!name) return;
+  const note = document.getElementById("ap-chain-note");
+  try {
+    await api(`/ontologies/${encodeURIComponent(name)}/aperture/chain`, {
+      method: "PUT",
+      body: JSON.stringify({
+        links: apCollectLinks(),
+        basis: document.getElementById("ap-basis").value.trim(),
+      }),
+    });
+    note.innerHTML = '<span style="color:#2e7d32;">chain declared</span>';
+    await apResolve();
+  } catch (e) {
+    note.innerHTML = `<span style="color:#c62828;">${esc(e.message)}</span>`;
+  }
+}
+
+async function apRefreshOntologies() {
+  const select = document.getElementById("ap-onto");
+  const current = select.value;
+  try {
+    const body = await api("/ontologies");
+    const names = (body.ontologies || []).map(o => o.name);
+    select.innerHTML = names.map(n =>
+      `<option value="${esc(n)}"${n === current ? " selected" : ""}>${esc(n)}</option>`).join("");
+  } catch (e) {
+    select.innerHTML = "";
+  }
+}
+
+async function apRefresh() {
+  await apRefreshOntologies();
+  await apLoadPreconditions();
+  await apLoadChain();
+}
+
+document.getElementById("ap-refresh").addEventListener("click", apRefresh);
+document.getElementById("ap-onto").addEventListener("change", async () => {
+  await apLoadPreconditions();
+  await apLoadChain();
+});
+document.getElementById("ap-basis").addEventListener("input", apUpdateDeclareState);
+document.getElementById("ap-declare").addEventListener("click", apDeclare);
+document.getElementById("ap-resolve").addEventListener("click", apResolve);
+document.getElementById("ap-profile").addEventListener("change", apResolve);
+document.getElementById("ap-copy").addEventListener("click", () => {
+  if (apScopeMarkdown) navigator.clipboard.writeText(apScopeMarkdown);
+});
+document.querySelectorAll('.tab[data-tab="aperture"]').forEach(t =>
+  t.addEventListener("click", apRefresh));
 
 // Initial load of ontology info alongside the first graph refresh
 refreshOntologies();

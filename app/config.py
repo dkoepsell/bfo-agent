@@ -402,3 +402,33 @@ def _warn_contradictory_flags():
 
 
 _warn_contradictory_flags()
+
+
+# --- Aperture (APERTURE-SPEC.md) ------------------------------------------
+# What a review of an artifact can establish, computed before any detector runs.
+
+# Does a vocabulary carrying only domain and range axioms count as a formal
+# theory? Strict says no: typing constraints alone are not a theory in the sense
+# Stratum A requires. That reading makes Stratum A vacuous for a large class of
+# real artifacts, which is the consequence being chosen deliberately here. The
+# value travels in the probe output so a resolution records which reading
+# produced it.
+APERTURE_FORMAL_THEORY_STRICT = os.getenv(
+    "APERTURE_FORMAL_THEORY_STRICT", "true").lower() == "true"
+
+# OWL 2 DL profile validation. ROBOT is optional: when it is absent the probe
+# reports profile_dl as unknown and every reasoner-dependent verdict still
+# resolves out of scope. A pass is never assumed.
+APERTURE_ROBOT_PATH = os.getenv("APERTURE_ROBOT_PATH", "robot")
+APERTURE_ROBOT_TIMEOUT_SECONDS = float(
+    os.getenv("APERTURE_ROBOT_TIMEOUT_SECONDS", "120"))
+
+# Default render profile. A request may narrow this to "client" and may never
+# widen it back. There is no account auth in this application yet, so this is not
+# enforced against an identity; see app/aperture/authz.py for what it does and
+# does not guarantee. The projection boundary is what actually prevents
+# disclosure either way.
+APERTURE_DEFAULT_PROFILE = os.getenv("APERTURE_DEFAULT_PROFILE", "internal")
+
+# Where Aperture writes the disclosure log. A business record, not a debug log.
+APERTURE_OUT = os.getenv("APERTURE_OUT", str(ROOT / "out" / "aperture"))
