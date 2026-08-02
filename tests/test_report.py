@@ -290,7 +290,7 @@ def test_disjointness_is_never_added_or_removed():
 def test_the_result_states_its_guarantee_and_its_limits():
     blob = repair_for_digestibility(owl(
         '<owl:Ontology rdf:about="http://example.org/t"/>')).to_dict()
-    assert "no claim about the domain was added" in blob["guarantee"]
+    assert "No claim about the domain was added" in blob["guarantee"]
     assert "separate artifact" in blob["guarantee"]
     assert len(blob["not_repaired"]) == 12
 
@@ -305,6 +305,64 @@ def test_the_repaired_variant_reparses():
     again = rdflib.Graph()
     again.parse(data=text, format="xml")
     assert len(again) == len(result.graph)
+
+
+def test_the_repaired_graph_never_has_a_blank_node_predicate():
+    """Regression, found in production. The declaration pass iterated one of the
+    graph's own generators while adding to it, which corrupts rdflib's indexes.
+    The damage did not surface at the point of the bug: it surfaced later as a
+    triple with a blank node in predicate position, which no serialiser can
+    write."""
+    g = owl("""
+      <owl:Ontology rdf:about="http://example.org/t"/>
+      <owl:Class rdf:about="http://example.org/t#Alpha"/>
+      <owl:Class rdf:about="http://example.org/t#Beta"/>
+      <rdf:Description rdf:about="http://example.org/t#a">
+        <rdf:type rdf:resource="http://example.org/t#Alpha"/>
+      </rdf:Description>
+      <rdf:Description rdf:about="http://example.org/t#b">
+        <rdf:type rdf:resource="http://example.org/t#Beta"/>
+      </rdf:Description>
+    """)
+    result = repair_for_digestibility(g)
+    for _s, p, _o in result.graph:
+        assert isinstance(p, URIRef), p
+    serialise(result)
+
+
+@pytest.mark.parametrize("body", [
+    '<owl:Ontology rdf:about="http://example.org/t"/>',
+    MIXED,
+    """<owl:Ontology rdf:about="http://example.org/t"/>
+       <rdf:Description rdf:about="http://example.org/t#Alpha">
+         <rdfs:subClassOf rdf:resource="http://example.org/t#Beta"/>
+       </rdf:Description>""",
+    """<owl:Class rdf:about="http://example.org/t#Alpha"/>""",
+])
+def test_every_repaired_variant_is_serialisable_and_reparses(body):
+    """The whole point of the module. If the output will not parse, nothing else
+    it does matters."""
+    result = repair_for_digestibility(owl(body))
+    again = rdflib.Graph()
+    again.parse(data=serialise(result), format="xml")
+    assert len(again) == len(result.graph)
+
+
+def test_a_malformed_triple_is_dropped_and_counted():
+    g = owl('<owl:Ontology rdf:about="http://example.org/t"/>')
+    g.add((URIRef("http://example.org/t#Alpha"), rdflib.BNode(),
+           URIRef("http://example.org/t#Beta")))
+    result = repair_for_digestibility(g)
+    dropped = next(r for r in result.repairs if r.id == "drop-nonconforming-triple")
+    assert dropped.count == 1
+    serialise(result)
+
+
+def test_the_guarantee_admits_the_one_removal():
+    blob = repair_for_digestibility(owl(
+        '<owl:Ontology rdf:about="http://example.org/t"/>')).to_dict()
+    assert "No claim about the domain was added" in blob["guarantee"]
+    assert "drop-nonconforming-triple" in blob["guarantee"]
 
 
 # --------------------------------------------------------------------------

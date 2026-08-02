@@ -128,9 +128,11 @@ class RepairResult:
             "not_repaired": NOT_REPAIRED,
             "guarantee": (
                 "Every change here was already entailed by the file's own usage. "
-                "No axiom was removed and no claim about the domain was added. "
-                "This variant is a separate artifact: no audit result in this "
-                "bundle was computed from it."
+                "No claim about the domain was added. No axiom was removed: the "
+                "only triples dropped are ones RDF does not permit, which no "
+                "tool could read and which are counted under "
+                "drop-nonconforming-triple. This variant is a separate "
+                "artifact: no audit result in this bundle was computed from it."
             ),
         }
 
@@ -214,7 +216,11 @@ def _repair_declarations(g: rdflib.Graph) -> list[Repair]:
 
     # An IRI asserted as an instance of a declared class, but never typed as an
     # individual. Protege and several toolchains want the explicit typing.
-    for subject, _p, obj in g.triples((None, RDF.type, None)):
+    #
+    # The list() is load bearing. Adding to a graph while iterating one of its
+    # own generators corrupts the store's indexes, and the damage surfaces much
+    # later as an unserialisable triple rather than as an error here.
+    for subject, _p, obj in list(g.triples((None, RDF.type, None))):
         if not isinstance(subject, URIRef) or not isinstance(obj, URIRef):
             continue
         if obj in known_classes and obj not in (OWL.Class, RDFS.Class):
@@ -330,6 +336,27 @@ def _base_namespace(g: rdflib.Graph) -> Optional[str]:
     return max(counts.items(), key=lambda kv: kv[1])[0]
 
 
+def _drop_nonconforming(g: rdflib.Graph) -> list[Repair]:
+    """Remove triples RDF forbids, which are the one thing that has to go.
+
+    RDF 1.1 requires a predicate to be an IRI, and a subject to be an IRI or a
+    blank node. A triple that breaks either is not an axiom that anything could
+    read: no serialiser can write it and no parser produced it from a
+    well-formed file. Dropping it is what makes the variant writable at all.
+
+    This is the only repair that removes anything, so it is counted and sampled
+    like the rest and called out separately in the guarantee.
+    """
+    repair = Repair("drop-nonconforming-triple",
+                    "removed a triple whose predicate or subject is not "
+                    "something RDF permits there, so no tool could read it")
+    for s, p, o in list(g):
+        if not isinstance(p, URIRef) or isinstance(s, Literal):
+            g.remove((s, p, o))
+            repair.note(f"{s} {p} {o}"[:200])
+    return [repair]
+
+
 def repair_for_digestibility(source, bind_prefixes: bool = True) -> RepairResult:
     """Produce a loadable variant of ``source`` without changing what it claims.
 
@@ -357,6 +384,9 @@ def repair_for_digestibility(source, bind_prefixes: bool = True) -> RepairResult
     repairs += header_repairs
     repairs += _repair_dangling_bnode_types(g)
     repairs += _repair_declarations(g)
+    # Last, so that anything the earlier passes could not express is caught
+    # before the variant is written rather than after.
+    repairs += _drop_nonconforming(g)
 
     if bind_prefixes:
         g.bind("owl", OWL)
@@ -375,5 +405,18 @@ def repair_for_digestibility(source, bind_prefixes: bool = True) -> RepairResult
 
 
 def serialise(result: RepairResult) -> str:
-    """The repaired variant as RDF/XML."""
-    return result.graph.serialize(format="pretty-xml")
+    """The repaired variant as RDF/XML.
+
+    pretty-xml is the readable form but it is the strictest serialiser rdflib
+    has, so a plain xml fallback follows it. Producing a file that will not
+    parse would defeat the entire point of this module, so the failure is raised
+    rather than written out as a comment.
+    """
+    last: Exception | None = None
+    for fmt in ("pretty-xml", "xml"):
+        try:
+            return result.graph.serialize(format=fmt)
+        except Exception as e:
+            last = e
+    raise RuntimeError(
+        f"the repaired variant could not be serialised: {last}") from last
