@@ -1,0 +1,172 @@
+# The contradiction kernel as data: one entry per primitive and per subtype.
+#
+# Single source of truth. The findings table, the completeness table and the
+# debt calculation all read this file, which is what stops the overlap that let
+# K-A3b appear among the findings while the completeness table listed only
+# K-A1 through K-D3.
+#
+# The distinction that matters most here is kind:
+#
+#   defect    a positive structural conflict in the axioms. Contributes to
+#             contradiction debt.
+#   coverage  the absence of an artifact-level attribute, such as a missing
+#             definition or label. Never contributes to debt, because counting
+#             absences as defects measures the size of the ontology rather than
+#             anything wrong with it. These populate the Coverage section.
+#
+# Weights are uncalibrated. Choosing values is a theoretical decision and is out
+# of scope; what this file provides is a versioned place for them and a flag
+# that keeps their status visible in every rendering.
+
+version: "1.0.0"
+weights_source: uniform_fallback
+namespace: http://davidkoepsell.com/sool/kernel#
+
+primitives:
+
+  # ---- Stratum A: failures of a theory relative to its models ----------------
+
+  - iri: http://davidkoepsell.com/sool/kernel#K-A1
+    code: K-A1
+    name: Inconsistency
+    stratum: A
+    kind: defect
+    weight: 1.0
+    calibrated: false
+    requires: [reasoner]
+    aggregates_subjects: false
+
+  - iri: http://davidkoepsell.com/sool/kernel#K-A2
+    code: K-A2
+    name: Term Incoherence
+    stratum: A
+    kind: defect
+    weight: 1.0
+    calibrated: false
+    requires: [reasoner]
+    aggregates_subjects: false
+
+  - iri: http://davidkoepsell.com/sool/kernel#K-A3
+    code: K-A3
+    name: Indeterminacy
+    stratum: A
+    kind: defect
+    weight: 1.0
+    calibrated: false
+    requires: [structural]
+    aggregates_subjects: false
+    subtypes:
+      # The reason this file exists. A class carrying no definition is a gap in
+      # documentation, not a contradiction in the axioms. Counting it as a
+      # defect made the debt figure equal to the class count.
+      - iri: http://davidkoepsell.com/sool/kernel#K-A3b
+        code: K-A3b
+        name: Undefined Class
+        kind: coverage
+        weight: 0.0
+        calibrated: false
+        requires: [structural]
+        aggregates_subjects: false
+        attribute: IAO definition or equivalentClass
+
+  # ---- Stratum B: definitional failures --------------------------------------
+
+  - iri: http://davidkoepsell.com/sool/kernel#K-B1
+    code: K-B1
+    name: Circularity
+    stratum: B
+    kind: defect
+    weight: 1.0
+    calibrated: false
+    requires: [structural]
+    aggregates_subjects: false
+
+  - iri: http://davidkoepsell.com/sool/kernel#K-B2
+    code: K-B2
+    name: Equivocation
+    stratum: B
+    kind: defect
+    weight: 1.0
+    calibrated: false
+    requires: [prose]
+    aggregates_subjects: false
+
+  - iri: http://davidkoepsell.com/sool/kernel#K-B3
+    code: K-B3
+    name: Residual Definition
+    stratum: B
+    kind: defect
+    weight: 1.0
+    calibrated: false
+    # Structural, and it needs definitions to be present at all. An artifact
+    # with no definitions cannot be tested for residual ones, and saying so is
+    # the honest result rather than falling back on label matching.
+    requires: [structural, definitions]
+    aggregates_subjects: false
+
+  # ---- Stratum C: meta-ontological failures ----------------------------------
+
+  - iri: http://davidkoepsell.com/sool/kernel#K-C1
+    code: K-C1
+    name: Category Violation
+    stratum: C
+    kind: defect
+    weight: 1.0
+    calibrated: false
+    requires: [structural]
+    aggregates_subjects: false
+
+  - iri: http://davidkoepsell.com/sool/kernel#K-C2
+    code: K-C2
+    name: Level Confusion
+    stratum: C
+    kind: defect
+    weight: 1.0
+    calibrated: false
+    requires: [structural]
+    aggregates_subjects: false
+
+  - iri: http://davidkoepsell.com/sool/kernel#K-C3
+    code: K-C3
+    name: Dependence Violation
+    stratum: C
+    kind: defect
+    weight: 1.0
+    calibrated: false
+    requires: [structural]
+    aggregates_subjects: false
+
+  # ---- Stratum D: pragmatic failures -----------------------------------------
+
+  - iri: http://davidkoepsell.com/sool/kernel#K-D1
+    code: K-D1
+    name: Falsification
+    stratum: D
+    kind: defect
+    weight: 1.0
+    calibrated: false
+    requires: [world_data]
+    aggregates_subjects: false
+
+  - iri: http://davidkoepsell.com/sool/kernel#K-D2
+    code: K-D2
+    name: Performative Self-Defeat
+    stratum: D
+    kind: defect
+    weight: 1.0
+    calibrated: false
+    requires: [structural, acts]
+    aggregates_subjects: true
+
+  - iri: http://davidkoepsell.com/sool/kernel#K-D3
+    code: K-D3
+    name: Modal Clash
+    stratum: D
+    kind: defect
+    weight: 1.0
+    calibrated: false
+    requires: [structural, acts]
+    # One finding naming 74 unrealized capacities across 440 acts counted the
+    # same as one class missing an annotation. The weighted figure carries the
+    # subject count so the two are no longer indistinguishable.
+    aggregates_subjects: true

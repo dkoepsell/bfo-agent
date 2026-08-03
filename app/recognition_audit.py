@@ -28,6 +28,13 @@ from typing import Optional
 
 from . import recognition as rec
 
+try:
+    from .kernel import load_registry as _load_registry
+
+    _REGISTRY = _load_registry()
+except Exception:  # the audit must still run if the registry is unreadable
+    _REGISTRY = {}
+
 log = logging.getLogger(__name__)
 
 # Which kernel primitives this module actually instruments. Anything outside
@@ -86,10 +93,18 @@ def _base_code(code: str) -> str:
 
 
 def _normalise(code: str, entry: dict) -> dict:
-    """One kernel_audit sample entry -> a typed finding triple."""
+    """One kernel_audit sample entry -> a typed finding triple.
+
+    ``kernel_code`` keeps the subtype the detector actually reported. Collapsing
+    it to the parent was how a coverage predicate reached the debt calculation
+    dressed as a defect: K-A3b, which fires once per undefined class, arrived as
+    K-A3 and the registry never got the chance to classify it. The registry
+    entry for the reported code is what decides whether a finding counts.
+    """
     base = _base_code(code)
     return {
-        "kernel_code": base,
+        "kernel_code": code if code else base,
+        "base_code": base,
         "subtype": code if code != base else None,
         "locus": locus_for(base, entry.get("bfo_anchor")),
         "subjects": [entry.get("label") or entry.get("iri") or ""],
@@ -242,9 +257,12 @@ def audit(working_path: str, profile: rec.DomainProfile,
         for code, total in counts.items():
             # Full population per type; the findings list may hold only a
             # sample of it, and a sampled count must never read as the whole.
-            base = _base_code(code)
-            if base in rec.KERNEL:
-                truncated[base] = truncated.get(base, 0) + int(total)
+            #
+            # Keyed by the reported code rather than its parent, for the same
+            # reason as _normalise: a coverage subtype folded into its defect
+            # parent enters the debt figure as though it were a defect.
+            if code in _REGISTRY or _base_code(code) in rec.KERNEL:
+                truncated[code] = truncated.get(code, 0) + int(total)
         instrumented.update(INSTRUMENTED_STRUCTURAL)
     except Exception as e:
         errors.append(f"structural audit failed: {e}")

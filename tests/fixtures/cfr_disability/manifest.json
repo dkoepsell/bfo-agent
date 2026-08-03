@@ -1,0 +1,32 @@
+{
+  "name": "CFR-DisabilityRegs",
+  "description": "20CFR404",
+  "source_text": null,
+  "author": null,
+  "created_at": "2026-07-28T22:07:10.818940+00:00",
+  "status": "finalized",
+  "seeded_from": "GeometryofTheGood",
+  "fidelity": "curated",
+  "stats": {
+    "note": "bootstrapped from seeds only"
+  },
+  "finalized_at": "2026-07-30T00:42:54.429596+00:00",
+  "recognition": {
+    "domain": "legal_order",
+    "chain": {
+      "links": {
+        "authority": "performed",
+        "criteria": "performed",
+        "assessor": "performed",
+        "facts": "performed",
+        "act": "external",
+        "effect": "performed",
+        "remedy": "external"
+      },
+      "basis": "CONGRESS",
+      "declared_by": "",
+      "declared_on": "",
+      "artifact_sha256": "b67f284415060f4057ed5426f443307871e266a37e38d701549b8ab54fcecde8"
+    }
+  }
+}

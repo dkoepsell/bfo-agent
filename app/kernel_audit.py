@@ -159,6 +159,103 @@ def _cycles(g: rdflib.Graph) -> list[list[str]]:
     return found
 
 
+# Differentiae: what makes a class say something its parent does not.
+_DIFFERENTIA_PREDICATES = (
+    OWL.someValuesFrom, OWL.allValuesFrom, OWL.hasValue,
+    OWL.cardinality, OWL.minCardinality, OWL.maxCardinality,
+    OWL.qualifiedCardinality, OWL.minQualifiedCardinality,
+    OWL.maxQualifiedCardinality,
+)
+
+
+def _has_differentia(g: rdflib.Graph, c: str) -> bool:
+    """Does this class contribute anything beyond sitting under its parent?"""
+    node = URIRef(c)
+    if (node, OWL.disjointWith, None) in g:
+        return True
+    for expression in list(g.objects(node, RDFS.subClassOf)) + \
+            list(g.objects(node, OWL.equivalentClass)):
+        if isinstance(expression, URIRef):
+            continue  # a bare named parent is not a differentia
+        for pred in _DIFFERENTIA_PREDICATES:
+            if (expression, pred, None) in g:
+                return True
+        for inter in g.objects(expression, OWL.intersectionOf):
+            for member in rdflib.collection.Collection(g, inter):
+                if not isinstance(member, URIRef):
+                    return True
+    return False
+
+
+def _complement_only(g: rdflib.Graph, c: str) -> bool:
+    """Is this class defined solely by what it excludes?"""
+    node = URIRef(c)
+    for expression in list(g.objects(node, OWL.equivalentClass)) + \
+            list(g.objects(node, RDFS.subClassOf)):
+        if isinstance(expression, URIRef):
+            continue
+        if (expression, OWL.complementOf, None) in g:
+            return True
+        for inter in g.objects(expression, OWL.intersectionOf):
+            members = list(rdflib.collection.Collection(g, inter))
+            if members and all((m, OWL.complementOf, None) in g for m in members):
+                return True
+    return False
+
+
+def _residual_classes(g: rdflib.Graph, named: set, anc: dict) -> list[dict]:
+    """Classes that are residual by structure, with the structure as evidence.
+
+    Two shapes count, per the definitional reading of the primitive:
+
+    * defined only by complement, so membership is fixed negatively; or
+    * sitting under a parent and contributing no differentia while at least one
+      sibling does. The sibling condition is what keeps a wholly undifferentiated
+      taxonomy from reading as a thousand residual categories: a class is
+      residual relative to differentiated peers, not in isolation.
+    """
+    direct_parents: dict[str, set[str]] = {}
+    for s, o in g.subject_objects(RDFS.subClassOf):
+        if isinstance(s, URIRef) and isinstance(o, URIRef) and str(s) in named:
+            direct_parents.setdefault(str(s), set()).add(str(o))
+
+    children: dict[str, set[str]] = {}
+    for child, parents in direct_parents.items():
+        for parent in parents:
+            children.setdefault(parent, set()).add(child)
+
+    differentiated = {c: _has_differentia(g, c) for c in named}
+
+    out: list[dict] = []
+    for c in sorted(named):
+        if _complement_only(g, c):
+            out.append({
+                "iri": c,
+                "detail": ("defined only by complement: membership is fixed "
+                           "negatively, with no positive differentia"),
+            })
+            continue
+        parents = direct_parents.get(c) or set()
+        if not parents or differentiated.get(c):
+            continue
+        siblings = set()
+        for parent in parents:
+            siblings |= children.get(parent, set())
+        siblings.discard(c)
+        differentiated_siblings = sorted(s for s in siblings if differentiated.get(s))
+        if differentiated_siblings:
+            out.append({
+                "iri": c,
+                "detail": (
+                    f"no differentia: sits under "
+                    f"{', '.join(_local(p) for p in sorted(parents))} with no "
+                    f"restriction, cardinality or disjointness distinguishing it, "
+                    f"while {len(differentiated_siblings)} sibling(s) carry one "
+                    f"(for example {_local(differentiated_siblings[0])})"),
+            })
+    return out
+
+
 def audit(target: str, bfo_path: str | None = None, sample: int = 25) -> dict:
     g, owned = _load(target, bfo_path)
     named = {str(c) for c in g.subjects(RDF.type, OWL.Class)
@@ -217,20 +314,26 @@ def audit(target: str, bfo_path: str | None = None, sample: int = 25) -> dict:
                             + " -> ".join(_local(x) for x in cyc))
 
     # ---- Stratum B: K-B3 residual categories -----------------------------
-    # axiom form: equivalentClass = intersectionOf whose members are all complementOf
-    for c in has_equiv:
-        for eq in g.objects(URIRef(c), OWL.equivalentClass):
-            for inter in g.objects(eq, OWL.intersectionOf):
-                members = list(rdflib.collection.Collection(g, inter))
-                if members and all(
-                    (m, OWL.complementOf, None) in g for m in members
-                ):
-                    add("K-B3", c, "defined only by complements (residual axiom)")
-    # label form: "other specified / unspecified / NEC"
-    for c in named:
-        lab = labels.get(c, "").lower()
-        if any(mk in lab for mk in RESIDUAL_LABEL_MARKERS):
-            add("K-B3", c, f"residual label: {labels.get(c, '')!r}")
+    # Structural only. The label heuristic this replaces matched the substring
+    # "nec" inside ordinary words, so Cell Necrosis, Connective Tissue and
+    # Felony-Connected Impairment Exclusion all read as residual categories.
+    # Four of its five hits on the reference artifact were that one bug.
+    #
+    # The test cannot run at all on an artifact with no definitions, and saying
+    # so is the honest result rather than falling back on names.
+    silent: list[dict] = []
+    if not has_equiv:
+        silent.append({
+            "kernel_code": "K-B3",
+            "status": "silent_by_principle",
+            "requires": "definitions",
+            "detail": ("no class in the artifact carries an equivalentClass, so "
+                       "there is no definition to test for residual form. A zero "
+                       "here is not a measurement."),
+        })
+    else:
+        for c in _residual_classes(g, named, anc):
+            add("K-B3", c["iri"], c["detail"])
 
     # ---- Stratum C: K-C2 punning -----------------------------------------
     for iri in named & individuals:
@@ -272,7 +375,13 @@ def audit(target: str, bfo_path: str | None = None, sample: int = 25) -> dict:
         "standard": "Contradiction Kernel v1.0 (Strata A/B/C) + BFO-ISO 21838-2",
         "metrics": metrics,
         "finding_counts": summary,
-        "total_findings": sum(summary.values()),
+        # R5. The scope is in the name. This figure covers strata A to C only;
+        # the recognition audit reports a strata A to D figure alongside it, and
+        # the two appearing unlabelled next to each other read as a discrepancy.
+        "total_findings_abc": sum(summary.values()),
+        # A predicate that could not run reports why, so a zero is never mistaken
+        # for a measurement.
+        "silent_by_principle": silent,
         "findings_sample": {
             prim: v[:sample] for prim, v in findings.items()
         },
@@ -301,7 +410,9 @@ def main(argv=None):
     print("  --- kernel findings ---")
     for prim in sorted(fc):
         print(f"    {prim:6s} {fc[prim]}")
-    print(f"  TOTAL findings ........... {ledger['total_findings']}")
+    print(f"  TOTAL findings (A-C) ..... {ledger['total_findings_abc']}")
+    for entry in ledger.get("silent_by_principle") or ():
+        print(f"  SILENT {entry['kernel_code']}: requires {entry['requires']}")
 
     if args.out:
         Path(args.out).write_text(json.dumps(ledger, indent=2))
