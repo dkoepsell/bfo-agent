@@ -66,6 +66,7 @@ _lock = threading.Lock()
 _registry: OntologyRegistry | None = None
 _proposer: LLMProposer | None = None
 _extractor: ClaimExtractor | None = None
+_norm_extractor = None   # chainlab.NormExtractor, lazily built
 # Small in-memory store of the latest proposal per id so /commit can round-trip
 _proposal_cache: dict[str, Proposal] = {}
 
@@ -108,6 +109,16 @@ def _get_extractor() -> ClaimExtractor:
     if _extractor is None:
         _extractor = ClaimExtractor()
     return _extractor
+
+
+def _get_norm_extractor():
+    """Second extractor, for act-thick corpora. Imported lazily so chainlab is
+    never on the import path of a run that does not use it."""
+    global _norm_extractor
+    if _norm_extractor is None:
+        from chainlab.norm_extractor import NormExtractor
+        _norm_extractor = NormExtractor()
+    return _norm_extractor
 
 
 def _gate_policy(faithful: bool = False) -> GatePolicy:
@@ -2173,9 +2184,16 @@ def create_app() -> Flask:
             return _finalized_guard_response()
         """Chunk raw text server-side. No LLM call.
 
-        Body: {text, chunk_chars?, overlap?, section?}
-        Returns: {chunks: [str], n_chunks, section, total_chars}
+        Body: {text, chunk_chars?, overlap?, section?, corpus_id?}
+        Returns: {chunks: [str], n_chunks, section, total_chars,
+                  extractors, retained_span?}
+
+        `corpus_id` routes the text to one or both extractors and applies that
+        corpus's front-matter trim. Omitting it keeps the historical behaviour:
+        chunk everything, entity-relation extractor only.
         """
+        from chainlab.corpora.routing import extractors_for
+
         body = request.get_json(force=True) or {}
         text = body.get("text", "")
         if not text or not text.strip():
@@ -2183,6 +2201,18 @@ def create_app() -> Flask:
         chunk_chars = int(body.get("chunk_chars", 8000))
         overlap = int(body.get("overlap", 400))
         section = body.get("section", "")
+        corpus_id = (body.get("corpus_id") or "").strip().lower()
+
+        total_chars = len(text)
+        retained_span = None
+        if corpus_id == "frcp":
+            # Roughly the first third of FRCP is committee roster, foreword,
+            # historical note and table of contents, which cost a model call per
+            # chunk to correctly return nothing.
+            from chainlab.corpora.legal_frcp import preprocess_frcp
+
+            text, span = preprocess_frcp(text)
+            retained_span = span.to_dict()
 
         chunks = chunk_text(text, chunk_chars, overlap)
         return jsonify(
@@ -2190,7 +2220,10 @@ def create_app() -> Flask:
                 "chunks": chunks,
                 "n_chunks": len(chunks),
                 "section": section,
-                "total_chars": len(text),
+                "total_chars": total_chars,
+                "corpus_id": corpus_id,
+                "extractors": list(extractors_for(corpus_id)),
+                "retained_span": retained_span,
             }
         )
 
@@ -2201,25 +2234,86 @@ def create_app() -> Flask:
             return _finalized_guard_response()
         """Run extraction on a single chunk.
 
-        Body: {chunk, section?, chunk_index?}
-        Returns: {claims: [...], chunk_index}
+        Body: {chunk, section?, chunk_index?, corpus_id?}
+        Returns: {claims: [...], norm_tuples: [...], chunk_index, extractors}
+
+        A corpus routed to the norm extractor gets both runs. Act-thick text
+        needs both: FRCP is mostly deontic, but Rule 7(a)'s closed list of
+        pleadings and Rule 54(a)'s definition of judgment are real ontological
+        content that only the entity-relation extractor sees.
         """
+        from chainlab.corpora.routing import ENTITY_RELATION, NORM, extractors_for
+
         body = request.get_json(force=True) or {}
         chunk = body.get("chunk", "")
         if not chunk:
             return jsonify({"error": "empty chunk"}), 400
         section = body.get("section", "")
         chunk_index = int(body.get("chunk_index", 0))
+        corpus_id = (body.get("corpus_id") or "").strip().lower()
+        routes = extractors_for(corpus_id)
+
+        claims = []
+        if ENTITY_RELATION in routes:
+            try:
+                extractor = _get_extractor()
+                claims = extractor.extract_chunk(chunk, section=section)
+                for c in claims:
+                    c["chunk_index"] = chunk_index
+            except Exception as e:
+                return jsonify({"error": f"extraction failed: {e}"}), 500
+
+        norm_tuples = []
+        if NORM in routes:
+            try:
+                tuples = _get_norm_extractor().extract_chunk(
+                    chunk, corpus_id=corpus_id, chunk_index=chunk_index)
+                norm_tuples = [t.model_dump(mode="json") for t in tuples]
+            except Exception as e:
+                return jsonify({"error": f"norm extraction failed: {e}"}), 500
+
+        return jsonify({
+            "claims": claims,
+            "norm_tuples": norm_tuples,
+            "chunk_index": chunk_index,
+            "extractors": list(routes),
+        })
+
+    @app.post("/extract/kd3")
+    def extract_kd3():
+        """Run K-D3 over norm tuples collected across a whole corpus.
+
+        Body: {norm_tuples: [...], corpus_id, run_id?}
+        Returns: {summary, capacities, findings}
+
+        Separate from /extract/chunk because a pathway for a capacity conferred
+        in Rule 60(b) can be specified in Rule 60(c); the search is only sound
+        once every chunk is in.
+        """
+        import uuid as _uuid
+
+        from chainlab.detectors.stratum_d import detect_kd3
+        from chainlab.model import NormTuple
+
+        body = request.get_json(force=True) or {}
+        corpus_id = (body.get("corpus_id") or "").strip().lower()
+        raw = body.get("norm_tuples") or []
+        if not raw:
+            return jsonify({"error": "no norm tuples"}), 400
 
         try:
-            extractor = _get_extractor()
-            claims = extractor.extract_chunk(chunk, section=section)
-            for c in claims:
-                c["chunk_index"] = chunk_index
+            tuples = [NormTuple(**t) for t in raw]
         except Exception as e:
-            return jsonify({"error": f"extraction failed: {e}"}), 500
+            return jsonify({"error": f"bad norm tuple: {e}"}), 400
 
-        return jsonify({"claims": claims, "chunk_index": chunk_index})
+        run_id = body.get("run_id") or str(_uuid.uuid4())
+        result = detect_kd3(tuples, corpus_id=corpus_id, run_id=run_id)
+        return jsonify({
+            "run_id": run_id,
+            "summary": result.summary(),
+            "capacities": [c.model_dump(mode="json") for c in result.capacities],
+            "findings": [f.model_dump(mode="json") for f in result.findings],
+        })
 
     # =================================================================
     # JOB endpoints: persistent, resumable extract + feed pipelines

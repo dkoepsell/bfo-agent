@@ -23,13 +23,13 @@ echo "== bfo-agent coherence-gate deploy =="
 BACKUP="$HOME/bfo-agent-codebackup-$TS"
 echo "-- backing up current code to $BACKUP"
 mkdir -p "$BACKUP"
-for p in app evaluation scripts requirements.txt; do
+for p in app chainlab evaluation scripts requirements.txt; do
   [ -e "$APP/$p" ] && cp -a "$APP/$p" "$BACKUP/" || true
 done
 
 # 2. Copy code-only paths from staging into the live app dir.
 echo "-- applying new code"
-for p in app evaluation scripts tests deploy requirements.txt; do
+for p in app chainlab evaluation scripts tests deploy requirements.txt; do
   [ -e "$STAGE/$p" ] && cp -a "$STAGE/$p" "$APP/" || true
 done
 

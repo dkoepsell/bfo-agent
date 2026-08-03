@@ -516,6 +516,16 @@
           <label>Section label
             <input type="text" id="extract-section" placeholder="e.g. SOoL Ch.4 Legal Reality" />
           </label>
+          <label>Corpus
+            <select id="extract-corpus" title="Act-thick corpora also get the norm extractor. Ontological text alone returns nothing on deontic rules.">
+              <option value="" selected>(none) — claims only</option>
+              <option value="frcp">frcp — Federal Rules of Civil Procedure</option>
+              <option value="nop_7cfr205">nop_7cfr205 — National Organic Program</option>
+              <option value="icd11">icd11 — claims only</option>
+              <option value="dsm">dsm — claims only</option>
+              <option value="go">go — claims only</option>
+            </select>
+          </label>
           <label>Min confidence
             <select id="extract-min-conf">
               <option value="low">low (most inclusive)</option>
@@ -1019,25 +1029,43 @@ async function runExtractionIntoJob() {
 
   const confRank = { low: 0, medium: 1, high: 2 };
   const minRank = confRank[minConf];
+  const corpusId = document.getElementById("extract-corpus").value;
 
   setBusy(true);
   extractStatus("preparing chunks...");
   try {
     const prep = await api("/extract/prepare", {
       method: "POST",
-      body: JSON.stringify({ text, section, chunk_chars: chunkChars, overlap }),
+      body: JSON.stringify({ text, section, chunk_chars: chunkChars, overlap,
+                             corpus_id: corpusId }),
     });
     const chunks = prep.chunks;
+    const doesNorms = (prep.extractors || []).includes("norm");
+    if (prep.retained_span) {
+      const s = prep.retained_span;
+      if (s.dropped_chars > 0) {
+        extractStatus(`front matter trimmed: ${s.retained_chars.toLocaleString()} of ` +
+                      `${s.total_chars.toLocaleString()} chars retained`);
+      } else {
+        // Say so rather than let a silent no-op read as a successful trim.
+        console.warn("front-matter trim did not fire:", s.notes);
+        extractStatus(`note: no front matter trimmed — ${s.notes || "landmarks not found"}`);
+      }
+    }
     renderExtractProgress(0, chunks.length);
-    extractStatus(`${chunks.length} chunks, extracting...`);
+    extractStatus(`${chunks.length} chunks, extracting` +
+                  (doesNorms ? " claims + norm tuples..." : "..."));
 
     let collected = 0;
+    const normTuples = [];
     for (let i = 0; i < chunks.length; i++) {
       try {
         const r = await api("/extract/chunk", {
           method: "POST",
-          body: JSON.stringify({ chunk: chunks[i], section, chunk_index: i }),
+          body: JSON.stringify({ chunk: chunks[i], section, chunk_index: i,
+                                 corpus_id: corpusId }),
         });
+        if (r.norm_tuples && r.norm_tuples.length) normTuples.push(...r.norm_tuples);
         const kept = (r.claims || []).filter(c => {
           const rank = confRank[(c.confidence || "low").toLowerCase()] ?? 0;
           return rank >= minRank;
@@ -1057,7 +1085,28 @@ async function runExtractionIntoJob() {
       renderExtractProgress(i + 1, chunks.length);
     }
 
-    extractStatus(`done. ${collected} new claims appended at >= ${minConf}.`);
+    let msg = `done. ${collected} new claims appended at >= ${minConf}.`;
+    if (doesNorms) {
+      msg += ` ${normTuples.length} norm tuples.`;
+      if (normTuples.length) {
+        // K-D3 runs over the whole corpus: a capacity conferred in Rule 60(b)
+        // can have its pathway specified in Rule 60(c).
+        try {
+          const kd3 = await api("/extract/kd3", {
+            method: "POST",
+            body: JSON.stringify({ norm_tuples: normTuples, corpus_id: corpusId }),
+          });
+          const s = kd3.summary;
+          msg += ` K-D3: ${s.no_pathway} of ${s.capacities} capacities without a` +
+                 ` pathway (${s.external} external, excluded).`;
+          window.lastNormRun = { corpus_id: corpusId, tuples: normTuples, kd3 };
+          console.log("norm run", window.lastNormRun);
+        } catch (e) {
+          msg += ` K-D3 failed: ${e.message}`;
+        }
+      }
+    }
+    extractStatus(msg);
   } catch (e) {
     extractStatus("extraction error: " + e.message);
   } finally {
