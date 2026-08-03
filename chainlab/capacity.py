@@ -133,10 +133,13 @@ def _addressed_to(candidate: NormTuple, bearer_role: str) -> bool:
 
 
 def _refers_to(capacity_tokens: set[str], cap_tuple: NormTuple,
-               candidate: NormTuple) -> bool:
+               candidate: NormTuple, candidate_tokens: set[str] | None = None) -> bool:
     if candidate.tuple_id == cap_tuple.tuple_id:
         return True     # the capacity's own tuple may specify its pathway inline
-    if _coverage(capacity_tokens, _searchable(candidate)) >= COVERAGE_STRONG:
+    if candidate_tokens is None:
+        candidate_tokens = content_tokens(_searchable(candidate))
+    if capacity_tokens and (
+            len(capacity_tokens & candidate_tokens) / len(capacity_tokens)) >= COVERAGE_STRONG:
         return True
     # Sitting under the same rule is evidence of reference, but only when the
     # procedure involves the same actor — otherwise Rule 83(a)'s
@@ -154,19 +157,35 @@ def _refers_to(capacity_tokens: set[str], cap_tuple: NormTuple,
             or _addressed_to(candidate, cap_tuple.bearer_role))
 
 
-def find_pathways(cap_tuple: NormTuple,
-                  corpus: list[NormTuple]) -> tuple[list[str], list[str]]:
+def _index(corpus: list[NormTuple]) -> dict[str, tuple[set[str], list[str]]]:
+    """Tokens and pathway kinds per tuple, computed once.
+
+    The search compares every capacity against every tuple, so anything derived
+    from a tuple's own text must not be recomputed inside that loop — on a
+    corpus the size of the Federal Rules it is the difference between two
+    minutes and a few seconds.
+    """
+    return {t.tuple_id: (content_tokens(_searchable(t)), pathway_kinds(t)) for t in corpus}
+
+
+def find_pathways(cap_tuple: NormTuple, corpus: list[NormTuple],
+                  index: dict[str, tuple[set[str], list[str]]] | None = None,
+                  ) -> tuple[list[str], list[str]]:
     """Return (pathway_loci, pathway_kinds) for one capacity tuple."""
+    if index is None:
+        index = _index(corpus)
     capacity_tokens = content_tokens(cap_tuple.action)
     loci: list[str] = []
     kinds: set[str] = set()
     for candidate in corpus:
-        if not _refers_to(capacity_tokens, cap_tuple, candidate):
+        cand_tokens, cand_kinds = index[candidate.tuple_id]
+        if not _refers_to(capacity_tokens, cap_tuple, candidate, cand_tokens):
             continue
-        found = pathway_kinds(candidate, is_self=candidate.tuple_id == cap_tuple.tuple_id)
-        if not found:
+        if candidate.tuple_id == cap_tuple.tuple_id:
+            cand_kinds = [k for k in cand_kinds if k not in _NOT_SELF_SUPPLIED]
+        if not cand_kinds:
             continue
-        kinds.update(found)
+        kinds.update(cand_kinds)
         if candidate.source_locator and candidate.source_locator not in loci:
             loci.append(candidate.source_locator)
     return loci, sorted(kinds)
@@ -180,6 +199,7 @@ def project_capacities(tuples: list[NormTuple]) -> list[CapacityRecord]:
     source-level modal clash.
     """
     corpus = list(tuples)
+    index = _index(corpus)
     records: list[CapacityRecord] = []
     for t in corpus:
         if t.modality not in CAPACITY_MODALITIES:
@@ -193,7 +213,7 @@ def project_capacities(tuples: list[NormTuple]) -> list[CapacityRecord]:
                 verdict="external",
             ))
             continue
-        loci, kinds = find_pathways(t, corpus)
+        loci, kinds = find_pathways(t, corpus, index)
         records.append(CapacityRecord(
             tuple_id=t.tuple_id,
             bearer_role=t.bearer_role or t.bearer,
