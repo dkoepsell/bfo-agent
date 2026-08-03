@@ -122,6 +122,34 @@ def test_heading_on_a_title_page_does_not_defeat_the_trim():
     assert span.dropped_chars > len(title_page)
 
 
+def test_body_is_found_when_the_copy_has_no_rules_heading():
+    """Not every printing carries the three-line heading. Rule 1 still appears
+    twice — once in the contents, once at the top of the body — and the body is
+    the one with a whole rule's text before Rule 2."""
+    toc = ("TABLE OF CONTENTS\n\nRule 1. Scope and Purpose\nRule 2. One Form of Action\n"
+           "Rule 3. Commencing an Action\n")
+    body = ("Rule 1. Scope and Purpose\nThese rules govern the procedure in all civil "
+            "actions and proceedings in the United States district courts. They should "
+            "be construed, administered, and employed by the court and the parties to "
+            "secure the just, speedy, and inexpensive determination of every action.\n\n"
+            "Rule 2. One Form of Action\nThere is one form of action — the civil action.\n")
+    text = FRONT_MATTER + "\n" + AUTHORITY + "\n" + toc + "\n" + body
+    retained, span = preprocess_frcp(text)
+    assert "TABLE OF CONTENTS" not in retained
+    assert "Hon. John D. Bates" not in retained
+    assert "These rules govern the procedure" in retained
+    assert "§ 2072." in retained          # authority link still kept
+
+
+def test_contents_alone_is_not_mistaken_for_the_body():
+    """A file that is only front matter must not have its contents list treated
+    as operative text."""
+    text = FRONT_MATTER + "\nRule 1. Scope\nRule 2. One Form\nRule 3. Commencing\n"
+    retained, span = preprocess_frcp(text)
+    assert span.dropped_chars == 0
+    assert "no front matter dropped" in span.notes
+
+
 def test_missing_landmarks_keep_everything_and_say_so():
     text = "Some unrelated document with no FRCP landmarks in it at all."
     retained, span = preprocess_frcp(text)

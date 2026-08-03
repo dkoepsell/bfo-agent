@@ -36,6 +36,30 @@ _RULE_ONE = re.compile(r"^\s*Rule\s+1\.", re.I | re.M)
 _RULE_ONE_WINDOW = 2000
 
 
+_RULE_TWO = re.compile(r"^\s*Rule\s+2\.", re.I | re.M)
+
+
+def _operative_start_without_heading(text: str) -> int | None:
+    """Fallback for a copy that carries no rules heading at all.
+
+    Rule 1 appears twice: once as a table-of-contents line and once at the top
+    of the body. In the contents, Rule 2 follows within a line or two; in the
+    body, a whole rule's text sits between them. So the real Rule 1 is the one
+    with the most text before Rule 2.
+    """
+    starts = [m.start() for m in _RULE_ONE.finditer(text)]
+    if not starts:
+        return None
+    best, best_gap = None, -1
+    for s in starts:
+        nxt = _RULE_TWO.search(text, s)
+        gap = (nxt.start() - s) if nxt else (len(text) - s)
+        if gap > best_gap:
+            best, best_gap = s, gap
+    # A contents block can be the only thing present; demand real body text.
+    return best if best_gap >= 200 else None
+
+
 def _operative_start(text: str) -> int | None:
     """Where the body begins.
 
@@ -50,7 +74,7 @@ def _operative_start(text: str) -> int | None:
     """
     matches = list(_RULES_HEADING.finditer(text))
     if not matches:
-        return None
+        return _operative_start_without_heading(text)
     qualifying = [m.start() for m in matches
                   if _RULE_ONE.search(text[m.end() : m.end() + _RULE_ONE_WINDOW])]
     return qualifying[-1] if qualifying else matches[0].start()

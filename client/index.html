@@ -1029,6 +1029,8 @@ async function runExtractionIntoJob() {
 
   const confRank = { low: 0, medium: 1, high: 2 };
   const minRank = confRank[minConf];
+  // Last chance to catch act-thick text pasted with the corpus left at "(none)".
+  maybeSuggestCorpus(text);
   const corpusId = document.getElementById("extract-corpus").value;
 
   setBusy(true);
@@ -1086,6 +1088,14 @@ async function runExtractionIntoJob() {
     }
 
     let msg = `done. ${collected} new claims appended at >= ${minConf}.`;
+    if (!collected && !corpusId) {
+      // Do not let a silent zero pass as a finding. It may be one — act-thick
+      // text genuinely has no ontological claims — but only the norm extractor
+      // can tell that apart from a corpus that was never routed to it.
+      msg += " No corpus selected, so only the claim extractor ran." +
+             " If this is legal or regulatory text, pick a Corpus above and re-run:" +
+             " deontic rules yield norm tuples, not claims.";
+    }
     if (doesNorms) {
       msg += ` ${normTuples.length} norm tuples.`;
       if (normTuples.length) {
@@ -1309,6 +1319,29 @@ async function resumeFeed() {
 }
 
 // File upload
+// Leaving the corpus at "(none)" on act-thick text is the one mistake that
+// looks exactly like the bug it causes: the claim extractor finds nothing in a
+// procedural code, and a silent 0 reads as a broken pipeline. Detect it.
+const CORPUS_SIGNATURES = [
+  { id: "frcp", re: /FEDERAL\s+RULES\s+OF\s+CIVIL\s+PROCEDURE|RULES\s+OF\s+CIVIL\s+PROCEDURE\s+FOR\s+THE/i },
+  { id: "nop_7cfr205", re: /NATIONAL\s+ORGANIC\s+PROGRAM|7\s*CFR\s*(PART\s*)?205/i },
+];
+
+function detectCorpus(text) {
+  const head = (text || "").slice(0, 20000);
+  for (const s of CORPUS_SIGNATURES) if (s.re.test(head)) return s.id;
+  return "";
+}
+
+function maybeSuggestCorpus(text) {
+  const sel = document.getElementById("extract-corpus");
+  if (sel.value) return null;          // an explicit choice always wins
+  const guess = detectCorpus(text);
+  if (!guess) return null;
+  sel.value = guess;
+  return guess;
+}
+
 document.getElementById("extract-file").addEventListener("change", async (ev) => {
   const f = ev.target.files[0];
   if (!f) return;
@@ -1317,7 +1350,14 @@ document.getElementById("extract-file").addEventListener("change", async (ev) =>
   if (!document.getElementById("extract-section").value) {
     document.getElementById("extract-section").value = f.name.replace(/\.[^.]+$/, "");
   }
-  extractStatus(`loaded ${f.name} (${text.length.toLocaleString()} chars)`);
+  const guess = maybeSuggestCorpus(text);
+  extractStatus(`loaded ${f.name} (${text.length.toLocaleString()} chars)` +
+                (guess ? ` — detected corpus "${guess}", norm extractor enabled` : ""));
+});
+
+document.getElementById("extract-text").addEventListener("blur", () => {
+  const guess = maybeSuggestCorpus(document.getElementById("extract-text").value);
+  if (guess) extractStatus(`detected corpus "${guess}" — norm extractor enabled`);
 });
 
 document.getElementById("btn-clear-text").onclick = () => {
