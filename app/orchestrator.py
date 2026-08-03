@@ -2179,9 +2179,6 @@ def create_app() -> Flask:
 
     @app.post("/extract/prepare")
     def extract_prepare():
-        # Phase 3: refuse writes against a finalized ontology.
-        if _active_is_finalized():
-            return _finalized_guard_response()
         """Chunk raw text server-side. No LLM call.
 
         Body: {text, chunk_chars?, overlap?, section?, corpus_id?}
@@ -2229,10 +2226,14 @@ def create_app() -> Flask:
 
     @app.post("/extract/chunk")
     def extract_chunk():
-        # Phase 3: refuse writes against a finalized ontology.
-        if _active_is_finalized():
-            return _finalized_guard_response()
         """Run extraction on a single chunk.
+
+        Not guarded on a finalized active ontology: extraction reads text and
+        returns claims, and touches no ontology at all. What must not run
+        against a finalized ontology is the write, and /propose and the feed
+        loop refuse that on their own. Guarding here as well only stopped
+        people reading a corpus while some unrelated ontology happened to be
+        the active one.
 
         Body: {chunk, section?, chunk_index?, corpus_id?}
         Returns: {claims: [...], norm_tuples: [...], chunk_index, extractors}

@@ -49,9 +49,6 @@ def client(monkeypatch):
     StubNorms.calls = 0
     monkeypatch.setattr(orchestrator, "_get_extractor", lambda: StubClaims())
     monkeypatch.setattr(orchestrator, "_get_norm_extractor", lambda: StubNorms())
-    # Whichever ontology happens to be active here must not decide the test:
-    # the extract endpoints refuse to run against a finalized one.
-    monkeypatch.setattr(orchestrator, "_active_is_finalized", lambda: False)
     with app.test_client() as c:
         c.stub_claims = StubClaims
         c.stub_norms = StubNorms
@@ -129,6 +126,29 @@ def test_kd3_endpoint_runs_over_the_whole_corpus(client):
     assert body["summary"]["no_pathway"] == 0
     assert body["findings"] == []
     assert body["run_id"]
+
+
+def test_extraction_runs_against_a_finalized_active_ontology(client, monkeypatch):
+    """Reading a corpus is not a write. Every ontology in the library can be
+    finalized and you must still be able to extract from a new source — which is
+    the normal state of affairs, since finalizing is the point of the workflow."""
+    monkeypatch.setattr(orchestrator, "_active_is_finalized", lambda: True)
+
+    prep = client.post("/extract/prepare", json={"text": "Rule 1. Scope.\nThese rules govern."})
+    assert prep.status_code == 200
+
+    chunk = client.post("/extract/chunk", json={"chunk": "The clerk must sign it.",
+                                                "corpus_id": "frcp"})
+    assert chunk.status_code == 200
+    assert len(chunk.get_json()["norm_tuples"]) == 1
+
+
+def test_writes_are_still_refused_against_a_finalized_ontology(client, monkeypatch):
+    """The guard belongs on the write, and must stay there."""
+    monkeypatch.setattr(orchestrator, "_active_is_finalized", lambda: True)
+    r = client.post("/propose", json={"text": "anything"})
+    assert r.status_code in (409, 423), r.status_code
+    assert "finalized" in r.get_data(as_text=True).lower()
 
 
 def test_kd3_endpoint_rejects_an_empty_run(client):
