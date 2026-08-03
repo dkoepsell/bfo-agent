@@ -141,6 +141,24 @@ def test_body_is_found_when_the_copy_has_no_rules_heading():
     assert "§ 2072." in retained          # authority link still kept
 
 
+def test_authority_block_stops_at_front_matter_when_2075_is_absent():
+    """Without a § 2075 to stop at, the block would run to the body and drag the
+    contents list back in behind it."""
+    text = ("COMMITTEE ON RULES\nHon. John D. Bates\n\n"
+            "AUTHORITY FOR PROMULGATION OF RULES\n\n"
+            "§ 2072. Rules of procedure\n(a) The Supreme Court shall have the power.\n\n"
+            "TABLE OF CONTENTS\nRule 1. Scope\nRule 2. One Form\n\n"
+            "Rule 1. Scope and Purpose\nThese rules govern the procedure in all civil "
+            "actions and proceedings in the United States district courts, and should "
+            "be construed to secure the just, speedy, and inexpensive determination of "
+            "every action.\n\nRule 2. One Form of Action\nThere is one form of action.\n")
+    retained, span = preprocess_frcp(text)
+    assert "§ 2072." in retained
+    assert "These rules govern" in retained
+    assert "TABLE OF CONTENTS" not in retained
+    assert "Hon. John D. Bates" not in retained
+
+
 def test_contents_alone_is_not_mistaken_for_the_body():
     """A file that is only front matter must not have its contents list treated
     as operative text."""

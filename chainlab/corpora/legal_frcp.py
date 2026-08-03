@@ -27,8 +27,18 @@ _AUTHORITY_HEADING = re.compile(
     re.I,
 )
 
-# End of the retained authority block: § 2075 is bankruptcy rules, out of scope.
-_AUTHORITY_END = re.compile(r"§?\s*2075\.", re.I)
+# End of the retained authority block. § 2075 is bankruptcy rules and normally
+# follows § 2074, but not every copy carries it — so the front-matter headings
+# that can follow the block terminate it too. Without them the block would run
+# all the way to the body and drag the contents list back in with it.
+_AUTHORITY_END = re.compile(
+    r"§?\s*2075\."
+    r"|^\s*TABLE\s+OF\s+CONTENTS\b"
+    r"|^\s*HISTORICAL\s+NOTE\b"
+    r"|^\s*FOREWORD\b"
+    r"|^\s*COMMITTEE\s+ON\s+RULES\b",
+    re.I | re.M,
+)
 
 # Rule 1 is the first operative rule, so a heading followed closely by it is the
 # real start of the body rather than a title page or a table-of-contents entry.
