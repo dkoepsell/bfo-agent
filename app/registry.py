@@ -61,6 +61,44 @@ class FinalizeVerificationError(RuntimeError):
         )
 
 
+def _source_text_sha256(source_text: str | None) -> str | None:
+    """Digest of the ingested source, when there was one.
+
+    Required whenever derivation is text_extraction, so that a claim to have
+    read a text is checkable rather than asserted.
+    """
+    if not source_text:
+        return None
+    import hashlib
+    from pathlib import Path as _Path
+
+    try:
+        candidate = _Path(source_text)
+        data = candidate.read_bytes() if candidate.exists() \
+            else str(source_text).encode("utf-8")
+    except OSError:
+        data = str(source_text).encode("utf-8")
+    return "sha256:" + hashlib.sha256(data).hexdigest()
+
+
+class FinalizeGateError(RuntimeError):
+    """finalize() refused: one or more finalize gates are blocking.
+
+    A blocking gate is one that failed and was not waived. Four of the six
+    cannot be waived at all, because an artifact that fails them is not
+    internally coherent and no written reason makes it so.
+    """
+
+    def __init__(self, name: str, gate_report):
+        self.gate_report = gate_report
+        blocking = ", ".join(g.id for g in gate_report.blocking) or "none"
+        super().__init__(
+            f"cannot finalize {name!r}: blocking gates: {blocking}. "
+            f"A waivable gate may be waived with a written reason recorded in "
+            f"the manifest; the rest must be fixed."
+        )
+
+
 class OntologyRegistry:
     def __init__(
         self,
@@ -290,10 +328,65 @@ class OntologyRegistry:
             profile=profile,
         )
 
+    def derive_chain(self, name: str) -> dict:
+        """C2. Derive the link profile from the artifact, for the author to confirm.
+
+        The reference artifact declared ``act: external`` and ``remedy:
+        external``. For 20 CFR 404 both are wrong: the determination is a
+        performed adjudicative act and the remedy ladder is internal to the
+        agency. The tool's own suggestion had both as ``performed`` and was
+        right; a separately typed ``act_thickness`` let the declaration drift
+        away from it.
+
+        So the flow becomes derive, present, confirm. Anything the author
+        overrides has to carry a written reason, and thickness is computed from
+        the accepted links rather than typed alongside them.
+        """
+        from . import recognition as rec
+        from .aperture import chain as chain_mod
+        from .mlc_anchor import read_asserted_links
+
+        if name not in self._managers:
+            raise OntologyNotFoundError(name)
+
+        declared = self.recognition_profile(name)
+        profile = rec.profile_for(declared.get("domain"))
+        suggested = chain_mod.suggest_links(profile)
+
+        # Asserted links are evidence about the artifact and outrank the
+        # profile default, because they are about this artifact rather than
+        # about its domain in general.
+        asserted = read_asserted_links(str(self._managers[name].working_path))
+        derived = dict(suggested)
+        for locus, members in asserted.items():
+            if members:
+                derived[locus] = "performed"
+
+        stored = self.chain_block(name)
+        stored_links = dict(stored.get("links") or {})
+        differing = {
+            locus: {"derived": derived.get(locus), "declared": stored_links.get(locus)}
+            for locus in chain_mod.LOCI
+            if derived.get(locus) and stored_links.get(locus)
+            and derived[locus] != stored_links[locus]
+        }
+
+        return {
+            "derived": derived,
+            "declared": stored_links,
+            "differing": differing,
+            "asserted_link_counts": {k: len(v) for k, v in asserted.items()},
+            "note": ("Derived from the artifact and the declared domain. Accept "
+                     "it, or override each differing link with a written reason. "
+                     "Thickness is computed from the accepted links and is not a "
+                     "separately typed field."),
+        }
+
     def set_chain_declaration(self, name: str, links: dict, basis: str,
                               declared_by: str | None = None,
                               declared_on: str | None = None,
-                              artifact_sha256: str | None = None) -> dict:
+                              artifact_sha256: str | None = None,
+                              overrides: dict | None = None) -> dict:
         """Declare where each chain link sits, and persist it.
 
         Validates before writing. A declaration that could not be resolved
@@ -309,12 +402,31 @@ class OntologyRegistry:
         declared = self.recognition_profile(name)
         profile = rec.profile_for(declared.get("domain"))
 
+        # C2. A link that differs from what the artifact and its domain imply
+        # must carry a written reason. Without one the override is refused,
+        # because that silent drift is how act and remedy ended up external on
+        # an artifact whose determination is a performed adjudicative act.
+        derived = self.derive_chain(name)["derived"]
+        overrides = dict(overrides or {})
+        unexplained = sorted(
+            locus for locus, value in (links or {}).items()
+            if derived.get(locus) and value != derived[locus]
+            and not str(overrides.get(locus) or "").strip()
+        )
+        if unexplained:
+            raise ValueError(
+                f"these links differ from the derived profile and carry no "
+                f"reason: {unexplained}. Accept the derived value or record why "
+                f"it is wrong; an unexplained override is how a declaration "
+                f"drifts away from the artifact.")
+
         block = {
             "links": links or {},
             "basis": basis,
             "declared_by": declared_by or "",
             "declared_on": declared_on or "",
             "artifact_sha256": artifact_sha256 or "",
+            "overrides": {k: v for k, v in overrides.items() if str(v).strip()},
         }
         # Raises ChainError / IncompleteChain / ThicknessContradiction.
         chain_mod.validate(
@@ -431,6 +543,11 @@ class OntologyRegistry:
             "created_at": datetime.now(timezone.utc).isoformat(),
             "status": "inactive",
             "seeded_from": seed_source_name,
+            # C8. Derivation is recorded at creation with no default guess.
+            # A null source_text beside a name referencing a legal instrument
+            # is what let a reader infer text derivation that never happened.
+            "derivation": ("text_extraction" if source_text else "seeded_bootstrap"),
+            "source_text_sha256": _source_text_sha256(source_text),
             # FM-1: FIDELITY_DEFAULT applies to new ontologies only; existing
             # manifests without the field always resolve to "curated".
             "fidelity": (
@@ -449,6 +566,21 @@ class OntologyRegistry:
             # Declared profiles only. An absent block means the scientific-
             # reference control, which is what an undeclared ontology is.
             manifest["recognition"] = {"domain": key}
+
+        # C8. A name or description referencing a specific legal instrument, on
+        # an artifact that ingested no text, is exactly the shape that invited a
+        # reader to infer text derivation. Warn at creation and set the flag that
+        # drives the report's provenance line.
+        from .report.bundle import _implied_source
+
+        implied = _implied_source(name, str(description or ""))
+        if implied and manifest.get("derivation") != "text_extraction":
+            manifest["name_implies_source"] = implied
+            log.warning(
+                "ontology %r references %s in its name or description but "
+                "ingested no source text (derivation=%s). The report will state "
+                "this above the fold.", name, implied, manifest.get("derivation"))
+
         (target / "manifest.json").write_text(json.dumps(manifest, indent=2))
 
         # Instantiate a manager, which will bootstrap working.owl from
@@ -511,6 +643,20 @@ class OntologyRegistry:
                 report = mgr.verify_full()
                 if not report["ok"]:
                     raise FinalizeVerificationError(name, report)
+
+        # C1. Finalize is a gated transition, not a flag. The reference artifact
+        # reached finalized while carrying a live thickness contradiction, zero
+        # definition coverage and thirty-one undeclared IRIs, because setting
+        # the field was all finalizing did.
+        if (config.FINALIZE_GATES_ENABLED
+                and manifest.get("status") != "finalized"):
+            from .library.finalize import check_finalizable
+
+            gate_report = check_finalizable(
+                self, name, run_reasoner=config.FINALIZE_REQUIRES_FULL_VERIFY)
+            if not gate_report.finalizable:
+                raise FinalizeGateError(name, gate_report)
+            manifest["finalize_gates"] = gate_report.to_dict()
 
         manifest["status"] = "finalized"
         from datetime import datetime, timezone

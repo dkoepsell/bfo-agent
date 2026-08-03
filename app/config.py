@@ -432,3 +432,28 @@ APERTURE_DEFAULT_PROFILE = os.getenv("APERTURE_DEFAULT_PROFILE", "internal")
 
 # Where Aperture writes the disclosure log. A business record, not a debug log.
 APERTURE_OUT = os.getenv("APERTURE_OUT", str(ROOT / "out" / "aperture"))
+
+
+# --- Creation gates (bfo-agent-audit-spec-v1.md section 3) -----------------
+# Finalize is a gated transition rather than a flag.
+#
+# Off by default, deliberately. A triage run across the current library shows 0
+# of 5 members passing: every one fails chain.consistent, declarations.complete
+# and definitions.coverage. That is the correct result and the spec says so, but
+# turning enforcement on before those are triaged would block finalize for the
+# whole library at once. Read the triage report, then set this.
+#
+#   python -c "from app.orchestrator import _get_registry; \
+#              from app.library import triage_library; \
+#              import json; print(json.dumps(triage_library(_get_registry()), indent=2))"
+FINALIZE_GATES_ENABLED = os.getenv(
+    "FINALIZE_GATES_ENABLED", "false").lower() == "true"
+
+# Minimum fraction of classes carrying a definition. Waivable at finalize time
+# with a written reason, because freezing something incomplete is a legitimate
+# project decision; freezing it silently is not.
+DEFINITION_COVERAGE_MIN = float(os.getenv("DEFINITION_COVERAGE_MIN", "0.60"))
+
+# Minimum asserted members per chain link before an institutional ontology can
+# be finalized. Links are asserted with sool:mlcLink, never inferred.
+MLC_MIN_PER_LINK = int(os.getenv("MLC_MIN_PER_LINK", "3"))
