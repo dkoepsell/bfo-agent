@@ -2265,11 +2265,14 @@ def create_app() -> Flask:
                 return jsonify({"error": f"extraction failed: {e}"}), 500
 
         norm_tuples = []
+        norm_truncated = False
         if NORM in routes:
             try:
-                tuples = _get_norm_extractor().extract_chunk(
+                extractor = _get_norm_extractor()
+                tuples = extractor.extract_chunk(
                     chunk, corpus_id=corpus_id, chunk_index=chunk_index)
                 norm_tuples = [t.model_dump(mode="json") for t in tuples]
+                norm_truncated = bool(getattr(extractor, "last_truncated", False))
             except Exception as e:
                 return jsonify({"error": f"norm extraction failed: {e}"}), 500
 
@@ -2278,6 +2281,9 @@ def create_app() -> Flask:
             "norm_tuples": norm_tuples,
             "chunk_index": chunk_index,
             "extractors": list(routes),
+            # True when the model ran out of output budget: the tuples returned
+            # are real but the chunk may hold more.
+            "norm_truncated": norm_truncated,
         })
 
     @app.post("/extract/kd3")

@@ -141,3 +141,56 @@ def test_prompt_examples_are_valid_json():
         end = block.rfind("]")
         assert start != -1 and end != -1
         json.loads(block[start : end + 1])
+
+
+# ------------------------------------------------------- truncated responses
+TRUNCATED = """[
+  {
+    "bearer": "the plaintiff",
+    "bearer_role": "plaintiff",
+    "modality": "permission",
+    "action": "present a summons to the clerk",
+    "conditions": [],
+    "confidence": "high"
+  },
+  {
+    "bearer": "the clerk",
+    "bearer_role": "clerk",
+    "modality": "duty",
+    "action": "sign, seal, and issue the summons",
+    "conditions": [],
+    "confidence": "high"
+  },
+  {
+    "bearer": "the court",
+    "bearer_role": "court",
+    "modality": "power",
+    "action": "permit a summons to be am"""
+
+
+def test_salvages_complete_tuples_from_a_clipped_array():
+    """A dense chunk can run past the output limit. Losing two sound rules
+    because a third was clipped mid-word is the wrong trade."""
+    raw = _extract_json_array(TRUNCATED, truncated=True)
+    assert len(raw) == 2
+    tuples = coerce_all(raw)
+    assert [t.modality.value for t in tuples] == ["permission", "duty"]
+
+
+def test_salvage_does_not_mask_a_response_with_nothing_usable():
+    with pytest.raises(ValueError) as e:
+        _extract_json_array("[ {\"bea", truncated=True)
+    assert "output limit" in str(e.value)
+
+
+def test_well_formed_output_is_not_routed_through_salvage():
+    """Salvage is a fallback; a clean array must parse as one, including the
+    empty array that non-operative chunks correctly return."""
+    assert _extract_json_array("[]") == []
+    assert len(_extract_json_array(RESPONSE)) == 2
+
+
+def test_max_output_tokens_has_headroom_over_a_dense_chunk():
+    """8000 clipped real FRCP text at ~27k characters of JSON."""
+    from chainlab.norm_extractor import MAX_OUTPUT_TOKENS
+    assert MAX_OUTPUT_TOKENS >= 16000

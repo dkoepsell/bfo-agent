@@ -190,12 +190,38 @@ Output: []
 
 NORM_EXTRACTION_PROMPT = "Corpus: {corpus_id}\n\nPassage:\n\n{passage}"
 
+MAX_OUTPUT_TOKENS = 16000
+
 _VALID_MODALITIES = {m.value for m in Modality}
 _VALID_CONFIDENCE = {"high", "medium", "low"}
 _QUOTE_MAX = 400
 
 
-def _extract_json_array(text: str) -> list:
+def _salvage_objects(fragment: str) -> list[dict]:
+    """Recover the complete objects from a truncated JSON array.
+
+    A dense chunk of a procedural code can run past the output limit, and the
+    array then ends mid-object. Every tuple before the cut is still good, and
+    throwing them away would lose twenty sound rules because a twenty-first was
+    clipped. Walk the fragment and keep what parses.
+    """
+    decoder = json.JSONDecoder()
+    out: list[dict] = []
+    i = 0
+    while True:
+        brace = fragment.find("{", i)
+        if brace == -1:
+            return out
+        try:
+            obj, end = decoder.raw_decode(fragment, brace)
+        except json.JSONDecodeError:
+            return out          # the cut lands here; everything before it is kept
+        if isinstance(obj, dict):
+            out.append(obj)
+        i = end
+
+
+def _extract_json_array(text: str, truncated: bool = False) -> list:
     """Pull the JSON array out of a model response.
 
     The prompt forbids fences and preamble, but a model that ignores that
@@ -207,13 +233,23 @@ def _extract_json_array(text: str) -> list:
         lines = [l for l in text.split("\n") if not l.strip().startswith("```")]
         text = "\n".join(lines).strip()
     start = text.find("[")
-    end = text.rfind("]")
-    if start == -1 or end == -1:
+    if start == -1:
         raise ValueError(f"No JSON array found in norm extraction output:\n{text[:400]}")
-    data = json.loads(text[start : end + 1])
-    if not isinstance(data, list):
-        raise ValueError("Norm extraction output was not a JSON array")
-    return data
+    end = text.rfind("]")
+    if end > start:
+        try:
+            data = json.loads(text[start : end + 1])
+            if not isinstance(data, list):
+                raise ValueError("Norm extraction output was not a JSON array")
+            return data
+        except json.JSONDecodeError:
+            pass                # fall through to salvage
+    salvaged = _salvage_objects(text[start:])
+    if not salvaged:
+        hint = " (response hit the output limit)" if truncated else ""
+        raise ValueError(
+            f"Could not parse norm extraction output{hint}:\n{text[:400]}")
+    return salvaged
 
 
 def _as_str_list(value) -> list[str]:
@@ -244,6 +280,10 @@ class NormExtractor:
         self.model = model
         self._on_usage = on_usage
         self.last_raw_response: str = ""
+        # Set when the model ran out of output budget and tuples were salvaged
+        # from a clipped array. Callers should surface it: a silently short
+        # chunk looks exactly like a chunk with little in it.
+        self.last_truncated: bool = False
 
     def _record_usage(self, resp) -> None:
         usage = getattr(resp, "usage", None)
@@ -259,14 +299,18 @@ class NormExtractor:
         prompt = NORM_EXTRACTION_PROMPT.format(corpus_id=corpus_id, passage=passage)
         resp = self.client.messages.create(
             model=self.model,
-            max_tokens=8000,
+            # A dense chunk of FRCP yields dozens of tuples at ~200 tokens each,
+            # and 8000 clipped the array mid-object on real text. Budget for the
+            # worst chunk rather than the average one.
+            max_tokens=MAX_OUTPUT_TOKENS,
             system=NORM_EXTRACTION_SYSTEM,
             messages=[{"role": "user", "content": prompt}],
         )
         self._record_usage(resp)
         text = "".join(b.text for b in resp.content if getattr(b, "text", None)).strip()
         self.last_raw_response = text
-        raw = _extract_json_array(text)
+        self.last_truncated = getattr(resp, "stop_reason", None) == "max_tokens"
+        raw = _extract_json_array(text, truncated=self.last_truncated)
         return [
             t for t in (
                 self._coerce(r, corpus_id, chunk_index, default_locator) for r in raw
