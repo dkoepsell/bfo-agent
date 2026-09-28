@@ -314,6 +314,33 @@ def test_qs_c3_unsat_roots_found_inside_subclass_cycles():
     assert hit == [units[0]]  # the cycle member's change; not the child, not text
 
 
+def test_qs_c3_ancestor_change_blamed_when_root_has_only_source_axioms(monkeypatch):
+    """GeometryofTheGood's Anticipation: the source puts it under process,
+    and a migration rewrite makes its (satisfiable) parent a continuant. The
+    parent's change is found and gated; the root's source axioms are not."""
+    m = mig.Migration(FIXTURE)
+    m.run()
+    root, parent = URIRef(W + "Anticipation"), URIRef(W + "TemporalDimension")
+    bad_edge = (parent, RDFS.subClassOf, URIRef(OBO + "BFO_0000002"))
+    ok_edge = (parent, RDFS.label, rdflib.Literal("x"))
+    m.out |= {bad_edge, (root, RDFS.subClassOf, parent)}
+    units = [{"kind": "axiom", "triples": {bad_edge}},
+             {"kind": "axiom", "triples": {(parent, RDFS.comment, rdflib.Literal("y"))}},
+             {"kind": "text", "triples": {(root, RDFS.subClassOf, parent)}}]
+    edge = b'rdf:about="http://davidkoepsell.com/bfo-agent/working#TemporalDimension">'
+    cont = b'<rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000002"/>'
+
+    def fake(b, p):
+        probe = b"_qsProbe" in b
+        return not (probe and cont in b.split(edge, 1)[-1].split(b"</rdf:Description>")[0])
+
+    monkeypatch.setattr(mig, "hermit_consistent", fake)
+    stats = {}
+    hit = mig._ancestor_culprits(m, units, str(root), {str(parent)}, Path("unused"), stats)
+    assert hit == [units[0]]
+    assert ok_edge not in m.out
+
+
 def test_qs_c3_gated_part_of_split_reverts_to_source_form():
     m = mig.Migration(FIXTURE)
     m.run()

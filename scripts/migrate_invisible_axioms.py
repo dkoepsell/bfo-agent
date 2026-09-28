@@ -1010,7 +1010,8 @@ def source_culprits(mig: Migration, bfo_path: Path, log=None,
     return [text[i] for i in found], stats
 
 
-def _primary_unsat_units(mig: Migration, units: list, new_unsat: set) -> list:
+def _primary_unsat_units(mig: Migration, units: list, new_unsat: set,
+                         return_roots: bool = False):
     """Migration changes to gate for newly unsat classes, root causes only. A
     class unsat merely because a named ancestor or one of its own restriction
     fillers is unsat is not a root: gating its axioms would discard innocent
@@ -1051,9 +1052,55 @@ def _primary_unsat_units(mig: Migration, units: list, new_unsat: set) -> list:
         if not ((anc[c] & new_unsat) - cycle - {c}):
             roots.add(c)
     primary = {c for c in roots if not (fillers.get(c, set()) & new_unsat)} or roots
-    return [u for u in units if u["kind"] != "text"
-            and any(not isinstance(t[0], BNode) and str(t[0]) in primary
-                    for t in u["triples"])]
+    own = [u for u in units if u["kind"] != "text"
+           and any(not isinstance(t[0], BNode) and str(t[0]) in primary
+                   for t in u["triples"])]
+    if return_roots:
+        return own, primary, {c: ancestors(c) for c in primary}
+    return own
+
+
+def _ancestor_culprits(mig: Migration, units: list, root: str, ancestors: set,
+                       bfo_path: Path, stats: dict) -> list:
+    """A root whose own axioms are all the source's can still be made unsat by
+    a migration change on a (satisfiable) ancestor -- e.g. a rewritten
+    subClassOf that makes the ancestor a continuant while the source puts the
+    root under process. Find, deterministically, the ancestor changes to gate
+    so the root is satisfiable again: satisfiability of C is tested as the
+    consistency of the output plus one fresh individual typed C."""
+    probe = (URIRef(W + "_qsProbe"), RDF.type, URIRef(root))
+    decl = (URIRef(W + "_qsProbe"), RDF.type, OWL.NamedIndividual)
+    cands = sorted((u for u in units if u["kind"] != "text" and any(
+        not isinstance(t[0], BNode) and str(t[0]) in ancestors for t in u["triples"])),
+        key=_unit_key)
+    if not cands:
+        return []
+    drop = set().union(*(u["triples"] for u in cands))
+    base = (mig.out - drop) | {probe, decl}
+
+    def sat(items) -> bool:
+        stats["reasoner_runs"] = stats.get("reasoner_runs", 0) + 1
+        extra = set().union(*(cands[i]["triples"] for i in items)) if items else set()
+        return hermit_consistent(serialize_deterministic(base | extra), bfo_path) is True
+
+    if not sat([]):
+        return []  # not caused by ancestor changes; leave it (reported)
+    kept, bad = [], []
+
+    def add(items):
+        if not items:
+            return
+        if sat(kept + items):
+            kept.extend(items)
+        elif len(items) == 1:
+            bad.append(items[0])
+        else:
+            mid = len(items) // 2
+            add(items[:mid])
+            add(items[mid:])
+
+    add(list(range(len(cands))))
+    return [cands[i] for i in sorted(bad)]
 
 
 def _source_forms(mig: Migration) -> dict:
@@ -1228,7 +1275,16 @@ def migrate(src, dst, report_path=None, ledger_path=None, do_verify=True,
                 if not new or not h.get("consistent"):
                     break
                 units, _inert = _gating_units(mig)
-                clashing = _primary_unsat_units(mig, units, new)
+                clashing, roots, anc = _primary_unsat_units(mig, units, new,
+                                                            return_roots=True)
+                blamed = {str(t[0]) for u in clashing for t in u["triples"]
+                          if not isinstance(t[0], BNode)}
+                search = rep.setdefault("ancestor_search", {"reasoner_runs": 0})
+                for root in sorted(roots - blamed):
+                    for u in _ancestor_culprits(mig, units, root, anc[root],
+                                                bfo_path, search):
+                        if u not in clashing:
+                            clashing.append(u)
                 if not clashing:
                     break
                 rep["unsat_gating_rounds"] += 1
@@ -1254,7 +1310,10 @@ def migrate(src, dst, report_path=None, ledger_path=None, do_verify=True,
     final = rep.get("verify", {}).get("hermit", {})
     rep["consistent"] = final.get("consistent") if do_verify else None
     rep["unsat"] = len(final.get("unsat_classes") or []) if do_verify else None
-    rep["deployable"] = bool(do_verify and final.get("consistent") is True and not missing)
+    # Deployable: consistent, no source axiom lost, and no class unsat that
+    # the source itself did not already classify as unsat.
+    rep["deployable"] = bool(do_verify and final.get("consistent") is True and not missing
+                             and not rep.get("unsat_new_remaining"))
     rep["ledger_entries"] = len(mig.ledger)
     rep["ledger_by_step"] = dict(sorted(collections.Counter(
         e["step"] for e in mig.ledger).items()))
