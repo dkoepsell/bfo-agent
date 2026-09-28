@@ -35,6 +35,8 @@ from dataclasses import dataclass, field
 from typing import Optional
 
 from . import bfo_catalog
+from . import config
+from . import content_quality
 from . import owl_checks
 
 
@@ -635,10 +637,140 @@ def _check_iris(proposal) -> list[Violation]:
 
 
 # ---------------------------------------------------------------------------
+# SPEC-bfo-agent-quality.md Workstream D. The spec names these PC-9..PC-12,
+# but those ids were already taken by the recognition-chain rules, so they
+# are PC-14..PC-17 here (QS id in each detail).
+# ---------------------------------------------------------------------------
+def _parent_label(ent, proposal) -> Optional[str]:
+    """Label of the new class's asserted parent, when knowable offline."""
+    parent = getattr(ent, "parent_class", None) or getattr(ent, "bfo_type", None)
+    if not parent:
+        return None
+    for other in proposal.entities:
+        if parent in (getattr(other, "iri_suggestion", None),
+                      getattr(other, "existing_iri", None)):
+            return other.label
+    return bfo_catalog.BFO_LABEL.get(bfo_catalog.normalize_fragment(parent) or "")
+
+
+def _check_definition(ent, proposal, fidelity: str) -> Optional[Violation]:
+    """PC-14 (QS-D1): a new class carries a definition or declares the text
+    gives none; a definition names its genus; in faithful mode it is drawn
+    from a source span."""
+    definition = (getattr(ent, "definition", None) or "").strip()
+    if not definition:
+        if getattr(ent, "definition_status", None) == "absent-in-source":
+            return None
+        return Violation(
+            rule="PC-14", offending_term=ent.label,
+            suggested_rewrite=(
+                "Give a genus-differentia 'definition' (genus = the parent "
+                "class label) with the 'source_span' it comes from, or set "
+                "definition_status='absent-in-source' if the text gives none. "
+                "Never invent a definition."),
+            detail="QS-D1 missing definition")
+    if fidelity == "faithful" and not (getattr(ent, "source_span", None) or "").strip():
+        return Violation(
+            rule="PC-14", offending_term=ent.label,
+            suggested_rewrite=("In faithful mode a definition must be drawn "
+                               "from the text: add the verbatim 'source_span'."),
+            detail="QS-D1 definition without source span")
+    genus = _parent_label(ent, proposal)
+    gkey = set(content_quality.norm_key(genus or "").split())
+    if genus and not (
+            genus.lower() in definition.lower()
+            or (gkey and gkey <= set(content_quality.norm_key(definition).split()))):
+        return Violation(
+            rule="PC-14", offending_term=ent.label,
+            suggested_rewrite=(f"Write the definition in genus-differentia "
+                               f"form: 'A {genus} that ...'."),
+            detail="QS-D1 genus not named in definition")
+    return None
+
+
+def _check_reuse(ent, existing: list[dict], canonical: set[str]) -> Optional[Violation]:
+    """PC-15 (QS-D3/QS-F2): a mint whose normalized key collides with an
+    existing class must reuse it or justify distinctness; a collision with a
+    canonical class must always reuse the canonical IRI."""
+    key = content_quality.norm_key(ent.label)
+    if not key:
+        return None
+    hits = [c for c in existing
+            if content_quality.norm_key(c.get("label") or c.get("name") or "") == key]
+    if not hits:
+        return None
+    canon = [c for c in hits if c.get("iri") in canonical]
+    if canon:
+        return Violation(
+            rule="PC-15", offending_term=ent.label,
+            suggested_rewrite=(f"Reuse the canonical class {canon[0]['iri']} "
+                               f"(set existing_iri) instead of minting a synonym."),
+            detail="QS-F2 canonical label collision")
+    if (getattr(ent, "distinct_from", None) or "").strip() and \
+            (getattr(ent, "source_span", None) or "").strip():
+        return None
+    return Violation(
+        rule="PC-15", offending_term=ent.label,
+        suggested_rewrite=(f"An existing class has the same normalized name: "
+                           f"{hits[0].get('iri')} ({hits[0].get('label')}). Reuse "
+                           f"it, or set distinct_from=<that IRI> with a "
+                           f"source_span showing the text distinguishes them."),
+        detail="QS-D3 near-synonym mint")
+
+
+def _check_triads(proposal) -> list[Finding]:
+    """PC-16 (QS-D4, warning): two new classes sharing a normalized key in
+    different BFO categories, without source support for both."""
+    groups: dict[str, list] = {}
+    for ent in proposal.entities:
+        if _is_new_class(ent):
+            groups.setdefault(content_quality.norm_key(ent.label), []).append(ent)
+    out = []
+    for key, ents in groups.items():
+        if not key or len(ents) < 2:
+            continue
+        cats = {getattr(e, "bfo_type", None) for e in ents}
+        unsupported = [e for e in ents if not (getattr(e, "source_span", None) or "").strip()]
+        if len(cats) > 1 and unsupported:
+            out.append(Finding(
+                rule="PC-16", kernel_code="", locus="construction",
+                term=", ".join(e.label for e in ents),
+                detail=("QS-D4 category triad: mint the one category the text "
+                        "supports; a realizable/realization pair needs a source "
+                        "span naming the realization.")))
+    return out
+
+
+def _check_meta_label(ent) -> Optional[Violation]:
+    """PC-17 (QS-D7): labels carry no meta-annotations."""
+    if content_quality.has_meta_label(getattr(ent, "label", "") or ""):
+        return Violation(
+            rule="PC-17", offending_term=ent.label,
+            suggested_rewrite=("Drop '(reuse)', '(instance)', '(class)', "
+                               "'(example ...)' or an 'example' prefix from the "
+                               "label. Reuse means reusing the IRI; illustrative "
+                               "individuals set illustrative=true."),
+            detail="QS-D7 meta-annotated label")
+    return None
+
+
+def _existing_classes(manager) -> tuple[list[dict], set[str]]:
+    if manager is None:
+        return [], set()
+    try:
+        existing = manager.list_working_classes()
+    except Exception:
+        existing = []
+    canonical = set(getattr(manager, "canonical_iris", None) or ())
+    return existing, canonical
+
+
+# ---------------------------------------------------------------------------
 # Top-level entry point.
 # ---------------------------------------------------------------------------
 def lint(proposal, strict_closed_vocab: bool = False,
-         chain_active: bool = False) -> LintReport:
+         chain_active: bool = False, manager=None,
+         fidelity: str = "curated") -> LintReport:
     """Run PC-1..PC-13 over a proposal draft. Returns a LintReport.
 
     PC-1/PC-2/PC-3/PC-5/PC-6/PC-7/PC-8 always run. PC-4 runs only when
@@ -649,6 +781,7 @@ def lint(proposal, strict_closed_vocab: bool = False,
     recorded and preserved).
     """
     report = LintReport()
+    existing, canonical = _existing_classes(manager)
 
     # PC-7 / PC-8: lexical IRI checks (same validators the gate runs).
     report.violations.extend(_check_iris(proposal))
@@ -656,12 +789,23 @@ def lint(proposal, strict_closed_vocab: bool = False,
     for ent in proposal.entities:
         name = _local(getattr(ent, "iri_suggestion", "") or ent.label)
 
+        v = _check_meta_label(ent)  # PC-17, every entity
+        if v is not None:
+            report.violations.append(v)
+
         # Privation / compound naming only apply to newly minted classes.
         if _is_new_class(ent):
             for check in (_check_privation, _check_compound):
                 v = check(name)
                 if v is not None:
                     report.violations.append(v)
+            if config.QS_REQUIRE_DEFINITIONS:
+                v = _check_definition(ent, proposal, fidelity)  # PC-14
+                if v is not None:
+                    report.violations.append(v)
+            v = _check_reuse(ent, existing, canonical)  # PC-15
+            if v is not None:
+                report.violations.append(v)
             if strict_closed_vocab:
                 v = _check_off_vocabulary(ent)
                 if v is not None:
@@ -693,6 +837,9 @@ def lint(proposal, strict_closed_vocab: bool = False,
         v = _check_relation_class_target(rel)
         if v is not None:
             report.violations.append(v)
+
+    # PC-16: category-triad warning, recorded not rejected.
+    report.findings.extend(_check_triads(proposal))
 
     # PC-11 / PC-13: proposal-level source findings, recorded not rejected.
     if chain_active:

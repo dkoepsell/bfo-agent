@@ -50,6 +50,20 @@ class Entity(BaseModel):
             "not part of the chain. Absent for scientific-reference ontologies."
         ),
     )
+    # QS-D1: genus-differentia definition (written as IAO_0000115) and the
+    # source text it was drawn from (bfoagent:sourceSpan). A new class with no
+    # definition must set definition_status='absent-in-source' (PC-9).
+    definition: Optional[str] = Field(
+        None, description="Genus-differentia definition of a new class")
+    source_span: Optional[str] = Field(
+        None, description="Verbatim source text supporting this entity")
+    definition_status: Optional[Literal["absent-in-source"]] = None
+    # QS-D3: IRI of an existing near-synonym class the text distinguishes this
+    # new class from (bfoagent:distinctFrom). Required by PC-10 on a key clash.
+    distinct_from: Optional[str] = None
+    # QS-D8: individual made up as an illustration rather than a referent of
+    # the text; written to examples.owl instead of the working ontology.
+    illustrative: bool = False
 
 
 class Relation(BaseModel):

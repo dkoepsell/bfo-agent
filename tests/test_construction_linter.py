@@ -269,3 +269,123 @@ def test_pc5_part_of_parent_rejected():
     ent.parent_class = "BFO_0000050"
     p = _prop({"entities": [ent]})
     assert "PC-5" in _rules(L.lint(p))
+
+
+# ---------------------------------------------------------------------------
+# SPEC-bfo-agent-quality.md Workstream D (spec PC-9..PC-12 = here PC-14..PC-17,
+# since PC-9..PC-13 were already the recognition-chain rules).
+# ---------------------------------------------------------------------------
+import pytest
+
+from app import config
+
+
+@pytest.fixture()
+def require_defs(monkeypatch):
+    monkeypatch.setattr(config, "QS_REQUIRE_DEFINITIONS", True)
+
+
+def _defcls(name, bfo="BFO_0000023", **kw):
+    e = _cls(name, bfo=bfo)
+    for k, v in kw.items():
+        setattr(e, k, v)
+    return e
+
+
+def test_qs_d1_missing_definition_rejected(require_defs):
+    r = L.lint(_prop({"entities": [_defcls("JudicialRole")]}))
+    assert "PC-14" in _rules(r)
+
+
+def test_qs_d1_absent_in_source_accepted(require_defs):
+    e = _defcls("JudicialRole", definition_status="absent-in-source")
+    assert "PC-14" not in _rules(L.lint(_prop({"entities": [e]})))
+
+
+def test_qs_d1_genus_differentia_accepted(require_defs):
+    e = _defcls("JudicialRole", definition="A role that a judge bears in court.",
+                source_span="the judge's role in court")
+    assert "PC-14" not in _rules(L.lint(_prop({"entities": [e]})))
+
+
+def test_qs_d1_genus_missing_rejected(require_defs):
+    e = _defcls("JudicialRole", definition="Something judges have.",
+                source_span="judges")
+    r = L.lint(_prop({"entities": [e]}))
+    assert any(v.rule == "PC-14" and "genus" in v.detail for v in r.violations)
+
+
+def test_qs_d1_faithful_needs_source_span(require_defs):
+    e = _defcls("JudicialRole", definition="A role that a judge bears.")
+    r = L.lint(_prop({"entities": [e]}), fidelity="faithful")
+    assert any(v.rule == "PC-14" and "span" in v.detail for v in r.violations)
+    assert "PC-14" not in _rules(L.lint(_prop({"entities": [e]})))
+
+
+class _Mgr:
+    def __init__(self, classes, canonical=()):
+        self._c = classes
+        self.canonical_iris = set(canonical)
+
+    def list_working_classes(self):
+        return self._c
+
+
+_EXISTING = [{"iri": "http://x#Recognition", "label": "Recognition"}]
+
+
+def test_qs_d3_synonym_mint_rejected():
+    r = L.lint(_prop({"entities": [_defcls("RecognitionProcess", bfo="BFO_0000015")]}),
+               manager=_Mgr(_EXISTING))
+    assert "PC-15" in _rules(r)
+
+
+def test_qs_d3_distinct_from_with_span_accepted():
+    e = _defcls("RecognitionProcess", bfo="BFO_0000015",
+                distinct_from="http://x#Recognition",
+                source_span="the process of recognition, as opposed to the status")
+    assert "PC-15" not in _rules(L.lint(_prop({"entities": [e]}), manager=_Mgr(_EXISTING)))
+
+
+def test_qs_f2_canonical_collision_always_rejected():
+    e = _defcls("RecognitionProcess", bfo="BFO_0000015",
+                distinct_from="http://x#Recognition", source_span="s")
+    r = L.lint(_prop({"entities": [e]}),
+               manager=_Mgr(_EXISTING, canonical={"http://x#Recognition"}))
+    assert any(v.rule == "PC-15" and "canonical" in v.detail for v in r.violations)
+
+
+def test_qs_d3_unrelated_mint_passes():
+    r = L.lint(_prop({"entities": [_defcls("Contract", bfo="BFO_0000031")]}),
+               manager=_Mgr(_EXISTING))
+    assert "PC-15" not in _rules(r)
+
+
+def test_qs_d4_triad_is_a_finding_not_a_reject():
+    ents = [_defcls("Recognition", bfo="BFO_0000016"),
+            _defcls("RecognitionProcess", bfo="BFO_0000015"),
+            _defcls("RecognitionQuality", bfo="BFO_0000019")]
+    r = L.lint(_prop({"entities": ents}))
+    assert "PC-16" not in _rules(r)
+    assert any(f.rule == "PC-16" for f in r.findings)
+
+
+def test_qs_d4_supported_pair_no_finding():
+    ents = [_defcls("Recognition", bfo="BFO_0000016", source_span="disposition to recognize"),
+            _defcls("RecognitionProcess", bfo="BFO_0000015", source_span="the act of recognizing")]
+    assert not any(f.rule == "PC-16" for f in L.lint(_prop({"entities": ents})).findings)
+
+
+@pytest.mark.parametrize("label", ["Court (reuse)", "Alice (instance)",
+                                   "Law (class)", "Judge (example of role)",
+                                   "example contract"])
+def test_qs_d7_meta_label_rejected(label):
+    e = _defcls("X")
+    e.label = label
+    assert "PC-17" in _rules(L.lint(_prop({"entities": [e]})))
+
+
+def test_qs_d7_plain_label_ok():
+    # an "example" prefix is flagged like the audit's meta_labels metric,
+    # so a label merely containing the word elsewhere is the clean case
+    assert "PC-17" not in _rules(L.lint(_prop({"entities": [_defcls("Counterexample Clause")]})))

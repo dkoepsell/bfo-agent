@@ -19,6 +19,8 @@ from .config import (
     PROPOSER_TEMPERATURE,
     require_api_key,
 )
+from . import config
+from . import content_quality
 from .cached_client import Usage, cache_control, summarize
 
 log = logging.getLogger(__name__)
@@ -186,6 +188,27 @@ RULES:
     realizable's TYPE: `has role` for a role, `has disposition` for a
     disposition, `has function` for a function -- never a mismatched one (a role
     reached by `has disposition` is rejected).
+17. DEFINE EVERY NEW CLASS FROM THE TEXT. Each new class carries a
+    `definition` in genus-differentia form, "A <parent label> that ...", where
+    the genus is the label of its asserted parent, and a `source_span` quoting
+    the text it is drawn from. If the text gives no definition, set
+    `definition_status` to "absent-in-source" and leave `definition` null.
+    Never invent a definition the text does not support.
+18. REUSE BEFORE MINTING. If a REUSE CANDIDATE (below) or an existing class
+    names the same concept -- same words once suffixes like Process,
+    Disposition, Quality, Role, Legal, Act are ignored -- reuse its IRI
+    (is_new=false, existing_iri). Mint a new class beside it only when the text
+    distinguishes the two: then set `distinct_from` to the existing IRI and
+    quote the distinguishing text in `source_span`.
+19. ONE CATEGORY PER NOUN. Do not mint disposition, process and quality
+    variants of one noun (Recognition, RecognitionDisposition,
+    RecognitionProcess, RecognitionQuality). Mint the one BFO category the
+    text supports; mint a realizable/realization pair only when the
+    source_span names or describes the realization.
+20. LABELS ARE NAMES ONLY. Never put "(reuse)", "(instance)", "(class)",
+    "(example ...)" or an "example" prefix in a label; reuse is expressed by
+    reusing the IRI. An individual you make up to illustrate a class, rather
+    than one the text refers to, sets `illustrative: true`.
 
 CURRENT WORKING ONTOLOGY CONTEXT:
 
@@ -215,7 +238,12 @@ Respond with ONLY a JSON object matching this schema:
       "parent_class": null or "working:..." or "bfo:BFO_...",
       "rationale": "...",
       "is_new": true or false,
-      "existing_iri": null or "full IRI if reusing"
+      "existing_iri": null or "full IRI if reusing",
+      "definition": null or "A <parent label> that ... (new classes)",
+      "source_span": null or "verbatim supporting text",
+      "definition_status": null or "absent-in-source",
+      "distinct_from": null or "IRI of an existing near-synonym the text distinguishes",
+      "illustrative": false
     }}
   ],
   "relations": [
@@ -384,18 +412,18 @@ def coverage_rules() -> str:
 RECOGNITION_RULES_HEADER = """RECOGNITION-CHAIN RULES (this ontology models a {name}: \
 authority={authority}, criteria={criteria}, assessor={assessor}, act={act}, \
 effect={effect}, remedy={remedy}):
-17. Every entity you propose carries ONE EXTRA FIELD beyond the schema above:
+21. Every entity you propose carries ONE EXTRA FIELD beyond the schema above:
       "recognition_locus": "authority" | "criteria" | "assessor" | "facts"
                          | "act" | "effect" | "remedy" | "none"
     Use "none" for terms that are not links of this institution's chain
     (background biology, geography, artifacts). Never omit the field.
-18. Anchor each locus to its BFO category. A term whose locus and BFO type
+22. Anchor each locus to its BFO category. A term whose locus and BFO type
     disagree is rejected before it reaches the reasoner:
 {anchors}
-19. The chain itself is NOT a set of classes to mint. Do not create classes
+23. The chain itself is NOT a set of classes to mint. Do not create classes
     named "Authority", "Criteria", "Recognition Act", "Remedy" or the like:
     the locus is an annotation on the domain terms the source actually names.
-20. A conferred status is a realizable dependent continuant borne by the
+24. A conferred status is a realizable dependent continuant borne by the
     entity that receives it -- never a quality of that entity, and never the
     act that confers it. Keep the act (a process) and the effect (a
     realizable) as distinct terms, related, not merged.
@@ -480,7 +508,16 @@ def build_prompt_blocks(
             "text": ontology_block,
             "cache_control": cache_control(ttl),
         })
-    return system, (claim or prompt)
+    user = claim or prompt
+    # QS-D3/QS-F2: reuse-before-mint candidates go in the uncached per-claim
+    # tail, so both prompt-cache breakpoints stay byte-identical.
+    classes = working_classes or []
+    cands = content_quality.utterance_candidates(
+        utterance, classes, k=config.REUSE_TOP_K,
+        canonical={c.get("iri") for c in classes if c.get("canonical")})
+    if cands:
+        user = content_quality.format_utterance_candidates(cands) + "\n\n" + user
+    return system, user
 
 
 def parse_proposal_response(text: str, session_id: str, utterance: str) -> Proposal:

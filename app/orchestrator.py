@@ -201,6 +201,7 @@ def _run_coherence_gate(proposal, mgr, proposer, ctx, session_id, context=None,
         exclude_axioms=exclude_axioms,
         chain_active=_chain_active(mgr),
         findings_out=chain_findings,
+        fidelity="faithful" if faithful else "curated",
     )
     _record_chain_findings(mgr, chain_findings)
 
