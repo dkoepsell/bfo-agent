@@ -42,6 +42,7 @@ from owlready2 import (
 
 from . import bfo_catalog
 from . import config
+from . import content_quality
 from . import owl_checks
 from . import relation_vocab
 from . import stable_iri
@@ -345,6 +346,10 @@ class OntologyManager:
         # points (checkpoint, final pass, pause/runner exit, shutdown) and
         # the crash-recovery reset consult it.
         self.unsaved_commits = 0
+        # QS-F2: canonical-seed class IRIs (set by the registry; PC-15).
+        self.canonical_iris: set[str] = set()
+        # QS-D8: illustrative individuals pending write to examples.owl.
+        self._illustrative: list[tuple[str, str, str]] = []
 
         self._load()
 
@@ -988,6 +993,23 @@ class OntologyManager:
                 except Exception as e:
                     warnings.append(f"Relation {rel.s} {rel.p} {rel.o} failed: {e}")
 
+            # QS-D5 [ENTAILMENT-PRESERVING]: drop asserted parents already
+            # entailed by another asserted parent; delta.retracted lets
+            # rollback restore them.
+            if config.TRANSITIVE_REDUCTION:
+                for ref in {e.iri_suggestion for e in proposal.entities
+                            if e.kind == "class"} | {
+                            r.s for r in proposal.relations
+                            if "subClassOf" in (r.p or "")}:
+                    try:
+                        cls = self._live_entity(
+                            _resolve_iri(ref, WORKING_IRI))
+                        if isinstance(cls, ThingClass) and \
+                                cls.iri.startswith(WORKING_IRI):
+                            content_quality.reduce_redundant_parents(cls, delta)
+                    except Exception:
+                        pass
+
         return warnings
 
     def _resolve_entity(self, iri: str, local: str):
@@ -1054,6 +1076,15 @@ class OntologyManager:
             with ns:
                 obj = types.new_class(name, (parent_cls,))
             obj.label = [ent.label]
+            if existing is None:
+                # QS-D1/D3: definition, source span, distinctFrom.
+                content_quality.annotate_new_class(
+                    self.world, obj.iri, ent, delta, onto=self.working)
+        elif getattr(ent, "illustrative", False):
+            # QS-D8: illustrations are not referents in the text; they go to
+            # examples.owl (importing the working ontology), never the ABox.
+            self._illustrative.append((iri, type_full, ent.label))
+            return
         else:
             obj = type_cls(name, namespace=ns)
             obj.label = [ent.label]
@@ -2625,6 +2656,11 @@ class OntologyManager:
         with timing.phase("save"):
             self.working_path.parent.mkdir(parents=True, exist_ok=True)
             self.working.save(file=str(self.working_path), format="rdfxml")
+            if self._illustrative:
+                content_quality.write_examples_module(
+                    self._illustrative, WORKING_IRI,
+                    self.working_path.parent / "examples.owl")
+                self._illustrative = []
             self.unsaved_commits = 0
 
     def stats(self) -> dict:

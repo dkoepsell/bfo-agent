@@ -56,7 +56,10 @@ def _cls(local: str, label: str, bfo: str, bfo_label: str,
          parent: str | None = None) -> dict:
     return {"label": label, "iri_suggestion": f"working:{local}",
             "bfo_type": bfo, "bfo_label": bfo_label, "kind": "class",
-            "parent_class": parent, "rationale": "gate-recall fixture"}
+            "parent_class": parent, "rationale": "gate-recall fixture",
+            # Keep PC-14 (QS-D1) out of the way so each fixture is credited
+            # to the tier that targets it, not to the missing definition.
+            "definition_status": "absent-in-source"}
 
 
 def _w(local: str) -> URIRef:

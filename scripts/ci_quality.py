@@ -25,7 +25,7 @@ from tests.quality_fixture import clean_graph, defective_graph, write  # noqa: E
 def main(argv=None) -> int:
     ap = argparse.ArgumentParser(description=__doc__.split("\n")[0])
     ap.add_argument("--seed", type=int, default=7)
-    ap.add_argument("--min-recall", type=float, default=0.75)
+    ap.add_argument("--min-recall", type=float, default=1.0)
     ap.add_argument("--no-reasoner", action="store_true")
     a = ap.parse_args(argv)
 

@@ -169,6 +169,13 @@ class OntologyRegistry:
             working_path=working_path,
             seed_path=seed_path,
         )
+        # QS-F1/F2: canonical-seed IRIs (read-only) so PC-15 forces reuse.
+        try:
+            from . import canonical
+            mgr.canonical_iris = canonical.canonical_classes(
+                canonical.load_seed(manifest, entry))
+        except Exception as e:
+            print(f"[registry] {name}: canonical seed not loaded: {e}")
         self._managers[name] = mgr
         self._manifests[name] = manifest
         print(

@@ -25,4 +25,4 @@ jobs:
       - name: Audit and profile tests
         run: python -m pytest -q tests/test_ontology_audit.py tests/test_profiles.py
       - name: Construction gates and gate recall
-        run: python scripts/ci_quality.py --seed 7 --min-recall 0.75
+        run: python scripts/ci_quality.py --seed 7 --min-recall 1.0

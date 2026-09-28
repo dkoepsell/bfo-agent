@@ -145,6 +145,21 @@ def _job_working_path(job_id: str) -> Path:
     return candidate if candidate.exists() else Path(config.WORKING_PATH)
 
 
+def _fanout_hubs(working) -> list[dict]:
+    """QS-D6: classes over FANOUT_LIMIT direct named subclasses (report-only)."""
+    from collections import Counter
+    from rdflib import Graph, RDFS, URIRef
+
+    g = Graph()
+    g.parse(str(working))
+    kids = Counter(o for s, o in g.subject_objects(RDFS.subClassOf)
+                   if isinstance(o, URIRef))
+    limit = config.FANOUT_LIMIT
+    return [{"iri": str(c), "label": str(g.value(c, RDFS.label) or ""),
+             "direct_subclasses": n}
+            for c, n in kids.most_common() if n > limit]
+
+
 def _quality_audit_on_complete(job_id: str, flush_fn=None) -> Optional[str]:
     """QS-G2: audit the saved ontology at job completion, attach the JSON to
     the job record, and return a one-line summary for the notification.
@@ -162,6 +177,7 @@ def _quality_audit_on_complete(job_id: str, flush_fn=None) -> Optional[str]:
         line = quality_gates.summary_line(report)
         extras = _canonical_and_profile_findings(working)
         record.update(extras)
+        record["fanout_hubs"] = _fanout_hubs(working)  # QS-D6, report-only
         if extras.get("canonical_coverage"):
             gaps = extras["canonical_coverage"]["zero_coverage"]
             line += f"; canonical gaps {len(gaps)}"

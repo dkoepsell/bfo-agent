@@ -295,6 +295,8 @@ def _check_predicate(rel) -> Optional[Violation]:
 # is_kernel_property alone: anything that looks like an upper-ontology id but is
 # not a kernel class is treated as a non-class target.
 _UPPER_ONTOLOGY_ID = re.compile(r"^(?:BFO|RO|IAO)_\d+$")
+# PC-18 exemption: annotation predicates carry text, written as a literal.
+_ANNOTATION_PRED = re.compile(r"(rdfs:(comment|label|seeAlso)|IAO_0000115|skos:|bfoagent:|#comment$|#label$)")
 
 
 def _target_is_not_a_class(ref: str) -> bool:
@@ -826,6 +828,16 @@ def lint(proposal, strict_closed_vocab: bool = False,
             f = _check_residual_definition(ent)
             if f is not None:
                 report.findings.append(f)
+
+    # PC-18 (QS-A6): a sentence in an entity/relation slot is never an IRI.
+    # Annotation predicates legitimately carry text (written as a literal).
+    for f in owl_checks.sentence_slot_findings(
+            [r for r in proposal.relations
+             if not _ANNOTATION_PRED.search(r.p or "")]):
+        report.violations.append(Violation(
+            rule="PC-18", offending_term=f["text"],
+            suggested_rewrite=f["fix"],
+            detail=f"QS-A6 free text in relation {f['slot']} slot"))
 
     for rel in proposal.relations:
         # subClassOf / type predicates are fine; only non-meta predicates that
