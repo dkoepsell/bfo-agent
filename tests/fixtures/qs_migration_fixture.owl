@@ -1,0 +1,75 @@
+<?xml version="1.0"?>
+<!-- QS-C1 migration fixture: one instance of each legacy defect seen in the
+     production artifacts (SPEC-bfo-agent-quality.md section 1). Hand-built;
+     the per-step counts asserted in tests/test_migration.py depend on it.
+     The 'wrdfs' / 'fw' prefixes exist only to spell the malformed IRIs that
+     earlier runs produced (working#rdfs:subClassOf, file:// bases). -->
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:owl="http://www.w3.org/2002/07/owl#"
+         xmlns:obo="http://purl.obolibrary.org/obo/"
+         xmlns:wrdfs="http://davidkoepsell.com/bfo-agent/working#rdfs:">
+
+  <owl:Ontology rdf:about="file:///home/x/ontology/working.owl">
+    <owl:imports rdf:resource="http://purl.obolibrary.org/obo/bfo.owl"/>
+  </owl:Ontology>
+
+  <!-- step 1: classes declared under a file:// base -->
+  <owl:Class rdf:about="file:///home/x/ontology/working.owl#Court">
+    <rdfs:label>Court</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:about="file:///home/x/ontology/working.owl#Judge">
+    <rdfs:label>Judge</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:about="file:///home/x/ontology/working.owl#JudicialRole"/>
+  <owl:Class rdf:about="file:///home/x/ontology/working.owl#Adjudication"/>
+  <owl:Class rdf:about="file:///home/x/ontology/working.owl#Institution"/>
+
+  <rdf:Description rdf:about="http://davidkoepsell.com/bfo-agent/working#Court">
+    <!-- step 2: mangled standard predicate -->
+    <wrdfs:subClassOf rdf:resource="http://davidkoepsell.com/bfo-agent/working#Institution"/>
+    <!-- step 1 (nested): working#file:///...#X -->
+    <rdfs:seeAlso rdf:resource="http://davidkoepsell.com/bfo-agent/working#file:///home/x/ontology/working.owl#Judge"/>
+    <!-- step 6: class -> individual (hasValue) -->
+    <obo:BFO_0000178 rdf:resource="http://davidkoepsell.com/bfo-agent/working#JusticeAlpha"/>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://davidkoepsell.com/bfo-agent/working#Institution">
+    <!-- step 3: locally minted upper-ontology id -->
+    <rdfs:subClassOf rdf:resource="http://davidkoepsell.com/bfo-agent/working#BFO_0000040"/>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://davidkoepsell.com/bfo-agent/working#JudicialRole">
+    <!-- step 2: owl:subClassOf is no such term -->
+    <owl:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+    <!-- step 4: restriction text baked into an IRI -->
+    <rdfs:subClassOf rdf:resource="http://davidkoepsell.com/bfo-agent/working#_:x [RO_0000052 some working:Judge]"/>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://davidkoepsell.com/bfo-agent/working#Judge">
+    <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+    <!-- step 5: a sentence minted as an IRI -->
+    <rdfs:subClassOf rdf:resource="http://davidkoepsell.com/bfo-agent/working#A judge is an officer who decides cases"/>
+    <!-- step 7: a blank-node label naming a recoverable restriction -->
+    <rdfs:subClassOf rdf:resource="http://davidkoepsell.com/bfo-agent/working#_:restriction_bearer_of_JudicialRole"/>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://davidkoepsell.com/bfo-agent/working#Adjudication">
+    <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+    <!-- step 7: a blank-node label naming nothing recoverable -->
+    <rdfs:subClassOf rdf:resource="http://davidkoepsell.com/bfo-agent/working#_:r1"/>
+    <!-- step 6: class -> class (some) -->
+    <obo:RO_0000057 rdf:resource="http://davidkoepsell.com/bfo-agent/working#Judge"/>
+  </rdf:Description>
+
+  <owl:NamedIndividual rdf:about="http://davidkoepsell.com/bfo-agent/working#SupremeCourt">
+    <rdf:type rdf:resource="http://davidkoepsell.com/bfo-agent/working#Court"/>
+  </owl:NamedIndividual>
+  <owl:NamedIndividual rdf:about="http://davidkoepsell.com/bfo-agent/working#JusticeAlpha">
+    <rdf:type rdf:resource="http://davidkoepsell.com/bfo-agent/working#Judge"/>
+    <!-- step 6 keep: individual -> individual (BFO 2.0 part-of, split to 2020) -->
+    <obo:BFO_0000050 rdf:resource="http://davidkoepsell.com/bfo-agent/working#SupremeCourt"/>
+    <!-- step 6 refuse: individual -> class -->
+    <obo:RO_0000056 rdf:resource="http://davidkoepsell.com/bfo-agent/working#Adjudication"/>
+  </owl:NamedIndividual>
+</rdf:RDF>
