@@ -847,30 +847,71 @@ _DECL_TYPES = {OWL.Class, OWL.ObjectProperty, OWL.DatatypeProperty,
                OWL.FunctionalProperty, OWL.TransitiveProperty}
 
 
+def _bnode_closure(b, by_subj: dict) -> set:
+    out, todo, seen = set(), [b], set()
+    while todo:
+        x = todo.pop()
+        if x in seen:
+            continue
+        seen.add(x)
+        for t in by_subj.get(x, ()):
+            out.add(t)
+            if isinstance(t[2], BNode):
+                todo.append(t[2])
+    return out
+
+
 def _gating_units(mig: Migration) -> tuple[list[dict], set]:
-    """Split the output into a *base* (triples the input already asserted
-    verbatim, plus bare declarations) and *units* the migration introduced
-    or rewrote: each restoration's closure, and every other changed named
-    triple (a rewritten IRI can import BFO semantics the text's typo hid --
-    e.g. working#BFO_0000020 becoming BFO's specifically dependent
-    continuant). Only units are candidates for gating; the base is the text."""
+    """Split the output into a *base* of inert triples (declarations and
+    annotations) and gating *units*: "text" units the input asserted verbatim
+    and units the migration introduced or rewrote. The text's visible axioms
+    are units too, because an input can pass HermiT only because malformed
+    triples hid a clash, and the gated output must be consistent. A unit is a whole axiom: a
+    restoration's closure; a named triple that changed; or a pre-existing
+    anonymous axiom (the edge to it plus its blank-node closure) any part of
+    which changed -- e.g. a restriction whose RO_0000052 became BFO_0000197
+    and so picked up BFO's domain and range. Only units are gating
+    candidates; the base is the text as the reasoner could already see it."""
     closures = _axiom_closures(mig)
     in_closure = set().union(*closures) if closures else set()
     units = [{"kind": "restoration", "axiom": ax, "triples": c}
              for ax, c in zip(mig.migration_axioms, closures)]
-    base = set()
-    for t in mig.out:
-        if t in in_closure:
-            continue
+    rest = mig.out - in_closure
+    by_subj = collections.defaultdict(list)
+    referenced = set()
+    for t in rest:
+        if isinstance(t[0], BNode):
+            by_subj[t[0]].append(t)
+        if isinstance(t[2], BNode):
+            referenced.add(t[2])
+
+    def inert(t) -> bool:
         s, p, o = t
-        if (isinstance(s, BNode) or isinstance(o, BNode) or t in mig.g
-                or p in ANNOTATION_PREDICATES or str(p).startswith(rv.BFOAGENT_NS)
-                or (p == RDF.type and o in _DECL_TYPES)
-                or p in (OWL.annotatedSource, OWL.annotatedProperty,
-                         OWL.annotatedTarget)):
-            base.add(t)
+        return (p in ANNOTATION_PREDICATES or str(p).startswith(rv.BFOAGENT_NS)
+                or (p == RDF.type and o in _DECL_TYPES))
+
+    base, grouped = set(), set()
+    # anonymous axioms hanging off a named subject, and unreferenced roots
+    # (owl:AllDisjointClasses, owl:Axiom annotations)
+    anchors = [t for t in rest if not isinstance(t[0], BNode) and isinstance(t[2], BNode)]
+    anchors += [(None, None, b) for b in by_subj if b not in referenced]
+    for a in sorted(anchors, key=lambda t: _triple_key(tuple(x or "" for x in t))):
+        clo = _bnode_closure(a[2], by_subj)
+        tri = clo | ({a} if a[0] is not None else set())
+        grouped |= tri
+        if all(inert(t) for t in tri):
+            base |= tri
+        elif all(t in mig.g or inert(t) for t in tri):
+            units.append({"kind": "text", "triples": tri})
         else:
-            units.append({"kind": "triple", "triples": {t}})
+            units.append({"kind": "axiom", "triples": tri})
+    for t in rest - grouped:
+        if inert(t):
+            base.add(t)
+        elif t in mig.g:
+            units.append({"kind": "text", "triples": {t}})
+        else:
+            units.append({"kind": "axiom", "triples": {t}})
     return units, base
 
 
@@ -880,19 +921,21 @@ def _unit_key(u: dict) -> str:
 
 
 def isolate_clashes(mig: Migration, bfo_path: Path, log=None) -> tuple[list, dict]:
-    """Deterministically find the migration's own changes whose addition makes
-    the (consistent) text base inconsistent. Units are added in sorted chunks;
-    a chunk that breaks consistency is bisected down to single offenders,
-    which are excluded while the rest are kept. Returns (offending units,
-    stats). If the base alone is inconsistent the text itself is incoherent:
-    nothing is gated and base_consistent is False."""
-    units, base = _gating_units(mig)
-    units.sort(key=_unit_key)
-    stats = {"units": len(units), "restorations": sum(
-        u["kind"] == "restoration" for u in units), "reasoner_runs": 0, "unknown": 0}
+    """Deterministically find the migration's own changes (restorations and
+    rewrites) whose addition makes the source's own axioms inconsistent.
+    FG-0: the source's asserted axioms ("text" units) are the fixed base and
+    are never candidates. Changes are added in sorted chunks; a chunk that
+    breaks consistency is bisected down to single offenders. Returns
+    (offending units, stats). If the base alone is inconsistent the source is
+    incoherent once visible: nothing is gated and base_consistent is False."""
+    units, inert = _gating_units(mig)
+    base = inert | set().union(*(u["triples"] for u in units if u["kind"] == "text"))
+    changes = sorted((u for u in units if u["kind"] != "text"), key=_unit_key)
+    stats = {"units": len(changes), "restorations": sum(
+        u["kind"] == "restoration" for u in changes), "reasoner_runs": 0, "unknown": 0}
 
     def cons(idx: list) -> bool | None:
-        extra = set().union(*(units[i]["triples"] for i in idx)) if idx else set()
+        extra = set().union(*(changes[i]["triples"] for i in idx)) if idx else set()
         stats["reasoner_runs"] += 1
         r = hermit_consistent(serialize_deterministic(base | extra), bfo_path)
         if r is None:
@@ -920,27 +963,188 @@ def isolate_clashes(mig: Migration, bfo_path: Path, log=None) -> tuple[list, dic
         add(items[:mid])
         add(items[mid:])
 
-    k = max(8, len(units) // 24)
-    for n in range(0, len(units), k):
-        add(list(range(n, min(n + k, len(units)))))
+    k = max(8, len(changes) // 24)
+    for n in range(0, len(changes), k):
+        add(list(range(n, min(n + k, len(changes)))))
         if log:
-            log(f"  gating: {min(n + k, len(units))}/{len(units)} units "
+            log(f"  gating: {min(n + k, len(changes))}/{len(changes)} changes "
                 f"checked, {len(bad)} clashing, {stats['reasoner_runs']} runs")
-    return [units[i] for i in sorted(bad)], stats
+    return [changes[i] for i in sorted(bad)], stats
 
 
-def _exclude_units(mig: Migration, units: list, reason: str) -> int:
-    """Faithful gating: keep clashing units out of the coherent file and in
-    the ledger (never silently dropped)."""
+def source_culprits(mig: Migration, bfo_path: Path, log=None,
+                    max_runs: int = 400) -> tuple[list, dict]:
+    """Evidence only (FG-0): a minimal set of the source's own axioms that is
+    inconsistent once made visible (QuickXplain over the text units, with the
+    inert declarations as background). Nothing found here is removed."""
+    units, inert = _gating_units(mig)
+    text = sorted((u for u in units if u["kind"] == "text"), key=_unit_key)
+    stats = {"text_units": len(text), "reasoner_runs": 0, "complete": True}
+
+    def cons(idx) -> bool:
+        if stats["reasoner_runs"] >= max_runs:
+            stats["complete"] = False
+            raise TimeoutError
+        stats["reasoner_runs"] += 1
+        extra = set().union(*(text[i]["triples"] for i in idx)) if idx else set()
+        return hermit_consistent(serialize_deterministic(inert | extra), bfo_path) is True
+
+    def qx(bg: list, delta: bool, cand: list) -> list:
+        if delta and not cons(bg):
+            return []
+        if len(cand) == 1:
+            return cand
+        mid = len(cand) // 2
+        c1, c2 = cand[:mid], cand[mid:]
+        d2 = qx(bg + c1, bool(c1), c2)
+        d1 = qx(bg + d2, bool(d2), c1)
+        return d1 + d2
+
+    try:
+        found = qx([], False, list(range(len(text)))) if text and not cons(
+            list(range(len(text)))) else []
+    except TimeoutError:
+        found = []
+    if log:
+        log(f"  source culprits: {len(found)} axioms ({stats['reasoner_runs']} runs)")
+    return [text[i] for i in found], stats
+
+
+def _primary_unsat_units(mig: Migration, units: list, new_unsat: set) -> list:
+    """Migration changes to gate for newly unsat classes, root causes only. A
+    class unsat merely because a named ancestor or one of its own restriction
+    fillers is unsat is not a root: gating its axioms would discard innocent
+    content. The source's own axioms are never candidates (FG-0)."""
+    named_parents = collections.defaultdict(set)
+    fillers = collections.defaultdict(set)
+    by_subj = collections.defaultdict(list)
+    for t in mig.out:
+        by_subj[t[0]].append(t)
+    for s, p, o in mig.out:
+        if isinstance(s, BNode):
+            continue
+        if p in (RDFS.subClassOf, OWL.equivalentClass):
+            if isinstance(o, URIRef):
+                named_parents[str(s)].add(str(o))
+            elif isinstance(o, BNode):
+                for t in _bnode_closure(o, by_subj):
+                    if isinstance(t[2], URIRef) and t[1] in (
+                            OWL.someValuesFrom, OWL.allValuesFrom, OWL.complementOf):
+                        fillers[str(s)].add(str(t[2]))
+
+    def ancestors(c):
+        seen, todo = set(), [c]
+        while todo:
+            for q in named_parents.get(todo.pop(), ()):
+                if q not in seen:
+                    seen.add(q)
+                    todo.append(q)
+        return seen
+
+    roots = {c for c in new_unsat if not (ancestors(c) & new_unsat)}
+    primary = {c for c in roots if not (fillers.get(c, set()) & new_unsat)} or roots
+    return [u for u in units if u["kind"] != "text"
+            and any(not isinstance(t[0], BNode) and str(t[0]) in primary
+                    for t in u["triples"])]
+
+
+def _source_forms(mig: Migration) -> dict:
+    """Output triple -> the source's reasoner-visible triple(s) it rewrites
+    (alias / namespace / upper-id rewrites of axioms the source reasoner could
+    already see). Used to revert a gated rewrite to the source's own form."""
+    saved = {k: collections.Counter(v) for k, v in mig.counts.items()}
+    rev = collections.defaultdict(set)
+    for t in mig.g:
+        if not _source_visible(mig, t):
+            continue
+        n = tuple(mig.norm(x) for x in t)
+        if any(isinstance(x, Text) for x in n) or n == t:
+            continue
+        rev[n].add(t)
+    mig.counts = saved
+    return rev
+
+
+def _source_visible(mig: Migration, t) -> bool:
+    """Would a reasoner loading the *source* have seen this triple as an
+    axiom? (Not a mangled predicate, not a malformed/text IRI, and not a
+    punned class-level use of an object property.)"""
+    s, p, o = t
+    for x in t:
+        if isinstance(x, URIRef):
+            frag = str(x).split("#", 1)[1] if "#" in str(x) else ""
+            if _TEXTY.search(frag) or ":" in frag:
+                return False
+    if str(p) in STD_FIXUPS:
+        return False
+    if _is_std(p) or p in ANNOTATION_PREDICATES:
+        return True
+    if isinstance(s, BNode):
+        return True
+    if not hasattr(mig, "_src_inds"):
+        mig._src_inds = set(mig.g.subjects(RDF.type, OWL.NamedIndividual))
+    return s in mig._src_inds and o in mig._src_inds
+
+
+def missing_source_axioms(mig: Migration) -> list:
+    """Source reasoner-visible axioms present in the output neither verbatim
+    nor as a migration rewrite (the deployability check)."""
+    saved = {k: collections.Counter(v) for k, v in mig.counts.items()}
+    missing = []
+    for t in sorted(mig.g, key=_triple_key):
+        if isinstance(t[0], BNode) or not _source_visible(mig, t):
+            continue  # anonymous structure is checked through its anchor
+        if t[1] == RDF.type and t[2] == OWL.Ontology:
+            continue
+        if _aliased_semantics(*t):
+            continue  # RO domain/range deliberately left to the BFO import
+        n = tuple(mig.norm(x) for x in t)
+        if (t[0], RDF.type, OWL.Ontology) in mig.g and not str(t[0]).startswith(OBO):
+            n = (URIRef(WORKING_BASE),) + n[1:]  # local header is rebased
+        cands = {n}
+        pid = str(t[1])[len(OBO):] if str(t[1]).startswith(OBO) else None
+        if pid in PART_OF_SPLIT:  # BFO 2.0 part-of split by subject category
+            cands = {(n[0], URIRef(OBO + q), n[2]) for q in PART_OF_SPLIT[pid]}
+        if t in mig.out or cands & mig.out:
+            continue
+        if n[0] == n[2] and n[1] in (RDFS.subClassOf, OWL.equivalentClass):
+            continue  # tautology collapsed by step 3
+        if t[1] == RDF.type and n[0] == URIRef(WORKING_BASE):
+            continue
+        missing.append(t)
+    mig.counts = saved
+    return missing
+
+
+def _exclude_units(mig: Migration, units: list, reason: str,
+                   source_forms: dict | None = None) -> int:
+    """Faithful gating: keep clashing migration changes out of the coherent
+    file and in the ledger (never silently dropped). A gated rewrite of an
+    axiom the source reasoner could already see is reverted to the source's
+    own form, so no source axiom is ever lost (FG-0)."""
+    assert all(u["kind"] != "text" for u in units), "source axioms are never gated"
     restorations = [u["axiom"] for u in units if u["kind"] == "restoration"]
     n = mig.exclude(restorations, reason) if restorations else 0
+    source_forms = source_forms if source_forms is not None else _source_forms(mig)
     for u in units:
-        if u["kind"] != "triple":
+        if u["kind"] == "restoration":
             continue
-        (t,) = tuple(u["triples"])
-        mig.out.discard(t)
-        mig.led("gated", t[0], t[1], t[2], reason)
+        back = set()
+        for t in u["triples"]:
+            mig.out.discard(t)
+            if t in mig.g:
+                back.add(t)  # untouched part of a rewritten anonymous axiom
+            back |= source_forms.get(t, set())
+        rewritten = any(t in source_forms for t in u["triples"])
+        if rewritten:
+            mig.out |= back
+        named = sorted((t for t in u["triples"] if not isinstance(t[0], BNode)),
+                       key=_triple_key) or sorted(u["triples"], key=_triple_key)[:1]
+        for t in named:
+            mig.led("gated", t[0], t[1], t[2],
+                    reason + ("; reverted to the source's own form" if rewritten else ""))
         n += 1
+    _drop_orphans(mig.out)
     return n
 
 
@@ -955,78 +1159,100 @@ def default_bfo_path() -> Path:
     raise FileNotFoundError(f"{ROOT / 'ontology' / 'bfo.owl'} not found; pass --bfo")
 
 
-class InconsistentOutput(RuntimeError):
-    """Raised when the migrated file cannot be made consistent without
-    altering what the input text itself asserts."""
-
-
 def migrate(src, dst, report_path=None, ledger_path=None, do_verify=True,
             bfo_path=None, fol=True, log=None) -> dict:
-    """Migrate ``src`` to ``dst``. Gated by default (QS-C3): the file written
-    at ``dst`` is HermiT-consistent and has no more unsat classes than its
-    text base, or it is not written at all (InconsistentOutput; the rejected
-    graph goes to ``dst.rejected.owl`` for inspection). ``do_verify=False``
-    skips reasoning and is for tests of the syntactic steps only."""
+    """Migrate ``src`` to ``dst``, gated by default (QS-C3, FG-0).
+
+    Only migration changes (restorations, rewrites, aliases) are ever gated
+    out, and a gated rewrite of an axiom the source reasoner already saw is
+    reverted to the source's own form. The source's asserted axioms are never
+    removed. The report carries ``deployable``: true only when the output is
+    HermiT-consistent AND every source reasoner-visible axiom is present
+    verbatim or as a rewrite. If the source's own axioms are inconsistent once
+    made visible, the output is written, marked ``source_inconsistent`` and
+    not deployable, with a minimal culprit set in the ledger as evidence.
+    ``do_verify=False`` skips reasoning (syntactic steps only; never
+    deployable)."""
     mig = Migration(Path(src))
     mig.run()
     rep = mig.report()
+    rep["gated_out"] = 0
     if do_verify:
         bfo_path = Path(bfo_path) if bfo_path else default_bfo_path()
+        forms = _source_forms(mig)
         v = verify(mig.serialize(), bfo_path, fol=False)
         rep["verify_before_gating"] = v
-        rep["gated_out"] = 0
         if v.get("hermit", {}).get("consistent") is False:
             clash, stats = isolate_clashes(mig, bfo_path, log=log)
             rep["gating_search"] = stats
             if not stats["base_consistent"]:
-                rep["pre_existing_inconsistency"] = True
+                rep["source_inconsistent"] = True
+                culprits, cstats = source_culprits(mig, bfo_path, log=log)
+                rep["source_culprit_search"] = cstats
+                rep["source_culprits"] = len(culprits)
+                for u in culprits:
+                    for t in sorted((t for t in u["triples"] if not isinstance(t[0], BNode)),
+                                    key=_triple_key):
+                        mig.led("source_inconsistent", t[0], t[1], t[2],
+                                "member of a minimal inconsistent set of the source's "
+                                "own axioms (evidence only; kept in the file)")
             elif clash:
                 rep["gated_out"] += _exclude_units(
                     mig, clash, "migration change makes the ontology inconsistent; "
-                                "kept out of the coherent file (faithful mode)")
+                                "kept out of the coherent file (faithful mode)", forms)
             v = verify(mig.serialize(), bfo_path, fol=False)
         h = v.get("hermit", {})
-        # Unsat classes the migration introduced (not already unsat in the
-        # text base) are gated the same way.
+        # Migration changes that make a class newly unsat (relative to what the
+        # input itself classifies as unsat) are gated too, root causes first.
         if h.get("consistent") and h.get("unsat_classes"):
-            units, base = _gating_units(mig)
-            b = verify(serialize_deterministic(base), bfo_path, fol=False)
-            base_unsat = set(b.get("hermit", {}).get("unsat_classes") or [])
-            new = set(h["unsat_classes"]) - base_unsat
-            rep["unsat_pre_existing"] = len(base_unsat)
-            clashing = [u for u in units if any(str(t[0]) in new for t in u["triples"])]
-            if clashing:
+            b = verify(Path(src).read_bytes(), bfo_path, fol=False)
+            base_unsat = {mig._unify(c) for c in
+                          b.get("hermit", {}).get("unsat_classes") or []}
+            rep["unsat_source"] = len(base_unsat)
+            rep["unsat_gating_rounds"] = 0
+            for _ in range(25):
+                new = set(h.get("unsat_classes") or []) - base_unsat
+                if not new or not h.get("consistent"):
+                    break
+                units, _inert = _gating_units(mig)
+                clashing = _primary_unsat_units(mig, units, new)
+                if not clashing:
+                    break
+                rep["unsat_gating_rounds"] += 1
                 rep["gated_out"] += _exclude_units(
-                    mig, clashing, "migration change on a newly unsatisfiable "
-                                   "class; kept out of the coherent file (faithful mode)")
-                v = verify(mig.serialize(), bfo_path, fol=fol)
-        elif fol:
+                    mig, clashing, "migration change makes a class unsatisfiable; "
+                                   "kept out of the coherent file (faithful mode)", forms)
+                if log:
+                    log(f"  unsat gating round {rep['unsat_gating_rounds']}: "
+                        f"{len(new)} new unsat, gated {len(clashing)} changes")
+                v = verify(mig.serialize(), bfo_path, fol=False)
+                h = v.get("hermit", {})
+            rep["unsat_new_remaining"] = sorted(
+                set(h.get("unsat_classes") or []) - base_unsat)
+        if fol:
             v = verify(mig.serialize(), bfo_path, fol=fol)
         rep["verify"] = v
-        rep["ledger_entries"] = len(mig.ledger)
-        rep["ledger_by_step"] = dict(sorted(collections.Counter(
-            e["step"] for e in mig.ledger).items()))
         rep["restorations"] = len(mig.migration_axioms)
-    data = mig.serialize()
-    ledger = sorted(mig.ledger, key=lambda e: json.dumps(e, sort_keys=True))
-    if ledger_path:
-        Path(ledger_path).write_text(json.dumps(ledger, indent=1) + "\n")
-    rep["output_triples"] = len(mig.out)
-    rep["output_sha256"] = hashlib.sha256(data).hexdigest()
+    missing = missing_source_axioms(mig)
+    rep["missing_source_axioms"] = len(missing)
+    for t in missing:
+        mig.led("missing_source_axiom", t[0], t[1], t[2],
+                "source axiom absent from the output (blocks deployment)")
     final = rep.get("verify", {}).get("hermit", {})
-    if do_verify and final.get("consistent") is not True:
-        rejected = Path(str(dst) + ".rejected.owl")
-        rejected.write_bytes(data)
-        rep["output"] = None
-        rep["rejected_output"] = str(rejected)
-        if report_path:
-            Path(report_path).write_text(json.dumps(rep, indent=2, default=str) + "\n")
-        raise InconsistentOutput(
-            f"{src}: migrated graph is not HermiT-consistent "
-            f"({'text base already inconsistent' if rep.get('pre_existing_inconsistency') else final.get('detail') or final.get('error')}); "
-            f"not written. Inspect {rejected}")
+    rep["consistent"] = final.get("consistent") if do_verify else None
+    rep["unsat"] = len(final.get("unsat_classes") or []) if do_verify else None
+    rep["deployable"] = bool(do_verify and final.get("consistent") is True and not missing)
+    rep["ledger_entries"] = len(mig.ledger)
+    rep["ledger_by_step"] = dict(sorted(collections.Counter(
+        e["step"] for e in mig.ledger).items()))
+    data = mig.serialize()
     Path(dst).write_bytes(data)
     rep["output"] = str(dst)
+    rep["output_triples"] = len(mig.out)
+    rep["output_sha256"] = hashlib.sha256(data).hexdigest()
+    ledger = sorted(mig.ledger, key=lambda e: json.dumps(e, sort_keys=True, default=str))
+    if ledger_path:
+        Path(ledger_path).write_text(json.dumps(ledger, indent=1) + "\n")
     if report_path:
         Path(report_path).write_text(json.dumps(rep, indent=2, default=str) + "\n")
     return rep
@@ -1051,17 +1277,15 @@ def main(argv=None) -> int:
     report = a.report or a.dst.with_suffix(".migration.json")
     ledger = a.ledger or a.dst.with_suffix(".ledger.json")
     logging.basicConfig(level=logging.WARNING)
-    try:
-        rep = migrate(a.src, a.dst, report, ledger, not a.unverified, a.bfo,
-                      fol=not a.no_fol,
-                      log=lambda m: print(m, file=sys.stderr, flush=True))
-    except InconsistentOutput as e:
-        print(f"REFUSED: {e}", file=sys.stderr)
-        return 2
+    rep = migrate(a.src, a.dst, report, ledger, not a.unverified, a.bfo,
+                  fol=not a.no_fol,
+                  log=lambda m: print(m, file=sys.stderr, flush=True))
     print(json.dumps({"steps": {k: v["total"] for k, v in rep["steps"].items()},
                       "ledger_entries": rep["ledger_entries"],
+                      "consistent": rep["consistent"], "deployable": rep["deployable"],
                       "output": rep["output"]}, indent=1))
-    return 0
+    # 0 deployable; 3 written but not deployable (see report); unverified -> 0
+    return 0 if rep["deployable"] or a.unverified else 3
 
 
 if __name__ == "__main__":

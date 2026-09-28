@@ -177,7 +177,7 @@ def test_qs_c3_verify_and_faithful_gating(tmp_path, monkeypatch):
     rep = mig.migrate(FIXTURE, tmp_path / "o.owl", tmp_path / "r.json",
                       tmp_path / "l.json", do_verify=True)
     assert rep["gated_out"] == 1
-    assert rep["unsat_pre_existing"] == 0
+    assert rep["unsat_source"] == 0
     assert rep["verify"]["hermit"]["unsat_classes"] == []
     assert rep["verify_before_gating"]["hermit"]["unsat_classes"] == [W + "Adjudication"]
     g = rdflib.Graph()
@@ -236,6 +236,7 @@ def test_qs_c3_inconsistent_change_is_ledgered_not_written(tmp_path, monkeypatch
     rep = mig.migrate(FIXTURE, tmp_path / "o.owl", tmp_path / "r.json", tmp_path / "l.json")
     assert rep["gating_search"]["base_consistent"] is True
     assert rep["gated_out"] == 1
+    assert rep["deployable"] is True
     assert clash not in (tmp_path / "o.owl").read_bytes()
     assert _restrictions(_graph(tmp_path / "o.owl"), "Court") == set()
     ledger = json.loads((tmp_path / "l.json").read_text())
@@ -251,21 +252,51 @@ def test_qs_c3_rewritten_triple_can_be_gated():
     m.run()
     units, base = mig._gating_units(m)
     assert target not in base
-    assert any(u["kind"] == "triple" and target in u["triples"] for u in units)
+    assert any(u["kind"] == "axiom" and target in u["triples"] for u in units)
 
 
-def test_qs_c3_never_writes_an_inconsistent_file(tmp_path, monkeypatch):
-    """If the text base itself is inconsistent nothing can be gated without
-    altering the text: the output is refused, not written."""
+def test_qs_c3_source_inconsistent_nothing_removed_not_deployable(tmp_path, monkeypatch):
+    """FG-0: if the source's own axioms are inconsistent once visible, no
+    source axiom is removed to force consistency; the output is written,
+    marked source_inconsistent, not deployable, with culprits as evidence."""
     monkeypatch.setattr(mig, "hermit_consistent", lambda b, p: False)
     monkeypatch.setattr(mig, "verify", lambda b, p, fol=True: {
         "hermit": {"consistent": False, "ok": False, "unsat_classes": []}})
-    with pytest.raises(mig.InconsistentOutput):
-        mig.migrate(FIXTURE, tmp_path / "o.owl", tmp_path / "r.json", tmp_path / "l.json")
-    assert not (tmp_path / "o.owl").exists()
-    assert (tmp_path / "o.owl.rejected.owl").exists()
-    rep = json.loads((tmp_path / "r.json").read_text())
-    assert rep["pre_existing_inconsistency"] is True and rep["output"] is None
+    rep = mig.migrate(FIXTURE, tmp_path / "o.owl", tmp_path / "r.json", tmp_path / "l.json")
+    assert rep["source_inconsistent"] is True
+    assert rep["deployable"] is False and rep["consistent"] is False
+    assert rep["gated_out"] == 0
+    assert rep["missing_source_axioms"] == 0
+    assert (tmp_path / "o.owl").exists()
+    ref = mig.migrate(FIXTURE, tmp_path / "u.owl", do_verify=False)
+    assert rep["output_triples"] == ref["output_triples"]  # nothing removed
+    ledger = json.loads((tmp_path / "l.json").read_text())
+    assert rep["source_culprits"] >= 1
+    assert any(e["step"] == "source_inconsistent" for e in ledger)
+
+
+def test_qs_c3_text_axioms_are_never_gating_candidates():
+    m = mig.Migration(FIXTURE)
+    m.run()
+    units, _ = mig._gating_units(m)
+    text = [u for u in units if u["kind"] == "text"]
+    assert text
+    with pytest.raises(AssertionError):
+        mig._exclude_units(m, text[:1], "x", {})
+
+
+def test_qs_c3_gated_rewrite_reverts_to_source_form():
+    """A rewrite of an axiom the source reasoner could already see is
+    reverted, not deleted, when gated."""
+    m = mig.Migration(FIXTURE)
+    m.run()
+    forms = mig._source_forms(m)
+    units, _ = mig._gating_units(m)
+    rewritten = [u for u in units if u["kind"] == "axiom"
+                 and any(t in forms for t in u["triples"])]
+    assert rewritten
+    mig._exclude_units(m, rewritten[:1], "test", forms)
+    assert mig.missing_source_axioms(m) == []
 
 
 def _graph(path):
