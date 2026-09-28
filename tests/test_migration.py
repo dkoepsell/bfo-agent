@@ -2,6 +2,7 @@
 (scripts/migrate_invisible_axioms.py, SPEC-bfo-agent-quality.md section 5)."""
 import hashlib
 import json
+import os
 import subprocess
 import sys
 from pathlib import Path
@@ -133,7 +134,7 @@ def test_qs_c1_output_passes_qs_g3_gates(migrated):
 
 def test_qs_c1_input_is_read_only(tmp_path):
     before = hashlib.sha256(FIXTURE.read_bytes()).hexdigest()
-    mig.migrate(FIXTURE, tmp_path / "o.owl")
+    mig.migrate(FIXTURE, tmp_path / "o.owl", do_verify=False)
     assert hashlib.sha256(FIXTURE.read_bytes()).hexdigest() == before
 
 
@@ -154,7 +155,7 @@ def test_qs_c2_idempotent_rerun_is_byte_identical(tmp_path):
                             ("3", tmp_path / "a.owl", "c")):
         subprocess.run([sys.executable, script, str(src), str(tmp_path / f"{name}.owl")],
                        check=True, capture_output=True,
-                       env={"PYTHONHASHSEED": seed, "PATH": "/usr/bin:/bin"})
+                       env={**os.environ, "PYTHONHASHSEED": seed})
         outs.append((tmp_path / f"{name}.owl").read_bytes())
     assert outs[0] == outs[1] == outs[2]
 
@@ -203,7 +204,8 @@ def test_qs_c3_isolate_clashes_finds_the_single_offender(monkeypatch):
     monkeypatch.setattr(mig, "hermit_consistent", fake_consistent)
     bad, stats = mig.isolate_clashes(m, Path("unused"))
     assert stats["base_consistent"] is True
-    assert [a["subject"] for a in bad] == [bad_subject]
+    assert [u["axiom"]["subject"] for u in bad if u["kind"] == "restoration"] == [bad_subject]
+    assert len(bad) == 1
 
 
 def test_qs_c3_pre_existing_inconsistency_is_not_gated(monkeypatch):
@@ -212,3 +214,61 @@ def test_qs_c3_pre_existing_inconsistency_is_not_gated(monkeypatch):
     monkeypatch.setattr(mig, "hermit_consistent", lambda b, p: False)
     bad, stats = mig.isolate_clashes(m, Path("unused"))
     assert bad == [] and stats["base_consistent"] is False
+
+
+def test_qs_c3_gated_by_default_fixture_is_consistent(migrated):
+    """The default (gated) run certifies the written file with HermiT."""
+    h = migrated["report"]["verify"]["hermit"]
+    assert h["consistent"] is True and h["unsat_classes"] == []
+
+
+def test_qs_c3_inconsistent_change_is_ledgered_not_written(tmp_path, monkeypatch):
+    """A migration change that makes the ontology inconsistent is found,
+    kept out of the written file and ledgered (QS-C3 / FG-0)."""
+    clash = b'<owl:hasValue rdf:resource="http://davidkoepsell.com/bfo-agent/working#JusticeAlpha"/>'
+
+    def consistent(b):
+        return clash not in b
+
+    monkeypatch.setattr(mig, "hermit_consistent", lambda b, p: consistent(b))
+    monkeypatch.setattr(mig, "verify", lambda b, p, fol=True: {
+        "hermit": {"consistent": consistent(b), "ok": consistent(b), "unsat_classes": []}})
+    rep = mig.migrate(FIXTURE, tmp_path / "o.owl", tmp_path / "r.json", tmp_path / "l.json")
+    assert rep["gating_search"]["base_consistent"] is True
+    assert rep["gated_out"] == 1
+    assert clash not in (tmp_path / "o.owl").read_bytes()
+    assert _restrictions(_graph(tmp_path / "o.owl"), "Court") == set()
+    ledger = json.loads((tmp_path / "l.json").read_text())
+    assert any("inconsistent" in e["reason"] and e["subject"] == W + "Court"
+               for e in ledger)
+
+
+def test_qs_c3_rewritten_triple_can_be_gated():
+    """Not only restorations: a rewritten IRI (step 3) that imports a clash
+    is a gating unit too."""
+    target = (URIRef(W + "Institution"), RDFS.subClassOf, URIRef(OBO + "BFO_0000040"))
+    m = mig.Migration(FIXTURE)
+    m.run()
+    units, base = mig._gating_units(m)
+    assert target not in base
+    assert any(u["kind"] == "triple" and target in u["triples"] for u in units)
+
+
+def test_qs_c3_never_writes_an_inconsistent_file(tmp_path, monkeypatch):
+    """If the text base itself is inconsistent nothing can be gated without
+    altering the text: the output is refused, not written."""
+    monkeypatch.setattr(mig, "hermit_consistent", lambda b, p: False)
+    monkeypatch.setattr(mig, "verify", lambda b, p, fol=True: {
+        "hermit": {"consistent": False, "ok": False, "unsat_classes": []}})
+    with pytest.raises(mig.InconsistentOutput):
+        mig.migrate(FIXTURE, tmp_path / "o.owl", tmp_path / "r.json", tmp_path / "l.json")
+    assert not (tmp_path / "o.owl").exists()
+    assert (tmp_path / "o.owl.rejected.owl").exists()
+    rep = json.loads((tmp_path / "r.json").read_text())
+    assert rep["pre_existing_inconsistency"] is True and rep["output"] is None
+
+
+def _graph(path):
+    g = rdflib.Graph()
+    g.parse(str(path))
+    return g
