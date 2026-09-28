@@ -5,8 +5,9 @@ thickness contradiction, zero definition coverage, thirteen unbound classes and
 thirty-one undeclared IRIs. Nothing stopped it, because finalizing was setting a
 field.
 
-Six gates. Four cannot be waived, because an artifact that fails them is not
-internally coherent and no reason makes it so. Two can be waived with a written
+Eight gates. Six cannot be waived, because an artifact that fails them is not
+internally coherent and no reason makes it so (the two ``quality.*`` gates are
+SPEC-bfo-agent-quality QS-G3's construction tier). Two can be waived with a written
 reason, because they are judgments about completeness rather than about
 correctness, and a project may legitimately decide to freeze something
 incomplete. A waiver is recorded in the manifest and reproduced verbatim in the
@@ -33,6 +34,9 @@ GATES: dict[str, bool] = {
     "reasoner.coherent": False,
     "definitions.coverage": True,
     "mlc.anchoring": True,
+    # SPEC-bfo-agent-quality.md QS-G3: construction-tier, so never waivable.
+    "quality.construction": False,
+    "quality.definitions": False,
 }
 
 
@@ -98,6 +102,8 @@ class GateReport:
     ontology: str
     gates: list[GateResult] = field(default_factory=list)
     errors: list[str] = field(default_factory=list)
+    # QS-E3 finalization certificate, when the quality gates ran.
+    certificate: Optional[dict] = None
 
     @property
     def blocking(self) -> list[GateResult]:
@@ -119,6 +125,7 @@ class GateReport:
             "waived": [g.id for g in self.waived],
             "gates": [g.to_dict() for g in self.gates],
             "errors": list(self.errors),
+            "certificate": self.certificate,
             "note": ("A waivable gate may be waived only with a written reason, "
                      "which is recorded in the manifest and reproduced in the "
                      "report. An unexplained waiver is not possible."),
@@ -263,7 +270,41 @@ def check_finalizable(registry, name: str,
     except Exception as e:
         report.errors.append(f"mlc.anchoring could not be checked: {e}")
 
+    # --- quality.construction / quality.definitions (QS-G3, QS-E3) ---------
+    if getattr(config, "QUALITY_GATES_ENABLED", True):
+        try:
+            _check_quality(registry, name, manifest, working, report, add,
+                           run_reasoner=run_reasoner)
+        except Exception as e:
+            report.errors.append(f"quality gates could not be checked: {e}")
+
     return report
+
+
+def _check_quality(registry, name, manifest, working, report, add,
+                   *, run_reasoner: bool) -> None:
+    from .. import quality_gates
+
+    from .. import config
+
+    audit = quality_gates.run_audit(working)
+    fidelity_of = getattr(registry, "fidelity", None)
+    fidelity = (fidelity_of(name) if callable(fidelity_of)
+                else manifest.get("fidelity") or config.FIDELITY_DEFAULT)
+    fails = quality_gates.construction_failures(audit)
+    add("quality.construction", not fails,
+        "construction gates pass" if not fails else "; ".join(fails))
+    passed, detail = quality_gates.definition_check(audit, fidelity)
+    add("quality.definitions", passed, detail)
+    verify = None
+    if run_reasoner:
+        try:
+            verify = registry.get(name).verify_full()
+        except Exception as e:  # the certificate records what it could not see
+            log.warning("verify_full for certificate failed: %s", e)
+    report.certificate = quality_gates.certificate(
+        audit, fidelity=fidelity, verify=verify,
+        profiles=list(manifest.get("profiles") or []))
 
 
 def _check_imports(working: Path, config) -> tuple[str, bool, str]:
