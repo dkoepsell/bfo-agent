@@ -17,6 +17,7 @@ import io
 import logging
 import os
 import signal
+import re as _re
 import threading
 import time
 import types
@@ -27,6 +28,9 @@ from typing import Optional
 
 from owlready2 import (
     World,
+    ThingClass,
+    AnnotationProperty,
+    rdfs_subclassof,
     Thing,
     Nothing,
     ObjectProperty,
@@ -39,6 +43,7 @@ from owlready2 import (
 from . import bfo_catalog
 from . import config
 from . import owl_checks
+from . import relation_vocab
 from . import stable_iri
 from . import timing
 
@@ -175,39 +180,78 @@ class AppliedDelta:
     # (class_full_iri, parent_full_iri) subClassOf edges removed by
     # _retract_axiom_triples (faithful-mode FM-9 exclusions) to restore.
     retracted: list[tuple[str, str]] = field(default_factory=list)
+    # (subject, annotation predicate, text) literals written by QS-A6.
+    literal_triples: list[tuple[str, str, str]] = field(default_factory=list)
 
 
-def _resolve_iri(iri_suggestion: str, working_base: str) -> str:
+_OBO_ID = _re.compile(r"^(?:BFO|RO|IAO|OBI)_\d+$")
+
+# Prefixes that expand to a namespace. The OBO family routes through the
+# relation alias table (QS-B1) so RO duplicates of BFO 2020 relations land
+# on the canonical BFO IRI.
+_STD_PREFIXES = {
+    "rdf:": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs:": "http://www.w3.org/2000/01/rdf-schema#",
+    "owl:": "http://www.w3.org/2002/07/owl#",
+    "xsd:": "http://www.w3.org/2001/XMLSchema#",
+    "bfoagent:": relation_vocab.BFOAGENT_NS,
+}
+_OBO_PREFIXES = ("obo:", "bfo:", "ro:", "iao:", "obi:")
+
+
+def _resolve_iri(iri_suggestion: str, working_base: str,
+                 strict: bool = False) -> str:
     """Expand a prefixed IRI suggestion to a full IRI.
 
     Accepts forms:
       'working:Vanessa'   -> {working_base}#Vanessa
       'bfo:BFO_0000040'   -> http://purl.obolibrary.org/obo/BFO_0000040
       'BFO_0000040'       -> http://purl.obolibrary.org/obo/BFO_0000040
-      'http://...'        -> returned unchanged
+      'RO_0000052'        -> http://purl.obolibrary.org/obo/BFO_0000197 (alias)
+      'http://...'        -> returned unchanged (OBO IRIs aliased)
+
+    QS-A1: a string that cannot name an entity (an unknown CURIE prefix,
+    'working:' followed by another CURIE, a '_:' blank-node label, a
+    file:// IRI) raises ValueError when ``strict`` -- write paths pass
+    strict=True and must refuse. Read paths keep the non-raising default,
+    which returns the old concatenation; ``owl_checks.iri_is_malformed``
+    flags every such result (QS-A2), so it can never be persisted.
     """
-    if iri_suggestion.startswith(("http", "file:")):
-        return iri_suggestion
-    # Standard RDF/RDFS/OWL vocabulary prefixes. Without these, predicates like
-    # 'rdfs:subClassOf' fall through to the working namespace and silently
-    # corrupt the triple.
-    _STD = {
-        "rdf:": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
-        "rdfs:": "http://www.w3.org/2000/01/rdf-schema#",
-        "owl:": "http://www.w3.org/2002/07/owl#",
-        "obo:": BFO_OBO_PREFIX,
-    }
-    for prefix, base in _STD.items():
-        if iri_suggestion.startswith(prefix):
-            return base + iri_suggestion.split(":", 1)[1]
-    if iri_suggestion.startswith("bfo:"):
-        return BFO_OBO_PREFIX + iri_suggestion.split(":", 1)[1]
-    if iri_suggestion.startswith("working:"):
-        return f"{working_base}#{_working_fragment(iri_suggestion.split(':', 1)[1])}"
-    if iri_suggestion.startswith("BFO_"):
-        return BFO_OBO_PREFIX + iri_suggestion
+    raw = (iri_suggestion or "").strip()
+
+    def refuse(why: str, frag: str = raw) -> str:
+        if strict:
+            raise ValueError(f"cannot resolve {raw!r} to an IRI: {why}")
+        return f"{working_base}#{frag}"
+
+    if raw.startswith(("http://", "https://")):
+        return relation_vocab.canonicalize_iri(raw)
+    if raw.startswith("file:"):
+        # QS-A5: one local namespace. Legacy file:// entities are still
+        # readable; new writes are re-based onto the working namespace.
+        if strict:
+            return f"{working_base}#{_working_fragment(raw.rsplit('#', 1)[-1])}"
+        return raw
+    if raw.startswith("_:"):
+        return refuse("blank-node label is not an IRI")
+    if _OBO_ID.match(raw):
+        return relation_vocab.canonicalize_iri(BFO_OBO_PREFIX + raw)
+    for prefix in _OBO_PREFIXES:
+        if raw.startswith(prefix):
+            return relation_vocab.canonicalize_iri(
+                BFO_OBO_PREFIX + raw.split(":", 1)[1])
+    for prefix, base in _STD_PREFIXES.items():
+        if raw.startswith(prefix):
+            return base + raw.split(":", 1)[1]
+    if raw.startswith("working:"):
+        rest = raw.split(":", 1)[1]
+        if ":" in rest:
+            return refuse("'working:' followed by another prefixed name", rest)
+        return f"{working_base}#{_working_fragment(rest)}"
+    if ":" in raw:
+        return refuse("unknown prefix")
     # Bare name defaults to working namespace
-    return f"{working_base}#{_working_fragment(iri_suggestion)}"
+    return f"{working_base}#{_working_fragment(raw)}"
 
 
 _STOPWORDS = frozenset(
@@ -252,6 +296,15 @@ def _working_fragment(frag: str) -> str:
     refuses it (read paths must stay non-raising)."""
     slug = owl_checks.slugify_fragment(frag)
     return slug if slug is not None else frag
+
+
+def _entity_kind(ent) -> str:
+    """'class' | 'individual' | 'unknown' for an owlready2 entity (or None)."""
+    if isinstance(ent, ThingClass):
+        return "class"
+    if isinstance(ent, Thing):
+        return "individual"
+    return "unknown"
 
 
 def _local_name(iri: str) -> str:
@@ -308,13 +361,32 @@ class OntologyManager:
                 self.working = self.world.get_ontology(
                     self.working_path.as_uri()
                 ).load()
+                # Existing (possibly live-feeding) ontology: declare the
+                # canonical vocabulary so QS-A4 can accept it, but add no
+                # domain/range/characteristic axioms -- those could make
+                # legacy content newly unsatisfiable mid-job.
+                self._apply_vocabulary_seed(full=False)
             else:
                 self.working = self.world.get_ontology(WORKING_IRI)
                 # Import BFO by adding it to the imported_ontologies list
                 self.working.imported_ontologies.append(self.bfo)
+                # QS-B2/B4: every new ontology starts with the canonical
+                # relation and bfoagent: annotation declarations.
+                self._apply_vocabulary_seed(full=True)
                 if self.seed_path and self.seed_path.exists():
                     self._apply_seed()
                 self.save()
+
+            # QS-A5: WORKING_IRI is the only local base for new entities.
+            # A legacy file whose ontology was serialized under a file://
+            # base stays readable as-is (scripts/migrate_invisible_axioms.py
+            # repairs it); new mints go to the working namespace regardless.
+            self._mint_ns = self.working.get_namespace(WORKING_IRI + "#")
+            if self.working.base_iri.startswith("file:"):
+                log.warning(
+                    "working ontology %s has a legacy file:// base (%s); new "
+                    "entities are minted under %s#", self.working_path,
+                    self.working.base_iri, WORKING_IRI)
 
             self._sanitize_bfo_disjointness()
             self._strip_subclass_of_property()
@@ -427,7 +499,7 @@ class OntologyManager:
         characteristics (transitive, inverse, domain, range), and
         direct disjointness axioms.
         """
-        from rdflib import Graph, RDF, RDFS, OWL, URIRef
+        from rdflib import Graph
 
         g = Graph()
         try:
@@ -435,6 +507,30 @@ class OntologyManager:
         except Exception as e:
             print(f"[seed] could not parse {seed_path.name}: {e}")
             return
+        self._apply_seed_graph(g)
+
+    def _apply_vocabulary_seed(self, full: bool) -> None:
+        """QS-B2/B4: declare relation_vocab's canonical relations and the
+        bfoagent: annotation properties. ``full`` also adds their inverse,
+        domain, range and characteristics (new ontologies only)."""
+        from rdflib import Graph, RDF, RDFS, OWL
+        g = Graph()
+        g.parse(data=relation_vocab.seed_turtle(), format="turtle")
+        if full:
+            self._apply_seed_graph(g)
+            return
+        rdf_g = self.world.as_rdflib_graph()
+        with self.working:
+            for kind in (OWL.ObjectProperty, OWL.AnnotationProperty):
+                for subj in g.subjects(RDF.type, kind):
+                    if (subj, RDF.type, None) in rdf_g:
+                        continue
+                    rdf_g.add((subj, RDF.type, kind))
+                    for lbl in g.objects(subj, RDFS.label):
+                        rdf_g.add((subj, RDFS.label, lbl))
+
+    def _apply_seed_graph(self, g) -> None:
+        from rdflib import RDF, RDFS, OWL
 
         with self.working:
             # --- Class declarations ---
@@ -463,6 +559,10 @@ class OntologyManager:
                 rdf_g.add((s, RDF.type, OWL.ObjectProperty))
             for s, p, o in g.triples((None, RDF.type, OWL.TransitiveProperty)):
                 rdf_g.add((s, RDF.type, OWL.TransitiveProperty))
+            for s, p, o in g.triples((None, RDF.type, OWL.FunctionalProperty)):
+                rdf_g.add((s, RDF.type, OWL.FunctionalProperty))
+            for s, p, o in g.triples((None, RDF.type, OWL.AnnotationProperty)):
+                rdf_g.add((s, RDF.type, OWL.AnnotationProperty))
             for s, p, o in g.triples((None, OWL.inverseOf, None)):
                 rdf_g.add((s, OWL.inverseOf, o))
             for s, p, o in g.triples((None, RDFS.domain, None)):
@@ -906,17 +1006,25 @@ class OntologyManager:
         return None
 
     def _add_entity(self, ent, delta: Optional[AppliedDelta] = None):
-        iri = _resolve_iri(ent.iri_suggestion, WORKING_IRI)
+        iri = _resolve_iri(ent.iri_suggestion, WORKING_IRI, strict=True)
         if owl_checks.iri_is_malformed(iri):
             raise ValueError(
                 f"malformed IRI {iri!r} (H-1: fragment must be a valid token; "
                 f"put display text in the label)"
             )
+        if not iri.startswith(WORKING_IRI + "#"):
+            # QS-A5: entities are only ever minted/reopened in the working
+            # namespace; an OBO or foreign IRI here would redefine an
+            # imported (kernel) entity.
+            raise ValueError(
+                f"refusing to mint {iri!r} outside the working namespace; "
+                f"reuse imported entities by reference instead"
+            )
         name = _local_name(iri)
 
         # Resolve the BFO (or working) type class
-        type_full = _resolve_iri(ent.bfo_type, WORKING_IRI)
-        type_cls = self.world[type_full]
+        type_full = _resolve_iri(ent.bfo_type, WORKING_IRI, strict=True)
+        type_cls = self._live_entity(type_full)
         if type_cls is None:
             raise ValueError(f"Type class not found: {ent.bfo_type} -> {type_full}")
 
@@ -924,26 +1032,30 @@ class OntologyManager:
         # type_cls(name) REOPEN an existing entity with the same name rather
         # than create one, so we must know up front whether this apply is a
         # create (rollback: destroy) or a reuse (rollback: remove the diff).
-        existing = None
+        existing = self._resolve_entity(iri, name)
         before_is_a: list = []
         before_labels: list = []
-        if delta is not None:
-            existing = self._resolve_entity(iri, name)
-            if existing is not None:
-                before_is_a = list(existing.is_a)
-                before_labels = [str(l) for l in existing.label]
+        if delta is not None and existing is not None:
+            before_is_a = list(existing.is_a)
+            before_labels = [str(l) for l in existing.label]
+
+        # QS-A5: reopen an existing entity in its own namespace (a legacy
+        # file:// entity must not be forked into a WORKING_IRI twin); mint
+        # anything new under WORKING_IRI.
+        ns = existing.namespace if existing is not None else self._mint_ns
 
         if ent.kind == "class":
             parent_full = (
-                _resolve_iri(ent.parent_class, WORKING_IRI)
+                _resolve_iri(ent.parent_class, WORKING_IRI, strict=True)
                 if ent.parent_class
                 else type_full
             )
-            parent_cls = self.world[parent_full] or type_cls
-            obj = types.new_class(name, (parent_cls,))
+            parent_cls = self._live_entity(parent_full) or type_cls
+            with ns:
+                obj = types.new_class(name, (parent_cls,))
             obj.label = [ent.label]
         else:
-            obj = type_cls(name, namespace=self.working)
+            obj = type_cls(name, namespace=ns)
             obj.label = [ent.label]
 
         if delta is not None:
@@ -1034,9 +1146,27 @@ class OntologyManager:
                 f"restriction; skipped to avoid a dangling '#_:' axiom"
             )
 
-        s_iri = _resolve_iri(rel.s, WORKING_IRI)
-        p_iri = _resolve_iri(rel.p, WORKING_IRI)
-        o_iri = _resolve_iri(rel.o, WORKING_IRI)
+        # QS-A6: free text never becomes an IRI. A gloss on an annotation
+        # predicate is written as a literal; anywhere else it is refused
+        # with a pointer to rdfs:comment.
+        if owl_checks.is_sentence_slot(rel.s) or owl_checks.is_sentence_slot(rel.p):
+            raise ValueError(
+                f"free text in a subject/predicate slot ({rel.s!r} {rel.p!r}); "
+                f"entities and predicates must be single IRIs"
+            )
+        if owl_checks.is_sentence_slot(o_raw):
+            p_try = _resolve_iri(rel.p, WORKING_IRI)
+            if self._is_annotation_property(p_try):
+                self._add_annotation_literal(rel.s, p_try, o_raw, delta)
+                return
+            raise ValueError(
+                f"sentence {o_raw[:60]!r} is not an IRI; record it as an "
+                f"rdfs:comment on {rel.s} instead of a relation object"
+            )
+
+        s_iri = _resolve_iri(rel.s, WORKING_IRI, strict=True)
+        p_iri = _resolve_iri(rel.p, WORKING_IRI, strict=True)
+        o_iri = _resolve_iri(rel.o, WORKING_IRI, strict=True)
 
         # H-1 / X-1 write-path guard: never persist an IRI carrying whitespace
         # or a templated OWL construct name. Reasoners silently drop such
@@ -1048,6 +1178,44 @@ class OntologyManager:
                     f"axiom every reasoner would drop"
                 )
 
+        # QS-A4: predicate allowlist.
+        kind = self._predicate_kind(p_iri)
+        if kind is None:
+            raise ValueError(
+                f"predicate {p_iri!r} is not rdf:type, rdfs:subClassOf, "
+                f"owl:disjointWith, owl:equivalentClass or a declared "
+                f"object/annotation property; refused"
+            )
+
+        s_ent = self._live_entity(s_iri)
+        o_ent = self._live_entity(o_iri)
+        # Write against the entity's real IRI: legacy entities can live under
+        # a file:// base (QS-A5) while the resolver yields WORKING_IRI.
+        if s_ent is not None:
+            s_iri = s_ent.iri
+        if o_ent is not None:
+            o_iri = o_ent.iri
+
+        if kind == "object":
+            # QS-A3: object-property assertions between classes are punning,
+            # which OWL 2 DL reasoners ignore. Convert to class axioms.
+            s_kind, o_kind = _entity_kind(s_ent), _entity_kind(o_ent)
+            if s_kind == "class" and o_kind in ("class", "individual"):
+                self._add_class_level_relation(
+                    rel, s_ent, p_iri, o_ent, o_kind, delta)
+                return
+            if s_kind == "individual" and o_kind == "class":
+                raise ValueError(
+                    f"{rel.s} is an individual and {rel.o} a class: name an "
+                    f"individual of {rel.o} as the object, or state the "
+                    f"relation as a class-level restriction"
+                )
+            if s_kind != "individual" or o_kind != "individual":
+                raise ValueError(
+                    f"cannot classify {rel.s} ({s_kind}) / {rel.o} ({o_kind}) "
+                    f"as class or individual; object-property relation refused"
+                )
+
         g = self.world.as_rdflib_graph()
         triple = (URIRef(s_iri), URIRef(p_iri), URIRef(o_iri))
         # Record only triples that were genuinely NEW: rolling back a triple
@@ -1056,6 +1224,139 @@ class OntologyManager:
         g.add(triple)
         if delta is not None and not preexisting:
             delta.raw_triples.append((s_iri, p_iri, o_iri))
+
+    # ------------------------------------------- QS-A3/A4/A6 write helpers
+    _STRUCTURAL_PREDICATES = frozenset({
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+        _RDFS_SUBCLASSOF_IRI,
+        _OWL_DISJOINT_IRI,
+        "http://www.w3.org/2002/07/owl#equivalentClass",
+    })
+    # OWL 2 built-in annotation properties: declared by the language itself.
+    _BUILTIN_ANNOTATIONS = frozenset({
+        "http://www.w3.org/2000/01/rdf-schema#label",
+        "http://www.w3.org/2000/01/rdf-schema#comment",
+        "http://www.w3.org/2000/01/rdf-schema#seeAlso",
+        "http://www.w3.org/2000/01/rdf-schema#isDefinedBy",
+        "http://www.w3.org/2002/07/owl#versionInfo",
+        "http://www.w3.org/2002/07/owl#deprecated",
+    })
+
+    def _predicate_kind(self, p_iri: str) -> Optional[str]:
+        """'structural' | 'object' | 'annotation' | None (not allowed)."""
+        from rdflib import RDF, OWL, URIRef
+        if p_iri in self._STRUCTURAL_PREDICATES:
+            return "structural"
+        if p_iri in self._BUILTIN_ANNOTATIONS:
+            return "annotation"
+        g = self.world.as_rdflib_graph()
+        types_ = set(g.objects(URIRef(p_iri), RDF.type))
+        if OWL.ObjectProperty in types_:
+            return "object"
+        if OWL.AnnotationProperty in types_:
+            return "annotation"
+        return None
+
+    def _is_annotation_property(self, p_iri: str) -> bool:
+        try:
+            return self._predicate_kind(p_iri) == "annotation"
+        except Exception:
+            return False
+
+    def _live_entity(self, iri: str):
+        """The class/individual an IRI names, found by full IRI and then by
+        local name within the working ontology (legacy file:// base)."""
+        ent = self.world[iri]
+        if ent is not None:
+            return ent
+        if iri.startswith(WORKING_IRI + "#"):
+            return self._resolve_entity(iri, _local_name(iri))
+        return None
+
+    def _bfoagent_annotation(self, name: str):
+        """The owlready2 AnnotationProperty ``bfoagent:<name>`` (QS-B4),
+        declared on first use."""
+        iri = relation_vocab.bfoagent(name)
+        prop = self.world[iri]
+        if prop is None:
+            ns = self.working.get_namespace(relation_vocab.BFOAGENT_NS)
+            with ns:
+                prop = types.new_class(name, (AnnotationProperty,))
+        return prop
+
+    def _clear_axiom_annotations(self, ent, member) -> None:
+        """Drop bfoagent: axiom annotations on ``ent SubClassOf member`` so a
+        rolled-back restriction leaves no orphaned owl:Axiom behind."""
+        for name in relation_vocab.BFOAGENT_ANNOTATIONS:
+            prop = self.world[relation_vocab.bfoagent(name)]
+            if prop is None:
+                continue
+            try:
+                if prop[ent, rdfs_subclassof, member]:
+                    prop[ent, rdfs_subclassof, member] = []
+            except Exception:
+                log.debug("could not clear %s on %s", name, ent, exc_info=True)
+
+    def _add_class_level_relation(self, rel, s_cls, p_iri: str, o_ent,
+                                  o_kind: str,
+                                  delta: Optional[AppliedDelta]) -> None:
+        """QS-A3: class-to-class -> ``s SubClassOf p some|only o``;
+        class-to-individual -> ``s SubClassOf p value o``. An unstated
+        quantifier defaults to ``some`` (``value`` for an individual object)
+        and the axiom is annotated ``bfoagent:quantifierDefaulted true`` so
+        the reading stays auditable."""
+        if "obolibrary.org/obo/" in s_cls.iri:
+            raise ValueError(
+                f"refusing to add a restriction to kernel class {rel.s}; "
+                f"anchor a SOoL subclass instead"
+            )
+        prop = self.world[p_iri]
+        if prop is None:
+            raise ValueError(f"object property {p_iri!r} is not loaded")
+        q = getattr(rel, "quantifier", None)
+        defaulted = q is None
+        if o_kind == "individual":
+            if q not in (None, "value"):
+                raise ValueError(
+                    f"quantifier {q!r} needs a class object; {rel.o} is an "
+                    f"individual (use 'value')"
+                )
+            restriction = prop.value(o_ent)
+        elif q == "value":
+            raise ValueError(
+                f"quantifier 'value' needs an individual object; {rel.o} is a class"
+            )
+        elif q == "only":
+            restriction = prop.only(o_ent)
+        else:
+            restriction = prop.some(o_ent)
+
+        with self.working:
+            s_cls.is_a.append(restriction)
+            if defaulted:
+                ann = self._bfoagent_annotation("quantifierDefaulted")
+                ann[s_cls, rdfs_subclassof, restriction] = [True]
+        if delta is not None:
+            delta.is_a_added.append((s_cls.iri, restriction))
+        elif getattr(self, "_tbox_mirror", None) is not None:
+            self._refresh_mirror_subject(s_cls.iri)
+
+    def _add_annotation_literal(self, s_ref: str, p_iri: str, text: str,
+                                delta: Optional[AppliedDelta]) -> None:
+        """QS-A6: write free text as a literal annotation on the subject."""
+        from rdflib import URIRef, Literal
+        s_iri = _resolve_iri(s_ref, WORKING_IRI, strict=True)
+        if owl_checks.iri_is_malformed(s_iri):
+            raise ValueError(f"malformed IRI {s_iri!r}; annotation skipped")
+        ent = self._live_entity(s_iri)
+        if ent is None:
+            raise ValueError(f"cannot annotate unknown entity {s_ref!r}")
+        g = self.world.as_rdflib_graph()
+        triple = (URIRef(ent.iri), URIRef(p_iri), Literal(text))
+        preexisting = triple in g
+        g.add(triple)
+        if delta is not None and not preexisting:
+            delta.literal_triples.append((ent.iri, p_iri, text))
 
     # --------------------------------------------------- consistency check
     def check_consistency_dry_run(self, proposal) -> tuple[bool, str]:
@@ -1188,7 +1489,7 @@ class OntologyManager:
         references them (making later per-triple removals harmless no-ops),
         and FM-9 retractions are restored last.
         """
-        from rdflib import URIRef
+        from rdflib import URIRef, Literal
 
         with self.working:
             # 1. New entities, reverse creation order. destroy_entity removes
@@ -1208,6 +1509,7 @@ class OntologyManager:
                 try:
                     ent = self._resolve_entity(iri, _local_name(iri))
                     if ent is not None and obj in ent.is_a:
+                        self._clear_axiom_annotations(ent, obj)
                         ent.is_a.remove(obj)
                 except Exception:
                     log.warning("rollback: could not remove is_a %r from %s",
@@ -1233,6 +1535,8 @@ class OntologyManager:
 
             # 4. Raw triples (no-op if already swept by destroy_entity).
             g = self.world.as_rdflib_graph()
+            for s, p, o in delta.literal_triples:
+                g.remove((URIRef(s), URIRef(p), Literal(o)))
             for s, p, o in delta.raw_triples:
                 try:
                     g.remove((URIRef(s), URIRef(p), URIRef(o)))

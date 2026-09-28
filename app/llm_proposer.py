@@ -98,6 +98,11 @@ RULES:
    the others using the BFO object properties above (inheres in, bearer of,
    realized in, participates in, part of, ...). Prefer a relation triple over a
    new class. This is mandatory, not optional.
+   When BOTH ends of an object-property relation are classes, add
+   "quantifier": "some" (every s stands in p to some o), "only" (s stands in
+   p only to o's) or "value" (the object is a specific individual). Between
+   two individuals, omit it. Never put a sentence or gloss in "o"; object
+   slots hold one IRI.
 5. NEVER name a class for an absence, lack, failure, or negation
    (no `AbsenceOf...`, `LackOf...`, `Non...`, `Invalid...`, `Failure...`).
    Model absence as the relevant contradiction/defect asserted on an
@@ -223,6 +228,7 @@ Respond with ONLY a JSON object matching this schema:
       "s": "working:...",
       "p": "bfo:BFO_... or rdfs:subClassOf or rdf:type or owl:disjointWith",
       "o": "working:... or bfo:BFO_... -- or, on a subClassOf edge only, 'not working:X' or 'bfo:BFO_xxx some working:X'",
+      "quantifier": "some | only | value -- class-level object-property relations only; omit otherwise",
       "rationale": "..."
     }}
   ],

@@ -165,6 +165,46 @@ def slugify_fragment(frag: str) -> str | None:
     return None
 
 
+# QS-A6: the longest multi-word string still treated as a label-like name
+# (slugified into a CamelCase IRI, H-1). Anything longer is a gloss.
+_MAX_NAME_TOKENS = 5
+
+
+def is_sentence_slot(text: str) -> bool:
+    """True when an entity/relation slot holds free text (a gloss, thesis
+    statement or sentence) rather than one IRI. Sanctioned class expressions
+    and short label-like names (slugified per H-1) are not sentences."""
+    t = (text or "").strip()
+    if not t or not re.search(r"\s", t):
+        return False
+    if parse_class_expression(t) is not None:
+        return False
+    name = t.split(":", 1)[1] if re.match(r"^[A-Za-z]\w*:\S", t) else t
+    tokens = name.split()
+    if len(tokens) <= _MAX_NAME_TOKENS and slugify_fragment(name) is not None:
+        return False
+    return True
+
+
+def sentence_slot_findings(relations) -> list[dict]:
+    """QS-A6 lint (PC-rule body for the construction linter): one finding per
+    relation whose s/p/o slot is free text, suggesting rdfs:comment on the
+    subject instead. ``relations`` are objects with .s/.p/.o."""
+    out = []
+    for rel in relations or []:
+        for slot in ("s", "p", "o"):
+            val = getattr(rel, slot, "") or ""
+            if is_sentence_slot(val):
+                out.append({
+                    "slot": slot,
+                    "text": val[:120],
+                    "fix": (f"record this text as an rdfs:comment on "
+                            f"{getattr(rel, 's', '?')} instead of a "
+                            f"relation {'object' if slot == 'o' else slot}"),
+                })
+    return out
+
+
 # ---------------------------------------------------------------------------
 # Part 2 — VALIDATORS  (gate-side)
 # ---------------------------------------------------------------------------
@@ -201,13 +241,36 @@ def _is_owl_vocab(iri: str) -> bool:
             and _VALID_FRAG.match(iri[len(_OWL_NS):]) is not None)
 
 
+# The tool's own namespace (plus the legacy file:// serialization base). Kept
+# as a literal so this module stays import-free of ontology_manager.
+_LOCAL_BASES = ("http://davidkoepsell.com/bfo-agent/working", "file:")
+_LOCAL_UPPER_ID = re.compile(r"^(?:BFO|RO|IAO)_\d+$")
+
+
+def local_fragment(iri: str) -> str | None:
+    """Everything after the FIRST '#' of a local-namespace IRI, or None for
+    a non-local IRI. Splitting on the first '#' (not the last) is what
+    exposes nested bases such as 'working#file:///x/working.owl#X'."""
+    if not iri.startswith(_LOCAL_BASES) or "#" not in iri:
+        return None
+    return iri.split("#", 1)[1]
+
+
 def iri_is_malformed(iri: str) -> bool:
     """True when an already-resolved IRI carries whitespace/illegal characters
-    or a templated OWL construct name. Commit-path guard (never persist)."""
+    or a templated OWL construct name. Commit-path guard (never persist).
+
+    QS-A2: a local-namespace fragment is also malformed when it contains
+    ':' (a CURIE, nested file:// IRI or '_:' blank-node label pasted into
+    the fragment) or is an upper-ontology id (BFO/RO/IAO_nnnnnnn), which
+    must never be minted locally."""
     if _BAD_IRI_CHARS.search(iri):
         return True
     if _is_owl_vocab(iri):  # the owl vocabulary itself is fine
         return False
+    local = local_fragment(iri)
+    if local is not None and (":" in local or _LOCAL_UPPER_ID.match(local)):
+        return True
     frag = _fragment_of(iri)
     return any(t in frag for t in _OWL_CONSTRUCTS)
 

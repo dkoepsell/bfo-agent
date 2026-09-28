@@ -4,7 +4,7 @@ from datetime import datetime, timezone
 from typing import Literal, Optional
 from uuid import uuid4
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, field_validator
 
 
 def _now_iso() -> str:
@@ -58,6 +58,18 @@ class Relation(BaseModel):
     p: str = Field(..., description="Predicate IRI (BFO relation or rdfs:subClassOf)")
     o: str = Field(..., description="Object IRI or literal")
     rationale: str
+    # QS-A3: how a class-to-class object-property relation is read. None
+    # means the proposer did not say; the write path then defaults to 'some'
+    # and marks the restriction bfoagent:quantifierDefaulted.
+    quantifier: Optional[Literal["some", "only", "value"]] = None
+
+    @field_validator("quantifier", mode="before")
+    @classmethod
+    def _lenient_quantifier(cls, v):
+        # An unrecognised quantifier must not invalidate the whole proposal;
+        # treat it as unstated (the write path records the default).
+        v = (v or "").strip().lower() if isinstance(v, str) else None
+        return v if v in ("some", "only", "value") else None
 
 
 class Proposal(BaseModel):

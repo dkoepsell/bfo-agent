@@ -37,10 +37,23 @@ CANONICAL_RELATIONS: dict[str, tuple] = {
     "BFO_0000108": ("exists at", None, None, "BFO_0000008", ()),
     "BFO_0000176": ("continuant part of", "BFO_0000178", "BFO_0000002", "BFO_0000002", ("Transitive",)),
     "BFO_0000178": ("has continuant part", "BFO_0000176", "BFO_0000002", "BFO_0000002", ("Transitive",)),
+    # Generic parthood (OBO/RO usage; not in the BFO 2020 OWL release).
+    # Deliberately NOT aliased to continuant part of: the proposer uses it
+    # for occurrent parts too.
+    "BFO_0000050": ("part of", "BFO_0000051", None, None, ("Transitive",)),
+    "BFO_0000051": ("has part", "BFO_0000050", None, None, ("Transitive",)),
     # RO kept only where BFO 2020 has no counterpart.
     "RO_0000087": ("has role", None, "BFO_0000004", "BFO_0000023", ()),
     "RO_0001025": ("located in", None, "BFO_0000004", "BFO_0000004", ("Transitive",)),
 }
+
+# Relations the BFO 2020 import (ontology/bfo.owl) declares itself, with its
+# own domain/range/inverse; the seed must not redeclare these.
+BFO2020_DECLARED: frozenset[str] = frozenset({
+    "BFO_0000054", "BFO_0000055", "BFO_0000056", "BFO_0000057",
+    "BFO_0000058", "BFO_0000059", "BFO_0000066", "BFO_0000108",
+    "BFO_0000176", "BFO_0000178", "BFO_0000196", "BFO_0000197",
+})
 
 # QS-B1: non-canonical relation id -> canonical id.
 RELATION_ALIASES: dict[str, str] = {
@@ -50,8 +63,6 @@ RELATION_ALIASES: dict[str, str] = {
     "RO_0000057": "BFO_0000057",  # has participant
     "RO_0000058": "BFO_0000058",  # is concretized by
     "RO_0000059": "BFO_0000059",  # concretizes
-    "BFO_0000050": "BFO_0000176",  # BFO 2.0 part of -> continuant part of
-    "BFO_0000051": "BFO_0000178",  # BFO 2.0 has part -> has continuant part
 }
 
 # QS-B4: bfoagent: annotation properties.
@@ -95,7 +106,7 @@ def seed_turtle() -> str:
         "",
     ]
     for pid, (label, inv, dom, rng, chars) in CANONICAL_RELATIONS.items():
-        if pid.startswith("BFO_"):
+        if pid in BFO2020_DECLARED:
             continue
         types = ["owl:ObjectProperty"] + [f"owl:{c}Property" for c in chars]
         body = [f"a {', '.join(types)}", f'rdfs:label "{label}"@en']

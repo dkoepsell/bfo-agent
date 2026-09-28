@@ -188,15 +188,9 @@ def _fragment_of(iri: str) -> str:
     return iri.rsplit("/", 1)[-1]
 
 
-def iri_is_malformed(iri: str) -> bool:
-    """True when an already-resolved IRI carries whitespace/illegal characters
-    or a templated OWL construct name. Commit-path guard (never persist)."""
-    if _BAD_IRI_CHARS.search(iri):
-        return True
-    if iri.startswith(_OWL_NS):  # the owl vocabulary itself is fine
-        return False
-    frag = _fragment_of(iri)
-    return any(t in frag for t in _OWL_CONSTRUCTS)
+# QS-A2: one implementation, shared with the bfo-agent commit path, so the
+# two guards cannot drift.
+from app.owl_checks import iri_is_malformed  # noqa: E402
 
 # Privation / compound anti-pattern (mirror of bfo-agent PC-1).
 # Boundary includes ':' and whitespace so terms smuggled inside expression
