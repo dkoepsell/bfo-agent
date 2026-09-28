@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+   xmlns:bfoagent="http://davidkoepsell.com/bfo-agent/meta#"
+   xmlns:owl="http://www.w3.org/2002/07/owl#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+>
+  <rdf:Description rdf:about="http://davidkoepsell.com/sool#LegalDocument">
+    <rdfs:label xml:lang="en">legal document</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://davidkoepsell.com/sool#ClaimRight">
+    <bfoagent:alignLabel>Claim</bfoagent:alignLabel>
+    <bfoagent:alignLabel>Claim Right</bfoagent:alignLabel>
+    <bfoagent:alignLabel>Right</bfoagent:alignLabel>
+    <rdfs:subClassOf rdf:resource="http://davidkoepsell.com/sool#LegalPosition"/>
+    <rdfs:label xml:lang="en">claim right</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <owl:disjointWith rdf:resource="http://davidkoepsell.com/sool#Duty"/>
+    <owl:disjointWith rdf:resource="http://davidkoepsell.com/sool#Privilege"/>
+    <owl:disjointWith rdf:resource="http://davidkoepsell.com/sool#NoRight"/>
+    <owl:disjointWith rdf:resource="http://davidkoepsell.com/sool#Power"/>
+    <owl:disjointWith rdf:resource="http://davidkoepsell.com/sool#Liability"/>
+    <owl:disjointWith rdf:resource="http://davidkoepsell.com/sool#Immunity"/>
+    <owl:disjointWith rdf:resource="http://davidkoepsell.com/sool#Disability"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://davidkoepsell.com/sool#Disability">
+    <bfoagent:alignLabel>Legal Disability</bfoagent:alignLabel>
+    <bfoagent:alignLabel>Disability</bfoagent:alignLabel>
+    <rdfs:label xml:lang="en">disability</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://davidkoepsell.com/sool#LegalPosition"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://davidkoepsell.com/sool#Liability">
+    <rdfs:label xml:lang="en">liability</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <bfoagent:alignLabel>Liability</bfoagent:alignLabel>
+    <rdfs:subClassOf rdf:resource="http://davidkoepsell.com/sool#LegalPosition"/>
+    <owl:disjointWith rdf:resource="http://davidkoepsell.com/sool#Immunity"/>
+    <owl:disjointWith rdf:resource="http://davidkoepsell.com/sool#Disability"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://davidkoepsell.com/sool#Duty">
+    <rdfs:subClassOf rdf:resource="http://davidkoepsell.com/sool#LegalPosition"/>
+    <bfoagent:alignLabel>Obligation</bfoagent:alignLabel>
+    <bfoagent:alignLabel>Duty</bfoagent:alignLabel>
+    <rdfs:label xml:lang="en">duty</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <owl:disjointWith rdf:resource="http://davidkoepsell.com/sool#Privilege"/>
+    <owl:disjointWith rdf:resource="http://davidkoepsell.com/sool#NoRight"/>
+    <owl:disjointWith rdf:resource="http://davidkoepsell.com/sool#Power"/>
+    <owl:disjointWith rdf:resource="http://davidkoepsell.com/sool#Liability"/>
+    <owl:disjointWith rdf:resource="http://davidkoepsell.com/sool#Immunity"/>
+    <owl:disjointWith rdf:resource="http://davidkoepsell.com/sool#Disability"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://davidkoepsell.com/sool#Norm">
+    <rdfs:label xml:lang="en">norm</rdfs:label>
+    <bfoagent:designDecision>D-3 (2026-09-28): norm content is a GDC; positions are SDCs</bfoagent:designDecision>
+    <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://davidkoepsell.com/sool#Privilege">
+    <rdfs:label xml:lang="en">privilege</rdfs:label>
+    <bfoagent:alignLabel>Privilege</bfoagent:alignLabel>
+    <bfoagent:alignLabel>Liberty</bfoagent:alignLabel>
+    <bfoagent:alignLabel>Permission</bfoagent:alignLabel>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://davidkoepsell.com/sool#LegalPosition"/>
+    <owl:disjointWith rdf:resource="http://davidkoepsell.com/sool#NoRight"/>
+    <owl:disjointWith rdf:resource="http://davidkoepsell.com/sool#Power"/>
+    <owl:disjointWith rdf:resource="http://davidkoepsell.com/sool#Liability"/>
+    <owl:disjointWith rdf:resource="http://davidkoepsell.com/sool#Immunity"/>
+    <owl:disjointWith rdf:resource="http://davidkoepsell.com/sool#Disability"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://davidkoepsell.com/sool#NoRight">
+    <bfoagent:alignLabel>NoRight</bfoagent:alignLabel>
+    <bfoagent:alignLabel>No Right</bfoagent:alignLabel>
+    <bfoagent:alignLabel>No-Right</bfoagent:alignLabel>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://davidkoepsell.com/sool#LegalPosition"/>
+    <rdfs:label xml:lang="en">no-right</rdfs:label>
+    <owl:disjointWith rdf:resource="http://davidkoepsell.com/sool#Power"/>
+    <owl:disjointWith rdf:resource="http://davidkoepsell.com/sool#Liability"/>
+    <owl:disjointWith rdf:resource="http://davidkoepsell.com/sool#Immunity"/>
+    <owl:disjointWith rdf:resource="http://davidkoepsell.com/sool#Disability"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://davidkoepsell.com/sool#Power">
+    <rdfs:subClassOf rdf:resource="http://davidkoepsell.com/sool#LegalPosition"/>
+    <bfoagent:alignLabel>Legal Power</bfoagent:alignLabel>
+    <bfoagent:alignLabel>Power</bfoagent:alignLabel>
+    <rdfs:label xml:lang="en">power</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <owl:disjointWith rdf:resource="http://davidkoepsell.com/sool#Liability"/>
+    <owl:disjointWith rdf:resource="http://davidkoepsell.com/sool#Immunity"/>
+    <owl:disjointWith rdf:resource="http://davidkoepsell.com/sool#Disability"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://davidkoepsell.com/bfo-agent/meta#alignLabel">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://davidkoepsell.com/sool#LegalAct">
+    <bfoagent:alignLabel>Legal Action</bfoagent:alignLabel>
+    <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+    <rdfs:label xml:lang="en">legal act</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <owl:disjointWith rdf:resource="http://davidkoepsell.com/sool#LegalDocument"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://davidkoepsell.com/sool#Immunity">
+    <rdfs:subClassOf rdf:resource="http://davidkoepsell.com/sool#LegalPosition"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <bfoagent:alignLabel>Immunity</bfoagent:alignLabel>
+    <rdfs:label xml:lang="en">immunity</rdfs:label>
+    <owl:disjointWith rdf:resource="http://davidkoepsell.com/sool#Disability"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://davidkoepsell.com/sool#LegalPosition">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+    <rdfs:label xml:lang="en">legal position</rdfs:label>
+    <bfoagent:alignLabel>Normative Position</bfoagent:alignLabel>
+    <bfoagent:designDecision>D-2 (2026-09-28): the eight Hohfeldian positions are roles</bfoagent:designDecision>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://davidkoepsell.com/bfo-agent/meta#designDecision">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://davidkoepsell.com/sool/profiles/legal-hohfeld">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Ontology"/>
+    <rdfs:comment>Profile legal-hohfeld (SPEC-bfo-agent-quality QS-E1). Constraints over canonical SOoL classes; extracted classes are bound by label alignment. Faithful mode: violations are ledger findings only.</rdfs:comment>
+  </rdf:Description>
+</rdf:RDF>

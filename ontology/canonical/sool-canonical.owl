@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+   xmlns:bfoagent="http://davidkoepsell.com/bfo-agent/meta#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+>
+  <rdf:Description rdf:about="http://davidkoepsell.com/sool#LegalDocument">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">legal document</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://davidkoepsell.com/sool#ClaimRight">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">claim right</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://davidkoepsell.com/sool#LegalPosition"/>
+    <bfoagent:alignLabel>Claim</bfoagent:alignLabel>
+    <bfoagent:alignLabel>Right</bfoagent:alignLabel>
+    <bfoagent:alignLabel>Claim Right</bfoagent:alignLabel>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://davidkoepsell.com/sool#Disability">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">disability</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://davidkoepsell.com/sool#LegalPosition"/>
+    <bfoagent:alignLabel>Disability</bfoagent:alignLabel>
+    <bfoagent:alignLabel>Legal Disability</bfoagent:alignLabel>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://davidkoepsell.com/sool#Liability">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">liability</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://davidkoepsell.com/sool#LegalPosition"/>
+    <bfoagent:alignLabel>Liability</bfoagent:alignLabel>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://davidkoepsell.com/sool#Duty">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">duty</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://davidkoepsell.com/sool#LegalPosition"/>
+    <bfoagent:alignLabel>Duty</bfoagent:alignLabel>
+    <bfoagent:alignLabel>Obligation</bfoagent:alignLabel>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://davidkoepsell.com/sool#K_C1">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">K-C1</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://davidkoepsell.com/sool#ContradictionType"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://davidkoepsell.com/sool#Norm">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">norm</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+    <bfoagent:designDecision>D-3 (2026-09-28): norm content is a GDC; positions are SDCs</bfoagent:designDecision>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://davidkoepsell.com/sool#NoRight">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">no-right</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://davidkoepsell.com/sool#LegalPosition"/>
+    <bfoagent:alignLabel>No Right</bfoagent:alignLabel>
+    <bfoagent:alignLabel>NoRight</bfoagent:alignLabel>
+    <bfoagent:alignLabel>No-Right</bfoagent:alignLabel>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://davidkoepsell.com/sool#Target">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">target</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000001"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://davidkoepsell.com/sool#K_B2">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">K-B2</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://davidkoepsell.com/sool#ContradictionType"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://davidkoepsell.com/sool#Power">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">power</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://davidkoepsell.com/sool#LegalPosition"/>
+    <bfoagent:alignLabel>Power</bfoagent:alignLabel>
+    <bfoagent:alignLabel>Legal Power</bfoagent:alignLabel>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://davidkoepsell.com/sool#K_B3">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">K-B3</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://davidkoepsell.com/sool#ContradictionType"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://davidkoepsell.com/sool#K_D3">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">K-D3</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://davidkoepsell.com/sool#ContradictionType"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://davidkoepsell.com/sool/canonical">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Ontology"/>
+    <rdfs:comment>Canonical SOoL core for anchoring (SPEC-bfo-agent-quality QS-F1). Read-only. D-2: Hohfeldian positions are roles. D-3: norm content is a generically dependent continuant; normative positions are specifically dependent continuants.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://davidkoepsell.com/sool#ActorInRole">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">actor in role</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://davidkoepsell.com/sool#TriggeringFacts">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">triggering facts</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000001"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://davidkoepsell.com/sool#K_A2">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">K-A2</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://davidkoepsell.com/sool#ContradictionType"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://davidkoepsell.com/sool#K_D2">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">K-D2</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://davidkoepsell.com/sool#ContradictionType"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://davidkoepsell.com/bfo-agent/meta#alignLabel">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://davidkoepsell.com/sool#ContradictionDebt">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">contradiction debt</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://davidkoepsell.com/sool#SourceOfAuthority">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">source of authority</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000020"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://davidkoepsell.com/sool#LegalAct">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">legal act</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+    <bfoagent:alignLabel>Legal Action</bfoagent:alignLabel>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://davidkoepsell.com/sool#K_D1">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">K-D1</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://davidkoepsell.com/sool#ContradictionType"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://davidkoepsell.com/sool#LegalPosition">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">legal position</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+    <bfoagent:alignLabel>Normative Position</bfoagent:alignLabel>
+    <bfoagent:designDecision>D-2 (2026-09-28): the eight Hohfeldian positions are roles</bfoagent:designDecision>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://davidkoepsell.com/bfo-agent/meta#designDecision">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://davidkoepsell.com/sool#Privilege">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">privilege</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://davidkoepsell.com/sool#LegalPosition"/>
+    <bfoagent:alignLabel>Privilege</bfoagent:alignLabel>
+    <bfoagent:alignLabel>Liberty</bfoagent:alignLabel>
+    <bfoagent:alignLabel>Permission</bfoagent:alignLabel>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://davidkoepsell.com/sool#K_C3">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">K-C3</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://davidkoepsell.com/sool#ContradictionType"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://davidkoepsell.com/sool#LegalPerson">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">legal person</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://davidkoepsell.com/sool#Immunity">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">immunity</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://davidkoepsell.com/sool#LegalPosition"/>
+    <bfoagent:alignLabel>Immunity</bfoagent:alignLabel>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://davidkoepsell.com/sool#ContradictionType">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">contradiction type</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://davidkoepsell.com/sool#Remedy">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">remedy</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://davidkoepsell.com/sool#K_A1">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">K-A1</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://davidkoepsell.com/sool#ContradictionType"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://davidkoepsell.com/sool#K_C2">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">K-C2</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://davidkoepsell.com/sool#ContradictionType"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://davidkoepsell.com/sool#K_A3">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">K-A3</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://davidkoepsell.com/sool#ContradictionType"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://davidkoepsell.com/sool#LegalEffect">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">legal effect</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000020"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://davidkoepsell.com/sool#LegalActOrOmission">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">legal act or omission</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://davidkoepsell.com/sool#K_B1">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">K-B1</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://davidkoepsell.com/sool#ContradictionType"/>
+  </rdf:Description>
+</rdf:RDF>
