@@ -155,6 +155,19 @@ FEED_STALL_TIMEOUT_SECONDS = float(os.getenv("FEED_STALL_TIMEOUT_SECONDS", "1800
 # Relation-aware scaffolding: when a dependent-continuant class is committed,
 # add the constraint its BFO category requires (inheres_in / realized_in).
 ENABLE_SCAFFOLDING = os.getenv("ENABLE_SCAFFOLDING", "true").lower() == "true"
+# QS-D2: scaffolding restrictions whose filler is a top-level BFO class
+# (independent continuant, process) carry no domain content; off by default.
+SCAFFOLD_UPPER_FILLERS = os.getenv("SCAFFOLD_UPPER_FILLERS", "0").lower() in ("1", "true")
+
+# ----- Content quality (SPEC-bfo-agent-quality.md Workstream D) -----
+# PC-14 (QS-D1): new classes need a definition or definition_status.
+QS_REQUIRE_DEFINITIONS = os.getenv("QS_REQUIRE_DEFINITIONS", "true").lower() == "true"
+# QS-D3: reuse candidates offered to the proposer per new label.
+REUSE_TOP_K = int(os.getenv("REUSE_TOP_K", "5"))
+# QS-D5: drop asserted parents already entailed by another asserted parent.
+TRANSITIVE_REDUCTION = os.getenv("TRANSITIVE_REDUCTION", "true").lower() == "true"
+# QS-D6: report classes with more direct named subclasses than this.
+FANOUT_LIMIT = int(os.getenv("FANOUT_LIMIT", "40"))
 
 # ----- Construction linter (bfo-agent-spec.md §6, PC-1..PC-6) -----
 # The construction tier runs first in the gate. It rejects privation

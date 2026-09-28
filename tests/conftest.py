@@ -16,3 +16,7 @@ os.environ.setdefault("DB_PATH", _db_path)
 # Deterministic-per-run crypto + session secrets so BYOK tests can run.
 os.environ.setdefault("BYOK_ENCRYPTION_KEY", Fernet.generate_key().decode())
 os.environ.setdefault("SECRET_KEY", "test-secret")
+
+# Fixtures across the suite predate QS-D1 and mint classes without
+# definitions; PC-14 tests enable the rule explicitly.
+os.environ.setdefault("QS_REQUIRE_DEFINITIONS", "false")

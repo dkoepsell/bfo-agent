@@ -34,7 +34,9 @@ from typing import Optional
 from . import bfo_catalog
 from . import config
 from . import construction_linter
+from . import content_quality
 from . import gate_structural
+from . import relation_vocab
 from .gate_structural import (  # noqa: F401  (re-exported; scaffolding/repair use them)
     _collect_class_parents,
     _is_subclass_predicate,
@@ -126,6 +128,7 @@ class GateResult:
 def construction_check(
     proposal, strict_closed_vocab: bool = False,
     chain_active: bool = False, findings_out: Optional[list] = None,
+    manager=None, fidelity: str = "curated",
 ) -> Optional[GateResult]:
     """Construction tier: run the PC-1..PC-13 prohibited-construction linter.
 
@@ -142,7 +145,7 @@ def construction_check(
     """
     report = construction_linter.lint(
         proposal, strict_closed_vocab=strict_closed_vocab,
-        chain_active=chain_active,
+        chain_active=chain_active, manager=manager, fidelity=fidelity,
     )
     if findings_out is not None and report.findings:
         findings_out.extend(report.finding_dicts())
@@ -264,6 +267,7 @@ def gate(
     exclude_axioms: Optional[list[dict]] = None,
     chain_active: bool = False,
     findings_out: Optional[list] = None,
+    fidelity: str = "curated",
 ) -> GateResult:
     """Run the gate. Construction first (cheapest), then lint, then reasoner.
 
@@ -277,6 +281,7 @@ def gate(
         construction = construction_check(
             proposal, strict_closed_vocab=strict_closed_vocab,
             chain_active=chain_active, findings_out=findings_out,
+            manager=manager, fidelity=fidelity,
         )
         if construction is not None:
             return construction
@@ -447,11 +452,24 @@ def scaffolding_directives(proposal, manager) -> list[dict]:
     disposition/function, propose the constraint that category requires so the
     ontology constrains rather than merely classifies.
 
+    QS-D2: a directive is emitted only when the proposal itself relates the
+    class to a domain-level (non-BFO) filler by the category's relation;
+    top-level BFO fillers are emitted only with SCAFFOLD_UPPER_FILLERS=1.
+
     Returns a list of directives:
       {class_ref, prop, filler, kind, question}
     """
     proposed_types = _proposed_class_types(proposal)
     directives: list[dict] = []
+    domain_fillers = _domain_fillers(proposal)
+
+    def _filler(class_ref: str, prop: str, upper: str) -> Optional[str]:
+        # QS-D2: only a domain-level filler carries content. The upper BFO
+        # filler is a legacy fallback behind SCAFFOLD_UPPER_FILLERS.
+        f = domain_fillers.get((_local(class_ref), prop))
+        if f is not None:
+            return f
+        return upper if config.SCAFFOLD_UPPER_FILLERS else None
 
     for ent in proposal.entities:
         if getattr(ent, "kind", None) != "class":
@@ -466,25 +484,34 @@ def scaffolding_directives(proposal, manager) -> list[dict]:
 
         for anchor in anchors:
             if bfo_catalog.is_descendant_of(anchor, bfo_catalog.QUALITY):
+                filler = _filler(class_ref, _INHERES_IN, bfo_catalog.INDEPENDENT_CONTINUANT)
+                if filler is None:
+                    break
                 directives.append({
                     "class_ref": class_ref, "prop": _INHERES_IN,
-                    "filler": bfo_catalog.INDEPENDENT_CONTINUANT, "kind": "quality",
+                    "filler": filler, "kind": "quality",
                     "question": f"Which independent continuant bears {ent.label}?",
                 })
                 break
             if bfo_catalog.is_descendant_of(anchor, bfo_catalog.ROLE):
+                filler = _filler(class_ref, _REALIZED_IN, bfo_catalog.PROCESS)
+                if filler is None:
+                    break
                 directives.append({
                     "class_ref": class_ref, "prop": _REALIZED_IN,
-                    "filler": bfo_catalog.PROCESS, "kind": "role",
+                    "filler": filler, "kind": "role",
                     "question": f"In which process is the role {ent.label} realized, "
                                 f"and what bears it?",
                 })
                 break
             if bfo_catalog.is_descendant_of(anchor, bfo_catalog.DISPOSITION):
                 is_function = bfo_catalog.is_descendant_of(anchor, bfo_catalog.FUNCTION)
+                filler = _filler(class_ref, _REALIZED_IN, bfo_catalog.PROCESS)
+                if filler is None:
+                    break
                 directives.append({
                     "class_ref": class_ref, "prop": _REALIZED_IN,
-                    "filler": bfo_catalog.PROCESS,
+                    "filler": filler,
                     "kind": "function" if is_function else "disposition",
                     "question": (
                         f"In which process is {ent.label} realized? Was its bearer "
@@ -506,8 +533,25 @@ def apply_scaffolding(directives: list[dict], manager) -> list[dict]:
         if manager.has_restriction_on(d["class_ref"], d["prop"]):
             continue
         if manager.add_existential_restriction(d["class_ref"], d["prop"], d["filler"]):
+            content_quality.mark_scaffolded(manager, d["class_ref"], d["prop"])
             applied.append(d)
     return applied
+
+
+def _domain_fillers(proposal) -> dict[tuple[str, str], str]:
+    """(class local name, scaffolding prop) -> non-BFO filler the proposal
+    relates the class to by that relation (canonicalized through the
+    QS-B1 alias table, so RO_0000052 counts as inheres in)."""
+    out: dict[tuple[str, str], str] = {}
+    for rel in getattr(proposal, "relations", []) or []:
+        p = relation_vocab.canonical_relation_id(_local(rel.p or ""))
+        if p not in (_INHERES_IN, _REALIZED_IN):
+            continue
+        o = (rel.o or "").strip()
+        if not o or bfo_catalog.normalize_fragment(o) in bfo_catalog.BFO_PARENT:
+            continue
+        out.setdefault((_local(rel.s or ""), p), o)
+    return out
 
 
 def _base_view_coherent(manager, proposal, exclude_axioms) -> bool:
@@ -539,6 +583,7 @@ def run_with_policy(
     exclude_axioms: Optional[list[dict]] = None,
     chain_active: bool = False,
     findings_out: Optional[list] = None,
+    fidelity: str = "curated",
 ) -> GateRun:
     """Run the gate and apply the configured policy on a clash.
 
@@ -562,6 +607,7 @@ def run_with_policy(
             # Record chain findings from the ACCEPTED attempt only: a rejected
             # draft's findings describe a construction we threw away.
             findings_out=attempt_findings,
+            fidelity=fidelity,
         )
         events.append({
             "attempt": attempt,
