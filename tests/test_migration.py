@@ -299,6 +299,31 @@ def test_qs_c3_gated_rewrite_reverts_to_source_form():
     assert mig.missing_source_axioms(m) == []
 
 
+def test_qs_c3_unsat_roots_found_inside_subclass_cycles():
+    """Classes in a subclass cycle are mutual ancestors; the root finder must
+    still pick them (GeometryofTheGood had 149 such classes and gating
+    stalled with no roots)."""
+    m = mig.Migration(FIXTURE)
+    m.run()
+    a, b, c = (URIRef(W + x) for x in ("CycA", "CycB", "CycChild"))
+    m.out |= {(a, RDFS.subClassOf, b), (b, RDFS.subClassOf, a), (c, RDFS.subClassOf, a)}
+    units = [{"kind": "axiom", "triples": {(a, RDFS.subClassOf, b)}},
+             {"kind": "axiom", "triples": {(c, RDFS.subClassOf, a)}},
+             {"kind": "text", "triples": {(b, RDFS.subClassOf, a)}}]
+    hit = mig._primary_unsat_units(m, units, {str(a), str(b), str(c)})
+    assert hit == [units[0]]  # the cycle member's change; not the child, not text
+
+
+def test_qs_c3_gated_part_of_split_reverts_to_source_form():
+    m = mig.Migration(FIXTURE)
+    m.run()
+    forms = mig._source_forms(m)
+    split = (URIRef(W + "JusticeAlpha"), URIRef(OBO + "BFO_0000176"), URIRef(W + "SupremeCourt"))
+    assert split in m.out and split in forms
+    mig._exclude_units(m, [{"kind": "axiom", "triples": {split}}], "test", forms)
+    assert mig.missing_source_axioms(m) == []
+
+
 def _graph(path):
     g = rdflib.Graph()
     g.parse(str(path))

@@ -1041,7 +1041,15 @@ def _primary_unsat_units(mig: Migration, units: list, new_unsat: set) -> list:
                     todo.append(q)
         return seen
 
-    roots = {c for c in new_unsat if not (ancestors(c) & new_unsat)}
+    # Root = no unsat ancestor outside its own subclass cycle (a cycle makes
+    # its members mutual ancestors, so a plain "no unsat ancestor" test finds
+    # no roots at all -- 149 classes in GeometryofTheGood sit in cycles).
+    anc = {c: ancestors(c) for c in new_unsat}
+    roots = set()
+    for c in new_unsat:
+        cycle = {d for d in anc[c] & new_unsat if c in anc.get(d, ())}
+        if not ((anc[c] & new_unsat) - cycle - {c}):
+            roots.add(c)
     primary = {c for c in roots if not (fillers.get(c, set()) & new_unsat)} or roots
     return [u for u in units if u["kind"] != "text"
             and any(not isinstance(t[0], BNode) and str(t[0]) in primary
@@ -1058,9 +1066,14 @@ def _source_forms(mig: Migration) -> dict:
         if not _source_visible(mig, t):
             continue
         n = tuple(mig.norm(x) for x in t)
-        if any(isinstance(x, Text) for x in n) or n == t:
+        if any(isinstance(x, Text) for x in n):
             continue
-        rev[n].add(t)
+        pid = str(t[1])[len(OBO):] if str(t[1]).startswith(OBO) else None
+        if pid in PART_OF_SPLIT:  # split in step 6, not by norm()
+            for q in PART_OF_SPLIT[pid]:
+                rev[(n[0], URIRef(OBO + q), n[2])].add(t)
+        elif n != t:
+            rev[n].add(t)
     mig.counts = saved
     return rev
 
