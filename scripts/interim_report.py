@@ -248,6 +248,24 @@ def ontology_stats() -> dict:
     }
 
 
+def quality_section(working: Path) -> str:
+    """Audit summary plus the QS-G3 finalization verdict, as markdown."""
+    if not working.exists():
+        return "_working ontology not found; audit skipped_"
+    try:
+        sys.path.insert(0, str(ROOT))
+        from app import quality_gates
+
+        report = quality_gates.run_audit(working)
+        fails = quality_gates.construction_failures(report)
+        verdict = ("construction gates pass" if not fails
+                   else "finalization blocked: " + "; ".join(fails))
+        return ("```\n" + quality_gates.audit_summary(report) + "\n```\n\n"
+                f"**QS-G3:** {verdict}")
+    except Exception as e:
+        return f"_quality audit failed: {e}_"
+
+
 def render_markdown(session: Path, summary: dict, ontstats: dict) -> str:
     lines: list[str] = []
     lines.append(f"# BFO-Agent Interim Report\n")
@@ -291,6 +309,9 @@ def render_markdown(session: Path, summary: dict, ontstats: dict) -> str:
     lines.append("\n## Ontology file stats\n")
     for k, v in ontstats.items():
         lines.append(f"- **{k}**: {v}")
+
+    lines.append("\n## Quality audit (SPEC-bfo-agent-quality QS-G2)\n")
+    lines.append(quality_section(WORKING))
 
     attach = summary.get("attach_overall") or {}
     if attach.get("subClassOf_working", 0) + attach.get("subClassOf_bfo", 0) > 0:

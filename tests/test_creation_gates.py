@@ -44,10 +44,12 @@ def graph(body: str) -> rdflib.Graph:
 
 def test_four_gates_cannot_be_waived():
     """An artifact failing these is not internally coherent, and no written
-    reason makes it so."""
+    reason makes it so. The two quality.* gates are construction-tier
+    (SPEC-bfo-agent-quality QS-G3) and equally unwaivable."""
     assert {g for g, waivable in GATES.items() if not waivable} == {
         "chain.consistent", "declarations.complete",
-        "imports.resolve", "reasoner.coherent"}
+        "imports.resolve", "reasoner.coherent",
+        "quality.construction", "quality.definitions"}
 
 
 def test_two_gates_are_waivable():

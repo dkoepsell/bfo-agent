@@ -26,6 +26,7 @@ from rdflib import OWL, RDF, RDFS, BNode, URIRef
 OBO = "http://purl.obolibrary.org/obo/"
 IAO_DEF = URIRef(OBO + "IAO_0000115")
 SKOS_DEF = URIRef("http://www.w3.org/2004/02/skos/core#definition")
+DEF_STATUS = URIRef("http://davidkoepsell.com/bfo-agent/meta#definitionStatus")
 STD_NS = (str(RDF), str(RDFS), str(OWL), "http://www.w3.org/2001/XMLSchema#")
 ANNOTATION_PREDICATES = {
     RDFS.label, RDFS.comment, RDFS.seeAlso, RDFS.isDefinedBy, IAO_DEF, SKOS_DEF,
@@ -192,6 +193,11 @@ def audit(path: str) -> dict:
     # ---- annotations and labels ------------------------------------------
     defined = sum(1 for c in local
                   if any((c, p, None) in g for p in (IAO_DEF, SKOS_DEF)))
+    # QS-D1/G3: in faithful mode "absent-in-source" counts as covered.
+    absent_in_source = sum(
+        1 for c in local
+        if not any((c, p, None) in g for p in (IAO_DEF, SKOS_DEF))
+        and any(str(o) == "absent-in-source" for o in g.objects(c, DEF_STATUS)))
     commented = sum(1 for c in local if (c, RDFS.comment, None) in g)
     meta_labels = sorted(label(g, x) for x in local | inds if META_LABEL.search(label(g, x)))
     clusters = collections.defaultdict(list)
@@ -224,6 +230,9 @@ def audit(path: str) -> dict:
         "restrictions_domain_filler": domain_filler,
         "domain_filler_share": round(domain_filler / max(1, upper_filler + domain_filler), 4),
         "definition_coverage": round(defined / max(1, len(local)), 4),
+        "definition_coverage_faithful": round(
+            (defined + absent_in_source) / max(1, len(local)), 4),
+        "definitions_absent_in_source": absent_in_source,
         "comment_coverage": round(commented / max(1, len(local)), 4),
         "multi_parent_classes": multi_parent,
         "redundant_parent_assertions": redundant,

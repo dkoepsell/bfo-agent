@@ -657,6 +657,8 @@ class OntologyRegistry:
             if not gate_report.finalizable:
                 raise FinalizeGateError(name, gate_report)
             manifest["finalize_gates"] = gate_report.to_dict()
+            if gate_report.certificate is not None:
+                manifest["quality_certificate"] = gate_report.certificate
 
         manifest["status"] = "finalized"
         from datetime import datetime, timezone

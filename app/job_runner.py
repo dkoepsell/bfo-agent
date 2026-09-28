@@ -16,15 +16,19 @@ body = message, "Title" header = subject).
 
 from __future__ import annotations
 
+import logging
 import threading
 import time
 import urllib.request
 from datetime import datetime, timezone
-from typing import Callable
+from pathlib import Path
+from typing import Callable, Optional
 
 from . import config
 from . import jobs as jobs_store
 from .storage import log_event
+
+log = logging.getLogger(__name__)
 
 # Stop a run (and flag the job paused) after this many claims in a row
 # end in error — that pattern means the API/reasoner is down, not that
@@ -133,6 +137,76 @@ def resume_incomplete(feed_fn: Callable[[str, bool], dict],
     return resumed
 
 
+def _job_working_path(job_id: str) -> Path:
+    """The working.owl of the library that owns this job (jobs live in
+    ``<library>/jobs/``); the active ontology for the legacy layout."""
+    lib = jobs_store._job_path(job_id).parent.parent
+    candidate = lib / "working.owl"
+    return candidate if candidate.exists() else Path(config.WORKING_PATH)
+
+
+def _quality_audit_on_complete(job_id: str, flush_fn=None) -> Optional[str]:
+    """QS-G2: audit the saved ontology at job completion, attach the JSON to
+    the job record, and return a one-line summary for the notification.
+    Evidence only; never fails the job."""
+    if not getattr(config, "QUALITY_AUDIT_ON_COMPLETE", True):
+        return None
+    try:
+        from . import quality_gates
+
+        if flush_fn is not None:
+            flush_fn(job_id)  # audit what is on disk, not a stale save
+        working = _job_working_path(job_id)
+        report = quality_gates.run_audit(working)
+        record = {"at": _now(), **report}
+        line = quality_gates.summary_line(report)
+        extras = _canonical_and_profile_findings(working)
+        record.update(extras)
+        if extras.get("canonical_coverage"):
+            gaps = extras["canonical_coverage"]["zero_coverage"]
+            line += f"; canonical gaps {len(gaps)}"
+        if "profile_findings" in extras:
+            line += f"; profile findings {len(extras['profile_findings'])}"
+        job = jobs_store.load_job(job_id)
+        job["quality_audit"] = record
+        jobs_store.save_job(job)
+        return line
+    except Exception as e:
+        log.exception("quality audit failed for job %s", job_id)
+        return f"quality audit failed: {e}"
+
+
+def _canonical_and_profile_findings(working: Path) -> dict:
+    """QS-F3 canonical coverage and QS-E1 profile findings for the job
+    report. Findings only: nothing is written to the ontology or ledger
+    here (the commit path owns ledgering)."""
+    out: dict = {}
+    manifest_path = working.parent / "manifest.json"
+    if not manifest_path.exists():
+        return out
+    import json
+
+    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    try:
+        from . import canonical
+
+        cov = canonical.library_coverage(working, manifest)
+        if cov is not None:
+            out["canonical_coverage"] = cov
+    except Exception as e:
+        out["canonical_coverage_error"] = str(e)
+    if manifest.get("profiles"):
+        try:
+            from rdflib import Graph
+            from . import profiles
+
+            g = Graph(); g.parse(str(working))
+            out["profile_findings"] = profiles.check_profiles(g, manifest)
+        except Exception as e:
+            out["profile_findings_error"] = str(e)
+    return out
+
+
 def _run(job_id: str, feed_fn, auto_accept: bool, state: dict,
          on_complete=None, resume_verify_fn=None, flush_fn=None) -> None:
     session_id = None
@@ -203,6 +277,9 @@ def _run(job_id: str, feed_fn, auto_accept: bool, state: dict,
                         extra = on_complete(job_id, state) or ""
                     except Exception as e:  # never let the hook kill the run
                         extra = f"(post-run hook failed: {e})"
+                quality = _quality_audit_on_complete(job_id, flush_fn)
+                if quality:
+                    extra = f"{extra}\n{quality}" if extra else quality
                 flagged_note = (
                     f"flagged {state['flagged']}, " if state["flagged"] else ""
                 )
