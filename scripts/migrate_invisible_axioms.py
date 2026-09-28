@@ -206,6 +206,14 @@ class Migration:
 
     def add_restriction_axiom(self, step, s, pred, prop, quant, filler,
                               neg=False, defaulted=False, origin=None):
+        if str(s).startswith(OBO):
+            # Never mutate an imported BFO/RO/IAO kernel class (same rule as
+            # OntologyManager._add_relation); the claim goes to the ledger.
+            self.counts[step]["kernel_subject_refused"] += 1
+            self.led(step, s, prop, filler,
+                     f"restriction on kernel class refused ({quant}); "
+                     f"anchor a local subclass instead")
+            return False
         r = self.restriction(prop, quant, filler, neg)
         self.out.add((s, pred, r))
         if defaulted:
@@ -215,6 +223,7 @@ class Migration:
             "step": step, "subject": str(s), "predicate": str(pred),
             "restriction": (str(prop), quant, _txt(filler), neg),
             "origin": origin, "node": r})
+        return True
 
     def comment(self, s, text: str, from_pred) -> None:
         lit = Literal(text)
@@ -270,6 +279,11 @@ class Migration:
                          "subClassOf an rdf: vocabulary term")
                 continue
             if not isinstance(no, Text):
+                if ns == no and np_ in (RDFS.subClassOf, OWL.equivalentClass):
+                    # e.g. working#BFO_0000040 subClassOf BFO_0000040: a
+                    # tautology after step 3, and a cycle owlready2 warns on.
+                    self.counts["3_upper_ids_and_aliases"]["self_subclass_dropped"] += 1
+                    continue
                 self.out.add((ns, np_, no))
                 continue
             self._text_object(ns, np_, no, s, p, o, known, subj_has_restriction)
@@ -286,10 +300,10 @@ class Migration:
             hit = mp.parse_bnode_label(no.text, known)
             if hit:
                 rel, frag = hit
-                self.add_restriction_axiom(
+                if self.add_restriction_axiom(
                     "7_bnode_label_iris", ns, pred, URIRef(OBO + rel), "some",
-                    URIRef(W + frag), defaulted=True, origin=no.text)
-                self.counts["7_bnode_label_iris"]["recovered"] += 1
+                    URIRef(W + frag), defaulted=True, origin=no.text):
+                    self.counts["7_bnode_label_iris"]["recovered"] += 1
             elif has_r.get(str(ns)):
                 self.counts["7_bnode_label_iris"]["resolved_to_existing"] += 1
             else:
@@ -316,10 +330,10 @@ class Migration:
             prop, filler = self.resolve(parsed["prop"]), self.resolve(parsed["filler"])
             if prop is not None and filler is not None and \
                     prop[len(OBO):] not in BFO_CLASS_IDS:
-                self.add_restriction_axiom(
+                if self.add_restriction_axiom(
                     "4_restriction_text", ns, pred, prop, parsed["quant"], filler,
-                    neg=parsed["neg"], defaulted=parsed["defaulted"], origin=text)
-                self.counts["4_restriction_text"]["restored"] += 1
+                    neg=parsed["neg"], defaulted=parsed["defaulted"], origin=text):
+                    self.counts["4_restriction_text"]["restored"] += 1
                 if pred != np_:
                     self.counts["4_restriction_text"]["via_other_predicate"] += 1
                 return
@@ -423,15 +437,15 @@ class Migration:
                         decl_i.add(x)
                         self.decls_added += 1
             elif ks == "C" and ko == "C":
-                self.add_restriction_axiom("6_punned_triples", s, RDFS.subClassOf,
+                if self.add_restriction_axiom("6_punned_triples", s, RDFS.subClassOf,
                                            p, "some", o, defaulted=True,
-                                           origin="class-class triple")
-                self.counts["6_punned_triples"]["class_class_to_some"] += 1
+                                           origin="class-class triple"):
+                    self.counts["6_punned_triples"]["class_class_to_some"] += 1
             elif ks == "C" and ko == "I":
-                self.add_restriction_axiom("6_punned_triples", s, RDFS.subClassOf,
+                if self.add_restriction_axiom("6_punned_triples", s, RDFS.subClassOf,
                                            p, "value", o, defaulted=True,
-                                           origin="class-individual triple")
-                self.counts["6_punned_triples"]["class_individual_to_hasValue"] += 1
+                                           origin="class-individual triple"):
+                    self.counts["6_punned_triples"]["class_individual_to_hasValue"] += 1
             else:
                 reason = ("individual related to a class; needs an individual of "
                           "that class or a class-level restriction"
