@@ -1056,7 +1056,7 @@ def _primary_unsat_units(mig: Migration, units: list, new_unsat: set,
            and any(not isinstance(t[0], BNode) and str(t[0]) in primary
                    for t in u["triples"])]
     if return_roots:
-        return own, primary, {c: ancestors(c) for c in primary}
+        return own, roots, {c: ancestors(c) for c in roots}
     return own
 
 
@@ -1070,11 +1070,25 @@ def _ancestor_culprits(mig: Migration, units: list, root: str, ancestors: set,
     consistency of the output plus one fresh individual typed C."""
     probe = (URIRef(W + "_qsProbe"), RDF.type, URIRef(root))
     decl = (URIRef(W + "_qsProbe"), RDF.type, OWL.NamedIndividual)
-    cands = sorted((u for u in units if u["kind"] != "text" and any(
+    changes = [u for u in units if u["kind"] != "text"]
+    near = sorted((u for u in changes if any(
         not isinstance(t[0], BNode) and str(t[0]) in ancestors for t in u["triples"])),
         key=_unit_key)
+    hit = _sat_bisect(mig, near, probe, decl, bfo_path, stats) if near else None
+    if hit is None:
+        # Not (only) the ancestors: property declarations, fillers, or other
+        # classes' rewrites. Search every migration change.
+        hit = _sat_bisect(mig, sorted(changes, key=_unit_key), probe, decl,
+                          bfo_path, stats)
+    return hit or []
+
+
+def _sat_bisect(mig: Migration, cands: list, probe, decl, bfo_path: Path,
+                stats: dict):
+    """Changes among ``cands`` whose presence keeps the probe's class unsat,
+    or None if removing all of them does not make it satisfiable."""
     if not cands:
-        return []
+        return None
     drop = set().union(*(u["triples"] for u in cands))
     base = (mig.out - drop) | {probe, decl}
 
@@ -1084,7 +1098,7 @@ def _ancestor_culprits(mig: Migration, units: list, root: str, ancestors: set,
         return hermit_consistent(serialize_deterministic(base | extra), bfo_path) is True
 
     if not sat([]):
-        return []  # not caused by ancestor changes; leave it (reported)
+        return None
     kept, bad = [], []
 
     def add(items):
@@ -1099,7 +1113,9 @@ def _ancestor_culprits(mig: Migration, units: list, root: str, ancestors: set,
             add(items[:mid])
             add(items[mid:])
 
-    add(list(range(len(cands))))
+    k = max(8, len(cands) // 24)
+    for n in range(0, len(cands), k):
+        add(list(range(n, min(n + k, len(cands)))))
     return [cands[i] for i in sorted(bad)]
 
 
