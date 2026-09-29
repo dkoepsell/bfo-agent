@@ -2,6 +2,7 @@
 (scripts/migrate_invisible_axioms.py, SPEC-bfo-agent-quality.md section 5)."""
 import hashlib
 import json
+import os
 import subprocess
 import sys
 from pathlib import Path
@@ -133,7 +134,7 @@ def test_qs_c1_output_passes_qs_g3_gates(migrated):
 
 def test_qs_c1_input_is_read_only(tmp_path):
     before = hashlib.sha256(FIXTURE.read_bytes()).hexdigest()
-    mig.migrate(FIXTURE, tmp_path / "o.owl")
+    mig.migrate(FIXTURE, tmp_path / "o.owl", do_verify=False)
     assert hashlib.sha256(FIXTURE.read_bytes()).hexdigest() == before
 
 
@@ -154,7 +155,7 @@ def test_qs_c2_idempotent_rerun_is_byte_identical(tmp_path):
                             ("3", tmp_path / "a.owl", "c")):
         subprocess.run([sys.executable, script, str(src), str(tmp_path / f"{name}.owl")],
                        check=True, capture_output=True,
-                       env={"PYTHONHASHSEED": seed, "PATH": "/usr/bin:/bin"})
+                       env={**os.environ, "PYTHONHASHSEED": seed})
         outs.append((tmp_path / f"{name}.owl").read_bytes())
     assert outs[0] == outs[1] == outs[2]
 
@@ -176,7 +177,7 @@ def test_qs_c3_verify_and_faithful_gating(tmp_path, monkeypatch):
     rep = mig.migrate(FIXTURE, tmp_path / "o.owl", tmp_path / "r.json",
                       tmp_path / "l.json", do_verify=True)
     assert rep["gated_out"] == 1
-    assert rep["unsat_pre_existing"] == 0
+    assert rep["unsat_source"] == 0
     assert rep["verify"]["hermit"]["unsat_classes"] == []
     assert rep["verify_before_gating"]["hermit"]["unsat_classes"] == [W + "Adjudication"]
     g = rdflib.Graph()
@@ -203,7 +204,8 @@ def test_qs_c3_isolate_clashes_finds_the_single_offender(monkeypatch):
     monkeypatch.setattr(mig, "hermit_consistent", fake_consistent)
     bad, stats = mig.isolate_clashes(m, Path("unused"))
     assert stats["base_consistent"] is True
-    assert [a["subject"] for a in bad] == [bad_subject]
+    assert [u["axiom"]["subject"] for u in bad if u["kind"] == "restoration"] == [bad_subject]
+    assert len(bad) == 1
 
 
 def test_qs_c3_pre_existing_inconsistency_is_not_gated(monkeypatch):
@@ -212,3 +214,144 @@ def test_qs_c3_pre_existing_inconsistency_is_not_gated(monkeypatch):
     monkeypatch.setattr(mig, "hermit_consistent", lambda b, p: False)
     bad, stats = mig.isolate_clashes(m, Path("unused"))
     assert bad == [] and stats["base_consistent"] is False
+
+
+def test_qs_c3_gated_by_default_fixture_is_consistent(migrated):
+    """The default (gated) run certifies the written file with HermiT."""
+    h = migrated["report"]["verify"]["hermit"]
+    assert h["consistent"] is True and h["unsat_classes"] == []
+
+
+def test_qs_c3_inconsistent_change_is_ledgered_not_written(tmp_path, monkeypatch):
+    """A migration change that makes the ontology inconsistent is found,
+    kept out of the written file and ledgered (QS-C3 / FG-0)."""
+    clash = b'<owl:hasValue rdf:resource="http://davidkoepsell.com/bfo-agent/working#JusticeAlpha"/>'
+
+    def consistent(b):
+        return clash not in b
+
+    monkeypatch.setattr(mig, "hermit_consistent", lambda b, p: consistent(b))
+    monkeypatch.setattr(mig, "verify", lambda b, p, fol=True: {
+        "hermit": {"consistent": consistent(b), "ok": consistent(b), "unsat_classes": []}})
+    rep = mig.migrate(FIXTURE, tmp_path / "o.owl", tmp_path / "r.json", tmp_path / "l.json")
+    assert rep["gating_search"]["base_consistent"] is True
+    assert rep["gated_out"] == 1
+    assert rep["deployable"] is True
+    assert clash not in (tmp_path / "o.owl").read_bytes()
+    assert _restrictions(_graph(tmp_path / "o.owl"), "Court") == set()
+    ledger = json.loads((tmp_path / "l.json").read_text())
+    assert any("inconsistent" in e["reason"] and e["subject"] == W + "Court"
+               for e in ledger)
+
+
+def test_qs_c3_rewritten_triple_can_be_gated():
+    """Not only restorations: a rewritten IRI (step 3) that imports a clash
+    is a gating unit too."""
+    target = (URIRef(W + "Institution"), RDFS.subClassOf, URIRef(OBO + "BFO_0000040"))
+    m = mig.Migration(FIXTURE)
+    m.run()
+    units, base = mig._gating_units(m)
+    assert target not in base
+    assert any(u["kind"] == "axiom" and target in u["triples"] for u in units)
+
+
+def test_qs_c3_source_inconsistent_nothing_removed_not_deployable(tmp_path, monkeypatch):
+    """FG-0: if the source's own axioms are inconsistent once visible, no
+    source axiom is removed to force consistency; the output is written,
+    marked source_inconsistent, not deployable, with culprits as evidence."""
+    monkeypatch.setattr(mig, "hermit_consistent", lambda b, p: False)
+    monkeypatch.setattr(mig, "verify", lambda b, p, fol=True: {
+        "hermit": {"consistent": False, "ok": False, "unsat_classes": []}})
+    rep = mig.migrate(FIXTURE, tmp_path / "o.owl", tmp_path / "r.json", tmp_path / "l.json")
+    assert rep["source_inconsistent"] is True
+    assert rep["deployable"] is False and rep["consistent"] is False
+    assert rep["gated_out"] == 0
+    assert rep["missing_source_axioms"] == 0
+    assert (tmp_path / "o.owl").exists()
+    ref = mig.migrate(FIXTURE, tmp_path / "u.owl", do_verify=False)
+    assert rep["output_triples"] == ref["output_triples"]  # nothing removed
+    ledger = json.loads((tmp_path / "l.json").read_text())
+    assert rep["source_culprits"] >= 1
+    assert any(e["step"] == "source_inconsistent" for e in ledger)
+
+
+def test_qs_c3_text_axioms_are_never_gating_candidates():
+    m = mig.Migration(FIXTURE)
+    m.run()
+    units, _ = mig._gating_units(m)
+    text = [u for u in units if u["kind"] == "text"]
+    assert text
+    with pytest.raises(AssertionError):
+        mig._exclude_units(m, text[:1], "x", {})
+
+
+def test_qs_c3_gated_rewrite_reverts_to_source_form():
+    """A rewrite of an axiom the source reasoner could already see is
+    reverted, not deleted, when gated."""
+    m = mig.Migration(FIXTURE)
+    m.run()
+    forms = mig._source_forms(m)
+    units, _ = mig._gating_units(m)
+    rewritten = [u for u in units if u["kind"] == "axiom"
+                 and any(t in forms for t in u["triples"])]
+    assert rewritten
+    mig._exclude_units(m, rewritten[:1], "test", forms)
+    assert mig.missing_source_axioms(m) == []
+
+
+def test_qs_c3_unsat_roots_found_inside_subclass_cycles():
+    """Classes in a subclass cycle are mutual ancestors; the root finder must
+    still pick them (GeometryofTheGood had 149 such classes and gating
+    stalled with no roots)."""
+    m = mig.Migration(FIXTURE)
+    m.run()
+    a, b, c = (URIRef(W + x) for x in ("CycA", "CycB", "CycChild"))
+    m.out |= {(a, RDFS.subClassOf, b), (b, RDFS.subClassOf, a), (c, RDFS.subClassOf, a)}
+    units = [{"kind": "axiom", "triples": {(a, RDFS.subClassOf, b)}},
+             {"kind": "axiom", "triples": {(c, RDFS.subClassOf, a)}},
+             {"kind": "text", "triples": {(b, RDFS.subClassOf, a)}}]
+    hit = mig._primary_unsat_units(m, units, {str(a), str(b), str(c)})
+    assert hit == [units[0]]  # the cycle member's change; not the child, not text
+
+
+def test_qs_c3_ancestor_change_blamed_when_root_has_only_source_axioms(monkeypatch):
+    """GeometryofTheGood's Anticipation: the source puts it under process,
+    and a migration rewrite makes its (satisfiable) parent a continuant. The
+    parent's change is found and gated; the root's source axioms are not."""
+    m = mig.Migration(FIXTURE)
+    m.run()
+    root, parent = URIRef(W + "Anticipation"), URIRef(W + "TemporalDimension")
+    bad_edge = (parent, RDFS.subClassOf, URIRef(OBO + "BFO_0000002"))
+    ok_edge = (parent, RDFS.label, rdflib.Literal("x"))
+    m.out |= {bad_edge, (root, RDFS.subClassOf, parent)}
+    units = [{"kind": "axiom", "triples": {bad_edge}},
+             {"kind": "axiom", "triples": {(parent, RDFS.comment, rdflib.Literal("y"))}},
+             {"kind": "text", "triples": {(root, RDFS.subClassOf, parent)}}]
+    edge = b'rdf:about="http://davidkoepsell.com/bfo-agent/working#TemporalDimension">'
+    cont = b'<rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000002"/>'
+
+    def fake(b, p):
+        probe = b"_qsProbe" in b
+        return not (probe and cont in b.split(edge, 1)[-1].split(b"</rdf:Description>")[0])
+
+    monkeypatch.setattr(mig, "hermit_consistent", fake)
+    stats = {}
+    hit = mig._ancestor_culprits(m, units, str(root), {str(parent)}, Path("unused"), stats)
+    assert hit == [units[0]]
+    assert ok_edge not in m.out
+
+
+def test_qs_c3_gated_part_of_split_reverts_to_source_form():
+    m = mig.Migration(FIXTURE)
+    m.run()
+    forms = mig._source_forms(m)
+    split = (URIRef(W + "JusticeAlpha"), URIRef(OBO + "BFO_0000176"), URIRef(W + "SupremeCourt"))
+    assert split in m.out and split in forms
+    mig._exclude_units(m, [{"kind": "axiom", "triples": {split}}], "test", forms)
+    assert mig.missing_source_axioms(m) == []
+
+
+def _graph(path):
+    g = rdflib.Graph()
+    g.parse(str(path))
+    return g
