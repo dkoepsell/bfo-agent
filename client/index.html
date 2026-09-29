@@ -2451,9 +2451,11 @@ function renderOntologyPanel() {
   const clone = document.getElementById("new-onto-clone");
   if (clone) {
     const preselect = currentActive;
-    clone.innerHTML = currentOntologies.map(o =>
-      `<option value="${esc(o.name)}" ${o.name === preselect ? "selected" : ""}>${esc(o.name)}</option>`
-    ).join("");
+    clone.innerHTML =
+      `<option value="BFO_2020">BFO 2020 (bare upper ontology, no domain seeds)</option>` +
+      currentOntologies.map(o =>
+        `<option value="${esc(o.name)}" ${o.name === preselect ? "selected" : ""}>${esc(o.name)}</option>`
+      ).join("");
   }
   // Disable finalize button if active is already finalized
   const active = findOntology(currentActive);

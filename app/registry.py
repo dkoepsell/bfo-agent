@@ -44,6 +44,10 @@ from .ontology_manager import OntologyManager
 log = logging.getLogger(__name__)
 
 
+
+# Pseudo seed source: start from BFO 2020 alone, cloning no library.
+BARE_BFO_SEED = "BFO_2020"
+
 class OntologyNotFoundError(KeyError):
     """Raised when a lookup for an ontology name fails."""
 
@@ -526,7 +530,8 @@ class OntologyRegistry:
 
         # Determine seed source. Default: active ontology's seeds.
         seed_source_name = clone_seeds_from or self._active_name
-        if seed_source_name not in self._managers:
+        if (seed_source_name != BARE_BFO_SEED
+                and seed_source_name not in self._managers):
             raise KeyError(
                 f"Seed source {seed_source_name!r} not in library."
             )
@@ -537,7 +542,14 @@ class OntologyRegistry:
         (target / "sessions").mkdir()
         (target / "jobs").mkdir()
         new_seed = target / "seed"
-        if seed_src.exists():
+        if seed_source_name == BARE_BFO_SEED:
+            # Bare BFO 2020: no domain seeds, only the canonical relation
+            # and bfoagent: annotation declarations (QS-B2/B4).
+            from . import relation_vocab
+            new_seed.mkdir()
+            (new_seed / "bfo_relations.ttl").write_text(
+                relation_vocab.seed_turtle())
+        elif seed_src.exists():
             _shutil.copytree(seed_src, new_seed)
         else:
             new_seed.mkdir()
@@ -834,7 +846,8 @@ class OntologyRegistry:
             raise FileNotFoundError(f"Source file not found: {file_path}")
 
         seed_source_name = clone_seeds_from or self._active_name
-        if seed_source_name not in self._managers:
+        if (seed_source_name != BARE_BFO_SEED
+                and seed_source_name not in self._managers):
             raise KeyError(
                 f"Seed source {seed_source_name!r} not in library."
             )
@@ -845,7 +858,14 @@ class OntologyRegistry:
         (target / "sessions").mkdir()
         (target / "jobs").mkdir()
         new_seed = target / "seed"
-        if seed_src.exists():
+        if seed_source_name == BARE_BFO_SEED:
+            # Bare BFO 2020: no domain seeds, only the canonical relation
+            # and bfoagent: annotation declarations (QS-B2/B4).
+            from . import relation_vocab
+            new_seed.mkdir()
+            (new_seed / "bfo_relations.ttl").write_text(
+                relation_vocab.seed_turtle())
+        elif seed_src.exists():
             _shutil.copytree(seed_src, new_seed)
         else:
             new_seed.mkdir()
