@@ -7,6 +7,7 @@ from __future__ import annotations
 
 import json
 import logging
+import re
 from typing import Optional
 
 from anthropic import Anthropic
@@ -24,6 +25,14 @@ from . import content_quality
 from .cached_client import Usage, cache_control, summarize
 
 log = logging.getLogger(__name__)
+
+
+def _sampling_kwargs(model: str) -> dict:
+    """Claude 5-generation models reject non-default sampling params with a
+    400, so PROPOSER_TEMPERATURE only applies to the 4.x models."""
+    if re.match(r"claude-(opus|sonnet|haiku)-4", model):
+        return {"temperature": PROPOSER_TEMPERATURE}
+    return {}
 from .schema import Proposal
 
 
@@ -342,7 +351,7 @@ class LLMProposer:
         resp = self.client.messages.create(
             model=self.model,
             max_tokens=4000,
-            temperature=PROPOSER_TEMPERATURE,
+            **_sampling_kwargs(self.model),
             system=system,
             messages=[{"role": "user", "content": user_message}],
         )
@@ -384,7 +393,7 @@ Return JSON only."""
         resp = self.client.messages.create(
             model=self.model,
             max_tokens=2000,
-            temperature=PROPOSER_TEMPERATURE,
+            **_sampling_kwargs(self.model),
             messages=[{"role": "user", "content": prompt}],
         )
         self._record_usage(resp)

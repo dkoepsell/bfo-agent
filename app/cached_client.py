@@ -43,6 +43,9 @@ class Rates:
 
 
 RATES = {
+    "claude-opus-5-5":           Rates(4.00, 0.20, 5.00,  8.00, 20.00),
+    "claude-sonnet-5-5":         Rates(2.00, 0.20, 2.50,  4.00, 10.00),
+    "claude-haiku-4-5":          Rates(1.00, 0.10, 1.25,  2.00,  5.00),
     "claude-opus-4-8":           Rates(5.00, 0.50, 6.25, 10.00, 25.00),
     "claude-opus-4-8[1m]":       Rates(5.00, 0.50, 6.25, 10.00, 25.00),
     "claude-sonnet-4-6":         Rates(3.00, 0.30, 3.75,  6.00, 15.00),

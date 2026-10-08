@@ -26,7 +26,7 @@ if _shutil.which("java") is None:
 ROOT = Path(__file__).resolve().parent.parent
 
 ANTHROPIC_API_KEY = os.getenv("ANTHROPIC_API_KEY", "")
-ANTHROPIC_MODEL = os.getenv("ANTHROPIC_MODEL", "claude-sonnet-4-6")
+ANTHROPIC_MODEL = os.getenv("ANTHROPIC_MODEL", "claude-sonnet-5-5")
 ANTHROPIC_EXTRACTOR_MODEL = os.getenv(
     "ANTHROPIC_EXTRACTOR_MODEL",
     "claude-haiku-4-5-20251001",
