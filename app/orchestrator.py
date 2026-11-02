@@ -454,6 +454,10 @@ def _proposer_extra_rules(claim: dict | None = None) -> str:
     if legal_drafting.is_legal_claim(claim):
         from . import legal_kernel
         legal = legal_drafting.LEGAL_RULES + "\n" + legal_kernel.kernel_rules()
+    else:
+        # Any genre: grounded claims (verified quote, quantifier) get the
+        # source-grounded rules G-0..G-5. Empty for pre-grounding claims.
+        legal = legal_drafting.claim_rules(claim)
     return "".join(
         block for block in (_coverage_extra_rules(), _recognition_extra_rules(),
                             legal)
@@ -462,15 +466,16 @@ def _proposer_extra_rules(claim: dict | None = None) -> str:
 
 
 def _legal_pass(proposal, claim, mgr, faithful, session_id, job_id) -> tuple:
-    """SPEC-legal-drafting.md 3.3 + 4.2 on one proposal of a legal claim.
+    """SPEC-legal-drafting.md 3.3 + 4.2 on one proposal of a grounded claim
+    (any genre; the legal-only checks apply to legal claims).
 
     Returns ``(rejecting_findings, notes)``. Stamps verbatim provenance;
     curated mode repairs findings in place, faithful mode leaves the proposal
     as asserted. Every finding is recorded in legal_findings.jsonl. A no-op
-    for philosophy claims."""
+    for claims extracted before grounding existed."""
     from . import legal_drafting
 
-    if not legal_drafting.is_legal_claim(claim):
+    if not legal_drafting.is_grounded_claim(claim):
         return [], []
     legal_drafting.stamp_provenance(proposal, claim)
     # Spec 6.2: one label per referent, in both modes (it governs what is
@@ -2429,8 +2434,10 @@ def create_app() -> Flask:
 
         # SPEC-legal-drafting.md 2.1: legal genres chunk on article
         # boundaries and carry the act and each chunk's starting locator.
-        from . import legal_source
-        genre = legal_source.normalize_genre(body.get("genre"))
+        from . import grounding, legal_source
+        # Blank or "auto": detect from the text, so an act pasted with the
+        # Genre control at its default still gets the legal profile.
+        genre = grounding.resolve_genre(body.get("genre"), text)
         legal_meta = {}
         if legal_source.is_legal_genre(genre):
             # Formex, Akoma Ntoso, JLT XML and EUR-Lex XHTML become
@@ -2459,6 +2466,8 @@ def create_app() -> Flask:
         return jsonify(
             {
                 **legal_meta,
+                "genre": genre,
+                "genre_detected": (body.get("genre") or "auto").strip().lower() == "auto",
                 "chunks": chunks,
                 "n_chunks": len(chunks),
                 "section": section,
@@ -2499,8 +2508,8 @@ def create_app() -> Flask:
         corpus_id = (body.get("corpus_id") or "").strip().lower()
         routes = extractors_for(corpus_id)
 
-        from . import legal_source
-        genre = legal_source.normalize_genre(body.get("genre"))
+        from . import grounding, legal_source
+        genre = grounding.resolve_genre(body.get("genre"), chunk)
         claims = []
         rejected: list = []
         if ENTITY_RELATION in routes:

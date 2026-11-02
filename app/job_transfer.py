@@ -56,6 +56,11 @@ def build_export_envelope(job: dict, box: str = BOX_LABEL) -> dict:
     claims_out = []
     for c in job.get("claims", []):
         out = {k: c.get(k) for k in EXPORT_CLAIM_FIELDS}
+        # Genre, act, locator, quantifier and grounding metadata: only when
+        # present, so philosophy envelopes without them are unchanged.
+        for k in jobs.CLAIM_METADATA_FIELDS:
+            if c.get(k) not in (None, "", []):
+                out[k] = c[k]
         # A precomputed proposal (batch propose, SPEC-bfo-agent-speed.md
         # change 5) is plain JSON and survives the trip; included only when
         # present so envelopes without one stay byte-identical to before.
