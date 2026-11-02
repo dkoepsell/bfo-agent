@@ -91,12 +91,17 @@ def build_request(claim: dict, ctx: dict, model: str, ttl: str,
     byte-identical to live calls and share the prompt-cache prefix
     (best-effort within the batch).
     """
+    from . import legal_drafting
+
     system, user_message = llm_proposer.build_prompt_blocks(
-        utterance=claim["claim"],
+        # Grounded claims (any genre) show the verbatim quote and quantifier;
+        # pre-grounding claims get exactly their claim text, as before.
+        utterance=legal_drafting.proposer_utterance(claim),
         working_classes=ctx["working_classes"],
         known_individuals=ctx["known_individuals"],
         relevant_classes=_relevant_for(claim, ctx),
         ttl=ttl,
+        extra_rules=legal_drafting.claim_rules(claim),
     )
     return {
         "custom_id": f"{job_id}:{claim['id']}",

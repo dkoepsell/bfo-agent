@@ -1,8 +1,13 @@
-"""Legal-genre drafting discipline (SPEC-legal-drafting.md sections 3.3 and 4).
+"""Source-grounded drafting discipline (SPEC-legal-drafting.md sections 3.3 and 4).
 
-Everything here is inert for philosophy-genre claims: a claim is legal only
-when the extractor's legal profile produced it (``claim["genre"]`` is one of
-``legal_source.LEGAL_GENRES``). For those claims the feed loop
+Two tiers. Every *grounded* claim (any genre: the extractor verified its quote
+and recorded a quantifier, see app/grounding.py) gets verbatim provenance, the
+GENERAL_RULES and the genre-independent checks (modal-universal,
+bearer-universal, multi-bearer, alternatives-as-conjunction). Claims stored
+before grounding existed carry none of those fields and are untouched.
+*Legal* claims (``claim["genre"]`` in ``legal_source.LEGAL_GENRES``) also get
+the act, locator and clause type, LEGAL_RULES and the legal-only checks
+(paraphrase-provenance, unscoped-definition). For legal claims the feed loop
 
 1. shows the proposer the verbatim quote, locator, clause type, quantifier and
    modality (:func:`proposer_utterance`) plus rules Q1-Q5 (:data:`LEGAL_RULES`);
@@ -69,8 +74,51 @@ L-7 A legal definition is scoped to its act: put the act's definiens in
 """
 
 
+GENERAL_RULES = """SOURCE-GROUNDED RULES (this claim carries its verbatim SOURCE QUOTE and a
+QUANTIFIER; they refine rule 4 "EMIT RELATIONS" and rule 10):
+G-0 Rule 4 asks you to express what the source states as relations, never to
+    add a relation it does not state. Every relation must be supported by the
+    SOURCE QUOTE or its SOURCE SENTENCE. An unstated connection goes in
+    `open_questions`.
+G-1 A class-level restriction (`C subClassOf p some D`, or a class-to-class
+    relation with "quantifier": "some"/"only") ONLY when the QUANTIFIER is
+    "every" or "definitional". For "can", "some" or a modal verb in the source
+    sentence ("may", "can", "should"), emit NO class-level axiom: put the
+    possibility in the subject entity's `possible_relations` as "p some D".
+G-2 Put a restriction on a role, disposition, function or quality on the
+    DEPENDENT side (`R subClassOf inheres_in some C`), never on the bearer
+    (`C subClassOf bearer_of some R`) unless the source says every C has it.
+G-3 A quality or role class gets AT MOST ONE `inheres in` restriction.
+G-4 ALTERNATIVES are not a conjunction. When the claim lists kinds as
+    alternatives or examples, never emit one `some` restriction per kind on
+    the same subject and property: that says every instance involves all of
+    them. Name the covering kind, or list "p some (A or B or C)" in
+    `possible_relations`.
+G-5 `source_span` is a verbatim excerpt of the SOURCE QUOTE or SOURCE
+    SENTENCE. Never paraphrase it.
+"""
+
+
 def is_legal_claim(claim: dict | None) -> bool:
     return bool(claim) and is_legal_genre(claim.get("genre"))
+
+
+def is_grounded_claim(claim: dict | None) -> bool:
+    """A claim from either extraction profile that carries grounding or a
+    quantifier (any genre). Claims stored before grounding existed carry
+    neither and keep today's behaviour exactly."""
+    return bool(claim) and (
+        is_legal_claim(claim) or "quote_grounding" in claim
+        or "quote_verified" in claim or bool(claim.get("quantifier")))
+
+
+def claim_rules(claim: dict | None) -> str:
+    """Static proposer rules for a non-legal grounded claim (legal claims get
+    LEGAL_RULES from the caller). Constant text, so it shares one cached
+    prompt prefix across every grounded claim."""
+    if is_grounded_claim(claim) and not is_legal_claim(claim):
+        return GENERAL_RULES
+    return ""
 
 
 def proposer_utterance(claim: dict) -> str:
@@ -79,7 +127,7 @@ def proposer_utterance(claim: dict) -> str:
     restatement plus the verbatim quote and its metadata (spec 3.3)."""
     text = claim.get("claim") or ""
     if not is_legal_claim(claim):
-        return text
+        return _grounded_utterance(claim, text)
     act = claim.get("act_title") or claim.get("act_id") or "unknown act"
     lines = [
         text,
@@ -91,13 +139,40 @@ def proposer_utterance(claim: dict) -> str:
         f"MODALITY: {claim.get('modality') or 'none'}"
         + (f"; SUBJECT: {claim['subject']}" if claim.get("subject") else ""),
     ]
+    if claim.get("source_sentence"):
+        lines.append(f"SOURCE SENTENCE: \"{claim['source_sentence']}\"")
+    if claim.get("alternatives"):
+        lines.append("ALTERNATIVES (not a conjunction): " + "; ".join(claim["alternatives"]))
+    return "\n".join(lines)
+
+
+def _grounded_utterance(claim: dict, text: str) -> str:
+    """Any-genre claims with grounding: the restatement plus the verbatim
+    quote, its sentence, the quantifier and any alternatives. A claim
+    without grounding fields gets exactly its claim text (old jobs)."""
+    if not is_grounded_claim(claim):
+        return text
+    lines = [text, ""]
+    if claim.get("quote_verified") and claim.get("source_quote"):
+        lines.append(f"SOURCE QUOTE (verbatim): \"{claim['source_quote']}\"")
+        if claim.get("source_sentence"):
+            lines.append(f"SOURCE SENTENCE: \"{claim['source_sentence']}\"")
+    else:
+        lines.append("SOURCE QUOTE: not verified against the source; assert "
+                     "nothing beyond the restatement and leave source_span null.")
+    meta = f"QUANTIFIER: {claim.get('quantifier') or 'unstated'}"
+    if claim.get("subject"):
+        meta += f"; SUBJECT: {claim['subject']}"
+    lines.append(meta)
+    if claim.get("alternatives"):
+        lines.append("ALTERNATIVES (not a conjunction): " + "; ".join(claim["alternatives"]))
     return "\n".join(lines)
 
 
 def provenance_text(claim: dict) -> str:
-    """``source_text`` for provenance records: the verbatim quote for legal
-    claims (spec principle 1), the claim text otherwise."""
-    if is_legal_claim(claim) and claim.get("source_quote"):
+    """``source_text`` for provenance records: the verbatim quote whenever it
+    was verified (any genre; spec principle 1), the claim text otherwise."""
+    if claim.get("source_quote") and (is_legal_claim(claim) or claim.get("quote_verified")):
         return claim["source_quote"]
     return claim.get("claim") or ""
 
@@ -108,18 +183,26 @@ def stamp_provenance(proposal, claim: dict) -> None:
     An entity's own ``source_span`` is kept only when it is a verbatim excerpt
     of the claim's quote; otherwise it is replaced by the quote. The locator,
     act and paraphrase go in their own fields."""
-    if not is_legal_claim(claim):
+    if not is_grounded_claim(claim):
         return
     from .legal_source import quote_is_verbatim
 
-    quote = claim.get("source_quote") or ""
+    legal = is_legal_claim(claim)
+    verified = legal or bool(claim.get("quote_verified"))
+    quote = (claim.get("source_quote") or "") if verified else ""
+    sentence = claim.get("source_sentence") or ""
     act = claim.get("act_id") or claim.get("act_title") or None
     for ent in getattr(proposal, "entities", []) or []:
         span = (getattr(ent, "source_span", None) or "").strip()
-        if not span or not quote_is_verbatim(span, quote):
+        ok = span and ((quote and quote_is_verbatim(span, quote)) or
+                       (sentence and quote_is_verbatim(span, sentence)))
+        if not ok:
+            # The quote, or nothing: a span that is not the source's own
+            # words is never stored.
             ent.source_span = quote or None
-        ent.source_locator = claim.get("locator") or "unknown"
-        ent.source_act = act
+        if legal:
+            ent.source_locator = claim.get("locator") or "unknown"
+            ent.source_act = act
         ent.claim_text = claim.get("claim") or None
 
 
@@ -224,23 +307,31 @@ def _existing_inheres_fillers(subject: str, mgr) -> list[str]:
 def check(proposal, claim: dict, mgr=None) -> list[dict]:
     """The five checks of spec 4.2. Returns findings, each
     ``{check, relation_index, subject, detail}``; [] for non-legal claims."""
-    if not is_legal_claim(claim):
+    if not is_grounded_claim(claim):
         return []
+    legal = is_legal_claim(claim)
     findings: list[dict] = []
     quant = (claim.get("quantifier") or "").lower()
     modality = (claim.get("modality") or "").lower()
     clause = (claim.get("clause_type") or "").lower()
+    if not legal and not modality:
+        # Any genre: a modal verb in the verified source sentence or quote
+        # ("may", "can", "might", "should") marks a possibility or a norm,
+        # never a universal (the D1 "persons can have expertise" failure).
+        ctx = _governing_context(claim)
+        if _MODAL_WORD.search(ctx) and quant not in UNIVERSAL_QUANTIFIERS:
+            modality = "possibility"
 
-    if not claim.get("quote_verified"):
+    if legal and not claim.get("quote_verified"):
         findings.append({"check": "paraphrase-provenance", "relation_index": None,
                          "subject": claim.get("subject") or "",
                          "detail": "source_quote was not verified verbatim against the source"})
-    if clause == "definition" and not claim.get("act_id"):
+    if legal and clause == "definition" and not claim.get("act_id"):
         findings.append({"check": "unscoped-definition", "relation_index": None,
                          "subject": claim.get("subject") or "",
                          "detail": "a legal definition with no act_id"})
 
-    modal = (quant in MODAL_QUANTIFIERS or modality == "permission"
+    modal = (quant in MODAL_QUANTIFIERS or modality in ("permission", "possibility")
              or clause == "condition")
     edges = _class_level_edges(proposal)
     for i, s, p, q, o in edges:
@@ -251,7 +342,7 @@ def check(proposal, claim: dict, mgr=None) -> list[dict]:
                           f"quantifier={quant or '?'}, modality={modality or '?'}, "
                           f"clause_type={clause or '?'}"})
             continue
-        if p in _BEARER_SIDE and quant not in UNIVERSAL_QUANTIFIERS:
+        if p in _BEARER_SIDE and quant and quant not in UNIVERSAL_QUANTIFIERS:
             _, s_cat = _bfo_category(s, proposal, mgr)
             _, o_cat = _bfo_category(o, proposal, mgr)
             if _is(s_cat, bfo_catalog.INDEPENDENT_CONTINUANT) and \
@@ -286,7 +377,78 @@ def check(proposal, claim: dict, mgr=None) -> list[dict]:
                 "detail": f"{subj} would inhere in {len(bearers)} bearers "
                           f"({', '.join(_local(b) for b in bearers)}); a specifically "
                           f"dependent continuant has one bearer"})
+
+    findings.extend(_alternatives_findings(claim, edges, proposal))
     return findings
+
+
+def _governing_context(claim: dict, lead_words: int = 8) -> str:
+    """The verified quote plus up to ``lead_words`` words of its sentence just
+    before it: where the verb governing a quoted phrase sits ("Consent
+    should be given by | a clear affirmative act ..."). Never the rest of the
+    sentence, whose modals govern other clauses. '' when unverified."""
+    if not claim.get("quote_verified"):
+        return ""
+    from .legal_source import find_verbatim
+
+    quote = claim.get("source_quote") or ""
+    sentence = claim.get("source_sentence") or ""
+    hit = find_verbatim(quote, sentence) if sentence else None
+    if not hit:
+        return quote
+    lead = sentence[:hit[0]].split()[-lead_words:]
+    return " ".join(lead + [quote])
+
+
+_MODAL_WORD = re.compile(r"\b(?:may|might|can|could|should|is able to|are able to)\b", re.I)
+
+
+def _term_key(s: str) -> str:
+    k = re.sub(r"[^a-z0-9]", "", (s or "").lower())
+    for suf in ("ies", "es", "s"):
+        if k.endswith(suf) and len(k) > len(suf) + 2:
+            return k[: -len(suf)] + ("y" if suf == "ies" else "")
+    return k
+
+
+def _names_for(ref: str, proposal) -> set[str]:
+    names = {_term_key(_local(ref))}
+    for ent in getattr(proposal, "entities", []) or []:
+        if any(c and _local(c) == _local(ref) for c in (ent.iri_suggestion, ent.existing_iri)):
+            names.add(_term_key(ent.label or ""))
+    return {n for n in names if n}
+
+
+def _alternatives_findings(claim: dict, edges, proposal) -> list[dict]:
+    """G-4 ``alternatives-as-conjunction``: two or more ``some`` restrictions
+    on one subject and property whose fillers are kinds the claim lists only
+    as alternatives or examples ("devices, applications, tools and
+    protocols"). Read conjunctively they say every instance involves all of
+    them."""
+    alts = {_term_key(a) for a in (claim.get("alternatives") or [])}
+    alts.discard("")
+    if len(alts) < 2:
+        return []
+    groups: dict[tuple[str, str], list[tuple[int, str]]] = {}
+    for i, s, p, q, o in edges:
+        if q != "some":
+            continue
+        names = _names_for(o, proposal)
+        if any(n in alts or any(n in a or a in n for a in alts if len(a) > 3)
+               for n in names):
+            groups.setdefault((_local(s), p), []).append((i, o))
+    out = []
+    for (subj, p), items in groups.items():
+        if len(items) >= 2:
+            out.append({
+                "check": "alternatives-as-conjunction", "relation_index": None,
+                "subject": subj, "property": p,
+                "indices": [i for i, _ in items],
+                "fillers": [_local(o) for _, o in items],
+                "detail": f"{subj} would have {p} some of EACH of "
+                          f"{', '.join(_local(o) for _, o in items)}, which the text "
+                          f"lists only as alternatives"})
+    return out
 
 
 # ------------------------------------------------- identity (spec 6.2)
@@ -425,6 +587,24 @@ def repair(proposal, findings: list[dict], mgr=None) -> list[str]:
                                           "relation (SPEC-legal-drafting Q2)"))
             notes.append(f"bearer-universal: '{rel.s} bearer_of some {f['filler']}' "
                          f"rewritten as '{f['filler']} inheres_in some {rel.s}'")
+
+    for f in findings:
+        if f["check"] != "alternatives-as-conjunction":
+            continue
+        idx = [i for i in f.get("indices", []) if i not in drop]
+        if len(idx) < 2:
+            continue
+        drop.update(idx)
+        union = f"{f['property']} some ({' or '.join(f['fillers'])})"
+        ent = _subject_entity(proposal, f["subject"])
+        if ent is not None:
+            ent.possible_relations = list(ent.possible_relations or []) + [union]
+        proposal.open_questions = list(proposal.open_questions or []) + [
+            f"alternatives: {f['subject']} was given one '{f['property']} some' "
+            f"restriction per alternative ({', '.join(f['fillers'])}). Is there a "
+            f"kind covering them that every {f['subject']} involves?"]
+        notes.append(f"alternatives-as-conjunction: dropped {len(idx)} restrictions on "
+                     f"{f['subject']}; kept '{union}' as a possibility")
 
     new_rels = [r for k, r in enumerate(rels) if k not in drop] + add
 

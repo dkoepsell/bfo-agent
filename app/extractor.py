@@ -67,10 +67,31 @@ EXCLUDE:
 - hedged or tentative formulations ("one might say that...", "it could be argued...")
 - quotations from source material being analyzed, not asserted
 
+QUANTIFIER: record what the passage says about HOW MANY, never what is typical:
+- "definitional": "X is (by definition) a Y that ..." (necessary and sufficient)
+- "every": the passage says every / each / all X are or have it, or states it unconditionally of the kind
+- "some": the passage says some, many, most or certain X
+- "can": the passage says X can, may, might or is able to have it (a possibility, NOT a universal)
+- "none": the passage says no X is or has it
+- "individual": the claim is about a named particular (Socrates, this statute)
+"Persons can have expertise" is "can": it does NOT say every person has expertise.
+
+ALTERNATIVES: when the claim names several kinds as alternatives or as examples
+("devices, applications, tools or protocols", "such as A, B and C"), list them in
+"alternatives". A list of examples does not say each one is always involved.
+
+SOURCE QUOTE: copy the words of the passage EXACTLY, character for character, as
+one continuous span of at most 40 words: no ellipses, no paraphrase, no reordering,
+no added words, and keep the modal verbs ("should", "may", "can") that govern it.
+A quote that is not found in the passage marks the claim unverified.
+
 For each claim, produce:
 {{
-  "claim": "A single short declarative sentence, 25 words or fewer, asserting ONE ontological commitment, in the author's voice. No 'but'/'yet'/'while'/'although' clauses and no semicolons joining two assertions. Rephrase for clarity but do not change the commitment.",
-  "source_quote": "The exact sentence(s) from the passage that motivate this claim, up to 40 words.",
+  "claim": "A single short declarative sentence, 25 words or fewer, asserting ONE ontological commitment, in the author's voice. No 'but'/'yet'/'while'/'although' clauses and no semicolons joining two assertions. Rephrase for clarity but do not change the commitment, and keep its quantifier ('can', 'some') in the sentence.",
+  "source_quote": "Verbatim continuous span of the passage, up to 40 words.",
+  "subject": "the term the claim is about, as the passage names it",
+  "quantifier": "definitional | every | some | can | none | individual",
+  "alternatives": ["terms the claim lists as alternatives or examples, else empty"],
   "confidence": "high" | "medium" | "low",
   "note": "Brief rationale: why this counts as an atomic ontological claim (and not, e.g., a methodological remark)."
 }}
@@ -143,6 +164,7 @@ For each claim, produce:
   "subject": "the term the claim is about, as the text names it (e.g. 'controller')",
   "quantifier": "definitional | every | some | can | at_most_one | none",
   "modality": "obligation | prohibition | permission | right | power | none",
+  "alternatives": ["terms the text lists as alternatives or examples ('devices, applications, tools and protocols'), else empty"],
   "confidence": "high" | "medium" | "low",
   "note": "Brief rationale"
 }}
@@ -164,6 +186,7 @@ If the passage has no operative content (recitals of history, a table of content
 """
 
 _QUANTIFIERS = {"definitional", "every", "some", "can", "at_most_one", "none"}
+_PHIL_QUANTIFIERS = {"definitional", "every", "some", "can", "none", "individual"}
 _MODALITIES = {"obligation", "prohibition", "permission", "right", "power", "none"}
 _CLAUSE_TYPES = {"definition", "scope", "establishment", "conferral", "norm",
                  "condition", "time_limit", "remedy", "other"}
@@ -172,6 +195,15 @@ _CLAUSE_TYPES = {"definition", "scope", "establishment", "conferral", "norm",
 def _pick(value, allowed: set, default: str) -> str:
     v = (value or "").strip().lower().replace(" ", "_") if isinstance(value, str) else ""
     return v if v in allowed else default
+
+
+def _alternatives(value) -> list[str]:
+    if isinstance(value, str):
+        value = [v for v in re.split(r",|\bor\b|\band\b", value)]
+    if not isinstance(value, list):
+        return []
+    out = [str(v).strip() for v in value if str(v).strip()]
+    return out if len(out) >= 2 else []
 
 
 # ----------------------------------------------------------------- chunking
@@ -285,17 +317,33 @@ class ClaimExtractor:
         data = _extract_json(text)
         claims = data.get("claims", [])
         # Normalize shape and attach section
+        from .grounding import ground_claim
+
         out = []
         for c in claims:
-            out.append(
-                {
-                    "claim": (c.get("claim") or "").strip(),
-                    "source_quote": (c.get("source_quote") or "").strip(),
-                    "confidence": (c.get("confidence") or "low").strip().lower(),
-                    "note": (c.get("note") or "").strip(),
-                    "section": section,
-                }
-            )
+            claim = {
+                "claim": (c.get("claim") or "").strip(),
+                "source_quote": (c.get("source_quote") or "").strip(),
+                "confidence": (c.get("confidence") or "low").strip().lower(),
+                "note": (c.get("note") or "").strip(),
+                "section": section,
+            }
+            if c.get("quantifier"):
+                claim["quantifier"] = _pick(c.get("quantifier"), _PHIL_QUANTIFIERS, "some")
+            if (c.get("subject") or "").strip():
+                claim["subject"] = c["subject"].strip()
+            alts = _alternatives(c.get("alternatives"))
+            if alts:
+                claim["alternatives"] = alts
+            # Provenance is the passage's own words: snap a near-quote to the
+            # exact span, or mark the claim unverified. Unverified claims are
+            # kept (philosophy has no article structure to fall back on) but
+            # never auto-approved.
+            ground_claim(claim, passage)
+            if not claim["quote_verified"]:
+                claim["confidence"] = "low"
+                claim["note"] = (claim["note"] + " [quote not found in source]").strip()
+            out.append(claim)
         return out
 
     def extract_legal_chunk(self, passage: str, genre: str = "legislation",
@@ -311,6 +359,7 @@ class ClaimExtractor:
         appended to ``rejected_out`` when given.
         """
         from . import legal_source as ls
+        from .grounding import ground_claim
 
         src = LEGAL_GENRE_SOURCE.get(genre, LEGAL_GENRE_SOURCE["legislation"])
         if not act_id:
@@ -347,14 +396,20 @@ class ClaimExtractor:
                 "quantifier": _pick(c.get("quantifier"), _QUANTIFIERS, "some"),
                 "modality": _pick(c.get("modality"), _MODALITIES, "none"),
             }
-            if not quote or not ls.quote_is_verbatim(quote, passage):
+            alts = _alternatives(c.get("alternatives"))
+            if alts:
+                claim["alternatives"] = alts
+            # A near-quote is snapped to the act's exact words (grounding.py);
+            # only a quote that cannot be grounded is rejected.
+            ground_claim(claim, passage)
+            if not claim["quote_verified"]:
                 claim["rejected"] = "paraphrase-provenance"
                 if rejected_out is not None:
                     rejected_out.append(claim)
                 continue
+            quote = claim["source_quote"]
             unit = ls.locate(quote, units)
             claim["locator"] = unit.locator if unit else (locator or "unknown")
-            claim["quote_verified"] = True
             if claim["clause_type"] == "definition":
                 # Spec 5.3: "For the purposes of this Regulation" stays with
                 # the definition so a reader can see its limit.

@@ -248,6 +248,12 @@ def _job_summary(job: dict) -> dict:
 # ----------------------------------------------------------- mutations
 LEGAL_CLAIM_FIELDS = ("genre", "act_id", "act_title", "locator", "clause_type",
                       "subject", "quantifier", "modality", "quote_verified", "scope")
+# Source grounding (app/grounding.py), any genre: how the quote was verified,
+# the sentence it sits in, the model's own wording when it was snapped, and
+# kinds the text lists only as alternatives or examples.
+GROUNDING_CLAIM_FIELDS = ("quote_grounding", "source_sentence", "quote_model",
+                          "alternatives")
+CLAIM_METADATA_FIELDS = LEGAL_CLAIM_FIELDS + GROUNDING_CLAIM_FIELDS
 
 
 def append_claims(job_id: str, new_claims: Iterable[dict]) -> dict:
@@ -281,8 +287,8 @@ def append_claims(job_id: str, new_claims: Iterable[dict]) -> dict:
         # locator, clause type, quantifier and modality to the proposer and
         # the provenance. Copied only when present, so philosophy claims keep
         # exactly today's shape.
-        for k in LEGAL_CLAIM_FIELDS:
-            if c.get(k) not in (None, ""):
+        for k in CLAIM_METADATA_FIELDS:
+            if c.get(k) not in (None, "", []):
                 entry[k] = c[k]
         # Precomputed proposal (batch propose, SPEC-bfo-agent-speed.md
         # change 5) carried in an imported envelope: preserved when present
