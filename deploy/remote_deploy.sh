@@ -12,7 +12,8 @@
 #   2. byte-compile the staged Python (fail before touching the live app)
 #   3. back up the live code paths, then rsync the code allowlist over them
 #      (no --delete; live data -- ontology/, sessions, .env -- is never overwritten;
-#      new files under ontology/ are added, existing ones are left alone)
+#      under ontology/ only kernels/, profiles/ and canonical/ get files the
+#      server lacks; ontology/library/ is never touched)
 #   4. pip install only if requirements.txt changed
 #   5. restart the systemd --user unit and wait for /health
 #   6. on health failure, restore the backup and restart again (exit 1)
@@ -69,7 +70,12 @@ done
 for f in "${CODE_FILES[@]}"; do
   [ -f "$STAGE/$f" ] && cp -p "$STAGE/$f" "$APP/$f"
 done
-[ -d "$STAGE/ontology" ] && rsync -a --ignore-existing "$STAGE/ontology/" "$APP/ontology/"
+# Only shipped reference folders, and only files the server lacks. Never
+# ontology/library/: the server's library is live data, and an ontology
+# removed there on purpose must not come back from the repo.
+for d in kernels profiles canonical; do
+  [ -d "$STAGE/ontology/$d" ] && rsync -a --ignore-existing "$STAGE/ontology/$d/" "$APP/ontology/$d/"
+done
 
 # 4. deps ------------------------------------------------------------------
 REQ_AFTER=$(sha256sum "$APP/requirements.txt" | cut -d' ' -f1)
