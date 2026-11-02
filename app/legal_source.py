@@ -303,6 +303,11 @@ _PARA_SIGN = re.compile(r"^\s*§+\s*(\d+[a-z]?)\b\.?\s*(.*)$")
 _DCFR = re.compile(r"^\s*([IVX]+\.\s?[-–]\s?\d+:\d+[a-z]?)\b\s*(.*)$")
 _PARAGRAPH = re.compile(r"^\s*(\d{1,3})\.\s+\S")
 _POINT = re.compile(r"^\s*\((\d{1,3}|[a-z]{1,4})\)\s+\S")
+# A recital number alone on its line, as EUR-Lex text and copy-paste give it:
+# "(18)" with the recital on the following lines.
+_NUMBER_LINE = re.compile(r"^\s*\((\d{1,3})\)\s*$")
+# The preamble ends at the enacting formula (or the first heading).
+_ENACTING = re.compile(r"\bHAVE ADOPTED THIS\b|\bHAS ADOPTED THIS\b|\bBE IT ENACTED\b")
 
 
 def _heading(line: str) -> tuple[str, str] | None:
@@ -343,13 +348,17 @@ def split_units(text: str, act_id: str = "", act_title: str = "",
     A heading line ("Article 4", "§ 164") opens a new top-level locator; a
     numbered paragraph ("1. ...") and a lettered or numbered point ("(a) ...",
     "(7) ...") open sub-locators. Text before any heading is one unit with
-    locator ``initial_locator`` or "unknown".
+    locator ``initial_locator`` or "unknown". In the preamble (before the
+    first heading or the enacting formula) a numbered paragraph is a recital:
+    locator ``rec_N``, kind "recital", whether its number shares the line
+    ("(18) Natural persons ...") or stands alone above it.
     """
     units: list[SourceUnit] = []
     top = initial_locator or ""
     par = pnt = ""
     cur_start: int | None = None
     cur_loc = ""
+    preamble = not top or top.startswith("rec_")
 
     def flush(end: int):
         nonlocal cur_start
@@ -358,9 +367,11 @@ def split_units(text: str, act_id: str = "", act_title: str = "",
         raw = text[cur_start:end]
         body = normalize(raw)
         if body:
+            loc = cur_loc or "unknown"
             units.append(SourceUnit(
                 act_id=act_id, act_title=act_title,
-                locator=cur_loc or "unknown", kind=classify_kind(body),
+                locator=loc,
+                kind="recital" if loc.startswith("rec_") else classify_kind(body),
                 text=body,
                 offsets=(base_offset + cur_start, base_offset + end),
                 language=language))
@@ -376,7 +387,21 @@ def split_units(text: str, act_id: str = "", act_title: str = "",
         if h and len(stripped) < 200:
             flush(start)
             top, par, pnt = h[0], "", ""
+            preamble = False
             continue
+        if preamble and _ENACTING.search(stripped):
+            flush(start)
+            preamble = False
+            top, par, pnt = "", "", ""
+            cur_loc, cur_start = "", start
+            continue
+        if preamble:
+            m_rec = _NUMBER_LINE.match(line) or _POINT.match(line)
+            if m_rec and m_rec.group(1).isdigit():
+                flush(start)
+                top, par, pnt = f"rec_{m_rec.group(1)}", "", ""
+                cur_loc, cur_start = top, start
+                continue
         m_par = _PARAGRAPH.match(line)
         m_pnt = None if m_par else _POINT.match(line)
         if m_par or m_pnt or cur_start is None:
@@ -433,10 +458,20 @@ def chunk_units(text: str, chunk_chars: int = 8000) -> list[dict]:
     # Top-level heading positions.
     marks: list[tuple[int, str]] = []
     pos = 0
+    preamble = True
     for line in text.splitlines(keepends=True):
         h = _heading(line.strip()) if line.strip() and len(line.strip()) < 200 else None
         if h:
             marks.append((pos, h[0]))
+            preamble = False
+        elif preamble and _ENACTING.search(line):
+            preamble = False
+        elif preamble:
+            # Recitals are boundaries too, so a chunk that starts inside the
+            # preamble knows which recital it is in.
+            m = _NUMBER_LINE.match(line) or _POINT.match(line)
+            if m and m.group(1).isdigit():
+                marks.append((pos, f"rec_{m.group(1)}"))
         pos += len(line)
     bounds = [0] + [p for p, _ in marks if p > 0] + [len(text)]
     sections = [(bounds[i], bounds[i + 1]) for i in range(len(bounds) - 1)

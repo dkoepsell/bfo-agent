@@ -570,6 +570,9 @@
           <button class="secondary" id="btn-select-high" disabled>Select high</button>
           <button class="secondary" id="btn-select-high-med" disabled>Select high+medium</button>
           <button class="secondary" id="btn-select-none" disabled>Clear selection</button>
+          <label class="muted row-flex" style="gap:6px;" title="Recitals state reasons and bind nothing; they are fed last when included.">
+            <input type="checkbox" id="select-include-recitals" /> include recitals
+          </label>
           <span class="muted" id="selection-count"></span>
         </div>
         <div class="row-flex">
@@ -1150,7 +1153,19 @@ async function runExtractionIntoJob() {
       renderExtractProgress(i + 1, chunks.length);
     }
 
-    let msg = `done. ${collected} new claims appended at >= ${minConf}.`;
+    // Legal text: feed the act's definitions first, then what it
+    // establishes and confers, then its norms, recitals last.
+    let prioNote = "";
+    if (collected && prep.genre && prep.genre !== "philosophy") {
+      try {
+        const pr = await api(`/jobs/${currentJob.job_id}/prioritize`, { method: "POST" });
+        const o = (pr.prioritized || {}).order || {};
+        prioNote = ` Feed order: ${o[0] || 0} definitions, ${o[1] || 0} establishment/conferral/scope,` +
+                   ` ${o[2] || 0} other provisions, ${o[3] || 0} recitals (recitals not auto-selected).`;
+        await loadJob(currentJob.job_id);
+      } catch (e) { console.warn("prioritize failed:", e); }
+    }
+    let msg = `done. ${collected} new claims appended at >= ${minConf}.` + prioNote;
     if (rejectedQuotes) {
       msg += ` ${rejectedQuotes} claim(s) dropped: quote not verbatim in the source.`;
     }
@@ -1271,9 +1286,11 @@ function updateSelectionCount() {
 async function selectByConfidence(levels) {
   if (!currentJob) return;
   const approvals = {};
+  const withRecitals = document.getElementById("select-include-recitals").checked;
   currentJob.claims.forEach(c => {
     if (c.status !== "pending") return;
-    approvals[c.id] = levels.includes((c.confidence || "").toLowerCase());
+    approvals[c.id] = levels.includes((c.confidence || "").toLowerCase()) &&
+                      (withRecitals || c.provision !== "recital");
   });
   try {
     await api(`/jobs/${currentJob.job_id}/approve`, {

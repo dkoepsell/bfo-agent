@@ -171,6 +171,34 @@ def annotate_new_class(world_or_graph, iri: str, entity, delta=None,
     return added
 
 
+def annotate_new_individual(world_or_graph, iri: str, entity, delta=None,
+                            onto=None) -> list[tuple]:
+    """Provenance of a NEW individual: bfoagent:sourceSpan, sourceLocator,
+    sourceAct and claimText (no definition fields). Same call contract as
+    :func:`annotate_new_class`."""
+    from rdflib import Literal, URIRef
+
+    g = (world_or_graph.as_rdflib_graph()
+         if hasattr(world_or_graph, "as_rdflib_graph") else world_or_graph)
+    s = URIRef(iri)
+    added = []
+    for field_name, pred in (("source_span", "sourceSpan"),
+                             ("source_locator", "sourceLocator"),
+                             ("source_act", "sourceAct"),
+                             ("claim_text", "claimText")):
+        val = (getattr(entity, field_name, None) or "").strip()
+        if not val:
+            continue
+        t = (s, URIRef(rv.bfoagent(pred)), Literal(val))
+        if onto is not None:
+            with onto:
+                g.add(t)
+        else:
+            g.add(t)
+        added.append(t)
+    return added
+
+
 def _expand(ref: str) -> str:
     if ref.startswith("http"):
         return ref

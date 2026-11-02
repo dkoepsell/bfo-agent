@@ -30,6 +30,7 @@ LOF_FILES = [f"lof-odp-00{n}-base.owl" for n in (1, 2, 3, 4)]
 
 OBO = "http://purl.obolibrary.org/obo/"
 IAO_DEFINITION = OBO + "IAO_0000115"
+OWL_ANNOTATION = "http://www.w3.org/2002/07/owl#AnnotationProperty"
 IAO_DEFINITION_SOURCE = OBO + "IAO_0000119"
 IS_CARRIER_OF = OBO + "BFO_0000101"
 CONTINUANT_PART_OF = OBO + "BFO_0000176"
@@ -153,18 +154,36 @@ def _graph(mgr):
     return mgr.world.as_rdflib_graph()
 
 
+def _node(o):
+    """The rdflib node for an object value. rdflib's ``Literal`` and
+    ``URIRef`` are both ``str`` subclasses, so they must be recognised
+    before a plain ``str`` (an IRI) is wrapped: testing ``isinstance(o, str)``
+    alone turned every literal (definiens, scope, label, source) into an
+    IRI made of its text."""
+    from rdflib.term import Node, URIRef
+    if o is None or isinstance(o, Node):
+        return o
+    return URIRef(o)
+
+
 def _put(mgr, s, p, o) -> None:
     from rdflib import URIRef
     g = _graph(mgr)
     with mgr.working:
-        g.add((URIRef(s), URIRef(p), o if not isinstance(o, str) else URIRef(o)))
+        g.add((URIRef(s), URIRef(p), _node(o)))
 
 
 def _remove(mgr, s, p, o) -> None:
+    """Remove ``(s, p, o)``; ``o=None`` removes every object. owlready2's
+    rdflib view ignores a wildcard remove, so each object is removed by
+    exact match."""
     from rdflib import URIRef
     g = _graph(mgr)
+    S, P = URIRef(s), URIRef(p)
+    targets = list(g.objects(S, P)) if o is None else [_node(o)]
     with mgr.working:
-        g.remove((URIRef(s), URIRef(p), o if not isinstance(o, str) else URIRef(o)))
+        for t in targets:
+            g.remove((S, P, t))
 
 
 def _lit(text: str, lang: str | None = None):
@@ -196,6 +215,16 @@ def act_source_url(act_id: str) -> str:
     return ""
 
 
+def _declare_annotations(mgr) -> None:
+    """Declare the annotation properties legal drafting writes (idempotent),
+    so a draft stays in OWL 2 DL for the OWL API (ROBOT, Protege)."""
+    from . import relation_vocab
+    for iri in [relation_vocab.bfoagent(n) for n in relation_vocab.BFOAGENT_ANNOTATIONS] + \
+            [IAO_DEFINITION, IAO_DEFINITION_SOURCE]:
+        if OWL_ANNOTATION not in [str(o) for o in _objects(mgr, iri, RDF_TYPE)]:
+            _put(mgr, iri, RDF_TYPE, OWL_ANNOTATION)
+
+
 def act_iris(act_id: str) -> dict:
     slug = _slug(act_id)
     return {"content": _working(f"Act_{slug}_Content"),
@@ -209,6 +238,7 @@ def ensure_act(mgr, act_id: str, act_title: str = "", language: str = "en",
     the legal document carrying it. Idempotent; None without an act id."""
     if not act_id:
         return None
+    _declare_annotations(mgr)
     iris = act_iris(act_id)
     if _objects(mgr, iris["content"], RDF_TYPE):
         return iris
@@ -279,6 +309,11 @@ def _entity_iri(ent) -> str | None:
         return None
 
 
+def _is_operative(locator: str | None) -> bool:
+    loc = (locator or "").strip()
+    return bool(loc) and loc != "unknown" and not loc.startswith("rec_")
+
+
 def record_definition(mgr, proposal, claim: dict, language: str = "en") -> dict | None:
     """Spec section 5 for one committed definition claim. Returns a summary
     ``{class, definition_individual, action, ...}`` or None when nothing was
@@ -336,11 +371,28 @@ def record_definition(mgr, proposal, claim: dict, language: str = "en") -> dict 
         _remove(mgr, cls_iri, _working_meta("definitionStatus"), None)
         existing_defs = []
     same = [d for d in existing_defs if _definiens_key(str(d)) == _definiens_key(definiens)]
-    if not existing_sources:
+    prior_locs = [str(o) for o in _objects(mgr, cls_iri, _working_meta("definitionLocator"))]
+    upgrade = (act_id in existing_sources and not same
+               and _is_operative(locator)
+               and not any(_is_operative(l) for l in prior_locs))
+    if upgrade:
+        # The same act defined this class earlier from a recital or an
+        # unlocated passage; its operative definition takes the slot and the
+        # earlier text is kept, marked superseded.
+        for d in existing_defs:
+            _put(mgr, cls_iri, _working_meta("supersededDefinition"), d)
+        for p_ in (IAO_DEFINITION, IAO_DEFINITION_SOURCE, _working_meta("definitionLocator")):
+            _remove(mgr, cls_iri, p_, None)
+        _put(mgr, cls_iri, IAO_DEFINITION, _lit(definiens, language))
+        _put(mgr, cls_iri, IAO_DEFINITION_SOURCE, _lit(source_ref))
+        _put(mgr, cls_iri, _working_meta("definitionLocator"), _lit(locator))
+        result["action"] = "defined-from-operative-provision"
+    elif not existing_sources:
         _put(mgr, cls_iri, IAO_DEFINITION, _lit(definiens, language))
         _put(mgr, cls_iri, IAO_DEFINITION_SOURCE, _lit(source_ref))
         _put(mgr, cls_iri, _working_meta("definedIn"), _lit(act_id or "unscoped"))
         _put(mgr, cls_iri, _working_meta("definitionStatus"), _lit("verbatim"))
+        _put(mgr, cls_iri, _working_meta("definitionLocator"), _lit(locator))
         result["action"] = "defined"
     elif act_id in existing_sources or same:
         if act_id not in existing_sources:

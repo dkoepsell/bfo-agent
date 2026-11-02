@@ -197,6 +197,17 @@ def _pick(value, allowed: set, default: str) -> str:
     return v if v in allowed else default
 
 
+def provision_kind(locator: str | None) -> str:
+    """'recital', 'operative' (an article, section, rule or paragraph) or
+    'unknown', from a source locator."""
+    loc = (locator or "").strip()
+    if loc.startswith("rec_"):
+        return "recital"
+    if not loc or loc == "unknown":
+        return "unknown"
+    return "operative"
+
+
 def _alternatives(value) -> list[str]:
     if isinstance(value, str):
         value = [v for v in re.split(r",|\bor\b|\band\b", value)]
@@ -410,6 +421,14 @@ class ClaimExtractor:
             quote = claim["source_quote"]
             unit = ls.locate(quote, units)
             claim["locator"] = unit.locator if unit else (locator or "unknown")
+            # Recitals state reasons; they bind nothing and define nothing.
+            # A recital's "definition" (e.g. "they are covered by the
+            # definition of biometric data only when ...") must never take
+            # the slot of the article that defines the term.
+            claim["provision"] = provision_kind(claim["locator"])
+            if claim["provision"] == "recital" and claim["clause_type"] == "definition":
+                claim["clause_type"] = "other"
+                claim["note"] = (claim["note"] + " [recital: not a definition]").strip()
             if claim["clause_type"] == "definition":
                 # Spec 5.3: "For the purposes of this Regulation" stays with
                 # the definition so a reader can see its limit.

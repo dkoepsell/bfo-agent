@@ -247,7 +247,8 @@ def _job_summary(job: dict) -> dict:
 
 # ----------------------------------------------------------- mutations
 LEGAL_CLAIM_FIELDS = ("genre", "act_id", "act_title", "locator", "clause_type",
-                      "subject", "quantifier", "modality", "quote_verified", "scope")
+                      "subject", "quantifier", "modality", "quote_verified", "scope",
+                      "provision")
 # Source grounding (app/grounding.py), any genre: how the quote was verified,
 # the sentence it sits in, the model's own wording when it was snapped, and
 # kinds the text lists only as alternatives or examples.
@@ -268,7 +269,10 @@ def append_claims(job_id: str, new_claims: Iterable[dict]) -> dict:
         conf = (c.get("confidence") or "low").lower()
         # Default approve = True for high, False otherwise. Caller can
         # still override via set_approval before feeding.
-        default_approved = conf == "high"
+        # Recitals state reasons and bind nothing: never auto-approved, so
+        # feeding them is a deliberate choice (Review & feed, "include
+        # recitals").
+        default_approved = conf == "high" and c.get("provision") != "recital"
         entry = {
             "id": next_id,
             "claim": (c.get("claim") or "").strip(),
@@ -381,6 +385,53 @@ def set_job_status(job_id: str, status: str) -> dict:
     job = load_job(job_id)
     job["status"] = status
     return save_job(job)
+
+
+# Feed priority for legal claims (lower first). The act's definitions come
+# first so later provisions reuse the defined classes instead of minting
+# their own from recital wording; then what the act establishes, confers
+# and scopes; then its norms; recitals last.
+_TIER_BY_CLAUSE = {"definition": 0, "establishment": 1, "conferral": 1, "scope": 1}
+
+
+def feed_priority(claim: dict) -> int:
+    if claim.get("provision") == "recital":
+        return 3
+    tier = _TIER_BY_CLAUSE.get((claim.get("clause_type") or "").lower())
+    return 2 if tier is None else tier
+
+
+def prioritize_pending(job_id: str) -> dict:
+    """Renumber the job's PENDING claims in feed priority (stable within a
+    tier), above every non-pending claim's id.
+
+    Feeding is in id order and the amortized-save watermark is "highest
+    committed id" (crash recovery re-feeds ids above it), so priority must
+    live in the ids: reordering pending claims in place would let a later,
+    lower-id commit fall below the watermark and be lost on a crash. Claims
+    that are not pending keep their ids. Refused while the job is feeding.
+    Returns ``{"moved": n, "order": {tier: count}}``."""
+    with _file_lock:
+        job = load_job(job_id)
+        if job.get("status") == "feeding":
+            raise RuntimeError("job is feeding; pause it before reprioritizing")
+        claims = job.get("claims", [])
+        fixed = [c for c in claims if c.get("status") != "pending"]
+        pending = [c for c in claims if c.get("status") == "pending"]
+        base = max((c["id"] for c in fixed), default=-1) + 1
+        ordered = sorted(pending, key=lambda c: (feed_priority(c), c["id"]))
+        moved = 0
+        for i, c in enumerate(ordered):
+            if c["id"] != base + i:
+                moved += 1
+            c["id"] = base + i
+        job["claims"] = fixed + ordered
+        counts: dict[int, int] = {}
+        for c in ordered:
+            counts[feed_priority(c)] = counts.get(feed_priority(c), 0) + 1
+        job["updated_at"] = _now()
+        _atomic_write(_job_path(job_id), job)
+    return {"moved": moved, "order": counts}
 
 
 def next_pending(job_id: str, limit: int = 1) -> list[dict]:
