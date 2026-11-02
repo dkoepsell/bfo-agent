@@ -218,7 +218,7 @@ def test_build_request_matches_live_prompt_blocks():
     )
     assert req["custom_id"] == "job_abc:7"
     assert req["params"]["model"] == "model-x"
-    assert req["params"]["max_tokens"] == 4000
+    assert req["params"]["max_tokens"] == config.PROPOSER_MAX_TOKENS
     assert req["params"]["system"] == system  # byte-identical blocks
     assert req["params"]["messages"] == [{"role": "user", "content": user}]
     # the tail (non-head) class lexically matching the claim is offered

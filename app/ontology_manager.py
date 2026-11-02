@@ -60,6 +60,39 @@ class ReasonerTimeout(Exception):
     """HermiT exceeded config.REASONER_TIMEOUT_SECONDS and was killed."""
 
 
+class ReasonerInputError(Exception):
+    """HermiT could not read the ontology it was given, so it reasoned over
+    nothing. owlready2 returns normally in that case (HermiT exits 0 after
+    printing its parse errors), which callers used to read as "consistent":
+    in the 2018/1725 feed, text written as IRIs made every check after the
+    first Article 3 definition pass by default."""
+
+
+# Characters that cannot appear in an IRI (RFC 3987): one of them in a
+# stored resource makes the serialized ontology unparseable for HermiT.
+_BAD_IRI_SQL = ("SELECT iri FROM resources WHERE iri LIKE '% %' OR iri LIKE '%<%' "
+                "OR iri LIKE '%>%' OR iri LIKE '%\"%' OR iri LIKE '%{%' OR iri LIKE '%}%' "
+                "OR iri LIKE '%|%' OR iri LIKE '%^%' OR iri LIKE '%`%' LIMIT 5")
+_HERMIT_INPUT_FAILURES = ("UnparsableOntologyException", "Problem parsing",
+                          "OWLOntologyCreationException")
+
+
+def _preflight_iris(target) -> None:
+    """Refuse to reason over a world holding malformed IRIs."""
+    world = target if isinstance(target, World) else getattr(target, "world", None)
+    db = getattr(getattr(world, "graph", None), "db", None)
+    if db is None:
+        return
+    try:
+        bad = [r[0] for r in db.execute(_BAD_IRI_SQL)]
+    except Exception:
+        return
+    if bad:
+        raise ReasonerInputError(
+            "malformed IRI(s) in the ontology, HermiT cannot read it: "
+            + "; ".join(repr(b[:80]) for b in bad))
+
+
 def _hermit_child_pids() -> list[int]:
     """PIDs of java children of this process running HermiT (Linux /proc only).
 
@@ -112,9 +145,10 @@ def _sync_reasoner_guarded(target, infer_property_values: bool = False) -> None:
     Callers must hold _REASONER_LOCK, so at kill time there is at most one
     HermiT child belonging to us.
     """
+    _preflight_iris(target)
     timeout = config.REASONER_TIMEOUT_SECONDS
     if not timeout or timeout <= 0:
-        sync_reasoner(target, infer_property_values=infer_property_values)
+        _run_hermit_checked(target, infer_property_values)
         return
 
     fired = threading.Event()
@@ -131,7 +165,9 @@ def _sync_reasoner_guarded(target, infer_property_values: bool = False) -> None:
     timer.daemon = True
     timer.start()
     try:
-        sync_reasoner(target, infer_property_values=infer_property_values)
+        _run_hermit_checked(target, infer_property_values)
+    except ReasonerInputError:
+        raise
     except Exception:
         # If the watchdog fired, the underlying error is just the killed java
         # process; surface it as a timeout. Otherwise it's a real reasoner
@@ -143,6 +179,36 @@ def _sync_reasoner_guarded(target, infer_property_values: bool = False) -> None:
         raise
     finally:
         timer.cancel()
+
+def _run_hermit_checked(target, infer_property_values: bool) -> None:
+    """sync_reasoner, reading HermiT's own output (debug=2) so a parse
+    failure raises instead of passing as an empty, consistent result. The
+    output is passed on to stderr unchanged for callers that inspect it."""
+    import contextlib
+    import io as _io
+    import sys as _sys
+
+    buf = _io.StringIO()
+    try:
+        with contextlib.redirect_stderr(buf):
+            sync_reasoner(target, infer_property_values=infer_property_values, debug=2)
+    finally:
+        out = buf.getvalue()
+        # Pass on only owlready2's own status lines (what debug=1 printed):
+        # HermiT's classification output must not reach callers that scan
+        # stderr for the word "inconsistent" (a class IRI could contain it).
+        status = [l for l in out.splitlines()
+                  if l.startswith("* Owlready2 *") and "HermiT output" not in l]
+        if status:
+            _sys.stderr.write("\n".join(status) + "\n")
+    hit = next((m for m in _HERMIT_INPUT_FAILURES if m in out), None)
+    if hit:
+        line = next((l for l in out.splitlines() if hit in l), hit)
+        raise ReasonerInputError(f"HermiT could not read the ontology: {line[:300]}")
+
+
+_RDF_TYPE_IRI = "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+_OWL_NAMED_INDIVIDUAL = "http://www.w3.org/2002/07/owl#NamedIndividual"
 
 BFO_OBO_PREFIX = "http://purl.obolibrary.org/obo/"
 WORKING_IRI = "http://davidkoepsell.com/bfo-agent/working"
@@ -1090,6 +1156,12 @@ class OntologyManager:
         else:
             obj = type_cls(name, namespace=ns)
             obj.label = [ent.label]
+            if existing is None:
+                # Provenance for individuals too: the source span, locator,
+                # act and claim text, as for classes (the 2018/1725 draft had
+                # 626 individuals and no provenance on any of them).
+                content_quality.annotate_new_individual(
+                    self.world, obj.iri, ent, delta, onto=self.working)
 
         if delta is not None:
             if existing is not None and obj is existing:
@@ -1257,6 +1329,16 @@ class OntologyManager:
         g.add(triple)
         if delta is not None and not preexisting:
             delta.raw_triples.append((s_iri, p_iri, o_iri))
+        # "x rdf:type C" naming an x the proposal never declared makes x an
+        # individual: declare it, or the OWL API reads every later property
+        # assertion on x as an annotation (and the draft leaves OWL 2 DL).
+        if p_iri == _RDF_TYPE_IRI and s_ent is None and o_ent is not None \
+                and _entity_kind(o_ent) == "class":
+            decl = (URIRef(s_iri), URIRef(_RDF_TYPE_IRI), URIRef(_OWL_NAMED_INDIVIDUAL))
+            if decl not in g:
+                g.add(decl)
+                if delta is not None:
+                    delta.raw_triples.append((s_iri, _RDF_TYPE_IRI, _OWL_NAMED_INDIVIDUAL))
 
     # ------------------------------------------- QS-A3/A4/A6 write helpers
     _STRUCTURAL_PREDICATES = frozenset({

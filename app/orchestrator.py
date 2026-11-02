@@ -453,7 +453,9 @@ def _proposer_extra_rules(claim: dict | None = None) -> str:
     legal = ""
     if legal_drafting.is_legal_claim(claim):
         from . import legal_kernel
-        legal = legal_drafting.LEGAL_RULES + "\n" + legal_kernel.kernel_rules()
+        from . import legal_positions
+        legal = (legal_drafting.LEGAL_RULES + "\n" + legal_kernel.kernel_rules()
+                 + "\n" + legal_positions.RULES)
     else:
         # Any genre: grounded claims (verified quote, quantifier) get the
         # source-grounded rules G-0..G-5. Empty for pre-grounding claims.
@@ -481,6 +483,10 @@ def _legal_pass(proposal, claim, mgr, faithful, session_id, job_id) -> tuple:
     # Spec 6.2: one label per referent, in both modes (it governs what is
     # proposed, not what the text says).
     identity_notes = legal_drafting.resolve_identity(proposal, mgr)
+    if legal_drafting.is_legal_claim(claim):
+        # ODP-003/004 links the claim's own act supplies (both modes).
+        from . import legal_positions
+        identity_notes = identity_notes + legal_positions.complete(proposal, claim, mgr)
     findings = legal_drafting.check(proposal, claim, mgr)
     if not findings:
         return [], identity_notes
@@ -2676,6 +2682,22 @@ def create_app() -> Flask:
         except FileNotFoundError as e:
             return jsonify({"error": str(e)}), 404
         return jsonify(jobs_store._job_summary(job))
+
+    @app.post("/jobs/<job_id>/prioritize")
+    def jobs_prioritize(job_id):
+        """Renumber pending claims in feed priority: definitions, then what
+        the act establishes/confers/scopes, then norms, recitals last
+        (jobs.prioritize_pending). Refused while the job is feeding."""
+        if _active_is_finalized():
+            return _finalized_guard_response()
+        try:
+            result = jobs_store.prioritize_pending(job_id)
+            job = jobs_store.load_job(job_id)
+        except FileNotFoundError as e:
+            return jsonify({"error": str(e)}), 404
+        except RuntimeError as e:
+            return jsonify({"error": str(e)}), 409
+        return jsonify({**jobs_store._job_summary(job), "prioritized": result})
 
     @app.post("/jobs/<job_id>/approve")
     def jobs_approve(job_id):

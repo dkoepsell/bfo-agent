@@ -69,6 +69,11 @@ RELATION_ALIASES: dict[str, str] = {
 BFOAGENT_ANNOTATIONS: tuple[str, ...] = (
     "quantifierDefaulted", "scaffolded", "sourceSpan", "definitionStatus",
     "migratedFrom", "distinctFrom",
+    # SPEC-legal-drafting.md provenance and definitions. Undeclared, the OWL
+    # API reads them as untyped and the draft falls out of OWL 2 DL.
+    "sourceLocator", "sourceAct", "claimText", "possibleRelation",
+    "definiens", "definesTerm", "definedIn", "scope", "derivedDefinition",
+    "supersededDefinition", "definitionLocator", "hasScopedSenses",
 )
 
 
@@ -120,6 +125,8 @@ def seed_turtle() -> str:
     lines.append("")
     lines.append("obo:IAO_0000115 a owl:AnnotationProperty ; "
                  'rdfs:label "definition"@en .')
+    lines.append("obo:IAO_0000119 a owl:AnnotationProperty ; "
+                 'rdfs:label "definition source"@en .')
     for name in BFOAGENT_ANNOTATIONS:
         lines.append(f"bfoagent:{name} a owl:AnnotationProperty ; "
                      f'rdfs:label "{name}" .')

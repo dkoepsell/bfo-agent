@@ -379,6 +379,9 @@ def check(proposal, claim: dict, mgr=None) -> list[dict]:
                           f"dependent continuant has one bearer"})
 
     findings.extend(_alternatives_findings(claim, edges, proposal))
+    if legal:
+        from . import legal_positions
+        findings.extend(legal_positions.check(proposal, claim, mgr))
     return findings
 
 
@@ -637,6 +640,10 @@ def repair(proposal, findings: list[dict], mgr=None) -> list[str]:
                          f"removed {len(removed)}")
 
     proposal.relations = new_rels
+    from . import legal_positions
+    pos = [f for f in findings if f["check"] in legal_positions.CHECKS]
+    if pos:
+        notes += legal_positions.repair(proposal, pos, mgr)
     return notes
 
 

@@ -350,7 +350,7 @@ class LLMProposer:
 
         resp = self.client.messages.create(
             model=self.model,
-            max_tokens=4000,
+            max_tokens=config.PROPOSER_MAX_TOKENS,
             **_sampling_kwargs(self.model),
             system=system,
             messages=[{"role": "user", "content": user_message}],

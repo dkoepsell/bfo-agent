@@ -107,7 +107,7 @@ def build_request(claim: dict, ctx: dict, model: str, ttl: str,
         "custom_id": f"{job_id}:{claim['id']}",
         "params": {
             "model": model,
-            "max_tokens": 4000,
+            "max_tokens": config.PROPOSER_MAX_TOKENS,
             "system": system,
             "messages": [{"role": "user", "content": user_message}],
         },

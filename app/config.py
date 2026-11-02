@@ -164,6 +164,11 @@ SCAFFOLD_UPPER_FILLERS = os.getenv("SCAFFOLD_UPPER_FILLERS", "0").lower() in ("1
 QS_REQUIRE_DEFINITIONS = os.getenv("QS_REQUIRE_DEFINITIONS", "true").lower() == "true"
 # QS-D3: reuse candidates offered to the proposer per new label.
 REUSE_TOP_K = int(os.getenv("REUSE_TOP_K", "5"))
+
+# Proposer output budget. Legal claims carry verbatim definitions and long
+# rationales; at 4000 tokens five proposals in the 2018/1725 feed were cut
+# off mid-JSON ("No parseable JSON object ... possibly truncated").
+PROPOSER_MAX_TOKENS = int(os.environ.get("PROPOSER_MAX_TOKENS", "8000"))
 # QS-D5: drop asserted parents already entailed by another asserted parent.
 TRANSITIVE_REDUCTION = os.getenv("TRANSITIVE_REDUCTION", "true").lower() == "true"
 # QS-D6: report classes with more direct named subclasses than this.
