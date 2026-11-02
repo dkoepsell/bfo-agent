@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Coverage Kernel &middot; a reasoner that decides coverage and shows its working</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,900&family=Newsreader:opsz,wght@6..72,400;6..72,500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1a1714; --paper:#f4f0e8; --paper2:#ebe5d8; --line:#cfc6b3;
+    --accent:#7c1f1f;      /* oxblood - authority */
+    --accent2:#1f4b5c;     /* slate teal - recognition */
+    --gold:#9a7a2b;
+    --covered:#2f5d3a;     /* green - covered */
+    --uncovered:#9a4a1f;   /* burnt orange - uncovered */
+    --undet:#6e655a;       /* grey - undetermined */
+    --contra:#7c1f1f;      /* oxblood - contradiction */
+    --muted:#6e655a;
+    --serif:"Newsreader",Georgia,serif;
+    --display:"Fraunces",Georgia,serif;
+    --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--serif);
+       line-height:1.55;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:860px;margin:0 auto;padding:56px 24px 96px}
+  header{border-bottom:2px solid var(--ink);padding-bottom:22px;margin-bottom:12px}
+  .kicker{font-family:var(--mono);font-size:12px;letter-spacing:.14em;
+          text-transform:uppercase;color:var(--accent);margin:0 0 14px}
+  .kicker a{color:var(--accent)}
+  h1{font-family:var(--display);font-weight:600;font-size:40px;line-height:1.05;
+     margin:0 0 12px;letter-spacing:-.01em}
+  .sub{font-size:19px;color:var(--muted);margin:0;max-width:62ch}
+  .meta{font-family:var(--mono);font-size:12px;color:var(--muted);
+        margin-top:20px;display:flex;flex-wrap:wrap;gap:6px 18px}
+  .lede{font-size:20px;line-height:1.5;margin:34px 0 8px}
+  .lede b{color:var(--accent)}
+  h2.sec{font-family:var(--mono);font-size:12.5px;letter-spacing:.1em;
+         text-transform:uppercase;color:var(--muted);margin:52px 0 14px;
+         border-top:1px solid var(--line);padding-top:18px;font-weight:400}
+  .card{background:#fbf8f1;border:1px solid var(--line);border-radius:10px;
+        padding:24px;margin:16px 0;box-shadow:0 1px 0 rgba(0,0,0,.03)}
+  .ftitle{font-family:var(--display);font-weight:500;font-size:22px;line-height:1.2;
+          margin:0 0 10px}
+  .blurb{font-size:16.5px;margin:0 0 16px;color:#2a2420}
+
+  /* verdict chips */
+  .v{font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.08em;
+     text-transform:uppercase;padding:3px 10px;border-radius:999px;color:#fff;
+     white-space:nowrap;display:inline-block}
+  .v.covered{background:var(--covered)} .v.uncovered{background:var(--uncovered)}
+  .v.undetermined{background:var(--undet)} .v.contradiction{background:var(--contra)}
+
+  .losses{display:flex;flex-wrap:wrap;gap:10px;margin:0 0 16px}
+  .loss{flex:1 1 240px;border:1px solid var(--line);border-radius:8px;
+        background:var(--paper);padding:13px 15px}
+  .loss .lab{font-size:16px;margin:0 0 8px}
+  .loss .who{font-family:var(--mono);font-size:11.5px;color:var(--muted);margin:7px 0 0}
+
+  .cite{font-family:var(--mono);font-size:12px;color:var(--accent);font-weight:500;
+        margin-bottom:5px}
+  .clause{border-top:1px solid var(--line);padding:12px 0}
+  .quote{font-size:15px;font-style:italic;color:#2a2420;
+         border-left:2px solid var(--gold);padding-left:14px;margin:0}
+  .clauses-h{font-family:var(--mono);font-size:11px;letter-spacing:.12em;
+             text-transform:uppercase;color:var(--muted);margin:18px 0 4px}
+
+  code,pre{font-family:var(--mono)}
+  pre{background:var(--paper2);border-left:3px solid var(--accent2);
+      padding:13px 15px;border-radius:0 6px 6px 0;overflow-x:auto;
+      font-size:12.5px;line-height:1.5;margin:10px 0}
+  .axioms{display:flex;flex-wrap:wrap;gap:7px;margin:12px 0}
+  .ax{font-family:var(--mono);font-size:11.5px;background:var(--accent);color:#fff;
+      padding:3px 9px;border-radius:4px}
+  details{margin-top:14px}
+  summary{font-family:var(--mono);font-size:12px;color:var(--accent2);cursor:pointer}
+  .gloss{font-size:15.5px;color:#2a2420;margin:0 0 4px}
+
+  /* the assessor */
+  .form{display:grid;grid-template-columns:1fr;gap:14px}
+  label{font-size:15.5px;display:block}
+  .row{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+  .fl{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;
+      color:var(--muted);display:block;margin-bottom:5px}
+  input[type=text]{font-family:var(--serif);font-size:16px;padding:8px 11px;
+      border:1px solid var(--line);border-radius:6px;background:var(--paper);
+      color:var(--ink);min-width:0;width:100%}
+  input[type=checkbox]{width:16px;height:16px;accent-color:var(--accent2);
+      vertical-align:-2px;margin-right:6px}
+  button{font-family:var(--mono);font-size:13px;letter-spacing:.06em;
+      background:var(--ink);color:var(--paper);border:0;border-radius:6px;
+      padding:11px 20px;cursor:pointer}
+  button:hover{background:var(--accent)}
+  button.ghost{background:transparent;color:var(--accent2);border:1px solid var(--line);
+      padding:6px 12px;font-size:12px}
+  button.ghost:hover{background:var(--paper2);color:var(--accent)}
+  button[disabled]{opacity:.5;cursor:default}
+  .excl{border:1px solid var(--line);border-radius:8px;padding:12px 14px;
+        background:var(--paper);margin-bottom:9px}
+  .excl .row{margin-top:8px}
+  .hint{font-size:14.5px;color:var(--muted);margin:4px 0 0}
+  .preset{display:flex;flex-wrap:wrap;gap:7px;margin:0 0 6px}
+  .result{margin-top:20px;border-top:1px solid var(--line);padding-top:18px}
+  .bigv{font-family:var(--display);font-size:27px;font-weight:600;margin:8px 0 6px}
+  .bigv.covered{color:var(--covered)} .bigv.uncovered{color:var(--uncovered)}
+  .bigv.undetermined{color:var(--undet)} .bigv.contradiction{color:var(--contra)}
+  .why{font-size:17px;margin:0 0 10px;max-width:64ch}
+  .note{font-family:var(--mono);font-size:12px;color:var(--muted)}
+
+  table.gates{border-collapse:collapse;width:100%;font-size:14px}
+  table.gates td{border-bottom:1px solid var(--line);padding:6px 8px 6px 0;
+                 vertical-align:top}
+  table.gates td.g{font-family:var(--mono);font-size:12px;color:var(--muted);width:38px}
+  table.gates td.s{font-family:var(--mono);font-size:11px;width:56px}
+  td.s.pass{color:var(--covered)} td.s.fail{color:var(--contra)}
+  .metrics{display:flex;flex-wrap:wrap;gap:6px 22px;font-family:var(--mono);
+           font-size:12px;color:var(--muted);margin-top:14px}
+  .metrics b{color:var(--ink);font-weight:500}
+
+  .warn{background:#fbf0ee;border:1px solid var(--accent);border-radius:8px;
+        padding:14px 16px;font-size:15px;color:var(--accent);margin:0 0 16px}
+  .err{background:#fbf0ee;border:1px solid var(--accent);border-radius:8px;
+       padding:20px;font-family:var(--mono);font-size:13px;color:var(--accent)}
+  footer{margin-top:56px;border-top:1px solid var(--line);padding-top:22px;
+          font-size:15px;color:var(--muted)}
+  footer b{color:var(--ink)}
+  .pat{border-top:1px solid var(--line);padding:14px 0}
+  .pat h3{font-family:var(--display);font-weight:500;font-size:18px;margin:0 0 6px}
+  .pat p{font-size:15.5px;margin:0 0 8px;color:#2a2420}
+  .cant{font-size:15px;margin:8px 0 0;padding-left:14px;border-left:2px solid var(--gold)}
+  .cant b{color:var(--accent)}
+  @media (max-width:560px){h1{font-size:31px}.wrap{padding:36px 18px 72px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <p class="kicker"><a href="/coverage.html">&larr; Coverage Coherence Layer</a></p>
+    <h1>A freezer is covered.<br>The sofa beside it is not.</h1>
+    <p class="sub">Neither fact is asserted anywhere. Both are derived by an OWL 2 DL
+      reasoner from two provisions of a public federal regulation. Below you can put your
+      own facts to the same kernel and watch it decide.</p>
+    <div class="meta" id="meta"></div>
+  </header>
+
+  <p class="lede">A coverage kernel that answers three questions and refuses to guess at
+    a fourth: is this loss <b>covered</b>, is it <b>uncovered</b>, is the wording
+    <b>contradictory</b>, and if the exclusions were never closed, <b>undetermined</b>.
+    Every verdict is derived, and a contradiction comes back with the axioms responsible
+    rather than a shrug.</p>
+
+  <div id="body"></div>
+
+  <footer>
+    <p>The demonstrator is the <b>NFIP Standard Flood Insurance Policy, Dwelling Form</b>,
+      published at <b>44 CFR Part 61, Appendix A(1)</b>. It is a work of the United States
+      federal government and carries no copyright, so every verdict here is independently
+      checkable against the source. Nothing on this page is endorsed by, affiliated with,
+      or approved by FEMA or any agency of the United States.</p>
+    <p>One fixture on this page is a <b>constructed wording variant</b> and says so where
+      it appears. It is not the SFIP.</p>
+  </footer>
+</div>
+
+<script>
+// Same API-base convention as the main app: behind Caddy the backend lives under
+// /api; on the raw Flask port there is no prefix.
+const API = window.location.protocol === "file:"
+  ? "http://localhost:5000"
+  : window.location.port === "5000" ? "" : "/api";
+
+function esc(s){return String(s==null?"":s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));}
+const cap = s => s ? s[0].toUpperCase()+s.slice(1) : s;
+
+/* ------------------------------------------------------------------ render */
+
+function renderGates(b){
+  if(!b || !b.gates || !b.gates.length) return "";
+  const rows = b.gates.map(g=>`<tr>
+      <td class="g">${esc(g.gate)}</td>
+      <td class="s ${esc(g.status)}">${esc(g.status)}</td>
+      <td>${esc(g.detail)}</td></tr>`).join("");
+  const m = b.metrics||{};
+  const chip = (k,l)=> m[k]===undefined ? "" : `<span><b>${esc(m[k])}</b> ${l}</span>`;
+  return `<h2 class="sec">Is it sound</h2>
+    <div class="card">
+      <p class="blurb">Twelve gates, run in order. Two of them are the ones that
+        distinguish this from ordinary ontology tooling: <b>G8</b> checks that
+        conclusions which must <i>not</i> follow do not, and <b>G10</b> requires a
+        contradiction to be attributed to a named set of axioms and to disappear when
+        those axioms are removed. Every gate has been deliberately sabotaged to confirm
+        it goes red when it should.</p>
+      <table class="gates">${rows}</table>
+      <div class="metrics">
+        ${chip("class_count","classes")}
+        ${chip("defined_class_count","defined")}
+        ${chip("inferred_subsumptions","inferred subsumptions")}
+        ${chip("unsatisfiable_classes","unsatisfiable")}
+        ${chip("must_entail_passed","entailment obligations")}
+        ${chip("must_not_entail_passed","non entailment obligations")}
+        ${chip("contradiction_fixtures_passed","contradiction fixtures")}
+      </div>
+    </div>`;
+}
+
+function renderLoss(l){
+  return `<div class="loss">
+    <p class="lab">${esc(cap(l.label))}</p>
+    <span class="v ${esc(l.status)}">${esc(l.status)}</span>
+    <p class="who">${l.bearer ? "bearer: "+esc(l.bearer.label) : ""}${
+      l.closed ? (l.bearer?" &middot; ":"")+"exclusions closed" : ""}</p>
+  </div>`;
+}
+
+function renderFixture(f){
+  const losses = (f.losses||[]).map(renderLoss).join("");
+  const provs = (f.provisions||[]).map(p=>`<div class="clause">
+      <div class="cite">${esc(p.citation)}</div>
+      ${p.text?`<p class="quote">&ldquo;${esc(p.text)}&rdquo;</p>`:""}
+    </div>`).join("");
+  let contra = "";
+  if(f.contradiction && f.contradiction.inconsistent){
+    contra = `<p class="blurb"><b>The reasoner reports this wording inconsistent</b>, and
+        names the axioms that cannot all hold:</p>
+      <div class="axioms">${(f.contradiction.axioms||[]).map(a=>`<span class="ax">${esc(a)}</span>`).join("")}</div>
+      <p class="note">${esc(f.contradiction.other_routes||0)} further routes to the same
+        contradiction were found. This is the one a drafter can act on.</p>`;
+  }
+  return `<div class="card">
+    <h3 class="ftitle">${esc(f.title)}</h3>
+    ${f.constructed_warning?`<p class="warn"><b>Constructed variant.</b> ${esc(f.constructed_warning)}</p>`:""}
+    <p class="blurb">${esc(f.blurb)}</p>
+    ${losses?`<div class="losses">${losses}</div>`:""}
+    ${contra}
+    ${provs?`<p class="clauses-h">Provisions relied on, quoted from the regulation</p>${provs}`:""}
+  </div>`;
+}
+
+function renderAxioms(list){
+  if(!list || !list.length) return "";
+  return `<h2 class="sec">The mechanism</h2>
+    <div class="card">
+      <p class="blurb">These are the axioms, not a description of them. The kernel is
+        published under CC BY 4.0, so there is nothing to hide behind: if a verdict on
+        this page is wrong, this is where to look.</p>
+      ${list.map(a=>`
+        <p class="clauses-h">${esc(a.id)}</p>
+        <p class="gloss">${esc(a.gloss)}</p>
+        <pre>${esc(a.turtle)}</pre>`).join("")}
+    </div>`;
+}
+
+function renderPatterns(list){
+  if(!list || !list.length) return "";
+  return `<h2 class="sec">What it cannot do</h2>
+    <div class="card">
+      <p class="blurb">Twelve patterns, each with a section stating what it
+        <b>cannot express</b>. That section is the most useful part of the library, and
+        it is reproduced here rather than kept in a repository nobody reads. A pattern
+        library that only says what it can do is marketing.</p>
+      ${list.map(p=>`<div class="pat">
+        <h3>${esc(p.title)}</h3>
+        <p>${esc(p.problem)}</p>
+        ${(p.cannot_express||[]).map(c=>`<p class="cant"><b>${esc(c.heading)}.</b>
+           ${esc(c.body)}</p>`).join("")}
+      </div>`).join("")}
+    </div>`;
+}
+
+/* --------------------------------------------------------------- assessor */
+
+let exclusions = [{label:"earth movement", applies:true, carved_back:false}];
+let HEALTH = {};
+
+const PRESETS = {
+  covered:   {peril:"flooding", granted:true, closure:true, deem:false, upstream:"",
+              ex:[]},
+  basement:  {peril:"flooding", granted:true, closure:true, deem:false, upstream:"",
+              ex:[{label:"personal property in a basement", applies:true, carved_back:true}]},
+  chain:     {peril:"landslide", granted:true, closure:true, deem:false, upstream:"flooding",
+              ex:[{label:"earth movement", applies:true, carved_back:false}]},
+  unclosed:  {peril:"flooding", granted:true, closure:false, deem:false, upstream:"",
+              ex:[]},
+  nogrant:   {peril:"earthquake", granted:false, closure:true, deem:false, upstream:"",
+              ex:[]},
+  contra:    {peril:"landslide", granted:true, closure:true, deem:true, upstream:"flooding",
+              ex:[{label:"earth movement", applies:true, carved_back:false}]}
+};
+
+function applyPreset(k){
+  const p = PRESETS[k]; if(!p) return;
+  document.getElementById("peril").value = p.peril;
+  document.getElementById("upstream").value = p.upstream;
+  document.getElementById("granted").checked = p.granted;
+  document.getElementById("closure").checked = p.closure;
+  document.getElementById("deem").checked = p.deem;
+  exclusions = p.ex.map(e=>({...e}));
+  drawExclusions();
+}
+
+function drawExclusions(){
+  const host = document.getElementById("exclusions");
+  host.innerHTML = exclusions.map((e,i)=>`
+    <div class="excl">
+      <span class="fl">Exclusion ${i+1}</span>
+      <input type="text" data-i="${i}" data-k="label" value="${esc(e.label)}"
+             placeholder="what the exclusion is called"/>
+      <div class="row">
+        <label><input type="checkbox" data-i="${i}" data-k="applies"
+          ${e.applies?"checked":""}/> applies to this loss</label>
+        <label><input type="checkbox" data-i="${i}" data-k="carved_back"
+          ${e.carved_back?"checked":""}/> carved back for this loss</label>
+        <button class="ghost" data-rm="${i}">remove</button>
+      </div>
+    </div>`).join("") || `<p class="hint">No exclusions. With a closure asserted this
+      loss will come back covered.</p>`;
+
+  host.querySelectorAll("input").forEach(el=>{
+    el.addEventListener("input", ev=>{
+      const i = +ev.target.dataset.i, k = ev.target.dataset.k;
+      exclusions[i][k] = ev.target.type==="checkbox" ? ev.target.checked : ev.target.value;
+    });
+  });
+  host.querySelectorAll("button[data-rm]").forEach(b=>{
+    b.addEventListener("click", ()=>{ exclusions.splice(+b.dataset.rm,1); drawExclusions(); });
+  });
+}
+
+function renderAssessor(live){
+  return `<h2 class="sec">Put your own facts to it</h2>
+    <div class="card">
+      ${live ? "" : `<p class="warn">${esc(HEALTH.disabled_reason ||
+        "Live assessment is not available on this host, so the panel below is disabled. Everything else on this page is precomputed and unaffected.")}</p>`}
+      <p class="blurb">Describe a loss. The server builds an ABox from what you enter,
+        runs HermiT over the kernel, and returns what follows. Nothing is looked up and
+        nothing is canned. One assessment takes about three seconds and they are
+        serialised behind the ontology feed, so you may occasionally be asked to wait.</p>
+
+      <div class="preset">
+        <button class="ghost" data-preset="covered">covered</button>
+        <button class="ghost" data-preset="basement">carveback</button>
+        <button class="ghost" data-preset="chain">exclusion through a causal chain</button>
+        <button class="ghost" data-preset="unclosed">no closure</button>
+        <button class="ghost" data-preset="nogrant">no grant reaches it</button>
+        <button class="ghost" data-preset="contra">contradictory wording</button>
+      </div>
+
+      <div class="form">
+        <div>
+          <span class="fl">The peril the loss arose from</span>
+          <input type="text" id="peril" value="flooding"/>
+        </div>
+        <div>
+          <span class="fl">Caused in turn by (optional)</span>
+          <input type="text" id="upstream" value="" placeholder="leave blank for no causal chain"/>
+          <p class="hint">Fill this in and the grant attaches to the upstream peril. That
+            is the earth movement case: the flood caused the landslide, the grant fired,
+            and the exclusion then defeated it.</p>
+        </div>
+        <div class="row">
+          <label><input type="checkbox" id="granted" checked/> a grant covers this</label>
+          <label><input type="checkbox" id="closure" checked/> exclusions closed</label>
+          <label><input type="checkbox" id="deem"/> a notwithstanding clause deems it covered</label>
+        </div>
+        <div>
+          <span class="fl">Exclusions</span>
+          <div id="exclusions"></div>
+          <button class="ghost" id="addex">add an exclusion</button>
+        </div>
+        <div class="row">
+          <button id="run" ${live?"":"disabled"}>Assess this loss</button>
+          <span class="note" id="status"></span>
+        </div>
+      </div>
+      <div class="result" id="result" style="display:none"></div>
+    </div>`;
+}
+
+function showResult(d){
+  const host = document.getElementById("result");
+  host.style.display = "block";
+  if(d.error){
+    host.innerHTML = `<div class="err">${esc(d.error)}${d.detail?"<br><br>"+esc(d.detail):""}</div>`;
+    return;
+  }
+  const v = d.verdict||"unknown";
+  const ax = (d.axioms&&d.axioms.length)
+    ? `<div class="axioms">${d.axioms.map(a=>`<span class="ax">${esc(a)}</span>`).join("")}</div>`
+    : "";
+  const fired = d.grant_reached_the_loss===undefined ? "" :
+    `<p class="note">Did a grant reach this loss? <b>${d.grant_reached_the_loss?"yes":"no"}</b>.
+      ${d.grant_reached_the_loss
+        ? "So an exclusion defeated a grant that fired, which is a different fact from the grant never reaching the loss."
+        : "So it falls outside cover because nothing brought it in, not because an exclusion applied."}</p>`;
+  host.innerHTML = `
+    <p class="bigv ${esc(v)}">${esc(cap(v))}</p>
+    <p class="why">${esc(d.why)}</p>
+    ${ax}
+    ${v==="contradiction"?"":fired}
+    <details><summary>Show the facts as the reasoner received them</summary>
+      <pre>${esc(d.turtle||"")}</pre></details>
+    <p class="note">HermiT, ${esc(d.elapsed_s||"?")} s.</p>`;
+}
+
+function wireAssessor(){
+  drawExclusions();
+  document.querySelectorAll("button[data-preset]").forEach(b=>{
+    b.addEventListener("click", ()=>applyPreset(b.dataset.preset));
+  });
+  const add = document.getElementById("addex");
+  if(add) add.addEventListener("click", ()=>{
+    if(exclusions.length>=8){ return; }
+    exclusions.push({label:"", applies:true, carved_back:false}); drawExclusions();
+  });
+  const run = document.getElementById("run");
+  if(!run) return;
+  run.addEventListener("click", async ()=>{
+    const status = document.getElementById("status");
+    run.disabled = true; status.textContent = "reasoning...";
+    const body = {
+      peril: document.getElementById("peril").value,
+      granted: document.getElementById("granted").checked,
+      closure_asserted: document.getElementById("closure").checked,
+      deemed_covered: document.getElementById("deem").checked,
+      exclusions: exclusions.map(e=>({label:e.label, applies:!!e.applies,
+                                      carved_back:!!e.carved_back}))
+    };
+    const up = document.getElementById("upstream").value.trim();
+    if(up){ body.upstream_peril = up; body.grant_on_upstream = true; }
+    try{
+      const r = await fetch(API+"/ck/assess", {method:"POST",
+        headers:{"Content-Type":"application/json"}, body:JSON.stringify(body)});
+      showResult(await r.json());
+    }catch(e){
+      showResult({error:"could not reach the reasoner", detail:String(e)});
+    }finally{
+      run.disabled = false; status.textContent = "";
+    }
+  });
+}
+
+/* -------------------------------------------------------------------- boot */
+
+Promise.all([
+  fetch(API+"/ck/payload").then(r=>r.json()).catch(e=>({error:String(e)})),
+  fetch(API+"/ck/health").then(r=>r.json()).catch(()=>({live_assessment:false}))
+]).then(([d, health])=>{
+  const host = document.getElementById("body");
+  if(d.error){
+    host.innerHTML = `<div class="err">${esc(d.error)}${d.fix?"<br><br>"+esc(d.fix):""}</div>`;
+    return;
+  }
+  document.getElementById("meta").innerHTML = [
+    d.build && d.build.verdict ? `<span>Build: ${esc(d.build.verdict)}</span>` : "",
+    d.build && d.build.duration_s ? `<span>${esc(d.build.duration_s)} s to verify</span>` : "",
+    `<span>Reasoner: HermiT</span>`,
+    d.selftest && d.selftest.all_caught ? `<span>All 12 gates proven to fail on sabotage</span>` : "",
+    d.generated_utc ? `<span>Built ${esc(d.generated_utc.slice(0,10))}</span>` : ""
+  ].filter(Boolean).join("");
+
+  const fixtures = (d.fixtures||[]);
+  const lead = fixtures.find(f=>f.id==="03");
+  const rest = fixtures.filter(f=>f.id!=="03");
+
+  host.innerHTML =
+      `<h2 class="sec">The demonstration</h2>`
+    + (lead ? renderFixture(lead) : "")
+    + renderAssessor(!!health.live_assessment)
+    + `<h2 class="sec">The other fixtures</h2>`
+    + rest.map(renderFixture).join("")
+    + renderGates(d.build)
+    + renderAxioms(d.kernel_axioms)
+    + renderPatterns(d.patterns);
+
+  wireAssessor();
+}).catch(e=>{
+  document.getElementById("body").innerHTML =
+    `<div class="err">Could not load: ${esc(String(e))}</div>`;
+});
+</script>
+</body>
+</html>
