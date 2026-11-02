@@ -158,6 +158,16 @@ def annotate_new_class(world_or_graph, iri: str, entity, delta=None,
         put(rv.bfoagent("sourceSpan"), Literal(span))
     if distinct:
         put(rv.bfoagent("distinctFrom"), URIRef(_expand(distinct)))
+    # SPEC-legal-drafting.md 3.3 / Q1: legal provenance and possibilities.
+    for field_name, pred in (("source_locator", "sourceLocator"),
+                             ("source_act", "sourceAct"),
+                             ("claim_text", "claimText")):
+        val = (getattr(entity, field_name, None) or "").strip()
+        if val:
+            put(rv.bfoagent(pred), Literal(val))
+    for possible in getattr(entity, "possible_relations", None) or []:
+        if (possible or "").strip():
+            put(rv.bfoagent("possibleRelation"), Literal(possible.strip()))
     return added
 
 

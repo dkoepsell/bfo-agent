@@ -526,6 +526,20 @@
               <option value="go">go — claims only</option>
             </select>
           </label>
+          <label>Genre
+            <select id="extract-genre" title="Legal genres keep verbatim quotes with article locators and record each claim's quantifier and modality.">
+              <option value="philosophy" selected>philosophy (author's own claims)</option>
+              <option value="legislation">legislation (statute, regulation, directive)</option>
+              <option value="model_rules">model rules (DCFR, restatement)</option>
+              <option value="policy">policy or code</option>
+            </select>
+          </label>
+          <label>Act id
+            <input type="text" id="extract-act-id" placeholder="CELEX/ELI, e.g. 32016R0679 (auto-detected if blank)" />
+          </label>
+          <label>Act title
+            <input type="text" id="extract-act-title" placeholder="e.g. Regulation (EU) 2016/679" />
+          </label>
           <label>Min confidence
             <select id="extract-min-conf">
               <option value="low">low (most inclusive)</option>
@@ -1032,6 +1046,9 @@ async function runExtractionIntoJob() {
   // Last chance to catch act-thick text pasted with the corpus left at "(none)".
   maybeSuggestCorpus(text);
   const corpusId = document.getElementById("extract-corpus").value;
+  const genre = document.getElementById("extract-genre").value;
+  const actIdIn = document.getElementById("extract-act-id").value.trim();
+  const actTitleIn = document.getElementById("extract-act-title").value.trim();
 
   setBusy(true);
   extractStatus("preparing chunks...");
@@ -1039,9 +1056,18 @@ async function runExtractionIntoJob() {
     const prep = await api("/extract/prepare", {
       method: "POST",
       body: JSON.stringify({ text, section, chunk_chars: chunkChars, overlap,
-                             corpus_id: corpusId }),
+                             corpus_id: corpusId, genre,
+                             act_id: actIdIn, act_title: actTitleIn }),
     });
     const chunks = prep.chunks;
+    // Legal genres: the server detects the act and each chunk's locator.
+    const actId = prep.act_id || actIdIn;
+    const actTitle = prep.act_title || actTitleIn;
+    const locators = prep.chunk_locators || [];
+    let rejectedQuotes = 0;
+    if (prep.genre && prep.genre !== "philosophy" && !actId) {
+      extractStatus("note: no act id detected; legal definitions will be flagged unscoped");
+    }
     const doesNorms = (prep.extractors || []).includes("norm");
     if (prep.retained_span) {
       const s = prep.retained_span;
@@ -1065,8 +1091,11 @@ async function runExtractionIntoJob() {
         const r = await api("/extract/chunk", {
           method: "POST",
           body: JSON.stringify({ chunk: chunks[i], section, chunk_index: i,
-                                 corpus_id: corpusId }),
+                                 corpus_id: corpusId, genre,
+                                 act_id: actId, act_title: actTitle,
+                                 locator: locators[i] || "" }),
         });
+        rejectedQuotes += (r.rejected_claims || []).length;
         if (r.norm_tuples && r.norm_tuples.length) normTuples.push(...r.norm_tuples);
         const kept = (r.claims || []).filter(c => {
           const rank = confRank[(c.confidence || "low").toLowerCase()] ?? 0;
@@ -1088,6 +1117,9 @@ async function runExtractionIntoJob() {
     }
 
     let msg = `done. ${collected} new claims appended at >= ${minConf}.`;
+    if (rejectedQuotes) {
+      msg += ` ${rejectedQuotes} claim(s) dropped: quote not verbatim in the source.`;
+    }
     if (!collected && !corpusId) {
       // Do not let a silent zero pass as a finding. It may be one — act-thick
       // text genuinely has no ontological claims — but only the norm extractor

@@ -64,6 +64,15 @@ class Entity(BaseModel):
     # QS-D8: individual made up as an illustration rather than a referent of
     # the text; written to examples.owl instead of the working ontology.
     illustrative: bool = False
+    # SPEC-legal-drafting.md 3.3: legal-genre provenance, set by the
+    # orchestrator from the claim (never by the proposer). source_span then
+    # holds the verbatim quote; claim_text keeps the paraphrase apart.
+    source_locator: Optional[str] = None
+    source_act: Optional[str] = None
+    claim_text: Optional[str] = None
+    # Q1: a "can" relation the text states as a possibility, kept as an
+    # annotation (bfoagent:possibleRelation) instead of a class-level axiom.
+    possible_relations: list[str] = []
 
 
 class Relation(BaseModel):

@@ -142,7 +142,7 @@ def _active_fidelity() -> str:
 
 
 def _run_coherence_gate(proposal, mgr, proposer, ctx, session_id, context=None,
-                        faithful=False, exclude_axioms=None):
+                        faithful=False, exclude_axioms=None, extra_rules=None):
     """Run the coherence gate under the configured policy and log the events.
 
     Returns the GateRun. The caller decides what to do with GateRun.outcome and
@@ -183,7 +183,8 @@ def _run_coherence_gate(proposal, mgr, proposer, ctx, session_id, context=None,
                 working_classes=ctx["working_classes"],
                 known_individuals=ctx["known_individuals"],
                 relevant_classes=ctx.get("relevant_classes"),
-                extra_rules=_proposer_extra_rules(),
+                extra_rules=(extra_rules if extra_rules is not None
+                             else _proposer_extra_rules()),
             )
         except Exception:
             return None
@@ -443,12 +444,53 @@ def _recognition_extra_rules() -> str:
         return ""
 
 
-def _proposer_extra_rules() -> str:
-    """All profile-conditional proposer rules for the active ontology."""
+def _proposer_extra_rules(claim: dict | None = None) -> str:
+    """All profile-conditional proposer rules for the active ontology, plus
+    the legal-source rules (SPEC-legal-drafting.md 4.1) when ``claim`` came
+    from the legal extraction profile. Philosophy claims: unchanged."""
+    from . import legal_drafting
+
+    legal = legal_drafting.LEGAL_RULES if legal_drafting.is_legal_claim(claim) else ""
     return "".join(
-        block for block in (_coverage_extra_rules(), _recognition_extra_rules())
+        block for block in (_coverage_extra_rules(), _recognition_extra_rules(),
+                            legal)
         if block
     )
+
+
+def _legal_pass(proposal, claim, mgr, faithful, session_id, job_id) -> tuple:
+    """SPEC-legal-drafting.md 3.3 + 4.2 on one proposal of a legal claim.
+
+    Returns ``(rejecting_findings, notes)``. Stamps verbatim provenance;
+    curated mode repairs findings in place, faithful mode leaves the proposal
+    as asserted. Every finding is recorded in legal_findings.jsonl. A no-op
+    for philosophy claims."""
+    from . import legal_drafting
+
+    if not legal_drafting.is_legal_claim(claim):
+        return [], []
+    legal_drafting.stamp_provenance(proposal, claim)
+    findings = legal_drafting.check(proposal, claim, mgr)
+    if not findings:
+        return [], []
+    mode = "faithful" if faithful else "curated"
+    rejecting = legal_drafting.rejects(findings, faithful)
+    if rejecting:
+        action = "claim-rejected"
+        notes = []
+    elif faithful:
+        action = "committed-as-asserted"
+        notes = [f"legal-check {f['check']}: {f['detail']} (committed as asserted)"
+                 for f in findings]
+    else:
+        action = "repaired"
+        notes = legal_drafting.repair(proposal, findings, mgr)
+    legal_drafting.record_findings(mgr.working_path, claim, findings, mode,
+                                   action, job_id=job_id)
+    log_event(session_id, "legal_check", {
+        "job_id": job_id, "claim_id": claim.get("id"), "fidelity": mode,
+        "action": action, "findings": findings})
+    return rejecting, notes
 
 
 def _chain_active(mgr=None) -> bool:
@@ -1189,7 +1231,13 @@ def _feed_one_core(job_id: str, auto_accept: bool = True) -> dict:
         # untouched, and any gate resample still re-proposes live.
         proposal = None
         used_stored_proposal = False
-        pre = claim.get("proposal") if config.BATCH_PROPOSE_ENABLED else None
+        # Legal claims always propose live: the batch prepare pass builds
+        # philosophy-style prompts (no verbatim quote, no legal rules).
+        from . import legal_drafting
+        legal_claim = legal_drafting.is_legal_claim(claim)
+        legal_rules = _proposer_extra_rules(claim)
+        pre = (claim.get("proposal")
+               if config.BATCH_PROPOSE_ENABLED and not legal_claim else None)
         if pre:
             try:
                 with timing.phase("propose"):  # near-zero; keeps the key
@@ -1209,12 +1257,12 @@ def _feed_one_core(job_id: str, auto_accept: bool = True) -> dict:
             try:
                 with timing.phase("propose"):
                     proposal = proposer.propose(
-                        utterance=claim["claim"],
+                        utterance=legal_drafting.proposer_utterance(claim),
                         session_id=session_id,
                         working_classes=ctx["working_classes"],
                         known_individuals=ctx["known_individuals"],
                         relevant_classes=ctx.get("relevant_classes"),
-                        extra_rules=_proposer_extra_rules(),
+                        extra_rules=legal_rules,
                     )
             except Exception as e:
                 jobs_store.update_claim_status(
@@ -1244,6 +1292,30 @@ def _feed_one_core(job_id: str, auto_accept: bool = True) -> dict:
             ledger_mod.exclusion_triples(mgr.working_path) if faithful else None
         )
 
+        # SPEC-legal-drafting.md 4.2: legal checks before the reasoner. A
+        # claim whose quote is unverified (or, curated, an unscoped
+        # definition) goes to needs_review for a person; other findings are
+        # repaired (curated) or recorded as evidence (faithful).
+        legal_notes: list[str] = []
+        if legal_claim:
+            rejecting, legal_notes = _legal_pass(
+                proposal, claim, mgr, faithful, session_id, job_id)
+            if rejecting:
+                reason = "; ".join(f"{f['check']}: {f['detail']}" for f in rejecting)
+                jobs_store.update_claim_status(
+                    job_id, claim["id"], "needs_review",
+                    proposal_id=proposal.proposal_id,
+                    verdict="legal:" + rejecting[0]["check"])
+                _emit_claim_timing(session_id, job_id, claim["id"], None,
+                                   "needs_review", False, None, mgr, t_claim)
+                return {
+                    "claim": claim,
+                    "proposal": proposal.model_dump(),
+                    "committed": False,
+                    "warnings": [f"legal-check rejected the claim: {reason}"],
+                    "remaining": _count_pending(job_id),
+                }
+
         # Coherence gate under the configured policy. This is the
         # load-bearing check: it may rewrite the proposal (repair/resample)
         # before it becomes eligible to commit, and it catches the
@@ -1256,8 +1328,15 @@ def _feed_one_core(job_id: str, auto_accept: bool = True) -> dict:
                     context={"job_id": job_id, "claim_id": claim["id"],
                              "proposal_id": proposal.proposal_id},
                     faithful=faithful, exclude_axioms=exclusions,
+                    extra_rules=legal_rules,
                 )
             gate_run = run
+            if legal_claim and run.proposal is not proposal:
+                # A gate resample is a new proposal: hold it to the same
+                # legal discipline. Rejection is decided once, above.
+                _, more = _legal_pass(run.proposal, claim, mgr, faithful,
+                                      session_id, job_id)
+                legal_notes += more
             proposal = run.proposal
             gate_accepted = run.outcome in (GateOutcome.ACCEPT,
                                             GateOutcome.FLAG)
@@ -1342,7 +1421,7 @@ def _feed_one_core(job_id: str, auto_accept: bool = True) -> dict:
                         mgr, proposal, gate_run, session_id,
                         {"session_id": session_id, "job_id": job_id,
                          "claim_id": claim["id"],
-                         "source_text": claim["claim"]},
+                         "source_text": legal_drafting.provenance_text(claim)},
                     )
                     if entry_id:
                         verdict = "flagged"
@@ -1350,7 +1429,7 @@ def _feed_one_core(job_id: str, auto_accept: bool = True) -> dict:
                             f"incoherence-flagged [{entry_id}]: committed "
                             f"as-asserted; see incoherence ledger"
                         ]
-                warnings = (warnings or []) + _budget_and_kext_notes(
+                warnings = (warnings or []) + legal_notes + _budget_and_kext_notes(
                     proposal, mgr
                 )
                 # FM-5: in faithful mode scaffolding is advisory -- the BFO
@@ -2212,9 +2291,34 @@ def create_app() -> Flask:
             text, span = preprocess_frcp(text)
             retained_span = span.to_dict()
 
-        chunks = chunk_text(text, chunk_chars, overlap)
+        # SPEC-legal-drafting.md 2.1: legal genres chunk on article
+        # boundaries and carry the act and each chunk's starting locator.
+        from . import legal_source
+        genre = legal_source.normalize_genre(body.get("genre"))
+        legal_meta = {}
+        if legal_source.is_legal_genre(genre):
+            act_id = (body.get("act_id") or "").strip()
+            act_title = (body.get("act_title") or "").strip()
+            if not act_id:
+                act_id, detected = legal_source.detect_act(text)
+                act_title = act_title or detected
+            pieces = legal_source.chunk_units(text, chunk_chars)
+            chunks = [p["text"] for p in pieces]
+            units = legal_source.split_units(text, act_id, act_title)
+            legal_meta = {
+                "genre": genre,
+                "act_id": act_id,
+                "act_title": act_title,
+                "chunk_locators": [p["locator"] for p in pieces],
+                "chunk_offsets": [p["offset"] for p in pieces],
+                "n_units": len(units),
+                "structured": legal_source.has_structure(units),
+            }
+        else:
+            chunks = chunk_text(text, chunk_chars, overlap)
         return jsonify(
             {
+                **legal_meta,
                 "chunks": chunks,
                 "n_chunks": len(chunks),
                 "section": section,
@@ -2255,12 +2359,23 @@ def create_app() -> Flask:
         corpus_id = (body.get("corpus_id") or "").strip().lower()
         routes = extractors_for(corpus_id)
 
+        from . import legal_source
+        genre = legal_source.normalize_genre(body.get("genre"))
         claims = []
+        rejected: list = []
         if ENTITY_RELATION in routes:
             try:
                 extractor = _get_extractor()
-                claims = extractor.extract_chunk(chunk, section=section)
-                for c in claims:
+                if legal_source.is_legal_genre(genre):
+                    claims = extractor.extract_legal_chunk(
+                        chunk, genre=genre,
+                        act_id=(body.get("act_id") or "").strip(),
+                        act_title=(body.get("act_title") or "").strip(),
+                        locator=(body.get("locator") or "").strip(),
+                        section=section, rejected_out=rejected)
+                else:
+                    claims = extractor.extract_chunk(chunk, section=section)
+                for c in claims + rejected:
                     c["chunk_index"] = chunk_index
             except Exception as e:
                 return jsonify({"error": f"extraction failed: {e}"}), 500
@@ -2279,6 +2394,10 @@ def create_app() -> Flask:
 
         return jsonify({
             "claims": claims,
+            # Legal genres: claims dropped because the quote was not verbatim
+            # (check paraphrase-provenance). Reported, never appended.
+            "rejected_claims": rejected,
+            "genre": genre,
             "norm_tuples": norm_tuples,
             "chunk_index": chunk_index,
             "extractors": list(routes),

@@ -246,6 +246,10 @@ def _job_summary(job: dict) -> dict:
 
 
 # ----------------------------------------------------------- mutations
+LEGAL_CLAIM_FIELDS = ("genre", "act_id", "act_title", "locator", "clause_type",
+                      "subject", "quantifier", "modality", "quote_verified")
+
+
 def append_claims(job_id: str, new_claims: Iterable[dict]) -> dict:
     """Append extracted claims to a job, assigning stable ids and default
     state. Safe to call repeatedly to grow a job from multiple extraction
@@ -273,6 +277,13 @@ def append_claims(job_id: str, new_claims: Iterable[dict]) -> dict:
             "verdict": None,
             "updated_at": _now(),
         }
+        # SPEC-legal-drafting.md 3.2: legal-genre claims carry their act,
+        # locator, clause type, quantifier and modality to the proposer and
+        # the provenance. Copied only when present, so philosophy claims keep
+        # exactly today's shape.
+        for k in LEGAL_CLAIM_FIELDS:
+            if c.get(k) not in (None, ""):
+                entry[k] = c[k]
         # Precomputed proposal (batch propose, SPEC-bfo-agent-speed.md
         # change 5) carried in an imported envelope: preserved when present
         # so the target can consume it; the gate re-validates at feed time.

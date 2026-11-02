@@ -92,6 +92,88 @@ If the passage contains no atomic ontological claims (e.g. it is entirely method
 """
 
 
+# SPEC-legal-drafting.md 3.1: genre profiles. "philosophy" is the prompt
+# above, unchanged. The legal genres replace "the author's own voice" with
+# clause types and keep modal verbs, which are norms in law, not hedges.
+LEGAL_GENRE_SOURCE = {
+    "legislation": "legislation (a statute, regulation or directive)",
+    "model_rules": "a set of model rules (a restatement or a draft common frame of reference)",
+    "policy": "a policy or code of conduct",
+}
+
+LEGAL_EXTRACTION_SYSTEM = (
+    "You are extracting atomic ontological and normative claims from {source}. "
+    "You copy the legal text exactly. Your output is strict JSON, no prose."
+)
+
+LEGAL_EXTRACTION_PROMPT = """I will give you a passage of {source}. Extract the atomic claims the TEXT ITSELF makes. Legal text is not an author's opinion: every operative provision counts, and modal verbs ("may", "shall", "is entitled to") are norms, not hedges.
+
+Classify each claim by CLAUSE TYPE:
+- definition: "'X' means ...", "X shall be understood as ..."
+- scope: "This Regulation applies to ...", "shall not apply to ..."
+- establishment: "is hereby established", "shall have legal personality"
+- conferral: "shall designate", "shall be appointed", "shall have the power to"
+- norm: "shall", "shall not", "may", "is entitled to", "has the right to"
+- condition: "where", "in the case of", "after having become aware" (a trigger of a norm)
+- time_limit: "within 72 hours", "without undue delay"
+- remedy: "has the right to lodge a complaint", "shall be liable", "administrative fines"
+- other: any other ontological content (an entity, a part-whole relation, a kind)
+
+ATOMICITY: one commitment per claim. A definition with several limbs ("natural or legal person, public authority, agency or other body") is ONE definition claim; a norm with two duties is two claims.
+
+QUANTIFIER: record what the text says about HOW MANY, never what is typical:
+- "definitional": "X means Y" (necessary and sufficient)
+- "every": the text says every / each / all / any X has it, or states it unconditionally of the kind
+- "some": the text says some or certain X
+- "can": the text says X can, may, might, or is able to have it (a possibility, NOT a universal)
+- "at_most_one": the text limits it to one
+- "none": the text says no X has it ("shall not", "no ... may")
+A conditional ("where ...", "if ...") is never "every" for the unconditioned kind.
+
+MODALITY (deontic force of a norm; "none" for definitions and descriptions):
+obligation ("shall", "must"), prohibition ("shall not", "may not"), permission ("may"), right ("is entitled to", "has the right to"), power ("shall have the power to", "may adopt").
+
+SOURCE QUOTE: copy the words of the passage EXACTLY, character for character, as one continuous span of at most 60 words: no ellipses, no paraphrase, no reordering, no added words. A claim whose quote is not found verbatim in the passage is discarded.
+
+For each claim, produce:
+{{
+  "claim": "Short restatement, 25 words or fewer, used for prompting only",
+  "source_quote": "Verbatim continuous span of the passage",
+  "clause_type": "definition | scope | establishment | conferral | norm | condition | time_limit | remedy | other",
+  "subject": "the term the claim is about, as the text names it (e.g. 'controller')",
+  "quantifier": "definitional | every | some | can | at_most_one | none",
+  "modality": "obligation | prohibition | permission | right | power | none",
+  "confidence": "high" | "medium" | "low",
+  "note": "Brief rationale"
+}}
+
+Confidence rules:
+- "high": the text states it plainly
+- "medium": the text states it with a qualification or cross-reference
+- "low": interpretation is involved; flag for human review
+
+PASSAGE (act: {act}; location: {locator}):
+\"\"\"
+{passage}
+\"\"\"
+
+Return ONLY a JSON object of the form:
+{{"claims": [ {{...}}, {{...}}, ... ]}}
+
+If the passage has no operative content (recitals of history, a table of contents, signatures), return {{"claims": []}}.
+"""
+
+_QUANTIFIERS = {"definitional", "every", "some", "can", "at_most_one", "none"}
+_MODALITIES = {"obligation", "prohibition", "permission", "right", "power", "none"}
+_CLAUSE_TYPES = {"definition", "scope", "establishment", "conferral", "norm",
+                 "condition", "time_limit", "remedy", "other"}
+
+
+def _pick(value, allowed: set, default: str) -> str:
+    v = (value or "").strip().lower().replace(" ", "_") if isinstance(value, str) else ""
+    return v if v in allowed else default
+
+
 # ----------------------------------------------------------------- chunking
 def chunk_text(text: str, chunk_chars: int = 8000, overlap: int = 400) -> list[str]:
     """Split text into overlapping chunks no larger than `chunk_chars`.
@@ -214,6 +296,66 @@ class ClaimExtractor:
                     "section": section,
                 }
             )
+        return out
+
+    def extract_legal_chunk(self, passage: str, genre: str = "legislation",
+                            act_id: str = "", act_title: str = "",
+                            locator: str = "", section: str = "",
+                            rejected_out: list | None = None) -> list[dict]:
+        """Legal genre profile (SPEC-legal-drafting.md 3.1-3.2).
+
+        Every returned claim carries a ``source_quote`` found verbatim in the
+        passage, its ``locator`` and ``act_id``, and the clause type,
+        quantifier and modality. A claim whose quote is not verbatim is
+        dropped (check ``paraphrase-provenance``, both fidelity modes) and
+        appended to ``rejected_out`` when given.
+        """
+        from . import legal_source as ls
+
+        src = LEGAL_GENRE_SOURCE.get(genre, LEGAL_GENRE_SOURCE["legislation"])
+        if not act_id:
+            act_id, detected_title = ls.detect_act(passage)
+            act_title = act_title or detected_title
+        prompt = LEGAL_EXTRACTION_PROMPT.format(
+            source=src, act=act_title or act_id or "unknown",
+            locator=locator or "unknown", passage=passage)
+        resp = self.client.messages.create(
+            model=self.model,
+            max_tokens=8000,
+            system=LEGAL_EXTRACTION_SYSTEM.format(source=src),
+            messages=[{"role": "user", "content": prompt}],
+        )
+        self._record_usage(resp)
+        text = "".join(b.text for b in resp.content if getattr(b, "text", None)).strip()
+        data = _extract_json(text)
+        units = ls.split_units(passage, act_id=act_id, act_title=act_title,
+                               initial_locator=locator)
+        out = []
+        for c in data.get("claims", []):
+            quote = (c.get("source_quote") or "").strip()
+            claim = {
+                "claim": (c.get("claim") or "").strip(),
+                "source_quote": quote,
+                "confidence": (c.get("confidence") or "low").strip().lower(),
+                "note": (c.get("note") or "").strip(),
+                "section": section,
+                "genre": genre,
+                "act_id": act_id,
+                "act_title": act_title,
+                "clause_type": _pick(c.get("clause_type"), _CLAUSE_TYPES, "other"),
+                "subject": (c.get("subject") or "").strip(),
+                "quantifier": _pick(c.get("quantifier"), _QUANTIFIERS, "some"),
+                "modality": _pick(c.get("modality"), _MODALITIES, "none"),
+            }
+            if not quote or not ls.quote_is_verbatim(quote, passage):
+                claim["rejected"] = "paraphrase-provenance"
+                if rejected_out is not None:
+                    rejected_out.append(claim)
+                continue
+            unit = ls.locate(quote, units)
+            claim["locator"] = unit.locator if unit else (locator or "unknown")
+            claim["quote_verified"] = True
+            out.append(claim)
         return out
 
     def extract_text(
