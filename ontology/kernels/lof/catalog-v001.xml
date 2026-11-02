@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Vendored Legal Ontology Foundry pattern releases (v0.1.0, see PINNED.json).
+     The base files import each other by their short w3id IRIs. -->
+<catalog prefer="public" xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
+  <uri name="https://w3id.org/lof/odp-001.owl" uri="lof-odp-001-base.owl"/>
+  <uri name="https://w3id.org/lof/odp-002.owl" uri="lof-odp-002-base.owl"/>
+  <uri name="https://w3id.org/lof/odp-003.owl" uri="lof-odp-003-base.owl"/>
+  <uri name="https://w3id.org/lof/odp-004.owl" uri="lof-odp-004-base.owl"/>
+  <uri name="https://w3id.org/lof/odp-001/lof-odp-001-base.owl" uri="lof-odp-001-base.owl"/>
+  <uri name="https://w3id.org/lof/odp-002/lof-odp-002-base.owl" uri="lof-odp-002-base.owl"/>
+  <uri name="https://w3id.org/lof/odp-003/lof-odp-003-base.owl" uri="lof-odp-003-base.owl"/>
+  <uri name="https://w3id.org/lof/odp-004/lof-odp-004-base.owl" uri="lof-odp-004-base.owl"/>
+  <uri name="https://w3id.org/lof/odp-001/imports/bfo_import.owl" uri="bfo_import.owl"/>
+</catalog>

@@ -1,0 +1,427 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="https://w3id.org/lof/odp-003/lof-odp-003-base.owl#"
+     xml:base="https://w3id.org/lof/odp-003/lof-odp-003-base.owl"
+     xmlns:obo="http://purl.obolibrary.org/obo/"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:odp1="https://w3id.org/lof/ODP001_"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+     xmlns:dcterms="http://purl.org/dc/terms/">
+    <owl:Ontology rdf:about="https://w3id.org/lof/odp-003/lof-odp-003-base.owl">
+        <owl:versionIRI rdf:resource="https://w3id.org/lof/odp-003/releases/0.1.0/lof-odp-003-base.owl"/>
+        <dcterms:creator>David R. Koepsell</dcterms:creator>
+        <dcterms:description xml:lang="en">Ontology design pattern for Hohfeld&apos;s correlative legal positions (claim and duty, liberty and no-claim, power and liability, immunity and disability), grounded in legal content from LOF-ODP-001. This file encodes Option A, which places legal positions under specifically dependent continuant. Option B, placing them under generically dependent continuant, is maintained in parallel for decision by the founding coordinators. DRAFT.</dcterms:description>
+        <dcterms:license rdf:resource="https://creativecommons.org/licenses/by/4.0/"/>
+        <dcterms:title xml:lang="en">LOF-ODP-003: Correlative Deontic Positions</dcterms:title>
+        <owl:versionInfo>0.1.0</owl:versionInfo>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/dc/terms/creator -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/creator"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/description -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/description"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/license -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/license"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/title -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/title"/>
+    
+
+
+    <!-- http://www.w3.org/2004/02/skos/core#altLabel -->
+
+    <owl:AnnotationProperty rdf:about="http://www.w3.org/2004/02/skos/core#altLabel"/>
+    
+
+
+    <!-- http://www.w3.org/2004/02/skos/core#definition -->
+
+    <owl:AnnotationProperty rdf:about="http://www.w3.org/2004/02/skos/core#definition"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/BFO_0000197 -->
+
+    <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/BFO_0000197"/>
+    
+
+
+    <!-- https://w3id.org/lof/ODP003_0001100 -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/lof/ODP003_0001100">
+        <rdfs:subPropertyOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000197"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="https://w3id.org/lof/ODP003_0001000"/>
+        <rdfs:range rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+        <rdfs:comment xml:lang="en">In Option A this is a functional subproperty of BFO &apos;inheres in&apos;, reflecting BFO&apos;s axiom that a specifically dependent continuant has exactly one bearer. A position can therefore never have two holders, even at different times.</rdfs:comment>
+        <rdfs:label xml:lang="en">held by</rdfs:label>
+        <skos:definition xml:lang="en">A relation between a legal position and the person or organization whose position it is.</skos:definition>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/lof/ODP003_0001101 -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/lof/ODP003_0001101">
+        <rdfs:domain rdf:resource="https://w3id.org/lof/ODP003_0001000"/>
+        <rdfs:range rdf:resource="https://w3id.org/lof/ODP001_0001001"/>
+        <rdfs:label xml:lang="en">grounded in</rdfs:label>
+        <skos:definition xml:lang="en">A relation between a legal position and the legal content in virtue of which it exists, such as the contract term creating a duty to pay.</skos:definition>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/lof/ODP003_0001102 -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/lof/ODP003_0001102">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#SymmetricProperty"/>
+        <rdfs:domain rdf:resource="https://w3id.org/lof/ODP003_0001000"/>
+        <rdfs:range rdf:resource="https://w3id.org/lof/ODP003_0001000"/>
+        <rdfs:label xml:lang="en">correlative of</rdfs:label>
+        <skos:definition xml:lang="en">A symmetric relation between two legal positions held by different parties, each of which exists if and only if the other does, such as a claim and the duty owed in satisfaction of it.</skos:definition>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/lof/ODP003_0001103 -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/lof/ODP003_0001103">
+        <rdfs:domain rdf:resource="https://w3id.org/lof/ODP003_0001005"/>
+        <rdfs:range rdf:resource="https://w3id.org/lof/ODP001_0001000"/>
+        <rdfs:label xml:lang="en">exercised in</rdfs:label>
+        <skos:definition xml:lang="en">A relation between a power and a legal act through which the holder of the power changes the legal positions of another party.</skos:definition>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/BFO_0000020 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/BFO_0000020"/>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/BFO_0000040 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/BFO_0000040"/>
+    
+
+
+    <!-- https://w3id.org/lof/ODP001_0001000 -->
+
+    <owl:Class rdf:about="https://w3id.org/lof/ODP001_0001000"/>
+    
+
+
+    <!-- https://w3id.org/lof/ODP001_0001001 -->
+
+    <owl:Class rdf:about="https://w3id.org/lof/ODP001_0001001"/>
+    
+
+
+    <!-- https://w3id.org/lof/ODP003_0001000 -->
+
+    <owl:Class rdf:about="https://w3id.org/lof/ODP003_0001000">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000020"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/lof/ODP003_0001100"/>
+                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/lof/ODP003_0001101"/>
+                <owl:someValuesFrom rdf:resource="https://w3id.org/lof/ODP001_0001001"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/lof/ODP003_0001102"/>
+                <owl:someValuesFrom rdf:resource="https://w3id.org/lof/ODP003_0001000"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">BFO placement, OPTION A (LOF-P-004): a legal position is a specifically dependent continuant inhering in its holder, as a role or disposition does. It exists only as long as its holder exists and cannot migrate from one holder to another, so assignment of a claim is modeled as the termination of one position and the creation of a new one in the assignee. OPEN QUESTION for the founding coordinators; see Option B.</rdfs:comment>
+        <rdfs:label xml:lang="en">legal position</rdfs:label>
+        <skos:altLabel xml:lang="en">Hohfeldian position</skos:altLabel>
+        <skos:definition xml:lang="en">A continuant that is held by a person or organization in virtue of some legal content, and that consists in what the holder is legally required, permitted, or enabled to do, or protected from having done to them, in relation to some other party.</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/lof/ODP003_0001001 -->
+
+    <owl:Class rdf:about="https://w3id.org/lof/ODP003_0001001">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/lof/ODP003_0001009"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/lof/ODP003_0001102"/>
+                <owl:someValuesFrom rdf:resource="https://w3id.org/lof/ODP003_0001002"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/lof/ODP003_0001102"/>
+                <owl:allValuesFrom rdf:resource="https://w3id.org/lof/ODP003_0001002"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label xml:lang="en">claim</rdfs:label>
+        <skos:altLabel xml:lang="en">right</skos:altLabel>
+        <skos:definition xml:lang="en">A first-order legal position in virtue of which its holder is owed some conduct by another party.</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/lof/ODP003_0001002 -->
+
+    <owl:Class rdf:about="https://w3id.org/lof/ODP003_0001002">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/lof/ODP003_0001009"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/lof/ODP003_0001102"/>
+                <owl:someValuesFrom rdf:resource="https://w3id.org/lof/ODP003_0001001"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/lof/ODP003_0001102"/>
+                <owl:allValuesFrom rdf:resource="https://w3id.org/lof/ODP003_0001001"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label xml:lang="en">duty</rdfs:label>
+        <skos:definition xml:lang="en">A first-order legal position in virtue of which its holder is required to engage in, or refrain from, some conduct owed to another party.</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/lof/ODP003_0001003 -->
+
+    <owl:Class rdf:about="https://w3id.org/lof/ODP003_0001003">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/lof/ODP003_0001009"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/lof/ODP003_0001102"/>
+                <owl:someValuesFrom rdf:resource="https://w3id.org/lof/ODP003_0001004"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/lof/ODP003_0001102"/>
+                <owl:allValuesFrom rdf:resource="https://w3id.org/lof/ODP003_0001004"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label xml:lang="en">liberty</rdfs:label>
+        <skos:altLabel xml:lang="en">privilege</skos:altLabel>
+        <skos:definition xml:lang="en">A first-order legal position in virtue of which its holder is not under a duty to another party to refrain from some conduct.</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/lof/ODP003_0001004 -->
+
+    <owl:Class rdf:about="https://w3id.org/lof/ODP003_0001004">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/lof/ODP003_0001009"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/lof/ODP003_0001102"/>
+                <owl:someValuesFrom rdf:resource="https://w3id.org/lof/ODP003_0001003"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/lof/ODP003_0001102"/>
+                <owl:allValuesFrom rdf:resource="https://w3id.org/lof/ODP003_0001003"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label xml:lang="en">no-claim</rdfs:label>
+        <skos:altLabel xml:lang="en">no-right</skos:altLabel>
+        <skos:definition xml:lang="en">A first-order legal position in virtue of which its holder has no claim against another party with respect to some conduct of that party.</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/lof/ODP003_0001005 -->
+
+    <owl:Class rdf:about="https://w3id.org/lof/ODP003_0001005">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/lof/ODP003_0001010"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/lof/ODP003_0001102"/>
+                <owl:someValuesFrom rdf:resource="https://w3id.org/lof/ODP003_0001006"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/lof/ODP003_0001102"/>
+                <owl:allValuesFrom rdf:resource="https://w3id.org/lof/ODP003_0001006"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label xml:lang="en">power</rdfs:label>
+        <skos:definition xml:lang="en">A second-order legal position in virtue of which its holder can, by some legal act, change the legal positions of another party.</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/lof/ODP003_0001006 -->
+
+    <owl:Class rdf:about="https://w3id.org/lof/ODP003_0001006">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/lof/ODP003_0001010"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/lof/ODP003_0001102"/>
+                <owl:someValuesFrom rdf:resource="https://w3id.org/lof/ODP003_0001005"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/lof/ODP003_0001102"/>
+                <owl:allValuesFrom rdf:resource="https://w3id.org/lof/ODP003_0001005"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label xml:lang="en">liability</rdfs:label>
+        <skos:definition xml:lang="en">A second-order legal position in virtue of which its holder&apos;s legal positions can be changed by some legal act of another party.</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/lof/ODP003_0001007 -->
+
+    <owl:Class rdf:about="https://w3id.org/lof/ODP003_0001007">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/lof/ODP003_0001010"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/lof/ODP003_0001102"/>
+                <owl:someValuesFrom rdf:resource="https://w3id.org/lof/ODP003_0001008"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/lof/ODP003_0001102"/>
+                <owl:allValuesFrom rdf:resource="https://w3id.org/lof/ODP003_0001008"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label xml:lang="en">immunity</rdfs:label>
+        <skos:definition xml:lang="en">A second-order legal position in virtue of which its holder&apos;s legal positions cannot be changed by some legal act of another party.</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/lof/ODP003_0001008 -->
+
+    <owl:Class rdf:about="https://w3id.org/lof/ODP003_0001008">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/lof/ODP003_0001010"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/lof/ODP003_0001102"/>
+                <owl:someValuesFrom rdf:resource="https://w3id.org/lof/ODP003_0001007"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/lof/ODP003_0001102"/>
+                <owl:allValuesFrom rdf:resource="https://w3id.org/lof/ODP003_0001007"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label xml:lang="en">disability</rdfs:label>
+        <skos:definition xml:lang="en">A second-order legal position in virtue of which its holder cannot, by some legal act, change the legal positions of another party.</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/lof/ODP003_0001009 -->
+
+    <owl:Class rdf:about="https://w3id.org/lof/ODP003_0001009">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/lof/ODP003_0001000"/>
+        <owl:disjointWith rdf:resource="https://w3id.org/lof/ODP003_0001010"/>
+        <rdfs:label xml:lang="en">first-order legal position</rdfs:label>
+        <skos:definition xml:lang="en">A legal position that concerns what its holder or another party is required or permitted to do.</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/lof/ODP003_0001010 -->
+
+    <owl:Class rdf:about="https://w3id.org/lof/ODP003_0001010">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/lof/ODP003_0001000"/>
+        <rdfs:label xml:lang="en">second-order legal position</rdfs:label>
+        <skos:definition xml:lang="en">A legal position that concerns whether its holder or another party can change first-order or second-order legal positions.</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // General axioms
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="https://w3id.org/lof/ODP003_0001001"/>
+            <rdf:Description rdf:about="https://w3id.org/lof/ODP003_0001002"/>
+            <rdf:Description rdf:about="https://w3id.org/lof/ODP003_0001003"/>
+            <rdf:Description rdf:about="https://w3id.org/lof/ODP003_0001004"/>
+            <rdf:Description rdf:about="https://w3id.org/lof/ODP003_0001005"/>
+            <rdf:Description rdf:about="https://w3id.org/lof/ODP003_0001006"/>
+            <rdf:Description rdf:about="https://w3id.org/lof/ODP003_0001007"/>
+            <rdf:Description rdf:about="https://w3id.org/lof/ODP003_0001008"/>
+        </owl:members>
+    </rdf:Description>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.29) https://github.com/owlcs/owlapi -->
+

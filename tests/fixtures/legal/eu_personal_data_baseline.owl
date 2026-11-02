@@ -1,0 +1,424 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:owl="http://www.w3.org/2002/07/owl#"
+         xml:base="http://davidkoepsell.com/bfo-agent/working"
+         xmlns="http://davidkoepsell.com/bfo-agent/working#"
+         xmlns:obo="http://purl.obolibrary.org/obo/"
+         xmlns:meta="http://davidkoepsell.com/bfo-agent/meta#">
+
+<owl:Ontology rdf:about="http://davidkoepsell.com/bfo-agent/working">
+  <owl:imports rdf:resource="http://purl.obolibrary.org/obo/bfo.owl"/>
+</owl:Ontology>
+
+<owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/BFO_0000050">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
+  <owl:inverseOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000051"/>
+  <rdfs:label xml:lang="en">part of</rdfs:label>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/BFO_0000051">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
+  <owl:inverseOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000050"/>
+  <rdfs:label xml:lang="en">has part</rdfs:label>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/RO_0000087">
+  <rdfs:domain rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
+  <rdfs:range rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <rdfs:label xml:lang="en">has role</rdfs:label>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/RO_0001025">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
+  <rdfs:domain rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
+  <rdfs:range rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
+  <rdfs:label xml:lang="en">located in</rdfs:label>
+</owl:ObjectProperty>
+
+<owl:AnnotationProperty rdf:about="http://purl.obolibrary.org/obo/IAO_0000115">
+  <rdfs:label xml:lang="en">definition</rdfs:label>
+</owl:AnnotationProperty>
+
+<owl:AnnotationProperty rdf:about="http://davidkoepsell.com/bfo-agent/meta#quantifierDefaulted">
+  <rdfs:label>quantifierDefaulted</rdfs:label>
+</owl:AnnotationProperty>
+
+<owl:AnnotationProperty rdf:about="http://davidkoepsell.com/bfo-agent/meta#scaffolded">
+  <rdfs:label>scaffolded</rdfs:label>
+</owl:AnnotationProperty>
+
+<owl:AnnotationProperty rdf:about="http://davidkoepsell.com/bfo-agent/meta#sourceSpan">
+  <rdfs:label>sourceSpan</rdfs:label>
+</owl:AnnotationProperty>
+
+<owl:AnnotationProperty rdf:about="http://davidkoepsell.com/bfo-agent/meta#definitionStatus">
+  <rdfs:label>definitionStatus</rdfs:label>
+</owl:AnnotationProperty>
+
+<owl:AnnotationProperty rdf:about="http://davidkoepsell.com/bfo-agent/meta#migratedFrom">
+  <rdfs:label>migratedFrom</rdfs:label>
+</owl:AnnotationProperty>
+
+<owl:AnnotationProperty rdf:about="http://davidkoepsell.com/bfo-agent/meta#distinctFrom">
+  <rdfs:label>distinctFrom</rdfs:label>
+</owl:AnnotationProperty>
+
+<owl:Class rdf:about="#PersonalData">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Personal data</rdfs:label>
+  <obo:IAO_0000115 xml:lang="en">A generically dependent continuant that is information concerning an identified or identifiable natural person.</obo:IAO_0000115>
+  <meta:sourceSpan>Personal data is information concerning an identified or identifiable natural person.</meta:sourceSpan>
+</owl:Class>
+
+<owl:Class rdf:about="#NaturalPerson">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/BFO_0000196"/>
+      <owl:someValuesFrom rdf:resource="#Identifiability"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/BFO_0000196"/>
+      <owl:someValuesFrom rdf:resource="#DataProtectionOfficer"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/BFO_0000196"/>
+      <owl:someValuesFrom rdf:resource="#Expertise"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/BFO_0000196"/>
+      <owl:someValuesFrom rdf:resource="#Experience"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Natural person</rdfs:label>
+  <meta:definitionStatus>absent-in-source</meta:definitionStatus>
+  <meta:sourceSpan>an identified or identifiable natural person</meta:sourceSpan>
+</owl:Class>
+
+<owl:Class rdf:about="#Identifiability">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/BFO_0000197"/>
+      <owl:someValuesFrom rdf:resource="#NaturalPerson"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/BFO_0000054"/>
+      <owl:someValuesFrom rdf:resource="#Attribution"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Identifiability</rdfs:label>
+  <obo:IAO_0000115 xml:lang="en">A Disposition of a natural person to be identified through the attribution of data to that person.</obo:IAO_0000115>
+  <meta:sourceSpan>information on an identifiable natural person</meta:sourceSpan>
+</owl:Class>
+
+<owl:Class rdf:about="#Attribution">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/BFO_0000057"/>
+      <owl:someValuesFrom rdf:resource="#NaturalPerson"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Attribution</rdfs:label>
+  <obo:IAO_0000115 xml:lang="en">A Process in which data is attributed to a natural person by additional information.</obo:IAO_0000115>
+  <meta:sourceSpan>could be attributed to a natural person by additional information</meta:sourceSpan>
+</owl:Class>
+
+<owl:Class rdf:about="#PseudonymisedData">
+  <rdfs:subClassOf rdf:resource="#PersonalData"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Pseudonymised personal data</rdfs:label>
+  <obo:IAO_0000115 xml:lang="en">A Personal data that could be attributed to a natural person by the use of additional information.</obo:IAO_0000115>
+  <meta:sourceSpan>Pseudonymised personal data that could be attributed to a natural person by additional information</meta:sourceSpan>
+</owl:Class>
+
+<owl:Class rdf:about="#AnonymousInformation">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:subClassOf>
+    <owl:Class>
+      <owl:complementOf rdf:resource="#PersonalData"/>
+    </owl:Class>
+  </rdfs:subClassOf>
+  <owl:disjointWith rdf:resource="#PersonalData"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Anonymous information</rdfs:label>
+  <obo:IAO_0000115 xml:lang="en">A generically dependent continuant that does not relate to an identified or identifiable natural person.</obo:IAO_0000115>
+  <meta:sourceSpan>Anonymous information is information that does not relate to an identified or identifiable natural person.</meta:sourceSpan>
+</owl:Class>
+
+<owl:Class rdf:about="#OnlineIdentifier">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Online identifier</rdfs:label>
+  <meta:definitionStatus>absent-in-source</meta:definitionStatus>
+  <meta:sourceSpan>online identifiers provided by their devices, applications, tools and protocols</meta:sourceSpan>
+</owl:Class>
+
+<owl:Class rdf:about="#Device">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Device</rdfs:label>
+  <meta:definitionStatus>absent-in-source</meta:definitionStatus>
+  <meta:sourceSpan>provided by their devices</meta:sourceSpan>
+</owl:Class>
+
+<owl:Class rdf:about="#Application">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Application</rdfs:label>
+  <meta:definitionStatus>absent-in-source</meta:definitionStatus>
+  <meta:sourceSpan>provided by their devices, applications, tools and protocols</meta:sourceSpan>
+</owl:Class>
+
+<owl:Class rdf:about="#Protocol">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Protocol</rdfs:label>
+  <meta:definitionStatus>absent-in-source</meta:definitionStatus>
+  <meta:sourceSpan>provided by their devices, applications, tools and protocols</meta:sourceSpan>
+</owl:Class>
+
+<owl:Class rdf:about="#Body">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Body</rdfs:label>
+  <meta:definitionStatus>absent-in-source</meta:definitionStatus>
+  <meta:sourceSpan>is an independent body of the Union</meta:sourceSpan>
+</owl:Class>
+
+<owl:Class rdf:about="#LegalPerson">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Legal person</rdfs:label>
+  <meta:definitionStatus>absent-in-source</meta:definitionStatus>
+  <meta:sourceSpan>with legal personality</meta:sourceSpan>
+</owl:Class>
+
+<owl:Class rdf:about="#DataProtectionOfficer">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/BFO_0000197"/>
+      <owl:someValuesFrom rdf:resource="#NaturalPerson"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/BFO_0000054"/>
+      <owl:someValuesFrom rdf:resource="#TaskPerformance"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Data protection officer</rdfs:label>
+  <obo:IAO_0000115 xml:lang="en">A Role that inheres in a person who has expert knowledge of data protection law and practices.</obo:IAO_0000115>
+  <meta:sourceSpan>A data protection officer is a person with expert knowledge of data protection law and practices.</meta:sourceSpan>
+</owl:Class>
+
+<owl:Class rdf:about="#Expertise">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/BFO_0000197"/>
+      <owl:someValuesFrom rdf:resource="#NaturalPerson"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/BFO_0000054"/>
+      <owl:someValuesFrom rdf:resource="#TaskPerformance"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Expert knowledge of data protection law and practices</rdfs:label>
+  <obo:IAO_0000115 xml:lang="en">A Disposition that inheres in a person and consists of expert knowledge of data protection law and practices.</obo:IAO_0000115>
+  <meta:sourceSpan>a person with expert knowledge of data protection law and practices</meta:sourceSpan>
+</owl:Class>
+
+<owl:Class rdf:about="#TaskPerformance">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Task performance</rdfs:label>
+  <meta:definitionStatus>absent-in-source</meta:definitionStatus>
+  <meta:sourceSpan>perform their duties and tasks</meta:sourceSpan>
+</owl:Class>
+
+<owl:Class rdf:about="#Controller">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/BFO_0000197"/>
+      <owl:someValuesFrom rdf:resource="#Body"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/BFO_0000054"/>
+      <owl:someValuesFrom rdf:resource="#TaskPerformance"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/BFO_0000054"/>
+      <owl:someValuesFrom rdf:resource="#Determination"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Controller</rdfs:label>
+  <obo:IAO_0000115 xml:lang="en">A Role that inheres in a Union institution, body, directorate-general, or organisational entity.</obo:IAO_0000115>
+  <meta:sourceSpan>A controller is a Union institution, body, directorate-general, or organisational entity.</meta:sourceSpan>
+</owl:Class>
+
+<owl:Class rdf:about="#UnionInstitution">
+  <rdfs:subClassOf rdf:resource="#Body"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Union institution</rdfs:label>
+  <meta:definitionStatus>absent-in-source</meta:definitionStatus>
+  <meta:sourceSpan>Union institution</meta:sourceSpan>
+</owl:Class>
+
+<owl:Class rdf:about="#DirectorateGeneral">
+  <rdfs:subClassOf rdf:resource="#Body"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Directorate-general</rdfs:label>
+  <meta:definitionStatus>absent-in-source</meta:definitionStatus>
+  <meta:sourceSpan>directorate-general</meta:sourceSpan>
+</owl:Class>
+
+<owl:Class rdf:about="#Determination">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Determination</rdfs:label>
+  <meta:definitionStatus>absent-in-source</meta:definitionStatus>
+  <meta:sourceSpan>A controller determines the purposes and means</meta:sourceSpan>
+</owl:Class>
+
+<owl:Class rdf:about="#DataProcessing">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Data processing</rdfs:label>
+  <meta:definitionStatus>absent-in-source</meta:definitionStatus>
+  <meta:sourceSpan>personal data processing</meta:sourceSpan>
+</owl:Class>
+
+<owl:Class rdf:about="#PublicAuthority">
+  <rdfs:subClassOf rdf:resource="#Body"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Public authority</rdfs:label>
+  <meta:definitionStatus>absent-in-source</meta:definitionStatus>
+  <meta:sourceSpan>an independent public authority</meta:sourceSpan>
+</owl:Class>
+
+<owl:Class rdf:about="#NationalSupervisoryAuthority">
+  <rdfs:subClassOf rdf:resource="#PublicAuthority"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/BFO_0000196"/>
+      <owl:someValuesFrom rdf:resource="#Independence"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">National supervisory authority</rdfs:label>
+  <obo:IAO_0000115 xml:lang="en">A public authority that is independent.</obo:IAO_0000115>
+  <meta:sourceSpan>A national supervisory authority is an independent public authority.</meta:sourceSpan>
+</owl:Class>
+
+<owl:Class rdf:about="#Independence">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/BFO_0000197"/>
+      <owl:someValuesFrom rdf:resource="#NationalSupervisoryAuthority"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/BFO_0000197"/>
+      <owl:someValuesFrom rdf:resource="#NaturalPerson"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Independence</rdfs:label>
+  <meta:definitionStatus>absent-in-source</meta:definitionStatus>
+  <meta:sourceSpan>independent public authority</meta:sourceSpan>
+</owl:Class>
+
+<owl:Class rdf:about="#Experience">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/BFO_0000197"/>
+      <owl:someValuesFrom rdf:resource="#NaturalPerson"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Experience</rdfs:label>
+  <meta:definitionStatus>absent-in-source</meta:definitionStatus>
+  <meta:sourceSpan>Persons can have experience.</meta:sourceSpan>
+</owl:Class>
+
+<owl:Class rdf:about="#Skill">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/BFO_0000197"/>
+      <owl:someValuesFrom rdf:resource="#NaturalPerson"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/BFO_0000054"/>
+      <owl:someValuesFrom rdf:resource="#TaskPerformance"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Skill</rdfs:label>
+  <meta:definitionStatus>absent-in-source</meta:definitionStatus>
+  <meta:sourceSpan>Persons can have skills.</meta:sourceSpan>
+</owl:Class>
+
+<owl:Class rdf:about="#Supervisor">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/BFO_0000197"/>
+      <owl:someValuesFrom rdf:resource="#NaturalPerson"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/BFO_0000054"/>
+      <owl:someValuesFrom rdf:resource="#Supervision"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">European Data Protection Supervisor</rdfs:label>
+  <meta:definitionStatus>absent-in-source</meta:definitionStatus>
+  <meta:sourceSpan>Persons can have the role of European Data Protection Supervisor.</meta:sourceSpan>
+</owl:Class>
+
+<owl:Class rdf:about="#Supervision">
+  <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Supervision</rdfs:label>
+  <meta:definitionStatus>absent-in-source</meta:definitionStatus>
+  <meta:sourceSpan>Persons can have the role of European Data Protection Supervisor.</meta:sourceSpan>
+</owl:Class>
+
+<owl:NamedIndividual rdf:about="#EDPB">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <rdf:type rdf:resource="#Body"/>
+  <obo:BFO_0000196 rdf:resource="#EDPBLegalPersonRole"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">European Data Protection Board</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#EDPBLegalPersonRole">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+  <rdf:type rdf:resource="#LegalPerson"/>
+  <obo:BFO_0000197 rdf:resource="#EDPB"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EDPB legal person role</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#EDPS">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+  <rdf:type rdf:resource="#Body"/>
+  <obo:BFO_0000196 rdf:resource="#EDPSIndependence"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">European Data Protection Supervisor</rdfs:label>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#EDPSIndependence">
+  <rdf:type rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+  <rdf:type rdf:resource="#Independence"/>
+  <obo:BFO_0000197 rdf:resource="#EDPS"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Independence of the European Data Protection Supervisor</rdfs:label>
+</owl:NamedIndividual>
+
+
+</rdf:RDF>

@@ -450,7 +450,10 @@ def _proposer_extra_rules(claim: dict | None = None) -> str:
     from the legal extraction profile. Philosophy claims: unchanged."""
     from . import legal_drafting
 
-    legal = legal_drafting.LEGAL_RULES if legal_drafting.is_legal_claim(claim) else ""
+    legal = ""
+    if legal_drafting.is_legal_claim(claim):
+        from . import legal_kernel
+        legal = legal_drafting.LEGAL_RULES + "\n" + legal_kernel.kernel_rules()
     return "".join(
         block for block in (_coverage_extra_rules(), _recognition_extra_rules(),
                             legal)
@@ -470,9 +473,12 @@ def _legal_pass(proposal, claim, mgr, faithful, session_id, job_id) -> tuple:
     if not legal_drafting.is_legal_claim(claim):
         return [], []
     legal_drafting.stamp_provenance(proposal, claim)
+    # Spec 6.2: one label per referent, in both modes (it governs what is
+    # proposed, not what the text says).
+    identity_notes = legal_drafting.resolve_identity(proposal, mgr)
     findings = legal_drafting.check(proposal, claim, mgr)
     if not findings:
-        return [], []
+        return [], identity_notes
     mode = "faithful" if faithful else "curated"
     rejecting = legal_drafting.rejects(findings, faithful)
     if rejecting:
@@ -490,7 +496,80 @@ def _legal_pass(proposal, claim, mgr, faithful, session_id, job_id) -> tuple:
     log_event(session_id, "legal_check", {
         "job_id": job_id, "claim_id": claim.get("id"), "fidelity": mode,
         "action": action, "findings": findings})
-    return rejecting, notes
+    return rejecting, identity_notes + notes
+
+
+def _legal_prepare(mgr, claim) -> None:
+    """Before a legal claim is proposed: the LOF kernel is in the ontology
+    (L5) and the claim's act is in the graph as content, enactment and
+    document (spec 2.2). Recorded in the manifest. Never raises."""
+    from . import legal_kernel
+    try:
+        merged = legal_kernel.merge_lof(mgr)
+        legal_kernel.ensure_act(mgr, claim.get("act_id") or "",
+                                claim.get("act_title") or "")
+        reg = _get_registry()
+        name = Path(mgr.working_path).resolve().parent.name
+        man = reg.manifest(name)
+        kernels = sorted(set(man.get("kernels") or []) | {"lof"})
+        acts = list(man.get("legal_acts") or [])
+        if claim.get("act_id") and claim["act_id"] not in [a.get("act_id") for a in acts]:
+            acts.append({"act_id": claim["act_id"], "title": claim.get("act_title") or ""})
+        if merged or kernels != (man.get("kernels") or []) or acts != (man.get("legal_acts") or []):
+            reg.set_manifest_fields(name, kernels=kernels, legal_acts=acts)
+    except Exception:
+        log.exception("legal kernel/act preparation failed")
+
+
+def _legal_after_commit(mgr, proposal, claim) -> list[str]:
+    """Spec section 5 on a committed legal definition. Returns notes."""
+    from . import legal_kernel
+    try:
+        rec = legal_kernel.record_definition(mgr, proposal, claim)
+    except Exception:
+        log.exception("recording legal definition failed")
+        return []
+    if not rec:
+        return []
+    if rec["action"] == "scoped-senses":
+        return [f"scoped-definition: '{rec['class'].rsplit('#', 1)[-1]}' is defined differently "
+                f"in {', '.join(rec['differs_from'])} and {rec['act_id']}; one sense per act"]
+    return [f"definition: {rec['action']} ({rec['act_id']} {rec['locator']})"]
+
+
+def _legal_on_complete(job_id: str) -> dict | None:
+    """Spec section 7 at job completion: the draft report and the finished
+    release copy, for jobs with legal claims. Never raises."""
+    from . import legal_report
+    try:
+        job = jobs_store.load_job(job_id)
+        if not legal_report.legal_claims(job):
+            return None
+        return _legal_build_outputs(job, _get_manager())
+    except Exception:
+        log.exception("legal draft report failed for job %s", job_id)
+        return None
+
+
+def _legal_build_outputs(job: dict, mgr) -> dict:
+    from . import legal_report
+    from .ontology_manager import WORKING_IRI
+    mgr.save()
+    name = Path(mgr.working_path).resolve().parent.name
+    try:
+        man = _get_registry().manifest(name)
+    except Exception:
+        man = {}
+    man.setdefault("name", name)
+    acts = man.get("legal_acts") or [
+        {"act_id": c.get("act_id"), "title": c.get("act_title")}
+        for c in legal_report.legal_claims(job) if c.get("act_id")]
+    release = legal_report.finish(Path(mgr.working_path), Path(mgr.bfo_path), man,
+                                  acts, WORKING_IRI)
+    report = legal_report.write_report(job, Path(mgr.working_path), WORKING_IRI,
+                                       audit_path=Path(release["artifact"]))
+    return {"release": release, "report_md": str(Path(mgr.working_path).parent / "draft-report.md"),
+            "provenance": report["provenance"], "audit": report["audit"].get("status")}
 
 
 def _chain_active(mgr=None) -> bool:
@@ -1211,6 +1290,9 @@ def _feed_one_core(job_id: str, auto_accept: bool = True) -> dict:
             if final_fatal is not None:
                 return final_fatal
             jobs_store.set_job_status(job_id, "completed")
+            legal_outputs = _legal_on_complete(job_id)
+            if legal_outputs:
+                return {"done": True, "remaining": 0, "legal": legal_outputs}
             return {"done": True, "remaining": 0}
         claim = pending[0]
 
@@ -1220,7 +1302,15 @@ def _feed_one_core(job_id: str, auto_accept: bool = True) -> dict:
 
         mgr = _get_manager()
         proposer = _get_proposer()
+        from . import legal_drafting
+        if legal_drafting.is_legal_claim(claim):
+            _legal_prepare(mgr, claim)
         ctx = mgr.summary_for_proposer(utterance=claim["claim"])
+        if legal_drafting.is_legal_claim(claim):
+            # Spec 6.1: LOF kernel classes are reuse candidates for legal claims.
+            from . import legal_kernel
+            ctx["relevant_classes"] = list(ctx.get("relevant_classes") or []) + \
+                legal_kernel.candidates()
 
         # Batch propose (SPEC-bfo-agent-speed.md change 5): a prepare pass
         # (app/batch_propose.py) may have already run this claim through the
@@ -1429,6 +1519,8 @@ def _feed_one_core(job_id: str, auto_accept: bool = True) -> dict:
                             f"incoherence-flagged [{entry_id}]: committed "
                             f"as-asserted; see incoherence ledger"
                         ]
+                if legal_claim:
+                    legal_notes += _legal_after_commit(mgr, proposal, claim)
                 warnings = (warnings or []) + legal_notes + _budget_and_kext_notes(
                     proposal, mgr
                 )
@@ -1742,6 +1834,50 @@ def create_app() -> Flask:
             })
         except Exception as e:
             return jsonify({"status": "error", "error": str(e)}), 500
+
+    @app.get("/ontologies/<name>/draft-report")
+    def ontology_draft_report(name):
+        """Latest legal draft report (SPEC-legal-drafting.md section 7).
+        ?format=md returns the markdown; default JSON."""
+        try:
+            try:
+                mgr = _get_registry().get(name)
+            except KeyError:
+                return _not_found_response(name)
+            onto_dir = Path(mgr.working_path).resolve().parent
+            fmt = request.args.get("format", "json")
+            path = onto_dir / ("draft-report.md" if fmt == "md" else "draft-report.json")
+            if not path.exists():
+                return jsonify({"ontology": name, "status": "no_report",
+                                "detail": "no legal draft report yet; it is written when a "
+                                          "job with legal claims completes"}), 404
+            if fmt == "md":
+                return path.read_text(encoding="utf-8"), 200, {
+                    "Content-Type": "text/markdown; charset=utf-8"}
+            return jsonify(json.loads(path.read_text(encoding="utf-8")))
+        except Exception as e:
+            return jsonify({"status": "error", "error": str(e)}), 500
+
+    @app.post("/ontologies/<name>/draft-report")
+    def ontology_draft_report_build(name):
+        """Rebuild the draft report and the finished release copy for the
+        ACTIVE ontology from a job's claims. Body: {job_id}."""
+        body = request.get_json(force=True) or {}
+        job_id = body.get("job_id")
+        if not job_id:
+            return jsonify({"error": "job_id required"}), 400
+        reg = _get_registry()
+        if reg.active_name() != name:
+            return jsonify({"error": f"{name!r} is not the active ontology"}), 409
+        try:
+            job = jobs_store.load_job(job_id)
+        except FileNotFoundError:
+            return jsonify({"error": f"job {job_id} not found"}), 404
+        with _lock:
+            try:
+                return jsonify(_legal_build_outputs(job, _get_manager()))
+            except Exception as e:
+                return jsonify({"status": "error", "error": str(e)}), 500
 
     @app.get("/ontologies/<name>/fol_audit")
     def ontology_fol_audit(name):
@@ -2297,6 +2433,9 @@ def create_app() -> Flask:
         genre = legal_source.normalize_genre(body.get("genre"))
         legal_meta = {}
         if legal_source.is_legal_genre(genre):
+            # Formex, Akoma Ntoso, JLT XML and EUR-Lex XHTML become
+            # heading-preserving text; plain text passes through unchanged.
+            text, source_format = legal_source.to_text(text)
             act_id = (body.get("act_id") or "").strip()
             act_title = (body.get("act_title") or "").strip()
             if not act_id:
@@ -2313,6 +2452,7 @@ def create_app() -> Flask:
                 "chunk_offsets": [p["offset"] for p in pieces],
                 "n_units": len(units),
                 "structured": legal_source.has_structure(units),
+                "source_format": source_format,
             }
         else:
             chunks = chunk_text(text, chunk_chars, overlap)

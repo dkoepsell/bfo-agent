@@ -289,6 +289,83 @@ def check(proposal, claim: dict, mgr=None) -> list[dict]:
     return findings
 
 
+# ------------------------------------------------- identity (spec 6.2)
+
+def _norm_label(s: str) -> str:
+    s = re.sub(r"[‘’'\"]", "", s or "").lower()
+    return re.sub(r"[^a-z0-9]+", " ", s).strip()
+
+
+def label_index(mgr) -> dict[str, list[tuple[str, str]]]:
+    """normalized label -> [(iri, 'class'|'individual')] over the manager's
+    world (working ontology, BFO and any merged kernel)."""
+    out: dict[str, list[tuple[str, str]]] = {}
+    world = getattr(mgr, "world", None)
+    if world is None:
+        return out
+    from rdflib import URIRef
+    from rdflib.namespace import OWL, RDF, RDFS
+    g = world.as_rdflib_graph()
+    for s, lab in g.subject_objects(RDFS.label):
+        if not isinstance(s, URIRef):
+            continue
+        if (s, RDF.type, OWL.Class) in g:
+            kind = "class"
+        elif (s, RDF.type, OWL.NamedIndividual) in g:
+            kind = "individual"
+        else:
+            continue
+        out.setdefault(_norm_label(str(lab)), []).append((str(s), kind))
+    return out
+
+
+def resolve_identity(proposal, mgr, index: dict | None = None) -> list[str]:
+    """One label per referent (D3). For each NEW entity:
+
+    * an existing entity of the same kind with the same normalized label is
+      reused (``is_new=False``, ``existing_iri``; relations re-pointed);
+    * an existing entity of the other kind (a class and an individual both
+      named "European Data Protection Supervisor") gets a distinguishing
+      label from the new entity's BFO category and ``distinct_from``.
+    Returns notes."""
+    index = label_index(mgr) if index is None else index
+    notes: list[str] = []
+    renames: dict[str, str] = {}
+    for ent in getattr(proposal, "entities", []) or []:
+        if not ent.is_new or ent.existing_iri:
+            continue
+        hits = index.get(_norm_label(ent.label), [])
+        if not hits:
+            continue
+        same = [iri for iri, kind in hits if kind == ent.kind]
+        if same:
+            old = ent.iri_suggestion
+            ent.is_new = False
+            ent.existing_iri = same[0]
+            if old:
+                renames[_local(old)] = same[0]
+            notes.append(f"identity: reused {same[0]} for '{ent.label}'")
+            continue
+        other_iri = hits[0][0]
+        if not ent.distinct_from:
+            ent.distinct_from = other_iri
+        cat = (ent.bfo_label or "").strip().lower() or ("kind" if ent.kind == "class" else "individual")
+        if _norm_label(cat) not in _norm_label(ent.label):
+            ent.label = f"{ent.label} ({cat})"
+        notes.append(f"identity: '{ent.label}' distinguished from {other_iri}")
+    if renames:
+        for rel in getattr(proposal, "relations", []) or []:
+            if _local(rel.s or "") in renames:
+                rel.s = renames[_local(rel.s)]
+            o = (rel.o or "").strip()
+            m = _RESTRICTION.match(o) if (rel.p or "").strip() in _SUBCLASS else None
+            if m and _local(m.group(3)) in renames:
+                rel.o = f"{m.group(1)} {m.group(2)} {renames[_local(m.group(3))]}"
+            elif _local(o) in renames and " " not in o:
+                rel.o = renames[_local(o)]
+    return notes
+
+
 # ------------------------------------------------------------ the policy
 
 REJECTING_CHECKS = {"paraphrase-provenance"}

@@ -355,6 +355,13 @@ class ClaimExtractor:
             unit = ls.locate(quote, units)
             claim["locator"] = unit.locator if unit else (locator or "unknown")
             claim["quote_verified"] = True
+            if claim["clause_type"] == "definition":
+                # Spec 5.3: "For the purposes of this Regulation" stays with
+                # the definition so a reader can see its limit.
+                from .legal_kernel import detect_scope
+                scope = detect_scope(quote) or detect_scope(passage)
+                if scope:
+                    claim["scope"] = scope
             out.append(claim)
         return out
 

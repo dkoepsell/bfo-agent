@@ -1,0 +1,11 @@
+{
+  "source": "https://github.com/legal-ontologies-foundry",
+  "license": "CC BY 4.0 (LICENSE-odp-00N; odp-004 states CC BY 4.0 in its README and ontology header)",
+  "tag": "v0.1.0",
+  "files": {
+    "lof-odp-001-base.owl": {"repo": "legal-ontologies-foundry/lof-odp-001", "commit": "ff4a493b1605792a971fb3b530134c3cd1b5012d", "sha256": "4dacf5f5e3f3cc2d670062c565b1b5623685ee253e195fdb08d45aea3142be70"},
+    "lof-odp-002-base.owl": {"repo": "legal-ontologies-foundry/lof-odp-002", "commit": "da739a0d285bfff153f7dd46ca166151f346acf0", "sha256": "8aa7a3b29fdb81d2c9b8a0ec4bd9b4d79272d83a206992a3fc777fa790259484"},
+    "lof-odp-003-base.owl": {"repo": "legal-ontologies-foundry/lof-odp-003", "commit": "5474faf27a9a45bd489e235b1cb1c2671be947ae", "sha256": "432e89a5db6beb4986168106a7bc8864ddb0c865259fd17af5a8f1243caef91c"},
+    "lof-odp-004-base.owl": {"repo": "legal-ontologies-foundry/lof-odp-004", "commit": "cd6826c17ed9f8309a2078a26efb5c70d2bf4c9c", "sha256": "3d20923007288a93daec5eb175ac704b0aac4dceb05a8b199b0d4474411ea0e7"}
+  }
+}

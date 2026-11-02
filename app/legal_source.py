@@ -140,6 +140,160 @@ def quote_is_verbatim(quote: str, text: str) -> bool:
     return find_verbatim(quote, text) is not None
 
 
+# ---------------------------------------------- structured readers (2.1)
+
+# Block elements per format (local names, lower-cased): each starts a line.
+# Everything else is inline, so "(7)" + "'controller' means ..." stay on one
+# line and the plain-text reader below sees the structure it expects.
+_BLOCKS = {
+    "formex": {"article", "ti.art", "sti.art", "parag", "item", "title", "ti",
+               "sti", "division", "gr.seq", "p", "preamble", "considerant"},
+    "akn": {"article", "section", "chapter", "part", "title", "paragraph",
+            "subparagraph", "point", "item", "heading", "intro", "wrapup",
+            "preamble", "recital", "list", "alinea"},
+    "jlt": {"article", "articlecaption", "articletitle", "paragraph", "item",
+            "subitem1", "subitem2", "subitem3", "chapter", "section",
+            "chaptertitle", "sectiontitle", "lawtitle"},
+    "xhtml": {"p", "div", "tr", "li", "h1", "h2", "h3", "h4", "h5", "h6",
+              "br", "table", "section", "article"},
+}
+# Inline elements that must be followed by a line break (JLT puts the
+# article number in ArticleTitle *after* the caption).
+_LINE_AFTER = {"jlt": {"articletitle", "articlecaption"}}
+
+
+def detect_format(raw: str) -> str:
+    """"formex" | "akn" | "jlt" | "xhtml" | "text"."""
+    head = (raw or "").lstrip()[:5000]
+    if not head.startswith("<"):
+        return "text"
+    low = head.lower()
+    if "<akomantoso" in low:
+        return "akn"
+    if re.search(r"<(formex|act|cons\.act|ti\.art|enacting\.terms)\b", low):
+        return "formex"
+    if "<law" in low and ("<lawbody" in low or "<article num" in low or "<lawnum" in low):
+        return "jlt"
+    if "<html" in low or "<body" in low or "<p" in low or "<div" in low:
+        return "xhtml"
+    return "text"
+
+
+def _local_tag(tag: str) -> str:
+    return tag.rsplit("}", 1)[-1].lower()
+
+
+def _emit_text(parts: list[str]) -> str:
+    text = "".join(parts)
+    lines = [re.sub(r"[ \t ]+", " ", ln).strip() for ln in text.split("\n")]
+    lines = [ln for ln in lines if ln]
+    # A line holding only a point or paragraph number ("(7)", "1.", "(a)")
+    # belongs to the text after it (EUR-Lex puts them in separate cells).
+    out: list[str] = []
+    carry = ""
+    for ln in lines:
+        if _NUMBER_ONLY.match(ln):
+            carry = (carry + " " + ln).strip()
+            continue
+        out.append((carry + " " + ln).strip() if carry else ln)
+        carry = ""
+    if carry:
+        out.append(carry)
+    return "\n\n".join(out)
+
+
+_NUMBER_ONLY = re.compile(r"^(?:\(\w{1,4}\)|\d{1,3}\.|[ivxlc]{1,6}\.)$")
+
+
+def _xml_to_text(raw: str, fmt: str) -> str:
+    import xml.etree.ElementTree as ET
+
+    blocks = _BLOCKS[fmt]
+    after = _LINE_AFTER.get(fmt, set())
+    parts: list[str] = []
+
+    def walk(el):
+        tag = _local_tag(el.tag) if isinstance(el.tag, str) else ""
+        if tag in ("note", "authorialnote", "footnote", "ref.doc.oj"):
+            if el.tail:
+                parts.append(el.tail)
+            return
+        if tag in blocks:
+            parts.append("\n")
+        if el.text:
+            parts.append(el.text)
+        for ch in el:
+            walk(ch)
+        if tag in blocks or tag in after:
+            parts.append("\n")
+        else:
+            parts.append(" " if tag else "")
+        if el.tail:
+            parts.append(el.tail)
+
+    root = ET.fromstring(raw.encode("utf-8") if isinstance(raw, str) else raw)
+    walk(root)
+    return _emit_text(parts)
+
+
+def _html_to_text(raw: str) -> str:
+    from html.parser import HTMLParser
+
+    blocks = _BLOCKS["xhtml"]
+
+    class P(HTMLParser):
+        def __init__(self):
+            super().__init__(convert_charrefs=True)
+            self.parts: list[str] = []
+            self.td = 0
+            self.skip = 0
+
+        def handle_starttag(self, tag, attrs):
+            if tag in ("script", "style", "head"):
+                self.skip += 1
+            elif tag == "td":
+                self.td += 1
+                self.parts.append(" ")
+            elif tag in blocks and not (self.td and tag in ("p", "div", "br")):
+                self.parts.append("\n")
+
+        def handle_endtag(self, tag):
+            if tag in ("script", "style", "head"):
+                self.skip = max(0, self.skip - 1)
+            elif tag == "td":
+                self.td = max(0, self.td - 1)
+            elif tag in blocks and not (self.td and tag in ("p", "div")):
+                self.parts.append("\n")
+
+        def handle_data(self, data):
+            if not self.skip:
+                self.parts.append(data)
+
+    p = P()
+    p.feed(raw)
+    return _emit_text(p.parts)
+
+
+def to_text(raw: str) -> tuple[str, str]:
+    """(plain text with one structural unit per line, detected format).
+
+    Plain text is returned unchanged. A structured source whose markup cannot
+    be parsed falls back to its tag-stripped text (format "text"), which the
+    reader then treats as unstructured where it finds no headings."""
+    fmt = detect_format(raw)
+    if fmt == "text":
+        return raw, "text"
+    try:
+        if fmt == "xhtml":
+            return _html_to_text(raw), fmt
+        return _xml_to_text(raw, fmt), fmt
+    except Exception:
+        try:
+            return _html_to_text(raw), "text"
+        except Exception:
+            return re.sub(r"<[^>]+>", " ", raw), "text"
+
+
 # ---------------------------------------------------------- the reader
 
 _ARTICLE = re.compile(r"^\s*(?:Article|ARTICLE|Art\.)\s+(\d+[a-z]?)\b\.?\s*(.*)$")

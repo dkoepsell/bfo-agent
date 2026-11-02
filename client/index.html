@@ -557,6 +557,8 @@
 
         <div class="row-flex" style="margin-top:8px;">
           <button id="btn-extract" disabled>Extract &amp; append</button>
+          <button id="btn-draft-report" type="button" onclick="showDraftReport()"
+                  title="The legal draft quality report, written when a job with legal claims completes">Draft report</button>
           <span class="muted" id="extract-status"></span>
         </div>
 
@@ -1029,6 +1031,31 @@ async function deleteCurrentJob() {
     await refreshJobList();
   } catch (e) {
     alert("delete failed: " + e.message);
+  }
+}
+
+// SPEC-legal-drafting.md section 7: open the active ontology's draft report.
+async function showDraftReport() {
+  try {
+    const onts = await api("/ontologies");
+    const name = onts.active;
+    const r = await fetch(`${API}/ontologies/${encodeURIComponent(name)}/draft-report?format=md`,
+                          { credentials: "same-origin" });
+    if (r.status === 404) {
+      alert(`No draft report for ${name} yet. It is written when a job with legal claims completes.`);
+      return;
+    }
+    const text = await r.text();
+    const w = window.open("", "_blank");
+    if (!w) { alert(text); return; }
+    w.document.title = `Draft report: ${name}`;
+    const pre = w.document.createElement("pre");
+    pre.style.whiteSpace = "pre-wrap";
+    pre.style.font = "13px/1.45 ui-monospace, monospace";
+    pre.textContent = text;
+    w.document.body.appendChild(pre);
+  } catch (e) {
+    alert("draft report failed: " + e.message);
   }
 }
 

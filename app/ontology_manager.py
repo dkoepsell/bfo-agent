@@ -196,6 +196,8 @@ _STD_PREFIXES = {
     "owl:": "http://www.w3.org/2002/07/owl#",
     "xsd:": "http://www.w3.org/2001/XMLSchema#",
     "bfoagent:": relation_vocab.BFOAGENT_NS,
+    # SPEC-legal-drafting.md L5: the Legal Ontology Foundry patterns.
+    "lof:": "https://w3id.org/lof/",
 }
 _OBO_PREFIXES = ("obo:", "bfo:", "ro:", "iao:", "obi:")
 

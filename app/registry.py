@@ -463,6 +463,23 @@ class OntologyRegistry:
             raise OntologyNotFoundError(name)
         return dict(self._manifests[name])
 
+    def set_manifest_fields(self, name: str, **fields) -> dict:
+        """Merge ``fields`` into an ontology's manifest and persist it
+        (SPEC-legal-drafting.md: ``kernels``, ``legal_acts``, ``namespace``,
+        ``license``, ``version``). A field set to None is removed."""
+        if name not in self._manifests:
+            raise OntologyNotFoundError(name)
+        manifest = dict(self._manifests[name])
+        for k, v in fields.items():
+            if v is None:
+                manifest.pop(k, None)
+            else:
+                manifest[k] = v
+        manifest_path = self._library_root / name / "manifest.json"
+        manifest_path.write_text(json.dumps(manifest, indent=2))
+        self._manifests[name] = manifest
+        return dict(manifest)
+
     def list_ontologies(self) -> list[dict]:
         """List all loaded ontologies with manifest + live stats."""
         result = []

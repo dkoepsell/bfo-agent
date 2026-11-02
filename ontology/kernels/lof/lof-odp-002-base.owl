@@ -1,0 +1,249 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="https://w3id.org/lof/odp-002/lof-odp-002-base.owl#"
+     xml:base="https://w3id.org/lof/odp-002/lof-odp-002-base.owl"
+     xmlns:obo="http://purl.obolibrary.org/obo/"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:odp1="https://w3id.org/lof/ODP001_"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+     xmlns:dcterms="http://purl.org/dc/terms/">
+    <owl:Ontology rdf:about="https://w3id.org/lof/odp-002/lof-odp-002-base.owl">
+        <owl:versionIRI rdf:resource="https://w3id.org/lof/odp-002/releases/0.1.0/lof-odp-002-base.owl"/>
+        <dcterms:creator>David R. Koepsell</dcterms:creator>
+        <dcterms:description xml:lang="en">Ontology design pattern for legal roles (judge, trustee, tenant, guardian) and the legal acts that confer and terminate them. Builds on LOF-ODP-001. DRAFT for review by the LOF founding coordinators.</dcterms:description>
+        <dcterms:license rdf:resource="https://creativecommons.org/licenses/by/4.0/"/>
+        <dcterms:title xml:lang="en">LOF-ODP-002: Legal Role Conferral</dcterms:title>
+        <owl:versionInfo>0.1.0</owl:versionInfo>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/dc/terms/creator -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/creator"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/description -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/description"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/license -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/license"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/title -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/title"/>
+    
+
+
+    <!-- http://www.w3.org/2004/02/skos/core#definition -->
+
+    <owl:AnnotationProperty rdf:about="http://www.w3.org/2004/02/skos/core#definition"/>
+    
+
+
+    <!-- http://www.w3.org/2004/02/skos/core#example -->
+
+    <owl:AnnotationProperty rdf:about="http://www.w3.org/2004/02/skos/core#example"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/BFO_0000197 -->
+
+    <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/BFO_0000197"/>
+    
+
+
+    <!-- https://w3id.org/lof/ODP002_0001100 -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/lof/ODP002_0001100">
+        <owl:inverseOf rdf:resource="https://w3id.org/lof/ODP002_0001101"/>
+        <rdfs:domain rdf:resource="https://w3id.org/lof/ODP001_0001000"/>
+        <rdfs:range rdf:resource="https://w3id.org/lof/ODP002_0001000"/>
+        <rdfs:label xml:lang="en">confers</rdfs:label>
+        <skos:definition xml:lang="en">A relation between a legal act and a legal role that comes into existence through that act.</skos:definition>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/lof/ODP002_0001101 -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/lof/ODP002_0001101">
+        <rdfs:label xml:lang="en">conferred by</rdfs:label>
+        <skos:definition xml:lang="en">A relation between a legal role and the legal act through which it came into existence.</skos:definition>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/lof/ODP002_0001102 -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/lof/ODP002_0001102">
+        <rdfs:domain rdf:resource="https://w3id.org/lof/ODP001_0001000"/>
+        <rdfs:range rdf:resource="https://w3id.org/lof/ODP002_0001000"/>
+        <rdfs:label xml:lang="en">terminates</rdfs:label>
+        <skos:definition xml:lang="en">A relation between a legal act and a legal role that ceases to exist through that act.</skos:definition>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/lof/ODP002_0001103 -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/lof/ODP002_0001103">
+        <rdfs:domain rdf:resource="https://w3id.org/lof/ODP002_0001000"/>
+        <rdfs:range rdf:resource="https://w3id.org/lof/ODP001_0001001"/>
+        <rdfs:label xml:lang="en">specified by</rdfs:label>
+        <skos:definition xml:lang="en">A relation between a legal role and legal content that specifies what the role consists in, such as the statute establishing an office or the lease clause defining the tenant&apos;s position.</skos:definition>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/BFO_0000023 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/BFO_0000023"/>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/BFO_0000040 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/BFO_0000040"/>
+    
+
+
+    <!-- https://w3id.org/lof/ODP001_0001000 -->
+
+    <owl:Class rdf:about="https://w3id.org/lof/ODP001_0001000"/>
+    
+
+
+    <!-- https://w3id.org/lof/ODP001_0001001 -->
+
+    <owl:Class rdf:about="https://w3id.org/lof/ODP001_0001001"/>
+    
+
+
+    <!-- https://w3id.org/lof/ODP002_0001000 -->
+
+    <owl:Class rdf:about="https://w3id.org/lof/ODP002_0001000">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/BFO_0000197"/>
+                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">BFO placement (LOF-P-004): a legal role is borne by a person or organization because of external circumstances (an appointment, a contract, a statute) rather than because of the bearer&apos;s physical make-up, and the bearer need not change physically to acquire or lose it. That is the mark of a BFO role, as opposed to a disposition.</rdfs:comment>
+        <rdfs:label xml:lang="en">legal role</rdfs:label>
+        <skos:definition xml:lang="en">A role that inheres in a person or organization in virtue of some legal act or legal content, and that is realized in processes having legal significance.</skos:definition>
+        <skos:example xml:lang="en">the role of judge borne by a person appointed to a court; the role of tenant borne by a party to a lease; the role of trustee</skos:example>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/lof/ODP002_0001001 -->
+
+    <owl:Class rdf:about="https://w3id.org/lof/ODP002_0001001">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="https://w3id.org/lof/ODP002_0001000"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="https://w3id.org/lof/ODP002_0001101"/>
+                        <owl:someValuesFrom rdf:resource="https://w3id.org/lof/ODP001_0001000"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:comment xml:lang="en">Defined class. Legal roles that arise by operation of law, without any conferring act (for example, a parent&apos;s role as guardian of a newborn child), are legal roles but not conferred legal roles.</rdfs:comment>
+        <rdfs:label xml:lang="en">conferred legal role</rdfs:label>
+        <skos:definition xml:lang="en">A legal role that was brought into existence by some legal act.</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/lof/ODP002_0001002 -->
+
+    <owl:Class rdf:about="https://w3id.org/lof/ODP002_0001002">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="https://w3id.org/lof/ODP001_0001000"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="https://w3id.org/lof/ODP002_0001100"/>
+                        <owl:someValuesFrom rdf:resource="https://w3id.org/lof/ODP002_0001000"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:label xml:lang="en">role conferral act</rdfs:label>
+        <skos:definition xml:lang="en">A legal act that brings some legal role into existence in some bearer.</skos:definition>
+        <skos:example xml:lang="en">the commissioning of a judge; the execution of a trust instrument naming a trustee; the signing of a lease</skos:example>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/lof/ODP002_0001003 -->
+
+    <owl:Class rdf:about="https://w3id.org/lof/ODP002_0001003">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="https://w3id.org/lof/ODP001_0001000"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="https://w3id.org/lof/ODP002_0001102"/>
+                        <owl:someValuesFrom rdf:resource="https://w3id.org/lof/ODP002_0001000"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:label xml:lang="en">role termination act</rdfs:label>
+        <skos:definition xml:lang="en">A legal act that brings some legal role to an end.</skos:definition>
+        <skos:example xml:lang="en">the removal of a trustee by a court; the resignation of a judge; the termination of a lease</skos:example>
+    </owl:Class>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.29) https://github.com/owlcs/owlapi -->
+

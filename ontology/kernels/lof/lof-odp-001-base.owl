@@ -1,0 +1,249 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="https://w3id.org/lof/odp-001/lof-odp-001-base.owl#"
+     xml:base="https://w3id.org/lof/odp-001/lof-odp-001-base.owl"
+     xmlns:obo="http://purl.obolibrary.org/obo/"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+     xmlns:dcterms="http://purl.org/dc/terms/">
+    <owl:Ontology rdf:about="https://w3id.org/lof/odp-001/lof-odp-001-base.owl">
+        <owl:versionIRI rdf:resource="https://w3id.org/lof/odp-001/releases/0.1.0/lof-odp-001-base.owl"/>
+        <dcterms:creator>David R. Koepsell</dcterms:creator>
+        <dcterms:description xml:lang="en">Ontology design pattern distinguishing three entities that legal information systems routinely conflate: the legal act (a process), the legal content it establishes (a generically dependent continuant), and the legal documents that carry that content (material entities). DRAFT for review by the LOF founding coordinators.</dcterms:description>
+        <dcterms:license rdf:resource="https://creativecommons.org/licenses/by/4.0/"/>
+        <dcterms:title xml:lang="en">LOF-ODP-001: Legal Act and Legal Document</dcterms:title>
+        <owl:versionInfo>0.1.0</owl:versionInfo>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/dc/terms/creator -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/creator"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/description -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/description"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/license -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/license"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/title -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/title"/>
+    
+
+
+    <!-- http://www.w3.org/2004/02/skos/core#altLabel -->
+
+    <owl:AnnotationProperty rdf:about="http://www.w3.org/2004/02/skos/core#altLabel"/>
+    
+
+
+    <!-- http://www.w3.org/2004/02/skos/core#closeMatch -->
+
+    <owl:AnnotationProperty rdf:about="http://www.w3.org/2004/02/skos/core#closeMatch"/>
+    
+
+
+    <!-- http://www.w3.org/2004/02/skos/core#definition -->
+
+    <owl:AnnotationProperty rdf:about="http://www.w3.org/2004/02/skos/core#definition"/>
+    
+
+
+    <!-- http://www.w3.org/2004/02/skos/core#example -->
+
+    <owl:AnnotationProperty rdf:about="http://www.w3.org/2004/02/skos/core#example"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/BFO_0000057 -->
+
+    <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/BFO_0000057"/>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/BFO_0000101 -->
+
+    <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/BFO_0000101"/>
+    
+
+
+    <!-- https://w3id.org/lof/ODP001_0001100 -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/lof/ODP001_0001100">
+        <owl:inverseOf rdf:resource="https://w3id.org/lof/ODP001_0001101"/>
+        <rdfs:domain rdf:resource="https://w3id.org/lof/ODP001_0001000"/>
+        <rdfs:range rdf:resource="https://w3id.org/lof/ODP001_0001001"/>
+        <rdfs:label xml:lang="en">establishes</rdfs:label>
+        <skos:definition xml:lang="en">A relation between a legal act and the legal content that comes into being through that act.</skos:definition>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/lof/ODP001_0001101 -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/lof/ODP001_0001101">
+        <rdfs:label xml:lang="en">established by</rdfs:label>
+        <skos:definition xml:lang="en">A relation between legal content and the legal act through which it came into being.</skos:definition>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/lof/ODP001_0001102 -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/lof/ODP001_0001102">
+        <rdfs:domain rdf:resource="https://w3id.org/lof/ODP001_0001000"/>
+        <rdfs:range rdf:resource="https://w3id.org/lof/ODP001_0001001"/>
+        <rdfs:label xml:lang="en">performed under</rdfs:label>
+        <skos:definition xml:lang="en">A relation between a legal act and pre-existing legal content that authorizes or governs it, such as an enabling statute or a rule of procedure.</skos:definition>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/BFO_0000015 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/BFO_0000015"/>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/BFO_0000031 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/BFO_0000031"/>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/BFO_0000040 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/BFO_0000040"/>
+    
+
+
+    <!-- https://w3id.org/lof/ODP001_0001000 -->
+
+    <owl:Class rdf:about="https://w3id.org/lof/ODP001_0001000">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/BFO_0000057"/>
+                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">BFO placement (LOF-P-004): a legal act unfolds in time and has temporal parts (offer and acceptance, the stages of a legislative vote), so it is a process. It is distinguished from the content it establishes, which outlives it.</rdfs:comment>
+        <rdfs:label xml:lang="en">legal act</rdfs:label>
+        <skos:definition xml:lang="en">A process, having one or more persons or organizations as participants, that a legal system recognizes as bringing into being, modifying, or terminating legally significant entities.</skos:definition>
+        <skos:example xml:lang="en">the signing of a residential lease; the enactment of a statute; the delivery of a judgment</skos:example>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/lof/ODP001_0001001 -->
+
+    <owl:Class rdf:about="https://w3id.org/lof/ODP001_0001001">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+        <rdfs:comment xml:lang="en">BFO placement (LOF-P-004): the same statute or contract term can be concretized in many copies and survives the destruction of any one of them. That is the mark of a generically dependent continuant. Legal content corresponds to the Work and Expression levels in FRBR-based legal standards.</rdfs:comment>
+        <rdfs:label xml:lang="en">legal content</rdfs:label>
+        <skos:altLabel xml:lang="en">legal information content</skos:altLabel>
+        <skos:closeMatch rdf:resource="http://purl.obolibrary.org/obo/IAO_0000030"/>
+        <skos:definition xml:lang="en">A generically dependent continuant that is established by some legal act and that specifies legally significant entities, such as the provisions of a statute, the terms of a contract, or the holding of a judgment.</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/lof/ODP001_0001002 -->
+
+    <owl:Class rdf:about="https://w3id.org/lof/ODP001_0001002">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/BFO_0000101"/>
+                <owl:someValuesFrom rdf:resource="https://w3id.org/lof/ODP001_0001001"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">BFO placement (LOF-P-004): the particular signed paper, or the particular stored file, is a material entity that carries the content. Digital documents are treated as patterns in material storage media. Note that IAO&apos;s &apos;document&apos; is an information content entity, so it corresponds to legal content here, not to legal document. Legal document corresponds to the Item level in FRBR-based legal standards.</rdfs:comment>
+        <rdfs:label xml:lang="en">legal document</rdfs:label>
+        <skos:definition xml:lang="en">A material entity that is the carrier of some legal content.</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/lof/ODP001_0001003 -->
+
+    <owl:Class rdf:about="https://w3id.org/lof/ODP001_0001003">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/lof/ODP001_0001000"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/lof/ODP001_0001100"/>
+                <owl:someValuesFrom rdf:resource="https://w3id.org/lof/ODP001_0001001"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <owl:disjointWith rdf:resource="https://w3id.org/lof/ODP001_0001004"/>
+        <rdfs:label xml:lang="en">enactment</rdfs:label>
+        <skos:definition xml:lang="en">A legal act in which a body with legislative authority establishes legal content of general application.</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/lof/ODP001_0001004 -->
+
+    <owl:Class rdf:about="https://w3id.org/lof/ODP001_0001004">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/lof/ODP001_0001000"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/lof/ODP001_0001100"/>
+                <owl:someValuesFrom rdf:resource="https://w3id.org/lof/ODP001_0001001"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label xml:lang="en">contract formation</rdfs:label>
+        <skos:definition xml:lang="en">A legal act in which two or more parties establish legal content that binds them to one another.</skos:definition>
+    </owl:Class>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.29) https://github.com/owlcs/owlapi -->
+

@@ -247,7 +247,7 @@ def _job_summary(job: dict) -> dict:
 
 # ----------------------------------------------------------- mutations
 LEGAL_CLAIM_FIELDS = ("genre", "act_id", "act_title", "locator", "clause_type",
-                      "subject", "quantifier", "modality", "quote_verified")
+                      "subject", "quantifier", "modality", "quote_verified", "scope")
 
 
 def append_claims(job_id: str, new_claims: Iterable[dict]) -> dict:
