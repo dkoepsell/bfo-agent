@@ -1,0 +1,41 @@
+# Deploy main to the Hetzner box after the quality workflow passes on main.
+# Also runnable by hand from the Actions tab ("Run workflow").
+#
+# The SSH key in HETZNER_SSH_KEY is restricted on the server to a single forced
+# command (~/bin/bfo-agent-deploy, a copy of deploy/remote_deploy.sh), so this
+# job cannot open a shell or run anything else on the server.
+name: deploy
+
+on:
+  workflow_run:
+    workflows: [quality]
+    types: [completed]
+    branches: [main]
+  workflow_dispatch: {}
+
+concurrency:
+  group: deploy-hetzner
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      (github.event.workflow_run.conclusion == 'success' &&
+       github.event.workflow_run.event == 'push')
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Configure SSH
+        env:
+          SSH_KEY: ${{ secrets.HETZNER_SSH_KEY }}
+          KNOWN_HOSTS: ${{ secrets.HETZNER_KNOWN_HOSTS }}
+        run: |
+          install -m 700 -d ~/.ssh
+          printf '%s\n' "$SSH_KEY" > ~/.ssh/id_ed25519
+          printf '%s\n' "$KNOWN_HOSTS" > ~/.ssh/known_hosts
+          chmod 600 ~/.ssh/id_ed25519 ~/.ssh/known_hosts
+      - name: Deploy
+        env:
+          HOST: ${{ secrets.HETZNER_HOST }}
+        run: ssh -o BatchMode=yes -o StrictHostKeyChecking=yes "drkoepsell@$HOST" deploy
