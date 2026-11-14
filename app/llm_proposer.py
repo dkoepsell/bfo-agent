@@ -62,8 +62,11 @@ OCCURRENT (BFO_0000003): unfolds in time
 
 Key BFO 2020 object properties (use THESE exact predicates; the RO_ aliases
 are obsolete under BFO 2020 and are rejected):
-  BFO_0000050  part of             (part -> whole)
-  BFO_0000051  has part            (whole -> part)
+  BFO_0000176  continuant part of     (continuant part -> continuant whole)
+  BFO_0000178  has continuant part    (continuant whole -> continuant part)
+  BFO_0000132  occurrent part of      (occurrent part -> occurrent whole)
+  BFO_0000117  has occurrent part     (occurrent whole -> occurrent part)
+  (BFO_0000050/BFO_0000051 'part of'/'has part' are NOT BFO 2020 and are rejected.)
   BFO_0000197  inheres in          (specifically dependent continuant -> bearer)
   BFO_0000196  bearer of           (bearer -> specifically dependent continuant)
   BFO_0000054  realized in         (realizable entity -> process)

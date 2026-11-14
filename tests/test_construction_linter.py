@@ -389,3 +389,26 @@ def test_qs_d7_plain_label_ok():
     # an "example" prefix is flagged like the audit's meta_labels metric,
     # so a label merely containing the word elsewhere is the clean case
     assert "PC-17" not in _rules(L.lint(_prop({"entities": [_defcls("Counterexample Clause")]})))
+
+
+def test_primer_object_properties_are_all_in_kp():
+    """Every object property the proposer primer tells the LLM to use must pass
+    PC-5. The primer once recommended BFO_0000050/051 (not BFO 2020), so every
+    parthood proposal was rejected at the gate and at manual /commit."""
+    from app import bfo_catalog
+    from app.llm_proposer import BFO_PRIMER
+
+    section = BFO_PRIMER.split("Key BFO 2020 object properties", 1)[1]
+    recommended = re.findall(r"^\s+(BFO_\d{7})\s", section, flags=re.M)
+    assert recommended, "primer property list not found"
+    bad = [p for p in recommended if not bfo_catalog.is_kernel_property(p)]
+    assert not bad, f"primer recommends non-K_P properties: {bad}"
+
+
+def test_pc5_rewrite_hint_only_suggests_kp_properties():
+    from app import bfo_catalog
+
+    src = Path(L.__file__).read_text()
+    hint = src[src.index("Use a BFO 2020 object property (K_P)"):][:400]
+    for p in re.findall(r"\((BFO_\d{7})\)", hint):
+        assert bfo_catalog.is_kernel_property(p), p

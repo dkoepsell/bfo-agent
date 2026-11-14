@@ -280,7 +280,8 @@ def _check_predicate(rel) -> Optional[Violation]:
         suggested_rewrite=(
             "Use a BFO 2020 object property (K_P) -- e.g. inheres in "
             "(BFO_0000197), realized in (BFO_0000054), participates in "
-            "(BFO_0000056), part of (BFO_0000050) -- or rdfs:subClassOf / "
+            "(BFO_0000056), continuant part of (BFO_0000176), occurrent "
+            "part of (BFO_0000132) -- or rdfs:subClassOf / "
             "rdf:type. If no BFO relation fits, file a kernel-extension request."
         ),
         detail="predicate is not in K_P and is not a meta-predicate",
