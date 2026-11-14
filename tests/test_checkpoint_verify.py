@@ -79,7 +79,8 @@ class FakeManager:
 
 class FakeProposer:
     def propose(self, utterance, session_id, working_classes,
-                known_individuals, relevant_classes=None):
+                known_individuals, relevant_classes=None,
+                extra_rules=None):
         return Proposal(session_id=session_id, utterance=utterance)
 
 

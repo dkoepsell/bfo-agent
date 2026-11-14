@@ -75,7 +75,8 @@ class FakeProposer:
         self.fail = False
 
     def propose(self, utterance, session_id, working_classes,
-                known_individuals, relevant_classes=None):
+                known_individuals, relevant_classes=None,
+                extra_rules=None):
         self.calls += 1
         if self.fail:
             raise AssertionError("live propose must not be called here")
