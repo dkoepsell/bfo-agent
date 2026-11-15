@@ -22,3 +22,17 @@ def test_create_from_bare_bfo_2020(tmp_path):
     assert [p.name for p in seed.iterdir()] == ["bfo_relations.ttl"]
     assert "bfoagent:quantifierDefaulted" in (seed / "bfo_relations.ttl").read_text()
     assert manifest["seeded_from"] == BARE_BFO_SEED
+
+
+@pytest.mark.skipif(not BFO_PATH.exists(), reason="bfo.owl not present")
+def test_default_seed_is_bare_bfo_not_active(tmp_path):
+    """No clone_seeds_from must NOT inherit the active ontology's domain seeds."""
+    lib = tmp_path / "library"
+    (lib / "Legal" / "seed").mkdir(parents=True)
+    (lib / "Legal" / "seed" / "legal_seed.ttl").write_text("")
+    (lib / "Legal" / "manifest.json").write_text('{"name": "Legal"}')
+    reg = OntologyRegistry(BFO_PATH, lib, active_name="Legal")
+    manifest = reg.create("Stem", "unrelated domain")
+    seed = lib / "Stem" / "seed"
+    assert [p.name for p in seed.iterdir()] == ["bfo_relations.ttl"]
+    assert manifest["seeded_from"] == BARE_BFO_SEED

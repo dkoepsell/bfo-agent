@@ -2533,11 +2533,12 @@ function renderOntologyPanel() {
   // Populate the "clone from" select in the new-ontology modal
   const clone = document.getElementById("new-onto-clone");
   if (clone) {
-    const preselect = currentActive;
+    // Default is bare BFO 2020; cloning another ontology's domain seeds
+    // must be an explicit choice, never inherited from the active one.
     clone.innerHTML =
-      `<option value="BFO_2020">BFO 2020 (bare upper ontology, no domain seeds)</option>` +
+      `<option value="BFO_2020" selected>BFO 2020 (bare upper ontology, no domain seeds)</option>` +
       currentOntologies.map(o =>
-        `<option value="${esc(o.name)}" ${o.name === preselect ? "selected" : ""}>${esc(o.name)}</option>`
+        `<option value="${esc(o.name)}">${esc(o.name)}</option>`
       ).join("");
   }
   // Disable finalize button if active is already finalized

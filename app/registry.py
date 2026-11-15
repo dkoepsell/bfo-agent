@@ -545,8 +545,10 @@ class OntologyRegistry:
         if target.exists():
             raise ValueError(f"Ontology {name!r} already exists.")
 
-        # Determine seed source. Default: active ontology's seeds.
-        seed_source_name = clone_seeds_from or self._active_name
+        # Determine seed source. Default: bare BFO 2020 only. Never inherit
+        # the active ontology's domain seeds implicitly (that leaked e.g.
+        # legal_seed.ttl classes into unrelated ontologies).
+        seed_source_name = clone_seeds_from or BARE_BFO_SEED
         if (seed_source_name != BARE_BFO_SEED
                 and seed_source_name not in self._managers):
             raise KeyError(
@@ -838,7 +840,7 @@ class OntologyRegistry:
         """Create a new library entry whose working.owl is the imported file.
 
         Validates name and uniqueness, copies the file in, optionally
-        clones seeds from another library entry (default: active),
+        clones seeds from another library entry (default: bare BFO 2020),
         writes manifest, and registers.
 
         Raises ValueError on bad name or duplicate, KeyError on bad
@@ -862,7 +864,7 @@ class OntologyRegistry:
         if not file_path.exists():
             raise FileNotFoundError(f"Source file not found: {file_path}")
 
-        seed_source_name = clone_seeds_from or self._active_name
+        seed_source_name = clone_seeds_from or BARE_BFO_SEED
         if (seed_source_name != BARE_BFO_SEED
                 and seed_source_name not in self._managers):
             raise KeyError(

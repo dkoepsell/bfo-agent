@@ -1688,7 +1688,7 @@ def create_app() -> Flask:
           "description": "...",                 # required
           "source_text": "...",                 # optional
           "author": "...",                      # optional
-          "clone_seeds_from": "SOoL_v1"         # optional; default active
+          "clone_seeds_from": "SOoL_v1"         # optional; default bare BFO 2020
         }
 
         Does NOT activate. Use /ontologies/<name>/activate separately.
