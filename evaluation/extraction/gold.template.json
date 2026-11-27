@@ -1,0 +1,11 @@
+{
+  "_about": "Hand annotation of one section of a source, scored by scripts/extraction_scorecard.py --gold. Write labels as a careful annotator would; bfo is the BFO class id the term belongs under; property is a BFO or RO id (BFO_0000056) or subClassOf. Keep only what the section states as true of every instance; generic and 'can' statements are not axioms.",
+  "source": "Hoenig et al. 2022, section 'Direct methods'",
+  "classes": [
+    {"label": "direct method", "bfo": "BFO_0000015"},
+    {"label": "fecal sample", "bfo": "BFO_0000040"}
+  ],
+  "axioms": [
+    {"subject": "fecal sampling", "property": "subClassOf", "filler": "direct method"}
+  ]
+}
