@@ -1,0 +1,40 @@
+# Scope for the cockatoo diet pilot (The Parrots' Project). A class is in
+# scope if a term or a competency question reaches it, or it is the parent or
+# child of a class that is.
+terms:
+  - diet
+  - food
+  - foraging
+  - feeding
+  - method
+  - observation
+  - sample
+  - fecal
+  - regurgitation
+  - crop
+  - stomach
+  - gut
+  - residue
+  - seed
+  - fruit
+  - flower
+  - plant
+  - prey
+  - measure
+  - frequency
+  - volumetric
+  - gravimetric
+  - occurrence
+  - identification
+  - specimen
+  - bird
+  - captive
+  - DNA
+  - bias
+questions:
+  - Which method detected the food in a record, and what are its known biases?
+  - Is a diet record a primary observation or a secondary citation, and of which source?
+  - What measure type does a reported share use, and what is it a share of?
+  - Which plant part was eaten?
+  - Do two sources that look independent draw on the same population or observer?
+  - Which taxon concept did the source use for the bird?

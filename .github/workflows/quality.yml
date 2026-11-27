@@ -23,6 +23,6 @@ jobs:
       - name: Download BFO 2020
         run: python scripts/download_bfo.py
       - name: Audit and profile tests
-        run: python -m pytest -q tests/test_ontology_audit.py tests/test_profiles.py
+        run: python -m pytest -q tests/test_ontology_audit.py tests/test_profiles.py tests/test_extraction_scorecard.py
       - name: Construction gates and gate recall
         run: python scripts/ci_quality.py --seed 7 --min-recall 1.0
