@@ -40,9 +40,11 @@ TTL_FIXED = ("obo:BFO_0000196 a owl:ObjectProperty ;\n"
              "    rdfs:label \"bearer of\" ;\n"
              "    owl:inverseOf obo:BFO_0000197 ;\n"
              "    rdfs:range obo:BFO_0000020 .\n")
+# owlready2 serializes the property as <rdf:Description>; hand-written
+# files use <owl:ObjectProperty>. Match either (same element closes it).
 XML_BLOCK = re.compile(
-    r'(<owl:ObjectProperty rdf:about="http://purl\.obolibrary\.org/obo/'
-    r'BFO_0000196">)(.*?)(</owl:ObjectProperty>)', re.S)
+    r'(<(owl:ObjectProperty|rdf:Description) rdf:about="http://purl\.'
+    r'obolibrary\.org/obo/BFO_0000196">)(.*?)(</\2>)', re.S)
 XML_BAD_LINES = [
     re.compile(r'[ \t]*<rdfs:range rdf:resource="http://purl\.obolibrary\.org/'
                r'obo/BFO_00000(?!20")\d+"/>[ \t]*\n'),
@@ -69,11 +71,11 @@ def fix_xml(text: str) -> tuple[str, int]:
 
     def repl(m):
         nonlocal n
-        body = m.group(2)
+        body = m.group(3)
         for pat in XML_BAD_LINES:
             body, k = pat.subn("", body)
             n += k
-        return m.group(1) + body + m.group(3)
+        return m.group(1) + body + m.group(4)
     return XML_BLOCK.sub(repl, text), n
 
 

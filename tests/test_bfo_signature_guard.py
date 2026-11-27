@@ -87,3 +87,34 @@ def test_seed_templates_do_not_narrow_bearer_of():
                     r"rdfs:range\s+obo:BFO_00000(?!20\b)\d+", body):
                 offenders.append(f"{ttl.parent.parent.name}/{ttl.name}")
     assert not offenders, "seeds narrow BFO_0000196: " + ", ".join(offenders)
+
+
+def test_repair_script_handles_owlready_description_form():
+    """owlready2 writes the property as <rdf:Description>, not
+    <owl:ObjectProperty>; the on-disk repair must match both."""
+    import importlib.util
+    spec = importlib.util.spec_from_file_location(
+        "fixer", REPO / "scripts" / "fix_bfo0000196_seeds.py")
+    fixer = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(fixer)
+    for el in ("rdf:Description", "owl:ObjectProperty"):
+        xml = (f'<{el} rdf:about="{O}BFO_0000196">\n'
+               f'  <rdfs:domain rdf:resource="{O}BFO_0000004"/>\n'
+               f'  <rdfs:range rdf:resource="{O}BFO_0000016"/>\n'
+               '  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema'
+               '#string">has disposition</rdfs:label>\n'
+               f'</{el}>\n'
+               f'<{el} rdf:about="{O}BFO_0000040">\n'
+               f'  <rdfs:range rdf:resource="{O}BFO_0000016"/>\n'
+               f'</{el}>\n')
+        out, n = fixer.fix_xml(xml)
+        assert n == 2, el
+        assert "has disposition" not in out
+        assert out.count("BFO_0000016") == 1  # other subjects untouched
+        assert "BFO_0000004" in out
+    ttl = ("obo:BFO_0000196 a owl:ObjectProperty ;\n"
+           "    rdfs:label \"has disposition\" ;\n"
+           "    rdfs:domain obo:BFO_0000004 ;\n"
+           "    rdfs:range obo:BFO_0000016 .\n\nobo:X a owl:Class .\n")
+    out, n = fixer.fix_ttl(ttl)
+    assert n == 1 and "bearer of" in out and "obo:X a owl:Class" in out
