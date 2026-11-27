@@ -32,6 +32,7 @@ from . import coherence_gate as gate_mod
 from . import gate_client
 from . import incoherence_ledger as ledger_mod
 from . import kext as kext_mod
+from . import job_health
 from . import job_runner
 from . import job_transfer
 from . import jobs as jobs_store
@@ -1057,13 +1058,31 @@ def _maybe_checkpoint_verify(job_id: str, claim: dict, session_id: str,
             last_checkpoint_at=_utcnow_iso(),
             last_checkpoint_ok=report["ok"],
             last_verified_claim_id=claim["id"],
+            checkpoint_fail_streak=0, self_heal_failed_at=None,
         )
         return None
 
     # Curated failure. Self-heal first (opt-in): the certificate names the
     # unsatisfiable classes, which are reduced-world false-coherent commits;
     # quarantine them and re-certify rather than stall the run.
-    if config.CHECKPOINT_SELF_HEAL:
+    #
+    # Checkpoint-loop guard: a curated failure leaves the counter untouched,
+    # so after a pause every later claim re-certifies. If self-heal already
+    # failed in this failure streak, re-running it (often ~25 min on a large
+    # graph) just repeats the same outcome per claim -- the Tractatus stall
+    # of 2026-11-27. Skip it and pause at once; job_health then offers the
+    # remedies (switch to faithful, or fix the named classes and resume).
+    fs_now = jobs_store.get_feed_state(jobs_store.load_job(job_id))
+    heal_already_failed = fs_now.get("self_heal_failed_at") is not None
+    heal_skipped = False
+    if config.CHECKPOINT_SELF_HEAL and heal_already_failed:
+        heal_skipped = True
+        log_event(session_id, "checkpoint_self_heal_skipped", {
+            "job_id": job_id, "claim_id": claim["id"],
+            "self_heal_failed_at": fs_now.get("self_heal_failed_at"),
+            "reason": "self-heal already failed in this failure streak",
+        })
+    elif config.CHECKPOINT_SELF_HEAL:
         healed = _self_heal_unsat(
             mgr, report, job_id, session_id, suspect_from, claim["id"],
             "checkpoint",
@@ -1073,9 +1092,26 @@ def _maybe_checkpoint_verify(job_id: str, claim: dict, session_id: str,
                 job_id, commits_since_checkpoint=0,
                 last_checkpoint_at=_utcnow_iso(), last_checkpoint_ok=True,
                 last_verified_claim_id=claim["id"],
+                checkpoint_fail_streak=0, self_heal_failed_at=None,
             )
             return None
         report = healed["report"]  # pause below with the post-heal detail
+        jobs_store.bump_feed_state(job_id, self_heal_failed_at=claim["id"])
+
+    # The user may have switched the ontology to faithful while a long heal
+    # was running (job_health remedy "continue_faithful"). Honour it now:
+    # ledger the incoherence as evidence and keep feeding instead of pausing.
+    if _active_fidelity() == "faithful":
+        _ledger_checkpoint_incoherence(
+            mgr, report, job_id, suspect_from, claim["id"]
+        )
+        jobs_store.bump_feed_state(
+            job_id, commits_since_checkpoint=0,
+            last_checkpoint_at=_utcnow_iso(), last_checkpoint_ok=False,
+            last_verified_claim_id=claim["id"],
+            checkpoint_fail_streak=0, self_heal_failed_at=None,
+        )
+        return None
 
     # Pause with a <=K-claim suspect window. The counter and
     # last_verified_claim_id are left untouched so a resume re-runs the
@@ -1083,7 +1119,8 @@ def _maybe_checkpoint_verify(job_id: str, claim: dict, session_id: str,
     # evidence-first, the per-commit git history of working.owl makes
     # bisection tractable.
     jobs_store.bump_feed_state(
-        job_id, last_checkpoint_at=_utcnow_iso(), last_checkpoint_ok=False
+        job_id, last_checkpoint_at=_utcnow_iso(), last_checkpoint_ok=False,
+        increment={"checkpoint_fail_streak": 1},
     )
     flipped: list[int] = []
     if config.CHECKPOINT_FAIL_MARK_REVIEW:
@@ -1098,6 +1135,9 @@ def _maybe_checkpoint_verify(job_id: str, claim: dict, session_id: str,
             f"(suspect window {suspect_from}..{claim['id']}"
             + (f"; {len(flipped)} claim(s) flipped to needs_review"
                if flipped else "")
+            + (" [self-heal skipped: it already failed at claim "
+               f"{fs_now.get('self_heal_failed_at')}; see the job's health "
+               "panel for remedies]" if heal_skipped else "")
             + f"): {report['detail']}"
         ),
     }
@@ -1187,6 +1227,31 @@ def _final_verify_before_complete(job_id: str, session_id: str) -> dict | None:
     }
 
 
+def _job_fidelity(job: dict) -> str:
+    """Fidelity of the job's own ontology (active one if unbound)."""
+    try:
+        return _get_registry().fidelity(job.get("ontology"))
+    except Exception:  # noqa: BLE001
+        return "curated"
+
+
+def _job_health(job: dict, runner: dict | None) -> dict:
+    """job_health verdict for a job; never raises into a progress poll."""
+    try:
+        return job_health.diagnose(
+            job, runner,
+            job_health.tail_events(session_path(job["session_id"])),
+            jobs_store.get_feed_state(job), _job_fidelity(job),
+            config.FEED_STALL_TIMEOUT_SECONDS,
+            active_ontology=_get_registry().active_name(),
+        )
+    except Exception as e:  # noqa: BLE001
+        log.warning("job health diagnosis failed: %s", e)
+        return {"state": "unknown", "level": "warn",
+                "headline": "Health unknown", "detail": str(e),
+                "remedies": []}
+
+
 def _resume_verify(job_id: str) -> bool:
     """Boot-resume certificate (SPEC-bfo-agent-speed.md change 6): a job
     interrupted with unverified commits gets one verify_full before its feed
@@ -1236,7 +1301,10 @@ def _resume_verify(job_id: str) -> bool:
         # Curated failure. Self-heal first (opt-in): quarantine the named
         # unsatisfiable classes and re-certify so a resume clears standing
         # poison instead of refusing to restart the feed.
-        if config.CHECKPOINT_SELF_HEAL and not faithful:
+        # Same checkpoint-loop guard as _maybe_checkpoint_verify: never
+        # re-run a self-heal that already failed in this failure streak.
+        if (config.CHECKPOINT_SELF_HEAL and not faithful
+                and fs.get("self_heal_failed_at") is None):
             with _lock:
                 healed = _self_heal_unsat(
                     mgr, report, job_id, session_id,
@@ -1247,16 +1315,80 @@ def _resume_verify(job_id: str) -> bool:
                     job_id, commits_since_checkpoint=0,
                     last_checkpoint_at=_utcnow_iso(), last_checkpoint_ok=True,
                     last_verified_claim_id=last_claim_id,
+                    checkpoint_fail_streak=0, self_heal_failed_at=None,
                 )
                 return True
+            jobs_store.bump_feed_state(
+                job_id, self_heal_failed_at=last_claim_id)
         jobs_store.bump_feed_state(
             job_id, last_checkpoint_at=_utcnow_iso(),
             last_checkpoint_ok=False,
+            increment={"checkpoint_fail_streak": 1},
         )
         return False
     except Exception as e:  # noqa: BLE001 — never brick boot-resume
         log.warning("resume_verify failed open (%s); resuming feed", e)
         return True
+
+
+def _job_ontology_guard(job: dict) -> dict | None:
+    """Refuse to feed a job into an ontology it does not belong to.
+
+    Feeding writes into whichever ontology is ACTIVE. Before jobs recorded
+    their ontology, a job resumed (or still running) after the active
+    ontology was switched poured its claims into the wrong library: 536
+    ICD-11 commits landed in Tractatus on 2026-07-13. Returns None when the
+    job is bound to the active ontology, else a fatal-shaped dict; the
+    caller pauses the job. An unbound (legacy) job never feeds until the
+    user binds it explicitly (remedy "bind_to_active")."""
+    bound = job.get("ontology")
+    active = _get_registry().active_name()
+    if bound == active:
+        return None
+    if bound is None:
+        return {"fatal": "job_unbound", "error": (
+            f"job {job['job_id']} is not bound to an ontology (it predates "
+            f"job-ontology binding), so it will not feed into the active "
+            f"ontology {active!r} without confirmation. Bind it to the "
+            f"ontology its claims belong to, then resume.")}
+    return {"fatal": "ontology_mismatch", "error": (
+        f"job {job['job_id']} belongs to ontology {bound!r} but {active!r} is "
+        f"active; refusing to write its claims into {active!r}. Activate "
+        f"{bound!r} and resume.")}
+
+
+def _running_feeds_blocking_activation(name: str) -> list[dict]:
+    """Running feed jobs that switching the active ontology to ``name``
+    would affect (any running job, unless ``name`` is already active)."""
+    try:
+        if _get_registry().active_name() == name:
+            return []
+    except Exception:  # noqa: BLE001
+        pass
+    out = []
+    for jid in job_runner.running_job_ids():
+        try:
+            j = jobs_store.load_job(jid)
+            out.append({"job_id": jid, "name": j.get("name"),
+                        "ontology": j.get("ontology")})
+        except FileNotFoundError:
+            continue
+    return out
+
+
+def _activate_ontology(name: str) -> tuple[str, str]:
+    """Activate ``name`` under _lock and git-record the switch. Raises
+    KeyError (OntologyNotFoundError) for an unknown name."""
+    with _lock:
+        reg = _get_registry()
+        new_active, previous = reg.activate(name)
+        if new_active != previous:
+            active_file = config.LIBRARY_ROOT.parent / "active.txt"
+            git_commit_library_change(
+                [active_file],
+                f"Activate ontology {new_active} (was {previous})",
+            )
+    return new_active, previous
 
 
 def _feed_one_core(job_id: str, auto_accept: bool = True) -> dict:
@@ -1289,6 +1421,15 @@ def _feed_one_core(job_id: str, auto_accept: bool = True) -> dict:
     session_id = job["session_id"]
 
     with _lock:
+        # Ontology binding is checked under the same lock that activation
+        # takes, so the active ontology cannot change between this check
+        # and the commit below.
+        wrong = _job_ontology_guard(jobs_store.load_job(job_id))
+        if wrong is not None:
+            jobs_store.set_job_status(job_id, "paused")
+            log_event(session_id, "feed_refused_wrong_ontology",
+                      {"job_id": job_id, **wrong})
+            return wrong
         # Claim selection happens under the lock so a concurrent caller
         # (e.g. a stale browser tab still looping /feed_one alongside the
         # server-side runner) cannot grab the same claim.
@@ -1733,21 +1874,24 @@ def create_app() -> Flask:
 
     @app.post("/ontologies/<name>/activate")
     def activate_ontology(name):
-        """Make <name> the active writable ontology."""
-        try:
-            with _lock:
-                reg = _get_registry()
-                try:
-                    new_active, previous = reg.activate(name)
-                except KeyError:
-                    return _not_found_response(name)
+        """Make <name> the active writable ontology.
 
-                if new_active != previous:
-                    active_file = config.LIBRARY_ROOT.parent / "active.txt"
-                    git_commit_library_change(
-                        [active_file],
-                        f"Activate ontology {new_active} (was {previous})",
-                    )
+        Refused (409) while any feed runner is alive: feeding writes into
+        the active ontology, so switching mid-run would redirect a job's
+        claims (checked before taking _lock, which a long self-heal can hold
+        for many minutes)."""
+        try:
+            busy = _running_feeds_blocking_activation(name)
+            if busy:
+                return jsonify({
+                    "error": "a feed is running; pause it before switching "
+                             "the active ontology",
+                    "running_jobs": busy,
+                }), 409
+            try:
+                new_active, previous = _activate_ontology(name)
+            except KeyError:
+                return _not_found_response(name)
 
             return jsonify({
                 "active": new_active,
@@ -2615,7 +2759,8 @@ def create_app() -> Flask:
         if not name:
             return jsonify({"error": "name required"}), 400
         meta = body.get("meta") or {}
-        job = jobs_store.create_job(name, meta=meta)
+        job = jobs_store.create_job(name, meta=meta,
+                                   ontology=_get_registry().active_name())
         return jsonify(job)
 
     @app.get("/jobs/<job_id>")
@@ -2661,7 +2806,8 @@ def create_app() -> Flask:
             name, meta, claims = job_transfer.parse_import_envelope(payload)
         except ValueError as e:
             return jsonify({"error": str(e)}), 400
-        job = jobs_store.create_job(name, meta=meta)
+        job = jobs_store.create_job(name, meta=meta,
+                                   ontology=_get_registry().active_name())
         job = jobs_store.append_claims(job["job_id"], claims)
         return jsonify(jobs_store._job_summary(job)), 201
 
@@ -2806,9 +2952,16 @@ def create_app() -> Flask:
         body = request.get_json(silent=True) or {}
         auto_accept = bool(body.get("auto_accept", True))
         try:
-            job = jobs_store.set_job_status(job_id, "feeding")
+            job = jobs_store.load_job(job_id)
         except FileNotFoundError as e:
             return jsonify({"error": str(e)}), 404
+        wrong = _job_ontology_guard(job)
+        if wrong is not None:
+            out = jobs_store._job_summary(job)
+            out["error"] = wrong["error"]
+            out["health"] = _job_health(job, job_runner.status(job_id))
+            return jsonify(out), 409
+        job = jobs_store.set_job_status(job_id, "feeding")
         try:
             # Amortized-save crash recovery (change 7): a manual resume
             # after a process death must not trust claim statuses beyond
@@ -2840,6 +2993,102 @@ def create_app() -> Flask:
         if runner and runner.get("avg_seconds_per_claim") and remaining:
             out["eta_seconds"] = int(
                 remaining * runner["avg_seconds_per_claim"])
+        out["health"] = _job_health(job, runner)
+        return jsonify(out)
+
+    @app.post("/jobs/<job_id>/remedy")
+    def jobs_remedy(job_id):
+        """Apply one of the remedies job_health offers for a stuck job.
+        Body: {action, auto_accept?}. Actions:
+          resume                 restart the runner (refused if the job does
+                                 not belong to the active ontology)
+          pause                  stop after the current step
+          continue_faithful      switch the JOB's ontology to faithful
+                                 fidelity (previous value kept in the
+                                 manifest's ``fidelity_switches``) and resume;
+                                 lock-free so it works mid self-heal
+          bind_to_active         bind an unbound legacy job to the active
+                                 ontology (explicit user confirmation)
+          activate_job_ontology  make the job's own ontology active, resume
+        """
+        body = request.get_json(silent=True) or {}
+        action = body.get("action")
+        if action not in job_health.REMEDIES:
+            return jsonify({"error": f"unknown action {action!r}; expected "
+                            f"one of {sorted(job_health.REMEDIES)}"}), 400
+        try:
+            job = jobs_store.load_job(job_id)
+        except FileNotFoundError as e:
+            return jsonify({"error": str(e)}), 404
+        reg = _get_registry()
+        changed = None
+
+        if action == "pause":
+            jobs_store.set_job_status(job_id, "paused")
+        elif action == "bind_to_active":
+            if job.get("ontology") is not None:
+                return jsonify({"error": f"job is already bound to "
+                                f"{job['ontology']!r}"}), 409
+            changed = {"ontology": reg.active_name()}
+            jobs_store.bind_ontology(job_id, reg.active_name())
+        elif action == "activate_job_ontology":
+            target = job.get("ontology")
+            if target is None:
+                return jsonify({"error": "job is not bound to an "
+                                "ontology"}), 409
+            busy = [b for b in _running_feeds_blocking_activation(target)
+                    if b["job_id"] != job_id]
+            if busy:
+                return jsonify({"error": "another feed is running; pause it "
+                                "first", "running_jobs": busy}), 409
+            try:
+                _, previous = _activate_ontology(target)
+            except KeyError:
+                return _not_found_response(target)
+            changed = {"active": target, "previous_active": previous}
+        elif action == "continue_faithful":
+            target = job.get("ontology")
+            if target is None:
+                return jsonify({"error": "job is not bound to an "
+                                "ontology; bind it first"}), 409
+            previous = reg.fidelity(target)
+            if previous != "faithful":
+                switches = list(reg.manifest(target).get(
+                    "fidelity_switches") or [])
+                switches.append({"from": previous, "to": "faithful",
+                                 "at": _utcnow_iso(), "job_id": job_id,
+                                 "reason": "job_health remedy"})
+                reg.set_manifest_fields(target, fidelity="faithful",
+                                        fidelity_switches=switches)
+                changed = {"ontology": target, "fidelity_from": previous}
+        log_event(job.get("session_id"), "job_remedy",
+                  {"job_id": job_id, "action": action, "changed": changed})
+
+        if action != "pause":
+            job = jobs_store.load_job(job_id)
+            if _active_is_finalized():
+                return _finalized_guard_response()
+            wrong = _job_ontology_guard(job)
+            if wrong is not None:
+                out = jobs_store._job_summary(job)
+                out["error"] = wrong["error"]
+                out["health"] = _job_health(job, job_runner.status(job_id))
+                return jsonify(out), 409
+            if not (job_runner.status(job_id) or {}).get("running"):
+                jobs_store.set_job_status(job_id, "feeding")
+                try:
+                    _prepare_amortized_resume(job_id)
+                except Exception:  # noqa: BLE001 — never brick resume
+                    log.exception("amortized-save resume preparation failed")
+                job_runner.start(job_id, _feed_one_core,
+                                 bool(body.get("auto_accept", True)),
+                                 on_complete=_fol_audit_on_complete,
+                                 flush_fn=flush_working_ontology)
+        job = jobs_store.load_job(job_id)
+        out = jobs_store._job_summary(job)
+        runner = job_runner.status(job_id)
+        out["runner"] = runner
+        out["health"] = _job_health(job, runner)
         return jsonify(out)
 
     @app.get("/session/<session_id>")

@@ -85,6 +85,8 @@ def feed_env(tmp_path, monkeypatch):
     git_calls: list[tuple] = []
 
     monkeypatch.setattr(orchestrator, "_get_manager", lambda: mgr)
+    monkeypatch.setattr(orchestrator, "_get_registry",
+                        lambda: type("R", (), {"active_name": lambda self: "TestOnto", "fidelity": lambda self, n=None: "curated"})())
     monkeypatch.setattr(orchestrator, "_get_proposer", lambda: FakeProposer())
     monkeypatch.setattr(orchestrator, "_active_is_finalized", lambda: False)
     monkeypatch.setattr(orchestrator, "_active_fidelity", lambda: "curated")
@@ -107,7 +109,7 @@ def feed_env(tmp_path, monkeypatch):
     monkeypatch.setattr(orchestrator.config, "FINALIZE_REQUIRES_FULL_VERIFY",
                         True)
 
-    job = jobs_store.create_job("amortized-save-test")
+    job = jobs_store.create_job("amortized-save-test", ontology="TestOnto")
     jobs_store.append_claims(job["job_id"], [
         {"claim": f"claim {i}", "confidence": "high"} for i in range(3)
     ])

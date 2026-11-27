@@ -157,7 +157,7 @@ def jobs_dir(tmp_path, monkeypatch):
 
 
 def _make_job():
-    job = jobs_store.create_job("batch-test")
+    job = jobs_store.create_job("batch-test", ontology="TestOnto")
     jobs_store.append_claims(job["job_id"], [
         {"claim": f"claim {i}", "confidence": "high"} for i in range(3)
     ])
@@ -173,6 +173,8 @@ def feed_env(tmp_path, monkeypatch, jobs_dir):
     events = []
 
     monkeypatch.setattr(orchestrator, "_get_manager", lambda: mgr)
+    monkeypatch.setattr(orchestrator, "_get_registry",
+                        lambda: type("R", (), {"active_name": lambda self: "TestOnto", "fidelity": lambda self, n=None: "curated"})())
     monkeypatch.setattr(orchestrator, "_get_proposer", lambda: proposer)
     monkeypatch.setattr(orchestrator, "_active_is_finalized", lambda: False)
     monkeypatch.setattr(orchestrator, "_active_fidelity", lambda: "curated")
