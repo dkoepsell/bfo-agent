@@ -91,6 +91,11 @@ _FEED_STATE_DEFAULTS = {
     "last_checkpoint_ok": None,
     "last_verified_claim_id": None,
     "last_saved_claim_id": None,
+    # Checkpoint-loop guard (job_health): consecutive failed curated
+    # checkpoints, and the claim id where self-heal last failed (None = no
+    # failed heal in the current failure streak).
+    "checkpoint_fail_streak": 0,
+    "self_heal_failed_at": None,
 }
 
 
@@ -166,13 +171,22 @@ def reset_claims_pending(job_id: str, claim_ids: list[int]) -> list[int]:
 
 
 # -------------------------------------------------------------- CRUD
-def create_job(name: str, meta: Optional[dict] = None) -> dict:
-    """Create a new empty job."""
+def create_job(name: str, meta: Optional[dict] = None,
+               ontology: Optional[str] = None) -> dict:
+    """Create a new empty job.
+
+    ``ontology`` binds the job to the library ontology its claims belong to.
+    Feeding refuses to write while a different ontology is active (see
+    orchestrator._job_ontology_guard), so switching the active ontology can
+    never route one job's claims into another ontology. None leaves the job
+    unbound, and an unbound job refuses to feed until it is bound
+    explicitly (bind_ontology)."""
     with _file_lock:
         job_id = _new_job_id()
         job = {
             "job_id": job_id,
             "name": name,
+            "ontology": ontology,
             "created_at": _now(),
             "updated_at": _now(),
             "session_id": f"feed_{_safe_slug(name)}_{job_id[4:10]}",
@@ -183,6 +197,14 @@ def create_job(name: str, meta: Optional[dict] = None) -> dict:
         }
         _atomic_write(_job_path(job_id), job)
     return job
+
+
+def bind_ontology(job_id: str, ontology: str) -> dict:
+    """Bind a job to the ontology its claims belong to (one-time, explicit
+    user action for jobs created before jobs recorded their ontology)."""
+    job = load_job(job_id)
+    job["ontology"] = ontology
+    return save_job(job)
 
 
 def load_job(job_id: str) -> dict:

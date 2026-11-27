@@ -955,6 +955,10 @@ async function loadJob(jobId) {
     // in), attach to it so progress shows live.
     feedingLoop = currentJob.status === "feeding";
     if (feedingLoop) startProgressPolling();
+    else if (switching && currentJob.status === "paused") {
+      // Show why a paused job stopped (and the fixes) without polling.
+      api(`/jobs/${jobId}/progress`).then(p => renderFeedProgress(p, null, true)).catch(() => {});
+    }
     renderJobSummary();
     renderClaims();
     setJobControlsEnabled(true);
@@ -1313,7 +1317,14 @@ async function feedLoop() {
       body: JSON.stringify({ auto_accept: autoAccept }),
     });
   } catch (e) {
-    renderFeedProgress(null, `could not start feed: ${e.message}`);
+    // A 409 (job belongs to another ontology / unbound) comes with a health
+    // verdict and fixes; show those instead of a bare error.
+    try {
+      const p = await api(`/jobs/${currentJob.job_id}/progress`);
+      renderFeedProgress(p, `could not start feed: ${e.message}`, true);
+    } catch (_) {
+      renderFeedProgress(null, `could not start feed: ${e.message}`);
+    }
     return;
   }
   feedingLoop = true;
@@ -1369,7 +1380,16 @@ function renderFeedProgress(p, extra, done = false) {
     ? `<br/><span class="muted">last: [${esc(r.current_claim.status || "")}] ${esc(r.current_claim.text)}</span>` : "";
   const err = r.last_error ? `<br/><span class="muted">last error: ${esc(r.last_error)}</span>` : "";
   let note = "";
-  if (r.running || p.status === "feeding") {
+  const h = p.health;
+  if (h && h.state !== "feeding" && h.state !== "completed" && h.state !== "idle") {
+    const color = h.level === "error" ? "#b42318" : (h.level === "warn" ? "#b54708" : "inherit");
+    const btns = (h.remedies || []).map(m =>
+      `<button type="button" title="${esc(m.description)}" onclick="applyRemedy('${esc(m.id)}')">${esc(m.label)}</button>`).join(" ");
+    note = `<div class="job-health" style="margin-top:6px;border-left:3px solid ${color};padding-left:8px">
+      <strong style="color:${color}">${esc(h.headline)}</strong><br/>
+      <span class="muted">${esc(h.detail)}</span>
+      ${btns ? `<div style="margin-top:4px">${btns}</div>` : ""}</div>`;
+  } else if (r.running || p.status === "feeding") {
     note = `<br/><span class="muted">feeding on the server &mdash; safe to close this tab${eta}</span>`;
   } else if (p.status === "completed" || done) {
     note = `<br/><span class="muted">run finished &mdash; job status: ${esc(p.status)}</span>`;
@@ -1388,6 +1408,23 @@ function fmtDuration(s) {
   if (h) return `${h}h ${m}m`;
   if (m) return `${m}m`;
   return `${s}s`;
+}
+
+async function applyRemedy(action) {
+  if (!currentJob) return;
+  if (action === "continue_faithful" && !confirm(
+      "Switch this ontology to faithful mode? Failed full-graph checks will be " +
+      "recorded in the incoherence ledger as evidence instead of stopping the run.")) return;
+  if (action === "bind_to_active" && !confirm(
+      "Bind this job to the currently active ontology? Only do this if its claims " +
+      "belong there: it will then feed only into that ontology.")) return;
+  try {
+    const p = await api(`/jobs/${currentJob.job_id}/remedy`, {
+      method: "POST", body: JSON.stringify({ action }),
+    });
+    renderFeedProgress(p);
+    if (action !== "pause") { feedingLoop = true; setJobControlsEnabled(true); startProgressPolling(); }
+  } catch (e) { alert("remedy failed: " + e.message); }
 }
 
 async function pauseFeed() {

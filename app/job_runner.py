@@ -106,6 +106,12 @@ def start(job_id: str, feed_fn: Callable[[str, bool], dict],
     return status(job_id)
 
 
+def running_job_ids() -> list[str]:
+    """Ids of jobs whose runner thread is alive right now."""
+    with _registry_lock:
+        return [j for j, t in _threads.items() if t.is_alive()]
+
+
 def status(job_id: str) -> dict | None:
     """Snapshot of the (current or most recent) run for this job, or
     None if no runner has been started since boot."""

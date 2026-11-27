@@ -98,6 +98,8 @@ def feed_env(tmp_path, monkeypatch):
     events: list[tuple[str, dict]] = []
 
     monkeypatch.setattr(orchestrator, "_get_manager", lambda: mgr)
+    monkeypatch.setattr(orchestrator, "_get_registry",
+                        lambda: type("R", (), {"active_name": lambda self: "TestOnto", "fidelity": lambda self, n=None: "curated"})())
     monkeypatch.setattr(orchestrator, "_get_proposer", lambda: FakeProposer())
     monkeypatch.setattr(orchestrator, "_active_is_finalized", lambda: False)
     monkeypatch.setattr(orchestrator, "_active_fidelity", lambda: "curated")
@@ -121,7 +123,7 @@ def feed_env(tmp_path, monkeypatch):
     monkeypatch.setattr(orchestrator.config, "FINALIZE_REQUIRES_FULL_VERIFY",
                         True)
 
-    job = jobs_store.create_job("checkpoint-test")
+    job = jobs_store.create_job("checkpoint-test", ontology="TestOnto")
     jobs_store.append_claims(job["job_id"], [
         {"claim": f"claim {i}", "confidence": "high"} for i in range(3)
     ])
@@ -143,6 +145,8 @@ def test_feed_state_defaults_on_new_jobs(tmp_path, monkeypatch):
         "last_checkpoint_ok": None,
         "last_verified_claim_id": None,
         "last_saved_claim_id": None,
+        "checkpoint_fail_streak": 0,
+        "self_heal_failed_at": None,
     }
     # Pre-existing job files without the field read as the defaults.
     legacy = {"job_id": "job_old", "claims": []}
@@ -428,3 +432,74 @@ def test_verify_full_real_smoke(tmp_path):
     assert report["duration_ms"] > 0
     assert report["classes"] >= 1
     assert mgr.commits_since_full_verify == 0
+
+
+# ------------------------------------------------- checkpoint-loop guard
+
+UNHEALABLE = {"ok": False, "unsat_classes": ["working#Broken"],
+              "detail": "unsatisfiable classes: working#Broken",
+              "duration_ms": 1.0, "classes": 0, "individuals": 0}
+
+
+def test_failed_self_heal_is_not_rerun_on_next_checkpoint(feed_env,
+                                                          monkeypatch):
+    """Tractatus 2026-11-27: after a failed self-heal, every later claim
+    re-ran the ~25 min heal. Once a heal fails it must be skipped until a
+    checkpoint passes, so the job pauses at once."""
+    mgr, events, job = feed_env
+    job_id = job["job_id"]
+    monkeypatch.setattr(orchestrator.config, "CHECKPOINT_SELF_HEAL", True)
+    monkeypatch.setattr(orchestrator.config, "CHECKPOINT_REALIZABLE_REPAIR",
+                        False)
+    mgr._verify_report = dict(UNHEALABLE)  # quarantine never fixes it
+
+    orchestrator._feed_one_core(job_id)
+    res = orchestrator._feed_one_core(job_id)  # K=2 -> checkpoint, heal fails
+    assert res.get("fatal") == "checkpoint_verify_failed"
+    heals = len(mgr.quarantine_calls)
+    assert heals >= 1
+    fs = jobs_store.get_feed_state(jobs_store.load_job(job_id))
+    assert fs["self_heal_failed_at"] is not None
+    assert fs["checkpoint_fail_streak"] == 1
+
+    jobs_store.set_job_status(job_id, "feeding")  # user hits Resume
+    res = orchestrator._feed_one_core(job_id)  # counter still >= K
+    assert res.get("fatal") == "checkpoint_verify_failed"
+    assert "self-heal skipped" in res["error"]
+    assert len(mgr.quarantine_calls) == heals  # no second heal
+    assert _events_of(events, "checkpoint_self_heal_skipped")
+    fs = jobs_store.get_feed_state(jobs_store.load_job(job_id))
+    assert fs["checkpoint_fail_streak"] == 2
+
+
+def test_faithful_switch_during_heal_continues(feed_env, monkeypatch):
+    """The continue_faithful remedy flips fidelity while the heal runs; the
+    checkpoint must then ledger and keep feeding instead of pausing."""
+    mgr, events, job = feed_env
+    job_id = job["job_id"]
+    monkeypatch.setattr(orchestrator.config, "CHECKPOINT_SELF_HEAL", True)
+    monkeypatch.setattr(orchestrator.config, "CHECKPOINT_REALIZABLE_REPAIR",
+                        False)
+    mgr._verify_report = dict(UNHEALABLE)
+    fidelity = {"v": "curated"}
+    monkeypatch.setattr(orchestrator, "_active_fidelity", lambda: fidelity["v"])
+    ledgered = []
+    monkeypatch.setattr(orchestrator, "_ledger_checkpoint_incoherence",
+                        lambda *a, **k: ledgered.append(a) or None)
+    real_heal = orchestrator._self_heal_unsat
+
+    def heal_then_user_flips(*a, **k):
+        out = real_heal(*a, **k)
+        fidelity["v"] = "faithful"
+        return out
+
+    monkeypatch.setattr(orchestrator, "_self_heal_unsat", heal_then_user_flips)
+
+    orchestrator._feed_one_core(job_id)
+    res = orchestrator._feed_one_core(job_id)
+    assert not res.get("fatal")
+    assert jobs_store.load_job(job_id)["status"] == "feeding"
+    assert ledgered
+    fs = jobs_store.get_feed_state(jobs_store.load_job(job_id))
+    assert fs["commits_since_checkpoint"] == 0
+    assert fs["self_heal_failed_at"] is None
