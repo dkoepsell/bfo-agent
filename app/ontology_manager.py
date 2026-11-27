@@ -462,6 +462,7 @@ class OntologyManager:
                     self.working.base_iri, WORKING_IRI)
 
             self._sanitize_bfo_disjointness()
+            self._sanitize_bfo_relation_signatures()
             self._strip_subclass_of_property()
 
             # Reduced-world indexes (SPEC-bfo-agent-speed.md change 1): built
@@ -549,6 +550,50 @@ class OntologyManager:
             log.warning(
                 "stripped %d invalid BFO subclass-pair disjointness axiom(s) "
                 "on load (e.g. Disposition/Function)", removed
+            )
+
+    # BFO 2020 specific-dependence relations whose named signature a seed
+    # must never narrow. (property fragment, rdfs predicate, the only named
+    # class BFO 2020 allows there, the BFO 2020 label).
+    _BFO_SIGNATURE_GUARD = (
+        ("BFO_0000196", "range", "BFO_0000020", "bearer of"),
+        ("BFO_0000197", "domain", "BFO_0000020", "inheres in"),
+    )
+
+    def _sanitize_bfo_relation_signatures(self, world: Optional[World] = None):
+        """Strip seed axioms that narrow a BFO 2020 relation's signature.
+
+        Library seeds (bfo_relations.ttl) re-declared BFO_0000196 as
+        "has disposition" with ``rdfs:range Disposition``. In BFO 2020 that IRI
+        is "bearer of", the inverse of "inheres in" (BFO_0000197), with range
+        specifically dependent continuant. The narrowed range forces every
+        quality (or role) that inheres in anything to be a Disposition, and
+        Quality is disjoint from Disposition, so the first quality-inheres-in
+        assertion makes the whole ontology inconsistent (Tractatus,
+        2026-11-27). Like _sanitize_bfo_disjointness this runs in memory on
+        every load; the disk file only changes if saved later. The
+        "has disposition" relation is RO_0000091.
+        """
+        from rdflib import Literal, RDFS, URIRef
+        g = (world or self.world).as_rdflib_graph()
+        obo = "http://purl.obolibrary.org/obo/"
+        removed = 0
+        for frag, which, allowed, label in self._BFO_SIGNATURE_GUARD:
+            prop = URIRef(obo + frag)
+            pred = RDFS.range if which == "range" else RDFS.domain
+            for o in list(g.objects(prop, pred)):
+                if isinstance(o, URIRef) and str(o) != obo + allowed:
+                    g.remove((prop, pred, o))
+                    removed += 1
+            for lab in list(g.objects(prop, RDFS.label)):
+                if isinstance(lab, Literal) and str(lab) != label:
+                    g.remove((prop, RDFS.label, lab))
+                    removed += 1
+        if removed:
+            log.warning(
+                "stripped %d axiom(s) narrowing BFO 2020 bearer-of/inheres-in "
+                "on load (e.g. BFO_0000196 'has disposition' range "
+                "Disposition)", removed
             )
 
     def _apply_seed(self):
@@ -2490,6 +2535,7 @@ class OntologyManager:
         # Same sanitizers _load runs, applied to the scratch verify world so
         # the verdict matches what the app would run with after a reload.
         self._sanitize_bfo_disjointness(world=w)
+        self._sanitize_bfo_relation_signatures(world=w)
         self._strip_subclass_of_property(world=w)
         if exclude_axioms:
             self._retract_axiom_triples(exclude_axioms, world=w, ontology=onto)
@@ -2572,6 +2618,7 @@ class OntologyManager:
             w.get_ontology(str(self.bfo_path)).load()
             onto = w.get_ontology(self.working_path.as_uri()).load()
         self._sanitize_bfo_disjointness(world=w)
+        self._sanitize_bfo_relation_signatures(world=w)
         self._strip_subclass_of_property(world=w)
         if drop_iris:
             with onto:

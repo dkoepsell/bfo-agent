@@ -138,9 +138,9 @@ obo:RO_0000087 a owl:ObjectProperty ;
     rdfs:range obo:BFO_0000023 .
 
 obo:BFO_0000196 a owl:ObjectProperty ;
-    rdfs:label "has disposition" ;
-    rdfs:domain obo:BFO_0000004 ;
-    rdfs:range obo:BFO_0000016 .
+    rdfs:label "bearer of" ;
+    owl:inverseOf obo:BFO_0000197 ;
+    rdfs:range obo:BFO_0000020 .
 
 #
 # ========== DISJOINTNESS (the reasoner's teeth) ==========

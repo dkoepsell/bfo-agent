@@ -854,13 +854,11 @@
   </rdfs:domain>
   <rdfs:range rdf:resource="http://purl.obolibrary.org/obo/BFO_0000020"/>
   <rdfs:domain rdf:resource="http://purl.obolibrary.org/obo/BFO_0000004"/>
-  <rdfs:range rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
   <x_1.1:identifier rdf:datatype="http://www.w3.org/2001/XMLSchema#string">053-BFO</x_1.1:identifier>
   <rdfs:label xml:lang="en">bearer of</rdfs:label>
   <core:definition xml:lang="en">b bearer of c =Def c inheres in b</core:definition>
   <core:example xml:lang="en">A patch of ink is the bearer of a colour quality; an organism is the bearer of a temperature quality</core:example>
   <core:prefLabel xml:lang="en">bearer of</core:prefLabel>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">has disposition</rdfs:label>
 </owl:ObjectProperty>
 
 <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/BFO_0000197">
